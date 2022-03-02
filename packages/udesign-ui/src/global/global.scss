@@ -1,0 +1,24 @@
+@import './theme.scss';
+
+:root {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  color: var(--ud-color-text);
+  font-size: var(--ud-font-size-main);
+  font-family: var(--ud-font-family);
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--ud-color-primary);
+  transition: opacity ease-in-out 0.2s;
+  &:active {
+    opacity: 0.8;
+  }
+}

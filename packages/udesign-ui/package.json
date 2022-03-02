@@ -1,0 +1,65 @@
+{
+  "name": "@ubt/udesign-ui",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Arvin <arvin.xiang@ubtrobot.com>",
+  "license": "MIT",
+  "scripts": {
+    "compile": "gulp",
+    "deploy": "npm run compile && npm publish ./dist"
+  },
+  "main": "./cjs/index.js",
+  "module": "./es/index.js",
+  "typings": "./es/index.d.ts",
+  "unpkg": "./umd/udesign.js",
+  "files": [
+    "./dist"
+  ],
+  "publishConfig": {
+    "registry": "http://npm.edu.ubtrobot.com"
+  },
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "./es/index.js",
+    "./src/index.ts",
+    "./es/global/index.js",
+    "./src/global/index.ts"
+],
+  "dependencies": {
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/react": "^17.0.29",
+    "@types/react-dom": "^17.0.10",
+    "autoprefixer": "^10.3.7",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-import": "^1.13.3",
+    "babel-plugin-transform-async-to-promises": "^0.8.15",
+    "css-loader": "^6.5.1",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-less": "^5.0.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "postcss": "^8.3.9",
+    "sass": "^1.49.0",
+    "style-loader": "^3.3.1",
+    "through2": "^4.0.2",
+    "typescript": "^3.9.10",
+    "webpack": "^5.69.1",
+    "webpack-stream": "^7.0.0"
+  }
+}

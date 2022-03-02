@@ -1,0 +1,47 @@
+$module: ud-switch;
+$gap: 2px;
+
+.#{$module} {
+  position: relative;
+  height: 20px;
+  border: 0;
+  border-radius: 9999px;
+  cursor: pointer;
+  outline: none;
+  &-notext {
+    width: 40px;
+  }
+  &-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  &-checked {
+    background: #7284fb;
+    padding-right: 20px;
+  }
+  &-unchecked {
+    background: #c1c1c1;
+    padding-left: 20px;
+  }
+
+  .#{$module}-inner {
+    position: absolute;
+    top: $gap;
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    background: #fff;
+
+    &-checked {
+      right: $gap;
+    }
+    &-unchecked {
+      left: $gap;
+    }
+  }
+
+  .#{$module}-text {
+    color: #fff;
+  }
+}

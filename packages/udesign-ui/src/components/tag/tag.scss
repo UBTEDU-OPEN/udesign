@@ -1,0 +1,60 @@
+$module: ud-tag;
+
+$height-tag_small: 20px; // 小尺寸标签高度
+$height-tag_large: 24px; // 大尺寸标签高度
+$radius-tag: 2px; // 标签圆角大小
+
+.#{$module} {
+  box-sizing: border-box;
+  display: inline-block;
+  border-radius: $radius-tag;
+  background-color: rgba(#5e69e9, 0.1);
+  color: var(--ud-color-text);
+  position: relative;
+  user-select: none;
+  overflow: hidden;
+  white-space: nowrap;
+
+  // size
+  &-large {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+  &-middle,
+  &-small {
+    font-size: 14px;
+    padding: 2px 6px;
+  }
+
+  // shape
+  &-round {
+    border-radius: 9999px;
+  }
+  &-square {
+    border-radius: 0;
+  }
+
+  // type
+  &-primary {
+    background-color: var(--ud-color-primary);
+    color: white;
+  }
+  &-success {
+    background-color: var(--ud-color-success);
+    color: white;
+  }
+  &-warning {
+    background-color: var(--ud-color-warning);
+    color: white;
+  }
+  &-danger {
+    background-color: var(--ud-color-danger);
+    color: white;
+  }
+
+  .#{$module}-close {
+    margin-left: 5px;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+}
