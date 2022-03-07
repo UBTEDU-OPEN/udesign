@@ -1,0 +1,145 @@
+$module: ud-button;
+
+.#{$module} {
+  --color: var(--ud-color-primary);
+
+  --text-color: var(--ud-button-text-color, var(--ud-color-text));
+  --background-color: var(--ud-button-background-color, var(--ud-color-white));
+  --border-radius: var(--ud-button-border-radius, 2px);
+  --border-width: var(--ud-button-border-width, 1px);
+  --border-style: var(--ud-button-border-style, solid);
+  --border-color: var(--ud-button-border-color, var(--ud-border-color));
+
+  --height: var(--ud-button-height, 48px);
+
+  color: var(--text-color);
+  background-color: var(--background-color);
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  height: var(--height);
+  padding: 11px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: opacity ease 0.15s;
+  user-select: none;
+  min-width: 150px;
+
+  &:focus {
+    outline: none;
+  }
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(calc(var(--border-width) * -1), calc(var(--border-width) * -1));
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border: var(--border-width) var(--border-style) #000;
+    border-radius: var(--border-radius);
+    opacity: 0;
+    content: ' ';
+    box-sizing: content-box;
+  }
+  &:active::before {
+    opacity: 0.08;
+  }
+
+  &-primary {
+    --background-color: rgba(var(--color), 1);
+    --text-color: rgba(var(--ud-color-white), 1);
+    --border-color: rgba(var(--color), 1);
+  }
+  &-default {
+    --background-color: rgba(var(--color), 0.2);
+    --text-color: rgba(var(--color), 1);
+    --border-width: 0px;
+  }
+  &-text {
+    // --background-color: rgba(var(--color), 0.2);
+    --text-color: rgba(var(--color), 1);
+    // --border-width: 0px;
+  }
+  &-link {
+    text-decoration: underline;
+    // --background-color: rgba(var(--color), 0.2);
+    --text-color: rgba(var(--color), 1);
+    // --border-width: 0px;
+  }
+
+  &-danger {
+    --color: var(--ud-color-danger);
+  }
+  &-warning {
+    --color: var(--ud-color-warning);
+  }
+  &-disabled {
+    --color: var(--ud-color-text);
+  }
+  &-glass {
+    --color: var(--ud-color-text);
+  }
+
+  &-block {
+    display: block;
+    width: 100%;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    &:active::before {
+      display: none;
+    }
+  }
+
+  &-small {
+    --height: 38px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 16px;
+    min-width: 120px;
+  }
+  &-large {
+    --height: 58px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 18px;
+    min-width: 180px;
+  }
+
+  &-shape-circle {
+    --border-radius: 50%;
+  }
+  &-shape-round {
+    --border-radius: 1000px;
+  }
+  &-shape-sqaure {
+    --border-radius: 0;
+  }
+
+  &-loading {
+    opacity: 0.7;
+  }
+  &-icon-wrapper {
+    display: flex;
+    height: 1.4em;
+    align-items: center;
+    justify-content: center;
+    > span {
+      margin-left: 10px;
+    }
+  }
+
+  &-icon-only {
+    min-width: var(--height);
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

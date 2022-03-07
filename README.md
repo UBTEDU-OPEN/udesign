@@ -6,9 +6,9 @@
 
 ```
 ├── app
-│   └── @ubt/udesign-website    (nextjs, tailwindcss, typescript)
+│   └── @ubt/udesign-website    (nextjs, tailwindcss, react, typescript)
 └── packages
-    ├── @ubt/udesign-ui         (webpack, gulp, scss, typescript)
+    ├── @ubt/udesign-ui         (react, typescript, scss)
     ├── @ubt/udesign-utils
     └── @ubt/udesign-ui-alpha
 ```
@@ -20,7 +20,7 @@
 ### packages
 
 @ubt/udesign-ui： React 组件库源码，建设中，会有更多组件加入。
-@ubt/udesign-utils: 工具库，udesign 内部使用。
+@ubt/udesign-utils: 工具库，目前 udesign 内部使用。
 @ubt/udesign-ui-alpha： 预研版本，仅用作演示，后面会废弃。
 
 ## Deploy

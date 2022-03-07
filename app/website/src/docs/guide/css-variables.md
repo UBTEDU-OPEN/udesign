@@ -10,8 +10,8 @@
 
 以 Input 组件为例，我们可以在它的文档上找到类似于下面这样的表格：
 
-| 属性            | 说明     | 默认值 | 全局变量                     |
-| --------------- | -------- | ------ | ---------------------------- |
+| 属性            | 说明     | 默认值 | 全局变量                    |
+| --------------- | -------- | ------ | --------------------------- |
 | --border-radius | 圆角大小 | `4px`  | `--ud-button-border-radius` |
 | --border-width  | 边框宽度 | `1px`  | `--ud-button-border-width`  |
 
@@ -24,7 +24,7 @@
 给 Input 组件加一个自定义的 `className`：
 
 ```jsx
-<Button className='my-button'/>
+<Button className='my-button' />
 ```
 
 然后在 CSS 文件中设置 CSS 变量
@@ -40,9 +40,11 @@
 直接通过组件的 `style` 属性，简单粗暴，适合小范围的调整：
 
 ```jsx
-<Button style={{
-  '--border-radius': '2px'
-}}/>
+<Button
+  style={{
+    '--border-radius': '2px',
+  }}
+/>
 ```
 
 ### 方法三：通过全局变量进行设置
@@ -58,3 +60,19 @@
 这样页面上全部的 Button 都会受到调整。
 
 当然，你也可以"局部性"地进行调整，只需要把对应的 CSS 变量添加到对应的父级节点上。
+
+## 关于颜色值
+
+颜色值不使用传统的十六进制值，而是使用 `rgb` 数字。
+
+```css
+--ud-color-primary: 114, 132, 251; /* 不使用传统的十六进制色值 #7284fb; */
+```
+
+这样做的原因是方便使用 `rgba` 改变颜色的 `a` 值。
+
+```css
+color: rgba(var(--ud-color-primary), 0.7);
+```
+
+上面的代码，将 `--ud-color-primary` 的 Alpha 通道（不透明度）设置为 0.7 来使用。

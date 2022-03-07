@@ -1,1 +1,1 @@
-export type CommonShape = 'round' | 'default' | 'square';
+export type CommonShape = 'circle' | 'round' | 'default' | 'square';

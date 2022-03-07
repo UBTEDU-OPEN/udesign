@@ -1,7 +1,7 @@
 // TODO: 使用脚本生成icon代码
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
-import { ArrowRightSvg, CheckSvg, CloseSvg, HeartFilledSvg, HeartSvg, InfoSvg, LoadingSvg, MarketingSvg, MoreSvg, PageSvg, PaymentSvg, PictureFilledSvg, SelectSvg, SettingSvg, UserSvg, WarningSvg } from './index';
+import { ArrowRightSvg, CheckSvg, CloseSvg, HeartFilledSvg, HeartSvg, InfoSvg, LoadingSvg, MarketingSvg, MoreSvg, PageSvg, PaymentSvg, PictureFilledSvg, SelectSvg, SettingSvg, UserSvg, WarningSvg } from './icons-svg';
 
 export interface BaseIconProps extends React.HTMLAttributes<HTMLSpanElement> {
   spin?: boolean; // 是否有旋转动画
