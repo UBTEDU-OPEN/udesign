@@ -1,0 +1,239 @@
+$module: ud-typography;
+
+.#{$module} {
+   --color: #272848;
+   display: block;
+   margin-bottom: 1rem;
+   --text-size: 16px;
+   --px-5: 5px;
+   --px-10: 10px;
+   position: relative;
+
+   &-h1 {
+      font-size: 38px;
+      line-height: 60px;
+      margin-top: 0;
+   }
+
+   &-h2 {
+      font-size: 30px;
+      line-height: 47px;
+   }
+
+   &-h3 {
+      font-size: 24px;
+      line-height: 38px;
+   }
+
+   &-h4 {
+      font-size: 20px;
+      line-height: 31px;
+   }
+
+   &-h5 {
+      font-size: var(--text-size);
+      line-height: 25px;
+   }
+
+   &-text-secondary {
+      color: #6A7078;
+   }
+
+   &-text-success {
+      color: #7BDC7B;
+   }
+
+   &-text-warning {
+      color: #F9811D;
+   }
+
+   &-text-danger {
+      color: #FF574E;
+   }
+
+   &-text-disabled {
+      color: #A8B4CE;
+   }
+
+   &-text-mark {
+      display: inline-block;
+      background-color: #D8DDF9;
+      padding: var(--px-5) var(--px-10);
+   }
+
+   &-text-code {
+      display: inline-block;
+      padding: var(--px-5) var(--px-10);
+      background: #EEEEEE;
+      border: 1px solid #C1CFD9;
+      box-shadow: inset 0 -1px 3px 0 rgba(0, 0, 0, 0.50);
+      border-radius: 3px;
+   }
+
+   &-text-underline {
+      color: var(--color);
+      text-decoration: underline;
+   }
+
+   &-text-del {
+      color: var(--color);
+      text-decoration: line-through;
+   }
+
+   &-text-italic {
+      color: var(--color);
+      font-style: italic;
+   }
+
+   &-text-link {
+      color: #7284FB;
+      text-decoration: underline;
+   }
+
+   &-text-strong {
+      font-weight: bold;
+   }
+
+   &-editable {
+      padding: 10px 10px;
+      width: 100%;
+      height: auto;
+      resize: none;
+      word-wrap: break-word;
+      word-break: normal;
+   }
+
+   &-editable>span {
+      position: relative;
+   }
+
+   &-editable-focus {
+      background: #eaedfc;
+
+      border: none;
+      border-radius: 25px;
+      word-wrap: break-word;
+      word-break: normal;
+      padding: 10px 10px;
+   }
+
+   &-editable-focus:focus {
+      outline: none;
+   }
+
+   &-editable-input {
+      display: none;
+   }
+
+   &-Tooltip {
+      margin: 0;
+      background-color: #404040;
+      color: #fff;
+      padding: 6px 8px;
+      display: inline-block;
+      position: absolute;
+      margin-left: 50%;
+      transform: translate(-50%, -125%);
+      white-space: nowrap;
+      font-size: 0.75em;
+      box-shadow: 0 7px 18px 0 rgba(198, 199, 219, 0.84);
+      border-radius: 5px;
+
+      display: none;
+
+      i {
+         position: absolute;
+         right: 0;
+         bottom: -2px;
+         left: 0;
+         display: block;
+         width: 5px;
+         height: 5px;
+         margin: auto;
+         background-color: #404040;
+         content: "";
+         transform: rotateZ(45deg);
+         pointer-events: auto;
+      }
+   }
+
+   &-editable-isShow-icon {
+      margin-left: 5px;
+   }
+
+   &-editable-isShow-icon:hover &-Tooltip {
+      display: inline-block;
+   }
+
+   &-copy-wrapper {
+      margin: 0;
+      padding: 10px 10px;
+   }
+
+   &-copy {
+      display: inline-block;
+      margin: 0 0 0 5px;
+      position: relative;
+      padding: 0;
+
+      >span>span {
+         margin-bottom: 2px;
+      }
+   }
+
+   &-copy:hover &-Tooltip {
+      display: inline-block;
+   }
+
+   &-copy-clicked {
+      color: rgb(82, 196, 26);
+   }
+
+   &-paragraph {
+      position: relative;
+   }
+
+   &-paragraph-editable {
+      width: 100%;
+   }
+
+   &-paragraph-ellipsis-rows {
+      color: #272848;
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+   }
+
+   &-paragraph-ellipsis-symbol {
+      color: #a4b0fc;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+   }
+
+   &-paragraph-ellipsis-tooltip {
+      display: none;
+      position: absolute;
+      left: 0px;
+      top: 100%;
+      font-size: 6px;
+      border: 1px solid black;
+      padding: 8px;
+      background-color: #fff;
+      max-height: 150px;
+      color: var(--color);
+      line-height: normal;
+   }
+
+   &-paragraph-ellipsis-suffix {
+      float: right;
+      margin-right: 5px;
+   }
+
+   &-paragraph-ellipsis-symbol:hover+&-paragraph-ellipsis-tooltip {
+      display: inline-block;
+      z-index: 99;
+   }
+}

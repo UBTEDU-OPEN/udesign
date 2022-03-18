@@ -16,7 +16,6 @@ const basicMenus = [
   {
     name: 'typography',
     text: 'Typography 排版',
-    disabled: true,
   },
 ];
 
@@ -25,7 +24,6 @@ const layoutMenus = [
   {
     name: 'divider',
     text: 'Divider 分割线',
-    disabled: true,
   },
   {
     name: 'grid',
@@ -52,7 +50,6 @@ const navMenus = [
   {
     name: 'breadcrumb',
     text: 'Breadcrumb 面包屑',
-    disabled: true,
   },
   {
     name: 'dropdown',

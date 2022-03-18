@@ -1,0 +1,40 @@
+$module: ud-breadcrumb;
+
+.#{$module} {
+    --color: #6d737b;
+    --color-hover: #7284fb;
+    --color-selected: #00001E;
+
+    &-item {
+        font-size: 24px;
+        color: var(--color);
+        line-height: 40px;
+    }
+
+    &-item:last-child:hover span,
+    &-item:last-child:hover>a {
+        color: var(--color-hover);
+        cursor: pointer;
+    }
+
+    &-item:last-child {
+        cursor: auto;
+    }
+
+    &-wrapper {
+        font-size: 24px;
+        color: var(--color);
+    }
+
+    &-last {
+        color: var(--color-selected);
+
+        a {
+            color: inherit;
+        }
+    }
+
+    &-separator {
+        margin: 0 5px 0 10px;
+    }
+}
