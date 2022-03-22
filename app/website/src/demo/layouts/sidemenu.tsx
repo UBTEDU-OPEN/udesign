@@ -20,7 +20,7 @@ export const SideMenu = ({ menus, base = 'components', onChange, ...restProps }:
 
   return (
     <>
-      <Menu vertical onChange={handleChange} activeKey={activeKey} {...restProps}>
+      <Menu onChange={handleChange} activeKey={activeKey} {...restProps}>
         {menus.map((menu) => (
           <Menu.Item key={menu.name} name={menu.name} disabled={menu.disabled}>
             {menu.text}

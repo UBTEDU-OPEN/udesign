@@ -1,1 +1,1 @@
-https://play.tailwindcss.com/6jojfPtaTP
+https://play.tailwindcss.com/sxIAyEZHQI

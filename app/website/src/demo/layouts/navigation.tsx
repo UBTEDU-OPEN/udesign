@@ -21,7 +21,7 @@ const Navigation = ({}: NavigationProps) => {
         <Link href='/'>
           <a className='font-bold text-xl'>uDesign</a>
         </Link>
-        <Menu className='gap-5' onChange={handleChange} activeKey={activeKey}>
+        <Menu className='gap-5' onChange={handleChange} activeKey={activeKey} mode='horizontal'>
           <Menu.Item name='spec' disabled>
             设计
           </Menu.Item>

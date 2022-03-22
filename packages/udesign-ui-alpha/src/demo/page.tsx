@@ -12,6 +12,7 @@ const basicMenus = [
   {
     name: 'icon',
     text: 'Icon 图标',
+    disabled: true,
   },
   {
     name: 'typography',
@@ -248,7 +249,6 @@ const showMenus = [
   {
     name: 'tooltip',
     text: 'Tooltip 文字提示',
-    disabled: true,
   },
   {
     name: 'tree',

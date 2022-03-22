@@ -19,7 +19,8 @@ export const Mask = ({ onClick, children }: MaskProps) => {
     }
   };
 
-  const cls = 'absolute w-full h-full top-0 left-0 opacity-50 bg-black';
+  // const cls = 'absolute w-full h-full top-0 left-0 opacity-50 bg-black';
+  const cls = 'fixed w-full h-full top-0 left-0 opacity-50 bg-black';
   // const maskCls = classNames('p-4 pointer-events-none opacity-50 bg-black', fixedCls);
   // const cls = classNames('flex items-center justify-center overflow-auto', fixedCls);
 

@@ -33,4 +33,5 @@ export * from './components/tabs';
 export * from './components/tag';
 export * from './components/textarea';
 export * from './components/toast';
+export { default as Tooltip } from './components/tooltip';
 export * from './components/wrapper';

@@ -8,7 +8,7 @@ export type ItemProps = {
 } & NativeProps;
 
 export const Item = ({ disabled, children, className, ...restProps }: ItemProps) => {
-  const cls = classNames('py-2 px-3 bg-white hover:bg-gray-100', getDisabledCls(disabled, 'cursor-pointer'), className);
+  const cls = classNames('truncate py-2 px-3 bg-white hover:bg-gray-100', getDisabledCls(disabled, 'cursor-pointer'), className);
   return (
     <li className={cls} {...restProps}>
       {children}

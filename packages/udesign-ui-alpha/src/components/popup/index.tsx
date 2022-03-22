@@ -37,15 +37,15 @@ const getPositionCls = (position: Position, round: boolean) => {
 
 export type PopupProps = {
   round?: boolean; // 是否显示圆角
-  position?: Position;
+  position?: Position; // 弹出层的位置
   closeable?: boolean; // 是否显示右上角的关闭按钮
   mask?: boolean; // 是否有遮罩，默认 true
   maskCloseable?: boolean; // 点击蒙层是否允许关闭
   onClose?: () => void; // Popup 关闭后的回调
-  getPopupContainer?: () => HTMLElement;
+  getContainer?: () => HTMLElement; // 渲染的父节点，默认 document.body
 } & NativeProps;
 
-export const Popup = ({ round, position = 'center', closeable, mask = true, maskCloseable = true, onClose, getPopupContainer, className, style, children }: PopupProps) => {
+export const Popup = ({ round, position = 'center', closeable, mask = true, maskCloseable = true, onClose, getContainer, className, style, children }: PopupProps) => {
   const handleClickMask = () => {
     if (maskCloseable) {
       onClose?.();
@@ -55,7 +55,7 @@ export const Popup = ({ round, position = 'center', closeable, mask = true, mask
   const cls = classNames('fixed z-20 bg-white max-h-full overflow-y-auto', getPositionCls(position, Boolean(round)), className);
 
   return (
-    <Portal className='fixed w-full h-full top-0 left-0 z-20 flex items-center justify-center overflow-auto' getPopupContainer={getPopupContainer}>
+    <Portal getContainer={getContainer}>
       {mask ? <Mask onClick={handleClickMask} /> : null}
       <div className={cls} style={style}>
         {children}

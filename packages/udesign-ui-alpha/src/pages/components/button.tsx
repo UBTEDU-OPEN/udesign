@@ -32,11 +32,9 @@ export default function ButtonPage() {
             </Button>
           </Space>
         </Demo.Block>
-        <Demo.Block title='图标按钮' description='通过 icon 属性设置按钮图标，支持 Icon 组件里的所有图标组件'>
+        <Demo.Block title='图标按钮' description='通过 icon 属性设置按钮图标，当没有 children 时，触发 iconOnly（width 和 height 相同）。'>
           <Space>
-            <Button type='primary'>
-              <HeartFilledIcon />
-            </Button>
+            <Button type='primary' icon={<HeartFilledIcon />} />
             <Button type='primary' icon={<HeartFilledIcon />}>
               图标按钮
             </Button>

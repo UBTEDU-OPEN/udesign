@@ -25,13 +25,11 @@ export const Item = ({ text, options, disabled, className, children, style }: It
         {text || children}
       </div>
       {opened ? (
-        <Popup position='top' getPopupContainer={() => document.body}>
+        <Popup position='top' getContainer={() => document.body}>
           {options ? (
-            <Menu vertical onChange={() => setOpened(false)}>
+            <Menu onChange={() => setOpened(false)}>
               {options.map((option, i) => (
-                <Menu.Item key={i}>
-                  {option.text}
-                </Menu.Item>
+                <Menu.Item key={i}>{option.text}</Menu.Item>
               ))}
             </Menu>
           ) : null}

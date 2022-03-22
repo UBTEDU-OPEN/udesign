@@ -73,23 +73,23 @@ export const getButtonShapeClass = (shape: ButtonShape) => {
   return cls;
 };
 
-export const getButtonSizeClass = (size: ButtonSize) => {
+export const getButtonSizeClass = (size: ButtonSize, iconOnly: boolean) => {
   let cls;
   switch (size) {
     case 'large':
-      cls = 'px-5 w-12 h-12 min-w-max text-xl';
+      cls = classNames('h-16 min-w-max text-lg', iconOnly ? 'w-16' : 'px-6 w-60');
       break;
 
     case 'middle':
-      cls = 'px-3 w-10 h-10 min-w-max text-base';
+      cls = classNames('h-12 min-w-max text-base', iconOnly ? 'w-12' : 'px-5 w-40');
       break;
 
     case 'small':
-      cls = 'px-2 w-8 h-8 min-w-max text-xs';
+      cls = classNames('h-9 min-w-max text-sm', iconOnly ? 'w-9' : 'px-4 w-20');
       break;
 
     case 'mini':
-      cls = 'px-1 w-6 h-6 min-w-max text-xs'; // 没有比 text-xs 更小的了
+      cls = classNames('h-6 min-w-max text-xs', iconOnly ? 'w-6' : 'px-3 w-10');
       break;
   }
   return cls;
@@ -107,7 +107,10 @@ export type ButtonProps = {
   onClick?: () => void; // 点击按钮时的回调
 } & NativeProps;
 
-export const Button = ({ icon, block = false, disabled = false, loading = false, shape = 'round', size = 'middle', type = 'default', onClick, children }: ButtonProps) => {
+export const Button = ({ icon, block = false, disabled = false, loading = false, shape = 'default', size = 'middle', type = 'default', onClick, children }: ButtonProps) => {
+  const hasIcon = loading || Boolean(icon);
+  const iconOnly = !children && hasIcon;
+
   const iconElement = useMemo(() => {
     if (loading) {
       return <LoadingIcon className='text-2xl' />;
@@ -116,7 +119,14 @@ export const Button = ({ icon, block = false, disabled = false, loading = false,
     }
   }, [loading, icon]);
 
-  const cls = classNames(getButtonSizeClass(size), getButtonShapeClass(shape), getButtonTypeClass(type), getDisabledCls(disabled), block ? 'flex w-full' : 'inline-flex', 'items-center justify-center leading-none transition duration-150 ease-in-out');
+  const cls = classNames(
+    getButtonSizeClass(size, iconOnly),
+    getButtonShapeClass(shape),
+    getButtonTypeClass(type),
+    getDisabledCls(disabled),
+    block ? 'flex w-full' : 'inline-flex',
+    'items-center justify-center leading-none transition duration-150 ease-in-out',
+  );
 
   return (
     <button className={cls} disabled={disabled} onClick={onClick}>

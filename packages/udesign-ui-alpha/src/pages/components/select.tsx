@@ -2,7 +2,7 @@ import React from 'react';
 import { Demo } from 'demo';
 import { Select } from '@ubt/udesign-ui-alpha';
 
-export default function ModalPage() {
+export default function SelectPage() {
   const options = [
     {
       text: 'Option1',

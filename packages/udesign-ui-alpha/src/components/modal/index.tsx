@@ -33,26 +33,26 @@ export const Modal = ({ visible, title, closeable = true, mask = true, maskClose
   const cls = classNames('relative text-left md:w-80 rounded border shadow-lg px-6 py-3 bg-white', wrapClassName);
 
   return visible ? (
-    <Portal className='fixed w-full h-full top-0 left-0 z-20 flex items-center justify-center overflow-auto'>
+    <Portal>
       {mask ? <Mask onClick={handleClickMask} /> : null}
-      <div className={cls} style={style}>
-        {title && <h1 className='text-gray-800 font-bold text-lg'>{title}</h1>}
-        {children}
-        <div className='flex items-center justify-end pt-6 gap-5'>
-          <Button type='default' onClick={onCancel}>
-            {cancelText}
-          </Button>
-          <Button type='primary' onClick={onOk}>
-            {okText}
-          </Button>
-        </div>
-        {closeable ? (
-          <div className='absolute top-0 right-0'>
-            <Button type='link' onClick={afterClose}>
-              <CloseIcon />
+      <div className='fixed w-full h-full top-0 left-0 flex items-center justify-center'>
+        <div className={cls} style={style}>
+          {title && <h1 className='text-gray-800 font-bold text-lg'>{title}</h1>}
+          {children}
+          <div className='flex items-center justify-end pt-6 gap-5'>
+            <Button type='default' onClick={onCancel}>
+              {cancelText}
+            </Button>
+            <Button type='primary' onClick={onOk}>
+              {okText}
             </Button>
           </div>
-        ) : null}
+          {closeable ? (
+            <div className='absolute top-0 right-0'>
+              <Button type='link' onClick={afterClose} icon={<CloseIcon />} />
+            </div>
+          ) : null}
+        </div>
       </div>
     </Portal>
   ) : null;

@@ -1,58 +1,44 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { NativeProps, toArray, usePropsValue } from '../../utils';
-import { Item } from './item';
+import { NativeProps, usePropsValue } from '../../utils';
+import { Mode } from '../../constants';
+import { MenuContext } from './context';
+
+export type MenuMode = Mode;
 
 export type MenuProps = {
+  isCollapsed?: boolean; // 设置是否折叠
+  mode?: MenuMode; // 水平 or 垂直
   activeKey?: string;
   defaultActiveKey?: string;
-  vertical?: boolean; // 设置是否垂直模式
-  onChange?: (key: string) => void;
+  onChange?: (name: string) => void;
 } & NativeProps;
 
-export const Menu = ({ activeKey, defaultActiveKey, vertical, onChange, className, children, ...restProps }: MenuProps) => {
-  // 1. 提取所有子元素
-  const menus = useMemo(() => toArray(children), []);
-
-  const [innerActiveKey, setInnerActiveKey] = usePropsValue({
-    value: activeKey,
-    defaultValue: defaultActiveKey ?? menus[0].props.name,
+export const Menu = ({ isCollapsed = false, mode = 'vertical', onChange, className, children, ...restProps }: MenuProps) => {
+  const [activeKey, setActiveKey] = usePropsValue({
+    value: restProps.activeKey,
+    defaultValue: restProps.defaultActiveKey ?? '',
     onChange,
   });
 
-  // const [innerActiveKey, setInnerActiveKey] = useState<string>(activeKey || defaultActiveKey || menus[0].props.name);
-
-  // useEffect(() => {
-  //   if (activeKey) {
-  //     setInnerActiveKey(activeKey);
-  //   }
-  // }, [activeKey]);
-
-  const onInnerClick = (name: string) => {
-    setInnerActiveKey(name);
-    // onChange?.(name);
+  const onClick = (name: string) => {
+    setActiveKey(name);
   };
 
-  // 2. 为子元素挂载事件和选中状态
-  const renderContent = () => {
-    return (
-      <>
-        {menus.map((child) => {
-          const { name } = child.props;
-          const active = innerActiveKey === name;
-          const newProps = {
-            ...child.props,
-            active,
-            onInnerClick,
-          };
-          return <Item key={name} {...newProps} />;
-        })}
-      </>
-    );
-  };
-
-  const cls = classNames('overflow-hidden', vertical ? 'flex flex-col' : 'inline-flex flex-row', className);
-  return <>{menus.length ? <ul className={cls}>{renderContent()}</ul> : null}</>;
+  const cls = classNames('overflow-hidden', mode === 'horizontal' ? 'inline-flex flex-row' : 'flex flex-col', className);
+  return (
+    <>
+      <MenuContext.Provider
+        value={{
+          isCollapsed,
+          activeKey,
+          onClick,
+        }}
+      >
+        <ul className={cls}>{children}</ul>
+      </MenuContext.Provider>
+    </>
+  );
 };
 
 Menu.displayName = 'Menu';
