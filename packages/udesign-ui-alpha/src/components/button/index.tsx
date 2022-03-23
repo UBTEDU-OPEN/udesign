@@ -73,7 +73,7 @@ export const getButtonShapeClass = (shape: ButtonShape) => {
   return cls;
 };
 
-export const getButtonSizeClass = (size: ButtonSize, iconOnly: boolean) => {
+export const getButtonSizeClass = (size: ButtonSize, iconOnly?: boolean) => {
   let cls;
   switch (size) {
     case 'large':

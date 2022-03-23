@@ -75,7 +75,6 @@ const navMenus = [
   {
     name: 'steps',
     text: 'Steps 步骤',
-    disabled: true,
   },
 ];
 
@@ -83,7 +82,7 @@ const navMenus = [
 const inputMenus = [
   {
     name: 'autoComplete',
-    text: 'AutoComplete 自动完成 ',
+    text: 'AutoComplete 自动完成',
     disabled: true,
   },
   {
@@ -110,7 +109,7 @@ const inputMenus = [
     text: 'Input 输入框',
   },
   {
-    name: 'InputNumber',
+    name: 'inputNumber',
     text: 'InputNumber 数字输入框',
     disabled: true,
   },
@@ -184,7 +183,7 @@ const showMenus = [
     text: 'Card 卡片',
   },
   {
-    name: 'Carousel',
+    name: 'carousel',
     text: 'Carousel 走马灯',
     disabled: true,
   },
@@ -218,7 +217,7 @@ const showMenus = [
     disabled: true,
   },
   {
-    name: 'Popover',
+    name: 'popover',
     text: 'Popover 气泡卡片',
     disabled: true,
   },
@@ -264,49 +263,48 @@ const feedbackMenus = [
     disabled: true,
   },
   {
-    name: 'Drawer',
+    name: 'drawer',
     text: 'Drawer 抽屉',
     disabled: true,
   },
   {
-    name: 'Message',
+    name: 'message',
     text: 'Message 全局提示',
     disabled: true,
   },
   {
-    name: 'Modal',
+    name: 'modal',
     text: 'Modal 对话框',
   },
   {
-    name: 'Notification',
+    name: 'notification',
     text: 'Notification 通知提醒框',
     disabled: true,
   },
   {
-    name: 'Popconfirm',
+    name: 'popconfirm',
     text: 'Popconfirm 气泡确认框',
     disabled: true,
   },
   {
-    name: 'Progress',
+    name: 'progress',
     text: 'Progress 进度条',
     disabled: true,
   },
   {
-    name: 'Result',
+    name: 'result',
     text: 'Result 结果',
-    disabled: true,
   },
   {
-    name: 'Skeleton',
+    name: 'skeleton',
     text: 'Skeleton 骨架屏',
   },
   {
-    name: 'Spin',
+    name: 'spin',
     text: 'Spin 加载中',
   },
   {
-    name: 'Toast',
+    name: 'toast',
     text: 'Toast 提示',
   },
 ];
@@ -319,12 +317,12 @@ const otherMenus = [
     disabled: true,
   },
   {
-    name: 'BackTop',
+    name: 'backtop',
     text: 'BackTop 回到顶部',
     disabled: true,
   },
   {
-    name: 'ConfigProvider',
+    name: 'configprovider',
     text: 'ConfigProvider 全局化配置',
     disabled: true,
   },
