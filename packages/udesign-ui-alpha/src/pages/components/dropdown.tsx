@@ -1,6 +1,6 @@
 import React from 'react';
 import { Demo } from 'demo';
-import { Dropdown, Button, Menu, Input, Space } from '@ubt/udesign-ui-alpha';
+import { Dropdown, Button, Menu, Input, Space, Divider } from '@ubt/udesign-ui-alpha';
 
 export default function DropdownPage() {
   const menu = (
@@ -9,7 +9,7 @@ export default function DropdownPage() {
       <Menu.Item name='2' disabled>
         2st menu item(disabled)
       </Menu.Item>
-      <Menu.Divider />
+      <Divider />
       <Menu.Item name='3'>3st menu item</Menu.Item>
     </Menu>
   );

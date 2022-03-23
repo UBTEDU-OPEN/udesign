@@ -37,35 +37,6 @@ export default function CellPage() {
             <Cell title='单元格' extra='内容' />
           </Cell.Group>
         </Demo.Block>
-        <Demo.Block compact title='自定义内容' description='使用 children 来自定义内容' debug>
-          <Cell className='text-sm leading-6'>
-            <div className='flex items-end'>
-              <span className='flex-1 text-lg'>服务器开发工程师</span>
-              <span className='text-red-500 text-right'>18-30K·16薪</span>
-            </div>
-            <div className='text-gray-400 font-light'>
-              <span>迅雷网络</span>
-              <span>深圳</span>
-            </div>
-            <Space size='small' className='my-1'>
-              <Tag size='small'>在校/应届</Tag>
-              <Tag size='small'>本科</Tag>
-              <Tag size='small'>Java</Tag>
-              <Tag size='small'>分布式技术</Tag>
-              <Tag size='small'>后端开发</Tag>
-            </Space>
-            <Space className='ml-1'>
-              <div className='flex-1'>
-                <div className='name'>陈女士·招聘主管</div>
-              </div>
-              <div className='text-right'>
-                <Button type='primary' size='mini'>
-                  立即沟通
-                </Button>
-              </div>
-            </Space>
-          </Cell>
-        </Demo.Block>
       </Demo.Page>
     </>
   );

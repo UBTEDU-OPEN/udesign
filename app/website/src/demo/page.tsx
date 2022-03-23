@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Layout, SideMenu } from './layouts';
 import { NativeProps } from '@ubt/udesign-utils';
+import { Layout, SideMenu } from './layouts';
 
 // 通用
 const basicMenus = [
@@ -246,7 +246,6 @@ const showMenus = [
   {
     name: 'tooltip',
     text: 'Tooltip 文字提示',
-    disabled: true,
   },
   {
     name: 'tree',

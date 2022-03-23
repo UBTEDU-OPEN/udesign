@@ -1,6 +1,7 @@
 export * from './colors';
 export * from './direction';
 export * from './mode';
+export * from './orientation';
 export * from './placement';
 export * from './position';
 export * from './shape';

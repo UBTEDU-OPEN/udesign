@@ -26,7 +26,6 @@ const layoutMenus = [
   {
     name: 'divider',
     text: 'Divider 分割线',
-    disabled: true,
   },
   {
     name: 'grid',

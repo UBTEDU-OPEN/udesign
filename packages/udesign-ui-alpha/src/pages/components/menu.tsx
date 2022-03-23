@@ -1,6 +1,6 @@
 import React from 'react';
 import { Demo } from 'demo';
-import { Dropdown, Menu } from '@ubt/udesign-ui-alpha';
+import { Divider, Dropdown, Menu } from '@ubt/udesign-ui-alpha';
 
 export default function MenuPage() {
   const Submenu = (
@@ -9,7 +9,7 @@ export default function MenuPage() {
       <Menu.Item name='2' disabled>
         Option 1(disabled)
       </Menu.Item>
-      <Menu.Divider />
+      <Divider />
       <Menu.Item name='3'>Option 1</Menu.Item>
       <Menu.Item name='4'>Option 4</Menu.Item>
     </Menu>

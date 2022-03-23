@@ -1,6 +1,5 @@
 import { attachPropertiesToComponent } from '../../utils';
 import { Menu as InternalMenu } from './menu';
-import { Divider } from './divider';
 import { Footer } from './footer';
 import { Header } from './header';
 import { Item } from './item';
@@ -8,4 +7,4 @@ import { Submenu } from './submenu';
 
 export type { MenuProps } from './menu';
 
-export const Menu = attachPropertiesToComponent(InternalMenu, { Item, Divider, Header, Footer, Submenu });
+export const Menu = attachPropertiesToComponent(InternalMenu, { Item, Header, Footer, Submenu });
