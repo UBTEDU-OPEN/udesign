@@ -13,36 +13,18 @@ export type StepProps = {
   mode?: Mode; // horizontal, vertical
 };
 
-const getStatusCls = (status: StepStatus, mode: Mode) => {
-  let cls = '';
-  switch (status) {
-    case 'finish':
-      break;
-    case 'process':
-      cls = classNames(mode === 'horizontal' ? 'mx-5' : 'my-5');
-      break;
-    case 'wait':
-      break;
-    case 'error':
-      break;
-    default:
-      break;
-  }
-  return cls;
-};
-
 export const Item = ({ icon, title, description, status = 'wait', mode = 'horizontal' }: StepProps) => {
-  const cls = classNames('flex flex-1 items-start', getStatusCls(status, mode));
+  const cls = classNames('flex flex-1 items-center last:flex-none', mode === 'horizontal' ? 'pr-5 last:pr-0' : 'my-5');
   return (
     <div className={cls}>
       {icon}
       <div className='flex flex-1 flex-col'>
         {mode === 'horizontal' ? (
           <Divider orientation='left'>
-            <div className='font-bold'>{title}</div>
+            <div className={classNames(status === 'wait' ? 'text-gray-400' : '')}>{title}</div>
           </Divider>
         ) : (
-          <div className='font-bold'>{title}</div>
+          <div className={classNames(status === 'wait' ? 'text-gray-400' : '')}>{title}</div>
         )}
         <div className='text-gray-400'>{description}</div>
       </div>

@@ -17,9 +17,6 @@ export default function MenuPage() {
   return (
     <>
       <Demo.Page title='Menu 导航菜单' description='为页面和功能提供导航的菜单列表。'>
-        <Demo.Block title='侧边栏导航' description='默认垂直的导航菜单。'>
-          <div className='border shadow-xl rounded-xl overflow-hidden'>{Submenu}</div>
-        </Demo.Block>
         <Demo.Block title='顶部导航' description='通过 mode 设置菜单模式'>
           <Menu defaultActiveKey='1' mode='horizontal'>
             <Menu.Item name='1'>Navigation One</Menu.Item>

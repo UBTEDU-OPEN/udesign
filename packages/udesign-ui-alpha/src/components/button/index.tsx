@@ -107,7 +107,7 @@ export type ButtonProps = {
   onClick?: () => void; // 点击按钮时的回调
 } & NativeProps;
 
-export const Button = ({ icon, block = false, disabled = false, loading = false, shape = 'default', size = 'middle', type = 'default', onClick, children }: ButtonProps) => {
+export const Button = ({ icon, block = false, disabled = false, loading = false, shape = 'default', size = 'middle', type = 'default', onClick, children, ...restProps }: ButtonProps) => {
   const hasIcon = loading || Boolean(icon);
   const iconOnly = !children && hasIcon;
 
@@ -125,11 +125,11 @@ export const Button = ({ icon, block = false, disabled = false, loading = false,
     getButtonTypeClass(type),
     getDisabledCls(disabled),
     block ? 'flex w-full' : 'inline-flex',
-    'items-center justify-center leading-none transition duration-150 ease-in-out',
+    'items-center justify-center leading-none transition duration-150 ease-in-out'
   );
 
   return (
-    <button className={cls} disabled={disabled} onClick={onClick}>
+    <button className={cls} disabled={disabled} onClick={onClick} {...restProps}>
       {icon || loading ? <span className='mr-1 inline-block'>{iconElement}</span> : null}
       <span>{children}</span>
     </button>
