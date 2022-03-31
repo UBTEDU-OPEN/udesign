@@ -29,7 +29,6 @@ const layoutMenus = [
   {
     name: 'grid',
     text: 'Grid 栅格',
-    disabled: true,
   },
   {
     name: 'layout',

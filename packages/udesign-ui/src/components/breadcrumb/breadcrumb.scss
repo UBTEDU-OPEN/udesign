@@ -6,7 +6,7 @@ $module: ud-breadcrumb;
     --color-selected: #00001E;
 
     &-item {
-        font-size: 24px;
+        font-size: inherit;
         color: var(--color);
         line-height: 40px;
     }

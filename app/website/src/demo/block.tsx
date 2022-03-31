@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ ReactNode} from 'react';
 import classNames from 'classnames';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { Collapse, Tag } from '@ubt/udesign-ui-alpha';
@@ -6,7 +6,7 @@ import { NativeProps } from '@ubt/udesign-utils';
 
 type DemoBlockProps = {
   title?: string;
-  description?: string;
+  description?: ReactNode;
   background?: boolean; // 是否添加背景颜色
   transform?: boolean; // 可使得内部 position: fixed 元素相对于 Demo 包裹器定位
   compact?: boolean; // 是否移除内边距

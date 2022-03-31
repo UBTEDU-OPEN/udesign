@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode, useRef } from "react";
 import classNames from "classnames";
 import { NativeProps } from "../../utils";
 
@@ -22,9 +22,8 @@ export const Item = ({
   indexLast,
   ...restProps
 }: ItemProps) => {
-  const strRef: any = useRef();
+  const strRef = useRef<HTMLSpanElement>(null);
 
-  console.log(indexArr, indexLast);
   const cls = classNames(
     prefixCls,
     {
@@ -44,8 +43,6 @@ export const Item = ({
 
   const iconCls = `${prefixCls}-separator`;
 
-  useEffect(() => {});
-
   let link;
   if ("href" in restProps) {
     link = (
@@ -64,7 +61,6 @@ export const Item = ({
   return (
     <>
       <span className={conCls} onClick={onClick}>
-        {/* <span className={iconCls} >{separator} </span> */}
         {indexArr[0] !== 0 ? (
           <span className={iconCls}>{separator} </span>
         ) : null}

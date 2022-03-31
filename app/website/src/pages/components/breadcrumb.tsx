@@ -12,7 +12,7 @@ export default function BreadcrumbPage() {
       >
         <Demo.Block
           title="何时使用"
-          description="*当系统拥有超过两级以上的层级结构时；*当需要告知用户『你在哪里』时；*当需要向上导航的功能时。"
+          description={<>*当系统拥有超过两级以上的层级结构时；<br/>*当需要告知用户『你在哪里』时；<br/>*当需要向上导航的功能时。</>}
         />
         <Demo.Block title="基础用法" description="最简单的面包屑。">
           <Space size="large">
@@ -23,7 +23,7 @@ export default function BreadcrumbPage() {
               <Breadcrumb.Item>
                 <a href="#">Application Center</a>
               </Breadcrumb.Item>
-              <Breadcrumb.Item style={{ color: "#7284fb" }}>
+              <Breadcrumb.Item >
                 <a href="#">Application List</a>
               </Breadcrumb.Item>
               <Breadcrumb.Item>An Application</Breadcrumb.Item>
@@ -40,7 +40,7 @@ export default function BreadcrumbPage() {
                 <SettingIcon></SettingIcon>
                 Application Center
               </Breadcrumb.Item>
-              <Breadcrumb.Item href="" style={{ color: "#7284fb" }}>
+              <Breadcrumb.Item href="" >
                 Application List
               </Breadcrumb.Item>
               <Breadcrumb.Item href="">An Application</Breadcrumb.Item>

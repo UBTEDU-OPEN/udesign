@@ -18,7 +18,6 @@ export const Breadcrumb = ({
 }: BreadcrumbProps) => {
   let newChildren = toArray(children);
   let arrkey: String[] = [];
-  console.log(newChildren);
   let indexLast = newChildren.length - 1;
 
   return (
