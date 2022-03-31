@@ -1,138 +1,111 @@
-import React, { ReactNode, useState, useRef, useEffect } from "react";
-import { SettingIcon } from "@ubt/udesign-ui-alpha";
-import classNames from "classnames";
-import { NativeProps } from "../../utils";
-import { Tooltip } from "./tooltip";
+import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
+
+import { SettingIcon, Tooltip } from '@ubt/udesign-ui-alpha';
+import classNames from 'classnames';
+import { NativeProps } from '../../utils';
 
 const prefixCls = `ud-typography-editable`;
 export type EditableProps = {
-  icon?: ReactNode;
+  icon?: ReactNode; //自定义编辑图标
   tooltip?: boolean | ReactNode;
-  maxLength?: number;
-  minLength?: number;
-  autoSize?: boolean | { minRows?: number; maxRows?: number };
-  onStart?: Function;
-  onEnd?: Function;
-  onCancel?: Function;
+  maxLength?: number; //编辑中文本域最大长度
+  autoSize?: { minRows?: number; maxRows?: number }; //自动 resize 文本域
+  onStart?: Function; //进入编辑中状态时触发
+  onEnd?: Function; //按 ENTER 结束编辑状态时触发
+  onCancel?: Function; //按 ESC 退出编辑状态时触发
+  onChange?: Function; //文本域编辑时触发
 } & NativeProps;
 
-export const Editable = ({
-  icon = <SettingIcon />,
-  tooltip,
-  minLength,
-  maxLength,
-  onCancel,
-  onStart,
-  onEnd,
-  autoSize = false,
-  children,
-  className,
-}: EditableProps) => {
+export const Editable = ({ icon = <SettingIcon />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className }: EditableProps) => {
   const [isShow, setIsShow] = useState(true);
   const [propChildren, setPropChildren] = useState(
     String(children)
       .trim()
-      .replace(/^(\s|,)+|(\s|,)+$/g, "")
+      .replace(/^(\s|,)+|(\s|,)+$/g, ''),
   );
   const [iconProps, setIconProps] = useState(icon);
   const cls = classNames(
     prefixCls,
     {
       [`${prefixCls}-focus`]: true,
-      [`${prefixCls}-isShow`]: isShow,
+      [`${prefixCls}-isShow`]: !isShow,
     },
-    className
+    className,
   );
 
   const isShowCls = classNames(
     {
       [`${prefixCls}-isShow-icon`]: true,
     },
-    className
+    className,
   );
 
-  const iconCss = `${prefixCls}-icon`;
-
-  const editText: any = useRef();
-  const inpText: any = useRef();
+  const editText = useRef<HTMLInputElement>(null);
+  const textArea = useRef<HTMLTextAreaElement>(null);
+  const inpText = useRef<HTMLDivElement>(null);
 
   const showHandle = () => {
     setIsShow(!isShow);
+    onStart?.();
 
-    onStart ? onStart() : onStart;
     setTimeout(() => {
-      editText.current.focus();
+      !autoSize ? editText.current!.focus() : textArea.current!.focus();
     }, 0);
 
     //  光标移至最后
-    editText.current.selectionStart = editText.current.value.length;
+    !autoSize ? (editText.current!.selectionStart = editText.current!.value.length) : (textArea.current!.selectionStart = textArea.current!.value.length);
   };
 
   const onBlur = () => {
     setIsShow(!isShow);
-    setPropChildren(editText.current.value);
+    setPropChildren(editText.current!.value);
   };
-  let height: number;
-  useEffect(() => {
-    height = inpText.current.style.offsetHeight;
-  });
-  const onChange = (e: any) => {
-    editText.current.style.height =
-      (autoSize.minRows ? autoSize.minRows : 1) * 34 + "px";
-    editText.current.style.height = e.target.scrollHeight + "px";
+  const textareaBlur = () => {
+    setIsShow(!isShow);
+    setPropChildren(textArea.current!.value);
   };
 
-  const onKeyHandler = (e: any) => {
+  const editChange = (event: ChangeEvent) => {
+    textArea.current!.style.height = (autoSize?.minRows ? autoSize.minRows : 1) * 34 + 'px';
+    textArea.current!.style.height = event.target.scrollHeight + 'px';
+  };
+
+  const onKeyHandler = (e: KeyboardEvent) => {
     if (e.keyCode === 27 || e.keyCode === 13) {
       setIsShow(!isShow);
-      if (e.keyCode === 13) onEnd ? onEnd() : onEnd;
-      else onCancel ? onCancel() : onCancel;
-      setPropChildren(editText.current.value);
+      if (e.keyCode === 13) onEnd?.();
+      else onCancel?.();
+      setPropChildren(editText.current!.value);
     }
   };
 
-  // 多行文本
   return (
     <>
-      <div
-        hidden={!isShow}
-        style={{ background: "#fff" }}
-        className={cls}
-        ref={inpText}
-      >
+      <div hidden={!isShow} className={cls} ref={inpText}>
         {propChildren}
         <span className={isShowCls} onClick={showHandle}>
-          {tooltip ? <Tooltip tooltip={tooltip} /> : null}
-          <span className={iconCss}>{iconProps}</span>
+          <Tooltip content={tooltip}>{iconProps}</Tooltip>
         </span>
       </div>
       {autoSize ? (
         <textarea
-          style={{ overflowY: "hidden" }}
           rows={autoSize.minRows}
-          minLength={minLength}
           maxLength={maxLength}
           hidden={isShow}
-          className={!isShow ? cls : ""}
-          onBlur={onBlur}
-          ref={editText}
-          onChange={onChange}
+          className={!isShow ? cls : ''}
+          onBlur={textareaBlur}
+          ref={textArea}
+          onChange={(Event) => {
+            editChange(Event);
+            onChange?.();
+          }}
           onKeyDown={onKeyHandler}
           defaultValue={propChildren}
         ></textarea>
       ) : (
-        <input
-          onKeyDown={onKeyHandler}
-          className={cls}
-          hidden={isShow}
-          onBlur={onBlur}
-          ref={editText}
-          type="text"
-          defaultValue={propChildren}
-          maxLength={maxLength}
-        ></input>
+        <input onKeyDown={onKeyHandler} className={cls} hidden={isShow} onBlur={onBlur} ref={editText} type='text' defaultValue={propChildren} maxLength={maxLength}></input>
       )}
     </>
   );
 };
-Editable.displayName = "Editable";
+Editable.displayName = 'Editable';

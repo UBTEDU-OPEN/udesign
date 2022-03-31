@@ -1,46 +1,31 @@
-import React from "react";
-import classNames from "classnames";
-import { NativeProps } from "../../utils";
-import { Copyable } from "./copyable";
-import { EllipsisConfig, EditableConfig, CopyableConfig } from "./base";
-import { Editable } from "./editable";
-import { Ellipsis } from "./ellipsis";
+import React from 'react';
+import classNames from 'classnames';
+import { NativeProps } from '../../utils';
+import { Copyable } from './copyable';
+import { EllipsisConfig, EditableConfig, CopyableConfig } from './base';
+import { Editable } from './editable';
+import { Ellipsis } from './ellipsis';
 
 const prefixCls = `ud-typography`;
 
 export type TextProps = {
-  type?: string;
-  mark?: Boolean;
-  disabled?: Boolean;
-  code?: Boolean;
-  underline?: Boolean;
-  del?: Boolean;
-  italic?: Boolean;
-  link?: Boolean;
-  strong?: Boolean;
-  ellipsis?: EllipsisConfig | boolean;
-  copyable?: CopyableConfig | boolean;
-  editable?: EditableConfig | boolean;
+  type?: string; //文本类型
+  mark?: Boolean; //添加标记样式
+  disabled?: Boolean; //禁用文本
+  code?: Boolean; //添加代码样式
+  underline?: Boolean; //添加下划线样式
+  del?: Boolean; //添加删除线样式
+  italic?: Boolean; //是否斜体
+  link?: string; //是否是连接,值为链接地址
+  strong?: Boolean; //是否加粗
+  keyboard?: Boolean; //添加键盘样式
+  ellipsis?: EllipsisConfig | boolean; //自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等
+  copyable?: CopyableConfig | boolean; //是否可拷贝，为对象时可进行各种自定义
+  editable?: EditableConfig | boolean; //是否可编辑，为对象时可对编辑进行控制
   onClick?: React.MouseEventHandler<HTMLSpanElement>;
 } & NativeProps;
 
-export const Text = ({
-  type = "default",
-  mark = false,
-  disabled = false,
-  code = false,
-  underline = false,
-  del = false,
-  italic = false,
-  link = false,
-  strong = false,
-  className,
-  ellipsis,
-  copyable,
-  editable,
-  onClick,
-  children,
-}: TextProps) => {
+export const Text = ({ type = 'default', mark = false, disabled = false, code = false, underline = false, del = false, italic = false, link, strong = false, keyboard = false, className, ellipsis, copyable, editable, onClick, children }: TextProps) => {
   const cls = classNames(
     prefixCls,
     {
@@ -53,56 +38,45 @@ export const Text = ({
       [`${prefixCls}-text-italic`]: italic,
       [`${prefixCls}-text-link`]: link,
       [`${prefixCls}-text-strong`]: strong,
-    },
-    className
-  );
-  const copyCls = classNames(
-    prefixCls,
-    {
+      [`${prefixCls}-text-keyboard`]: keyboard,
       [`${prefixCls}-copy-wrapper`]: copyable,
+      [`${prefixCls}-editable-wrapper`]: editable,
     },
-    className
+    className,
   );
 
   if (ellipsis || copyable || editable) {
     return (
       <>
         {ellipsis ? (
-          <div onClick={onClick} style={{ position: "relative" }}>
+          <span onClick={onClick} className={cls} style={{ position: 'relative' }}>
             <Ellipsis {...ellipsis} children={children} />
-            <span style={{ lineClamp: "2" }} className={cls}></span>
-          </div>
-        ) : (
-          ""
-        )}
+          </span>
+        ) : null}
         {copyable ? (
-          <div onClick={onClick} className={copyCls}>
+          <span onClick={onClick} className={cls}>
             <Copyable {...copyable}> {children}</Copyable>
-          </div>
-        ) : (
-          ""
-        )}
+          </span>
+        ) : null}
         {editable ? (
-          <div onClick={onClick}>
+          <span onClick={onClick} className={cls}>
             <Editable {...editable} children={children} />
-          </div>
-        ) : (
-          ""
-        )}
+          </span>
+        ) : null}
       </>
     );
   } else {
     return (
-      <span style={{ display: "block" }}>
+      <>
         {link ? (
-          <a className={cls} href="">
+          <a className={cls} href={link}>
             {children}
           </a>
         ) : (
           <span className={cls}>{children}</span>
         )}
-      </span>
+      </>
     );
   }
 };
-Text.displayName = "Text";
+Text.displayName = 'Text';

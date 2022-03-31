@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
 export interface EllipsisConfig {
   rows?: number;
@@ -35,9 +35,8 @@ export interface EditableConfig {
   tooltip?: boolean | ReactNode;
   editing?: boolean;
   maxLength?: number;
-  minLength?: number;
   onStart?: Function;
   onEnd?: Function;
   onCancel?: Function;
-  autoSize?: boolean | { minRows?: number; maxRows?: number };
+  autoSize?: { minRows?: number; maxRows?: number };
 }

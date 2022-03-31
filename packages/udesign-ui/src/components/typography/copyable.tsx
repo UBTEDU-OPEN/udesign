@@ -1,26 +1,18 @@
-import React, { ReactNode, useRef, useState } from "react";
-import classNames from "classnames";
-import { NativeProps } from "../../utils";
-import { PageIcon, CheckIcon } from "@ubt/udesign-ui-alpha";
-import { Tooltip } from "./tooltip";
+import React, { ReactNode, useRef, useState } from 'react';
+import classNames from 'classnames';
+import { NativeProps } from '../../utils';
+import { PageIcon, CheckIcon, Tooltip } from '@ubt/udesign-ui-alpha';
 
 const prefixCls = `ud-typography`;
 
 export type CopyableProps = {
-  tooltip?: ReactNode;
-  icon?: ReactNode;
-  text?: string;
-  onCopy?: Function;
+  tooltip?: ReactNode; //自定义提示文案，为 false 时隐藏文案
+  icon?: ReactNode; //自定义拷贝图标
+  text?: string; //拷贝到剪切板里的文本
+  onCopy?: Function; //拷贝成功的回调函数
 } & NativeProps;
 
-export const Copyable = ({
-  tooltip,
-  className,
-  icon = <PageIcon />,
-  text,
-  onCopy,
-  children,
-}: CopyableProps) => {
+export const Copyable = ({ tooltip, className, icon = <PageIcon />, text, onCopy, children }: CopyableProps) => {
   let [stateIcon, setStateIcon] = useState(icon);
   let [stateTooltip, setStateTooltip] = useState(tooltip);
   let [isShow, setIsShow] = useState(false);
@@ -31,25 +23,25 @@ export const Copyable = ({
       [`${prefixCls}-copy`]: true,
       [`${prefixCls}-copy-clicked`]: isShow,
     },
-    className
+    className,
   );
 
-  const textRef: any = useRef();
+  const textRef = useRef<HTMLSpanElement>(null);
 
   const onClick = () => {
-    const textCopy = textRef.current.innerText;
-    const textareaEl = document.createElement("textarea");
+    const textCopy = textRef.current!.innerText;
+    const textareaEl = document.createElement('textarea');
 
-    textareaEl.setAttribute("readonly", "readonly");
+    textareaEl.setAttribute('readonly', 'readonly');
     text ? (textareaEl.value = text) : (textareaEl.value = textCopy);
     document.body.appendChild(textareaEl);
     textareaEl.select();
 
-    if (document.execCommand("copy")) {
-      setStateIcon(<CheckIcon />);
-      setStateTooltip("复制成功!");
+    if (document.execCommand('copy')) {
+      setStateIcon(<CheckIcon style={{ color: '#7fdd7f' }} />);
+      setStateTooltip('复制成功!');
       setIsShow(true);
-      onCopy ? onCopy() : onCopy;
+      onCopy?.();
       setTimeout(() => {
         setStateIcon(icon);
         setStateTooltip(tooltip);
@@ -62,12 +54,11 @@ export const Copyable = ({
   return (
     <>
       <span ref={textRef}> {children}</span>
-      <span className={cls} onClick={onClick}>
-        <Tooltip tooltip={stateTooltip} />
-        <span>{stateIcon}</span>
+      <span className={cls} onClick={onClick} style={{ cursor: 'pointer' }}>
+        {stateTooltip ? <Tooltip content={stateTooltip}>{stateIcon}</Tooltip> : <span style={{ color: '#7284FB' }}>{stateIcon}</span>}
       </span>
     </>
   );
 };
 
-Copyable.displayName = "Copyable";
+Copyable.displayName = 'Copyable';
