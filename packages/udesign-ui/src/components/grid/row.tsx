@@ -9,27 +9,20 @@ export type RowProps = {
   wrap?: Boolean; // 是否自动换行
   gutter?: number | Array<number> | object; // 栅格间隔，可以写成像素值或支持响应式的对象写法来设置水平间隔 { xs: 8, sm: 16, md: 24}。或者使用数组形式同时设置 [水平间距, 垂直间距]
 } & NativeProps;
-export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter = 0, className, children }: RowProps) => {
+export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter = 0, className, children, style }: RowProps) => {
   const gutterRef = useRef<HTMLDivElement>(null);
 
   const cls = classNames(
     prefixCls,
     {
-      [`${prefixCls}-${align}`]: align == 'top',
-      [`${prefixCls}-align-middle`]: align == 'middle',
-      [`${prefixCls}-align-bottom`]: align == 'bottom',
-      [`${prefixCls}-justify-${justify}`]: justify == 'start',
-      [`${prefixCls}-justify-${justify}`]: justify == 'end',
-      [`${prefixCls}-${justify}`]: justify == 'center',
-      [`${prefixCls}-${justify}`]: justify == 'space-around',
-      [`${prefixCls}-${justify}`]: justify == 'space-between',
-      [`${prefixCls}-${justify}`]: justify == 'space-evenly',
+      [`${prefixCls}-align-${align}`]: align,
+      [`${prefixCls}-justify-${justify}`]: justify,
       [`${prefixCls}-wrap`]: wrap,
     },
     className,
   );
   const [size, setSize] = useState(0);
-  useLayoutEffect(() => {
+  useEffect(() => {
     function updateSize() {
       setSize(window.innerWidth);
     }
@@ -45,7 +38,7 @@ export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter = 0,
     if (gutter instanceof Array) {
       (gutHor = gutter[0] / 2), (gutVer = gutter[1]);
       gutterRef.current!.style.margin = '0px ' + -gutHor + 'px';
-      gutterRef.current!.style.marginBottom = gutVer + 'px';
+      gutterRef.current!.style.rowGap = gutVer + 'px';
       let i = 0;
       for (i; i < gutterRef.current!.children.length; i++) {
         gutterRef.current!.children[i].style.padding = '0px ' + gutHor + 'px';
@@ -53,8 +46,9 @@ export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter = 0,
       }
     } else if (typeof gutter === 'number' && gutter) {
       gutHor = gutter / 2;
-      gutterRef.current!.style.margin = '0px ' + -gutHor + 'px';
-      gutterRef.current!.style.marginBottom = gutVer + 'px';
+      gutterRef.current!.style.marginLeft = -gutHor + 'px';
+      gutterRef.current!.style.marginRight = -gutHor + 'px';
+      gutterRef.current!.style.rowGap = gutVer + 'px';
       let i = 0;
       for (i; i < gutterRef.current!.children.length; i++) {
         gutterRef.current!.children[i].style.padding = '0px ' + gutHor + 'px';
@@ -78,7 +72,7 @@ export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter = 0,
 
       gutterRef.current!.style.marginLeft = -gutHor + 'px';
       gutterRef.current!.style.marginRight = -gutHor + 'px';
-      gutterRef.current!.style.marginBottom = gutVer + 'px';
+      gutterRef.current!.style.rowGap = gutVer + 'px';
       let i = 0;
       for (i; i < gutterRef.current!.children.length; i++) {
         gutterRef.current!.children[i].style.padding = '0px ' + gutHor + 'px';
@@ -89,7 +83,7 @@ export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter = 0,
   }, [size]);
 
   return (
-    <div ref={gutterRef} className={cls}>
+    <div ref={gutterRef} className={cls} style={style}>
       {children}
     </div>
   );

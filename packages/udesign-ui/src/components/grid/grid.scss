@@ -4,73 +4,35 @@ $width: 4.166666%;
 .#{$module} {
     flex-grow: 1;
 
-    --bg: #EEEEEE;
     --p-px: 8px;
-    background-color: var(--bg);
+    --p-5: 5px;
 
     &-row {
         display: flex;
-        --bg-even: rgba(114, 132, 251, 0.50);
-        width: 100%;
+    }
 
-        :nth-of-type(odd) {
-            background-color: var(--bg-even);
-            padding: 16px 0;
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-
-        :nth-of-type(even) {
-            background-color: rgb(var(--ud-color-primary));
-            padding: 16px 0;
-            margin-top: 5px;
-            margin-bottom: 5px;
+    @each $var,
+    $align in (top, flex-start),
+    (middle, center),
+    (bottom, flex-end) {
+        &-row-align-#{$var} {
+            align-items: $align;
         }
     }
 
-    &-row-top {
-        align-items: flex-start;
-    }
-
-    &-row-align-middle {
-        align-items: center;
-    }
-
-    &-row-align-bottom {
-        align-items: flex-end;
-    }
-
-    &-row-justify-start {
-        justify-content: start;
-    }
-
-    &-row-justify-end {
-        justify-content: end;
-    }
-
-    &-row-justify-center {
-        justify-content: center;
-    }
-
-    &-row-space-around {
-        justify-content: space-around;
-    }
-
-    &-row-space-between {
-        justify-content: space-between;
-    }
-
-    &-row-space-evenly {
-        justify-content: space-evenly;
+    @each $var in start,
+    end,
+    center,
+    space-around,
+    space-between,
+    space-evenly {
+        &-row-justify-#{$var} {
+            justify-content: $var;
+        }
     }
 
     &-row-wrap {
         flex-wrap: wrap;
-    }
-
-    &-col {
-        margin: var(--p-px) 0;
-        text-align: center;
     }
 
     &-col-span-0 {

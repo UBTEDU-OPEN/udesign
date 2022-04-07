@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from './index.module.scss';
 import { Demo } from 'demo';
-import { girdShow as GritShow } from '../../../../../packages/udesign-ui/src/components/grid/gridShow';
+import { girdShow as GritShow } from './gridShow';
 import { Row, Col, Typography, Divider } from '@ubt/udesign-ui';
 
 export default function GridPage() {
   return (
-    <>
+    <div className={styles['grid-root']}>
       <Demo.Page title='Gied 栅格' description='24 栅格系统。'>
         <Demo.Block
           title='设计理念'
@@ -68,8 +69,8 @@ export default function GridPage() {
           </Row>
           <Row>
             <Col span={6}>col-6</Col>
-            <Col span={6}>col-6 1</Col>
-            <Col span={6}>col-62</Col>
+            <Col span={6}>col-6</Col>
+            <Col span={6}>col-6</Col>
             <Col span={6}>col-6</Col>
           </Row>
         </Demo.Block>
@@ -95,7 +96,7 @@ export default function GridPage() {
           <Divider plain orientation='right'>
             sub-element align right
           </Divider>
-          <Row justify='space-between'>
+          <Row justify='end'>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
@@ -103,6 +104,6 @@ export default function GridPage() {
           </Row>
         </Demo.Block>
       </Demo.Page>
-    </>
+    </div>
   );
 }

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Row, Col } from '../../index';
-import './index.scss';
-const girdShow = () => {
+import { Row, Col } from '@ubt/udesign-ui';
+const girdShow = () => {  
   return (
     <div className='gridShow'>
       <Row className='gridShow-row'>
-        <Col span={24}>100%</Col>
+        <Col className='gridShow-col' span={24}>100%</Col>
       </Row>
       <Row className='gridShow-row'>
         <Col span={6}>25%</Col>
