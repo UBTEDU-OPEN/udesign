@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { NativeProps, toArray } from "../../utils";
 
-import { Item } from "./Item";
+import { Item } from "./item";
 
 const prefixCls = `ud-breadcrumb`;
 

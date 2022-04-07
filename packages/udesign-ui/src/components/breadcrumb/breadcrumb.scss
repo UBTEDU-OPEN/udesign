@@ -2,7 +2,7 @@ $module: ud-breadcrumb;
 
 .#{$module} {
     --color: #6d737b;
-    --color-hover: #7284fb;
+    --color-hover: rgba(156, 172, 255, 0.90);
     --color-selected: #00001E;
 
     &-item {
@@ -30,5 +30,6 @@ $module: ud-breadcrumb;
 
     &-separator {
         margin: 0 5px 0 10px;
+        color: var(--color);
     }
 }
