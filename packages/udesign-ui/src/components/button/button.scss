@@ -1,14 +1,14 @@
 $module: ud-button;
 
 .#{$module} {
-  --color: var(--ud-color-primary);
+  --color: var(--ud-purple-6);
 
-  --text-color: var(--ud-button-text-color, var(--ud-color-text));
-  --background-color: var(--ud-button-background-color, var(--ud-color-white));
+  --text-color: var(--ud-button-text-color, --ud-color-white);
+  --background-color: var(--ud-button-background-color, --ud-color-white);
   --border-radius: var(--ud-button-border-radius, 2px);
   --border-width: var(--ud-button-border-width, 1px);
   --border-style: var(--ud-button-border-style, solid);
-  --border-color: var(--ud-button-border-color, var(--ud-border-color));
+  --border-color: var(--ud-button-border-color, --ud-color-border);
 
   --height: var(--ud-button-height, 48px);
 
@@ -53,7 +53,7 @@ $module: ud-button;
 
   &-primary {
     --background-color: rgba(var(--color), 1);
-    --text-color: rgba(var(--ud-color-white), 1);
+    --text-color: var(--ud-color-white);
     --border-color: rgba(var(--color), 1);
   }
   &-default {
@@ -74,13 +74,13 @@ $module: ud-button;
   }
 
   &-danger {
-    --color: var(--ud-color-danger);
+    --color: var(--ud-red-6);
   }
   &-warning {
-    --color: var(--ud-color-warning);
+    --color: var(--ud-yellow-6);
   }
   &-disabled {
-    --color: var(--ud-color-text);
+    --color: var(--ud-gray-6);
   }
   &-glass {
     --color: var(--ud-color-text);
@@ -93,7 +93,7 @@ $module: ud-button;
 
   &-disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    // opacity: 0.5;
     &:active::before {
       display: none;
     }
