@@ -71,7 +71,7 @@ const navMenus = [
   },
   {
     name: 'steps',
-    text: 'Steps 步骤',
+    text: 'Steps 步骤条',
   },
 ];
 

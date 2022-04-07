@@ -19,6 +19,7 @@ export * from './components/menu';
 export * from './components/modal';
 export * from './components/navbar';
 export * from './components/notice-bar';
+export * from './components/pagination';
 export * from './components/popup';
 export * from './components/radio';
 export * from './components/raw';
