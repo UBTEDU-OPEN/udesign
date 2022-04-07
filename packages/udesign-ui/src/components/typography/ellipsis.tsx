@@ -9,7 +9,7 @@ export type EllipsisProps = {
   expandable?: boolean; //是否可展开
   suffix?: string; //自定义省略内容后缀
   symbol?: ReactNode; //自定义展开描述文案
-  onExpand?: Function; //点击展开时的回调
+  onExpand?: ()=>void; //点击展开时的回调
   tooltip?: false | ReactNode; //省略时，展示提示信息
 } & NativeProps;
 

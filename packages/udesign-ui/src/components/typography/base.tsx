@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, SetStateAction } from 'react';
 
 export interface EllipsisConfig {
   rows?: number;
   expandable?: boolean;
   suffix?: string;
   symbol?: React.ReactNode;
-  onExpand?: Function;
+  onExpand?: ()=> void;
   tooltip?: React.ReactNode;
 }
 
@@ -25,9 +25,9 @@ export interface TextConfig {
 
 export interface CopyableConfig {
   tooltip?: ReactNode;
-  icon?: ReactNode;
+  icon?: [ReactNode, ReactNode];
   text?: string;
-  onCopy?: Function;
+  onCopy?: ()=> void;
 }
 
 export interface EditableConfig {
@@ -35,8 +35,8 @@ export interface EditableConfig {
   tooltip?: boolean | ReactNode;
   editing?: boolean;
   maxLength?: number;
-  onStart?: Function;
-  onEnd?: Function;
-  onCancel?: Function;
+  onStart?: ()=> void;
+  onEnd?: ()=> void;
+  onCancel?: ()=> void;
   autoSize?: { minRows?: number; maxRows?: number };
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SetStateAction, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { Copyable } from './copyable';
@@ -25,7 +25,7 @@ export type TextProps = {
   onClick?: React.MouseEventHandler<HTMLSpanElement>;
 } & NativeProps;
 
-export const Text = ({ type = 'default', mark = false, disabled = false, code = false, underline = false, del = false, italic = false, link, strong = false, keyboard = false, className, ellipsis, copyable, editable, onClick, children }: TextProps) => {
+export const Text = ({ type = 'default', mark = false, disabled = false, code = false, underline = false, del = false, italic = false, link, strong = false, keyboard = false, className, ellipsis, copyable, editable, onClick, children, style }: TextProps) => {
   const cls = classNames(
     prefixCls,
     {
@@ -40,10 +40,11 @@ export const Text = ({ type = 'default', mark = false, disabled = false, code = 
       [`${prefixCls}-text-strong`]: strong,
       [`${prefixCls}-text-keyboard`]: keyboard,
       [`${prefixCls}-copy-wrapper`]: copyable,
-      [`${prefixCls}-editable-wrapper`]: editable,
     },
     className,
   );
+
+  let wrapperCls = '';
 
   if (ellipsis || copyable || editable) {
     return (
@@ -54,13 +55,15 @@ export const Text = ({ type = 'default', mark = false, disabled = false, code = 
           </span>
         ) : null}
         {copyable ? (
-          <span onClick={onClick} className={cls}>
-            <Copyable {...copyable}> {children}</Copyable>
+          <span onClick={onClick} className={cls} style={style}>
+            <Copyable {...copyable} className={wrapperCls}>
+              {children}
+            </Copyable>
           </span>
         ) : null}
         {editable ? (
-          <span onClick={onClick} className={cls}>
-            <Editable {...editable} children={children} />
+          <span onClick={onClick} className={cls} style={style}>
+            <Editable children={children} {...editable} />
           </span>
         ) : null}
       </>

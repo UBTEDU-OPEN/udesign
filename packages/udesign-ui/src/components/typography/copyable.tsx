@@ -7,13 +7,14 @@ const prefixCls = `ud-typography`;
 
 export type CopyableProps = {
   tooltip?: ReactNode; //自定义提示文案，为 false 时隐藏文案
-  icon?: ReactNode; //自定义拷贝图标
+  icon?: [ReactNode, ReactNode]; //[复制是图标,复制成功时图标]
   text?: string; //拷贝到剪切板里的文本
-  onCopy?: Function; //拷贝成功的回调函数
+  onCopy?: ()=> void; //拷贝成功的回调函数
 } & NativeProps;
 
-export const Copyable = ({ tooltip, className, icon = <PageIcon />, text, onCopy, children }: CopyableProps) => {
-  let [stateIcon, setStateIcon] = useState(icon);
+export const Copyable = ({ tooltip, className, icon = [<PageIcon/>, <CheckIcon/>], text, onCopy, children }: CopyableProps) => {
+
+  let [copyIcon, setCopyIcon] = useState(icon[0] );
   let [stateTooltip, setStateTooltip] = useState(tooltip);
   let [isShow, setIsShow] = useState(false);
 
@@ -38,12 +39,12 @@ export const Copyable = ({ tooltip, className, icon = <PageIcon />, text, onCopy
     textareaEl.select();
 
     if (document.execCommand('copy')) {
-      setStateIcon(<CheckIcon style={{ color: '#7fdd7f' }} />);
+      setCopyIcon(icon[1] );
       setStateTooltip('复制成功!');
       setIsShow(true);
       onCopy?.();
       setTimeout(() => {
-        setStateIcon(icon);
+        setCopyIcon(icon[0]);
         setStateTooltip(tooltip);
         setIsShow(false);
       }, 3000);
@@ -55,7 +56,7 @@ export const Copyable = ({ tooltip, className, icon = <PageIcon />, text, onCopy
     <>
       <span ref={textRef}> {children}</span>
       <span className={cls} onClick={onClick} style={{ cursor: 'pointer' }}>
-        {stateTooltip ? <Tooltip content={stateTooltip}>{stateIcon}</Tooltip> : <span style={{ color: '#7284FB' }}>{stateIcon}</span>}
+        {stateTooltip ? <Tooltip content={stateTooltip}>{copyIcon}</Tooltip> : <span>{copyIcon}</span>}
       </span>
     </>
   );

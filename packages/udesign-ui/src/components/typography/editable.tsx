@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
+import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent, SetStateAction } from 'react';
 
 import { SettingIcon, Tooltip } from '@ubt/udesign-ui-alpha';
 import classNames from 'classnames';
@@ -10,10 +10,10 @@ export type EditableProps = {
   tooltip?: boolean | ReactNode;
   maxLength?: number; //编辑中文本域最大长度
   autoSize?: { minRows?: number; maxRows?: number }; //自动 resize 文本域
-  onStart?: Function; //进入编辑中状态时触发
-  onEnd?: Function; //按 ENTER 结束编辑状态时触发
-  onCancel?: Function; //按 ESC 退出编辑状态时触发
-  onChange?: Function; //文本域编辑时触发
+  onStart?: ()=> void; //进入编辑中状态时触发
+  onEnd?: ()=> void; //按 ENTER 结束编辑状态时触发
+  onCancel?: ()=> void; //按 ESC 退出编辑状态时触发
+  onChange?: ()=> void; //文本域编辑时触发
 } & NativeProps;
 
 export const Editable = ({ icon = <SettingIcon />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className }: EditableProps) => {
