@@ -1,13 +1,15 @@
 $module: ud-breadcrumb;
 
 .#{$module} {
-    --color: #6d737b;
-    --color-hover: rgba(156, 172, 255, 0.90);
-    --color-selected: #00001E;
+    --color: var(--ud-breadcrumb-color,var(--ud-color-secondary));
+    --color-hover: var( --ud-breadcrumb-color-hover, var(--ud-color-primary));
+    --color-selected: var(--ud-breadcrumb-color-selected, rgb(var(--ud-gray-12)));
+    --font-size: var(--ud-breadcrumb-font-size, 16px);
+    
+    font-size: var(--font-size);
 
-    &-item {
+    &-item > a ,  &-item > span{
         color: var(--color);
-        line-height: 40px;
     }
 
     &-item:last-child:hover span,
