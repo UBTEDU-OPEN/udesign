@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Tooltip, Button, Input, Space } from '@ubt/udesign-ui-alpha';
+import { Tooltip } from '@ubt/udesign-ui';
+import { Button, Input, Space } from '@ubt/udesign-ui-alpha';
 
 export default function TooltipPage() {
   const [visible, setVisible] = useState<boolean>(false);

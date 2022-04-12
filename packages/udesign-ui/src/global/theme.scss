@@ -1,12 +1,7 @@
 @import './palette.scss';
 
 :root {
-  --ud-font-size-main: 16px;
-  --ud-font-family: -apple-system, blinkmacsystemfont, 'Helvetica Neue', helvetica, segoe ui, arial, roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
-
-  --ud-color-white: rgba(var(--ud-white), 1);
-  --ud-color-black: rgba(var(--ud-black), 1);
-
+  // color
   --ud-color-primary: rgba(var(--ud-purple-6), 1); // 主要颜色。仅在需要非常强调的情况下使用。
   --ud-color-primary-hover: rgba(var(--ud-purple-5), 1); // 主要颜色悬浮态
   --ud-color-primary-active: rgba(var(--ud-purple-7), 1); // 主要颜色激活态
@@ -30,14 +25,48 @@
   --ud-color-warning-hover: rgba(var(--ud-yellow-5), 1); // 警示色悬浮态
   --ud-color-warning-active: rgba(var(--ud-yellow-7), 1); // 警示色激活态
 
+  --ud-color-white: rgba(var(--ud-white), 1);
+  --ud-color-black: rgba(var(--ud-black), 1);
+
   --ud-color-border: rgba(var(--ud-gray-9), 0.08); // 默认边框颜色
 
   --ud-color-text: rgba(var(--ud-gray-9), 1); // 文本/图标颜色
 
+  // border-radius
   --ud-border-radius-extra-small: 3px; // 超小圆角，用于 checkbox 内圆角
   --ud-border-radius-small: 3px; // 小圆角, 用于 button、tag、tabs 等大多数组件, 比较常用
   --ud-border-radius-medium: 6px; // 中圆角, 用于 dropdown、scrollist、transfer 等菜单类组件
   --ud-border-radius-large: 12px; // 大圆角, 用于 modal
   --ud-border-radius-circle: 50%; // 全圆角, 用于 avatar, badge 等组件
   --ud-border-radius-full: 9999px; // 用于创建全尺寸圆角，如胶囊标签等
+
+  // z-index
+  --ud-z-portal: 1; // 抽象插槽，适用于未经特殊定制的所有组件
+  --ud-z-affix: 10; // 固定位置的页面元素 z-index
+  --ud-z-backtop: 10; // 返回顶部 z-index
+  --ud-z-badge: 10; // badge z-index
+  --ud-z-modal: 1000; // modal z-index
+  --ud-z-modal-mask: 1000; // modal 遮罩 z-index
+
+  --ud-z-toast: 1010; // toast 组件 z-index
+  --ud-z-notification: 1010; // notification 组件 z-index
+  --ud-z-popover: 1030; // popover 组件 z-index
+  --ud-z-dropdown: 1050; // dropdown 组件 z-index
+  --ud-z-tooltip: 1060; // tooltip 组件 z-index
+
+  // font
+  --ud-font-family: -apple-system, blinkmacsystemfont, 'Helvetica Neue', helvetica, segoe ui, arial, roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  --ud-font-size-small: 12px; // 小文本字号
+  --ud-font-size-regular: 14px; // 常规文本字号
+
+  --ud-font-size-header-6: 16px; // 六级标题字号
+  --ud-font-size-header-5: 18px; // 五级标题字号
+  --ud-font-size-header-4: 20px; // 四级标题字号
+  --ud-font-size-header-3: 24px; // 三级标题字号
+  --ud-font-size-header-2: 28px; // 二级标题字号
+  --ud-font-size-header-1: 32px; // 一级标题字号
+
+  --ud-font-weight-light: 200; // 字重 - 轻
+  --ud-font-weight-regular: 400; // 字重 - 常规
+  --ud-font-weight-bold: 600; // 字重 - 加粗
 }
