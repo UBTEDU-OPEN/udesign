@@ -1,0 +1,12 @@
+$module: ud-dropdown;
+
+.#{$module} {
+  --max-width: var(--ud-dropdown-max-width, 360px);
+  --background: var(--ud-dropdown-background, var(--ud-color-white));
+  --border-radius: var(--ud-dropdown-border-radius, 8px);
+
+  max-width: var(--max-width);
+  background: var(--background);
+  box-shadow: var(--ud-shadow-elevated);
+  border-radius: var(--border-radius);
+}

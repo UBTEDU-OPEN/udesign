@@ -1,6 +1,7 @@
 import React from 'react';
 import { Demo } from 'demo';
-import { Dropdown, Button, Menu, Input, Space, Divider } from '@ubt/udesign-ui-alpha';
+import { Button, Dropdown } from '@ubt/udesign-ui';
+import { Menu, Input, Space, Divider } from '@ubt/udesign-ui-alpha';
 
 export default function DropdownPage() {
   const menu = (
@@ -46,32 +47,34 @@ export default function DropdownPage() {
                 <Button>bottomRight</Button>
               </Dropdown>
             </Space>
-            <Space justify='between'>
-              <Space vertical>
-                <Dropdown content={menu} placement='leftTop'>
-                  <Button>leftTop</Button>
-                </Dropdown>
-                <Dropdown content={menu} placement='left'>
-                  <Button>left</Button>
-                </Dropdown>
-                <Dropdown content={menu} placement='leftBottom'>
-                  <Button>leftBottom</Button>
-                </Dropdown>
-              </Space>
-              <Space vertical>
-                <Dropdown content={menu} placement='rightTop'>
-                  <Button>rightTop</Button>
-                </Dropdown>
-                <Dropdown content={menu} placement='right'>
-                  <Button>right</Button>
-                </Dropdown>
-                <Dropdown content={menu} placement='rightBottom'>
-                  <Button>rightBottom</Button>
-                </Dropdown>
-              </Space>
-            </Space>
           </Space>
         </Demo.Block>
+        {/* <Demo.Block title='带箭头展示' description='弹出菜单可以展示一个箭头。'>
+          <Space vertical>
+            <Space>
+              <Dropdown content={menu} placement='topLeft' showArrow>
+                <Button>topLeft</Button>
+              </Dropdown>
+              <Dropdown content={menu} placement='top' showArrow>
+                <Button>top</Button>
+              </Dropdown>
+              <Dropdown content={menu} placement='topRight' showArrow>
+                <Button>topRight</Button>
+              </Dropdown>
+            </Space>
+            <Space>
+              <Dropdown content={menu} placement='bottomLeft' showArrow>
+                <Button>bottomLeft</Button>
+              </Dropdown>
+              <Dropdown content={menu} placement='bottom' showArrow>
+                <Button>bottom</Button>
+              </Dropdown>
+              <Dropdown content={menu} placement='bottomRight' showArrow>
+                <Button>bottomRight</Button>
+              </Dropdown>
+            </Space>
+          </Space>
+        </Demo.Block> */}
         <Demo.Block title='触发方式' description='默认是移入触发菜单，可以通过 trigger 更改触发方式。'>
           <Dropdown content={menu} trigger='hover'>
             <Button>Hover me</Button>

@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import { createPortal } from 'react-dom';
 import { NativeProps } from '../../utils';
 
+const prefixCls = `ud-portal`;
+
 export type PortalProps = {
   getContainer?: () => HTMLElement;
 } & NativeProps;
@@ -47,7 +49,7 @@ export const Portal = ({ getContainer, className, style, children }: PortalProps
   };
 
   const addCls = () => {
-    const cls = classNames('absolute w-full top-0 left-0 z-20', className);
+    const cls = classNames(prefixCls, className);
     getRootElem().className = cls;
   };
 

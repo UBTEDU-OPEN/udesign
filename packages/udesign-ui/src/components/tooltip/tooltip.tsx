@@ -4,55 +4,58 @@ import { get } from 'lodash';
 import { Arrow } from './arrow';
 import { mergeEvents, NativeProps, usePropsValue } from '../../utils';
 import { Placement, Trigger } from '../../constants';
-import { Portal } from '../_portal';
+import Portal from '../_portal';
 import { ArrowVertical } from './arrow-vertical';
 
-const prefixCls = `ud-tooltip`;
+const prefix = `ud-tooltip`;
 
-export const getPlacementCls = (placement: Placement) => {
-  let cls;
+const getTranslateStyle = (placement: Placement): React.CSSProperties => {
+  let style;
   switch (placement) {
     case 'topLeft': // 上左角
-      cls = '-translate-y-full';
+      style = 'translateY(-100%)';
       break;
     case 'top': // 上中
-      cls = '-translate-y-full -translate-x-1/2';
+      style = 'translateY(-100%) translateX(-50%)';
       break;
     case 'topRight': // 上右角
-      cls = '-translate-y-full -translate-x-full';
+      style = 'translateY(-100%) translateX(-100%)';
       break;
     case 'bottomLeft': // 下左角
-      cls = '';
+      style = '';
       break;
     case 'bottom': // 下中
-      cls = '-translate-x-1/2';
+      style = 'translateX(-50%)';
       break;
     case 'bottomRight': // 下右角
-      cls = '-translate-x-full';
+      style = 'translateX(-100%)';
       break;
     case 'leftTop': // 左上角
-      cls = '-translate-x-full';
+      style = 'translateX(-100%)';
       break;
     case 'left': // 左中
-      cls = '-translate-x-full -translate-y-1/2';
+      style = 'translateX(-100%) translateY(-50%)';
       break;
     case 'leftBottom': // 左下角
-      cls = '-translate-x-full -translate-y-full';
+      style = 'translateX(-100%) translateY(-100%)';
       break;
     case 'rightTop': // 右上角
-      cls = '';
+      style = '';
       break;
     case 'right': // 右中
-      cls = '-translate-y-1/2';
+      style = 'translateY(-50%)';
       break;
     case 'rightBottom': // 右下角
-      cls = '-translate-y-full';
+      style = 'translateY(-100%)';
       break;
   }
-  return cls;
+  return {
+    transform: style,
+  };
 };
 
 export type TooltipProps = {
+  prefixCls?: string; // 接收上层组件的 className 改写，比如 Dropdown 组件
   showArrow?: boolean; // 是否显示箭头
   content?: React.ReactNode; // 弹出层的内容
   placement?: Placement; // 弹出层的位置
@@ -71,6 +74,7 @@ export type TooltipProps = {
 
 const getDefaultContainer = () => document.body;
 export const Tooltip = ({
+  prefixCls = prefix,
   showArrow = true,
   content,
   placement = 'top',
@@ -305,12 +309,7 @@ export const Tooltip = ({
 
   // 箭头元素
   const renderArrow = () => {
-    const arrowCls = classNames(`${prefixCls}-arrow`, {
-      [`${prefixCls}-arrow-${placement}`]: placement,
-      [`${prefixCls}-arrow-rotate`]: placement.indexOf('bottom') === 0 || placement.indexOf('right') === 0,
-      [`${prefixCls}-arrow-translate-x`]: placement === 'top' || placement === 'bottom',
-      [`${prefixCls}-arrow-translate-y`]: placement === 'left' || placement === 'right',
-    });
+    const arrowCls = classNames(`${prefixCls}-arrow`);
     const bgColor = get(style, 'backgroundColor');
     const arrowStyle: React.CSSProperties = {
       color: bgColor,
@@ -379,9 +378,11 @@ export const Tooltip = ({
       {newChild}
       {visible ? (
         <Portal getContainer={getContainer}>
-          <div className={cls} style={{ ...style, ...coords }} {...restProps} {...portalEventSet} ref={popupRef}>
-            {content}
-            {renderArrow()}
+          <div className='ud-portal-inner' style={{ ...coords, ...getTranslateStyle(placement) }} ref={popupRef}>
+            <div className={cls} style={style} {...restProps} {...portalEventSet}>
+              {content}
+              {renderArrow()}
+            </div>
           </div>
         </Portal>
       ) : null}

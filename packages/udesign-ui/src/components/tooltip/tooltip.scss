@@ -13,7 +13,7 @@ $module: ud-tooltip;
   --padding-top: var(--tooltip-padding-top, 8px);
   --padding-bottom: var(--tooltip-padding-bottom, 8px);
 
-  --width: var(--tooltip-width, 240px);
+  --max-width: var(--tooltip-max-width, 240px);
 
   background: var(--bg-color);
   color: var(--color);
@@ -21,30 +21,30 @@ $module: ud-tooltip;
   padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
   border-radius: var(--border-radius);
   width: max-content;
-  max-width: var(--width);
-  position: absolute;
+  max-width: var(--max-width);
+  // position: absolute;
 
-  transform: translate(var(--translate-x), var(--translate-y));
+  // transform: translate(var(--translate-x), var(--translate-y));
 
   &-topLeft {
-    --translate-y: -100%;
-    --translate-x: 0;
+    // --translate-y: -100%;
+    // --translate-x: 0;
 
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
   &-top {
-    --translate-y: -100%;
-    --translate-x: -50%;
+    // --translate-y: -100%;
+    // --translate-x: -50%;
 
     --arrow-rotate: 0;
     --arrow-translate-x: -50%;
     --arrow-translate-y: 0;
   }
   &-topRight {
-    --translate-y: -100%;
-    --translate-x: -100%;
+    // --translate-y: -100%;
+    // --translate-x: -100%;
 
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
@@ -52,24 +52,24 @@ $module: ud-tooltip;
   }
 
   &-bottomLeft {
-    --translate-y: 0;
-    --translate-x: 0;
+    // --translate-y: 0;
+    // --translate-x: 0;
 
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
   &-bottom {
-    --translate-y: 0;
-    --translate-x: -50%;
+    // --translate-y: 0;
+    // --translate-x: -50%;
 
     --arrow-rotate: 180deg;
     --arrow-translate-x: -50%;
     --arrow-translate-y: 0;
   }
   &-bottomRight {
-    --translate-y: 0;
-    --translate-x: -100%;
+    // --translate-y: 0;
+    // --translate-x: -100%;
 
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
@@ -77,24 +77,24 @@ $module: ud-tooltip;
   }
 
   &-leftTop {
-    --translate-y: 0;
-    --translate-x: -100%;
+    // --translate-y: 0;
+    // --translate-x: -100%;
 
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
   &-left {
-    --translate-y: -50%;
-    --translate-x: -100%;
+    // --translate-y: -50%;
+    // --translate-x: -100%;
 
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
     --arrow-translate-y: -50%;
   }
   &-leftBottom {
-    --translate-y: -100%;
-    --translate-x: -100%;
+    // --translate-y: -100%;
+    // --translate-x: -100%;
 
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
@@ -102,24 +102,24 @@ $module: ud-tooltip;
   }
 
   &-rightTop {
-    --translate-y: 0;
-    --translate-x: 0;
+    // --translate-y: 0;
+    // --translate-x: 0;
 
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
   &-right {
-    --translate-y: -50%;
-    --translate-x: 0;
+    // --translate-y: -50%;
+    // --translate-x: 0;
 
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
     --arrow-translate-y: -50%;
   }
   &-rightBottom {
-    --translate-y: -100%;
-    --translate-x: 0;
+    // --translate-y: -100%;
+    // --translate-x: 0;
 
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
