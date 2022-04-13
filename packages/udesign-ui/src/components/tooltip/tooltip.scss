@@ -2,7 +2,7 @@ $module: ud-tooltip;
 
 .#{$module} {
   --bg-color: var(--tooltip-bg-color, var(--ud-color-black));
-  --color: var(--tooltip-bg-color, var(--ud-color-white));
+  --color: var(--tooltip-color, var(--ud-color-white));
 
   --font-size: var(--tooltip-font-size, var(--ud-font-size-regular));
 
