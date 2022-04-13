@@ -4,9 +4,6 @@ $width: 4.166666%;
 .#{$module} {
     flex-grow: 1;
 
-    --p-px: 8px;
-    --p-5: 5px;
-
     &-row {
         display: flex;
     }
