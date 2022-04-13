@@ -62,7 +62,7 @@ export default function BreadcrumbPage() {
               <Breadcrumb.Item separator=">">
                 <a href="">Application Center</a>
               </Breadcrumb.Item>
-              <Breadcrumb.Item separator="|" style={{ color: "#7284fb" }}>
+              <Breadcrumb.Item separator="|">
                 <a href="">Application List</a>
               </Breadcrumb.Item>
               <Breadcrumb.Item>An Application</Breadcrumb.Item>
