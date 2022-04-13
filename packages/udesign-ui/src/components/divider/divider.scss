@@ -1,26 +1,32 @@
 $module: ud-divider;
 
 .#{$module} {
-    --color: #272848;
+    --color: var( --ud-divider-color,rgb(var(--ud-gray-12)));
+    --border-width: var(--ud-divider-border-width, 1px);
+    --font-size: var(--ud-divider-font-size, 16px);
+    --border-color: var(--ud-divider-border-color, rgb(var(--ud-gray-3)));
     color: var(--color);
+    
     margin: 16px 0;
 
     span {
-        display: inline-block;
+        padding: 0;
+        margin: 0;
     }
 
     display: flex;
     width: 100%;
 
+    :last-child,
+    :first-child {
+        border-top: var(--border-width) solid var(--border-color);
+    }
     &-default {
 
         :last-child,
         :first-child {
             width: 50%;
             margin: 24px 0;
-            box-sizing: border-box;
-            border-top: 1px solid transparent;
-            border-top-color: inherit;
         }
     }
 
@@ -30,7 +36,7 @@ $module: ud-divider;
         .text {
             padding: 0 20px;
             white-space: nowrap;
-
+            font-size: var(--font-size);
         }
 
         :first-child,
@@ -38,8 +44,6 @@ $module: ud-divider;
             position: relative;
             top: 50%;
             width: 50%;
-            border-top: 1px solid transparent;
-            border-top-color: inherit;
             border-bottom: 0;
             transform: translateY(50%);
         }
@@ -75,9 +79,7 @@ $module: ud-divider;
         :last-child,
         :first-child {
             margin: 24px 0;
-            box-sizing: border-box;
-            border-top: 1px dashed transparent;
-            border-top-color: inherit;
+            border-top-style: dashed;
         }
     }
 
@@ -98,51 +100,41 @@ $module: ud-divider;
         margin: 0 8px;
         vertical-align: middle;
         border-top: 0;
-        border-left: 1px solid transparent;
-        border-color: inherit;
+        border-left: var(--border-width) solid var(--border-color); 
     }
 
     &-dashed-vertical {
-        border-left: 1px solid transparent;
-        border-color: inherit;
+        border-left: var(--border-width) solid var(--border-color);
     }
 
     &-orientation-margin-left {
         span {
             display: inline-block;
             width: 0;
-            padding: 0;
         }
 
         .text {
             width: auto;
-            margin: 0;
-            padding: 0;
             padding-right: 20px;
             white-space: nowrap;
-            font-size: initial;
             font-weight: bold;
         }
 
         :last-child {
             width: 100%;
-            border-top: 1px solid;
-            border-color: inherit;
             transform: translateY(50%);
         }
     }
-
+    .text{
+        width: auto;
+    }
     &-orientation-margin-right {
         span {
             display: inline-block;
             width: 0;
-            padding: 0;
         }
 
         .text {
-            width: auto;
-            margin: 0;
-            padding: 0;
             padding-left: 20px;
             white-space: nowrap;
             font-weight: bold;
@@ -150,8 +142,6 @@ $module: ud-divider;
 
         :first-child {
             width: 100%;
-            border-top: 1px solid;
-            border-color: inherit;
             transform: translateY(50%);
         }
     }
@@ -160,12 +150,9 @@ $module: ud-divider;
         span {
             display: inline-block;
             width: 50%;
-            padding: 0;
         }
 
         .text {
-            width: auto;
-            margin: 0;
             padding: 0 20px;
             white-space: nowrap;
             font-weight: bold;
