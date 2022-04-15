@@ -12,39 +12,28 @@ export type DividerProps = {
   type?: 'horizontal' | 'vertical'; //水平还是垂直类型
 } & NativeProps;
 
-export const Divider = ({ dashed = false, orientation = 'center', orientationMargin, plain = false, type = 'horizontal', children, className, style }: DividerProps) => {
+export const Divider = ({ dashed , orientation = 'center', orientationMargin, plain = false, type = 'horizontal', children, className, style }: DividerProps) => {
   const textRef = useRef<HTMLSpanElement>(null);
 
   const cls = classNames(
     prefixCls,
     {
-      [`${prefixCls}-default`]: !children,
-      [`${prefixCls}-dashed`]: dashed && !children,
-      [`${prefixCls}-text`]: children && !orientationMargin,
-      [`${prefixCls}-text-${orientation}`]: orientation && !orientationMargin,
+      [`${prefixCls}-dashed`]: dashed,
+      [`${prefixCls}-text`]: children ,
+      [`${prefixCls}-text-${orientation}`]: orientation,
       [`${prefixCls}-${type}`]: type,
-      [`${prefixCls}-dashed-vertical`]: type === 'vertical' && dashed,
       [`${prefixCls}-plain`]: plain,
-      [`${prefixCls}-text-dashed`]: dashed && children,
-      [`${prefixCls}-orientation-margin-${orientation}`]: orientation && orientationMargin != undefined && (orientationMargin < 0 || orientationMargin != ''),
+      [`${prefixCls}-orientation-margin-${orientation}`]: orientationMargin,
     },
     className,
   );
 
-  useEffect(() => {
-    if (orientationMargin !== undefined && orientation) {
-      orientation === 'left' ? (textRef.current!.style.marginLeft = orientationMargin + 'px') : null;
-      orientation === 'right' ? (textRef.current!.style.marginRight = orientationMargin + 'px') : null;
-    }
-  }, []);
 
   return (
     <div className={cls} style={style}>
-      <span></span>
-      <span ref={textRef} className='text'>
+      <span ref={textRef} className='text' style={orientation==='left' ? {marginLeft: `${orientationMargin}px`} : {marginRight: `${orientationMargin}px`}}>
         {children}
       </span>
-      <span></span>
     </div>
   );
 };

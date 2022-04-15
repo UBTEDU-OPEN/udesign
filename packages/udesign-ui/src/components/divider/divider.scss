@@ -1,94 +1,70 @@
 $module: ud-divider;
 
 .#{$module} {
-    --color: var( --ud-divider-color,rgb(var(--ud-gray-12)));
+    --color: var(--ud-divider-color, rgb(var(--ud-gray-12)));
     --border-width: var(--ud-divider-border-width, 1px);
     --font-size: var(--ud-divider-font-size, 16px);
     --border-color: var(--ud-divider-border-color, rgb(var(--ud-gray-3)));
     color: var(--color);
-    
+
     margin: 16px 0;
-
-    span {
-        padding: 0;
-        margin: 0;
-    }
-
+    font-weight: bold;
     display: flex;
     width: 100%;
 
-    :last-child,
-    :first-child {
+    &::after,
+    &::before {
+        content: '';
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        width: 50%;
         border-top: var(--border-width) solid var(--border-color);
     }
-    &-default {
 
-        :last-child,
-        :first-child {
-            width: 50%;
-            margin: 24px 0;
-        }
+    .text {
+        white-space: nowrap;
+        font-size: var(--font-size);
+        width: auto;
     }
 
-    &-text {
-        font-weight: bold;
 
+    &-text {
         .text {
             padding: 0 20px;
-            white-space: nowrap;
-            font-size: var(--font-size);
         }
 
-        :first-child,
-        :last-child {
+        &::after,
+        &::before {
             position: relative;
             top: 50%;
-            width: 50%;
             border-bottom: 0;
             transform: translateY(50%);
         }
     }
 
     &-text-left {
-        :first-child {
+        &::before {
             width: 5%;
         }
 
-        :last-child {
+        &::after {
             width: 95%;
         }
     }
 
     &-text-right {
-        :first-child {
+        &::before {
             width: 95%;
         }
 
-        :last-child {
+        &::after {
             width: 5%;
         }
     }
 
     &-plain {
         font-weight: normal;
-        color: inherit;
-    }
-
-    &-dashed {
-
-        :last-child,
-        :first-child {
-            margin: 24px 0;
-            border-top-style: dashed;
-        }
-    }
-
-    &-text-dashed {
-
-        :last-child,
-        :first-child {
-            border-style: dashed !important;
-        }
     }
 
     &-vertical {
@@ -100,62 +76,51 @@ $module: ud-divider;
         margin: 0 8px;
         vertical-align: middle;
         border-top: 0;
-        border-left: var(--border-width) solid var(--border-color); 
-    }
-
-    &-dashed-vertical {
         border-left: var(--border-width) solid var(--border-color);
     }
-
     &-orientation-margin-left {
-        span {
-            display: inline-block;
+        .text {
+            padding: 0 20px;
+        }
+        &::before {
             width: 0;
         }
-
-        .text {
-            width: auto;
-            padding-right: 20px;
-            white-space: nowrap;
-            font-weight: bold;
-        }
-
-        :last-child {
+        &::after {
             width: 100%;
             transform: translateY(50%);
         }
     }
-    .text{
-        width: auto;
-    }
-    &-orientation-margin-right {
-        span {
-            display: inline-block;
-            width: 0;
-        }
 
+
+    &-orientation-margin-right {
         .text {
             padding-left: 20px;
-            white-space: nowrap;
-            font-weight: bold;
         }
 
-        :first-child {
+        &::before {
             width: 100%;
             transform: translateY(50%);
+        }
+
+        &::after {
+            width: 0;
         }
     }
 
     &-orientation-margin-center {
-        span {
-            display: inline-block;
-            width: 50%;
-        }
 
         .text {
             padding: 0 20px;
-            white-space: nowrap;
-            font-weight: bold;
+        }
+    }
+
+    &-dashed {
+        border-style: dashed;
+
+        &::after,
+        &::before,
+        .text {
+            border-style: dashed;
         }
     }
 }
