@@ -26,11 +26,9 @@ export const Title = ({ level, copyable, ellipsis, editable, onClick, className,
 
   return (
     <>
-      <div className={cls} onClick={onClick}>
-        <Text {...restProps} copyable={copyable} ellipsis={ellipsis} editable={editable}>
-          {children}
-        </Text>
-      </div>
+      <Text className={cls} {...restProps} copyable={copyable} ellipsis={ellipsis} editable={editable}>
+        {children}
+      </Text>
     </>
   );
 };

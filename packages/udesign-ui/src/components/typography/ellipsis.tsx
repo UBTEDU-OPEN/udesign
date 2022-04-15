@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-
+import {  Tooltip } from '../../index';
 const prefixCls = `ud-typography`;
 
 export type EllipsisProps = {
@@ -46,12 +46,12 @@ export const Ellipsis = ({ rows = 1, expandable, suffix, className, tooltip, sym
       <span ref={lineClamp} className={isExpand ? cls : undefined}>
         {children}
       </span>
-      {isExpand ? (
+      {isExpand && tooltip ? (
         <span className={symbolCss} onClick={onClick}>
-          {symbol}
+          <Tooltip trigger={undefined} className={tooltipCss} placement="bottomLeft" content={tooltipText} showArrow={false}>{symbol}</Tooltip> 
         </span>
       ) : null}
-      {tooltip ? <span className={tooltipCss}>{tooltipText}</span> : undefined}
+      { isExpand && !tooltip ? <span className={symbolCss} onClick={onClick}>{symbol}</span> : undefined}
       <span className={suffixCss}>{suffix}</span>
     </>
   );

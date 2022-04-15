@@ -56,7 +56,7 @@ export const Copyable = ({ tooltip, className, icon = [<PageIcon/>, <CheckIcon/>
     <>
       <span ref={textRef}> {children}</span>
       <span className={cls} onClick={onClick} style={{ cursor: 'pointer' }}>
-        {stateTooltip ? <Tooltip content={stateTooltip}>{copyIcon}</Tooltip> : <span>{copyIcon}</span>}
+        {stateTooltip ? <Tooltip content={stateTooltip}>{copyIcon}</Tooltip> : <span className={`${prefixCls}-copy-icon`}>{copyIcon}</span>}
       </span>
     </>
   );
