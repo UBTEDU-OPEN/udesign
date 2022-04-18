@@ -30,6 +30,9 @@ $module: ud-breadcrumb;
         }
     }
 
+    & > span:first-child &-separator{
+        display: none;
+    }
     &-separator {
         margin: 0 5px 0 10px;
         color: var(--color);

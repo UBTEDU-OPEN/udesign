@@ -8,8 +8,7 @@ export type ItemProps = {
   separator?: ReactNode; // 设置分隔符
   href?: string;
   onClick?: React.MouseEventHandler<HTMLSpanElement>; // 点击时的回调
-  indexArr?: any;
-  indexLast?: any;
+
 } & NativeProps;
 
 export const Item = ({
@@ -18,8 +17,6 @@ export const Item = ({
   className,
   children,
   style,
-  indexArr,
-  indexLast,
   ...restProps
 }: ItemProps) => {
   const strRef = useRef<HTMLSpanElement>(null);
@@ -28,7 +25,6 @@ export const Item = ({
     prefixCls,
     {
       [`${prefixCls}-item`]: children,
-      [`${prefixCls}-last`]: indexArr[0] === indexLast,
     },
     className
   );
@@ -61,9 +57,7 @@ export const Item = ({
   return (
     <>
       <span className={conCls} onClick={onClick}>
-        {indexArr[0] !== 0 ? (
           <span className={iconCls}>{separator} </span>
-        ) : null}
         {link}
       </span>
     </>

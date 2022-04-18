@@ -18,7 +18,6 @@ export const Breadcrumb = ({
 }: BreadcrumbProps) => {
   let newChildren = toArray(children);
   let arrkey: String[] = [];
-  let indexLast = newChildren.length - 1;
 
   return (
     <div className={prefixCls} {...restProps} style={style}>
@@ -37,13 +36,8 @@ export const Breadcrumb = ({
 
           if (!arrkey[0]) arrkey.shift();
           const strKey: string = arrkey.join("/");
-          let indexArr: number[] = [];
-          indexArr[0] = index;
-          indexArr.push(index);
           return (
             <Item
-              indexArr={indexArr}
-              indexLast={indexLast}
               key={strKey}
               {...child.props}
               separator={
