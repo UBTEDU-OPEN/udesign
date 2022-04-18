@@ -32,20 +32,22 @@ export type SwitchProps = {
   size?: SwitchSize; // TODO: 暂未实现
   checkedText?: ReactNode; // 选中时的内容
   uncheckedText?: ReactNode; // 非选中时的内容
-  onChange?: (checked: boolean) => void;
+  onChange?: (checked: boolean) => void;  // 变化时回调函数
+  onClick?: (checked: boolean) => void; // 点击时回调函数
 } & NativeProps;
 
-export const Switch = ({ defaultChecked = false, disabled, loading, size = 'middle', checkedText, uncheckedText, className, ...restProps }: SwitchProps) => {
+export const Switch = ({ defaultChecked = false, disabled, loading, size = 'middle', checkedText, uncheckedText, className, ...props }: SwitchProps) => {
   const [innerChecked, setInnerChecked] = usePropsValue({
-    value: restProps.checked,
+    value: props.checked,
     defaultValue: defaultChecked,
-    onChange: restProps.onChange,
+    onChange: props.onChange,
   });
 
   function onInternalClick(event: React.MouseEvent<HTMLButtonElement>) {
     if (!disabled && !loading) {
       setInnerChecked(!innerChecked);
     }
+    props.onClick?.(innerChecked);
   }
 
   const widthClass = (innerChecked && !checkedText) || (!innerChecked && !uncheckedText) ? 'w-16' : '';
