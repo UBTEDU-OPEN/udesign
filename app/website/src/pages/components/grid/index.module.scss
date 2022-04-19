@@ -2,11 +2,11 @@
     --bg-even: rgba(114, 132, 251, 0.50);
 
     :global {
-        .ud-grid-row:first-child>div:nth-of-type(1) {
-            background-color: rgb(var(--ud-color-primary));
+        .ud-grid-row:first-child>div:nth-child(1) {
+            background-color: var(--ud-color-primary);
         }
 
-        .ud-grid-row>div:nth-of-type(odd) {
+        .ud-grid-row>div:nth-child(odd) {
             background-color: var(--bg-even);
             padding: 16px 0;
             margin-top: 5px;
@@ -14,8 +14,8 @@
             color: #fff;
         }
 
-        .ud-grid-row>div:nth-of-type(even) {
-            background-color: rgb(var(--ud-color-primary));
+        .ud-grid-row>div:nth-child(even) {
+            background-color: var(--ud-color-primary);
             padding: 16px 0;
             margin-top: 5px;
             margin-bottom: 5px;
