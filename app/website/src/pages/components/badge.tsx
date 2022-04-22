@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Demo } from 'demo';
-import { Avatar, Badge, Button, CheckIcon, SettingIcon, Space } from '@ubt/udesign-ui-alpha';
+import { Avatar, Badge, CheckIcon, SettingIcon, Space } from '@ubt/udesign-ui-alpha';
 import { ArrowDownOutlined } from '@ant-design/icons';
 
 export default function BadgePage() {

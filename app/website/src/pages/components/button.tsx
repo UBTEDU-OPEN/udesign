@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { HeartFilledIcon, HeartSvg, SettingIcon, Space } from '@ubt/udesign-ui-alpha';
+import { SettingIcon, Space } from '@ubt/udesign-ui-alpha';
 import { Button } from '@ubt/udesign-ui';
 
 export default function ButtonPage() {

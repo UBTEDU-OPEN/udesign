@@ -5,11 +5,12 @@ import { Radio, Button } from '@ubt/udesign-ui-alpha';
 export default function RadioPage() {
   const [checked, setChecked] = useState(false);
 
-  const optionsWithDisabled = [
-    { label: 'A', value: 'A' },
-    { label: 'B', value: 'B' },
-    { label: 'C', value: 'C', disabled: true },
-  ];
+  // const optionsWithDisabled = [
+  //   { label: 'A', value: 'A' },
+  //   { label: 'B', value: 'B' },
+  //   { label: 'C', value: 'C', disabled: true },
+  // ];
+
   return (
     <>
       <Demo.Page title='Radio 单选框' description='用于在选中和非选中状态之间进行切换。'>

@@ -29,14 +29,17 @@ const layoutMenus = [
   {
     name: 'grid',
     text: 'Grid 栅格',
+    disabled: true,
   },
   {
     name: 'layout',
     text: 'Layout 布局',
+    disabled: true,
   },
   {
     name: 'space',
     text: 'Space 间距',
+    disabled: true,
   },
 ];
 
@@ -72,6 +75,7 @@ const navMenus = [
   {
     name: 'steps',
     text: 'Steps 步骤条',
+    disabled: true,
   },
 ];
 
@@ -90,6 +94,7 @@ const inputMenus = [
   {
     name: 'checkbox',
     text: 'Checkbox 多选框',
+    disabled: true,
   },
   {
     name: 'datepicker',
@@ -104,6 +109,7 @@ const inputMenus = [
   {
     name: 'input',
     text: 'Input 输入框',
+    disabled: true,
   },
   {
     name: 'inputNumber',
@@ -118,6 +124,7 @@ const inputMenus = [
   {
     name: 'radio',
     text: 'Radio 单选框',
+    disabled: true,
   },
   {
     name: 'rate',
@@ -137,6 +144,7 @@ const inputMenus = [
   {
     name: 'switch',
     text: 'Switch 开关',
+    disabled: true,
   },
   {
     name: 'timePicker',
@@ -165,10 +173,12 @@ const showMenus = [
   {
     name: 'avatar',
     text: 'Avatar 头像',
+    disabled: true,
   },
   {
     name: 'badge',
     text: 'Badge 徽标',
+    disabled: true,
   },
   {
     name: 'calendar',
@@ -178,6 +188,7 @@ const showMenus = [
   {
     name: 'card',
     text: 'Card 卡片',
+    disabled: true,
   },
   {
     name: 'carousel',
@@ -187,6 +198,7 @@ const showMenus = [
   {
     name: 'collapse',
     text: 'Collapse 折叠面板',
+    disabled: true,
   },
   {
     name: 'comment',
@@ -231,10 +243,12 @@ const showMenus = [
   {
     name: 'tabs',
     text: 'Tabs 标签页',
+    disabled: true,
   },
   {
     name: 'tag',
     text: 'Tag 标签',
+    disabled: true,
   },
   {
     name: 'timeline',
@@ -272,6 +286,7 @@ const feedbackMenus = [
   {
     name: 'modal',
     text: 'Modal 对话框',
+    disabled: true,
   },
   {
     name: 'notification',
@@ -291,18 +306,22 @@ const feedbackMenus = [
   {
     name: 'result',
     text: 'Result 结果',
+    disabled: true,
   },
   {
     name: 'skeleton',
     text: 'Skeleton 骨架屏',
+    disabled: true,
   },
   {
     name: 'spin',
     text: 'Spin 加载中',
+    disabled: true,
   },
   {
     name: 'toast',
     text: 'Toast 提示',
+    disabled: true,
   },
 ];
 

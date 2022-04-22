@@ -19,7 +19,7 @@ const docMenus = [
   },
 ];
 
-export default function Doc({ meta, menu, content }) {
+export default function Doc({ content }) {
   return (
     <>
       <Demo.Doc menus={docMenus}>

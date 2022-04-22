@@ -8,11 +8,21 @@ export type NavigationProps = {};
 
 const Navigation = ({}: NavigationProps) => {
   const router = useRouter();
-  const firstActiveKey = router.asPath.split('/').shift() || router.asPath.split('/').slice(1, 2)[0];
-  const [activeKey, setActiveKey] = useState(firstActiveKey);
-
+  const defaultActiveKey = router.asPath.split('/').pop() || router.asPath.split('/').slice(-2, -1)[0];
+  
   function handleChange(name: string) {
-    setActiveKey(name);
+    let path = '';
+    switch (name) {
+      case 'quick-start':
+        path = '/docs/guide/quick-start';
+        break;
+      case 'button':
+        path = '/components/button';
+        break;
+      default:
+        break;
+    }
+    router.push(path);
   }
 
   return (
@@ -21,20 +31,12 @@ const Navigation = ({}: NavigationProps) => {
         <Link href='/'>
           <a className='font-bold text-xl'>uDesign</a>
         </Link>
-        <Menu className='gap-5' onChange={handleChange} activeKey={activeKey} mode='horizontal'>
+        <Menu className='gap-5' onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
           <Menu.Item name='spec' disabled>
             设计
           </Menu.Item>
-          <Menu.Item name='docs'>
-            <Link href='/docs/guide/quick-start'>
-              <a>文档</a>
-            </Link>
-          </Menu.Item>
-          <Menu.Item name='components'>
-            <Link href='/components/button'>
-              <a>组件</a>
-            </Link>
-          </Menu.Item>
+          <Menu.Item name='quick-start'>文档</Menu.Item>
+          <Menu.Item name='button'>组件</Menu.Item>
           <Menu.Item name='theme' disabled>
             主题
           </Menu.Item>
