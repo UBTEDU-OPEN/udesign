@@ -1,7 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext, useState } from 'react';
 import classNames from 'classnames';
+import RowContext from './rowContext';
 import { NativeProps } from '../../utils';
 const prefixCls = `ud-grid-col`;
+
+export interface ColSize {
+  span?: number;
+  order?: number;
+  offset?: number;
+  push?: number;
+  pull?: number;
+}
 
 export type ColProps = {
   flex?: string | number; // flex 布局属性
@@ -10,15 +19,37 @@ export type ColProps = {
   pull?: number; // 栅格向左移动格数
   push?: number; // 栅格向右移动格数
   span?: number; // 栅格占位格数，为 0 时相当于 display: none
-  xs?: number | object; // 屏幕 < 576px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  sm?: number | object; // 屏幕 ≥ 576px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  md?: number | object; // 屏幕 ≥ 768px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  lg?: number | object; // 屏幕 ≥ 992px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  xl?: number | object; // 屏幕 ≥ 1200px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  xxl?: number | object; // 屏幕 ≥ 1600px 响应式栅格，可为栅格数或一个包含其他属性的对象
+  xs?: number | ColSize; // 屏幕 < 576px 响应式栅格，可为栅格数或一个包含其他属性的对象
+  sm?: number | ColSize; // 屏幕 ≥ 576px 响应式栅格，可为栅格数或一个包含其他属性的对象
+  md?: number | ColSize; // 屏幕 ≥ 768px 响应式栅格，可为栅格数或一个包含其他属性的对象
+  lg?: number | ColSize; // 屏幕 ≥ 992px 响应式栅格，可为栅格数或一个包含其他属性的对象
+  xl?: number | ColSize; // 屏幕 ≥ 1200px 响应式栅格，可为栅格数或一个包含其他属性的对象
+  xxl?: number | ColSize; // 屏幕 ≥ 1600px 响应式栅格，可为栅格数或一个包含其他属性的对象
 } & NativeProps;
-export const Col = ({ flex, offset = 0, order = 0, pull = 0, push = 0, span, xs, sm, md, lg, xl, xxl, children }: ColProps) => {
+
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const;
+
+export const Col = (props: ColProps) => {
+  const { flex, offset = 0, order = 0, pull = 0, push = 0, span, xs, sm, md, lg, xl, xxl, children } = props;
+
   const colRef = useRef<HTMLDivElement>(null);
+  const { gutter } = useContext(RowContext);
+  let sizeClassObj = {};
+  sizes.forEach((size) => {
+    let sizeProps: ColSize = {};
+    const propSize = props[size];
+    if (typeof propSize === 'object') {
+      sizeProps = propSize || {};
+    }
+    sizeClassObj = {
+      ...sizeClassObj,
+      [`${prefixCls}-${size}-${sizeProps.span}`]: sizeProps.span,
+      [`${prefixCls}-${size}-order-${sizeProps.order}`]: sizeProps.order,
+      [`${prefixCls}-${size}-offset-${sizeProps.offset}`]: sizeProps.offset,
+      [`${prefixCls}-${size}-push-${sizeProps.push}`]: sizeProps.push,
+      [`${prefixCls}-${size}-pull-${sizeProps.pull}`]: sizeProps.pull,
+    };
+  });
 
   const cls = classNames(prefixCls, {
     [`${prefixCls}-span-${span}`]: span,
@@ -26,56 +57,64 @@ export const Col = ({ flex, offset = 0, order = 0, pull = 0, push = 0, span, xs,
     [`${prefixCls}-push-${push}`]: push,
     [`${prefixCls}-offset-${offset}`]: offset,
     [`${prefixCls}-order-${order}`]: order,
-
     [`${prefixCls}-xs-${xs}`]: xs && typeof xs === 'number',
-    [`${prefixCls}-xs-${xs?.span}`]: xs?.span,
-    [`${prefixCls}-xs-offset-${xs?.offset}`]: xs?.offset,
-    [`${prefixCls}-xs-push-${xs?.push}`]: xs?.push,
-    [`${prefixCls}-xs-pull-${xs?.pull}`]: xs?.pull,
-    [`${prefixCls}-xs-order-${xs?.order}`]: xs?.order,
-
     [`${prefixCls}-sm-${sm}`]: sm && typeof sm === 'number',
-    [`${prefixCls}-sm-${sm?.span}`]: sm?.span,
-    [`${prefixCls}-sm-offset-${sm?.offset}`]: sm?.offset,
-    [`${prefixCls}-sm-push-${sm?.push}`]: sm?.push,
-    [`${prefixCls}-sm-pull-${sm?.pull}`]: sm?.pull,
-    [`${prefixCls}-sm-order-${sm?.order}`]: sm?.order,
-
     [`${prefixCls}-md-${md}`]: md && typeof md === 'number',
-    [`${prefixCls}-md-${md?.span}`]: md?.span,
-    [`${prefixCls}-md-offset-${md?.offset}`]: md?.offset,
-    [`${prefixCls}-md-push-${md?.push}`]: md?.push,
-    [`${prefixCls}-md-pull-${md?.pull}`]: md?.pull,
-    [`${prefixCls}-md-order-${md?.order}`]: md?.order,
-
     [`${prefixCls}-lg-${lg}`]: lg && typeof lg === 'number',
-    [`${prefixCls}-lg-${lg?.span}`]: lg?.span,
-    [`${prefixCls}-lg-offset-${lg?.offset}`]: lg?.offset,
-    [`${prefixCls}-lg-push-${lg?.push}`]: lg?.push,
-    [`${prefixCls}-lg-pull-${lg?.pull}`]: lg?.pull,
-    [`${prefixCls}-lg-order-${lg?.order}`]: lg?.order,
-
     [`${prefixCls}-xl-${xl}`]: xl && typeof xl === 'number',
-    [`${prefixCls}-xl-${xl?.span}`]: xl?.span,
-    [`${prefixCls}-xl-offset-${xl?.offset}`]: xl?.offset,
-    [`${prefixCls}-xl-push-${xl?.push}`]: xl?.push,
-    [`${prefixCls}-xl-pull-${xl?.pull}`]: xl?.pull,
-    [`${prefixCls}-xl-order-${xl?.order}`]: xl?.order,
-
     [`${prefixCls}-xxl-${xxl}`]: xxl && typeof xxl === 'number',
-    [`${prefixCls}-xxl-${xxl?.span}`]: xxl?.span,
-    [`${prefixCls}-xxl-offset-${xxl?.offset}`]: xxl?.offset,
-    [`${prefixCls}-xxl-push-${xxl?.push}`]: xxl?.push,
-    [`${prefixCls}-xxl-pull-${xxl?.pull}`]: xxl?.pull,
-    [`${prefixCls}-xxl-order-${xxl?.order}`]: xxl?.order,
+    ...sizeClassObj,
   });
 
   useEffect(() => {
     flex ? (colRef.current!.style.flex = `${flex}`) : null;
   }, [flex]);
+  let [styleCss, setStyleCss] = useState<Object>();
+  const [size, setSize] = useState(0);
+  useEffect(() => {
+    function updateSize() {
+      setSize(window.innerWidth);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+
+  useEffect(() => {
+    if (gutter instanceof Array) {
+      setStyleCss({
+        paddingLeft: gutter[0] / 2 + 'px',
+        paddingRight: gutter[0] / 2 + 'px',
+      });
+    } else if (typeof gutter === 'number' && gutter) {
+      setStyleCss({
+        padding: '0px ' + gutter / 2 + 'px',
+        margin: '0px',
+      });
+    } else if (typeof gutter === 'object') {
+      let gutterHorizontal;
+      if (size <= 576 && gutter.xs) {
+        gutterHorizontal = gutter.xs / 2;
+      } else if (size <= 768 && gutter.sm) {
+        gutterHorizontal = gutter.sm / 2;
+      } else if (size <= 992 && gutter.md) {
+        gutterHorizontal = gutter.md / 2;
+      } else if (size <= 1200 && gutter.lg) {
+        gutterHorizontal = gutter.lg / 2;
+      } else if (size <= 1600 && gutter.xl) {
+        gutterHorizontal = gutter.xl / 2;
+      } else if (size > 1600 && gutter.xxl) {
+        gutterHorizontal = gutter.xxl / 2;
+      }
+      setStyleCss({
+        padding: '0px ' + gutterHorizontal + 'px',
+        margin: '0px',
+      });
+    }
+  }, [size]);
 
   return (
-    <div ref={colRef} className={cls}>
+    <div ref={colRef} className={cls} style={styleCss}>
       {children}
     </div>
   );
