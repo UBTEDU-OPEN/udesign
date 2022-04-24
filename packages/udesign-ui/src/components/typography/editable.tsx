@@ -1,8 +1,8 @@
-import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent, SetStateAction } from 'react';
-
-import { SettingIcon, Tooltip } from '@ubt/udesign-ui-alpha';
+import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
+import { EditOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
+import Tooltip from '../tooltip';
 
 const prefixCls = `ud-typography-editable`;
 export type EditableProps = {
@@ -16,7 +16,7 @@ export type EditableProps = {
   onChange?: ()=> void; //文本域编辑时触发
 } & NativeProps;
 
-export const Editable = ({ icon = <SettingIcon />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className }: EditableProps) => {
+export const Editable = ({ icon = <EditOutlined />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className }: EditableProps) => {
   const [isShow, setIsShow] = useState(true);
   const [propChildren, setPropChildren] = useState(
     String(children)

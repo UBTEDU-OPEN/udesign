@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ReactNode } from 'react';
 import classNames from 'classnames';
-import { LoadingIcon } from '@ubt/udesign-ui-alpha';
+import { LoadingOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
 import { CommonType, CommonSize, CommonShape } from '../../constants';
 
@@ -26,7 +26,7 @@ export type ButtonProps = {
 } & NativeProps;
 
 export const Button = ({ type = 'default', size = 'middle', shape = 'round', loading, block, danger, warning, disabled, glass, icon, onClick, className, children, ...restProps }: ButtonProps) => {
-  const iconElement = icon && !loading ? icon : <LoadingIcon />;
+  const iconElement = icon && !loading ? icon : <LoadingOutlined />;
 
   const hasIcon = loading || Boolean(icon);
 

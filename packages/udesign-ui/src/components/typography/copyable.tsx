@@ -1,7 +1,8 @@
 import React, { ReactNode, useRef, useState } from 'react';
 import classNames from 'classnames';
+import { CopyOutlined, CheckOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
-import { PageIcon, CheckIcon, Tooltip } from '@ubt/udesign-ui-alpha';
+import Tooltip from '../tooltip';
 
 const prefixCls = `ud-typography`;
 
@@ -12,7 +13,7 @@ export type CopyableProps = {
   onCopy?: ()=> void; //拷贝成功的回调函数
 } & NativeProps;
 
-export const Copyable = ({ tooltip, className, icon = [<PageIcon/>, <CheckIcon/>], text, onCopy, children }: CopyableProps) => {
+export const Copyable = ({ tooltip, className, icon = [<CopyOutlined/>, <CheckOutlined/>], text, onCopy, children }: CopyableProps) => {
 
   let [copyIcon, setCopyIcon] = useState(icon[0] );
   let [stateTooltip, setStateTooltip] = useState(tooltip);

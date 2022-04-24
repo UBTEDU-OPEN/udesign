@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './index.module.scss';
 import { Demo } from 'demo';
-import { SettingIcon, Space } from '@ubt/udesign-ui-alpha';
+import { Space } from '@ubt/udesign-ui-alpha';
+import { EditOutlined } from '@ant-design/icons';
 import { Typography } from '@ubt/udesign-ui';
+import styles from './index.module.scss';
+
 export default function TypographyPage() {
   return (
     <div className={styles['typography-root']}>
@@ -36,13 +38,15 @@ export default function TypographyPage() {
         </Demo.Block>
         <Demo.Block title='可交互能力' description='提供可编辑和可复制等额外的交互能力。'>
           <Space vertical>
-            <Typography.Text style={{width:'100%'}} editable={{ tooltip: '编辑', icon: () => <SettingIcon /> }}>This is an editable text.</Typography.Text>
+            <Typography.Text style={{ width: '100%' }} editable={{ tooltip: '编辑', icon: () => <EditOutlined /> }}>
+              This is an editable text.
+            </Typography.Text>
             <Typography.Text
-            style={{width:'100%'}}
+              style={{ width: '100%' }}
               editable={{
                 tooltip: '编辑',
                 autoSize: { minRows: 2 },
-                icon: () => <SettingIcon />,
+                icon: () => <EditOutlined />,
               }}
             >
               This is an editable text.

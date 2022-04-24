@@ -9,7 +9,7 @@ export type NavigationProps = {};
 const Navigation = ({}: NavigationProps) => {
   const router = useRouter();
   const defaultActiveKey = router.asPath.split('/').pop() || router.asPath.split('/').slice(-2, -1)[0];
-  
+
   function handleChange(name: string) {
     let path = '';
     switch (name) {
@@ -32,9 +32,9 @@ const Navigation = ({}: NavigationProps) => {
           <a className='font-bold text-xl'>uDesign</a>
         </Link>
         <Menu className='gap-5' onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
-          <Menu.Item name='spec' disabled>
-            设计
-          </Menu.Item>
+          <Link href='http://dev.edu.ubtrobot.com/UI/U-Design/'>
+            <Menu.Item name='spec'>设计</Menu.Item>
+          </Link>
           <Menu.Item name='quick-start'>文档</Menu.Item>
           <Menu.Item name='button'>组件</Menu.Item>
           <Menu.Item name='theme' disabled>
