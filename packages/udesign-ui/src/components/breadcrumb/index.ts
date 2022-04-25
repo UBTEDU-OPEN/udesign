@@ -1,9 +1,10 @@
-import "./breadcrumb.scss";
-import { attachPropertiesToComponent } from "../../utils";
-import { Breadcrumb as InnerBreadcrumb } from "./breadcrumb";
-export type { BreadcrumbProps } from "./breadcrumb";
+import './breadcrumb.scss';
+import { attachPropertiesToComponent } from '../../utils';
+import { Breadcrumb } from './breadcrumb';
+import { Item } from './item';
 
-import { Item } from "./item";
-export const Breadcrumb = attachPropertiesToComponent(InnerBreadcrumb, {
+export type { BreadcrumbProps } from './breadcrumb';
+
+export default attachPropertiesToComponent(Breadcrumb, {
   Item,
 });

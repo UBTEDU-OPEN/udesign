@@ -8,7 +8,7 @@ const prefixCls = `ud-typography`;
 
 export type CopyableProps = {
   tooltip?: ReactNode; //自定义提示文案，为 false 时隐藏文案
-  icon?: [ReactNode, ReactNode]; //[复制是图标,复制成功时图标]
+  icon?: [ReactNode, ReactNode]; //[复制图标,复制成功图标]
   text?: string; //拷贝到剪切板里的文本
   onCopy?: ()=> void; //拷贝成功的回调函数
 } & NativeProps;
