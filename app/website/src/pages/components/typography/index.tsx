@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './index.module.scss';
 import { Demo } from 'demo';
-import { SettingIcon, Space } from '@ubt/udesign-ui-alpha';
-import { Typography } from '@ubt/udesign-ui';
+import { SettingIcon } from '@ubt/udesign-ui-alpha';
+import { Typography, Space } from '@ubt/udesign-ui';
 export default function TypographyPage() {
   return (
     <div className={styles['typography-root']}>
@@ -17,7 +17,7 @@ export default function TypographyPage() {
           <Typography.Title level={5}>h5. U Design</Typography.Title>
         </Demo.Block>
         <Demo.Block title='文本与超链接组件' description='内置不同样式的文本以及超链接组件。'>
-          <Space vertical>
+          <Space direction='vertical'>
             <Typography.Text>U Design (default)</Typography.Text>
             <Typography.Text type='secondary'>U Design (secondary)</Typography.Text>
             <Typography.Text type='success'>U Design (success)</Typography.Text>
@@ -35,7 +35,7 @@ export default function TypographyPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='可交互能力' description='提供可编辑和可复制等额外的交互能力。'>
-          <Space vertical>
+          <Space direction='vertical'>
             <Typography.Text style={{width:'100%'}} editable={{ tooltip: '编辑', icon: () => <SettingIcon /> }}>This is an editable text.</Typography.Text>
             <Typography.Text
             style={{width:'100%'}}

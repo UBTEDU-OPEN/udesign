@@ -1,6 +1,7 @@
 import React from 'react';
 import { Demo } from 'demo';
-import { Toast, Button, HeartFilledIcon, Space } from '@ubt/udesign-ui-alpha';
+import { Toast, Button, HeartFilledIcon } from '@ubt/udesign-ui-alpha';
+import { Space } from '@ubt/udesign-ui';
 
 export default function ToastPage() {
   return (

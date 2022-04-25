@@ -1,8 +1,8 @@
 import { SearchOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Button, Input, Space } from '@ubt/udesign-ui-alpha';
-
+import { Button, Input } from '@ubt/udesign-ui-alpha';
+import { Space } from '@ubt/udesign-ui';
 export default function InputPage() {
   const [value, setValue] = useState('Hi');
   return (

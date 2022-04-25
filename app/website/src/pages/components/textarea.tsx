@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Button, Textarea, Space } from '@ubt/udesign-ui-alpha';
+import { Button, Textarea } from '@ubt/udesign-ui-alpha';
+import { Space} from "@ubt/udesign-ui";
 
 export default function TextareaPage() {
   const [value, setValue] = useState('Hi');

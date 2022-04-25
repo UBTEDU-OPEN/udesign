@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Popup, Button, Space } from '@ubt/udesign-ui-alpha';
-
+import { Popup, Button } from '@ubt/udesign-ui-alpha';
+import { Space } from '@ubt/udesign-ui';
 export default function PopupPage() {
   const [visible, setVisible] = useState(false);
   const [closeable, setCloseable] = useState(false);
   const [round, setRound] = useState(false);
-  const [mask, setMask] = useState(false);
   const [maskCloseable, setMaskCloseable] = useState(false);
 
   const [top, setTop] = useState(false);

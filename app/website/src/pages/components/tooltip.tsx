@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
 import { Tooltip } from '@ubt/udesign-ui';
-import { Button, Input, Space } from '@ubt/udesign-ui-alpha';
+import { Button, Input } from '@ubt/udesign-ui-alpha';
+import { Space } from '@ubt/udesign-ui';
 
 export default function TooltipPage() {
   const [visible, setVisible] = useState<boolean>(false);
@@ -38,7 +39,7 @@ export default function TooltipPage() {
           </Tooltip>
         </Demo.Block>
         <Demo.Block title='弹出位置' description='支持弹出层在不同方向展示，共有 12 个方向'>
-          <Space vertical>
+          <Space direction='vertical'>
             <Space>
               <Tooltip content={content} placement='topLeft'>
                 <Button>topLeft</Button>
@@ -62,7 +63,7 @@ export default function TooltipPage() {
               </Tooltip>
             </Space>
             <Space justify='between'>
-              <Space vertical>
+              <Space direction='vertical'>
                 <Tooltip content={content} placement='leftTop'>
                   <Button size='large'>leftTop</Button>
                 </Tooltip>
@@ -73,7 +74,7 @@ export default function TooltipPage() {
                   <Button size='large'>leftBottom</Button>
                 </Tooltip>
               </Space>
-              <Space vertical>
+              <Space direction='vertical'>
                 <Tooltip content={content} placement='rightTop'>
                   <Button size='large'>rightTop</Button>
                 </Tooltip>

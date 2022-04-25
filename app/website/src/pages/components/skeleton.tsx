@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Button, Skeleton, Space } from '@ubt/udesign-ui-alpha';
-
+import { Button, Skeleton } from '@ubt/udesign-ui-alpha';
+import { Space } from '@ubt/udesign-ui';
 export default function SkeletonPage() {
   const [active, setActive] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,7 @@ export default function SkeletonPage() {
           <Button onClick={() => setActive(!active)}>active:{String(active)}</Button>
         </Demo.Block>
         <Demo.Block title='全部骨架元素' description='骨架头像、按钮、输入框、标题、段落和图像。'>
-          <Space vertical>
+          <Space direction='vertical'>
             <Skeleton.Avatar />
             <Skeleton.Button />
             <Skeleton.Input />
