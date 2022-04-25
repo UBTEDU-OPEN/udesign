@@ -1,29 +1,29 @@
 import React from 'react';
 import { Demo } from 'demo';
-import { Button, Dropdown, Space } from '@ubt/udesign-ui';
-import { Menu, Input, Divider } from '@ubt/udesign-ui-alpha';
+import { Button, Dropdown, Divider, Menu, Space } from '@ubt/udesign-ui';
+import { Input } from '@ubt/udesign-ui-alpha';
 
 export default function DropdownPage() {
   const menu = (
     <Menu>
-      <Menu.Item name='1'>1st menu item</Menu.Item>
-      <Menu.Item name='2' disabled>
-        2st menu item(disabled)
-      </Menu.Item>
+      <Menu.Item name='1'>1 st menu item</Menu.Item>
+      <Menu.Item name='2'>2 st menu item</Menu.Item>
       <Divider />
-      <Menu.Item name='3'>3st menu item</Menu.Item>
+      <Menu.Item name='3' disabled>
+        3 st menu item(disabled)
+      </Menu.Item>
     </Menu>
   );
 
   return (
     <>
       <Demo.Page title='Dropdown 下拉菜单' description='向下弹出的菜单列表。'>
-        <Demo.Block title='基础用法' description='通过 content 来指定菜单内容，一般使用 Menu 组件。'>
+        <Demo.Block title='基础用法' description='最简单的下拉菜单。'>
           <Dropdown content={menu}>
             <Button>Hover me</Button>
           </Dropdown>
         </Demo.Block>
-        <Demo.Block title='弹出位置' description='通过 content 来指定菜单内容，一般使用 Menu 组件。'>
+        <Demo.Block title='弹出位置' description='支持 6 个弹出位置。'>
           <Space direction='vertical'>
             <Space>
               <Dropdown content={menu} placement='topLeft'>

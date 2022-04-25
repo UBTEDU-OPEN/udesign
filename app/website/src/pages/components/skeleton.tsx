@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Button, Skeleton } from '@ubt/udesign-ui-alpha';
-import { Space } from '@ubt/udesign-ui';
+import { Skeleton } from '@ubt/udesign-ui-alpha';
+import { Button, Space } from '@ubt/udesign-ui';
+
 export default function SkeletonPage() {
   const [active, setActive] = useState(true);
   const [loading, setLoading] = useState(false);

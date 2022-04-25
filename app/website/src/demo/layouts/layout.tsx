@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Layout, Navbar, Scrollbar } from '@ubt/udesign-ui-alpha';
+import { Layout, Scrollbar } from '@ubt/udesign-ui-alpha';
 import { NativeProps } from '@ubt/udesign-utils';
 import Navigation from './navigation';
 import { SITE_NAME } from '../constants/site';

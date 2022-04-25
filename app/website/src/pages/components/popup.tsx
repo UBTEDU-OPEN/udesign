@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Popup, Button } from '@ubt/udesign-ui-alpha';
-import { Space } from '@ubt/udesign-ui';
+import { Popup } from '@ubt/udesign-ui-alpha';
+import { Space, Button } from '@ubt/udesign-ui';
+
 export default function PopupPage() {
   const [visible, setVisible] = useState(false);
   const [closeable, setCloseable] = useState(false);

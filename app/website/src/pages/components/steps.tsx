@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Button, Steps, Toast } from '@ubt/udesign-ui-alpha';
+import { Button } from '@ubt/udesign-ui';
+import { Steps, Toast } from '@ubt/udesign-ui-alpha';
 
 const steps = [
   {

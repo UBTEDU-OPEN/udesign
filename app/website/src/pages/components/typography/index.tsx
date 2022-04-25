@@ -37,7 +37,9 @@ export default function TypographyPage() {
         </Demo.Block>
         <Demo.Block title='可交互能力' description='提供可编辑和可复制等额外的交互能力。'>
           <Space direction='vertical'>
-            <Typography.Text style={{width:'100%'}} editable={{ tooltip: '编辑', icon: () => <EditOutlined /> }}>This is an editable text.</Typography.Text>
+            <Typography.Text style={{ width: '100%' }} editable={{ tooltip: '编辑', icon: () => <EditOutlined /> }}>
+              This is an editable text.
+            </Typography.Text>
             <Typography.Text
               style={{ width: '100%' }}
               editable={{
@@ -52,7 +54,7 @@ export default function TypographyPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='省略展示' description='多行文本省略。你可以通过 tooltip 属性配置省略展示内容，大量文本时推荐优先使用 expandable。'>
-          <Space size='large'>
+          <Space size='large' direction='vertical'>
             <Typography.Paragraph
               ellipsis={{
                 rows: 1,

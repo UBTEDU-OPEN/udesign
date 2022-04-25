@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Radio, Button } from '@ubt/udesign-ui-alpha';
+import { Button } from '@ubt/udesign-ui';
+import { Radio } from '@ubt/udesign-ui-alpha';
 
 export default function RadioPage() {
   const [checked, setChecked] = useState(false);

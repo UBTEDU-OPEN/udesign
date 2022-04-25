@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Modal, Button } from '@ubt/udesign-ui-alpha';
-import { Space } from '@ubt/udesign-ui';
+import { Modal } from '@ubt/udesign-ui-alpha';
+import { Space, Button } from '@ubt/udesign-ui';
+
 export default function ModalPage() {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);

@@ -29,7 +29,6 @@ const layoutMenus = [
   {
     name: 'grid',
     text: 'Grid 栅格',
-    disabled: true,
   },
   {
     name: 'layout',
@@ -39,7 +38,6 @@ const layoutMenus = [
   {
     name: 'space',
     text: 'Space 间距',
-    disabled: true,
   },
 ];
 

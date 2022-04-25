@@ -64,7 +64,7 @@ export default function SpacePage() {
           </div>
           <div>
             <Space align='start' size='small'>
-              center
+              start
               <Button size='small' shape='default' type='primary'>
                 Primary
               </Button>
@@ -73,7 +73,7 @@ export default function SpacePage() {
           </div>
           <div>
             <Space align='end' size='small'>
-              center
+              end
               <Button size='small' shape='default' type='primary'>
                 Primary
               </Button>
@@ -82,7 +82,7 @@ export default function SpacePage() {
           </div>
           <div>
             <Space align='baseline' size='small'>
-              center
+              baseline
               <Button size='small' shape='default' type='primary'>
                 Primary
               </Button>
@@ -90,7 +90,7 @@ export default function SpacePage() {
             </Space>
           </div>
         </Demo.Block>
-        <Demo.Block className='space-bg' title='自定义尺寸' description='自定义间距大小。'>
+        <Demo.Block className='space-bg' title='自定义尺寸' description='自定义间距大小。' todo='依赖Slider组件'>
           <Space size={50}>
             <Button type='primary'>Primary</Button>
             <Button>Primary</Button>
@@ -98,7 +98,7 @@ export default function SpacePage() {
             <Button type='link'>Link Button</Button>
           </Space>
         </Demo.Block>
-        <Demo.Block className='space-bg' title='设置换行' description='当间距为水平方向时，可使用 wrap 设置是否自动换行，默认情况下为 false。'>
+        <Demo.Block className='space-bg' title='自动换行' description='当间距为水平方向时，可使用 wrap 设置是否自动换行，默认情况下为 false。'>
           <Space wrap>
             <Button>Button</Button>
             <Button>Button</Button>
@@ -117,7 +117,7 @@ export default function SpacePage() {
             <Button>Button</Button>
           </Space>
         </Demo.Block>
-        <Demo.Block className='space-bg' title='分隔符' description='自动换行。'>
+        <Demo.Block className='space-bg' title='分隔符' description='相邻组件分隔符。'>
           <Space align='center'>
             <Typography.Text link='#'>Link</Typography.Text>
             <Divider type='vertical' />

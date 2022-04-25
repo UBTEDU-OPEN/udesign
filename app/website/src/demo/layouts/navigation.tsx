@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { GithubOutlined } from '@ant-design/icons';
-import { Menu } from '@ubt/udesign-ui-alpha';
 import { useRouter } from 'next/router';
+import { GithubOutlined } from '@ant-design/icons';
+import { Menu } from '@ubt/udesign-ui';
 
 export type NavigationProps = {};
 
 const Navigation = ({}: NavigationProps) => {
   const router = useRouter();
-  const defaultActiveKey = router.asPath.split('/').pop() || router.asPath.split('/').slice(-2, -1)[0];
+  const defaultActiveKey = router.asPath.split('/').shift() || router.asPath.split('/').slice(1, 2)[0];
 
   function handleChange(name: string) {
     let path = '';
     switch (name) {
-      case 'quick-start':
+      case 'docs':
         path = '/docs/guide/quick-start';
         break;
-      case 'button':
+      case 'components':
         path = '/components/button';
         break;
       default:
@@ -35,8 +35,8 @@ const Navigation = ({}: NavigationProps) => {
           <Link href='http://dev.edu.ubtrobot.com/UI/U-Design/'>
             <Menu.Item name='spec'>设计</Menu.Item>
           </Link>
-          <Menu.Item name='quick-start'>文档</Menu.Item>
-          <Menu.Item name='button'>组件</Menu.Item>
+          <Menu.Item name='docs'>文档</Menu.Item>
+          <Menu.Item name='components'>组件</Menu.Item>
           <Menu.Item name='theme' disabled>
             主题
           </Menu.Item>

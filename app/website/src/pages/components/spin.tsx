@@ -1,6 +1,7 @@
 import React from 'react';
 import { Demo } from 'demo';
-import { Button, Spin, LoadingIcon } from '@ubt/udesign-ui-alpha';
+import { Button } from '@ubt/udesign-ui';
+import { Spin, LoadingIcon } from '@ubt/udesign-ui-alpha';
 
 export default function SpinPage() {
   return (

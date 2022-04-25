@@ -6,5 +6,6 @@ import { Submenu } from './submenu';
 
 export type { MenuProps } from './menu';
 export type { MenuItemProps } from './item';
+export type { SubmenuProps } from './submenu';
 
 export default attachPropertiesToComponent(Menu, { Item, Submenu });

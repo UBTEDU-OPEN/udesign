@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-import { Menu, MenuProps } from '@ubt/udesign-ui-alpha';
+import { Menu } from '@ubt/udesign-ui';
+import { NativeProps } from '@ubt/udesign-utils';
 
 export type SideMenuItemProps = {
   name: string;
@@ -11,15 +12,14 @@ export type SideMenuItemProps = {
 export type SideMenuProps = {
   menus: SideMenuItemProps[];
   base?: string;
-} & MenuProps;
+} & NativeProps;
 
-export const SideMenu = ({ menus, base = 'components', onChange, ...restProps }: SideMenuProps) => {
+export const SideMenu = ({ menus, base = 'components', ...restProps }: SideMenuProps) => {
   const router = useRouter();
   const defaultActiveKey = router.asPath.split('/').pop() || router.asPath.split('/').slice(-2, -1)[0];
 
   function handleChange(name: string) {
     router.push(`/${base}/${name.toLowerCase()}`);
-    onChange?.(name);
   }
 
   return (

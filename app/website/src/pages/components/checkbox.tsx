@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Checkbox, Button } from '@ubt/udesign-ui-alpha';
+import { Button } from '@ubt/udesign-ui';
+import { Checkbox } from '@ubt/udesign-ui-alpha';
 
 export default function CheckboxPage() {
   const [checked, setChecked] = useState(false);

@@ -1,4 +1,4 @@
-import React,{ ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { Collapse, Tag } from '@ubt/udesign-ui-alpha';
@@ -15,7 +15,7 @@ type DemoBlockProps = {
 } & NativeProps;
 
 export const Block = ({ title, description, background, transform, compact, debug, todo, children, className }: DemoBlockProps) => {
-  const cls = classNames('relative', background ? 'bg-gray-100' : '', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-6', className);
+  const cls = classNames('relative', background ? 'bg-gray-100' : '', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-12', className);
   const code = reactElementToJSXString(React.isValidElement(children) ? children : <>{children}</>, { maxInlineAttributesLineLength: 80, showFunctions: false });
   return debug && process.env.NODE_ENV === 'production' ? null : (
     <>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button, Space, Toast } from '@ubt/udesign-ui-alpha';
+import { Button } from '@ubt/udesign-ui';
+import { Space, Toast } from '@ubt/udesign-ui-alpha';
 
 const Index = () => {
   return (
@@ -9,12 +10,10 @@ const Index = () => {
         <div className='text-4xl mb-5'>uDesign</div>
         <div className='text-gray-500 mb-5'>一个意在统一所有教育产品设计风格的项目，包含设计规范、开发规范和开箱即用的 React 组件库</div>
         <Space justify='center'>
-          <Button onClick={() => Toast('接入文档即将上线，敬请期待！')} type='primary'>
-            开始使用
-          </Button>
           <Link href='/components/button'>
-            <Button type='default'>预览</Button>
+            <Button type='primary'>预览</Button>
           </Link>
+          <Button onClick={() => Toast('接入文档即将上线，敬请期待！')}>开始使用</Button>
         </Space>
       </div>
     </div>
