@@ -1,7 +1,7 @@
 import React from 'react';
 import { Demo } from 'demo';
-import { Button, Result, SuccessIcon, ErrorIcon, Space } from '@ubt/udesign-ui-alpha';
-
+import { Button, Result, SuccessIcon, ErrorIcon } from '@ubt/udesign-ui-alpha';
+import { Space} from "@ubt/udesign-ui";
 export default function ResultPage() {
   return (
     <>

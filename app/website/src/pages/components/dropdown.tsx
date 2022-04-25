@@ -1,7 +1,7 @@
 import React from 'react';
 import { Demo } from 'demo';
-import { Button, Dropdown } from '@ubt/udesign-ui';
-import { Menu, Input, Space, Divider } from '@ubt/udesign-ui-alpha';
+import { Button, Dropdown, Space } from '@ubt/udesign-ui';
+import { Menu, Input, Divider } from '@ubt/udesign-ui-alpha';
 
 export default function DropdownPage() {
   const menu = (
@@ -24,7 +24,7 @@ export default function DropdownPage() {
           </Dropdown>
         </Demo.Block>
         <Demo.Block title='弹出位置' description='通过 content 来指定菜单内容，一般使用 Menu 组件。'>
-          <Space vertical>
+          <Space direction='vertical'>
             <Space>
               <Dropdown content={menu} placement='topLeft'>
                 <Button>topLeft</Button>

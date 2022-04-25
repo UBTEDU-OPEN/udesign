@@ -1,7 +1,7 @@
 import React from "react";
 import { Demo } from "demo";
-import { SettingIcon, Space } from "@ubt/udesign-ui-alpha";
-import { Breadcrumb } from "@ubt/udesign-ui";
+import { SettingIcon } from "@ubt/udesign-ui-alpha";
+import { Breadcrumb, Space} from "@ubt/udesign-ui";
 
 export default function BreadcrumbPage() {
   return (
