@@ -1,0 +1,75 @@
+$module: ud-layout;
+
+.#{$module} {
+
+    display: flex;
+    width: 100%;
+
+    &-header {
+        flex-shrink: 0;
+    }
+
+    &-main {
+        flex-grow: 1;
+    }
+
+    &-footer {
+        flex-shrink: 0;
+    }
+
+    &-sider {
+        flex-shrink: 0;
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transform: translate(0, 0);
+    }
+
+    &-sider-theme-light {
+        background-color: #fff;
+    }
+    &-sider-toggle{
+        width: 100px;
+        transition: all 0.2s;
+    }
+    &-sider-trigger {
+        width: 100%;
+        position: fixed;
+        flex-shrink: 0;
+        bottom: 0;
+        z-index: 1;
+        height: 48px;
+        color: #fff;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        overflow: hidden;
+        font-size: 32px;
+       margin-bottom: 15px;
+       transform: rotateY(180deg);
+    }
+    &-sider-trigger-rotate{
+        transform: rotateY(0deg);
+    }
+    &-sider-special-trigger{
+        display: inline-block;
+        line-height: 32px;
+        width: 32px;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        cursor: pointer;
+    }
+
+    &-direction-column {
+        flex-direction: column;
+    }
+
+    &-direction-row {
+        flex-direction: row;
+    }
+
+
+}
