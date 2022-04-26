@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
-import { Demo } from 'demo';
+import { Demo } from '../../../demo';
 import { Layout, Typography, Breadcrumb, Menu } from '@ubt/udesign-ui';
 import { ArrowRightIcon } from '@ubt/udesign-ui-alpha';
 
@@ -135,7 +135,7 @@ export default function LayoutPage() {
           </Layout>
         </Demo.Block>
         <Demo.Block
-          className='layout-top-middle-bottom'
+          className='layout-menu'
           title='上中下布局'
           description={
             <>
@@ -167,7 +167,7 @@ export default function LayoutPage() {
             <Footer style={{ textAlign: 'center' }}>&copy;2022 Ubtech Robotics Corp. All rights reserved</Footer>
           </Layout>
         </Demo.Block>
-        <Demo.Block title='顶部-侧边布局-通栏' description='同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。'>
+        <Demo.Block className='layout-menu' title='顶部-侧边布局-通栏' description='同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。'>
           <Layout>
             <Header style={{ background: 'rgba(114,132,251,.8)', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
               <div className='logo' style={{ width: '150px' }} />
@@ -194,7 +194,7 @@ export default function LayoutPage() {
             </Layout>
           </Layout>
         </Demo.Block>
-        <Demo.Block title='顶部-侧边布局' description='拥有顶部导航及侧边栏的页面，多用于展示类网站。'>
+        <Demo.Block className='layout-menu' title='顶部-侧边布局' description='拥有顶部导航及侧边栏的页面，多用于展示类网站。'>
           <Layout>
             <Header style={{ display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
               <div className='logo' style={{ width: '150px' }} />
@@ -254,6 +254,7 @@ export default function LayoutPage() {
           </Layout>
         </Demo.Block>
         <Demo.Block
+        className='layout-menu'
           title='自定义触发器'
           description={
             <>
@@ -305,7 +306,7 @@ export default function LayoutPage() {
           </Layout>
         </Demo.Block>
 
-        <Demo.Block title='固定头部' description={<>一般用于固定顶部导航，方便页面切换。</>}>
+        <Demo.Block className='layout-menu' title='固定头部' description={<>一般用于固定顶部导航，方便页面切换。</>}>
           <div className='fixed-body'>
             <Layout style={{ height: '500px', overflow: 'auto' }}>
               <Header style={{ position: 'fixed', overflow: 'hidden', width: '100%', display: 'flex', alignItems: 'center' }}>
