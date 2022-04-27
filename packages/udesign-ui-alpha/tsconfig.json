@@ -16,7 +16,7 @@
     "baseUrl": "./",
     "paths": {
       "@ubt/udesign-ui-alpha": ["src/index.ts"],
-      "demo": ["src/demo/index.ts"]
+      "demo": ["src/demo/index.tsx"]
     },
     "incremental": true
   },

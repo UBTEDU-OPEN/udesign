@@ -18,10 +18,10 @@ export default function ListPage() {
         </Demo.Block>
         <Demo.Block title='可点击的功能列表' description='添加onClick事件后，列表会有点击效果'>
           <List>
-            <List.Item prefix={<MoneyCollectOutlined />} arrow onClick={() => {}}>
+            <List.Item prefix={<MoneyCollectOutlined />} arrow>
               children
             </List.Item>
-            <List.Item prefix={<SettingIcon />} arrow onClick={() => {}}>
+            <List.Item prefix={<SettingIcon />} arrow>
               children
             </List.Item>
           </List>

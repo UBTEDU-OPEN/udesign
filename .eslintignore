@@ -11,4 +11,3 @@ build
 packages/**/lib/
 packages/**/dist/
 next.config.js
-udesign-ui-alpha

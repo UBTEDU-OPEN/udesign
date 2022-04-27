@@ -1,3 +1,4 @@
+import React from 'react';
 import Head from 'next/head';
 import { SITE_NAME } from '../constants/site';
 

@@ -39,7 +39,7 @@ export default function Doc({ content }: DocProps) {
  * can't use __dirname, use process.cwd() instead
  * https://nextjs.org/docs/api-reference/data-fetching/get-static-props
  */
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: any) {
   const doc = getDocBySlug(params.slug);
   const content = await markdownToHtml(doc.content || '');
 

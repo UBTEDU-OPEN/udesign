@@ -33,7 +33,6 @@ const layoutMenus = [
   {
     name: 'layout',
     text: 'Layout 布局',
-    disabled: true,
   },
   {
     name: 'space',

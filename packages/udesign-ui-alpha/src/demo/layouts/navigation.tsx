@@ -4,9 +4,7 @@ import { GithubOutlined } from '@ant-design/icons';
 import { Menu } from '@ubt/udesign-ui-alpha';
 import { useRouter } from 'next/router';
 
-export type NavigationProps = {};
-
-const Navigation = ({}: NavigationProps) => {
+const Navigation = () => {
   const router = useRouter();
   const firstActiveKey = router.asPath.split('/').shift() || router.asPath.split('/').slice(1, 2)[0];
   const [activeKey, setActiveKey] = useState(firstActiveKey);

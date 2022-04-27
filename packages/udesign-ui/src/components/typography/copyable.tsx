@@ -13,8 +13,7 @@ export type CopyableProps = {
   onCopy?: ()=> void; //拷贝成功的回调函数
 } & NativeProps;
 
-export const Copyable = ({ tooltip, className, icon = [<CopyOutlined/>, <CheckOutlined/>], text, onCopy, children }: CopyableProps) => {
-
+export const Copyable = ({ tooltip, className, icon = [<CopyOutlined key='copy-icon' />, <CheckOutlined key='copied-icon' />], text, onCopy, children }: CopyableProps) => {
   const [copyIcon, setCopyIcon] = useState(icon[0] );
   const [stateTooltip, setStateTooltip] = useState(tooltip);
   const [isShow, setIsShow] = useState(false);

@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "compile": "gulp",
-    "deploy": "npm run compile && npm publish ./dist"
+    "deploy": "npm run compile && npm publish ./dist",
+    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --cache --fix",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --cache"
   },
   "main": "./cjs/index.js",
   "module": "./es/index.js",

@@ -14,7 +14,7 @@ export type SkeletonProps = {
 } & NativeProps;
 
 export const Skeleton = ({ active = false, avatar = false, loading = true, paragraph = true, title = true, children }: SkeletonProps) => {
-  function getComponentProps<T>(prop: T | boolean | undefined): T | {} {
+  function getComponentProps<T>(prop: T | boolean | undefined): T | Record<string, never> {
     if (prop && typeof prop === 'object') {
       return prop;
     }

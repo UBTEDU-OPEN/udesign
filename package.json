@@ -9,6 +9,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run --parallel build",
+    "lint:fix": "lerna run --parallel lint:fix",
     "lint": "lerna run --parallel lint"
   },
   "husky": {
@@ -18,10 +19,10 @@
   },
   "lint-staged": {
     "app/**/*.{js,jsx,ts,tsx}": [
-      "eslint --ext '.js,.jsx,.ts,.tsx' --fix"
+      "eslint --ext '.js,.jsx,.ts,.tsx'"
     ],
     "packages/**/*.{js,jsx,ts,tsx}": [
-      "eslint --ext '.js,.jsx,.ts,.tsx' --fix"
+      "eslint --ext '.js,.jsx,.ts,.tsx'"
     ]
   },
   "devDependencies": {
