@@ -301,7 +301,6 @@ const feedbackMenus = [
   {
     name: 'result',
     text: 'Result 结果',
-    disabled: true,
   },
   {
     name: 'skeleton',
