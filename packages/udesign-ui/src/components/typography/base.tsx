@@ -11,14 +11,14 @@ export interface EllipsisConfig {
 
 export interface TextConfig {
   type?: string;
-  mark?: Boolean;
-  disabled?: Boolean;
-  code?: Boolean;
-  underline?: Boolean;
-  del?: Boolean;
-  italic?: Boolean;
-  link?: Boolean;
-  strong?: Boolean;
+  mark?: boolean;
+  disabled?: boolean;
+  code?: boolean;
+  underline?: boolean;
+  del?: boolean;
+  italic?: boolean;
+  link?: boolean;
+  strong?: boolean;
   ellipsis?: EllipsisConfig | boolean;
   icon?: ReactNode;
 }

@@ -28,7 +28,7 @@ export function withNativeProps<P extends NativeProps>(props: P, element: ReactE
     };
   }
   for (const key in props) {
-    if (!props.hasOwnProperty(key)) continue;
+    if (!Object.prototype.hasOwnProperty.call(props, key)) continue;
     if (key.startsWith('data-') || key.startsWith('aria-')) {
       p[key] = props[key];
     }

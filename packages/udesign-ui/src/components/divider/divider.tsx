@@ -5,10 +5,10 @@ import { NativeProps } from '../../utils';
 const prefixCls = `ud-divider`;
 
 export type DividerProps = {
-  dashed?: Boolean; //是否虚线
+  dashed?: boolean; //是否虚线
   orientation?: 'left' | 'right' | 'center'; //分割线标题的位置
   orientationMargin?: string | number; //标题和最近 left/right 边框之间的距离，去除了分割线，同时 orientation 必须为 left 或 right
-  plain?: Boolean; //文字是否显示为普通正文样式
+  plain?: boolean; //文字是否显示为普通正文样式
   type?: 'horizontal' | 'vertical'; //水平还是垂直类型
 } & NativeProps;
 

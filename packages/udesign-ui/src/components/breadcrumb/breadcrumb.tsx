@@ -16,8 +16,8 @@ export const Breadcrumb = ({
   style,
   ...restProps
 }: BreadcrumbProps) => {
-  let newChildren = toArray(children);
-  let arrkey: String[] = [];
+  const newChildren = toArray(children);
+  const arrkey: string[] = [];
 
   return (
     <div className={prefixCls} {...restProps} style={style}>

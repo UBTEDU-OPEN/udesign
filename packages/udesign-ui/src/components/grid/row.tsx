@@ -7,7 +7,7 @@ const prefixCls = `ud-grid-row`;
 export type RowProps = {
   align?: 'top' | 'middle' | 'bottom'; // 垂直对齐方式
   justify?: 'start' | 'end' | 'center' | 'space-around' | 'space-between' | 'space-evenly'; // 水平排列方式
-  wrap?: Boolean; // 是否自动换行
+  wrap?: boolean; // 是否自动换行
   gutter?: number | Array<number> | { xs?: number; sm?: number; md?: number; lg?: number; xl?: number; xxl?: number }; // 栅格间隔，可以写成像素值或支持响应式的对象写法来设置水平间隔 { xs: 8, sm: 16, md: 24}。或者使用数组形式同时设置 [水平间距, 垂直间距]
 } & NativeProps;
 

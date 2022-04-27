@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { Copyable } from './copyable';
@@ -10,15 +10,15 @@ const prefixCls = `ud-typography`;
 
 export type TextProps = {
   type?: string; //文本类型
-  mark?: Boolean; //添加标记样式
-  disabled?: Boolean; //禁用文本
-  code?: Boolean; //添加代码样式
-  underline?: Boolean; //添加下划线样式
-  del?: Boolean; //添加删除线样式
-  italic?: Boolean; //是否斜体
+  mark?: boolean; //添加标记样式
+  disabled?: boolean; //禁用文本
+  code?: boolean; //添加代码样式
+  underline?: boolean; //添加下划线样式
+  del?: boolean; //添加删除线样式
+  italic?: boolean; //是否斜体
   link?: string; //是否是连接,值为链接地址
-  strong?: Boolean; //是否加粗
-  keyboard?: Boolean; //添加键盘样式
+  strong?: boolean; //是否加粗
+  keyboard?: boolean; //添加键盘样式
   ellipsis?: EllipsisConfig | boolean; //自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等
   copyable?: CopyableConfig | boolean; //是否可拷贝，为对象时可进行各种自定义
   editable?: EditableConfig | boolean; //是否可编辑，为对象时可对编辑进行控制
@@ -44,14 +44,14 @@ export const Text = ({ type = 'default', mark = false, disabled = false, code = 
     className,
   );
 
-  let wrapperCls = '';
+  const wrapperCls = '';
 
   if (ellipsis || copyable || editable) {
     return (
       <>
         {ellipsis ? (
           <span onClick={onClick} className={cls} style={{ position: 'relative' }}>
-            <Ellipsis {...ellipsis} children={children} />
+            <Ellipsis {...ellipsis}>{children}</Ellipsis>
           </span>
         ) : null}
         {copyable ? (
@@ -63,7 +63,7 @@ export const Text = ({ type = 'default', mark = false, disabled = false, code = 
         ) : null}
         {editable ? (
           <span onClick={onClick} className={cls} style={style}>
-            <Editable children={children} {...editable} />
+            <Editable {...editable}>{children}</Editable>
           </span>
         ) : null}
       </>

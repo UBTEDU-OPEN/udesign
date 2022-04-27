@@ -108,7 +108,7 @@ export const Tooltip = ({
     const rect = e.currentTarget.getBoundingClientRect();
 
     // 根据 placement 改变基准点
-    let newCoords = {
+    const newCoords = {
       left: rect.left,
       top: rect.bottom,
     };
@@ -168,8 +168,8 @@ export const Tooltip = ({
 
   // 根据trigger类型挂载事件
   const generateEvent = (trigger: Trigger) => {
-    const triggerEventSet: { [key: string]: Function } = {};
-    let portalEventSet: { [key: string]: Function } = {};
+    const triggerEventSet: { [key: string]: (e: React.MouseEvent<HTMLElement>) => void } = {};
+    let portalEventSet: { [key: string]: (e: React.MouseEvent<HTMLElement>) => void } = {};
     switch (trigger) {
       case 'focus':
         triggerEventSet.onFocus = (e: React.MouseEvent<HTMLElement>) => {

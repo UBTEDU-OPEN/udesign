@@ -11,5 +11,5 @@ export type WrapperProps = {
 };
 
 export const Wrapper = ({ if: condition, with: wrap, children }: WrapperProps) => {
-  return Boolean(condition) ? wrap(children) : <>{children}</>;
+  return condition ? wrap(children) : <>{children}</>;
 };

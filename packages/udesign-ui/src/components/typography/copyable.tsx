@@ -15,9 +15,9 @@ export type CopyableProps = {
 
 export const Copyable = ({ tooltip, className, icon = [<CopyOutlined/>, <CheckOutlined/>], text, onCopy, children }: CopyableProps) => {
 
-  let [copyIcon, setCopyIcon] = useState(icon[0] );
-  let [stateTooltip, setStateTooltip] = useState(tooltip);
-  let [isShow, setIsShow] = useState(false);
+  const [copyIcon, setCopyIcon] = useState(icon[0] );
+  const [stateTooltip, setStateTooltip] = useState(tooltip);
+  const [isShow, setIsShow] = useState(false);
 
   const cls = classNames(
     prefixCls,

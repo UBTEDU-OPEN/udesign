@@ -19,7 +19,7 @@
       "@ubt/udesign-ui": ["../../packages/udesign-ui/src/index"],
       "@ubt/udesign-utils": ["../../packages/udesign-ui/src/utils/index"],
       "@ubt/udesign-ui-alpha": ["../../packages/udesign-ui-alpha/src/index"],
-      "demo": ["src/demo/index.ts"]
+      "demo": ["src/demo/index.tsx"]
     }
   },
   "include": ["next-env.d.ts", "typings.d.ts", "src/**/*.ts", "src/**/*.tsx"],

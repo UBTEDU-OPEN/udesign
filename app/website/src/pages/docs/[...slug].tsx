@@ -1,5 +1,5 @@
 import React from 'react';
-import { Demo } from 'demo';
+import { Demo } from '../../demo';
 import { getAllDocs, getDocBySlug } from '../../lib/docs';
 import markdownToHtml from '../../lib/markdown';
 
@@ -19,7 +19,11 @@ const docMenus = [
   },
 ];
 
-export default function Doc({ content }) {
+export type DocProps = {
+  content: string;
+};
+
+export default function Doc({ content }: DocProps) {
   return (
     <>
       <Demo.Doc menus={docMenus}>

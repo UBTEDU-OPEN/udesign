@@ -15,8 +15,8 @@ export type EllipsisProps = {
 
 export const Ellipsis = ({ rows = 1, expandable, suffix, className, tooltip, symbol, children, onExpand }: EllipsisProps) => {
   const [isExpand, setIsExpand] = useState(true);
-  let lineClamp = useRef<HTMLSpanElement>(null);
-  let [tooltipText, setTooltipText] = useState(tooltip);
+  const lineClamp = useRef<HTMLSpanElement>(null);
+  const [tooltipText, setTooltipText] = useState(tooltip);
 
   const cls = classNames(
     prefixCls,

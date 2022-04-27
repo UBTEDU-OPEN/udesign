@@ -69,7 +69,7 @@ export const Col = (props: ColProps) => {
   useEffect(() => {
     flex ? (colRef.current!.style.flex = `${flex}`) : null;
   }, [flex]);
-  let [styleCss, setStyleCss] = useState<Object>();
+  const [styleCss, setStyleCss] = useState<React.CSSProperties>();
   const [size, setSize] = useState(0);
   useEffect(() => {
     function updateSize() {

@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 const gulp = require('gulp');
 // const less = require('gulp-less');
 const sass = require('gulp-sass')(require('sass'));

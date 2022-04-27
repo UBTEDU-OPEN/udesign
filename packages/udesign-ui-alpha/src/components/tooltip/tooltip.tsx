@@ -102,7 +102,7 @@ export const Tooltip = ({
     const rect = e.currentTarget.getBoundingClientRect();
 
     // 根据 placement 改变基准点
-    let newCoords = {
+    const newCoords = {
       left: rect.left,
       top: rect.bottom,
     };
