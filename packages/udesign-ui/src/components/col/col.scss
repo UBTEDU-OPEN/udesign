@@ -1,0 +1,71 @@
+$module: ud-grid-col;
+$width: 4.166666%;
+
+.#{$module} {
+
+    &-span-0 {
+        display: none;
+    }
+
+    @for $i from 1 through 24 {
+        &-span-#{$i} {
+            width: $width * $i;
+        }
+
+        &-pull-#{$i} {
+            position: relative;
+            right: $width * $i;
+        }
+
+        &-push-#{$i} {
+            position: relative;
+            left: $width * $i;
+        }
+
+        &-offset-#{$i} {
+            margin-left: $width * $i;
+        }
+
+        &-order-#{$i} {
+            order: $i;
+        }
+    }
+
+    @each $var,
+    $middle in (0px, xs),
+    (576px, sm),
+    (768px, md),
+    (992px, lg),
+    (1200px, xl),
+    (1600px, xxl) {
+        @media screen and (min-width: $var) {
+
+            @for $i from 1 through 24 {
+                &-#{$middle}-#{$i} {
+                    display: block;
+                    max-width: $width * $i;
+                    flex: 0 0 $width * $i;
+                }
+
+                &-#{$middle}-pull-#{$i} {
+                    position: relative;
+                    right: $width * $i;
+                }
+
+                &-#{$middle}-push-#{$i} {
+                    position: relative;
+                    left: $width * $i;
+                }
+
+                &-#{$middle}-order-#{$i} {
+                    order: $i;
+                }
+
+                &-#{$middle}-offset-#{$i} {
+                    margin-left: $width * $i;
+                }
+            }
+        }
+    }
+
+}

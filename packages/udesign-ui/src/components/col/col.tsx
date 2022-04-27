@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useContext, useState } from 'react';
 import classNames from 'classnames';
-import RowContext from './rowContext';
+import RowContext from '../row/rowContext';
 import { NativeProps } from '../../utils';
 const prefixCls = `ud-grid-col`;
 
