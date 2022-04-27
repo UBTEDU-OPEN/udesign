@@ -9,15 +9,10 @@ const { Header, Footer, Content, Sider } = Layout;
 export default function LayoutPage() {
   const { Text } = Typography;
 
-  const [collapsible, setCollapsible] = useState(true);// eslint-disable-line no-unused-vars
-  const [collapsed, setCollapsed] = useState();// eslint-disable-line no-unused-vars
-  const [width, setWidth] = useState(200);
-  const [collapsedWidth, setCollapsedWidth] = useState(100);// eslint-disable-line no-unused-vars
+  const [collapsed, setCollapsed] = useState(true);
 
   const toggle = () => {
-    if (collapsed === undefined) {
-      setWidth(width == collapsedWidth ? 200 : collapsedWidth);
-    }
+    setCollapsed(!collapsed);
   };
 
   const onbreak = (collapsed: boolean, type: string) => {
@@ -117,20 +112,20 @@ export default function LayoutPage() {
           </Layout>
 
           <Layout>
-            <Header >Header</Header>
+            <Header>Header</Header>
             <Layout hasSider>
-              <Content >Content</Content>
+              <Content>Content</Content>
               <Sider>Sider</Sider>
             </Layout>
-            <Footer >Footer</Footer>
+            <Footer>Footer</Footer>
           </Layout>
 
           <Layout hasSider>
             <Sider>Sider</Sider>
             <Layout>
-              <Header >Header</Header>
-              <Content >Content</Content>
-              <Footer >Footer</Footer>
+              <Header>Header</Header>
+              <Content>Content</Content>
+              <Footer>Footer</Footer>
             </Layout>
           </Layout>
         </Demo.Block>
@@ -148,7 +143,7 @@ export default function LayoutPage() {
           <Layout>
             <Header style={{ paddingLeft: '125px', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
               <div className='logo' style={{ width: '150px' }}></div>
-              <Menu mode='horizontal' style={{ }}>
+              <Menu mode='horizontal'>
                 <Menu.Item name='1'>Nav 1</Menu.Item>
                 <Menu.Item name='2'>Nav 2</Menu.Item>
                 <Menu.Item name='3'>Nav 3</Menu.Item>
@@ -254,7 +249,7 @@ export default function LayoutPage() {
           </Layout>
         </Demo.Block>
         <Demo.Block
-        className='layout-menu'
+          className='layout-menu'
           title='自定义触发器'
           description={
             <>
@@ -263,20 +258,13 @@ export default function LayoutPage() {
           }
         >
           <Layout hasSider>
-            <Sider collapsed={collapsed} collapsible={collapsible} width={width} collapsedWidth={collapsedWidth} trigger={null}>
+            <Sider collapsed={collapsed} collapsible width={200} collapsedWidth={100} trigger={null}>
               <div className='logo' style={{ margin: '12px 25px 0 25px' }}></div>
               <div style={{ textAlign: 'center', color: '#fff', overflow: 'hidden', lineHeight: '250px' }}>sider</div>
             </Sider>
             <Layout>
               <Header style={{ background: '#fff', padding: '0 20px' }}>
                 <div style={{ width: '44px', height: '44px', margin: '10px 0', cursor: 'pointer', backgroundColor: '#7284FB' }} onClick={toggle}></div>
-                <Menu mode='horizontal' style={{ alignItems: 'center', background: '#000' }}>
-                  <Menu.Item name='1'>Nav 1</Menu.Item>
-                  <Menu.Item name='2'>Nav 2</Menu.Item>
-                  <Menu.Item name='3'>Nav 3</Menu.Item>
-                  <Menu.Item name='4'>Nav 4</Menu.Item>
-                  <Menu.Item name='5'>Nav 5</Menu.Item>
-                </Menu>
               </Header>
               <Layout hasSider style={{ textAlign: 'left', padding: '20px 20px 0  20px' }}>
                 <Content>

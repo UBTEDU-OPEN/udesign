@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { NativeProps } from '../../utils';
+import { NativeProps, usePropsValue } from '../../utils';
 
 const prefixCls = 'ud-layout-sider';
 
@@ -12,13 +12,18 @@ export type SiderProps = {
   collapsible?: boolean; // 是否可收起
   trigger?: ReactNode; //自定义 trigger，设置为 null 时隐藏 trigger
   collapsedWidth?: number; // 收缩宽度，设置为 0 会出现特殊 trigger
-  defaultCollapsed ?:boolean;
+  defaultCollapsed ?:boolean; // 是否默认收起
   onCollapse?: (collapsed: boolean, type: CollapseType) => void; //展开-收起时的回调函数
-  collapsed?: boolean; //是否可收起
+  collapsed?: boolean; // 当前收起状态
 } & NativeProps;
-export const Sider = ({ width = 200, theme = 'dark', defaultCollapsed = false, collapsed, style, collapsible = false, trigger, collapsedWidth = 100, onCollapse, children, className }: SiderProps) => {
+export const Sider = ({ width = 200, theme = 'dark', defaultCollapsed = false, style, collapsible = false, trigger, collapsedWidth = 100, onCollapse, children, className, ...props }: SiderProps) => {
   const [toggle, steToggle] = useState(false);
   const [stateWidth, setStateWidth] = useState(width);
+  
+  const [collapsed, setCollapsed] = usePropsValue({
+    value: props.collapsed,
+    defaultValue:defaultCollapsed,
+  });
   const cls = classNames(
     prefixCls,
     {
@@ -37,21 +42,15 @@ export const Sider = ({ width = 200, theme = 'dark', defaultCollapsed = false, c
   );
   
   useEffect(() => {
-    if (collapsed === false) {
-      setStateWidth(width);
-    } else if(collapsed === true) {
-      setStateWidth(collapsedWidth);
-    }else{
-      setStateWidth(width);
-    }
-    setStateWidth(defaultCollapsed ? collapsedWidth : width)
-  }, [collapsed, width]);
+      setStateWidth(collapsed ? collapsedWidth : width);
+  }, [collapsed]);
 
   const togglehandler = () => {
-    if (collapsed !== undefined) return;
+    
     if (collapsible) {
       steToggle(!toggle);
-      setStateWidth(stateWidth === width ? collapsedWidth : width);
+      setCollapsed(toggle);
+      setStateWidth(collapsed ? width : collapsedWidth);
       onCollapse?.(toggle, 'clickTrigger');
     } else {
       defaultCollapsed ? setStateWidth(collapsedWidth) :  setStateWidth(width);
