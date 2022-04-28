@@ -8,6 +8,7 @@ export { default as Dropdown } from './components/dropdown';
 export { default as Layout } from './components/layout';
 export { default as Row } from './components/row';
 export { default as Menu } from './components/menu';
+export { default as Pagination } from './components/pagination';
 export { default as Space } from './components/space';
 export { default as Tag } from './components/tag';
 export { default as Tooltip } from './components/tooltip';

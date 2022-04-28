@@ -1,0 +1,70 @@
+$module: ud-pagination;
+
+.#{$module} {
+  --paddingX: var(--ud-pagination-paddingX, 0px);
+  --paddingY: var(--ud-pagination-paddingY, 0px);
+  --item-width: var(--ud-pagination-item-width, 40px);
+  --item-height: var(--ud-pagination-item-height, 40px);
+  --item-marginLeft: var(--ud-pagination-item-marginLeft, 5px);
+  --item-marginRight: var(--ud-pagination-item-marginRight, 5px);
+  --item-radius: var(--ud-pagination-item-radius, 9999px);
+  --item-background: var(--ud-pagination-item-background, var(--ud-color-white));
+  --item-color: var(--ud-pagination-item-color, var(--ud-color-text));
+  --item-background-hover: var(--ud-pagination-item-background-hover, var(--ud-color-border));
+  --item-color-hover: var(--ud-pagination-item-color-hover, var(--ud-color-text));
+  --item-background-active: var(--ud-pagination-item-background-active, var(--ud-color-primary));
+  --item-color-active: var(--ud-pagination-item-color-active, var(--ud-color-white));
+  --total-marginRight: var(--ud-pagination-total-marginRight, 10px);
+  --quickJump-marginLeft: var(--ud-pagination-quickJump-marginLeft, 10px);
+  --quickJump-input-width: var(--ud-pagination-quickJump-input-width, 50px);
+  --quickJump-input-marginLeft: var(--ud-pagination-quickJump-input-marginLeft, 5px);
+  --quickJump-input-marginRight: var(--ud-pagination-quickJump-input-marginRight, 5px);
+
+  display: inline-flex;
+  align-items: center;
+
+  .#{$module}-total {
+    margin-right: var(--total-marginRight);
+  }
+
+  .#{$module}-quickJump {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    margin-left: var(--quickJump-marginLeft);
+    .#{$module}-quickJump-input {
+      width: var(--quickJump-input-width);
+      margin-left: var(--quickJump-input-marginLeft);
+      margin-right: var(--quickJump-input-marginRight);
+    }
+  }
+
+  .#{$module}-item {
+    width: var(--item-width);
+    height: var(--item-height);
+    margin-left: var(--item-marginLeft);
+    margin-right: var(--item-marginRight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--item-radius);
+    background: var(--item-background);
+    color: var(--item-color);
+
+    &:hover:not(&-disabled):not(&-active) {
+      background: var(--item-background-hover);
+      color: var(--item-color-hover);
+      cursor: pointer;
+    }
+
+    &-active {
+      background: var(--item-background-active);
+      color: var(--item-color-active);
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}

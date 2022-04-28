@@ -76,3 +76,31 @@ color: rgba(var(--ud-color-primary), 0.7);
 ```
 
 上面的代码，将 `--ud-color-primary` 的 Alpha 通道（不透明度）设置为 0.7 来使用。
+
+## CSS 对外接口命名规则
+
+前缀-组件-元素-属性-状态
+
+比如：`--ud-pagination-item-color-hover`、`--ud-pagination-quickJump-marginLeft`
+
+### 前缀
+
+统一使用：`--ud-`
+
+### 组件
+
+小写，如果组件名称有多个单词，则使用小驼峰。
+
+### 元素
+
+小写，如果多个单词，则使用小驼峰。
+
+### 属性
+
+使用小驼峰。例如：
+
+margin-left => marginLeft
+
+### 状态
+
+小写，如果多个单词，则使用小驼峰。

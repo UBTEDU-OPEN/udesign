@@ -67,7 +67,6 @@ const navMenus = [
   {
     name: 'pagination',
     text: 'Pagination 分页',
-    disabled: true,
   },
   {
     name: 'steps',

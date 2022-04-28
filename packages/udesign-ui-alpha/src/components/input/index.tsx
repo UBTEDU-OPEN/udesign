@@ -44,7 +44,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 
 const InternalInput: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { type = 'text', size = 'middle', defaultValue = '', disabled, clearable, rounded, bordered = true, maxCount, maxLength, prefix, suffix, onChange, onClear, onEnterPress, onKeyDown, className, style, ...restProps },
-  ref
+  ref,
 ) => {
   const [innerValue, setInnerValue] = usePropsValue<string>({
     value: restProps.value,
@@ -75,7 +75,14 @@ const InternalInput: React.ForwardRefRenderFunction<HTMLInputElement, InputProps
   };
 
   const cls = classNames('relative w-full inline-flex flex-initial items-center border border-gray-300 text-gray-800 rounded focus:outline-none', getDisabledCls(disabled), getInputSizeClass(size));
-  const inputCls = classNames('w-full px-2 border-none bg-transparent outline-none focus:outline-none focus:ring-0', size === 'large' ? 'text-xl' : size === 'small' ? 'text-xs' : '', prefix ? 'pl-0' : '', suffix ? 'pr-0' : '', getDisabledCls(disabled));
+  const inputCls = classNames(
+    'w-full px-2 border-none bg-transparent outline-none focus:outline-none focus:ring-0',
+    size === 'large' ? 'text-xl' : size === 'small' ? 'text-xs' : '',
+    prefix ? 'pl-0' : '',
+    suffix ? 'pr-0' : '',
+    getDisabledCls(disabled),
+    className,
+  );
 
   const Box = ({ className, children }: NativeProps) => <div className={classNames('flex items-center justify-center whitespace-nowrap mx-2 text-gray-400', className)}>{children}</div>;
 
