@@ -1,125 +1,112 @@
 $module: ud-divider;
 
 .#{$module} {
-    --color: var(--ud-divider-color, rgb(var(--ud-gray-12)));
-    --border-width: var(--ud-divider-border-width, 1px);
-    --font-size: var(--ud-divider-font-size, 16px);
-    --border-color: var(--ud-divider-border-color, rgb(var(--ud-gray-3)));
-    color: var(--color);
+  --border-width: var(--ud-divider-borderWidth, 1px);
+  --border-color: var(--ud-divider-borderColor, rgb(var(--ud-gray-3)));
 
-    font-weight: bold;
+  --text-color: var(--ud-divider-text-color, rgb(var(--ud-gray-12)));
+  --text-fontSize: var(--ud-divider-fontSize, 16px);
+  --text-fontWeight: var(--ud-divider-text-fontWeight, 500);
+  --text-padddingLeft: var(--ud-divider-text-padddingLeft, 1em);
+  --text-padddingRight: var(--ud-divider-text-padddingRight, 1em);
+
+  --vertical-height: var(--ud-divider-vertical-height, 0.9em);
+  --vertical-marginLeft: var(--ud-divider-vertical-marginLeft, 1em);
+  --vertical-marginRight: var(--ud-divider-vertical-marginRight, 1em);
+
+  color: var(--text-color);
+
+  .#{$module}-inner-text {
+    display: inline-block;
+    padding: 0 var(--text-padddingRight) 0 var(--text-padddingLeft);
+    font-size: var(--text-fontSize);
+    font-weight: var(--text-fontWeight);
+  }
+
+  &-horizontal {
     display: flex;
+    clear: both;
     width: 100%;
+    min-width: 100%;
+    border-top: var(--border-width) solid var(--border-color);
+  }
+
+  &-with-text {
+    border: 0;
+    white-space: nowrap;
 
     &::after,
     &::before {
-        content: '';
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-        width: 50%;
-        border-top: var(--border-width) solid var(--border-color);
+      content: '';
+      position: relative;
+      top: 50%;
+      width: 50%;
+      border-top: var(--border-width) solid var(--border-color);
+      border-bottom: 0;
+      transform: translateY(50%);
+    }
+  }
+
+  &-with-text-left {
+    &::before {
+      width: 5%;
     }
 
-    .text {
-        white-space: nowrap;
-        font-size: var(--font-size);
-        width: auto;
+    &::after {
+      width: 95%;
+    }
+  }
+
+  &-with-text-right {
+    &::before {
+      width: 95%;
     }
 
-
-    &-text {
-        .text {
-            padding: 0 20px;
-        }
-
-        &::after,
-        &::before {
-            position: relative;
-            top: 50%;
-            border-bottom: 0;
-            transform: translateY(50%);
-        }
+    &::after {
+      width: 5%;
     }
+  }
 
-    &-text-left {
-        &::before {
-            width: 5%;
-        }
-
-        &::after {
-            width: 95%;
-        }
+  &-no-default-orientation-margin-left {
+    &::before {
+      width: 0;
     }
-
-    &-text-right {
-        &::before {
-            width: 95%;
-        }
-
-        &::after {
-            width: 5%;
-        }
+    .#{$module}-inner-text {
+      padding-left: 0;
     }
+  }
 
-    &-plain {
-        font-weight: normal;
+  &-no-default-orientation-margin-right {
+    .#{$module}-inner-text {
+      padding-right: 0;
     }
-
-    &-vertical {
-        width: 0;
-        position: relative;
-        top: -0.06em;
-        display: inline-block;
-        height: 0.9em;
-        margin: 0 8px;
-        vertical-align: middle;
-        border-top: 0;
-        border-left: var(--border-width) solid var(--border-color);
+    &::after {
+      width: 0;
     }
-    &-orientation-margin-left {
-        .text {
-            padding: 0 20px;
-        }
-        &::before {
-            width: 0;
-        }
-        &::after {
-            width: 100%;
-            transform: translateY(50%);
-        }
+  }
+
+  &-vertical {
+    position: relative;
+    top: -0.06em;
+    display: inline-block;
+    height: var(--vertical-height);
+    margin: 0 var(--vertical-marginRight) 0 var(--vertical-marginLeft);
+    vertical-align: middle;
+    border-left: var(--border-width) solid var(--border-color);
+  }
+
+  &-plain {
+    font-weight: normal;
+  }
+
+  &-dashed {
+    border-style: dashed;
+
+    &::before {
+      border-style: dashed;
     }
-
-
-    &-orientation-margin-right {
-        .text {
-            padding-left: 20px;
-        }
-
-        &::before {
-            width: 100%;
-            transform: translateY(50%);
-        }
-
-        &::after {
-            width: 0;
-        }
+    &::after {
+      border-style: dashed;
     }
-
-    &-orientation-margin-center {
-
-        .text {
-            padding: 0 20px;
-        }
-    }
-
-    &-dashed {
-        border-style: dashed;
-
-        &::after,
-        &::before,
-        .text {
-            border-style: dashed;
-        }
-    }
+  }
 }
