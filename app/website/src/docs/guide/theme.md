@@ -33,38 +33,27 @@
  * inline: true
  */
 
-import React from 'react'
-import { Button } from '@ubt/udesign-ui'
+import React from 'react';
+import { Button } from '@ubt/udesign-ui';
 
 export default () => {
   return (
-    <div style={{
-      ['--ud-color-primary']: '#a062d4',
-    }}>
+    <div
+      style={{
+        ['--ud-color-primary']: '#a062d4',
+      }}
+    >
       <Button color='primary'>Purple</Button>
     </div>
-  )
-}
+  );
+};
 ```
 
 以下是 udesign 目前提供的全局性 CSS 变量：
 
 ```css
 :root {
-  --ud-color-primary: #1677ff;
-  --ud-color-success: #00b578;
-  --ud-color-warning: #ff8f1f;
-  --ud-color-danger: #ff3141;
-  --ud-color-white: #ffffff;
-  --ud-color-weak: #999999;
-  --ud-color-light: #cccccc;
-  --ud-border-color: #eeeeee;
-  --ud-font-size-main: 13px;
-  --ud-color-text: #333333;
-
-  --ud-font-family: -apple-system, blinkmacsystemfont, 'Helvetica Neue',
-  helvetica, segoe ui, arial, roboto, 'PingFang SC', 'miui',
-  'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  todo: '待添加';
 }
 ```
 

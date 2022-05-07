@@ -10,7 +10,8 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run --parallel build",
     "lint:fix": "lerna run --parallel lint:fix",
-    "lint": "lerna run --parallel lint"
+    "lint": "lerna run --parallel lint",
+    "gerrit:verify": "yarn lint"
   },
   "husky": {
     "hooks": {
