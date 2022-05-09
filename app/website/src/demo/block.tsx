@@ -27,7 +27,7 @@ export const Block = ({ title, description, background, transform, compact, debu
         </div>
       ) : null}
       {children ? (
-        <div className='border mb-10'>
+        <div className='border mb-10 rounded-lg overflow-hidden'>
           <div className={cls}>
             {debug ? (
               <Tag className='absolute top-0 right-0' type='warning'>

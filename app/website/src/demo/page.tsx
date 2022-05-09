@@ -71,7 +71,6 @@ const navMenus = [
   {
     name: 'steps',
     text: 'Steps 步骤条',
-    disabled: true,
   },
 ];
 

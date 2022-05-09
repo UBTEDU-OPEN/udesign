@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Demo } from 'demo';
-import { Button } from '@ubt/udesign-ui';
-import { Steps, Toast } from '@ubt/udesign-ui-alpha';
+import { Steps, Button } from '@ubt/udesign-ui';
+import { Toast } from '@ubt/udesign-ui-alpha';
+import { SearchOutlined } from '@ant-design/icons';
 
 const steps = [
   {
@@ -30,28 +31,51 @@ export default function StepsPage() {
 
   return (
     <>
-      <Demo.Page title='Steps 步骤条' description='引导用户按照流程完成任务的导航条。'>
-        <Demo.Block title='基本用法' description='简单的步骤条。'>
-          <Steps mode='horizontal' current={1}>
+      <Demo.Page title='Steps 步骤条' description='分步骤引导用户按照流程完成任务的导航条。'>
+        <Demo.Block title='何时使用' description='当任务复杂或者存在先后关系时，将其分解成一系列步骤，从而简化任务。' />
+        <Demo.Block title='基本用法' description='常规步骤条用法。'>
+          <Steps current={1}>
             <Steps.Item title='Finished' description='This is a description.' />
             <Steps.Item title='In Progress' description='This is a description.' />
             <Steps.Item title='Waiting' description='This is a description.' />
           </Steps>
         </Demo.Block>
-        <Demo.Block title='不带描述的步骤条'>
-          <Steps mode='horizontal' current={1}>
+        <Demo.Block title='不带描述的步骤条' description='简化版的步骤条'>
+          <Steps current={1}>
             <Steps.Item title='Finished' />
             <Steps.Item title='In Progress' />
             <Steps.Item title='Waiting' />
           </Steps>
         </Demo.Block>
-        <Demo.Block title='步骤切换' description='通常配合内容及按钮使用，表示一个流程的处理进度。'>
-          <Steps mode='horizontal' current={current}>
+        <Demo.Block title='步骤条的状态' description='通过设置 Steps.Item 的 status 属性，可以自定义每个 step 的状态'>
+          <Steps current={1}>
+            <Steps.Item title='Finished' />
+            <Steps.Item title='In Progress' status='error' />
+            <Steps.Item title='In Progress' status='warning' />
+            <Steps.Item title='Waiting' />
+          </Steps>
+        </Demo.Block>
+        <Demo.Block title='虚线步骤条' description='通过设置 dash 属性，可以使用虚线。'>
+          <Steps current={1} dashed>
             <Steps.Item title='Finished' />
             <Steps.Item title='In Progress' />
             <Steps.Item title='Waiting' />
           </Steps>
-          <div className='h-40 my-5 bg-gray-100 rounded'>{steps[current].content}</div>
+        </Demo.Block>
+        <Demo.Block title='带图标的步骤条' description='通过设置 icon 属性，可以启用自定义图标。'>
+          <Steps current={1} type='custom'>
+            <Steps.Item title='创建数据集' icon={<SearchOutlined />} />
+            <Steps.Item title='训练' icon={<SearchOutlined />} />
+            <Steps.Item title='预测' icon={<SearchOutlined />} />
+          </Steps>
+        </Demo.Block>
+        <Demo.Block title='步骤切换' description='通常配合内容及按钮使用，表示一个流程的处理进度。'>
+          <Steps current={current}>
+            <Steps.Item title='First' />
+            <Steps.Item title='Second' />
+            <Steps.Item title='Last' />
+          </Steps>
+          <div className='h-40 my-5 bg-gray-100 rounded flex items-center justify-center'>{steps[current].content}</div>
           <div className='steps-action'>
             {current < steps.length - 1 && (
               <Button type='primary' onClick={() => next()}>

@@ -1,8 +1,8 @@
 import { createContext } from 'react';
-import { Mode } from '../../constants';
+import { MenuMode } from './menu';
 
 export type MenuContextProps = {
-  mode?: Mode;
+  mode?: MenuMode;
   prefixCls: string;
   firstLevel: boolean;
   isCollapsed: boolean;

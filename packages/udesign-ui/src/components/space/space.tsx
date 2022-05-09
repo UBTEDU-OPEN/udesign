@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants/size';
+import { CommonSize, Direction } from '../../constants';
 
 // No `stretch` since many components do not support that.
 export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
 export type SpaceJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
-export type SpaceDirection = 'vertical' | 'horizontal';
+export type SpaceDirection = Direction;
 export type SpaceSize = CommonSize;
 
 const prefixCls = 'ud-space';
@@ -19,7 +19,7 @@ export type SpaceProps = {
 } & NativeProps;
 
 export const Space = ({ align = 'start', justify = 'start', direction = 'horizontal', size ='small', wrap = false, className, children }: SpaceProps) => {
- 
+
   const cls = classNames(
     prefixCls,
     {

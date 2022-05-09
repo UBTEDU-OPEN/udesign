@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
-import { Mode } from '../../constants';
+import { Direction } from '../../constants';
 import MenuContext from './context';
 
 const prefixCls = `ud-menu`;
 
-export type MenuMode = Mode;
+export type MenuMode = Direction;
 
 export type MenuProps = {
   isCollapsed?: boolean; // 设置是否折叠
