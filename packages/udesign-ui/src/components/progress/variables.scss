@@ -1,0 +1,22 @@
+$transition-duration: 0.3s; // 进度条动画时长
+$transition-timing-function: cubic-bezier(0.62, 0.05, 0.36, 0.95); // 进度条动画曲线
+
+$line-height-small: 8px; // 小尺寸水平进度条高度
+$line-height-middle: 12px; // 水平进度条高度
+$line-height-large: 20px; // 大尺寸水平进度条高度
+
+$line-text-margin-left: var(--ud-spacing-base); // 水平进度条文本左侧外边距
+$line-text-marginY: var(--ud-spacing-extra-tight); // 水平进度条垂直方向外边距
+
+$line-track-background: var(--ud-color-fill-0); // 默认背景色
+$line-track-inner-background: var(--ud-color-success); // 默认进度色
+$line-track-border-radius: var(--ud-border-radius-large); // 背景圆角大小
+$line-track-inner-border-radius: var(--ud-border-radius-large); // 进度条圆角大小
+
+$line-text-min-width: 45px; // 进度条文本最小宽度
+$line-text-color: var(--ud-line-text-color, var(--ud-color-primary)); // 进度条文本颜色
+$line-text-font-size: var(--ud-line-text-font-size, 20px); // 进度圈文本字号
+$line-text-font-weight: var(--ud-line-text-font-weight, 600); // 进度圈文本字重
+
+$circle-text-color: var(--ud-circle-text-color, var(--ud-color-primary)); // 进度圈文本颜色
+$circle-text-font-size: var(--ud-circle-text-font-size, 20px); // 进度圈文本字号

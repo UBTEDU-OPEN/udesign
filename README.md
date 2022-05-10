@@ -56,3 +56,4 @@ yarn export
 ## TODO
 
 - tsconfig 公共部分抽离
+- 编写脚本将 `theme.scss` 和 `variables.scss` 输出为页面

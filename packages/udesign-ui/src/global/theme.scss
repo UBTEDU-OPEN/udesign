@@ -41,6 +41,14 @@
   --ud-color-border: rgba(var(--ud-gray-9), 0.08); // 默认边框颜色
   --ud-color-focus-border: rgba(var(--ud-purple-5), 1); // 多用于边框激活态颜色
 
+  --ud-color-fill-0: rgba(var(--ud-gray-8), 0.05); // 填充色 - 默认态
+  --ud-color-fill-1: rgba(var(--ud-gray-8), 0.09); // 填充色 - 悬浮态
+  --ud-color-fill-2: rgba(var(--ud-gray-8), 0.13); // 填充色 - 激活态
+  --ud-color-bg-0: rgba(var(--ud-white), 1); // 背景色 - 最下层（底部页面）
+  --ud-color-bg-1: rgba(var(--ud-white), 1); // 背景色 - 次下层（页面中需要提升的内容）
+  --ud-color-bg-2: rgba(var(--ud-white), 1); // 背景色 - 中间层（模态等容器）
+  --ud-color-bg-3: rgba(var(--ud-white), 1); // 背景色 - 次上层（通知，Toast等）
+  --ud-color-bg-4: rgba(var(--ud-white), 1); // 背景色 - 最上层（特殊）
   --ud-color-text-0: rgba(var(--ud-gray-9), 1); // 文本/图标颜色 - 最主要
   --ud-color-text-1: rgba(var(--ud-gray-9), 0.8); // 文本/图标颜色 - 稍次要
   --ud-color-text-2: rgba(var(--ud-gray-9), 0.6); // 文本/图标颜色 - 次要
@@ -59,6 +67,18 @@
   --ud-border-radius-large: 12px; // 大圆角, 用于 modal
   --ud-border-radius-circle: 50%; // 全圆角, 用于 avatar, badge 等组件
   --ud-border-radius-full: 9999px; // 用于创建全尺寸圆角，如胶囊标签等
+
+  // spacing
+  --ud-spacing-none: 0; // 间距 - 零
+  --ud-spacing-super-tight: 2px; // 间距 - 极紧凑尺寸内/外边距
+  --ud-spacing-extra-tight: 4px; // 间距 - 超紧凑尺寸内/外边距
+  --ud-spacing-tight: 8px; // 间距 - 紧凑尺寸内/外边距
+  --ud-spacing-base-tight: 12px; // 间距 - 默认（偏紧凑）尺寸内/外边距
+  --ud-spacing-base: 16px; // 间距 - 默认尺寸内/外边距
+  --ud-spacing-base-loose: 20px; // 间距 - 默认（偏宽松）尺寸内/外边距
+  --ud-spacing-loose: 24px; // 间距 - 宽松尺寸内/外边距
+  --ud-spacing-extra-loose: 32px; // 间距 - 超宽松尺寸内/外边距
+  --ud-spacing-super-loose: 40px; // 间距 - 极宽松尺寸内/外边距
 
   // z-index
   --ud-z-portal: 1; // 抽象插槽，适用于未经特殊定制的所有组件
