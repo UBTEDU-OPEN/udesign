@@ -1,48 +1,47 @@
 $module: ud-result;
 
+$padding: var(--ud-result-padding, 48px 32px);
+
+$title-color: var(--ud-result-title-color, rgb(var(--ud-gray-12)));
+$title-margin-top: var(--ud-result-title-margin-top, 20px);
+$title-font-size: var(--ud-result-title-font-size, 20px);
+
+$sub-title-color: var(--ud-result-sub-title-color, rgb(var(--ud-gray-9)));
+$sub-title-margin-top: var(--ud-result-sub-title-margin-top, 20px);
+
+$icon-font-size: var(--ud-result-icon-font-size, 100px);
+$icon-height: var(--ud-result-icon-height, 150px);
+$icon-width: var(--ud-result-icon-width, 150px);
+
+$extra-margin-top: var(--ud-result-extra-margin-top, 40px);
+$extra-gap: var(--ud-result-extra-gap, 20px);
+
 .#{$module} {
-
-    --padding: var(--ud-result-padding, 48px 32px);
-
-    --title-color: var(--ud-result-title-color, rgb(var(--ud-gray-12)));
-    --title-margin-top: var(--ud-result-title-margin-top, 20px);
-    --title-font-size: var(--ud-result-title-font-size, 20px);
-
-    --sub-title-color: var(--ud-result-sub-title-color, rgb(var(--ud-gray-9)));
-    --sub-title-margin-top: var(--ud-result-sub-title-margin-top, 20px);
-
-    --icon-font-size: var(--ud-result-icon-font-size, 100px);
-    --icon-height: var(--ud-result-icon-height, 150px);
-    --icon-width: var(--ud-result-icon-width, 150px);
-
-    --extra-margin-top: var(--ud-result-extra-margin-top, 40px);
-    --extra-gap: var(--ud-result-extra-gap, 20px);
-
-    padding: var(--padding);
+    padding: $padding;
     text-align: center;
 
     &-icon {
-        font-size: var(--icon-font-size);
-        width: var(--icon-width);
-        height: var(--icon-height);
+        font-size: $icon-font-size;
+        width: $icon-width;
+        height: $icon-height;
         margin: 0 auto;
     }
 
     &-title {
-        color: var(--title-color);
+        color: $title-color;
         font-weight: bold;
-        font-size: var(--title-font-size);
+        font-size: $title-font-size;
     }
 
     &-sub-title {
-        margin-top: var(--sub-title-margin-top);
-        color: var(--sub-title-color);
+        margin-top: $sub-title-margin-top;
+        color: $sub-title-color;
     }
 
     &-extra {
         display: flex;
-        margin-top: var(--extra-margin-top);
+        margin-top: $extra-margin-top;
         justify-content: center;
-        gap: var(--extra-gap);
+        gap: $extra-gap;
     }
 }
