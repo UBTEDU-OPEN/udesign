@@ -10,6 +10,7 @@ export { default as Result } from './components/result';
 export { default as Row } from './components/row';
 export { default as Menu } from './components/menu';
 export { default as Pagination } from './components/pagination';
+export { default as Progress } from './components/progress';
 export { default as Space } from './components/space';
 export { default as Steps } from './components/steps';
 export { default as Tag } from './components/tag';

@@ -296,7 +296,6 @@ const feedbackMenus = [
   {
     name: 'progress',
     text: 'Progress 进度条',
-    disabled: true,
   },
   {
     name: 'result',

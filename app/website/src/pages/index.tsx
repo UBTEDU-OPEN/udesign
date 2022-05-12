@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button } from '@ubt/udesign-ui';
-import { Space, Toast } from '@ubt/udesign-ui-alpha';
+import { Space, Button } from '@ubt/udesign-ui';
+import { Toast } from '@ubt/udesign-ui-alpha';
 
 const Index = () => {
   return (
