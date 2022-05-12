@@ -2,46 +2,46 @@ $module: ud-result;
 
 $padding: var(--ud-result-padding, 48px 32px);
 
+$icon-font-size: var(--ud-result-icon-font-size, 100px);
+
 $title-color: var(--ud-result-title-color, rgb(var(--ud-gray-12)));
 $title-margin-top: var(--ud-result-title-margin-top, 20px);
 $title-font-size: var(--ud-result-title-font-size, 20px);
 
-$sub-title-color: var(--ud-result-sub-title-color, rgb(var(--ud-gray-9)));
-$sub-title-margin-top: var(--ud-result-sub-title-margin-top, 20px);
-
-$icon-font-size: var(--ud-result-icon-font-size, 100px);
-$icon-height: var(--ud-result-icon-height, 150px);
-$icon-width: var(--ud-result-icon-width, 150px);
+$subtitle-color: var(--ud-result-subtitle-color, rgb(var(--ud-gray-9)));
+$subtitle-margin-top: var(--ud-result-subtitle-margin-top, 20px);
+$subtitle-font-size: var(--ud-result-subtitle-font-size, 16px);
 
 $extra-margin-top: var(--ud-result-extra-margin-top, 40px);
 $extra-gap: var(--ud-result-extra-gap, 20px);
 
 .#{$module} {
-    padding: $padding;
-    text-align: center;
+  padding: $padding;
+  text-align: center;
 
-    &-icon {
-        font-size: $icon-font-size;
-        width: $icon-width;
-        height: $icon-height;
-        margin: 0 auto;
-    }
+  &-icon {
+    font-size: $icon-font-size;
+    margin: 0 auto;
+    display: inline-block;
+  }
 
-    &-title {
-        color: $title-color;
-        font-weight: bold;
-        font-size: $title-font-size;
-    }
+  &-title {
+    margin-top: $title-margin-top;
+    color: $title-color;
+    font-weight: bold;
+    font-size: $title-font-size;
+  }
 
-    &-sub-title {
-        margin-top: $sub-title-margin-top;
-        color: $sub-title-color;
-    }
+  &-subtitle {
+    margin-top: $subtitle-margin-top;
+    color: $subtitle-color;
+    font-size: $subtitle-font-size;
+  }
 
-    &-extra {
-        display: flex;
-        margin-top: $extra-margin-top;
-        justify-content: center;
-        gap: $extra-gap;
-    }
+  &-extra {
+    display: flex;
+    margin-top: $extra-margin-top;
+    justify-content: center;
+    gap: $extra-gap;
+  }
 }
