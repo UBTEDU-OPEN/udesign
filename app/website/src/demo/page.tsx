@@ -309,7 +309,6 @@ const feedbackMenus = [
   {
     name: 'spin',
     text: 'Spin 加载中',
-    disabled: true,
   },
   {
     name: 'toast',
