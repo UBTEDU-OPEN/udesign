@@ -1,31 +1,33 @@
+@import './variables.scss';
+
 $module: ud-space;
 
 .#{$module} {
+  display: flex;
 
-    display: flex;
-    
-    @each $var,$gap in (small, 20px),(middle, 30px),(large,40px){
-        &-size-#{$var}{
-            gap: $gap;
-        }
+  @each $size, $gap in (small, $space-small), (middle, $space-middle), (large, $space-large) {
+    &-#{$size} {
+      gap: $gap;
     }
-    @each $var,$style in (start, flex-start),(end, flex-end),(center,center),(baseline,baseline) {
-        &-align-#{$var}{
-            align-items: $style;
-        }
+  }
+
+  @each $var, $style in (start, flex-start), (end, flex-end), (center, center), (baseline, baseline) {
+    &-align-#{$var} {
+      align-items: $style;
     }
-    @each $var,$style in (start, flex-start),(end, flex-end),(center,center),( between ,space-between), ( around ,space-between){
-        &-justify-#{$var}{
-            justify-content: $style;
-        }
+  }
+
+  @each $var, $style in (start, flex-start), (end, flex-end), (center, center), (between, space-between), (around, space-between) {
+    &-justify-#{$var} {
+      justify-content: $style;
     }
- 
-    &-wrap{
-        flex-wrap: wrap;
-    }
-    
-    &-direction-vertical{
-        flex-direction: column;
-    }
-    
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-vertical {
+    flex-direction: column;
+  }
 }

@@ -1,38 +1,45 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { CommonSize, Direction } from '../../constants';
 
-// No `stretch` since many components do not support that.
 export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
 export type SpaceJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 export type SpaceDirection = Direction;
-export type SpaceSize = CommonSize;
+export type SpaceSize = CommonSize | number;
 
 const prefixCls = 'ud-space';
 export type SpaceProps = {
-  align?: SpaceAlign; // 对齐方式
-  justify?: SpaceJustify; // 对齐方式
-  direction?: SpaceDirection; // 是否为垂直间距
-  size?: CommonSize | number ; // 间距大小
+  align?: SpaceAlign; // 对齐方式（align-items）
+  justify?: SpaceJustify; // 对齐方式（justify-content）
+  direction?: SpaceDirection; // 间距方向
+  size?: SpaceSize; // 间距大小
   wrap?: boolean; // 是否自动换行，仅在 horizontal 时有效
 } & NativeProps;
 
-export const Space = ({ align = 'start', justify = 'start', direction = 'horizontal', size ='small', wrap = false, className, children }: SpaceProps) => {
-
+export const Space = ({ align = 'start', justify = 'start', direction = 'horizontal', size = 'small', wrap, className, children, ...restProps }: SpaceProps) => {
   const cls = classNames(
     prefixCls,
     {
-        [`${prefixCls}-align-${align}`]: align,
-        [`${prefixCls}-justify-${justify}`]: justify,
-        [`${prefixCls}-direction-${direction}`]: direction,
-        [`${prefixCls}-size-${size}`]: size,
-        [`${prefixCls}-wrap`]: wrap && direction,
+      [`${prefixCls}-${size}`]: typeof size === 'string',
+      [`${prefixCls}-${direction}`]: direction,
+      [`${prefixCls}-wrap`]: wrap,
+      [`${prefixCls}-align-${align}`]: align,
+      [`${prefixCls}-justify-${justify}`]: justify,
     },
-    className
+    className,
   );
 
-  return <div className={cls} style={ typeof(size) === 'number' ?  {gap:`${ size }px`} : {}}>{ children}</div>;
+  const style = { ...restProps.style };
+  if (typeof size === 'number') {
+    style.gap = `${size}px`;
+  }
+
+  return (
+    <div className={cls} style={style}>
+      {children}
+    </div>
+  );
 };
 
 Space.displayName = 'Space';
