@@ -310,7 +310,6 @@ const feedbackMenus = [
   {
     name: 'toast',
     text: 'Toast 提示',
-    disabled: true,
   },
 ];
 

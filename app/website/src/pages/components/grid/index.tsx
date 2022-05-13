@@ -69,7 +69,7 @@ export default function GridPage() {
             </>
           }
         ></Demo.Block>
-       
+
         <Demo.Block
           title='基础栅格'
           description={
@@ -113,32 +113,64 @@ export default function GridPage() {
             Horizontal
           </Divider>
           <Row gutter={[16, 16]}>
-            <Col span={6} className="gutter-row" ><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
           </Row>
           <Divider plain orientation='left'>
             Responsive
           </Divider>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, xl: 40, xxl: 48 }}>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
           </Row>
           <Divider plain orientation='left'>
             Vertical
           </Divider>
           <Row gutter={[16, 16]}>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
-            <Col span={6} className="gutter-row"><div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div></Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
+            <Col span={6} className='gutter-row'>
+              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
+            </Col>
           </Row>
         </Demo.Block>
         <Demo.Block
@@ -152,23 +184,23 @@ export default function GridPage() {
           }
         >
           <Row>
-          <Col span={8}>col-8</Col>
-          <Col span={8} offset={8}>
-            col-8
-          </Col>
+            <Col span={8}>col-8</Col>
+            <Col span={8} offset={8}>
+              col-8
+            </Col>
           </Row>
           <Row>
-          <Col span={6} offset={6}>
-            col-6 col-offset-6
-          </Col>
-          <Col span={6} offset={6}>
-            col-6 col-offset-6
-          </Col>
+            <Col span={6} offset={6}>
+              col-6 col-offset-6
+            </Col>
+            <Col span={6} offset={6}>
+              col-6 col-offset-6
+            </Col>
           </Row>
           <Row>
-          <Col span={12} offset={6}>
-            col-12 col-offset-6
-          </Col>
+            <Col span={12} offset={6}>
+              col-12 col-offset-6
+            </Col>
           </Row>
           <Row>
             <Col span={6}>col-6</Col>
@@ -195,7 +227,6 @@ export default function GridPage() {
               col-6 col-pull-18
             </Col>
           </Row>
-          
         </Demo.Block>
         <Demo.Block
           title='排版'
@@ -262,50 +293,60 @@ export default function GridPage() {
             <Col span={4}>col-4</Col>
           </Row>
         </Demo.Block>
-        <Demo.Block
-          title='对齐'
-          description={
-            <>
-              子元素垂直对齐。
-            </>
-          }
-        >
+        <Demo.Block title='对齐' description={<>子元素垂直对齐。</>}>
           <Divider plain orientation='left'>
             Align Top
           </Divider>
           <Row justify='center' align='top'>
-            <Col span={4}><p style={{height: '20px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '100px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '80px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '50px'}}>col-4</p></Col>
+            <Col span={4}>
+              <p style={{ height: '20px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '100px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '80px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '50px' }}>col-4</p>
+            </Col>
           </Row>
           <Divider plain orientation='left'>
             Align Middle
           </Divider>
           <Row justify='space-around' align='middle'>
-            <Col span={4}><p style={{height: '20px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '100px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '80px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '50px'}}>col-4</p></Col>
+            <Col span={4}>
+              <p style={{ height: '20px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '100px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '80px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '50px' }}>col-4</p>
+            </Col>
           </Row>
           <Divider plain orientation='left'>
             Align Bottom
           </Divider>
           <Row justify='space-between' align='bottom'>
-            <Col span={4}><p style={{height: '20px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '100px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '80px'}}>col-4</p></Col>
-            <Col span={4}><p style={{height: '50px'}}>col-4</p></Col>
+            <Col span={4}>
+              <p style={{ height: '20px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '100px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '80px' }}>col-4</p>
+            </Col>
+            <Col span={4}>
+              <p style={{ height: '50px' }}>col-4</p>
+            </Col>
           </Row>
         </Demo.Block>
-        <Demo.Block
-          title='排序'
-          description={
-            <>
-              通过 order 来改变元素的排序。
-            </>
-          }
-        >
+        <Demo.Block title='排序' description={<>通过 order 来改变元素的排序。</>}>
           <Divider plain orientation='left'>
             Normal
           </Divider>
@@ -327,59 +368,45 @@ export default function GridPage() {
             Responsive
           </Divider>
           <Row>
-          <Col span={6} xs={{ order: 1 }} sm={{ order: 2 }} md={{ order: 3 }} lg={{ order: 4 }}>
-            1 col-order-responsive
-          </Col>
-          <Col span={6} xs={{ order: 2 }} sm={{ order: 1 }} md={{ order: 4 }} lg={{ order: 3 }}>
-            2 col-order-responsive
-          </Col>
-          <Col span={6} xs={{ order: 3 }} sm={{ order: 4 }} md={{ order: 2 }} lg={{ order: 1 }}>
-            3 col-order-responsive
-          </Col>
-          <Col span={6} xs={{ order: 4 }} sm={{ order: 3 }} md={{ order: 1 }} lg={{ order: 2 }}>
-            4 col-order-responsive
-          </Col>
+            <Col span={6} xs={{ order: 1 }} sm={{ order: 2 }} md={{ order: 3 }} lg={{ order: 4 }}>
+              1 col-order-responsive
+            </Col>
+            <Col span={6} xs={{ order: 2 }} sm={{ order: 1 }} md={{ order: 4 }} lg={{ order: 3 }}>
+              2 col-order-responsive
+            </Col>
+            <Col span={6} xs={{ order: 3 }} sm={{ order: 4 }} md={{ order: 2 }} lg={{ order: 1 }}>
+              3 col-order-responsive
+            </Col>
+            <Col span={6} xs={{ order: 4 }} sm={{ order: 3 }} md={{ order: 1 }} lg={{ order: 2 }}>
+              4 col-order-responsive
+            </Col>
           </Row>
         </Demo.Block>
-        <Demo.Block
-          title='Flex填充'
-          description={
-            <>
-              Col 提供 flex 属性以支持填充。
-            </>
-          }
-        >
-          <Divider orientation="left">Percentage columns</Divider>
+        <Demo.Block title='Flex填充' description={<>Col 提供 flex 属性以支持填充。</>}>
+          <Divider orientation='left'>Percentage columns</Divider>
           <Row>
             <Col flex={2}>2 / 5</Col>
             <Col flex={3}>3 / 5</Col>
           </Row>
-          <Divider orientation="left">Fill rest</Divider>
+          <Divider orientation='left'>Fill rest</Divider>
           <Row>
-            <Col flex="100px">100px</Col>
-            <Col flex="auto">Fill Rest</Col>
+            <Col flex='100px'>100px</Col>
+            <Col flex='auto'>Fill Rest</Col>
           </Row>
-          <Divider orientation="left">Raw flex style</Divider>
+          <Divider orientation='left'>Raw flex style</Divider>
           <Row>
-            <Col flex="1 1 200px">1 1 200px</Col>
-            <Col flex="0 1 300px">0 1 300px</Col>
+            <Col flex='1 1 200px'>1 1 200px</Col>
+            <Col flex='0 1 300px'>0 1 300px</Col>
           </Row>
 
           <Row wrap={false}>
-            <Col flex="none">
+            <Col flex='none'>
               <div style={{ padding: '0 16px' }}>none</div>
             </Col>
-            <Col flex="auto">auto with no-wrap</Col>
+            <Col flex='auto'>auto with no-wrap</Col>
           </Row>
         </Demo.Block>
-        <Demo.Block
-          title='响应式布局'
-          description={
-            <>
-              参照 Bootstrap 的 响应式设计，预设六个响应尺寸：xs sm md lg xl xxl。
-            </>
-          }
-        >
+        <Demo.Block title='响应式布局' description={<>参照 Bootstrap 的 响应式设计，预设六个响应尺寸：xs sm md lg xl xxl。</>}>
           <Row>
             <Col xs={2} sm={4} md={6} lg={8} xl={10}>
               Col
@@ -396,20 +423,20 @@ export default function GridPage() {
           title='其他属性响应式'
           description={
             <>
-             span pull push offset order 属性可以通过内嵌到 xs sm md lg xl xxl 属性中来使用。其中 <Typography.Text code>xs={'{6}'}</Typography.Text> 相当于 <Typography.Text code>xs={JSON.stringify({ span: 6 })}</Typography.Text>
+              span pull push offset order 属性可以通过内嵌到 xs sm md lg xl xxl 属性中来使用。其中 <Typography.Text code>xs={'{6}'}</Typography.Text> 相当于 <Typography.Text code>xs={JSON.stringify({ span: 6 })}</Typography.Text>
             </>
           }
         >
           <Row>
-          <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            Col
-          </Col>
-          <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            Col
-          </Col>
-          <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-            Col
-          </Col>
+            <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+              Col
+            </Col>
+            <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+              Col
+            </Col>
+            <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+              Col
+            </Col>
           </Row>
         </Demo.Block>
       </Demo.Page>

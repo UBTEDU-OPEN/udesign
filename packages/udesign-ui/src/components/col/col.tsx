@@ -52,7 +52,7 @@ export const Col = (props: ColProps) => {
     };
   });
 
-  const cls = classNames(prefixCls, className, { 
+  const cls = classNames(prefixCls, className, {
     [`${prefixCls}-span-${span}`]: span,
     [`${prefixCls}-pull-${pull}`]: pull,
     [`${prefixCls}-push-${push}`]: push,
