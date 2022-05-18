@@ -1,0 +1,14 @@
+$module: ud-mask;
+
+$mask-background: var(--ud-mask-background, rgba(var(--ud-gray-9), 0.5));
+$mask-z-index: var(--ud-mask-z-index, var(--ud-z-modal));
+
+.#{$module} {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $mask-z-index;
+  background: $mask-background;
+}

@@ -18,6 +18,7 @@
     "paths": {
       "@ubt/udesign-ui": ["../../packages/udesign-ui/src/index"],
       "@ubt/udesign-utils": ["../../packages/udesign-ui/src/utils/index"],
+      "@ubt/udesign-constants": ["../../packages/udesign-ui/src/constants/index"],
       "@ubt/udesign-ui-alpha": ["../../packages/udesign-ui-alpha/src/index"],
       "demo": ["src/demo/index.tsx"]
     }

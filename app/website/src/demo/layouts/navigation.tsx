@@ -25,7 +25,7 @@ const Navigation = () => {
 
   return (
     <>
-      <div className='fixed z-20 bg-white w-full flex justify-between items-center shadow px-4'>
+      <div className='fixed z-1 bg-white w-full flex justify-between items-center shadow px-4'>
         <Link href='/'>
           <a className='font-bold text-xl'>uDesign</a>
         </Link>

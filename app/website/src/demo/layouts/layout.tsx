@@ -26,7 +26,7 @@ const BaseLayout = ({ sidebar, children }: BaseLayoutProps) => {
       </Navbar> */}
       <Layout hasSider={hasSider}>
         {hasSider ? (
-          <Sider className='fixed w-72 h-full pb-12 border-r bg-white'>
+          <Sider className='fixed z-1 w-72 h-full pb-12 border-r bg-white'>
             <Scrollbar className='p-4'>{sidebar}</Scrollbar>
           </Sider>
         ) : null}

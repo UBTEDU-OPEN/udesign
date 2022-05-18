@@ -57,3 +57,4 @@ yarn export
 
 - tsconfig 公共部分抽离
 - 编写脚本将 `theme.scss` 和 `variables.scss` 输出为页面（思路：fs 正则（:和//）处理 scss 文件输出 json 文件，页面请求 json 文件作为数据源。）
+- 多语言（Context 方案）
