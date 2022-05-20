@@ -42,11 +42,11 @@ const layoutMenus = [
 
 // 导航
 const navMenus = [
-  {
-    name: 'affix',
-    text: 'Affix 固钉',
-    disabled: true,
-  },
+  // {
+  //   name: 'affix',
+  //   text: 'Affix 固钉',
+  //   disabled: true,
+  // },
   {
     name: 'breadcrumb',
     text: 'Breadcrumb 面包屑',
@@ -59,11 +59,11 @@ const navMenus = [
     name: 'menu',
     text: 'Menu 导航菜单',
   },
-  {
-    name: 'pageHeader',
-    text: 'PageHeader 页头',
-    disabled: true,
-  },
+  // {
+  //   name: 'pageHeader',
+  //   text: 'PageHeader 页头',
+  //   disabled: true,
+  // },
   {
     name: 'pagination',
     text: 'Pagination 分页',
@@ -76,46 +76,46 @@ const navMenus = [
 
 // 数据录入
 const inputMenus = [
-  {
-    name: 'autoComplete',
-    text: 'AutoComplete 自动完成',
-    disabled: true,
-  },
-  {
-    name: 'cascader',
-    text: 'Cascader 级联选择',
-    disabled: true,
-  },
+  // {
+  //   name: 'autoComplete',
+  //   text: 'AutoComplete 自动完成',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'cascader',
+  //   text: 'Cascader 级联选择',
+  //   disabled: true,
+  // },
   {
     name: 'checkbox',
     text: 'Checkbox 多选框',
     disabled: true,
   },
-  {
-    name: 'datepicker',
-    text: 'DatePicker 日期选择框',
-    disabled: true,
-  },
-  {
-    name: 'form',
-    text: 'Form 表单',
-    disabled: true,
-  },
+  // {
+  //   name: 'datepicker',
+  //   text: 'DatePicker 日期选择框',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'form',
+  //   text: 'Form 表单',
+  //   disabled: true,
+  // },
   {
     name: 'input',
     text: 'Input 输入框',
     disabled: true,
   },
-  {
-    name: 'inputNumber',
-    text: 'InputNumber 数字输入框',
-    disabled: true,
-  },
-  {
-    name: 'mentions',
-    text: 'Mentions 提及',
-    disabled: true,
-  },
+  // {
+  //   name: 'inputNumber',
+  //   text: 'InputNumber 数字输入框',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'mentions',
+  //   text: 'Mentions 提及',
+  //   disabled: true,
+  // },
   {
     name: 'radio',
     text: 'Radio 单选框',
@@ -131,31 +131,31 @@ const inputMenus = [
     text: 'Select 选择器',
     disabled: true,
   },
-  {
-    name: 'slider',
-    text: 'Slider 滑动选择器',
-    disabled: true,
-  },
+  // {
+  //   name: 'slider',
+  //   text: 'Slider 滑动选择器',
+  //   disabled: true,
+  // },
   {
     name: 'switch',
     text: 'Switch 开关',
     disabled: true,
   },
-  {
-    name: 'timePicker',
-    text: 'TimePicker 时间选择框',
-    disabled: true,
-  },
-  {
-    name: 'transfer',
-    text: 'Transfer 穿梭框',
-    disabled: true,
-  },
-  {
-    name: 'treeSelect',
-    text: 'TreeSelect 树选择',
-    disabled: true,
-  },
+  // {
+  //   name: 'timePicker',
+  //   text: 'TimePicker 时间选择框',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'transfer',
+  //   text: 'Transfer 穿梭框',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'treeSelect',
+  //   text: 'TreeSelect 树选择',
+  //   disabled: true,
+  // },
   {
     name: 'upload',
     text: 'Upload 上传',
@@ -165,71 +165,71 @@ const inputMenus = [
 
 // 数据展示
 const showMenus = [
-  {
-    name: 'avatar',
-    text: 'Avatar 头像',
-    disabled: true,
-  },
+  // {
+  //   name: 'avatar',
+  //   text: 'Avatar 头像',
+  //   disabled: true,
+  // },
   {
     name: 'badge',
     text: 'Badge 徽标',
     disabled: true,
   },
-  {
-    name: 'calendar',
-    text: 'Calendar 日历',
-    disabled: true,
-  },
-  {
-    name: 'card',
-    text: 'Card 卡片',
-    disabled: true,
-  },
-  {
-    name: 'carousel',
-    text: 'Carousel 走马灯',
-    disabled: true,
-  },
+  // {
+  //   name: 'calendar',
+  //   text: 'Calendar 日历',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'card',
+  //   text: 'Card 卡片',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'carousel',
+  //   text: 'Carousel 走马灯',
+  //   disabled: true,
+  // },
   {
     name: 'collapse',
     text: 'Collapse 折叠面板',
     disabled: true,
   },
-  {
-    name: 'comment',
-    text: 'Comment 评论',
-    disabled: true,
-  },
-  {
-    name: 'descriptions',
-    text: 'Descriptions 描述列表',
-    disabled: true,
-  },
+  // {
+  //   name: 'comment',
+  //   text: 'Comment 评论',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'descriptions',
+  //   text: 'Descriptions 描述列表',
+  //   disabled: true,
+  // },
   {
     name: 'empty',
     text: 'Empty 空状态',
     disabled: true,
   },
-  {
-    name: 'image',
-    text: 'Image 图片',
-    disabled: true,
-  },
-  {
-    name: 'list',
-    text: 'List 列表',
-    disabled: true,
-  },
-  {
-    name: 'popover',
-    text: 'Popover 气泡卡片',
-    disabled: true,
-  },
-  {
-    name: 'statistic',
-    text: 'Statistic 统计数值',
-    disabled: true,
-  },
+  // {
+  //   name: 'image',
+  //   text: 'Image 图片',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'list',
+  //   text: 'List 列表',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'popover',
+  //   text: 'Popover 气泡卡片',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'statistic',
+  //   text: 'Statistic 统计数值',
+  //   disabled: true,
+  // },
   {
     name: 'table',
     text: 'Table 表格',
@@ -245,54 +245,54 @@ const showMenus = [
     text: 'Tag 标签',
     disabled: true,
   },
-  {
-    name: 'timeline',
-    text: 'Timeline 时间轴',
-    disabled: true,
-  },
+  // {
+  //   name: 'timeline',
+  //   text: 'Timeline 时间轴',
+  //   disabled: true,
+  // },
   {
     name: 'tooltip',
     text: 'Tooltip 文字提示',
   },
-  {
-    name: 'tree',
-    text: 'Tree 树形控件',
-    disabled: true,
-  },
+  // {
+  //   name: 'tree',
+  //   text: 'Tree 树形控件',
+  //   disabled: true,
+  // },
 ];
 
 // 反馈
 const feedbackMenus = [
-  {
-    name: 'alert',
-    text: 'Alert 警告提示',
-    disabled: true,
-  },
-  {
-    name: 'drawer',
-    text: 'Drawer 抽屉',
-    disabled: true,
-  },
-  {
-    name: 'message',
-    text: 'Message 全局提示',
-    disabled: true,
-  },
+  // {
+  //   name: 'alert',
+  //   text: 'Alert 警告提示',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'drawer',
+  //   text: 'Drawer 抽屉',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'message',
+  //   text: 'Message 全局提示',
+  //   disabled: true,
+  // },
   {
     name: 'modal',
     text: 'Modal 对话框',
     disabled: true,
   },
-  {
-    name: 'notification',
-    text: 'Notification 通知提醒框',
-    disabled: true,
-  },
-  {
-    name: 'popconfirm',
-    text: 'Popconfirm 气泡确认框',
-    disabled: true,
-  },
+  // {
+  //   name: 'notification',
+  //   text: 'Notification 通知提醒框',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'popconfirm',
+  //   text: 'Popconfirm 气泡确认框',
+  //   disabled: true,
+  // },
   {
     name: 'progress',
     text: 'Progress 进度条',
@@ -319,16 +319,16 @@ const feedbackMenus = [
 
 // 其他
 const otherMenus = [
-  {
-    name: 'anchor',
-    text: 'Anchor 锚点',
-    disabled: true,
-  },
-  {
-    name: 'backtop',
-    text: 'BackTop 回到顶部',
-    disabled: true,
-  },
+  // {
+  //   name: 'anchor',
+  //   text: 'Anchor 锚点',
+  //   disabled: true,
+  // },
+  // {
+  //   name: 'backtop',
+  //   text: 'BackTop 回到顶部',
+  //   disabled: true,
+  // },
   {
     name: 'configprovider',
     text: 'ConfigProvider 全局化配置',

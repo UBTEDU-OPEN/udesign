@@ -1,5 +1,4 @@
 export * from './direction';
-export * from './mode';
 export * from './placement';
 export * from './position';
 export * from './shape';

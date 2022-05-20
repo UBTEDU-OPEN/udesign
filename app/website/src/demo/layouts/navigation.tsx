@@ -30,9 +30,9 @@ const Navigation = () => {
           <a className='font-bold text-xl'>uDesign</a>
         </Link>
         <Menu className='gap-5' onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
-          <Link href='http://dev.edu.ubtrobot.com/UI/U-Design/'>
+          <a className='text-inherit' target='_blank' href='http://dev.edu.ubtrobot.com/UI/U-Design/' rel="noreferrer">
             <Menu.Item name='spec'>设计</Menu.Item>
-          </Link>
+          </a>
           <Menu.Item name='docs'>文档</Menu.Item>
           <Menu.Item name='components'>组件</Menu.Item>
           <Menu.Item name='theme' disabled>
