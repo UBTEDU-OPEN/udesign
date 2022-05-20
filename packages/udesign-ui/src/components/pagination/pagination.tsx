@@ -1,6 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { Input } from '@ubt/udesign-ui-alpha';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { NativeProps, usePropsValue } from '../../utils';
 import { numbers, prefixCls } from './constants';
@@ -245,13 +244,13 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
       <div className={quickJumpCls}>
         <span>跳至</span>
         <div className={`${prefixCls}-quickJump-input`}>
-          <Input
+          {/* <Input
             value={quickJumpPage}
             disabled={isDisabled}
             onBlur={(e: React.FocusEvent) => handleQuickJumpBlur()}
             onEnterPress={(e: React.KeyboardEvent) => handleQuickJumpEnterPress((e.target as any).value)}
             onChange={(value) => handleQuickJumpNumberChange(value)}
-          />
+          /> */}
         </div>
         <span>页</span>
       </div>

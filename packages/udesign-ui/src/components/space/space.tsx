@@ -30,7 +30,7 @@ export const Space = ({ align = 'start', justify = 'start', direction = 'horizon
     className,
   );
 
-  const style = { ...restProps.style };
+  const style: React.CSSProperties = { ...restProps.style };
   if (typeof size === 'number') {
     style.gap = `${size}px`;
   }

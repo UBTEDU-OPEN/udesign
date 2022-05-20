@@ -1,39 +1,26 @@
-// const path = require('path');
 const gulp = require('gulp');
-// const less = require('gulp-less');
 const sass = require('gulp-sass')(require('sass'));
 const babel = require('gulp-babel');
 const ts = require('gulp-typescript');
 const del = require('del');
 const through = require('through2');
 const tsconfig = require('./tsconfig.json');
-// const postcss = require('gulp-postcss')
 const webpackStream = require('webpack-stream');
 const webpack = require('webpack');
-
-// const pxMultiplePlugin = require('postcss-px-multiple')({ times: 2 })
 
 function clean() {
   return del('./dist/**');
 }
 
 function buildStyle() {
-  return (
-    gulp
-      .src(['./src/**/*.scss'], {
-        base: './src/',
-        ignore: ['**/layouts/**/*', '**/pages/**/*', '**/demo/**/*', '**/lib/**/*'],
-      })
-      .pipe(sass().on('error', sass.logError))
-      //   .pipe(
-      //     less({
-      //       paths: [path.join(__dirname, 'src')],
-      //       relativeUrls: true,
-      //     }),
-      //   )
-      .pipe(gulp.dest('./dist/es'))
-      .pipe(gulp.dest('./dist/cjs'))
-  );
+  return gulp
+    .src(['./src/**/*.scss'], {
+      base: './src/',
+      ignore: ['**/layouts/**/*', '**/pages/**/*', '**/demo/**/*', '**/lib/**/*'],
+    })
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./dist/es'))
+    .pipe(gulp.dest('./dist/cjs'));
 }
 
 function copyAssets() {
@@ -108,28 +95,6 @@ function generatePackageJSON() {
     .pipe(gulp.dest('./dist/'));
 }
 
-// function create2xFolder() {
-//   return gulp
-//     .src('./dist/**', {
-//       base: './dist/',
-//       ignore: ['./dist/2x/demos/**/*'],
-//     })
-//     .pipe(gulp.dest('./dist/2x/'))
-// }
-
-// function build2xCSS() {
-//   return gulp
-//     .src('./dist/2x/**/*.css', {
-//       base: './dist/2x/',
-//     })
-//     .pipe(postcss([pxMultiplePlugin]))
-//     .pipe(
-//       gulp.dest('./dist/2x', {
-//         overwrite: true,
-//       })
-//     )
-// }
-
 function umdWebpack() {
   return gulp
     .src('dist/es/index.js')
@@ -176,13 +141,4 @@ function umdWebpack() {
 
 exports.umdWebpack = umdWebpack;
 
-exports.default = gulp.series(
-  clean,
-  buildES,
-  gulp.parallel(buildCJS, buildDeclaration, buildStyle),
-  copyAssets,
-  copyMetaFiles,
-  generatePackageJSON,
-  // gulp.series(create2xFolder, build2xCSS),
-  gulp.parallel(umdWebpack),
-);
+exports.default = gulp.series(clean, buildES, gulp.parallel(buildCJS, buildDeclaration, buildStyle), copyAssets, copyMetaFiles, generatePackageJSON, gulp.parallel(umdWebpack));

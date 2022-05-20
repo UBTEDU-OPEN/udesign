@@ -1,6 +1,6 @@
 {
   "name": "@ubt/udesign-ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "author": "Arvin <arvin.xiang@ubtrobot.com>",
   "license": "MIT",
@@ -22,7 +22,7 @@
   },
   "sideEffects": [
     "**/*.css",
-    "**/*.less",
+    "**/*.scss",
     "./es/index.js",
     "./src/index.ts",
     "./es/global/index.js",
@@ -30,7 +30,8 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21"
   },
   "peerDependencies": {
     "react": "^17.0.2"
@@ -42,6 +43,7 @@
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
+    "@types/lodash": "^4.14.182",
     "@types/react": "^17.0.29",
     "@types/react-dom": "^17.0.10",
     "autoprefixer": "^10.3.7",
@@ -52,7 +54,6 @@
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-less": "^5.0.0",
     "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
