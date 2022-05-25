@@ -92,7 +92,7 @@ export default function ButtonPage() {
           <Space>
             <Button type='primary' shape='default' icon={<SettingIcon />} />
             <Button type='primary' shape='circle' icon={<SettingIcon />} />
-            <Button type='primary' shape='round' icon={<SettingIcon />} />
+            <Button type='primary' shape='square' icon={<SettingIcon />} />
             <Button type='primary' icon={<SettingIcon />}>
               设置
             </Button>

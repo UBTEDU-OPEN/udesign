@@ -1,0 +1,28 @@
+@import '../../global/variables.scss';
+
+$button-color-primary: var(--ud-button-color-primary, var(--ud-color-primary)); // 默认态按钮主要色
+$button-color-primary-light: var(--ud-button-color-primary-light, var(--ud-color-primary-light)); // 默认态按钮次要色
+$button-color-danger: var(--ud-button-color-danger, var(--ud-color-danger)); // 二级警示按钮主要色
+$button-color-danger-light: var(--ud-button-color-danger-light, var(--ud-color-danger-light)); // 二级警示按钮次要色
+$button-color-warning: var(--ud-button-color-warning, var(--ud-color-warning)); // 一级警示按钮主要色
+$button-color-warning-light: var(--ud-button-color-warning-light, var(--ud-color-warning-light)); // 一级警示按钮次要色
+$button-color-disabled: var(--ud-button-color-disabled, rgba(var(--ud-gray-6), 1)); // 禁用按钮主要色
+$button-color-disabled-light: var(--ud-button-color-disabled-light, var(--ud-color-disabled-fill)); // 禁用按钮次要色
+
+$button-font-size-small: var(--button-font-size-small, 14px); // 按钮文字字号-小
+$button-font-size-middle: var(--button-font-size-middle, 16px); // 按钮文字字号-中
+$button-font-size-large: var(--button-font-size-large, 16px); // 按钮文字字号-大
+
+$button-min-width-small: var(--button-min-width-small, 120px); // 按钮最小宽度-小
+$button-min-width-middle: var(--button-min-width-middle, 150px); // 按钮最小宽度-中
+$button-min-width-large: var(--button-min-width-large, 180px); // 按钮最小宽度-大
+
+$button-height-small: var(--button-height-small, $height-control-small); // 按钮高度-小
+$button-height-middle: var(--button-height-middle, $height-control-middle); // 按钮高度-中
+$button-height-large: var(--button-height-large, $height-control-large); // 按钮高度-大
+
+$button-border-width: var(--ud-button-border-width, 1px); // 按钮边框宽度
+$button-border-style: var(--ud-button-border-style, solid); // 按钮边框类型
+$button-border-color: var(--ud-button-border-color, var(--ud-color-border)); // 按钮边框颜色
+
+$button-border-radius: var(--ud-button-border-radius, 2px); // 按钮圆角-默认
