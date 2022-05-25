@@ -1,0 +1,41 @@
+@import '../../global/variables.scss';
+
+// $input-wrapper-height-small: $height-control-small;
+// $input-wrapper-height-middle: $height-control-middle;
+// $input-wrapper-height-large: $height-control-large;
+
+$input-background: var(--input-background, var(--ud-color-fill-0)); // 输入框背景色-默认
+$input-background-hover: var(--input-background-hover, transparent); // 输入框背景色-悬浮
+$input-background-focus: var(--input-background-focus, #fff); // 输入框背景色-聚焦
+$input-background-error: var(--input-background-error, var(--ud-color-danger-light)); // 输入框背景色-错误
+$input-background-warning: var(--input-background-warning, var(--ud-color-warning-light)); // 输入框背景色-警告
+
+$input-color: var(--input-color, var(--ud-color-0)); // 输入框文字颜色-默认
+$input-color-error: var(--input-color-error, var(--ud-color-danger)); // 输入框文字颜色-错误
+$input-color-warning: var(--input-color-warning, var(--ud-color-warning)); // 输入框文字颜色-警告
+
+$input-border-width: var(--input-border-width, 1px); // 输入框描边宽度
+$input-border-color: var(--input-border-color, var(--ud-color-border)); // 输入框描边颜色-默认
+$input-border-color-focus: var(--input-border-color-focus, var(--ud-color-primary)); // 输入框描边颜色-聚焦
+$input-border-color-error: var(--input-border-color-error, var(--ud-color-danger)); // 输入框描边颜色-错误
+$input-border-color-warning: var(--input-border-color-warning, var(--ud-color-warning)); // 输入框描边颜色-警告
+
+$input-count-color: var(--input-count-color, var(--ud-color-text-2)); // 输入框字数提示文字颜色
+
+$input-font-size-small: var(--input-font-size-small, 14px); // 输入框文字字号-小
+$input-font-size-middle: var(--input-font-size-middle, 16px); // 输入框文字字号-中
+$input-font-size-large: var(--input-font-size-large, 16px); // 输入框文字字号-大
+
+$input-height-small: $height-control-small - $border-width-control * 2; // 输入框高度-小
+$input-height-middle: $height-control-middle - $border-width-control * 2; // 输入框高度-中
+$input-height-large: $height-control-large - $border-width-control * 2; // 输入框高度-大
+
+$input-border-radius: var(--input-border-radius, var(--ud-border-radius-full)); // 输入框圆角
+
+$input-padding: var(--input-padding, 0 20px); // 输入框内边距
+
+$input-prepend-padding: var(--input-prepend-padding, 0 20px); // 输入框前置内边距
+$input-append-padding: var(--input-append-padding, 0 20px); // 输入框后置内边距
+
+$input-prefix-margin: var(--input-prefix-margin, 0 10px); // 输入框前缀外边距
+$input-suffix-margin: var(--input-suffix-margin, 0 10px); // 输入框后缀外边距

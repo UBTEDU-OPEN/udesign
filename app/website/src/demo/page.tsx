@@ -104,7 +104,6 @@ const inputMenus = [
   {
     name: 'input',
     text: 'Input 输入框',
-    disabled: true,
   },
   // {
   //   name: 'inputNumber',
@@ -281,7 +280,6 @@ const feedbackMenus = [
   {
     name: 'modal',
     text: 'Modal 对话框',
-    disabled: true,
   },
   // {
   //   name: 'notification',

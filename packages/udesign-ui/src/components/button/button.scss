@@ -96,17 +96,13 @@ $module: ud-button;
     }
   }
 
-  &-icon-only {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
   // 尺寸
   &-small {
     height: $button-height-small;
     line-height: $button-height-small;
     font-size: $button-font-size-small;
     min-width: $button-min-width-small;
+    padding: $button-padding-small;
     &.#{$module}-icon-only {
       min-width: $button-height-small;
     }
@@ -116,6 +112,7 @@ $module: ud-button;
     line-height: $button-height-middle;
     font-size: $button-font-size-middle;
     min-width: $button-min-width-middle;
+    padding: $button-padding-middle;
     &.#{$module}-icon-only {
       min-width: $button-height-middle;
     }
@@ -125,6 +122,7 @@ $module: ud-button;
     line-height: $button-height-large;
     font-size: $button-font-size-large;
     min-width: $button-min-width-large;
+    padding: $button-padding-large;
     &.#{$module}-icon-only {
       min-width: $button-height-large;
     }
@@ -139,5 +137,10 @@ $module: ud-button;
   }
   &-shape-square {
     border-radius: 0;
+  }
+
+  &-icon-only {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

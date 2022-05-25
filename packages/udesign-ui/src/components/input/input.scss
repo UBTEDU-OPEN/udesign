@@ -1,0 +1,175 @@
+@import './variables.scss';
+
+$module: ud-input;
+
+.#{$module}-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  outline: none;
+  cursor: text;
+  background: $input-background;
+  color: $input-color;
+  border: $border-width-control solid $input-border-color;
+  border-radius: $input-border-radius;
+  overflow: hidden;
+
+  &-with-prepend,
+  &-with-append {
+    .#{$module} {
+      background: #fff;
+      &:focus {
+        border: $input-border-width solid $input-border-color-focus;
+      }
+    }
+  }
+  &-with-prepend {
+    .#{$module} {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  &-with-append {
+    .#{$module} {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &.#{$module}-wrapper-focused:not(.#{$module}-wrapper-with-prepend):not(.#{$module}-wrapper-with-append) {
+    background: $input-background-focus;
+    border-color: $input-border-color-focus;
+  }
+
+  &-with-prefix {
+    .#{$module} {
+      padding-left: 0;
+    }
+  }
+  &-with-suffix {
+    .#{$module} {
+      padding-right: 0;
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // // 尺寸
+  // &-small {
+  //   height: $input-wrapper-height-small;
+  //   line-height: $input-wrapper-height-small;
+  //   font-size: $input-font-size-small;
+  // }
+
+  // &-middle {
+  //   height: $input-wrapper-height-middle;
+  //   line-height: $input-wrapper-height-middle;
+  //   font-size: $input-font-size-middle;
+  // }
+
+  // &-large {
+  //   height: $input-wrapper-height-large;
+  //   line-height: $input-wrapper-height-large;
+  //   font-size: $input-font-size-large;
+  // }
+}
+
+.#{$module} {
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: $input-padding;
+  border-radius: $input-border-radius;
+
+  // &:hover {
+  //   background: $input-background-hover;
+  //   // border-color: $input-border-color-focus;
+  // }
+
+  &:focus {
+    background: $input-background-focus;
+    border-color: $input-border-color-focus;
+  }
+
+  &-prefix,
+  &-suffix {
+    display: flex;
+    align-items: center;
+    margin: $input-suffix-margin;
+  }
+
+  &-prepend {
+    padding: $input-prepend-padding;
+    background: $input-background;
+  }
+
+  &-append {
+    padding: $input-append-padding;
+    background: $input-background;
+  }
+
+  &-count {
+    color: $input-count-color;
+  }
+
+  &-clearBtn,
+  &-passwordBtn {
+    cursor: pointer;
+  }
+
+  // 尺寸
+  &-small {
+    height: $input-height-small;
+    line-height: $input-height-small;
+    font-size: $input-font-size-small;
+  }
+  &-middle {
+    height: $input-height-middle;
+    line-height: $input-height-middle;
+    font-size: $input-font-size-middle;
+  }
+  &-large {
+    height: $input-height-large;
+    line-height: $input-height-large;
+    font-size: $input-font-size-large;
+  }
+}
+
+.#{$module}-wrapper-error {
+  background: $input-background-error;
+  border-color: $input-border-color-error;
+  color: $input-color-error;
+
+  &.#{$module}-wrapper-focused:not(.#{$module}-wrapper-with-prepend):not(.#{$module}-wrapper-with-append) {
+    background: $input-background-focus;
+    border-color: $input-border-color-error;
+
+    .#{$module} {
+      border-color: transparent;
+      &:focus {
+        border-color: transparent;
+      }
+    }
+  }
+}
+.#{$module}-wrapper-warning {
+  background: $input-background-warning;
+  border-color: $input-border-color-warning;
+  color: $input-color-warning;
+
+  &.#{$module}-wrapper-focused:not(.#{$module}-wrapper-with-prepend):not(.#{$module}-wrapper-with-append) {
+    background: $input-background-focus;
+    border-color: $input-border-color-warning;
+
+    .#{$module} {
+      border-color: transparent;
+      &:focus {
+        border-color: transparent;
+      }
+    }
+  }
+}
