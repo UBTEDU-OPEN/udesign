@@ -2,11 +2,11 @@
     --bg-even: rgba(114, 132, 251, 0.50);
 
     :global {
-        .ud-grid-row:first-child>div:nth-child(1) {
-            background-color: var(--ud-color-primary);
-        }
+        // .ud-grid-row:first-child>div:nth-child(1) {
+        //     background-color: var(--ud-color-primary);
+        // }
 
-        .ud-grid-row>div:nth-child(odd) {
+        .ud-grid-row>div:not(.gutter-row):nth-child(odd) {  
             background-color: var(--bg-even);
             padding: 16px 0;
             margin-top: 5px;
@@ -14,12 +14,19 @@
             color: #fff;
         }
 
-        .ud-grid-row>div:nth-child(even) {
+        .ud-grid-row>div:not(.gutter-row):nth-child(even) {
             background-color: var(--ud-color-primary);
             padding: 16px 0;
             margin-top: 5px;
             margin-bottom: 5px;
             color: #fff;
+        }
+
+        .ud-grid-row> div {
+            min-height: 30px;
+            color: #fff;
+            text-align: center;
+            border-radius: 0;
         }
 
         .ud-grid-col {
