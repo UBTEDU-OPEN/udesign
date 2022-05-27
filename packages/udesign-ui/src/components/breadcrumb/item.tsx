@@ -1,6 +1,6 @@
-import React, { ReactNode, useRef } from "react";
-import classNames from "classnames";
-import { NativeProps } from "../../utils";
+import React, { ReactNode, useRef } from 'react';
+import classNames from 'classnames';
+import { NativeProps } from '../../utils';
 
 const prefixCls = `ud-breadcrumb`;
 
@@ -8,17 +8,9 @@ export type ItemProps = {
   separator?: ReactNode; // 设置分隔符
   href?: string;
   onClick?: React.MouseEventHandler<HTMLSpanElement>; // 点击时的回调
-
 } & NativeProps;
 
-export const Item = ({
-  separator,
-  onClick,
-  className,
-  children,
-  style,
-  ...restProps
-}: ItemProps) => {
+export const Item = ({ separator, onClick, className, children, style, ...restProps }: ItemProps) => {
   const strRef = useRef<HTMLSpanElement>(null);
 
   const cls = classNames(
@@ -26,7 +18,7 @@ export const Item = ({
     {
       [`${prefixCls}-item`]: children,
     },
-    className
+    className,
   );
 
   const conCls = classNames(
@@ -34,13 +26,13 @@ export const Item = ({
     {
       [`${prefixCls}-wrapper`]: children,
     },
-    className
+    className,
   );
 
   const iconCls = `${prefixCls}-separator`;
 
   let link;
-  if ("href" in restProps) {
+  if ('href' in restProps) {
     link = (
       <span ref={strRef} className={cls} style={style}>
         <a {...restProps}> {children}</a>
@@ -57,10 +49,10 @@ export const Item = ({
   return (
     <>
       <span className={conCls} onClick={onClick}>
-          <span className={iconCls}>{separator} </span>
+        <span className={iconCls}>{separator} </span>
         {link}
       </span>
     </>
   );
 };
-Item.displayName = "Item";
+Item.displayName = 'Item';

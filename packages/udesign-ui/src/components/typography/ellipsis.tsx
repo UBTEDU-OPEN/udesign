@@ -1,16 +1,17 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import {  Tooltip } from '../../index';
+import Tooltip from '../tooltip';
+
 const prefixCls = `ud-typography`;
 
 export type EllipsisProps = {
   rows?: number; //	最多显示的行数
-  expandable?: boolean; //是否可展开
-  suffix?: string; //自定义省略内容后缀
-  symbol?: ReactNode; //自定义展开描述文案
-  onExpand?: ()=>void; //点击展开时的回调
-  tooltip?: false | ReactNode; //省略时，展示提示信息
+  expandable?: boolean; // 是否可展开
+  suffix?: string; // 自定义省略内容后缀
+  symbol?: ReactNode; // 自定义展开描述文案
+  onExpand?: () => void; // 点击展开时的回调
+  tooltip?: false | ReactNode; // 省略时，展示提示信息
 } & NativeProps;
 
 export const Ellipsis = ({ rows = 1, expandable, suffix, className, tooltip, symbol, children, onExpand }: EllipsisProps) => {
@@ -32,7 +33,7 @@ export const Ellipsis = ({ rows = 1, expandable, suffix, className, tooltip, sym
   const onClick = () => {
     if (!expandable) return;
     setIsExpand(!isExpand);
-    return onExpand?.();
+    onExpand?.();
   };
 
   useEffect(() => {
@@ -48,12 +49,19 @@ export const Ellipsis = ({ rows = 1, expandable, suffix, className, tooltip, sym
       </span>
       {isExpand && tooltip ? (
         <span className={symbolCss} onClick={onClick}>
-          <Tooltip trigger={undefined} className={tooltipCss} placement="bottomLeft" content={tooltipText} showArrow={false}>{symbol}</Tooltip> 
+          <Tooltip trigger={undefined} className={tooltipCss} placement='bottomLeft' content={tooltipText} showArrow={false}>
+            {symbol}
+          </Tooltip>
         </span>
       ) : null}
-      { isExpand && !tooltip ? <span className={symbolCss} onClick={onClick}>{symbol}</span> : undefined}
+      {isExpand && !tooltip ? (
+        <span className={symbolCss} onClick={onClick}>
+          {symbol}
+        </span>
+      ) : undefined}
       <span className={suffixCss}>{suffix}</span>
     </>
   );
 };
+
 Ellipsis.displayName = 'Ellipsis';

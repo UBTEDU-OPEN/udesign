@@ -60,13 +60,11 @@ export async function getStaticPaths() {
   const docs = getAllDocs();
 
   return {
-    paths: docs.map((doc) => {
-      return {
-        params: {
-          slug: doc.slug, // 对应 [slug].js
-        },
-      };
-    }),
+    paths: docs.map((doc) => ({
+      params: {
+        slug: doc.slug, // 对应 [slug].js
+      },
+    })),
     fallback: false,
   };
 }

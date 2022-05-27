@@ -1,8 +1,8 @@
-import React, { useEffect, ReactNode, useState } from 'react';
+import React, { useEffect, ReactNode, useState, useRef } from 'react';
 import classNames from 'classnames';
+import { LoadingOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
 import { CommonSize } from '../../constants';
-import { LoadingOutlined } from '@ant-design/icons';
 
 const prefixCls = 'ud-spin';
 
@@ -22,17 +22,17 @@ export const Spin = (props: SpinProps) => {
 
   const [loading, setLoading] = useState(true);
 
-  let timer: NodeJS.Timeout;
+  const timerRef = useRef(0);
   useEffect(() => {
     if (delay) {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
+      window.clearTimeout(timerRef.current);
+      timerRef.current = window.setTimeout(() => {
         setLoading(spinning);
       }, delay);
     } else {
       setLoading(spinning);
     }
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timerRef.current);
   }, [spinning]);
 
   const renderSpin = () => {

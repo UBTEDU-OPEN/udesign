@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import RowContext from './rowContext';
+
 const prefixCls = `ud-grid-row`;
 
 export type RowProps = {
@@ -13,8 +14,8 @@ export type RowProps = {
 export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter, className, children, style }: RowProps) => {
   const gutterRef = useRef<HTMLDivElement>(null);
 
-  let gutterHorizontal = 0,
-    gutterVertical = 0;
+  let gutterHorizontal = 0;
+  let gutterVertical = 0;
 
   const cls = classNames(
     prefixCls,
@@ -37,15 +38,16 @@ export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter, cla
 
   useEffect(() => {
     if (gutter instanceof Array) {
-      (gutterHorizontal = gutter[0] / 2), (gutterVertical = gutter[1]);
+      gutterHorizontal = gutter[0] / 2;
+      gutterVertical = gutter[1];
 
-      gutterRef.current!.style.margin = '0px ' + -gutterHorizontal + 'px';
-      gutterRef.current!.style.rowGap = gutterVertical + 'px';
+      gutterRef.current!.style.margin = `0px ${-gutterHorizontal}px`;
+      gutterRef.current!.style.rowGap = `${gutterVertical}px`;
     } else if (typeof gutter === 'number' && gutter) {
       gutterHorizontal = gutter / 2;
-      gutterRef.current!.style.marginLeft = -gutterHorizontal + 'px';
-      gutterRef.current!.style.marginRight = -gutterHorizontal + 'px';
-      gutterRef.current!.style.rowGap = gutterVertical + 'px';
+      gutterRef.current!.style.marginLeft = `${-gutterHorizontal}px`;
+      gutterRef.current!.style.marginRight = `${-gutterHorizontal}px`;
+      gutterRef.current!.style.rowGap = `${gutterVertical}px`;
     } else if (typeof gutter === 'object') {
       if (size <= 576 && gutter.xs) {
         gutterHorizontal = gutter.xs / 2;
@@ -61,9 +63,9 @@ export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter, cla
         gutterHorizontal = gutter.xxl / 2;
       }
 
-      gutterRef.current!.style.marginLeft = -gutterHorizontal + 'px';
-      gutterRef.current!.style.marginRight = -gutterHorizontal + 'px';
-      gutterRef.current!.style.rowGap = gutterVertical + 'px';
+      gutterRef.current!.style.marginLeft = `${-gutterHorizontal}px`;
+      gutterRef.current!.style.marginRight = `${-gutterHorizontal}px`;
+      gutterRef.current!.style.rowGap = `${gutterVertical}px`;
     }
   }, [size]);
 

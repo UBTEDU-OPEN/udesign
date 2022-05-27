@@ -17,7 +17,7 @@ export type SwitchProps = {
   size?: SwitchSize; // TODO: 没有UI，暂不实现
   checkedText?: ReactNode; // 选中时的内容
   uncheckedText?: ReactNode; // 非选中时的内容
-  onChange?: SwitchChangeEventHandler;  // 变化时回调函数
+  onChange?: SwitchChangeEventHandler; // 变化时回调函数
   onClick?: SwitchClickEventHandler; // 点击时回调函数
 } & NativeProps;
 

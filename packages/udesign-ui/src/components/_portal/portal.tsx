@@ -43,9 +43,9 @@ export const Portal = ({ getContainer, className, style, children }: PortalProps
 
   const addStyle = (style = {}) => {
     // https://stackoverflow.com/questions/37655393/how-to-set-multiple-css-style-properties-in-typescript-for-an-element
-    for (const key of Object.keys(style)) {
+    Object.keys(style).forEach((key) => {
       (getRootElem().style as any)[key] = (style as any)[key]; // 如果使用 setProperty，类似 fontSize 的样式会失败
-    }
+    });
   };
 
   const addCls = () => {

@@ -48,6 +48,8 @@ const getTranslateStyle = (placement: Placement): React.CSSProperties => {
     case 'rightBottom': // 右下角
       style = 'translateY(-100%)';
       break;
+    default:
+      break;
   }
   return {
     transform: style,
@@ -66,7 +68,7 @@ export type TooltipProps = {
   spacing?: number; //	弹出层与 children 元素的距离，单位 px
   defaultVisible?: boolean; //	默认是否显隐
   visible?: boolean; //	当trigger为custom时，通过该属性控制是否展示弹出层
-  clickTriggerToHide?: boolean; //点击trigger时关闭
+  clickTriggerToHide?: boolean; // 点击trigger时关闭
   zIndex?: number; //	弹层层级
   onVisibleChange?: (visible: boolean) => void; //	显示隐藏的回调
   onClickOutSide?: (e: Event) => void; //	当弹出层处于展示状态，点击非Children、非浮层内部区域时的回调（仅trigger为custom、click时有效）

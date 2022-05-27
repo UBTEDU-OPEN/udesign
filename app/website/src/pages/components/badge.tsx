@@ -1,8 +1,9 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { Avatar, Badge, CheckIcon, SettingIcon } from '@ubt/udesign-ui-alpha';
 import { ArrowDownOutlined } from '@ant-design/icons';
-import { Space  } from '@ubt/udesign-ui';
+import { Space } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
+
 export default function BadgePage() {
   return (
     <>

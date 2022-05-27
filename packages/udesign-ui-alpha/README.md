@@ -50,9 +50,9 @@ css 变量提供了更加动态化的样式调整能力，也让组件的样式�
 统一使用 name 来作为标志符。（TODO: 使用 key 代替）
 优先使用 children，来减少 Props 数量。（比如 Menu 的文案可使用 children，不需要增加一个 label 属性）
 
-## 风格
+## 风格检查
 
-已经在项目根目录配置了 `prettierrc.js`。
+项目已经配置了 `lint` 脚本。
 
 ## 参考
 

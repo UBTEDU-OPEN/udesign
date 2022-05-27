@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Demo } from 'demo';
 import { SettingIcon } from '@ubt/udesign-ui-alpha';
 import { Button, Space } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
 
 export default function ButtonPage() {
   const [loading, setLoading] = useState<boolean>(true);

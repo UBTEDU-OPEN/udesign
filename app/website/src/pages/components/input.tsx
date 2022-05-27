@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Demo } from 'demo';
 import { CloseCircleOutlined, InfoCircleOutlined, SearchOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Space, Input } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
 
 export default function InputPage() {
   const [value, setValue] = useState('controlInput');

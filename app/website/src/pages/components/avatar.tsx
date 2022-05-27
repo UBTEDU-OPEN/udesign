@@ -1,7 +1,8 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { Avatar, Badge, SettingIcon, UserIcon } from '@ubt/udesign-ui-alpha';
 import { Space } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
+
 export default function AvatarPage() {
   return (
     <>

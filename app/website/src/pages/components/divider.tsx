@@ -1,6 +1,6 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { Divider, Typography } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
 
 export default function DividerPage() {
   return (

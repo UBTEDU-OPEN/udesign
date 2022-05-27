@@ -13,14 +13,12 @@ export type DropdownProps = {
   getContainer?: () => HTMLElement; // 渲染的父节点，默认 document.body
 } & NativeProps;
 
-export const Dropdown = ({ showArrow = false, placement = 'bottomLeft', children, className, ...restProps }: DropdownProps) => {
-  return (
-    <>
-      <Tooltip prefixCls={prefixCls} showArrow={showArrow} placement={placement} {...restProps}>
-        {children}
-      </Tooltip>
-    </>
-  );
-};
+export const Dropdown = ({ showArrow = false, placement = 'bottomLeft', children, className, ...restProps }: DropdownProps) => (
+  <>
+    <Tooltip prefixCls={prefixCls} showArrow={showArrow} placement={placement} {...restProps}>
+      {children}
+    </Tooltip>
+  </>
+);
 
 Dropdown.displayName = 'Dropdown';

@@ -1,7 +1,7 @@
 import { HomeFilled, UnorderedListOutlined } from '@ant-design/icons';
 import React from 'react';
-import { Demo } from 'demo';
 import { Badge, Tabs, UserIcon } from '@ubt/udesign-ui-alpha';
+import { Demo } from '../../demo';
 
 export default function TabsPage() {
   return (

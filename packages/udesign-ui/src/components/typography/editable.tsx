@@ -6,14 +6,14 @@ import Tooltip from '../tooltip';
 
 const prefixCls = `ud-typography-editable`;
 export type EditableProps = {
-  icon?: ReactNode; //自定义编辑图标
+  icon?: ReactNode; // 自定义编辑图标
   tooltip?: boolean | ReactNode;
-  maxLength?: number; //编辑中文本域最大长度
-  autoSize?: { minRows?: number; maxRows?: number }; //自动 resize 文本域
-  onStart?: ()=> void; //进入编辑中状态时触发
-  onEnd?: ()=> void; //按 ENTER 结束编辑状态时触发
-  onCancel?: ()=> void; //按 ESC 退出编辑状态时触发
-  onChange?: ()=> void; //文本域编辑时触发
+  maxLength?: number; // 编辑中文本域最大长度
+  autoSize?: { minRows?: number; maxRows?: number }; // 自动 resize 文本域
+  onStart?: () => void; // 进入编辑中状态时触发
+  onEnd?: () => void; // 按 ENTER 结束编辑状态时触发
+  onCancel?: () => void; // 按 ESC 退出编辑状态时触发
+  onChange?: () => void; // 文本域编辑时触发
 } & NativeProps;
 
 export const Editable = ({ icon = <EditOutlined />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className }: EditableProps) => {
@@ -66,8 +66,8 @@ export const Editable = ({ icon = <EditOutlined />, tooltip = '编辑', maxLengt
   };
 
   const editChange = (event: ChangeEvent) => {
-    textArea.current!.style.height = (autoSize?.minRows ? autoSize.minRows : 1) * 34 + 'px';
-    textArea.current!.style.height = event.target.scrollHeight + 'px';
+    textArea.current!.style.height = `${(autoSize?.minRows ? autoSize.minRows : 1) * 34}px`;
+    textArea.current!.style.height = `${event.target.scrollHeight}px`;
   };
 
   const onKeyHandler = (e: KeyboardEvent) => {

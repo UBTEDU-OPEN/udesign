@@ -6,9 +6,7 @@
     "dev": "next -p 2000",
     "build": "next build",
     "export": "next build && next export",
-    "start": "next start -p 2000",
-    "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --cache --fix",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --cache"
+    "start": "next start -p 2000"
   },
   "dependencies": {
     "@ant-design/icons": "4.6.4",

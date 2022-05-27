@@ -1,7 +1,7 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { EditOutlined } from '@ant-design/icons';
 import { Typography, Space } from '@ubt/udesign-ui';
+import { Demo } from '../../../demo';
 import styles from './index.module.scss';
 
 export default function TypographyPage() {

@@ -166,7 +166,7 @@ export const Modal = (props: ModalProps) => {
   const { centered = true, visible, zIndex = 1000, style } = props;
   const cls = classNames({ [`${prefixCls}-wrap`]: true, [`${prefixCls}-wrap-centered`]: centered });
 
-  const mergedStyle = {
+  const mergedStyle: React.CSSProperties = {
     ...style,
   };
   if (zIndex) {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { Tag } from '@ubt/udesign-ui-alpha';
 import { Space } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
 
 export default function TagPage() {
   return (

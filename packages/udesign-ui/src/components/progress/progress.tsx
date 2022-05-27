@@ -37,7 +37,7 @@ function calcPercent(percent: number): number {
 export const Progress = (props: ProgressProps) => {
   const { percent = 0, showInfo = true, size = 'middle', type = 'line', stroke = 'var(--ud-color-primary)', strokeLinecap = 'round', orbitStroke = 'var(--ud-color-fill-0)', format = (text: number): string => `${text}%`, className, style } = props;
 
-  if (isNaN(percent)) {
+  if (Number.isNaN(percent)) {
     throw new Error('[uDesign Progress]:percent can not be NaN');
   }
 

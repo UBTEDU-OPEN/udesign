@@ -1,6 +1,6 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { Pagination } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
 
 export default function PaginationPage() {
   return (

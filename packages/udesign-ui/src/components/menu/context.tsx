@@ -1,5 +1,7 @@
 import { createContext } from 'react';
-import { MenuMode } from './menu';
+import { Direction } from '../../constants';
+
+export type MenuMode = Direction;
 
 export type MenuContextProps = {
   mode?: MenuMode;

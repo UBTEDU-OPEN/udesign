@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Demo } from 'demo';
 import { Switch } from '@ubt/udesign-ui-alpha';
 import { Button, Space } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
 
 export default function SwitchPage() {
   const [checked, setChecked] = useState(false);

@@ -7,14 +7,14 @@ import Tooltip from '../tooltip';
 const prefixCls = `ud-typography`;
 
 export type CopyableProps = {
-  tooltip?: ReactNode; //自定义提示文案，为 false 时隐藏文案
-  icon?: [ReactNode, ReactNode]; //[复制图标,复制成功图标]
-  text?: string; //拷贝到剪切板里的文本
-  onCopy?: ()=> void; //拷贝成功的回调函数
+  tooltip?: ReactNode; // 自定义提示文案，为 false 时隐藏文案
+  icon?: [ReactNode, ReactNode]; // [复制图标,复制成功图标]
+  text?: string; // 拷贝到剪切板里的文本
+  onCopy?: () => void; // 拷贝成功的回调函数
 } & NativeProps;
 
 export const Copyable = ({ tooltip, className, icon = [<CopyOutlined key='copy-icon' />, <CheckOutlined key='copied-icon' />], text, onCopy, children }: CopyableProps) => {
-  const [copyIcon, setCopyIcon] = useState(icon[0] );
+  const [copyIcon, setCopyIcon] = useState(icon[0]);
   const [stateTooltip, setStateTooltip] = useState(tooltip);
   const [isShow, setIsShow] = useState(false);
 
@@ -39,7 +39,7 @@ export const Copyable = ({ tooltip, className, icon = [<CopyOutlined key='copy-i
     textareaEl.select();
 
     if (document.execCommand('copy')) {
-      setCopyIcon(icon[1] );
+      setCopyIcon(icon[1]);
       setStateTooltip('复制成功!');
       setIsShow(true);
       onCopy?.();

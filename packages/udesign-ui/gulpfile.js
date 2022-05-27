@@ -4,9 +4,9 @@ const babel = require('gulp-babel');
 const ts = require('gulp-typescript');
 const del = require('del');
 const through = require('through2');
-const tsconfig = require('./tsconfig.json');
 const webpackStream = require('webpack-stream');
 const webpack = require('webpack');
+const tsconfig = require('./tsconfig.json');
 
 function clean() {
   return del('./dist/**');
@@ -87,7 +87,14 @@ function generatePackageJSON() {
         delete parsed.publishConfig;
         delete parsed.files;
         delete parsed.private; // 为了避免主仓库被错误发布，添加了private:true，这里删除。
-        const stringified = JSON.stringify(parsed, null, 2);
+        const overrideConfig = {
+          main: './cjs/index.js',
+          module: './es/index.js',
+          typings: './es/index.d.ts',
+          unpkg: './umd/udesign.js',
+        };
+        const newParsed = { ...parsed, ...overrideConfig };
+        const stringified = JSON.stringify(newParsed, null, 2);
         file.contents = Buffer.from(stringified);
         cb(null, file);
       }),

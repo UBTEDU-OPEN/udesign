@@ -1,6 +1,6 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { Collapse } from '@ubt/udesign-ui-alpha';
+import { Demo } from '../../demo';
 
 export default function CollapsePage() {
   return (

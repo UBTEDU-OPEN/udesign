@@ -10,9 +10,7 @@ export interface GeneratorProps {
 
 function generator({ prefixCls, tagName, displayName }: GeneratorProps) {
   return (BasicComponent: any) => {
-    const Adapter = (props: BasicProps) => {
-      return <BasicComponent prefixCls={prefixCls} tagName={tagName} {...props} />;
-    };
+    const Adapter = (props: BasicProps) => <BasicComponent prefixCls={prefixCls} tagName={tagName} {...props} />;
     Adapter.displayName = displayName;
     return Adapter;
   };

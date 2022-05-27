@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Demo } from 'demo';
 import { Progress, Button, Space } from '@ubt/udesign-ui';
 import { Toast } from '@ubt/udesign-ui-alpha';
 import { SearchOutlined } from '@ant-design/icons';
+import { Demo } from '../../demo';
 
 export default function ProgressPage() {
   const [percent, setPercent] = useState(0);

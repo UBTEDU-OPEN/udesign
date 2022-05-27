@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Demo } from 'demo';
 import { Steps, Button } from '@ubt/udesign-ui';
 import { Toast } from '@ubt/udesign-ui-alpha';
 import { SearchOutlined } from '@ant-design/icons';
+import { Demo } from '../../demo';
 
 const steps = [
   {

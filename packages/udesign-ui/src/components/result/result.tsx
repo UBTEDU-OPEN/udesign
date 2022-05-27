@@ -23,11 +23,11 @@ export const Result = ({ icon, status = 'info', title, subtitle, extra, classNam
     if (icon) return icon;
 
     if (status === 'success') return <SuccessIcon />;
-    else if (status === 'warning') return <WarningIcon />;
-    else if (status === '403') return <Icon403 />;
-    else if (status === '404') return <Icon404 />;
-    else if (status === '500') return <Icon500 />;
-    else return <InfoIcon />;
+    if (status === 'warning') return <WarningIcon />;
+    if (status === '403') return <Icon403 />;
+    if (status === '404') return <Icon404 />;
+    if (status === '500') return <Icon500 />;
+    return <InfoIcon />;
   };
 
   const cls = classNames(prefixCls, className);

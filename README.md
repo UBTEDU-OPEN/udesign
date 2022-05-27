@@ -1,8 +1,16 @@
 # README
 
+## 开发
+
+```
+yarn
+cd .\app\website
+yarn dev
+```
+
 ## 目录结构
 
-使用 monorepo
+使用 lerna 进行 monorepo 的管理。
 
 ```
 ├── app

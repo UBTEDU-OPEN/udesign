@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
+import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
 import { CommonSize } from '../../constants';
-import classNames from 'classnames';
 import { ClearIcon } from './icon/clear';
 import { PasswordOnIcon } from './icon/password-on';
 import { PasswordOffIcon } from './icon/password-off';

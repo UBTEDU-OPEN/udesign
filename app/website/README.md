@@ -1,6 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+演示网站使用 next.js 搭建。
 
-## 开发调试
+## 本地开发
 
 修改会热更新
 

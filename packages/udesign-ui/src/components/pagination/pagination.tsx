@@ -4,9 +4,7 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { NativeProps, usePropsValue } from '../../utils';
 import { numbers, prefixCls } from './constants';
 
-const _getTotalPageNumber = (total: number, pageSize: number) => {
-  return Math.ceil(total / pageSize);
-};
+const _getTotalPageNumber = (total: number, pageSize: number) => Math.ceil(total / pageSize);
 
 export type PageRenderText = number | '•••';
 export type PageList = PageRenderText[];
@@ -110,11 +108,13 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
         case targetPageIndex === 4:
           pageList = [1, 2, 3, 4, 5, '•••', totalPageNum];
           break;
-        case 4 < targetPageIndex && targetPageIndex < totalPageNum - 3:
+        case targetPageIndex > 4 && targetPageIndex < totalPageNum - 3:
+          // eslint-disable-next-line
           const middle = Array.from({ length: 3 }, (v, i) => targetPageIndex + (i - 1));
           pageList = ([1] as PageList).concat('•••', middle, '•••', totalPageNum);
           break;
         case targetPageIndex - 3 <= targetPageIndex && targetPageIndex <= totalPageNum:
+          // eslint-disable-next-line
           const right = Array.from({ length: 5 }, (v, i) => totalPageNum - (4 - i));
           pageList = [1, '•••' as const].concat(right);
           break;

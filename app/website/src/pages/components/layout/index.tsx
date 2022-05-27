@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import styles from './index.module.scss';
-import { Demo } from '../../../demo';
 import { Layout, Typography, Breadcrumb, Menu } from '@ubt/udesign-ui';
 import { ArrowRightIcon } from '@ubt/udesign-ui-alpha';
+import styles from './index.module.scss';
+import { Demo } from '../../../demo';
 
 const { Header, Footer, Content, Sider } = Layout;
 

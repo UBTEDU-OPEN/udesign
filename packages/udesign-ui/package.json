@@ -10,10 +10,7 @@
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --cache --fix",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --cache"
   },
-  "main": "./cjs/index.js",
-  "module": "./es/index.js",
-  "typings": "./es/index.d.ts",
-  "unpkg": "./umd/udesign.js",
+  "main": "src/index.ts",
   "files": [
     "./dist"
   ],
@@ -34,7 +31,8 @@
     "lodash": "^4.17.21"
   },
   "peerDependencies": {
-    "react": "^17.0.2"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

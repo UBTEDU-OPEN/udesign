@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Demo } from 'demo';
 import { Space, Button, Modal } from '@ubt/udesign-ui';
 import { Input } from '@ubt/udesign-ui-alpha';
 import { CommonSize } from '@ubt/udesign-constants';
+import { Demo } from '../../demo';
 
 export default function ModalPage() {
   const [size, setSize] = useState<CommonSize>('small');

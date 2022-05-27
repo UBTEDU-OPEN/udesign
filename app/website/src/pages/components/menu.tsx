@@ -1,6 +1,6 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { Menu } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
 
 export default function MenuPage() {
   const Submenu = (

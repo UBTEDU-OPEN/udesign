@@ -2,6 +2,8 @@ import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
+const walkSync = require('walk-sync');
+
 const docsDirectory = join(process.cwd(), 'src/docs');
 
 // export function getDirectories(postsDirectory) {
@@ -39,30 +41,7 @@ export function getDocByPath(file) {
 
 // https://stackoverflow.com/questions/25460574/find-files-by-extension-html-under-a-folder-in-nodejs/62695186
 export function getAllDocs() {
-  const walkSync = require('walk-sync');
   const files = walkSync(docsDirectory, { globs: ['**/*.md'] }); // [ 'css-variables.md', 'react/introduce.md', 'spec/introduce.md', 'theme.md' ]
   const docs = files.map((file) => getDocByPath(file));
   return docs;
-}
-
-export function findFilesInDir(startPath, filter) {
-  var results = [];
-
-  if (!fs.existsSync(startPath)) {
-    console.log('no dir ', startPath);
-    return;
-  }
-
-  var files = fs.readdirSync(startPath);
-  for (var i = 0; i < files.length; i++) {
-    var filename = join(startPath, files[i]);
-    var stat = fs.lstatSync(filename);
-    if (stat.isDirectory()) {
-      results = results.concat(findFilesInDir(filename, filter)); //recurse
-    } else if (filename.indexOf(filter) >= 0) {
-      console.log('-- found: ', filename);
-      results.push(filename);
-    }
-  }
-  return results;
 }

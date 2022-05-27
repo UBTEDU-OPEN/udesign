@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useContext, useState } from 'react';
 import classNames from 'classnames';
 import RowContext from '../row/rowContext';
 import { NativeProps } from '../../utils';
+
 const prefixCls = `ud-grid-col`;
 
 export interface ColSize {
@@ -83,12 +84,12 @@ export const Col = (props: ColProps) => {
   useEffect(() => {
     if (gutter instanceof Array) {
       setStyleCss({
-        paddingLeft: gutter[0] / 2 + 'px',
-        paddingRight: gutter[0] / 2 + 'px',
+        paddingLeft: `${gutter[0] / 2}px`,
+        paddingRight: `${gutter[0] / 2}px`,
       });
     } else if (typeof gutter === 'number' && gutter) {
       setStyleCss({
-        padding: '0px ' + gutter / 2 + 'px',
+        padding: `0px ${gutter / 2}px`,
         margin: '0px',
       });
     } else if (typeof gutter === 'object') {
@@ -107,7 +108,7 @@ export const Col = (props: ColProps) => {
         gutterHorizontal = gutter.xxl / 2;
       }
       setStyleCss({
-        padding: '0px ' + gutterHorizontal + 'px',
+        padding: `0px ${gutterHorizontal}px`,
         margin: '0px',
       });
     }

@@ -1,6 +1,5 @@
-import React from "react";
-export const Typography = () => {
-  return <></>;
-};
+import React from 'react';
 
-Typography.displayName = "Typography";
+export const Typography = () => <></>;
+
+Typography.displayName = 'Typography';

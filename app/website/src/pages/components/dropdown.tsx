@@ -1,7 +1,7 @@
 import React from 'react';
-import { Demo } from 'demo';
 import { Button, Dropdown, Divider, Menu, Space } from '@ubt/udesign-ui';
 import { Input } from '@ubt/udesign-ui-alpha';
+import { Demo } from '../../demo';
 
 export default function DropdownPage() {
   const menu = (
