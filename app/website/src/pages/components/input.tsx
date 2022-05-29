@@ -4,7 +4,7 @@ import { Button, Space, Input } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function InputPage() {
-  const [value, setValue] = useState('controlInput');
+  const [value, setValue] = useState('controlled');
   return (
     <>
       <Demo.Page title='Input 输入框' description='通过键盘输入内容。'>
@@ -60,13 +60,13 @@ export default function InputPage() {
         <Demo.Block title='密码框' description='密码输入框，支持加密字符。'>
           <Input type='password' value='Basic usage' />
         </Demo.Block>
-        <Demo.Block title='限定字数' description='通过 maxLength 属性限定总输入字数，showCount 来显示可输入字数提示'>
+        <Demo.Block title='字数提示' description='通过 maxLength 属性限定总输入字数，showCount 来显示可输入字数提示'>
           <Input placeholder='请输入名称' maxLength={40} showCount />
         </Demo.Block>
-        <Demo.Block title='带移除图标' description='通过 showClear 属性设置移除图标，点击图标删除所有内容'>
+        <Demo.Block title='带删除图标' description='通过 showClear 属性设置移除图标，点击图标删除所有内容'>
           <Input placeholder='input with clear icon' showClear />
         </Demo.Block>
-        <Demo.Block title='自定义状态' description='使用 status 为 Input 添加状态，可选 error 或者 warning。'>
+        <Demo.Block title='自定义状态' description='使用 status 为输入框添加状态，可选 error 或者 warning。'>
           <Space direction='vertical'>
             <Input status='error' placeholder='Error' />
             <Input status='warning' placeholder='Warning' />
@@ -74,7 +74,7 @@ export default function InputPage() {
             <Input status='warning' suffix={<InfoCircleOutlined />} placeholder='Warning with suffix' />
           </Space>
         </Demo.Block>
-        <Demo.Block title='受控组件' description='Input 值完全取决于传入的 value 值，配合 onChange 回调函数使用'>
+        <Demo.Block title='受控组件' description='当传入 value 时，输入框将变成受控组件，必须配合 onChange 回调函数使用。如果不希望使用受控组件，请使用 defaultValue。'>
           <Input
             value={value}
             onChange={(value) => {

@@ -1,9 +1,5 @@
 @import '../../global/variables.scss';
 
-// $input-wrapper-height-small: $height-control-small;
-// $input-wrapper-height-middle: $height-control-middle;
-// $input-wrapper-height-large: $height-control-large;
-
 $input-background: var(--input-background, var(--ud-color-fill-0)); // 输入框背景色-默认
 $input-background-hover: var(--input-background-hover, transparent); // 输入框背景色-悬浮
 $input-background-focus: var(--input-background-focus, #fff); // 输入框背景色-聚焦
@@ -39,3 +35,8 @@ $input-append-padding: var(--input-append-padding, 0 20px); // 输入框后置�
 
 $input-prefix-margin: var(--input-prefix-margin, 0 10px); // 输入框前缀外边距
 $input-suffix-margin: var(--input-suffix-margin, 0 10px); // 输入框后缀外边距
+
+// 多行输入框
+$textarea-padding: var(--textarea-padding, 13px 20px); // 输入框内边距
+
+$textarea-border-radius: var(--textarea-border-radius, 20px); // 多行输入框圆角
