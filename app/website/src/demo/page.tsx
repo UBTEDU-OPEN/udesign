@@ -242,7 +242,6 @@ const showMenus = [
   {
     name: 'tag',
     text: 'Tag 标签',
-    disabled: true,
   },
   // {
   //   name: 'timeline',

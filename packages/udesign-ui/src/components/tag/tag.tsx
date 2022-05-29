@@ -1,44 +1,94 @@
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useState, ReactNode } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { CommonType, CommonSize, CommonShape } from '../../constants';
+import { CommonSize } from '../../constants';
 
 const prefixCls = `ud-tag`;
+const PresetColors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'];
+const PresetStatusColors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'];
+const PresetColorRegex = new RegExp(`^(${PresetColors.join('|')})(-inverse)?$`);
+const PresetStatusColorRegex = new RegExp(`^(${PresetStatusColors.join('|')})(-inverse)?$`);
 
-export type TagSize = CommonSize;
-export type TagType = CommonType;
-export type TagShape = CommonShape;
+type TagSize = CommonSize;
 
 export type TagProps = {
-  size?: TagSize; // 设置大小
-  shape?: TagShape; // 形状
-  type?: TagType; // 样式
-  color?: string; // 自定义标签颜色
-  textColor?: string; // 自定义文本颜色
-  closeable?: boolean; // 是否为可关闭标签
+  closeable?: boolean; // 标签是否可以关闭（点击默认关闭）
+  closeIcon?: ReactNode; //	自定义关闭按钮
+  color?: string; // 标签颜色
+  textColor?: string; // 标签文本颜色
+  size?: TagSize; // 标签大小
+  visible?: boolean; // 是否显示标签
   onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void; // 单击标签时的回调函数
   onClose?: (value: ReactNode, event: React.MouseEvent<HTMLElement>) => void; // 关闭标签时的回调函数
 } & NativeProps;
 
-export const Tag = (props: TagProps) => {
-  const { type = 'default', size = 'middle', shape = 'default', closeable, color, textColor, style, onClick, onClose, className, children } = props;
+const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = ({ size = 'middle', color, textColor, style, onClick, onClose, className, children, ...props }, ref) => {
   const [visible, setVisible] = useState(true);
 
+  React.useEffect(() => {
+    if ('visible' in props) {
+      setVisible(!!props.visible);
+    }
+  }, [props.visible]);
+
+  const isPresetColor = (): boolean => {
+    if (!color) {
+      return false;
+    }
+    return PresetColorRegex.test(color) || PresetStatusColorRegex.test(color);
+  };
+
+  const handleCloseClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+
+    onClose?.(children, e);
+
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/Event/defaultPrevented
+    if (e.defaultPrevented) {
+      return;
+    }
+
+    if (!('visible' in props)) {
+      setVisible(false);
+    }
+  };
+
+  const renderCloseIcon = () => {
+    const { closeable, closeIcon } = props;
+    return closeable ? (
+      <span className={`${prefixCls}-close-icon`} onClick={handleCloseClick}>
+        {closeIcon || `×`}
+      </span>
+    ) : null;
+  };
+
+  const cls = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-${color}`]: isPresetColor(),
+      [`${prefixCls}-hidden`]: !visible,
+      [`${prefixCls}-${size}`]: size,
+    },
+    className,
+  );
+
   const getTagStyle = () => {
-    let stl = {};
+    if (isPresetColor()) return {};
+
+    let style: React.CSSProperties = {};
     if (color) {
-      stl = {
+      style = {
         background: color,
-        ...stl,
+        ...style,
       };
     }
     if (textColor) {
-      stl = {
+      style = {
         color: textColor,
-        ...stl,
+        ...style,
       };
     }
-    return stl;
+    return style;
   };
 
   const tagStyle = {
@@ -46,31 +96,14 @@ export const Tag = (props: TagProps) => {
     ...style,
   };
 
-  const handleClose = (e: React.MouseEvent<HTMLElement>) => {
-    setVisible(false);
-    onClose?.(children, e);
-  };
-
-  const getTypeCls = (type: TagType) => `${prefixCls}-${type}`;
-  const getSizeCls = (size: TagSize) => `${prefixCls}-${size}`;
-  const getShapeCls = (shape: TagShape) => `${prefixCls}-${shape}`;
-
-  const cls = classNames(prefixCls, getTypeCls(type), getSizeCls(size), getShapeCls(shape), className);
-
   return (
-    <>
-      {visible ? (
-        <span className={cls} onClick={onClick} style={tagStyle}>
-          {children}
-          {closeable ? (
-            <span className={`${prefixCls}-close`} onClick={handleClose}>
-              ×
-            </span>
-          ) : null}
-        </span>
-      ) : null}
-    </>
+    <span className={cls} onClick={onClick} style={tagStyle} ref={ref}>
+      {children}
+      {renderCloseIcon()}
+    </span>
   );
 };
+
+export const Tag = React.forwardRef<HTMLSpanElement, TagProps>(InternalTag);
 
 Tag.displayName = 'Tag';

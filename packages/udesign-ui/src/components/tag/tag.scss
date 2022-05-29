@@ -1,60 +1,57 @@
+@import './variables.scss';
+
 $module: ud-tag;
 
-$height-tag_small: 20px; // 小尺寸标签高度
-$height-tag_large: 24px; // 大尺寸标签高度
-$radius-tag: 2px; // 标签圆角大小
-
 .#{$module} {
+  background: $tag-background-default;
+  color: $tag-color-default;
+  border: 1px solid $tag-background-default;
+  border-radius: $tag-border-radius;
+
   box-sizing: border-box;
-  display: inline-block;
-  border-radius: $radius-tag;
-  background-color: rgba(#5e69e9, 0.1);
-  color: var(--ud-color-text-0);
   position: relative;
   user-select: none;
   overflow: hidden;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
 
   // size
-  &-large {
-    font-size: 16px;
-    padding: 6px 10px;
-  }
-  &-middle,
   &-small {
-    font-size: 14px;
-    padding: 2px 6px;
+    font-size: $tag-font-size-small;
+    height: $tag-height-small;
+    line-height: $tag-height-small;
+    padding: $tag-padding-small;
+  }
+  &-middle {
+    font-size: $tag-font-size-middle;
+    height: $tag-height-middle;
+    line-height: $tag-height-middle;
+    padding: $tag-padding-middle;
+  }
+  &-large {
+    font-size: $tag-font-size-large;
+    height: $tag-height-large;
+    line-height: $tag-height-large;
+    padding: $tag-padding-large;
   }
 
-  // shape
-  &-round {
-    border-radius: 9999px;
-  }
-  &-square {
-    border-radius: 0;
-  }
-
-  // type
-  &-primary {
-    background-color: var(--ud-color-primary);
-    color: white;
-  }
-  &-success {
-    background-color: var(--ud-color-success);
-    color: white;
-  }
-  &-warning {
-    background-color: var(--ud-color-warning);
-    color: white;
-  }
-  &-danger {
-    background-color: var(--ud-color-danger);
-    color: white;
+  // color
+  @each $color in red, orange, yellow, green, cyan, blue, purple {
+    &-#{$color} {
+      background: rgba(var(--ud-#{$color}-1), 1);
+      border-color: rgba(var(--ud-#{$color}-2), 1);
+      color: rgba(var(--ud-#{$color}-6), 1);
+    }
   }
 
-  .#{$module}-close {
-    margin-left: 5px;
-    cursor: pointer;
+  .#{$module}-close-icon {
+    margin: $tag-close-icon-margin;
     vertical-align: middle;
+    cursor: pointer;
+  }
+
+  &-hidden {
+    display: none;
   }
 }

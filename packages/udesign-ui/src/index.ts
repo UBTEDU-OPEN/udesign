@@ -17,5 +17,6 @@ export { default as Row } from './components/row';
 export { default as Space } from './components/space';
 export { default as Steps } from './components/steps';
 export { default as Spin } from './components/spin';
+export { default as Tag } from './components/tag';
 export { default as Tooltip } from './components/tooltip';
 export { default as Typography } from './components/typography';

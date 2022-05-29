@@ -59,18 +59,18 @@
   // --ud-color-fill-0: rgba(var(--ud-gray-8), 0.05); // 填充色 - 默认态
   // --ud-color-fill-1: rgba(var(--ud-gray-8), 0.09); // 填充色 - 悬浮态
   // --ud-color-fill-2: rgba(var(--ud-gray-8), 0.13); // 填充色 - 激活态
-  --ud-color-fill-0: rgba(var(--ud-purple-1), 1); // 填充色 - 默认态
-  --ud-color-fill-1: rgba(var(--ud-purple-2), 1); // 填充色 - 悬浮态
-  --ud-color-fill-2: rgba(var(--ud-purple-3), 1); // 填充色 - 激活态
+  --ud-color-fill-0: rgba(var(--ud-purple-2), 1); // 填充色 - 默认态
+  --ud-color-fill-1: rgba(var(--ud-purple-3), 1); // 填充色 - 悬浮态
+  --ud-color-fill-2: rgba(var(--ud-purple-4), 1); // 填充色 - 激活态
   --ud-color-bg-0: rgba(var(--ud-white), 1); // 背景色 - 最下层（底部页面）
   --ud-color-bg-1: rgba(var(--ud-white), 1); // 背景色 - 次下层（页面中需要提升的内容）
   --ud-color-bg-2: rgba(var(--ud-white), 1); // 背景色 - 中间层（模态等容器）
   --ud-color-bg-3: rgba(var(--ud-white), 1); // 背景色 - 次上层（通知，Toast等）
   --ud-color-bg-4: rgba(var(--ud-white), 1); // 背景色 - 最上层（特殊）
-  --ud-color-text-0: rgba(var(--ud-gray-11), 1); // 文本/图标颜色 - 最主要
-  --ud-color-text-1: rgba(var(--ud-gray-11), 0.8); // 文本/图标颜色 - 稍次要
-  --ud-color-text-2: rgba(var(--ud-gray-11), 0.6); // 文本/图标颜色 - 次要
-  --ud-color-text-3: rgba(var(--ud-gray-11), 0.35); // 文本/图标颜色 - 最次要
+  --ud-color-text-0: rgba(var(--ud-gray-12), 1); // 文本/图标颜色 - 最主要
+  --ud-color-text-1: rgba(var(--ud-gray-12), 0.8); // 文本/图标颜色 - 稍次要
+  --ud-color-text-2: rgba(var(--ud-gray-12), 0.6); // 文本/图标颜色 - 次要
+  --ud-color-text-3: rgba(var(--ud-gray-12), 0.35); // 文本/图标颜色 - 最次要
 
   --ud-overlay-bg: rgba(22, 22, 26, 0.6); // 蒙层背景色
 
