@@ -3,8 +3,9 @@ import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { CopyableConfig, EllipsisConfig, EditableConfig } from './base';
 import { Text, TextProps } from './text';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-typography`;
+const prefixCls = `${BASE_CLASS_PREFIX}-typography`;
 
 export type ParagraphProps = {
   copyable?: CopyableConfig | boolean; // 是否可拷贝，为对象时可进行各种自定义

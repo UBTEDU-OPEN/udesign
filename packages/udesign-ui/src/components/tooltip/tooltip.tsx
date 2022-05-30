@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { get } from 'lodash';
 import { Arrow } from './arrow';
 import { mergeEvents, NativeProps, usePropsValue } from '../../utils';
-import { Placement, Trigger } from '../../constants';
+import { BASE_CLASS_PREFIX, Placement, Trigger } from '../../constants';
 import Portal from '../_portal';
 import { ArrowVertical } from './arrow-vertical';
 
-const prefix = `ud-tooltip`;
+const prefix = `${BASE_CLASS_PREFIX}-tooltip`;
 
 const getTranslateStyle = (placement: Placement): React.CSSProperties => {
   let style;
@@ -380,7 +380,7 @@ export const Tooltip = ({
       {newChild}
       {visible ? (
         <Portal getContainer={getContainer}>
-          <div className='ud-portal-inner' style={{ ...coords, ...getTranslateStyle(placement) }} ref={popupRef}>
+          <div className={`${BASE_CLASS_PREFIX}-portal-inner`} style={{ ...coords, ...getTranslateStyle(placement) }} ref={popupRef}>
             <div className={cls} style={style} {...restProps} {...portalEventSet}>
               {content}
               {renderArrow()}

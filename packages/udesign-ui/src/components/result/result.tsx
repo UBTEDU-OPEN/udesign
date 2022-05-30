@@ -7,8 +7,9 @@ import WarningIcon from './warning';
 import Icon403 from './403';
 import Icon404 from './404';
 import Icon500 from './500';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = 'ud-result';
+const prefixCls = `${BASE_CLASS_PREFIX}-result`;
 
 export type ResultProps = {
   icon?: ReactNode; // 自定义 icon

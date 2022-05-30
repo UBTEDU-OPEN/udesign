@@ -3,8 +3,9 @@ import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
 import { ClearIcon } from './icon/clear';
 import './textarea.scss';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-textarea`;
+const prefixCls = `${BASE_CLASS_PREFIX}-textarea`;
 
 type TextAreaStatus = 'default' | 'error' | 'warning' | 'success';
 

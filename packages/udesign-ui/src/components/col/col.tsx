@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useContext, useState } from 'react';
 import classNames from 'classnames';
 import RowContext from '../row/rowContext';
 import { NativeProps } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-grid-col`;
+const prefixCls = `${BASE_CLASS_PREFIX}-grid-col`;
 
 export interface ColSize {
   span?: number;

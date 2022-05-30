@@ -5,8 +5,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { createPortal } from 'react-dom';
 import { NativeProps } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-portal`;
+const prefixCls = `${BASE_CLASS_PREFIX}-portal`;
 
 export type PortalProps = {
   getContainer?: () => HTMLElement;

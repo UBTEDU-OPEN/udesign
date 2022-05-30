@@ -3,8 +3,10 @@ import { EditOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import Tooltip from '../tooltip';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-typography-editable`;
+const prefixCls = `${BASE_CLASS_PREFIX}-typography-editable`;
+
 export type EditableProps = {
   icon?: ReactNode; // 自定义编辑图标
   tooltip?: boolean | ReactNode;

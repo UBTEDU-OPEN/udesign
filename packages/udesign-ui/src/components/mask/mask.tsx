@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-mask`;
+const prefixCls = `${BASE_CLASS_PREFIX}-mask`;
 
 export type MaskProps = {
   onClick?: () => void; // 点击蒙层自身触发

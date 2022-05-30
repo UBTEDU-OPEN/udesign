@@ -1,8 +1,7 @@
 import React, { CSSProperties, ReactNode } from 'react';
 import classNames from 'classnames';
-import { CloseOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
 import Mask from '../mask';
 import Portal from '../_portal';
 import Space from '../space';
@@ -10,7 +9,7 @@ import Button, { ButtonProps } from '../button';
 import { ButtonType } from '../button/button';
 import { CloseIcon } from './close';
 
-const prefixCls = `ud-modal`;
+const prefixCls = `${BASE_CLASS_PREFIX}-modal`;
 
 export type ModalSize = CommonSize;
 

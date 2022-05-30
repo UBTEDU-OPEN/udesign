@@ -2,8 +2,9 @@ import React, { ReactNode, useContext } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import MenuContext from './context';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-menu-item`;
+const prefixCls = `${BASE_CLASS_PREFIX}-menu-item`;
 
 export type MenuItemProps = {
   name?: string; // 唯一标志符

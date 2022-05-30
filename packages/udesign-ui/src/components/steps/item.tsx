@@ -3,8 +3,9 @@ import classNames from 'classnames';
 import { CheckOutlined, CloseOutlined, ExclamationOutlined } from '@ant-design/icons';
 import Divider, { DividerProps } from '../divider';
 import { NativeProps } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-steps-item`;
+const prefixCls = `${BASE_CLASS_PREFIX}-steps-item`;
 
 export type StepStatus = 'wait' | 'process' | 'finish' | 'error' | 'warning';
 

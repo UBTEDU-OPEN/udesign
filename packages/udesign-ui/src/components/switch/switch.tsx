@@ -1,9 +1,9 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
 
-const prefixCls = `ud-switch`;
+const prefixCls = `${BASE_CLASS_PREFIX}-switch`;
 
 export type SwitchSize = CommonSize;
 export type SwitchChangeEventHandler = (checked: boolean, event: React.MouseEvent<HTMLButtonElement>) => void;

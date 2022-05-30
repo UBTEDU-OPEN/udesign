@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { Direction } from '../../constants';
+import { BASE_CLASS_PREFIX, Direction } from '../../constants';
 
-const prefixCls = `ud-divider`;
+const prefixCls = `${BASE_CLASS_PREFIX}-divider`;
 
 export type DividerProps = {
   dashed?: boolean; // 是否虚线

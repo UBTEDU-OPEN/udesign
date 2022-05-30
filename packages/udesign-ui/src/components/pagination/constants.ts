@@ -1,4 +1,6 @@
-const prefixCls = `ud-pagination`;
+import { BASE_CLASS_PREFIX } from '../../constants';
+
+const prefixCls = `${BASE_CLASS_PREFIX}-pagination`;
 
 const strings = {} as const;
 

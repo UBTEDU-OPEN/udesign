@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
 export interface GeneratorProps {
   prefixCls: string;
@@ -32,7 +33,7 @@ const Basic = (props: BasicPropsWithTagName) => {
 };
 
 const BasicLayout = ({ prefixCls, hasSider, className, children, tagName: Tag, ...others }: BasicPropsWithTagName) => {
-  const classString = classNames(prefixCls, hasSider ? 'ud-layout-direction-row' : 'ud-layout-direction-column', className);
+  const classString = classNames(prefixCls, hasSider ? `${BASE_CLASS_PREFIX}-layout-direction-row` : `${BASE_CLASS_PREFIX}-layout-direction-column`, className);
 
   return (
     <>
@@ -44,25 +45,25 @@ const BasicLayout = ({ prefixCls, hasSider, className, children, tagName: Tag, .
 };
 
 export const Layout = generator({
-  prefixCls: 'ud-layout',
+  prefixCls: `${BASE_CLASS_PREFIX}-layout`,
   tagName: 'section',
   displayName: 'Layout',
 })(BasicLayout);
 
 export const Header = generator({
-  prefixCls: 'ud-layout-header',
+  prefixCls: `${BASE_CLASS_PREFIX}-layout-header`,
   tagName: 'header',
   displayName: 'Header',
 })(Basic);
 
 export const Footer = generator({
-  prefixCls: 'ud-layout-footer',
+  prefixCls: `${BASE_CLASS_PREFIX}-layout-footer`,
   tagName: 'footer',
   displayName: 'Footer',
 })(Basic);
 
 export const Content = generator({
-  prefixCls: 'ud-layout-main',
+  prefixCls: `${BASE_CLASS_PREFIX}-layout-main`,
   tagName: 'main',
   displayName: 'Content',
 })(Basic);

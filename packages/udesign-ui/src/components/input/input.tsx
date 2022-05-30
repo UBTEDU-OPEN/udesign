@@ -1,12 +1,12 @@
 import React, { ReactNode, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
-import { CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
 import { ClearIcon } from './icon/clear';
 import { PasswordOnIcon } from './icon/password-on';
 import { PasswordOffIcon } from './icon/password-off';
 
-const prefixCls = `ud-input`;
+const prefixCls = `${BASE_CLASS_PREFIX}-input`;
 
 export type InputSize = CommonSize;
 export type InputStatus = 'default' | 'error' | 'warning' | 'success';

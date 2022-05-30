@@ -2,8 +2,9 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import Tooltip from '../tooltip';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-typography`;
+const prefixCls = `${BASE_CLASS_PREFIX}-typography`;
 
 export type EllipsisProps = {
   rows?: number; //	最多显示的行数

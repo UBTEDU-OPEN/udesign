@@ -5,8 +5,9 @@ import { Copyable } from './copyable';
 import { EllipsisConfig, EditableConfig, CopyableConfig } from './base';
 import { Editable } from './editable';
 import { Ellipsis } from './ellipsis';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-typography`;
+const prefixCls = `${BASE_CLASS_PREFIX}-typography`;
 
 export type TextProps = {
   type?: string; // 文本类型

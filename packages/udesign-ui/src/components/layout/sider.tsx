@@ -1,8 +1,9 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = 'ud-layout-sider';
+const prefixCls = `${BASE_CLASS_PREFIX}-layout-sider`;
 
 export type CollapseType = 'clickTrigger' | 'responsive';
 

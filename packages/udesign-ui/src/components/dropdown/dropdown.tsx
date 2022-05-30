@@ -1,9 +1,9 @@
 import React from 'react';
 import { NativeProps } from '../../utils';
-import { Placement, Trigger } from '../../constants';
+import { BASE_CLASS_PREFIX, Placement, Trigger } from '../../constants';
 import Tooltip from '../tooltip';
 
-const prefixCls = `ud-dropdown`;
+const prefixCls = `${BASE_CLASS_PREFIX}-dropdown`;
 
 export type DropdownProps = {
   showArrow?: boolean; // 是否显示箭头

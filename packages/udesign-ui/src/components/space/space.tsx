@@ -1,14 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { CommonSize, Direction } from '../../constants';
+import { BASE_CLASS_PREFIX, CommonSize, Direction } from '../../constants';
 
 export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
 export type SpaceJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
 export type SpaceDirection = Direction;
 export type SpaceSize = CommonSize | number;
 
-const prefixCls = 'ud-space';
+const prefixCls = `${BASE_CLASS_PREFIX}-space`;
+
 export type SpaceProps = {
   align?: SpaceAlign; // 对齐方式（align-items）
   justify?: SpaceJustify; // 对齐方式（justify-content）

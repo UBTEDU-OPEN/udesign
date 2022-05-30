@@ -1,8 +1,9 @@
 import React, { ReactNode, useRef } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-breadcrumb`;
+const prefixCls = `${BASE_CLASS_PREFIX}-breadcrumb`;
 
 export type ItemProps = {
   separator?: ReactNode; // 设置分隔符

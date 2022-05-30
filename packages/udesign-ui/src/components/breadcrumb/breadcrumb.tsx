@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
 import { NativeProps, toArray } from '../../utils';
 import { Item } from './item';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-breadcrumb`;
+const prefixCls = `${BASE_CLASS_PREFIX}-breadcrumb`;
 
 export type BreadcrumbProps = {
   separator?: ReactNode; // 设置分隔符

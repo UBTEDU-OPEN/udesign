@@ -3,8 +3,9 @@ import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { CopyableConfig, EditableConfig, EllipsisConfig } from './base';
 import { Text, TextProps } from './text';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-typography-title`;
+const prefixCls = `${BASE_CLASS_PREFIX}-typography-title`;
 
 export type TitleProps = {
   level?: ReactNode; // 设置标题大小

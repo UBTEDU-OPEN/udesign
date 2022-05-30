@@ -1,10 +1,10 @@
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
-import { CommonType, CommonSize, CommonShape } from '../../constants';
+import { CommonSize, CommonShape, BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-button`;
+const prefixCls = `${BASE_CLASS_PREFIX}-button`;
 
 export type ButtonType = 'primary' | 'default' | 'text' | 'link';
 export type ButtonSize = CommonSize;

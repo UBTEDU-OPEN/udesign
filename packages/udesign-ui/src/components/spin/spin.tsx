@@ -2,9 +2,9 @@ import React, { useEffect, ReactNode, useState, useRef } from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
 
-const prefixCls = 'ud-spin';
+const prefixCls = `${BASE_CLASS_PREFIX}-spin`;
 
 export type SpinSize = CommonSize;
 

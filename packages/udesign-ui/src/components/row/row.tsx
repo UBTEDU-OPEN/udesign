@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import RowContext from './rowContext';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-grid-row`;
+const prefixCls = `${BASE_CLASS_PREFIX}-grid-row`;
 
 export type RowProps = {
   align?: 'top' | 'middle' | 'bottom'; // 垂直对齐方式

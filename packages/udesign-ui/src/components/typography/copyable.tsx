@@ -3,8 +3,9 @@ import classNames from 'classnames';
 import { CopyOutlined, CheckOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
 import Tooltip from '../tooltip';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-typography`;
+const prefixCls = `${BASE_CLASS_PREFIX}-typography`;
 
 export type CopyableProps = {
   tooltip?: ReactNode; // 自定义提示文案，为 false 时隐藏文案

@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
 import { DividerProps } from '../divider';
 
-const prefixCls = `ud-progress`;
+const prefixCls = `${BASE_CLASS_PREFIX}-progress`;
 export type ProgressSize = CommonSize;
 export type ProgressType = 'line' | 'circle';
 

@@ -2,8 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
 import MenuContext, { MenuMode } from './context';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `ud-menu`;
+const prefixCls = `${BASE_CLASS_PREFIX}-menu`;
 
 export type MenuProps = {
   isCollapsed?: boolean; // 设置是否折叠

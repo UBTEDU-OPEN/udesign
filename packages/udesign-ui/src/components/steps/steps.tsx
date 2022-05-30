@@ -1,11 +1,11 @@
 import React, { Children, cloneElement, isValidElement, ReactElement, useMemo } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { Direction } from '../../constants';
+import { BASE_CLASS_PREFIX, Direction } from '../../constants';
 import { StepStatus } from './item';
 import { DividerProps } from '../divider';
 
-const prefixCls = `ud-steps`;
+const prefixCls = `${BASE_CLASS_PREFIX}-steps`;
 
 export type StepsProps = {
   direction?: Direction; // 指定步骤条方向。目前支持水平（horizontal）和竖直（vertical）两种方向

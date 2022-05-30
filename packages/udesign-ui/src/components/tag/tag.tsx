@@ -1,9 +1,10 @@
 import React, { useState, ReactNode } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
 
-const prefixCls = `ud-tag`;
+const prefixCls = `${BASE_CLASS_PREFIX}-tag`;
+
 const PresetColors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'];
 const PresetStatusColors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple'];
 const PresetColorRegex = new RegExp(`^(${PresetColors.join('|')})(-inverse)?$`);
