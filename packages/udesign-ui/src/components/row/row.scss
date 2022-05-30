@@ -36,65 +36,6 @@ $width: 4.166666%;
         display: none;
     }
 
-    @for $i from 1 through 24 {
-        &-col-span-#{$i} {
-            width: $width * $i;
-        }
-
-        &-col-pull-#{$i} {
-            position: relative;
-            right: $width * $i;
-        }
-
-        &-col-push-#{$i} {
-            position: relative;
-            left: $width * $i;
-        }
-
-        &-col-offset-#{$i} {
-            margin-left: $width * $i;
-        }
-
-        &-col-order-#{$i} {
-            order: $i;
-        }
-    }
-
-    @each $var,
-    $middle in (0px, xs),
-    (576px, sm),
-    (768px, md),
-    (992px, lg),
-    (1200px, xl),
-    (1600px, xxl) {
-        @media screen and (min-width: $var) {
-
-            @for $i from 1 through 24 {
-                &-col-#{$middle}-#{$i} {
-                    display: block;
-                    max-width: $width * $i;
-                    flex: 0 0 $width * $i;
-                }
-
-                &-col-#{$middle}-pull-#{$i} {
-                    position: relative;
-                    right: $width * $i;
-                }
-
-                &-col-#{$middle}-push-#{$i} {
-                    position: relative;
-                    left: $width * $i;
-                }
-
-                &-col-#{$middle}-order-#{$i} {
-                    order: $i;
-                }
-
-                &-col-#{$middle}-offset-#{$i} {
-                    margin-left: $width * $i;
-                }
-            }
-        }
-    }
+    
 
 }

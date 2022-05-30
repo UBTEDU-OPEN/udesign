@@ -9,7 +9,9 @@ $width: 4.166666%;
 
     @for $i from 1 through 24 {
         &-span-#{$i} {
-            width: $width * $i;
+            display: block;
+            flex: 0 0 $width * $i;
+            max-width: $width * $i;
         }
 
         &-pull-#{$i} {
