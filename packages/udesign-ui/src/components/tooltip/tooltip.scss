@@ -1,126 +1,75 @@
+@import './variables.scss';
+
 $module: ud-tooltip;
 
 .#{$module} {
-  --bg-color: var(--tooltip-bg-color, var(--ud-color-black));
-  --color: var(--tooltip-color, var(--ud-color-white));
-
-  --font-size: var(--tooltip-font-size, var(--ud-font-size-regular));
-
-  --border-radius: var(--tooltip-border-radius, var(--ud-border-radius-medium));
-
-  --padding-left: var(--tooltip-padding-left, 12px);
-  --padding-right: var(--tooltip-padding-right, 12px);
-  --padding-top: var(--tooltip-padding-top, 8px);
-  --padding-bottom: var(--tooltip-padding-bottom, 8px);
-
-  --max-width: var(--tooltip-max-width, 240px);
-
-  background: var(--bg-color);
-  color: var(--color);
-  font-size: var(--font-size);
-  padding: var(--padding-top) var(--padding-right) var(--padding-bottom) var(--padding-left);
-  border-radius: var(--border-radius);
   width: max-content;
-  max-width: var(--max-width);
-  // position: absolute;
-
-  // transform: translate(var(--translate-x), var(--translate-y));
+  max-width: $tooltip-max-width;
+  padding: $tooltip-padding;
+  font-size: $tooltip-font-size;
+  background: $tooltip-background;
+  color: $tooltip-color;
+  border-radius: $tooltip-border-radius;
 
   &-topLeft {
-    // --translate-y: -100%;
-    // --translate-x: 0;
-
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
   &-top {
-    // --translate-y: -100%;
-    // --translate-x: -50%;
-
     --arrow-rotate: 0;
     --arrow-translate-x: -50%;
     --arrow-translate-y: 0;
   }
   &-topRight {
-    // --translate-y: -100%;
-    // --translate-x: -100%;
-
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
 
   &-bottomLeft {
-    // --translate-y: 0;
-    // --translate-x: 0;
-
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
   &-bottom {
-    // --translate-y: 0;
-    // --translate-x: -50%;
-
     --arrow-rotate: 180deg;
     --arrow-translate-x: -50%;
     --arrow-translate-y: 0;
   }
   &-bottomRight {
-    // --translate-y: 0;
-    // --translate-x: -100%;
-
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
 
   &-leftTop {
-    // --translate-y: 0;
-    // --translate-x: -100%;
-
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
   &-left {
-    // --translate-y: -50%;
-    // --translate-x: -100%;
-
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
     --arrow-translate-y: -50%;
   }
   &-leftBottom {
-    // --translate-y: -100%;
-    // --translate-x: -100%;
-
     --arrow-rotate: 0;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
 
   &-rightTop {
-    // --translate-y: 0;
-    // --translate-x: 0;
-
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
   }
   &-right {
-    // --translate-y: -50%;
-    // --translate-x: 0;
-
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
     --arrow-translate-y: -50%;
   }
   &-rightBottom {
-    // --translate-y: -100%;
-    // --translate-x: 0;
-
     --arrow-rotate: 180deg;
     --arrow-translate-x: 0;
     --arrow-translate-y: 0;
@@ -128,7 +77,7 @@ $module: ud-tooltip;
 
   .#{$module}-arrow {
     position: absolute;
-    color: var(--bg-color);
+    color: $tooltip-background;
     transform: translate(var(--arrow-translate-x), var(--arrow-translate-y)) rotate(var(--arrow-rotate));
   }
 }
