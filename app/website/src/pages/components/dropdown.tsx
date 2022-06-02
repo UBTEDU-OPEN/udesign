@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Dropdown, Divider, Menu, Space } from '@ubt/udesign-ui';
-import { Input } from '@ubt/udesign-ui-alpha';
+import { Button, Dropdown, Divider, Menu, Space, Input } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function DropdownPage() {
@@ -18,6 +17,19 @@ export default function DropdownPage() {
   return (
     <>
       <Demo.Page title='Dropdown 下拉菜单' description='向下弹出的菜单列表。'>
+        <Demo.Block
+          title='何时使用'
+          description={
+            <>
+              <b>当页面上的操作命令过多时，用此组件可以收纳操作元素。点击或移入触点，会出现一个下拉菜单。可在列表中进行选择，并执行相应的命令。</b>
+              <br />
+              <br />
+              * 用于收罗一组命令操作。 <br />
+              * Select 用于选择，而 Dropdown 是命令集合。
+              <br />
+            </>
+          }
+        />
         <Demo.Block title='基础用法' description='最简单的下拉菜单。'>
           <Dropdown content={menu}>
             <Button>Hover me</Button>
@@ -49,8 +61,8 @@ export default function DropdownPage() {
             </Space>
           </Space>
         </Demo.Block>
-        {/* <Demo.Block title='带箭头展示' description='弹出菜单可以展示一个箭头。'>
-          <Space vertical>
+        <Demo.Block title='带箭头展示' description='通过 showArrow 可以展示一个箭头。'>
+          <Space direction='vertical'>
             <Space>
               <Dropdown content={menu} placement='topLeft' showArrow>
                 <Button>topLeft</Button>
@@ -74,7 +86,7 @@ export default function DropdownPage() {
               </Dropdown>
             </Space>
           </Space>
-        </Demo.Block> */}
+        </Demo.Block>
         <Demo.Block title='触发方式' description='默认是移入触发菜单，可以通过 trigger 更改触发方式。'>
           <Dropdown content={menu} trigger='hover'>
             <Button>Hover me</Button>

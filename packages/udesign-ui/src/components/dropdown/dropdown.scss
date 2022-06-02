@@ -1,13 +1,81 @@
+@import './variables.scss';
+
 $module: ud-dropdown;
 
 .#{$module} {
-  --max-width: var(--ud-dropdown-max-width, 360px);
-  --background: var(--ud-dropdown-background, var(--ud-color-white));
-  --border-radius: var(--ud-dropdown-border-radius, 8px);
-
-  max-width: var(--max-width);
-  background: var(--background);
-  box-shadow: var(--ud-shadow-elevated);
-  border-radius: var(--border-radius);
+  max-width: $dropdown-max-width;
+  background: $dropdown-background;
+  box-shadow: $dropdown-box-shadow;
+  border-radius: $dropdown-border-radius;
   overflow: hidden;
+
+  &-topLeft {
+    --arrow-rotate: 0;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: 0;
+  }
+  &-top {
+    --arrow-rotate: 0;
+    --arrow-translate-x: -50%;
+    --arrow-translate-y: 0;
+  }
+  &-topRight {
+    --arrow-rotate: 0;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: 0;
+  }
+
+  &-bottomLeft {
+    --arrow-rotate: 180deg;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: 0;
+  }
+  &-bottom {
+    --arrow-rotate: 180deg;
+    --arrow-translate-x: -50%;
+    --arrow-translate-y: 0;
+  }
+  &-bottomRight {
+    --arrow-rotate: 180deg;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: 0;
+  }
+
+  &-leftTop {
+    --arrow-rotate: 0;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: 0;
+  }
+  &-left {
+    --arrow-rotate: 0;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: -50%;
+  }
+  &-leftBottom {
+    --arrow-rotate: 0;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: 0;
+  }
+
+  &-rightTop {
+    --arrow-rotate: 180deg;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: 0;
+  }
+  &-right {
+    --arrow-rotate: 180deg;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: -50%;
+  }
+  &-rightBottom {
+    --arrow-rotate: 180deg;
+    --arrow-translate-x: 0;
+    --arrow-translate-y: 0;
+  }
+
+  .#{$module}-arrow {
+    position: absolute;
+    color: $dropdown-background;
+    transform: translate(var(--arrow-translate-x), var(--arrow-translate-y)) rotate(var(--arrow-rotate));
+  }
 }

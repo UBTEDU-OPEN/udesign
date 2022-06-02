@@ -1,0 +1,6 @@
+@import '../../global/variables.scss';
+
+$dropdown-background: var(--ud-dropdown-background, var(--ud-color-white)); // 下拉菜单背景色
+$dropdown-border-radius: var(--ud-dropdown-border-radius, 8px); // 下拉菜单圆角
+$dropdown-max-width: var(--ud-dropdown-max-width, 360px); // 下拉菜单最大宽度
+$dropdown-box-shadow: var(--ud-dropdown-box-shadow, var(--ud-shadow-elevated)); // 下拉菜单阴影
