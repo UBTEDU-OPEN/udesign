@@ -15,9 +15,9 @@ export type RadioProps = {
   value?: any; // 根据 value 进行比较，判断是否选中
 } & NativeProps;
 
-export const Button = ({ defaultChecked = false, disabled, className, children, value, ...restProps }: RadioProps) => {
-  const prefixCls = 'ud-radio-button';
+const prefixCls = 'ud-radio-button';
 
+export const Button = ({ defaultChecked = false, disabled, className, children, value, ...restProps }: RadioProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;
   const [innerChecked, setInnerChecked] = useState<boolean>(checked!);
   const context = useContext(RadioContext);
@@ -33,7 +33,7 @@ export const Button = ({ defaultChecked = false, disabled, className, children, 
   function handleClick() {
     if (!disabled) {
       setInnerChecked(true);
-      // 没有onchange 时更新value值
+      // 更新value值
       if (context.dispatch) {
         context.dispatch({
           type: types.UPDATE_VALUE,
@@ -65,7 +65,7 @@ export const Button = ({ defaultChecked = false, disabled, className, children, 
         [`${prefixCls}-light-disabled`]: disabled && innerChecked,
       }),
     );
-  }, [innerChecked]);
+  }, [innerChecked, disabled]);
 
   const cls = classNames(className, prefixCls);
 

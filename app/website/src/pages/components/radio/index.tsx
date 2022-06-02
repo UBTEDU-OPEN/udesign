@@ -5,13 +5,8 @@ import styles from './index.module.scss';
 
 export default function RadioPage() {
   const [checked, setChecked] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const [value1, setValue1] = useState('');
-  const [value2, setValue2] = useState<string | number>('2');
-  const [value3, setValue3] = useState('');
-  const [value4, setValue4] = useState('');
-  const [value5, setValue5] = useState('A');
-  const [value6, setValue6] = useState('');
-
   return (
     <div className={styles['radio-root']}>
       <Demo.Page title='Radio 单选框' description='用于在选中和非选中状态之间进行切换。'>
@@ -26,13 +21,7 @@ export default function RadioPage() {
           </Radio>
         </Demo.Block>
         <Demo.Block title='按钮样式' description='Radio.Button可以使用按钮样式'>
-          <Radio.Group
-            name='button'
-            value={value3}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setValue3(event.nativeEvent.target?.value);
-            }}
-          >
+          <Radio.Group name='button'>
             <>
               <Radio.Button value='a' disabled>
                 Hangzhou
@@ -43,30 +32,21 @@ export default function RadioPage() {
             </>
           </Radio.Group>
         </Demo.Block>
-        <Demo.Block title='置顶是否选中' description='checked 值指定是否选中'>
-          <Radio checked={checked}>单选框</Radio>
-          <Button onClick={() => setChecked(!checked)}>{String(checked)}</Button>
+        <Demo.Block title='受控组件' description='checked 值指定是否选中， disabled 是否禁用'>
+          <Radio checked={checked} disabled={disabled}>
+            单选框
+          </Radio>
+          <Button onClick={() => setChecked(!checked)}>{checked ? 'unchecked' : 'checked'}</Button>
+          <Button onClick={() => setDisabled(!disabled)}>{disabled ? 'abled' : 'unabled'}</Button>
         </Demo.Block>
         <Demo.Block title='单选组合' description='一组互斥的 Radio 配合使用'>
-          <Radio.Group
-            options={['A', 'B', 'C']}
-            name={'group'}
-            value={value1}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setValue1(event.nativeEvent.target?.value);
-            }}
-          />
+          <Radio.Group options={['A', 'B', 'C']} name={'group'} value={value1} />
+          <Button onClick={() => setValue1('A')}>选择A</Button>
+          <Button onClick={() => setValue1('B')}>选择B</Button>
+          <Button onClick={() => setValue1('C')}>选择C</Button>
         </Demo.Block>
         <Demo.Block title='默认值' description='defaultValue 初始化默认值,defaultValue会被value 覆盖'>
-          <Radio.Group
-            options={['A', 'B', 'C']}
-            name={'groupdefault'}
-            value={value5}
-            defaultValue='A'
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setValue5(event.nativeEvent.target?.value);
-            }}
-          />
+          <Radio.Group options={['A', 'B', 'C']} name={'groupdefault'} defaultValue='A' />
         </Demo.Block>
         <Demo.Block title='禁用组合中的部分选项' description='option的disabled属性禁用特定单选框'>
           <Radio.Group
@@ -88,10 +68,6 @@ export default function RadioPage() {
               },
             ]}
             name={'disabledsingle'}
-            value={value4}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setValue4(event.nativeEvent.target?.value);
-            }}
           />
         </Demo.Block>
         <Demo.Block title='禁用一组单选框' description='Radio 的disabled 属性可以禁用一组单选框，与option的disabled 组合，options 的优先级更高'>
@@ -100,6 +76,7 @@ export default function RadioPage() {
               {
                 value: 'A',
                 label: 'A',
+                disabled: false,
               },
               {
                 value: 'B',
@@ -112,32 +89,15 @@ export default function RadioPage() {
               },
             ]}
             name={'disabledgroup'}
-            value={value6}
             disabled
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setValue6(event.nativeEvent.target?.value);
-            }}
           />
         </Demo.Block>
         <Demo.Block title='垂直排列' description='垂直的 Radio.Group'>
-          <Radio.Group
-            name={'vertical'}
-            // value={value2}
-            defaultValue={'2'}
-            // onChange={(event: React.ChangeEvent<HTMLInputElement>)=>{
-            //   setValue2(event.nativeEvent.target?.value);
-            // }}
-          >
+          <Radio.Group name={'vertical'} defaultValue={'2'}>
             <Space direction='vertical'>
-              <Radio value={'1'} checked={value2 === '1'}>
-                Option A
-              </Radio>
-              <Radio value={'2'} checked={value2 === '2'}>
-                Option B
-              </Radio>
-              <Radio value={'3'} checked={value2 === '3'}>
-                Option C
-              </Radio>
+              <Radio value={'1'}>Option A</Radio>
+              <Radio value={'2'}>Option B</Radio>
+              <Radio value={'3'}>Option C</Radio>
             </Space>
           </Radio.Group>
         </Demo.Block>

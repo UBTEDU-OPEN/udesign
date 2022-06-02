@@ -1,7 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import classNames from 'classnames';
 import { Radio } from './radio';
-import { RadioContext, reducer } from './context';
+import { RadioContext, reducer, types } from './context';
 
 export type RadioValueType = string | number | boolean;
 
@@ -41,6 +41,15 @@ export const Group = ({ defaultValue = '', disabled, options, children, name, on
   const wrapperClass = classNames(`${prefixCls}-wrapper`);
   const initialState = { value: restProps.value };
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    dispatch({
+      type: types.UPDATE_VALUE,
+      payload: {
+        value: restProps.value || defaultValue,
+      },
+    });
+  }, [restProps.value, defaultValue]);
 
   return (
     <RadioContext.Provider value={{ value: state.value, name, onChange, dispatch }}>

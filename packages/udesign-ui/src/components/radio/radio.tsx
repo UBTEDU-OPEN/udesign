@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { RadioContext, types } from './context';
+import { RadioNormal } from './radio-normal';
+import { RadioLight } from './radio-light';
+import { RadioNormalDisabled } from './radio-normal-disabled';
+import { RadioLightDisabled } from './radio-light-disabled';
 
 export type RadioChangeEventType = React.ChangeEvent<HTMLInputElement>;
 
@@ -13,27 +17,21 @@ export type RadioProps = {
   defaultChecked?: boolean; // 初始是否选中
   disabled?: boolean; // 禁用 Radio
   value?: any; // 根据 value 进行比较，判断是否选中
+  label?: string; // 单选框显示文字
 } & NativeProps;
 
-export const Radio = ({ defaultChecked = false, disabled, className, children, value, ...restProps }: RadioProps) => {
-  const prefixCls = 'ud-radio';
+const prefixCls = 'ud-radio';
 
+export const Radio = ({ defaultChecked = false, disabled, className, children, value, label, ...restProps }: RadioProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;
+
   const [innerChecked, setInnerChecked] = useState<boolean>(checked!);
   const context = useContext(RadioContext);
-  const [cusInput, setCusInput] = useState(
-    classNames(`${prefixCls}-cus-input`, {
-      [`${prefixCls}-normal`]: !disabled && !innerChecked,
-      [`${prefixCls}-light`]: !disabled && innerChecked,
-      [`${prefixCls}-normal-disabled`]: disabled && !innerChecked,
-      [`${prefixCls}-light-disabled`]: disabled && innerChecked,
-    }),
-  );
 
   function handleClick() {
     if (!disabled) {
       setInnerChecked(true);
-      // 没有onchange 时更新value值
+      // 更新value值
       if (context.dispatch) {
         context.dispatch({
           type: types.UPDATE_VALUE,
@@ -56,17 +54,6 @@ export const Radio = ({ defaultChecked = false, disabled, className, children, v
     }
   }, [restProps.checked]);
 
-  useEffect(() => {
-    setCusInput(
-      classNames(`${prefixCls}-cus-input`, {
-        [`${prefixCls}-normal`]: !disabled && !innerChecked,
-        [`${prefixCls}-light`]: !disabled && innerChecked,
-        [`${prefixCls}-normal-disabled`]: disabled && !innerChecked,
-        [`${prefixCls}-light-disabled`]: disabled && innerChecked,
-      }),
-    );
-  }, [innerChecked]);
-
   const cls = classNames(className, prefixCls);
 
   return (
@@ -86,8 +73,13 @@ export const Radio = ({ defaultChecked = false, disabled, className, children, v
             }
           }}
         />
-        <div className={cusInput}></div>
-        <span className={`${prefixCls}-text`}>{children}</span>
+        {!disabled && !innerChecked && <RadioNormal />}
+        {!disabled && innerChecked && <RadioLight />}
+        {disabled && !innerChecked && <RadioNormalDisabled />}
+        {disabled && innerChecked && <RadioLightDisabled />}
+        <span className={`${prefixCls}-text`} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
+          {children || label}
+        </span>
       </label>
     </>
   );
