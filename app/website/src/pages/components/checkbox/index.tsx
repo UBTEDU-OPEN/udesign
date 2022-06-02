@@ -6,8 +6,7 @@ import styles from './index.module.scss';
 export default function CheckboxPage() {
   const [checked, setChecked] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(false);
-  const [indeterminate, setIndeterminate] = useState<boolean>(false);
-  // const [value, setValue] = useState<string[]>([]);
+  const [indeterminate, setIndeterminate] = useState<boolean>(true);
   const [allvalue, setAllvalue] = useState<string[]>([]);
   const [allchecked, setAllchecked] = useState<boolean>(false);
   const optionsWithDisabled = [
@@ -64,14 +63,15 @@ export default function CheckboxPage() {
           </Checkbox.Group>
         </Demo.Block>
         <Demo.Block title='复选框组（数组方式）' description='复选框组可以通过 options 属性生成 Checkbox。'>
-          <Checkbox.Group options={['A', 'B', 'C']} value={['A', 'B', 'C']} name='array1' />
+          <Checkbox.Group options={['A', 'B', 'C']} defaultValue={['A', 'B', 'C']} name='array1' />
           <Divider />
           <Checkbox.Group options={['A', 'B', 'C']} name='array2' />
           <Divider />
-          <Checkbox.Group options={optionsWithDisabled} defaultValue={['A']} name='array3' disabled value={['A']} />
+          <Checkbox.Group options={optionsWithDisabled} defaultValue={['A']} name='array3' disabled />
         </Demo.Block>
         <Demo.Block title='全选' description='在实现全选效果时，你可能会用到 indeterminate 属性。'>
           <Checkbox.Group
+            defaultValue={['A']}
             value={allvalue}
             name='selectall'
             onChange={(selectedValue: string[]) => {

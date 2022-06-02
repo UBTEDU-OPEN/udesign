@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IProps {
-  stroke: string;
+  stroke?: string;
 }
 
 export const CheckboxCenter: React.FC<IProps> = (props: IProps) => (

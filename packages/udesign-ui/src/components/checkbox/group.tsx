@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import classNames from 'classnames';
 import { Checkbox } from './checkbox';
 import { CheckboxContext, reducer, types } from './context';
@@ -6,13 +6,13 @@ import { CheckboxContext, reducer, types } from './context';
 export type CheckboxOptionType = {
   label: string; // 对外显示
   value: string; // 真实值
-  disabled?: boolean;
+  disabled?: boolean; // 是否禁用
 };
 
 export interface GroupProps {
   defaultValue?: string[]; // 默认选中的值
   value?: string[]; // 用于设置当前选中的值
-  disabled?: boolean; // 禁选所有子单选器
+  disabled?: boolean; // 禁选所有子多选器
   children?: React.ReactElement; // 子组件
   options?: Array<CheckboxOptionType | string>; // 以配置形式设置子元素
   name: string; // CheckboxGroup 下所有 input[type="radio"] 的 name 属性
@@ -39,14 +39,23 @@ export const Group = ({ defaultValue = [], disabled, options, children, name, on
   const wrapperClass = classNames(`${prefixCls}-wrapper`);
   const initialState = { value: restProps.value || [] };
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [innerDefaultValue, setInnerDefaultValue] = useState<string[]>(defaultValue!);
   useEffect(() => {
     dispatch({
       type: types.UPDATE_VALUE,
       payload: {
-        value: restProps.value || [],
+        value: restProps.value && Array.isArray(restProps.value) && restProps.value.length > 0 ? restProps.value : [],
       },
     });
   }, [restProps.value]);
+  useEffect(() => {
+    dispatch({
+      type: types.UPDATE_VALUE,
+      payload: {
+        value: innerDefaultValue && Array.isArray(innerDefaultValue) && innerDefaultValue.length > 0 ? innerDefaultValue : [],
+      },
+    });
+  }, [innerDefaultValue]);
 
   return (
     <CheckboxContext.Provider value={{ value: state.value, name, onChange, dispatch }}>

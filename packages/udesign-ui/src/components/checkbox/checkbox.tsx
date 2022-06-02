@@ -14,8 +14,8 @@ export type CheckboxChangeEventHandler = (event: CheckboxChangeEventType) => voi
 export type CheckboxClickEventHandler = CheckboxChangeEventHandler;
 
 export type CheckboxProps = {
-  label?: React.ReactNode;
-  onChange?: CheckboxChangeEventHandler;
+  label?: React.ReactNode; // 多选框显示的内容
+  onChange?: CheckboxChangeEventHandler; // function (event: React.ChangeEvent<HTMLInputElement>)=> void
   checked?: boolean; // 指定当前是否选中
   defaultChecked?: boolean; // 初始是否选中
   disabled?: boolean; // 禁用 Checkbox
@@ -29,6 +29,7 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, children
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;
   const [innerChecked, setInnerChecked] = useState<boolean>(checked!);
   const context = useContext(CheckboxContext);
+
   const getResult = () => {
     let result = context.value;
     if (innerChecked) {
@@ -54,7 +55,7 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, children
     }
   }
   useEffect(() => {
-    if (context.value && value) {
+    if (context.value && Array.isArray(context.value) && value) {
       setInnerChecked(context.value.includes(value));
     }
   }, [context.value]);
@@ -82,15 +83,11 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, children
             if (onChange) {
               onChange(event);
             }
-
-            if (context.onChange) {
-              context.onChange(getResult());
-            }
           }}
         />
         {!disabled && indeterminate && <CheckboxCenter />}
 
-        {disabled && indeterminate && <CheckboxCenter stroke='ccddcc' />}
+        {disabled && indeterminate && <CheckboxCenter stroke='#e9e9ec' />}
 
         {!disabled && !innerChecked && !indeterminate && <CheckboxNormal />}
 
@@ -100,7 +97,9 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, children
 
         {disabled && innerChecked && !indeterminate && <CheckboxLightDisabled />}
 
-        <span className={`${prefixCls}-text`}>{children || label}</span>
+        <span className={`${prefixCls}-text`} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
+          {children || label}
+        </span>
       </label>
     </>
   );
