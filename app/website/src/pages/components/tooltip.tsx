@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Input } from '@ubt/udesign-ui-alpha';
-import { Button, Space, Tooltip } from '@ubt/udesign-ui';
+import { Button, Space, Tooltip, Input } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function TooltipPage() {
@@ -13,6 +12,11 @@ export default function TooltipPage() {
       <Demo.Page title='Tooltip 文字提示' description='简单的文字提示气泡框。'>
         <Demo.Block title='基础用法' description='通过 content 来指定内容。'>
           <Tooltip content={content}>
+            <Button>Hover me</Button>
+          </Tooltip>
+        </Demo.Block>
+        <Demo.Block title='不显示箭头' description='通过 showArrow 来显示箭头，默认 true。'>
+          <Tooltip content={content} showArrow={false}>
             <Button>Hover me</Button>
           </Tooltip>
         </Demo.Block>

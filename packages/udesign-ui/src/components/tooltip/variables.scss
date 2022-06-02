@@ -1,0 +1,9 @@
+@import '../../global/variables.scss';
+
+$tooltip-background: var(--ud-tooltip-background, var(--ud-color-black)); // 文字提示背景色
+$tooltip-color: var(--ud-tooltip-color, var(--ud-color-white)); // 文字提示文字颜色
+$tooltip-border-radius: var(--ud-tooltip-border-radius, var(--ud-border-radius-medium)); // 文字提示圆角
+$tooltip-max-width: var(--ud-tooltip-max-width, 240px); // 文字提示最大宽度
+$tooltip-box-shadow: var(--ud-tooltip-box-shadow, var(--ud-shadow-elevated)); // 文字提示阴影
+$tooltip-padding: var(--ud-tooltip-padding, 8px 12px); // 文字提示内边距
+$tooltip-font-size: var(--ud-tooltip-font-size, var(--ud-font-size-regular)); // 文字提示字号
