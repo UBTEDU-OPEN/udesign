@@ -1,0 +1,24 @@
+$module: ud-checkbox;
+
+$checkbox-padding: var(--ud-checkbox-padding, 15px 15px 15px 0);
+$checkbox-height: var(--ud-checkbox-height, 40px);
+
+.#{$module}-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+.#{$module} {
+  display: flex;
+  padding: $checkbox-padding;
+  
+  &-hidden {
+    opacity: 0;
+    width: 0;
+  }
+  
+  &-text {
+    display: inline-block;
+    height: $checkbox-height;
+    line-height: $checkbox-height;
+  }
+}

@@ -89,7 +89,6 @@ const inputMenus = [
   {
     name: 'checkbox',
     text: 'Checkbox 多选框',
-    disabled: true,
   },
   // {
   //   name: 'datepicker',
