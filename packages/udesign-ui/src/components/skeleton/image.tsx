@@ -8,7 +8,7 @@ export interface ImageProps {
 }
 
 export const Image = ({ width = '220px', height = '190px' }: ImageProps) => {
-  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}`], [`${prefixCls}-image`]);
+  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}-image`]);
 
   return (
     <>

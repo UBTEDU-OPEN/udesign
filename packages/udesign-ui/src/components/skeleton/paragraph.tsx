@@ -23,7 +23,7 @@ export const Paragraph = ({ width = ['100%', '100%', '60%'], rows = 3, size = 'm
     return undefined;
   };
 
-  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}`], [`${prefixCls}-paragraph`], {
+  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}-paragraph`], {
     [`${prefixCls}-paragraph-${size}`]: size,
     [`${prefixCls}-active`]: active,
   });

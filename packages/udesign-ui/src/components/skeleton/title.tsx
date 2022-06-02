@@ -11,7 +11,7 @@ export interface TitleProps {
 }
 
 export const Title = ({ width = '38%', size = 'middle', active = false }: TitleProps) => {
-  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}`], [`${prefixCls}-title`], {
+  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}-title`], {
     [`${prefixCls}-title-${size}`]: size,
     [`${prefixCls}-active`]: active,
   });

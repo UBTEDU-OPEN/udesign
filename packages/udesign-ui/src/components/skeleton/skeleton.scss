@@ -46,12 +46,12 @@ $module-width: var(--ud-skeleton-width, 150px); // 默认按钮 标题 宽度
     }
   }
   &-active {
-    .ud-skeleton-bg {
+    .#{$module}-bg {
       animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
     
   }
-  &-active.ud-skeleton-bg {
+  &-active.#{$module}-bg {
     animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
   &-avatar {

@@ -11,7 +11,7 @@ export interface ButtonProps {
 }
 
 export const Button = ({ shape = 'round', size = 'middle', active = false }: ButtonProps) => {
-  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}`], [`${prefixCls}-button`], {
+  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}-button`], {
     [`${prefixCls}-button-${size}`]: size,
     [`${prefixCls}-button-${shape}`]: shape,
     [`${prefixCls}-active`]: active,

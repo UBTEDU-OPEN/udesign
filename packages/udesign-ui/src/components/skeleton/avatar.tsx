@@ -12,7 +12,7 @@ export interface AvatarProps {
 }
 
 export const Avatar = ({ shape = 'circle', size = 'middle', active = false }: AvatarProps) => {
-  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}`], [`${prefixCls}-avatar`], {
+  const cls = classNames([`${prefixCls}-bg`], [`${prefixCls}-avatar`], {
     [`${prefixCls}-avatar-${size}`]: size,
     [`${prefixCls}-avatar-${shape}`]: shape,
     [`${prefixCls}-active`]: active,
