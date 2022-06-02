@@ -1,0 +1,41 @@
+.skeleton {
+  :global {
+    h4 {
+      color: rgb(31 41 55);
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      color: rgb(55 65 81);
+      line-height: 1.5;
+    }
+    .skeleton-list-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+    }
+    .skeleton-padding {
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    .skeleton-full {
+      display: flex;
+      width: 100%;
+      > :not([hidden]) ~ :not([hidden]) {
+        margin-right: 16px;
+        margin-left: 16px;
+      }
+    }
+    .skeleton-grow {
+      flex: 1;
+      > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 16px;
+      }
+    }
+  }
+}

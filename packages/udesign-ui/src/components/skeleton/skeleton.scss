@@ -1,0 +1,124 @@
+$module: ud-skeleton;
+
+
+
+
+$module-border-radius-circle: var(--ud-skeleton-border-radius, 1000px); // 圆形border-radius
+$module-border-radius-image: var(--ud-skeleton-border-radius, 6px);  // 图片border-radius
+$module-border-radius: var(--ud-skeleton-border-radius, 4px); // 默认border-radius
+$module-height: var(--ud-skeleton-height, 48px); // 默认height
+$module-small-height: var(--ud-skeleton-small-height, 32px); // small height
+$module-large-height: var(--ud-skeleton-large-height, 58px); // large height
+$module-space: var(--ud-skeleton-space, 16px); // padding margin 间隙
+$module-width: var(--ud-skeleton-width, 150px); // 默认按钮 标题 宽度
+
+
+@keyframes pulse {
+  0% {
+    background: rgba(var(--ud-gray-2), 1);
+  }
+  50% {
+    background: rgba(var(--ud-gray-4), 1);
+  }
+
+  100% {
+    background: rgba(var(--ud-gray-2), 1);
+  }
+}
+
+
+.#{$module} {
+  &-bg {
+    background: rgba(var(--ud-gray-2), 1);
+  }
+  &-full {
+    display: flex;
+    width: 100%;
+    > :not([hidden]) ~ :not([hidden]) {
+      margin-right: $module-space;
+      margin-left: $module-space;
+    }
+  }
+  &-grow {
+    flex: 1;
+    > :not([hidden]) ~ :not([hidden]) {
+      margin-top: $module-space;
+    }
+  }
+  &-active {
+    .ud-skeleton-bg {
+      animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+  }
+  &-active.ud-skeleton-bg {
+    animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  &-avatar {
+    height: $module-height;
+    width: $module-height;
+    border-radius: $module-border-radius-circle;
+    &-small {
+      height: $module-small-height;
+      width: $module-small-height;
+    }
+    &-large {
+      height: $module-large-height;
+      width: $module-large-height;
+    }
+
+    &-square {
+      border-radius: $module-border-radius;
+    }
+    
+  }
+  &-button {
+    height: $module-height;
+    width: $module-width;
+    border-radius: $module-border-radius-circle;
+    &-small {
+      height: $module-small-height;
+    }
+    &-large {
+      height: $module-large-height;
+    }
+
+    &-square {
+      border-radius: $module-border-radius;
+    }
+    &-circle {
+      width: $module-height;
+    }
+    
+    
+  }
+
+  &-title {
+    width: $module-width;
+    height: $module-height;
+    border-radius: $module-border-radius;
+    &-small {
+      height: $module-small-height;
+    }
+    &-large {
+      height: $module-large-height;
+    }
+  }
+
+  &-image {
+    border-radius: $module-border-radius-image;
+    background: url('../../assets/skeleton.png') no-repeat center center;
+    background-size: cover;
+  }
+
+  &-paragraph {
+    border-radius: $module-border-radius;
+    height: $module-height;
+    &-small {
+      height: $module-small-height;
+    }
+    &-large {
+      height: $module-large-height;
+    }
+  }
+}

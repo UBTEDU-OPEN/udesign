@@ -299,7 +299,7 @@ const feedbackMenus = [
   {
     name: 'skeleton',
     text: 'Skeleton 骨架屏',
-    disabled: true,
+    disabled: false,
   },
   {
     name: 'spin',

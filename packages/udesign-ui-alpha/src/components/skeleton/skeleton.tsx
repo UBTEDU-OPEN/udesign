@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { Avatar, AvatarProps } from './avatar';
 import { Paragraph, ParagraphProps } from './paragraph';
