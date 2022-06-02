@@ -1,0 +1,18 @@
+
+
+.radio-root {
+
+  :global {
+    
+    
+    .ud-radio-wrapper {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .test {
+      color: red;
+    }
+   
+  }
+}

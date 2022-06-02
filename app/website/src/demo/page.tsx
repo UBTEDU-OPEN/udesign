@@ -118,7 +118,6 @@ const inputMenus = [
   {
     name: 'radio',
     text: 'Radio 单选框',
-    disabled: true,
   },
   {
     name: 'rate',
