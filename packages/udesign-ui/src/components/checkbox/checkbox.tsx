@@ -83,6 +83,9 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, children
             if (onChange) {
               onChange(event);
             }
+            if (context.onChange) {
+              context.onChange(getResult());
+            }
           }}
         />
         {!disabled && indeterminate && <CheckboxCenter />}

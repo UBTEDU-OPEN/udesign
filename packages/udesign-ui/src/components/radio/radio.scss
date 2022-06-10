@@ -12,9 +12,10 @@ $radio-button-inner-padding: var(--ud-radio-button-inner-padding, 15px 18px);
   justify-content: flex-start;
 }
 .#{$module} {
-  display: flex;
   padding: $radio-padding;
-  
+  > svg {
+    display: inline-block;
+  }
   &-hidden {
     opacity: 0;
     width: 0;

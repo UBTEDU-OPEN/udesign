@@ -8,9 +8,10 @@ $checkbox-height: var(--ud-checkbox-height, 40px);
   justify-content: flex-start;
 }
 .#{$module} {
-  display: flex;
   padding: $checkbox-padding;
-  
+  > svg {
+    display: inline-block;
+  }
   &-hidden {
     opacity: 0;
     width: 0;
