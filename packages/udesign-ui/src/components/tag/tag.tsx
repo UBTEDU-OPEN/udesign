@@ -19,11 +19,12 @@ export type TagProps = {
   textColor?: string; // 标签文本颜色
   size?: TagSize; // 标签大小
   visible?: boolean; // 是否显示标签
+  value?: string; // 标签的value
   onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void; // 单击标签时的回调函数
-  onClose?: (value: ReactNode, event: React.MouseEvent<HTMLElement>) => void; // 关闭标签时的回调函数
+  onClose?: (value: { label: ReactNode; value: string }, event: React.MouseEvent<HTMLElement>) => void; // 关闭标签时的回调函数
 } & NativeProps;
 
-const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = ({ size = 'middle', color, textColor, style, onClick, onClose, className, children, ...props }, ref) => {
+const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = ({ size = 'middle', color, textColor, style, onClick, onClose, className, children, value, ...props }, ref) => {
   const [visible, setVisible] = useState(true);
 
   React.useEffect(() => {
@@ -42,7 +43,7 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
   const handleCloseClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
 
-    onClose?.(children, e);
+    onClose?.({ label: children, value: value || '' }, e);
 
     // https://developer.mozilla.org/zh-CN/docs/Web/API/Event/defaultPrevented
     if (e.defaultPrevented) {

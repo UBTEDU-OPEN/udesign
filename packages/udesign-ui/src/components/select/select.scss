@@ -1,0 +1,153 @@
+
+$select-disabled-color: var(--select-disabled-color, rgb(var(--ud-gray-4)));
+$select-active-color: var(--select-active-color, rgb(var(--ud-purple-6)));
+$select-active-background: var(--select-active-background, rgb(var(--ud-gray-2)));
+$select-border: var(--selete-border, 1px solid rgb(var(--ud-gray-3)));
+$select-border-radius: var(--selete-border-radius, 1000px);
+$select-width: var(--selete-width, 129px);
+$select-height: var(--selete-height, 40px);
+$select-width-large: var(--selete-width-large, 160px);
+$select-height-large: var(--selete-height-large, 50px);
+$select-width-small: var(--selete-width-small, 110px);
+$select-height-small: var(--selete-height-small, 32px);
+$select-padding-left: var(--selete-padding-left, 10px);
+$select-item-height: var(--selete-item-height, 40px);
+$select-item-disabled-color: var(--selete-item-disabled-color, rgb(var(--ud-gray-6)));
+$select-item-padding: var(--selete-item-padding, 0 20px);
+$select-list-top: var(--selete-list-top, 50px);
+$select-list-top-large: var(--selete-list-top-large, 60px);
+$select-list-top-small: var(--selete-list-top-small, 42px);
+$module: ud-select;
+
+.#{$module}-wrapper {
+  position: relative;
+}
+.#{$module} {
+  width: $select-width;
+  height: $select-height;
+  background: rgb(var(--ud-white));
+  border: $select-border;
+  border-radius: $select-border-radius;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse ;
+  &-large {
+    width: $select-width-large;
+    height: $select-height-large;
+  }
+  &-small {
+    width: $select-width-small;
+    height: $select-height-small;
+  }
+  &-arrow {
+    border-radius: 0 $select-border-radius $select-border-radius 0;
+    display: flex;
+    align-items: center;
+  }
+  &-disabled {
+    background: #F5F5F5;
+    color: $select-disabled-color;
+    border: $select-border;
+    cursor: not-allowed;
+  }
+  &-single-text {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: $select-padding-left;
+    align-items: center;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  &-multi {
+    &-box {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    &-selected {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &-disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &-item {
+    &-single {
+      padding: $select-item-padding;
+      height: $select-item-height;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    &-multi {
+      padding: $select-item-padding;
+      height: $select-item-height;
+      width: 100%;
+      display: flex;
+      flex: auto;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      &-text {
+        flex-grow: 1;
+      }
+    }
+    &-active {
+      background: $select-active-background;
+      color: $select-active-color;
+    }
+    &-disabled {
+      color: $select-item-disabled-color;
+      cursor: not-allowed;
+    }
+  }
+  
+  
+  &-list-wrapper {
+    position: absolute;
+    background: rgb(var(--ud-white));
+    box-shadow: 0 7px 18px 0 rgba(198,199,219,0.84);
+    border-radius: 8px;
+    overflow: hidden;
+    width: $select-width;
+    top: $select-list-top;
+    z-index: 99;
+    &-large {
+      width: $select-width-large;
+      top: $select-list-top-large;
+    }
+    &-small {
+      width: $select-width-small;
+      top: $select-list-top-small;
+    }
+  }
+
+  &-search {
+    background: transparent;
+    outline: none;
+    width: 6px;
+    padding: 0 1px;
+    flex-grow: 1;
+    padding-left: $select-padding-left;
+    cursor: pointer;
+    &-disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+
+

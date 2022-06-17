@@ -1,6 +1,6 @@
 $module: ud-checkbox;
 
-$checkbox-padding: var(--ud-checkbox-padding, 15px 15px 15px 0);
+$checkbox-padding: var(--ud-checkbox-padding, 15px 15px 15px 15px);
 $checkbox-height: var(--ud-checkbox-height, 40px);
 
 .#{$module}-wrapper {

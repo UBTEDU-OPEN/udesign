@@ -126,7 +126,6 @@ const inputMenus = [
   {
     name: 'select',
     text: 'Select 选择器',
-    disabled: true,
   },
   // {
   //   name: 'slider',
@@ -230,7 +229,6 @@ const showMenus = [
   {
     name: 'table',
     text: 'Table 表格',
-    disabled: true,
   },
   {
     name: 'tabs',

@@ -12,7 +12,7 @@ export default function RadioPage() {
       <Demo.Page title='Radio 单选框' description='用于在选中和非选中状态之间进行切换。'>
         <Demo.Block title='基础用法' description='通过 defaultChecked 指定单选框的初始勾选状态。'>
           <Radio>单选框</Radio>
-          <Radio defaultChecked>单选框</Radio>
+          {/* <Radio defaultChecked>单选框</Radio> */}
         </Demo.Block>
         <Demo.Block title='禁用状态' description='通过设置 disabled 属性可以禁用单选框。'>
           <Radio disabled>单选框</Radio>
