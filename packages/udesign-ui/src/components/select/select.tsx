@@ -71,7 +71,7 @@ export const Select = ({ children, className, style, size, value, onChange, disa
     }
     return result;
   };
-  const triggerRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
   const [showClear, setShowClear] = useState<boolean>(false);
   const [innerDefaultValue, setInnerDefaultValue] = useState<string[]>(formatValue(defaultValue));
   const initialState = { value: formatValue(value) };

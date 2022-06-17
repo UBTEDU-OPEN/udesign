@@ -66,7 +66,7 @@ export const Body = () => {
                             payload: { rowSelection: { ...rowSelection, selectedRowKeys: [outerItem.key] } },
                           });
                         }
-                        rowSelection?.onChange && rowSelection?.onChange([outerItem.key], outerItem);
+                        rowSelection?.onChange && rowSelection?.onChange([outerItem.key as string], outerItem);
                       }}
                     >
                       <Radio disabled={rowSelection?.getCheckboxProps && rowSelection?.getCheckboxProps(outerItem).disabled} checked={[...(rowSelection?.selectedRowKeys || [])]?.shift() === outerItem.key} />

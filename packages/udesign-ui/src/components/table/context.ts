@@ -5,7 +5,7 @@ export const enum types {
   UPDATE_SELECTED = 'UPDATE_SELECTED',
 }
 
-export function reducer(state: { [key: string]: unknown }, action: { type: string; payload: unknown }) {
+export function reducer(state: { [key: string]: any }, action: { type: string; payload: unknown }) {
   switch (action.type) {
     case types.UPDATE_SELECTED:
       return action.payload;

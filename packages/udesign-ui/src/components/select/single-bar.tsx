@@ -25,7 +25,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
 export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearch, options = [], innerDefaultValue = [] }: SingleBarProps) => {
   const context = useContext(SelectContext);
-  const searchRef = useRef<HTMLElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   const getSingleLabel = (value: string, options: OptionItem[] = []) => {
     let label: ReactNode = '';
     options?.forEach((item: OptionItem) => {

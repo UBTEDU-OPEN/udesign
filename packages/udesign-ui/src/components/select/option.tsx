@@ -50,7 +50,9 @@ export const Option = ({ label, disabled, className, children, style, value }: O
         });
       }
       if (!innerChecked && context.mode !== 'multiple') {
-        context.setVisible(false);
+        if (context.setVisible) {
+          context.setVisible(false);
+        }
       }
     }
   };

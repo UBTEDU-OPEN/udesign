@@ -39,7 +39,7 @@ export default function CheckboxPage() {
           </Checkbox>
         </Demo.Block>
         <Demo.Block title='受控组件' description='组件是否选中完全取决于传入的 checked 值，配合 onChange 回调函数使用'>
-          <Checkbox checked={checked} disabled={disabled} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setChecked((event.nativeEvent.target as HTMLInputElement as HTMLInputElement)?.checked)}>
+          <Checkbox checked={checked} disabled={disabled} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setChecked((event.nativeEvent.target as HTMLInputElement)?.checked)}>
             复选框
           </Checkbox>
           <Button onClick={() => setChecked(!checked)}>{checked ? 'unchecked' : 'checked'}</Button>
