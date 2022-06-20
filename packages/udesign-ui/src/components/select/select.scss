@@ -58,9 +58,13 @@ $module: ud-select;
     justify-content: flex-start;
     padding-left: $select-padding-left;
     align-items: center;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+    overflow: hidden;
+    &-content {
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    
   }
   &-multi {
     &-box {

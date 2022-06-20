@@ -20,7 +20,6 @@ export default function SelectPage() {
 
   const tagRender = (props: CustomTagProps) => {
     const { label, value, closeable, onClose } = props;
-    console.log(closeable, 'closeable', value);
     const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
       event.stopPropagation();

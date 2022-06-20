@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { Table, Button, Radio, Tooltip, Pagination } from '@ubt/udesign-ui';
+import { Table, Radio, Tooltip, Pagination } from '@ubt/udesign-ui';
 import { Demo } from '../../../demo';
 import styles from './index.module.scss';
 
@@ -17,12 +17,13 @@ export default function TablePage() {
     key: string;
     render?: (record: { [key: string]: any }) => ReactNode;
     ellipsis?: boolean;
+    width?: string;
   }
   const columns: column[] = [
     {
       title: 'Name',
       key: 'name',
-      render: (record: DataType) => `${record.name}-render`,
+      render: (record: { [key: string]: any }) => `${record.name}-render`,
     },
     {
       title: 'Age',
@@ -41,7 +42,7 @@ export default function TablePage() {
       title: 'Action',
       key: 'action',
       // width: '100px',
-      render: (record: DataType) => (
+      render: (record: { [key: string]: any }) => (
         <React.Fragment>
           <a type='text' style={{ marginRight: '20px' }}>
             edit
@@ -56,7 +57,7 @@ export default function TablePage() {
     {
       title: 'Name',
       key: 'name',
-      render: (record: DataType) => `${record.name}-render`,
+      render: (record: { [key: string]: any }) => `${record.name}-render`,
       ellipsis: true,
     },
     {
@@ -77,7 +78,7 @@ export default function TablePage() {
     {
       title: 'Action',
       key: 'action',
-      render: (record: DataType) => (
+      render: (record: { [key: string]: any }) => (
         <React.Fragment>
           <a type='text' style={{ marginRight: '20px' }}>
             edit
@@ -94,12 +95,12 @@ export default function TablePage() {
       title: 'Name',
       key: 'name',
       render: ({ name }) => <a>{name}</a>,
-      width: 150,
+      width: '150px',
     },
     {
       title: 'Age',
       key: 'age',
-      width: 80,
+      width: '80px',
     },
     {
       title: 'Address',
@@ -177,7 +178,6 @@ export default function TablePage() {
           <Radio.Group
             name='type'
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              console.log(event.target);
               setChecked(!checked);
             }}
           >

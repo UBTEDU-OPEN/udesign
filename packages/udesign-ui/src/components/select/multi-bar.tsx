@@ -16,11 +16,11 @@ export type MultiBarProps = {
 } & NativeProps;
 
 export type CustomTagProps = {
-  label?: React.ReactNode;
-  value?: string;
-  disabled?: boolean;
-  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-  closable?: boolean;
+  label?: React.ReactNode; // tag 显示内容
+  value?: string; // tag 对应value
+  disabled?: boolean; // 是否禁用
+  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调
+  closable?: boolean; // 是否显示关闭按钮
 };
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
@@ -28,7 +28,14 @@ const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, selectedList, tagRender, handleClose }: MultiBarProps) => {
   const context = useContext(SelectContext);
   const defautTagRender = (CustomTagProps: CustomTagProps) => (
-    <Tag closeable={!context.disabled} onClose={handleClose} value={CustomTagProps.value} color={context.disabled ? '#F5F5F5' : '#EEF0FC'} textColor={context.disabled ? '#D4D4DA' : '#000'}>
+    <Tag
+      closeable={!context.disabled}
+      onClose={handleClose}
+      value={CustomTagProps.value}
+      color={context.disabled ? '#F5F5F5' : '#EEF0FC'}
+      textColor={context.disabled ? '#D4D4DA' : '#000'}
+      style={{ border: context.disabled ? '1px solid #DDE8F5' : 'none' }}
+    >
       {CustomTagProps.label}
     </Tag>
   );

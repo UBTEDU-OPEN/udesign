@@ -6,11 +6,11 @@ import { Header } from './header';
 import { Body } from './body';
 import { columnType, rowSelectionType } from './types';
 
-interface IProps {
-  dataSource: { [key: string]: unknown }[];
-  columns: columnType[];
-  rowSelection?: rowSelectionType;
-  bordered?: boolean;
+export interface IProps {
+  dataSource: { [key: string]: any }[]; // table 行数据
+  columns: columnType[]; // table 列数据
+  rowSelection?: rowSelectionType; // 选择行 相关参数
+  bordered?: boolean; // 是否显示border
   rowKey?: string; // todo
   scroll?: { [key: string]: unknown }; // todo
   showHeader?: boolean; // todo

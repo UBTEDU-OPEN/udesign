@@ -15,8 +15,8 @@ export function reducer(state: any, action: any) {
 }
 
 export interface SelectContextState {
-  value: string[];
-  defaultValue: string[];
+  value?: string[];
+  defaultValue?: string[];
   name?: string;
   onChange?: (value: string | string[]) => void;
   dispatch?: React.Dispatch<{ type: string; payload: any }>;

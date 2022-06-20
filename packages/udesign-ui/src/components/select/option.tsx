@@ -6,9 +6,9 @@ import { SelectContext, types } from './context';
 import { IconApplyTick } from './icon-apply-tick';
 
 export type OptionProps = {
-  value?: string;
-  label?: string;
-  disabled?: boolean;
+  value?: string; // 默认根据此属性值进行筛选
+  label?: string; // 显示内容
+  disabled?: boolean; // 是否禁用
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select-item`;
@@ -17,12 +17,12 @@ export const Option = ({ label, disabled, className, children, style, value }: O
   const context = useContext(SelectContext);
   const [innerChecked, setInnerChecked] = useState<boolean>(context.defaultValue?.includes(value || '') || false);
   const getResult = () => {
-    let result: string[] = context.value;
+    let result: string[] = context.value || [];
     if (context.mode === 'multiple') {
       if (innerChecked) {
-        result = context.value.filter((item: any) => item !== value);
+        result = (context.value || []).filter((item: any) => item !== value);
       } else {
-        result = value ? [...context.value, value] : context.value;
+        result = value ? [...(context.value || []), value] : context.value || [];
       }
     } else if (!innerChecked) {
       result = value ? [value] : [];

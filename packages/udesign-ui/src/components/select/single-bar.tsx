@@ -13,14 +13,6 @@ export type SingleBarProps = {
   innerDefaultValue?: string[];
 } & NativeProps;
 
-export type CustomTagProps = {
-  label?: React.ReactNode;
-  value?: string;
-  disabled?: boolean;
-  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-  closable?: boolean;
-};
-
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
 export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearch, options = [], innerDefaultValue = [] }: SingleBarProps) => {
@@ -57,7 +49,9 @@ export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearc
           />
         </div>
       ) : (
-        <div className={`${prefixCls}-single-text`}>{getSingleLabel(context.value[0], options) || getSingleLabel(innerDefaultValue[0], options)}</div>
+        <div className={`${prefixCls}-single-text`}>
+          <div className={`${prefixCls}-single-text-content`}>{getSingleLabel((context.value || [])[0], options) || getSingleLabel(innerDefaultValue[0], options)}</div>
+        </div>
       )}
     </React.Fragment>
   );
