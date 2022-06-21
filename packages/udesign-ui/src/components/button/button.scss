@@ -4,69 +4,110 @@ $module: ud-button;
 
 .#{$module} {
   --button-color: #{$button-color-primary};
+  --button-color-hover: #{$button-color-primary-hover};
+  --button-color-active: #{$button-color-primary-active};
   --button-color-light: #{$button-color-primary-light};
+  --button-color-light-hover: #{$button-color-primary-light-hover};
+  --button-color-light-active: #{$button-color-primary-light-active};
 
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   margin: 0;
-  font-size: 16px;
+  font-weight: $button-font-weight;
   text-align: center;
   border: $button-border-width $button-border-style $button-border-color;
   border-radius: $button-border-radius;
   cursor: pointer;
   transition: opacity ease 0.15s;
   user-select: none;
-  min-width: 150px;
   overflow: hidden;
 
   &:focus {
     outline: none;
   }
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 0;
-    content: ' ';
-  }
-  &:active::before {
-    opacity: 0.08;
-  }
+  // &::before {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   background: #000;
+  //   opacity: 0;
+  //   content: ' ';
+  // }
+  // &:active::before {
+  //   opacity: 0.08;
+  // }
 
   &-primary {
     background: var(--button-color);
     color: var(--ud-color-white);
+
+    &:hover {
+      background: var(--button-color-hover);
+    }
+    &:active {
+      background: var(--button-color-active);
+    }
   }
   &-default {
     background: var(--button-color-light);
     color: var(--button-color);
     border-color: transparent;
+
+    &:hover {
+      background: var(--button-color-light-hover);
+    }
+    &:active {
+      background: var(--button-color-light-active);
+    }
   }
   &-text {
     color: var(--button-color);
     border-color: transparent;
+    &:hover {
+      color: var(--button-color-hover);
+    }
+    &:active {
+      color: var(--button-color-active);
+    }
   }
   &-link {
     color: var(--button-color);
     border-color: transparent;
     text-decoration: underline;
+    &:hover {
+      color: var(--button-color-hover);
+    }
+    &:active {
+      color: var(--button-color-active);
+    }
   }
 
   &-danger {
     --button-color: #{$button-color-danger};
+    --button-color-hover: #{$button-color-danger-hover};
+    --button-color-active: #{$button-color-danger-active};
     --button-color-light: #{$button-color-danger-light};
+    --button-color-light-hover: #{$button-color-danger-light-hover};
+    --button-color-light-active: #{$button-color-danger-light-active};
   }
   &-warning {
     --button-color: #{$button-color-warning};
+    --button-color-hover: #{$button-color-warning-hover};
+    --button-color-active: #{$button-color-warning-active};
     --button-color-light: #{$button-color-warning-light};
+    --button-color-light-hover: #{$button-color-warning-light-hover};
+    --button-color-light-active: #{$button-color-warning-light-active};
   }
   &-disabled {
     --button-color: #{$button-color-disabled};
+    --button-color-hover: #{$button-color-disabled};
+    --button-color-active: #{$button-color-disabled};
     --button-color-light: #{$button-color-disabled-light};
+    --button-color-light-hover: #{$button-color-disabled-light};
+    --button-color-light-active: #{$button-color-disabled-light};
   }
 
   &-block {
