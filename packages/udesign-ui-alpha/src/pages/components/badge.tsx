@@ -6,7 +6,7 @@ import { ArrowDownOutlined } from '@ant-design/icons';
 export default function BadgePage() {
   return (
     <>
-      <Demo.Page title='Badge 徽标' description='在右上角展示徽标数字或小红点。' todo='增加配色接口'>
+      <Demo.Page title='Badge 徽标' description='在右上角展示徽标数字或小红点。'>
         <Demo.Block title='基础用法' description='设置 content 属性后，Badge 会在子元素的右上角显示对应的徽标，也可以通过 Badge.Dot 来显示小红点。'>
           <Space>
             <Badge content='5'>

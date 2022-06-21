@@ -22,7 +22,7 @@
     "app/**/*.{js,jsx,ts,tsx}": [
       "eslint --ext '.js,.jsx,.ts,.tsx'"
     ],
-    "packages/**/*.{js,jsx,ts,tsx}": [
+    "packages/udesign-ui/*.{js,jsx,ts,tsx}": [
       "eslint --ext '.js,.jsx,.ts,.tsx'"
     ]
   },

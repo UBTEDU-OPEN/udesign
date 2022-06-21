@@ -7,9 +7,18 @@ import styles from './index.module.scss';
 export default function TypographyPage() {
   return (
     <div className={styles['typography-root']}>
-      <Demo.Page title='Typography 排版' description='文本的基本格式。'>
-        <Demo.Block title='何时使用' description='当需要展示标题、段落、列表内容时使用，如文章/博客/日志的文本样式。当需要一列基于文本的基础操作时，如拷贝/省略/可编辑。'></Demo.Block>
-        <Demo.Block title='基本排版' description='展示文档样例 标题+正 多级标题+正文'></Demo.Block>
+      <Demo.Page title='Typography 排版' description='文本的基本格式'>
+        <Demo.Block
+          title='何时使用'
+          description={
+            <>
+              当需要展示标题、段落、列表内容时使用，如文章、博客、日志的文本样式。
+              <br />
+              当需要一列基于文本的基础操作时，如拷贝、省略、可编辑。
+            </>
+          }
+        ></Demo.Block>
+        <Demo.Block title='基本排版' description='展示文档样例 标题+正 多级标题+正文' todo='缺少文案' />
         <Demo.Block title='标题组件' description='展示不同级别的标题。'>
           <Typography.Title level={1}>h1. U Design</Typography.Title>
           <Typography.Title level={2}>h2. U Design</Typography.Title>

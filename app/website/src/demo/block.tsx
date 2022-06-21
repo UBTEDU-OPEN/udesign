@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import { Collapse, Tag } from '@ubt/udesign-ui-alpha';
+import { Tag } from '@ubt/udesign-ui';
+import { Collapse } from '@ubt/udesign-ui-alpha';
 import { NativeProps } from '@ubt/udesign-utils';
 
 type DemoBlockProps = {
@@ -15,14 +16,14 @@ type DemoBlockProps = {
 } & NativeProps;
 
 export const Block = ({ title, description, background, transform, compact, debug, todo, children, className }: DemoBlockProps) => {
-  const cls = classNames('relative', background ? 'bg-gray-100' : '', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-12', className);
+  const cls = classNames('relative', background ? 'bg-gray-50' : '', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-12', className);
   const code = reactElementToJSXString(React.isValidElement(children) ? children : <>{children}</>, { maxInlineAttributesLineLength: 80, showFunctions: false, sortProps: false, useBooleanShorthandSyntax: false });
   return debug && process.env.NODE_ENV === 'production' ? null : (
     <>
       {title || description ? (
         <div className='py-4'>
-          <div className='text-2xl'>{title}</div>
-          <div className='text-gray-500 mt-2'>{description}</div>
+          <div className='text-2xl font-semibold'>{title}</div>
+          <div className='text-base text-gray-500 mt-2'>{description}</div>
           <div className='text-indigo-600 mt-2'>{todo ? `TODO: ${todo}` : ''}</div>
         </div>
       ) : null}
@@ -30,7 +31,7 @@ export const Block = ({ title, description, background, transform, compact, debu
         <div className='border mb-10 rounded-lg overflow-hidden'>
           <div className={cls}>
             {debug ? (
-              <Tag className='absolute top-0 right-0' type='warning'>
+              <Tag className='absolute top-0 right-0' color='warning'>
                 Dev Only
               </Tag>
             ) : null}

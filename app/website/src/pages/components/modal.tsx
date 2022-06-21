@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Space, Button, Modal } from '@ubt/udesign-ui';
-import { Input } from '@ubt/udesign-ui-alpha';
+import { Space, Button, Modal, Input } from '@ubt/udesign-ui';
 import { CommonSize } from '@ubt/udesign-constants';
 import { Demo } from '../../demo';
 
@@ -81,6 +80,8 @@ export default function ModalPage() {
             </Modal>
           </Space>
         </Demo.Block>
+        <Demo.Block title='确认式对话框' description='使用 confirm() 可以快捷地弹出确认框。onCancel/onOk 返回 promise 可以延迟关闭。' todo='内置函数式调用方法' />
+        <Demo.Block title='信息提示' description='各种类型的信息提示，只提供一个按钮用于关闭。' todo='内置函数式调用方法' />
         <Demo.Block title='点击遮罩层不可关闭' description='修改 maskClosable 为 false 则不可通过点击遮罩层来关闭对话框。'>
           <Space>
             <Button type='primary' onClick={() => setVisible2(true)}>

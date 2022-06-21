@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Progress, Button, Space } from '@ubt/udesign-ui';
-import { Toast } from '@ubt/udesign-ui-alpha';
-import { SearchOutlined } from '@ant-design/icons';
 import { Demo } from '../../demo';
 
 export default function ProgressPage() {

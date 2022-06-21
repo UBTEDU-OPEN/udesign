@@ -16,10 +16,9 @@ export type ResultProps = {
   status?: 'success' | 'info' | 'warning' | '404' | '403' | '500'; // 结果的状态，决定图标和颜色，默认info
   title?: ReactNode; // 标题文字
   subtitle?: ReactNode; // 副标题文字
-  extra?: ReactNode; // 额外的内容
 } & NativeProps;
 
-export const Result = ({ icon, status = 'info', title, subtitle, extra, className, ...restProps }: ResultProps) => {
+export const Result = ({ icon, status = 'info', title, subtitle, children, className, style }: ResultProps) => {
   const renderIcon = () => {
     if (icon) return icon;
 
@@ -33,12 +32,12 @@ export const Result = ({ icon, status = 'info', title, subtitle, extra, classNam
 
   const cls = classNames(prefixCls, className);
   return (
-    <div className={cls} {...restProps}>
+    <div className={cls} style={style}>
       <div className={`${prefixCls}-icon`}>{renderIcon()}</div>
       <div>
         {title ? <h4 className={`${prefixCls}-title`}>{title}</h4> : null}
         {subtitle ? <div className={`${prefixCls}-subtitle`}>{subtitle}</div> : null}
-        {extra ? <div className={`${prefixCls}-extra`}>{extra}</div> : null}
+        {children ? <div className={`${prefixCls}-extra`}>{children}</div> : null}
       </div>
     </div>
   );
