@@ -1,13 +1,28 @@
 @import '../../global/variables.scss';
 
 $button-color-primary: var(--ud-button-color-primary, var(--ud-color-primary)); // 默认态按钮主要色
-$button-color-primary-light: var(--ud-button-color-primary-light, var(--ud-color-primary-light)); // 默认态按钮次要色
+$button-color-primary-hover: var(--ud-button-color-primary-hover, var(--ud-color-primary-hover)); // 默认态按钮主要色-悬浮
+$button-color-primary-active: var(--ud-button-color-primary-active, var(--ud-color-primary-active)); // 默认态按钮主要色-按下
+$button-color-primary-light: var(--ud-button-color-primary-light, var(--ud-color-primary-light)); // 浅版默认态按钮主要色
+$button-color-primary-light-hover: var(--ud-button-color-primary-light-hover, var(--ud-color-primary-light-hover)); // 浅版默认态按钮主要色-悬浮
+$button-color-primary-light-active: var(--ud-button-color-primary-light-active, var(--ud-color-primary-light-active)); // 浅版默认态按钮主要色-按下
+
 $button-color-danger: var(--ud-button-color-danger, var(--ud-color-danger)); // 二级警示按钮主要色
-$button-color-danger-light: var(--ud-button-color-danger-light, var(--ud-color-danger-light)); // 二级警示按钮次要色
+$button-color-danger-hover: var(--ud-button-color-danger-hover, var(--ud-color-danger-hover)); // 二级警示按钮主要色-悬浮
+$button-color-danger-active: var(--ud-button-color-danger-active, var(--ud-color-danger-active)); // 二级警示按钮主要色-按下
+$button-color-danger-light: var(--ud-button-color-danger-light, var(--ud-color-danger-light)); // 浅版二级警示按钮主要色
+$button-color-danger-light-hover: var(--ud-button-color-danger-light-hover, var(--ud-color-danger-light-hover)); // 浅版二级警示按钮主要色-悬浮
+$button-color-danger-light-active: var(--ud-button-color-danger-light-active, var(--ud-color-danger-light-active)); // 浅版二级警示按钮主要色-按下
+
 $button-color-warning: var(--ud-button-color-warning, var(--ud-color-warning)); // 一级警示按钮主要色
-$button-color-warning-light: var(--ud-button-color-warning-light, var(--ud-color-warning-light)); // 一级警示按钮次要色
+$button-color-warning-hover: var(--ud-button-color-warning-hover, var(--ud-color-warning-hover)); // 一级警示按钮主要色-悬浮
+$button-color-warning-active: var(--ud-button-color-warning-active, var(--ud-color-warning-active)); // 一级警示按钮主要色-按下
+$button-color-warning-light: var(--ud-button-color-warning-light, var(--ud-color-warning-light)); // 浅版一级警示按钮主要色
+$button-color-warning-light-hover: var(--ud-button-color-warning-light-hover, var(--ud-color-warning-light-hover)); // 浅版一级警示按钮主要色-悬浮
+$button-color-warning-light-active: var(--ud-button-color-warning-light-active, var(--ud-color-warning-light-active)); // 浅版一级警示按钮主要色-按下
+
 $button-color-disabled: var(--ud-button-color-disabled, rgba(var(--ud-gray-6), 1)); // 禁用按钮主要色
-$button-color-disabled-light: var(--ud-button-color-disabled-light, var(--ud-color-disabled-fill)); // 禁用按钮次要色
+$button-color-disabled-light: var(--ud-button-color-disabled-light, var(--ud-color-disabled-fill)); // 浅版禁用按钮主要色
 
 $button-font-size-small: var(--button-font-size-small, 14px); // 按钮文字字号-小
 $button-font-size-middle: var(--button-font-size-middle, 16px); // 按钮文字字号-中
@@ -29,4 +44,6 @@ $button-border-width: var(--ud-button-border-width, 1px); // 按钮边框宽度
 $button-border-style: var(--ud-button-border-style, solid); // 按钮边框类型
 $button-border-color: var(--ud-button-border-color, var(--ud-color-border)); // 按钮边框颜色
 
-$button-border-radius: var(--ud-button-border-radius, 2px); // 按钮圆角-默认
+$button-border-radius: var(--ud-button-border-radius, 4px); // 按钮圆角大小
+
+$button-font-weight: var(--ud-button-font-weight, 400); // 按钮文字字重

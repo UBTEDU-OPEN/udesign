@@ -14,7 +14,7 @@ yarn dev
 
 ```
 ├── app
-│   └── @ubt/udesign-website    (nextjs, tailwindcss, react, typescript)
+│   └── @ubt/udesign-website    (next.js, tailwindcss, react, typescript)
 └── packages
     ├── @ubt/udesign-ui         (react, typescript, scss)
     ├── @ubt/udesign-utils
@@ -23,13 +23,13 @@ yarn dev
 
 ### app
 
-@ubt/udesign-website: udesign 网站源码，SSG，包含组件文档和使用案例。
+@ubt/udesign-website: udesign 网站源码，使用 next.js + tailwindcss 构建，包含组件文档和使用案例。
 
 ### packages
 
-@ubt/udesign-ui： React 组件库源码，建设中，会有更多组件加入。
-@ubt/udesign-utils: 工具库，目前 udesign 内部使用。
-@ubt/udesign-ui-alpha： 预研版本，仅用作演示，后面会废弃。
+@ubt/udesign-ui： React 组件库源码，是 uDesign 的核心内容。
+@ubt/udesign-utils: 工具库，目前 udesign 内部使用，后面可能会单独发包。
+@ubt/udesign-ui-alpha： 预研版本，使用 tailwind 构建，仅用于临时网站演示，后面会废弃。不要使用！！！
 
 ## Deploy
 
@@ -47,7 +47,12 @@ cd app/website
 yarn export
 ```
 
-使用 nextjs 构建，将生成的 `out` 目录上传到服务器。（CI 工具待添加）
+构建完成后，将生成的 `out` 目录上传到临时 FTP 服务器。
+
+Host: 10.10.18.65
+username: ucode
+password: ucode
+port: 22
 
 ## 使用说明
 
@@ -64,5 +69,5 @@ yarn export
 ## TODO
 
 - tsconfig 公共部分抽离
-- Table组件完成后，编写脚本将 `theme.scss` 和 `variables.scss` 输出为页面（思路：fs 正则（:和//）处理 scss 文件输出 json 文件，页面请求 json 文件作为数据源。）
+- Table 组件完成后，编写脚本将 `theme.scss` 和 `variables.scss` 输出为页面（思路：fs 正则（:和//）处理 scss 文件输出 json 文件，页面请求 json 文件作为数据源。）
 - 多语言（ConfigContext 方案）
