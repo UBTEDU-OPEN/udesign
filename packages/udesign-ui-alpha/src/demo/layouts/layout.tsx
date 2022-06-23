@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Layout, Navbar, Scrollbar } from '@ubt/udesign-ui-alpha';
 import { NativeProps } from '../../utils';
 import Navigation from './navigation';
-import { SITE_NAME } from '../constants/site';
+import { SITE_NAME } from '../../constants/site';
 
 const { Header, Content, Sider, Footer } = Layout;
 

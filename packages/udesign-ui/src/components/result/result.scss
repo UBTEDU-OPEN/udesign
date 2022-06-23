@@ -1,47 +1,35 @@
+@import './variables.scss';
+
 $module: ud-result;
 
-$padding: var(--ud-result-padding, 48px 32px);
-
-$icon-font-size: var(--ud-result-icon-font-size, 100px);
-
-$title-color: var(--ud-result-title-color, rgb(var(--ud-gray-12)));
-$title-margin-top: var(--ud-result-title-margin-top, 20px);
-$title-font-size: var(--ud-result-title-font-size, 20px);
-
-$subtitle-color: var(--ud-result-subtitle-color, rgb(var(--ud-gray-9)));
-$subtitle-margin-top: var(--ud-result-subtitle-margin-top, 20px);
-$subtitle-font-size: var(--ud-result-subtitle-font-size, 16px);
-
-$extra-margin-top: var(--ud-result-extra-margin-top, 40px);
-$extra-gap: var(--ud-result-extra-gap, 20px);
-
 .#{$module} {
-  padding: $padding;
+  padding: $result-padding;
   text-align: center;
 
   &-icon {
-    font-size: $icon-font-size;
+    font-size: $result-icon-font-size;
     margin: 0 auto;
     display: inline-block;
   }
 
   &-title {
-    margin-top: $title-margin-top;
-    color: $title-color;
-    font-weight: bold;
-    font-size: $title-font-size;
+    margin: $result-title-margin;
+    color: $result-title-color;
+    font-weight: $result-title-font-weight;
+    font-size: $result-title-font-size;
   }
 
   &-subtitle {
-    margin-top: $subtitle-margin-top;
-    color: $subtitle-color;
-    font-size: $subtitle-font-size;
+    margin: $result-subtitle-margin;
+    color: $result-subtitle-color;
+    font-size: $result-subtitle-font-size;
+    font-weight: $result-subtitle-font-weight;
   }
 
   &-extra {
     display: flex;
-    margin-top: $extra-margin-top;
+    margin: $result-extra-margin;
     justify-content: center;
-    gap: $extra-gap;
+    gap: $result-extra-gap;
   }
 }

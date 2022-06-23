@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SettingIcon } from '@ubt/udesign-ui-alpha';
 import { Button, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { SITE_NAME } from '../../constants/site';
 
 export default function ButtonPage() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -14,7 +15,7 @@ export default function ButtonPage() {
           description={
             <>
               <b>
-                在 uDesign 中我们提供了五种类型的按钮。
+                在 {SITE_NAME} 中我们提供了五种类型的按钮。
                 <br />
                 五种类型：主按钮、次按钮、无边框按钮、文本按钮和链接按钮。
               </b>

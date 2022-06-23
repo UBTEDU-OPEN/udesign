@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { GithubOutlined } from '@ant-design/icons';
 import { Menu } from '@ubt/udesign-ui-alpha';
 import { useRouter } from 'next/router';
+import { SITE_NAME } from '../../constants/site';
 
 const Navigation = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const Navigation = () => {
     <>
       <div className='fixed z-20 bg-white w-full flex justify-between items-center shadow px-4'>
         <Link href='/'>
-          <a className='font-bold text-xl'>uDesign</a>
+          <a className='font-bold text-xl'>{SITE_NAME}</a>
         </Link>
         <Menu className='gap-5' onChange={handleChange} activeKey={activeKey} mode='horizontal'>
           <Menu.Item name='spec' disabled>

@@ -1,37 +1,6 @@
+@import './variables.scss';
+
 $module: ud-modal;
-
-$modal-z-index: var(--ud-modal-z-index, var(--ud-z-modal));
-
-$modal-width-small: var(--ud-modal-width-small, 420px);
-$modal-width-middle: var(--ud-modal-width-middle, 520px);
-$modal-width-large: var(--ud-modal-width-large, 620px);
-
-$modal-paddingY: var(--ud-modal-paddingY, 0);
-$modal-paddingX: var(--ud-modal-paddingX, 35px);
-
-$modal-border-radius: var(--ud-modal-border-radius, 20px);
-$modal-background: var(--ud-modal-background, var(--ud-color-white));
-$modal-box-shadow: var(--ud-modal-box-shadow, var(--ud-shadow-elevated));
-
-$modal-title-font-size: var(--ud-modal-title-font-size, 20px);
-$modal-title-font-weight: var(--ud-modal-title-font-weight, 700);
-$modal-title-color: var(--ud-modal-title-color, var(--ud-color-text-0));
-$modal-title-text-align: var(--ud-modal-title-text-align, center);
-
-$modal-header-marginY: var(--ud-modal-header-marginY, 40px);
-$modal-header-marginX: var(--ud-modal-header-marginX, 0);
-$modal-header-paddingY: var(--ud-modal-header-paddingY, 0);
-$modal-header-paddingX: var(--ud-modal-header-paddingX, 0);
-
-$modal-body-font-size: var(--ud-modal-body-font-size, 16px);
-$modal-body-font-weight: var(--ud-modal-body-font-weight, 400);
-$modal-body-color: var(--ud-modal-body-color, var(--ud-color-text-2));
-$modal-body-text-align: var(--ud-modal-body-text-align, center);
-
-$modal-footer-marginY: var(--ud-modal-footer-marginY, 40px);
-$modal-footer-marginX: var(--ud-modal-footer-marginX, 0);
-$modal-footer-paddingY: var(--ud-modal-footer-paddingY, 0);
-$modal-footer-paddingX: var(--ud-modal-footer-paddingX, 0);
 
 .#{$module}-wrap {
   position: fixed;
@@ -46,17 +15,12 @@ $modal-footer-paddingX: var(--ud-modal-footer-paddingX, 0);
 }
 
 .#{$module} {
-  padding-top: $modal-paddingY;
-  padding-bottom: $modal-paddingY;
-  padding-left: $modal-paddingX;
-  padding-right: $modal-paddingX;
+  padding: $modal-padding;
   background: $modal-background;
   border-radius: $modal-border-radius;
   box-shadow: $modal-box-shadow;
   position: relative;
   overflow: hidden;
-  // display: flex;
-  // flex-direction: column;
 
   &-close {
     position: absolute;
@@ -72,8 +36,8 @@ $modal-footer-paddingX: var(--ud-modal-footer-paddingX, 0);
   }
 
   &-header {
-    margin: $modal-header-marginY $modal-header-marginX $modal-header-marginY $modal-header-marginX;
-    padding: $modal-header-paddingY $modal-header-paddingX $modal-header-paddingY $modal-header-paddingX;
+    margin: $modal-header-margin;
+    padding: $modal-header-padding;
   }
 
   &-body {
@@ -81,12 +45,11 @@ $modal-footer-paddingX: var(--ud-modal-footer-paddingX, 0);
     font-weight: $modal-body-font-weight;
     color: $modal-body-color;
     text-align: $modal-body-text-align;
-    // flex: 1;
   }
 
   &-footer {
-    margin: $modal-footer-marginY $modal-footer-marginX $modal-footer-marginY $modal-footer-marginX;
-    padding: $modal-footer-paddingY $modal-footer-paddingX $modal-footer-paddingY $modal-footer-paddingX;
+    margin: $modal-footer-margin;
+    padding: $modal-footer-padding;
   }
 }
 

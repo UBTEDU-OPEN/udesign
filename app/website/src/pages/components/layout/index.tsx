@@ -20,7 +20,7 @@ export default function LayoutPage() {
   };
   return (
     <div className={styles['layout-root']}>
-      <Demo.Page title='Layout布局' description='协助进行页面级整体布局。'>
+      <Demo.Page title='Layout 布局' description='协助进行页面级整体布局。'>
         <Demo.Block title='设计规则'></Demo.Block>
         <Demo.Block
           title='功能色'

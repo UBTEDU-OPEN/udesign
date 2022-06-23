@@ -34,7 +34,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 }
 
 const Input = (props: InputProps) => {
-  const { defaultValue = '', onChange, onClear, onEnterPress, onKeyDown, prepend, append, className, disabled, prefix, status, type, size = 'middle', suffix, style, showClear, showCount, inputStyle, forwardRef, ...restProps } = props;
+  const { defaultValue = '', onChange, onClear, onEnterPress, onFocus, onBlur, onKeyDown, prepend, append, className, disabled, prefix, status, type, size = 'middle', suffix, style, showClear, showCount, inputStyle, forwardRef, ...restProps } = props;
 
   const [innerValue, setInnerValue] = usePropsValue<string>({
     value: props.value,
@@ -165,7 +165,7 @@ const Input = (props: InputProps) => {
       [`${prefixCls}`]: true,
       [`${prefixCls}-${size}`]: size,
     });
-    return <input className={cls} style={inputStyle} type={innerType} value={innerValue} disabled={disabled} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} onKeyDown={handleKeydown} {...restProps} ref={forwardRef} />;
+    return <input {...restProps} className={cls} style={inputStyle} type={innerType} value={innerValue} disabled={disabled} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} onKeyDown={handleKeydown} ref={forwardRef} />;
   };
 
   const cls = classNames(className, {

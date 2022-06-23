@@ -1,0 +1,16 @@
+$result-padding: var(--ud-result-padding, 48px 32px); // 结果内边距
+
+$result-icon-font-size: var(--ud-result-icon-font-size, 100px); // 结果icon字号
+
+$result-title-margin: var(--ud-result-title-margin, 20px 0 0); // 结果title外边距
+$result-title-color: var(--ud-result-title-color, rgb(var(--ud-gray-12))); // 结果title文本颜色
+$result-title-font-size: var(--ud-result-title-font-size, 20px); // 结果title字号
+$result-title-font-weight: var(--ud-result-title-font-weight, 700); // 结果title字重
+
+$result-subtitle-margin: var(--ud-result-subtitle-margin, 20px 0 0); // 结果subtitle外边距
+$result-subtitle-color: var(--ud-result-subtitle-color, rgb(var(--ud-gray-9))); // 结果subtitle文本颜色
+$result-subtitle-font-size: var(--ud-result-subtitle-font-size, 16px); // 结果subtitle文本字号
+$result-subtitle-font-weight: var(--ud-result-subtitle-font-weight, 400); // 结果subtitle字重
+
+$result-extra-margin: var(--ud-result-extra-margin, 40px 0 0); // 结果内容区外边距
+$result-extra-gap: var(--ud-result-extra-gap, 20px); // 结果内容区间隙

@@ -1,32 +1,7 @@
+@import './variables.scss';
+
 $module: ud-steps;
 $item: #{$module}-item;
-
-$item-paddingLeft: var(--ud-steps-item-paddingLeft, 16px); // 步骤条左侧内边距
-$item-paddingRight: var(--ud-steps-item-paddingRight, 16px); // 步骤条右侧内边距
-
-$item-icon-width: var(--ud-steps-item-icon-width, 30px); // 步骤条图标宽度
-$item-icon-height: var(--ud-steps-item-icon-height, 30px); // 步骤条图标高度
-$item-icon-marginLeft: var(--ud-steps-item-icon-marginLeft, 0); // 步骤条图标左外边距
-$item-icon-marginRight: var(--ud-steps-item-icon-marginRight, 12px); // 步骤条图标右外边距
-$item-icon-marginBottom: var(--ud-steps-item-icon-marginBottom, 10px); // 步骤条图标下外边距（仅type=custom有效）
-$item-icon-number-fontSize: var(--ud-steps-item-icon-number-fontSize, 18px); //步骤条图标数字字号
-
-$item-title-fontSize: var(--ud-steps-item-title-fontSize, 16px); // 步骤条标题文本字号
-$item-title-fontWeight: var(--ud-steps-item-title-fontWeight, 500); // 步骤条标题文本字重
-$item-description-fontSize: var(--ud-steps-item-description-fontSize, 14px); // 步骤条描述文本字号
-$item-description-fontWeight: var(--ud-steps-item-description-fontWeight, 400); // 步骤条描述文本字重
-$item-description-color: var(--ud-steps-item-description-color, var(--ud-color-text-2)); // 步骤条描述文本颜色
-
-$item-background-wait: var(--ud-steps-item-background-wait, var(--ud-color-text-3)); // 未到达步骤条背景颜色
-$item-color-wait: var(--ud-steps-item-color-wait, var(--ud-color-white)); // 未到达步骤条文本颜色
-$item-background-process: var(--ud-steps-item-background-process, var(--ud-color-primary)); // 进行中步骤条背景颜色
-$item-color-process: var(--ud-steps-item-color-process, var(--ud-color-white)); // 进行中步骤条文本颜色
-$item-background-finish: var(--ud-steps-item-background-finish, var(--ud-color-white)); // 已完成步骤条背景颜色
-$item-color-finish: var(--ud-steps-item-color-finish, var(--ud-color-primary)); // 已完成步骤条文本颜色
-$item-background-error: var(--ud-steps-item-background-error, var(--ud-color-white)); // 错误步骤条背景颜色
-$item-color-error: var(--ud-steps-item-color-error, var(--ud-color-danger)); // 错误步骤条文本颜色
-$item-background-warning: var(--ud-steps-item-background-warning, var(--ud-color-white)); // 警告步骤条背景颜色
-$item-color-warning: var(--ud-steps-item-color-warning, var(--ud-color-warning)); // 警告步骤条文本颜色
 
 .#{$module} {
   display: flex;
@@ -35,8 +10,7 @@ $item-color-warning: var(--ud-steps-item-color-warning, var(--ud-color-warning))
   .#{$item} {
     flex: 1;
     position: relative;
-    padding-left: $item-paddingLeft;
-    padding-right: $item-paddingRight;
+    padding: $steps-item-padding;
 
     &:first-child {
       padding-left: 0;
@@ -52,45 +26,45 @@ $item-color-warning: var(--ud-steps-item-color-warning, var(--ud-color-warning))
     }
 
     &-icon {
-      width: $item-icon-width;
-      height: $item-icon-height;
-      margin-left: $item-icon-marginLeft;
-      margin-right: $item-icon-marginRight;
+      width: $steps-item-icon-width;
+      height: $steps-item-icon-height;
+      margin-left: $steps-item-icon-marginLeft;
+      margin-right: $steps-item-icon-marginRight;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: $item-icon-width;
+      border-radius: $steps-item-icon-width;
 
       .#{$item}-icon-number {
-        font-size: $item-icon-number-fontSize;
+        font-size: $steps-item-icon-number-fontSize;
       }
 
       &-wait {
-        background: $item-background-wait;
-        color: $item-color-wait;
+        background: $steps-item-background-wait;
+        color: $steps-item-color-wait;
       }
 
       &-process {
-        background: $item-background-process;
-        color: $item-color-process;
+        background: $steps-item-background-process;
+        color: $steps-item-color-process;
       }
 
       &-finish {
-        background: $item-background-finish;
-        border: 1px solid $item-color-finish;
-        color: $item-color-finish;
+        background: $steps-item-background-finish;
+        border: 1px solid $steps-item-color-finish;
+        color: $steps-item-color-finish;
       }
 
       &-error {
-        background: $item-background-error;
-        border: 1px solid $item-color-error;
-        color: $item-color-error;
+        background: $steps-item-background-error;
+        border: 1px solid $steps-item-color-error;
+        color: $steps-item-color-error;
       }
 
       &-warning {
-        background: $item-background-warning;
-        border: 1px solid $item-color-warning;
-        color: $item-color-warning;
+        background: $steps-item-background-warning;
+        border: 1px solid $steps-item-color-warning;
+        color: $steps-item-color-warning;
       }
     }
 
@@ -100,21 +74,20 @@ $item-color-warning: var(--ud-steps-item-color-warning, var(--ud-color-warning))
     }
 
     &-title {
-      font-size: $item-title-fontSize;
-      font-weight: $item-title-fontWeight;
+      font-size: $steps-item-title-fontSize;
+      font-weight: $steps-item-title-fontWeight;
     }
 
     &-description {
-      font-size: $item-description-fontSize;
-      font-weight: $item-description-fontWeight;
-      color: $item-description-color;
+      font-size: $steps-item-description-fontSize;
+      font-weight: $steps-item-description-fontWeight;
+      color: $steps-item-description-color;
     }
   }
 
   &-custom {
     .#{$item}-icon {
-      margin: 0;
-      margin-bottom: $item-icon-marginBottom;
+      margin: 0 0 $steps-item-icon-marginBottom;
     }
 
     .#{$item}-wrapper {
