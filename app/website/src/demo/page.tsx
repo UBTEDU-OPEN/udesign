@@ -138,7 +138,6 @@ const inputMenus = [
   {
     name: 'switch',
     text: 'Switch 开关',
-    disabled: true,
   },
   // {
   //   name: 'timePicker',

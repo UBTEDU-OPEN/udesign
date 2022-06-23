@@ -20,3 +20,4 @@ export { default as Spin } from './components/spin';
 export { default as Tag } from './components/tag';
 export { default as Tooltip } from './components/tooltip';
 export { default as Typography } from './components/typography';
+export { default as Switch } from './components/switch';
