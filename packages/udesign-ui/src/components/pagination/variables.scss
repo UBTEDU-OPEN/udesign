@@ -1,0 +1,18 @@
+$pagination-padding: var(--ud-pagination-padding, 0px); // 分页内边距
+
+$pagination-item-width: var(--ud-pagination-item-width, 40px); // 分页页码宽度
+$pagination-item-height: var(--ud-pagination-item-height, 40px); // 分页页码高度
+$pagination-item-margin: var(--ud-pagination-item-margin, 0 5px); // 分页页码外边距
+$pagination-item-radius: var(--ud-pagination-item-radius, 9999px); // 分页页码圆角
+$pagination-item-color: var(--ud-pagination-item-color, var(--ud-color-text-0)); // 分页页码文字颜色
+$pagination-item-color-hover: var(--ud-pagination-item-color-hover, var(--ud-color-text-0)); // 分页页码文字颜色-悬浮
+$pagination-item-color-active: var(--ud-pagination-item-color-active, var(--ud-color-white)); // 分页页码文字颜色-按下
+$pagination-item-background: var(--ud-pagination-item-background, var(--ud-color-white)); // 分页页码背景色
+$pagination-item-background-hover: var(--ud-pagination-item-background-hover, var(--ud-color-border)); // 分页页码背景色-悬浮
+$pagination-item-background-active: var(--ud-pagination-item-background-active, var(--ud-color-primary)); // 分页页码背景色-按下
+
+$pagination-total-margin: var(--ud-pagination-total-margin, 0 10px 0 0); // 分页总页数外边距
+
+$pagination-quickJump-margin: var(--ud-pagination-quickJump-margin, 0 0 0 10px); // 分页快速跳转外边距
+$pagination-quickJump-input-width: var(--ud-pagination-quickJump-input-width, 50px); // 分页快速跳转输入框宽度
+$pagination-quickJump-input-margin: var(--ud-pagination-quickJump-input-margin, 0 5px); // 分页快速跳转输入框外边距

@@ -1,26 +1,15 @@
+@import './variables.scss';
+
 $module: ud-divider;
 
 .#{$module} {
-  --border-width: var(--ud-divider-borderWidth, 1px);
-  --border-color: var(--ud-divider-borderColor, rgb(var(--ud-gray-3)));
-
-  --text-color: var(--ud-divider-text-color, rgb(var(--ud-gray-12)));
-  --text-fontSize: var(--ud-divider-fontSize, 16px);
-  --text-fontWeight: var(--ud-divider-text-fontWeight, 500);
-  --text-padddingLeft: var(--ud-divider-text-padddingLeft, 1em);
-  --text-padddingRight: var(--ud-divider-text-padddingRight, 1em);
-
-  --vertical-height: var(--ud-divider-vertical-height, 0.9em);
-  --vertical-marginLeft: var(--ud-divider-vertical-marginLeft, 1em);
-  --vertical-marginRight: var(--ud-divider-vertical-marginRight, 1em);
-
-  color: var(--text-color);
+  color: $divider-text-color;
 
   .#{$module}-inner-text {
     display: inline-block;
-    padding: 0 var(--text-padddingRight) 0 var(--text-padddingLeft);
-    font-size: var(--text-fontSize);
-    font-weight: var(--text-fontWeight);
+    padding: $divider-text-padding;
+    font-size: $divider-text-font-size;
+    font-weight: $divider-text-font-weight;
   }
 
   &-horizontal {
@@ -28,7 +17,7 @@ $module: ud-divider;
     clear: both;
     width: 100%;
     min-width: 100%;
-    border-top: var(--border-width) solid var(--border-color);
+    border-top: $divider-border-width solid $divider-border-color;
   }
 
   &-with-text {
@@ -41,7 +30,7 @@ $module: ud-divider;
       position: relative;
       top: 50%;
       width: 50%;
-      border-top: var(--border-width) solid var(--border-color);
+      border-top: $divider-border-width solid $divider-border-color;
       border-bottom: 0;
       transform: translateY(50%);
     }
@@ -89,10 +78,10 @@ $module: ud-divider;
     position: relative;
     top: -0.06em;
     display: inline-block;
-    height: var(--vertical-height);
-    margin: 0 var(--vertical-marginRight) 0 var(--vertical-marginLeft);
+    height: $divider-vertical-height;
+    margin: $divider-vertical-margin;
     vertical-align: middle;
-    border-left: var(--border-width) solid var(--border-color);
+    border-left: $divider-border-width solid $divider-border-color;
   }
 
   &-plain {

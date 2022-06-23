@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { NativeProps, usePropsValue } from '../../utils';
 import { numbers, prefixCls } from './constants';
+import Input from '../input';
 
 const _getTotalPageNumber = (total: number, pageSize: number) => Math.ceil(total / pageSize);
 
@@ -144,7 +145,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
     const { prevText } = restProps;
     const cls = classNames({
       [`${prefixCls}-item`]: true,
-      [`${prefixCls}-disabled`]: prevDisabled,
+      [`${prefixCls}-item-disabled`]: prevDisabled,
     });
     return (
       <li onClick={() => !prevDisabled && goPrev()} className={cls} tab-index={0}>
@@ -157,7 +158,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
     const { nextText } = restProps;
     const cls = classNames({
       [`${prefixCls}-item`]: true,
-      [`${prefixCls}-disabled`]: nextDisabled,
+      [`${prefixCls}-item-disabled`]: nextDisabled,
     });
     return (
       <li onClick={() => !nextDisabled && goNext()} className={cls} tab-index={0}>
@@ -244,13 +245,14 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
       <div className={quickJumpCls}>
         <span>跳至</span>
         <div className={`${prefixCls}-quickJump-input`}>
-          {/* <Input
+          <Input
+            size='small'
             value={quickJumpPage}
             disabled={isDisabled}
-            onBlur={(e: React.FocusEvent) => handleQuickJumpBlur()}
+            onBlur={() => handleQuickJumpBlur()}
             onEnterPress={(e: React.KeyboardEvent) => handleQuickJumpEnterPress((e.target as any).value)}
             onChange={(value) => handleQuickJumpNumberChange(value)}
-          /> */}
+          />
         </div>
         <span>页</span>
       </div>

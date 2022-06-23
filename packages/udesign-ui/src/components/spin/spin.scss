@@ -6,36 +6,32 @@ $module: ud-spin;
 .#{$module} {
   position: relative;
   display: inline-block;
-  @include size($width-middle);
+  @include size($spin-width-middle);
 
   &-wrapper {
     text-align: center;
     position: absolute;
     width: 100%;
-    transform: $wrapper-translate;
-    top: $wrapper-top;
-    color: $wrapper-color;
+    transform: translate(0, -50%);
+    top: 50%;
+    color: $spin-color;
 
     & > svg {
-      //   animation: $wrapper-animationDuration linear infinite #{$prefix}-animation-rotate;
-      @include size($width-middle);
+      @include size($spin-width-middle);
     }
   }
 
   &-animate {
     display: inline-flex;
-    // animation: $svg-animationDuration linear infinite #{$prefix}-animation-rotate;
   }
 
   &-children {
-    opacity: $children-opacity;
+    opacity: $spin-children-opacity;
     user-select: none;
   }
 
   &-block {
     display: block;
-
-    // 添加一个遮罩解决嵌套 Spin 穿透问题
 
     &::after {
       content: '';
@@ -71,26 +67,26 @@ $module: ud-spin;
 }
 
 .#{$module}-small {
-  @include size($width-small);
+  @include size($spin-width-small);
 
   & > .#{$module}-wrapper svg {
-    @include size($width-small);
+    @include size($spin-width-small);
   }
 }
 
 .#{$module}-middle {
-  @include size($width-middle);
+  @include size($spin-width-middle);
 
   & > .#{$module}-wrapper svg {
-    @include size($width-middle);
+    @include size($spin-width-middle);
   }
 }
 
 .#{$module}-large {
-  @include size($width-large);
+  @include size($spin-width-large);
 
   & > .#{$module}-wrapper svg {
-    @include size($width-large);
+    @include size($spin-width-large);
   }
 }
 

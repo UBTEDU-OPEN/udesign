@@ -5,7 +5,7 @@ import { Demo } from '../../demo';
 export default function DividerPage() {
   return (
     <>
-      <Demo.Page title='Divider分割线' description='区隔内容的分割线'>
+      <Demo.Page title='Divider 分割线' description='区隔内容的分割线'>
         <Demo.Block
           title='何时使用'
           description={

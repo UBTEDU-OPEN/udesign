@@ -1,5 +1,3 @@
-@import '../../global/variables.scss';
-
 $tooltip-background: var(--ud-tooltip-background, var(--ud-color-black)); // 文字提示背景色
 $tooltip-color: var(--ud-tooltip-color, var(--ud-color-white)); // 文字提示文字颜色
 $tooltip-border-radius: var(--ud-tooltip-border-radius, var(--ud-border-radius-medium)); // 文字提示圆角

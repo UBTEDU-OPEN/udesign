@@ -3,26 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "prepare": "node ./scripts/designToken.js ./public/designToken.json",
+    "dev": "yarn prepare && next dev",
+    "build": "yarn prepare && next build",
     "start": "next start",
-    "export": "next build && next export",
+    "export": "yarn build && next export",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --cache --fix",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --cache"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@tailwindcss/typography": "^0.5.2",
     "@ubt/udesign-ui": "^0.2.0",
     "@ubt/udesign-ui-alpha": "^1.0.0",
-    "tailwindcss": "^3.0.23",
-    "@tailwindcss/typography": "^0.5.2",
     "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "tailwindcss": "^3.0.23"
   },
   "devDependencies": {
     "@types/node": "17.0.21",
     "@types/react": "17.0.39",
+    "axios": "^0.27.2",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
     "gray-matter": "^4.0.3",

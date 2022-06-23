@@ -1,0 +1,25 @@
+$steps-item-padding: var(--ud-steps-item-padding, 0 16px); // 步骤条内边距
+
+$steps-item-icon-width: var(--ud-steps-item-icon-width, 30px); // 步骤条图标宽度
+$steps-item-icon-height: var(--ud-steps-item-icon-height, 30px); // 步骤条图标高度
+$steps-item-icon-marginLeft: var(--ud-steps-item-icon-marginLeft, 0); // 步骤条图标左外边距
+$steps-item-icon-marginRight: var(--ud-steps-item-icon-marginRight, 12px); // 步骤条图标右外边距
+$steps-item-icon-marginBottom: var(--ud-steps-item-icon-marginBottom, 10px); // 步骤条图标下外边距（仅type=custom有效）
+$steps-item-icon-number-fontSize: var(--ud-steps-item-icon-number-fontSize, 18px); //步骤条图标数字字号
+
+$steps-item-title-fontSize: var(--ud-steps-item-title-fontSize, 16px); // 步骤条标题文本字号
+$steps-item-title-fontWeight: var(--ud-steps-item-title-fontWeight, 500); // 步骤条标题文本字重
+$steps-item-description-fontSize: var(--ud-steps-item-description-fontSize, 14px); // 步骤条描述文本字号
+$steps-item-description-fontWeight: var(--ud-steps-item-description-fontWeight, 400); // 步骤条描述文本字重
+$steps-item-description-color: var(--ud-steps-item-description-color, var(--ud-color-text-2)); // 步骤条描述文本颜色
+
+$steps-item-background-wait: var(--ud-steps-item-background-wait, var(--ud-color-text-3)); // 未到达步骤条背景颜色
+$steps-item-color-wait: var(--ud-steps-item-color-wait, var(--ud-color-white)); // 未到达步骤条文本颜色
+$steps-item-background-process: var(--ud-steps-item-background-process, var(--ud-color-primary)); // 进行中步骤条背景颜色
+$steps-item-color-process: var(--ud-steps-item-color-process, var(--ud-color-white)); // 进行中步骤条文本颜色
+$steps-item-background-finish: var(--ud-steps-item-background-finish, var(--ud-color-white)); // 已完成步骤条背景颜色
+$steps-item-color-finish: var(--ud-steps-item-color-finish, var(--ud-color-primary)); // 已完成步骤条文本颜色
+$steps-item-background-error: var(--ud-steps-item-background-error, var(--ud-color-white)); // 错误步骤条背景颜色
+$steps-item-color-error: var(--ud-steps-item-color-error, var(--ud-color-danger)); // 错误步骤条文本颜色
+$steps-item-background-warning: var(--ud-steps-item-background-warning, var(--ud-color-white)); // 警告步骤条背景颜色
+$steps-item-color-warning: var(--ud-steps-item-color-warning, var(--ud-color-warning)); // 警告步骤条文本颜色
