@@ -44,13 +44,13 @@ export type NoticeBarProps = {
   type?: NoticeType; // 通知栏模式，可选值为 closeable link
   mode?: 'closeable' | 'link'; // 通知栏模式，可选值为 closeable link
   scrollable?: boolean; // 是否开启滚动播放
-  wrapable?: boolean; // 是否开启文本换行，只在禁用滚动时生效
+  wrap?: boolean; // 是否开启文本换行，只在禁用滚动时生效
 
   onClick?: () => void; // 点击通知栏时触发
   onClose?: () => void; // 关闭通知栏时触发
 } & NativeProps;
 
-export const NoticeBar = ({ icon = false, left, right, delay = 1000, speed = 80, type = 'default', mode, scrollable, wrapable, onClick, onClose, className, children }: NoticeBarProps) => {
+export const NoticeBar = ({ icon = false, left, right, delay = 1000, speed = 80, type = 'default', mode, scrollable, wrap, onClick, onClose, className, children }: NoticeBarProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const [key, setKey] = useState(0);
@@ -89,7 +89,7 @@ export const NoticeBar = ({ icon = false, left, right, delay = 1000, speed = 80,
   }, [key]);
 
   const cls = classNames('px-4 py-2', getNoticeTypeClass(type), className);
-  const contentCls = classNames('px-3', wrapable ? '' : 'whitespace-nowrap', scrollable ? 'w-max ease-linear' : 'overflow-hidden overflow-ellipsis');
+  const contentCls = classNames('px-3', wrap ? '' : 'whitespace-nowrap', scrollable ? 'w-max ease-linear' : 'overflow-hidden overflow-ellipsis');
 
   const getRightIcon = () => {
     if (mode === 'closeable') {

@@ -27,7 +27,7 @@ export default function ResultPage() {
             </div>
           </Result>
         </Demo.Block>
-        <Demo.Block title='占位图' todo='提供常用场景的配图：404、无结果、没有权限、加载失败、创建成功等'>
+        <Demo.Block title='占位图'>
           <Space>
             <ErrorIcon className='text-5xl' />
           </Space>

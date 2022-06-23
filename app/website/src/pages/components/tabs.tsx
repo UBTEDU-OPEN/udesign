@@ -1,5 +1,5 @@
-import { HomeFilled, UnorderedListOutlined } from '@ant-design/icons';
 import React from 'react';
+import { HomeFilled, UnorderedListOutlined } from '@ant-design/icons';
 import { Badge, Tabs, UserIcon } from '@ubt/udesign-ui-alpha';
 import { Demo } from '../../demo';
 

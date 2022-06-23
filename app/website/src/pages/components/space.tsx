@@ -10,7 +10,8 @@ export default function SpacePage() {
         title='何时使用'
         description={
           <>
-            <p>避免组件紧贴在一起，拉开统一的空间。</p>
+            <b>避免组件紧贴在一起，拉开统一的空间。</b>
+            <br />
             <br />
             *适合行内元素的水平间距。
             <br />
@@ -86,7 +87,7 @@ export default function SpacePage() {
           </Space>
         </Space>
       </Demo.Block>
-      <Demo.Block title='自定义尺寸' description='通过向 size 传入 number，来自定义间距大小。'>
+      <Demo.Block title='自定义尺寸' description='通过向 size 传入 number，来自定义间距大小。' todo='依赖 Slider 组件'>
         <Space size={100}>
           <Button>Button</Button>
           <Button>Button</Button>

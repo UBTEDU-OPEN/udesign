@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CloseCircleOutlined, InfoCircleOutlined, SearchOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Space, Input } from '@ubt/udesign-ui';
+import { Button, Space, Input, TextArea } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function InputPage() {
@@ -61,7 +61,10 @@ export default function InputPage() {
           <Input type='password' value='Basic usage' />
         </Demo.Block>
         <Demo.Block title='字数提示' description='通过 maxLength 属性限定总输入字数，showCount 来显示可输入字数提示'>
-          <Input placeholder='请输入名称' maxLength={40} showCount />
+          <Space direction='vertical'>
+            <Input placeholder='请输入名称' maxLength={40} showCount />
+            <TextArea placeholder='给你的作品写一个操作指南，并告诉大家如何操作' maxLength={200} showCount />
+          </Space>
         </Demo.Block>
         <Demo.Block title='带删除图标' description='通过 showClear 属性设置移除图标，点击图标删除所有内容'>
           <Input placeholder='input with clear icon' showClear />

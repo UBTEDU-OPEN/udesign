@@ -11,12 +11,12 @@ export type ButtonSize = CommonSize;
 export type ButtonShape = CommonShape;
 
 export type ButtonProps = {
+  block?: boolean; // 将宽度设置为其父宽度
+  danger?: boolean; // 设置2级警示
   type?: ButtonType; // 设置类型
   size?: ButtonSize; // 设置大小
   shape?: ButtonShape; // 设置形状
   loading?: boolean; // 设置载入状态
-  block?: boolean; // 将宽度设置为其父宽度
-  danger?: boolean; // 设置2级警示
   warning?: boolean; // 设置1级警示
   disabled?: boolean; // 不可用状态
   glass?: boolean; // 半透明状态

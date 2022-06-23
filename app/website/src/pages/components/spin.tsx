@@ -33,7 +33,7 @@ export default function SpinPage() {
           </div>
         </Demo.Block>
         <Demo.Block title='带描述文案' description='通过 tip 属性可设置当 Spin 用作包裹元素时的文字。'>
-          <Spin tip='加载中...'>
+          <Spin tip='加载中'>
             <div className='border p-5'>
               <p>Alert message title</p>
               <p>Further details about the context of this alert.</p>

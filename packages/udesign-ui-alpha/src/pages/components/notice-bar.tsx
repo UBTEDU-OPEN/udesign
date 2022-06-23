@@ -23,8 +23,8 @@ export default function NoticeBarPage() {
         <Demo.Block title='滚动播放' description='通过 scrollable 属性控制。'>
           <NoticeBar scrollable>在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。</NoticeBar>
         </Demo.Block>
-        <Demo.Block title='多行展示' description='文字较长时，可以通过设置 wrapable 属性来开启多行展示。'>
-          <NoticeBar wrapable>在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。</NoticeBar>
+        <Demo.Block title='多行展示' description='文字较长时，可以通过设置 wrap 属性来开启多行展示。'>
+          <NoticeBar wrap>在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。</NoticeBar>
         </Demo.Block>
         <Demo.Block title='通知栏模式' description='通知栏支持 closeable 和 link 两种模式。'>
           <NoticeBar mode='closeable'>在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。</NoticeBar>

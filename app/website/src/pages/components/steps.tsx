@@ -40,7 +40,7 @@ export default function StepsPage() {
             <Steps.Item title='Waiting' description='This is a description.' />
           </Steps>
         </Demo.Block>
-        <Demo.Block title='不带描述的步骤条' description='简化版的步骤条'>
+        <Demo.Block title='不带描述的步骤条' description='简化版的步骤条，通过不设置 description 启用。'>
           <Steps current={1}>
             <Steps.Item title='Finished' />
             <Steps.Item title='In Progress' />
