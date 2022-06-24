@@ -4,7 +4,12 @@ export const enum types {
   UPDATE_VALUE = 'UPDATE_VALUE',
 }
 
-export function reducer(state: any, action: any) {
+export interface actionType {
+  type: string;
+  payload: any;
+}
+
+export function reducer(state: { [key: string]: any }, action: actionType) {
   switch (action.type) {
     case types.UPDATE_VALUE:
       return action.payload;
@@ -14,10 +19,10 @@ export function reducer(state: any, action: any) {
 }
 
 export interface RadioContextState {
-  value?: any;
+  value?: string;
   name?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  dispatch?: any;
+  dispatch?: React.Dispatch<actionType>;
 }
 
 export const RadioContext: Context<RadioContextState> = createContext({});

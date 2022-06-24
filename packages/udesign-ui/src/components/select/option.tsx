@@ -20,7 +20,7 @@ export const Option = ({ label, disabled, className, children, style, value }: O
     let result: string[] = context.value || [];
     if (context.mode === 'multiple') {
       if (innerChecked) {
-        result = (context.value || []).filter((item: any) => item !== value);
+        result = (context.value || []).filter((item: string) => item !== value);
       } else {
         result = value ? [...(context.value || []), value] : context.value || [];
       }

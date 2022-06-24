@@ -12,7 +12,7 @@ export type RadioProps = {
   checked?: boolean; // 指定当前是否选中
   defaultChecked?: boolean; // 初始是否选中
   disabled?: boolean; // 禁用 Radio
-  value?: any; // 根据 value 进行比较，判断是否选中
+  value?: string; // 根据 value 进行比较，判断是否选中
 } & NativeProps;
 
 const prefixCls = 'ud-radio-button';

@@ -33,9 +33,9 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, children
   const getResult = () => {
     let result = context.value;
     if (innerChecked) {
-      result = context.value.filter((item: any) => item !== value);
+      result = context.value?.filter((item: string) => item !== value);
     } else {
-      result = [...context.value, value];
+      result = [...(context.value || []), value || ''];
     }
     return result;
   };

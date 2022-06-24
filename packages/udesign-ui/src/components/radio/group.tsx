@@ -12,8 +12,8 @@ export type RadioOptionType = {
 };
 
 export interface GroupProps {
-  defaultValue?: any; // 默认选中的值
-  value?: any; // 用于设置当前选中的值
+  defaultValue?: string; // 默认选中的值
+  value?: string; // 用于设置当前选中的值
   disabled?: boolean; // 禁选所有子单选器
   children?: React.ReactElement; // 子组件
   options?: Array<RadioOptionType | string>; // 以配置形式设置子元素

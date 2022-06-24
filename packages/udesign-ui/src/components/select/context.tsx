@@ -5,7 +5,12 @@ export const enum types {
   UPDATE_VALUE = 'UPDATE_VALUE',
 }
 
-export function reducer(state: any, action: any) {
+export interface actionType {
+  type: string;
+  payload: any;
+}
+
+export function reducer(state: { [key: string]: any }, action: actionType) {
   switch (action.type) {
     case types.UPDATE_VALUE:
       return action.payload;
@@ -19,7 +24,7 @@ export interface SelectContextState {
   defaultValue?: string[];
   name?: string;
   onChange?: (value: string | string[]) => void;
-  dispatch?: React.Dispatch<{ type: string; payload: any }>;
+  dispatch?: React.Dispatch<actionType>;
   mode?: 'multiple';
   setVisible?: (visible: boolean) => void;
   options?: OptionItem[];

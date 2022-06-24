@@ -6,8 +6,8 @@ import { Header } from './header';
 import { Body } from './body';
 import { columnType, rowSelectionType } from './types';
 
-export interface IProps {
-  dataSource: { [key: string]: any }[]; // table 行数据
+export interface IProps<T> {
+  dataSource: { [key: string]: T }[]; // table 行数据
   columns: columnType[]; // table 列数据
   rowSelection?: rowSelectionType; // 选择行 相关参数
   bordered?: boolean; // 是否显示border
@@ -20,7 +20,7 @@ export interface IProps {
 
 const prefixCls = `${BASE_CLASS_PREFIX}-table`;
 
-export const Table = (props: IProps) => {
+export const Table = <T,>(props: IProps<T>) => {
   const { dataSource, columns, rowSelection, bordered } = props;
   const initialState = { rowSelection };
   const [state, dispatch] = useReducer(reducer, initialState);
