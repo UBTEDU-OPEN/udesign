@@ -30,7 +30,7 @@ export default function SwitchPage() {
         </Demo.Block>
         <Demo.Block title='带有文字' description='开关中带有文字'>
           <Space direction='vertical'>
-            <Switch defaultChecked checkedText='开启' uncheckedText='关闭' />
+            <Switch defaultChecked checkedText='开启' uncheckedText='关闭' size='small' />
             <Switch checkedText='开启' uncheckedText='关闭' />
           </Space>
         </Demo.Block>

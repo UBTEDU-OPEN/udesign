@@ -1,37 +1,37 @@
+@import './variables.scss';
 $module: ud-switch;
-$gap: 2px;
 
 .#{$module} {
   margin: 0;
   padding: 0;
   border: 0;
   color: #000000d9;
-  font-size: 14px;
+  font-size: $switch-font-size-small;
   list-style: none;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  min-width: 70px;
-  height: 36px;
-  line-height: 36px;
+  min-width: $switch-min-width-middle;
+  height: $switch-height-middle;
+  line-height: $switch-height-middle;
   vertical-align: middle;
-  border: 1px solid #CDCDCD;
-  background: #ededed;
-  border-radius: 100px;
+  border: $switch-border-width solid $switch-color-primary-unchecked;
+  background: $switch-color-primary-light-unchecked;
+  border-radius: $switch-height-middle;
   cursor: pointer;
   transition: all .2s;
   &-handle {
     position: absolute;
     top: 1px;
     left: 2px;
-    width: 32px;
-    height: 32px;
+    width: $switch-circle-diameter-middle;
+    height: $switch-circle-diameter-middle;
     transition: all .2s ease-in-out;
     &::before {
       position: absolute;
       inset: 0;
       background-color: #fff;
-      border-radius: 32px;
+      border-radius: $switch-circle-diameter-middle;
       box-shadow: 0 2px 4px #00230b33;
       transition: all .2s ease-in-out;
       content: "";
@@ -45,9 +45,9 @@ $gap: 2px;
     background: var(--ud-color-primary-light);
     border-color: var(--ud-color-primary);
     color: var(--ud-color-primary);
-    padding-right: 30px;
+    padding-right: $switch-circle-padding-middle;
     .#{$module}-handle {
-      left: calc(100% - 34px);
+      left: calc(100% - ($switch-circle-diameter-middle + 2px ));
       &::before {
         background-image: linear-gradient(-180deg, var(--ud-color-primary) 0%, var(--ud-color-primary) 100%);
         box-shadow: 0 3px 5px 0 rgba(247,130,0,0.33);
@@ -55,30 +55,30 @@ $gap: 2px;
     }
   }
   &-unchecked {
-    background: #ededed;
-    padding-left: 30px;
+    background: $switch-color-primary-light-unchecked;
+    padding-left: $switch-circle-padding-middle;
     color: #A8B4CE;;
     .#{$module}-handle::before {
-      background-image: linear-gradient(-180deg, #E6E6E6 3%, #BEBEBE 98%);
+      background-image: linear-gradient(-180deg, #BEBEBE 0%, #BEBEBE 98%);
       box-shadow: 0 3px 5px 0 rgba(196,196,196,0.33);
     }
   }
   &-text {
-    font-size: 12px;
+    font-size: $switch-font-size-small;
   }
 }
 .#{$module}-small {
-  min-width: 50px;
-  height: 26px;
-  line-height: 26px;
+  min-width: $switch-min-width-small;
+  height: $switch-height-small;
+  line-height: $switch-height-small;
   .#{$module}-handle {
-    width: 22px;
-    height: 22px;
+    width: $switch-circle-diameter-small;
+    height: $switch-circle-diameter-small;
     &::before {
       position: absolute;
       inset: 0;
       background-color: #fff;
-      border-radius: 22px;
+      border-radius: $switch-circle-diameter-small;
       box-shadow: 0 2px 4px #00230b33;
       transition: all .2s ease-in-out;
       content: "";
@@ -88,6 +88,6 @@ $gap: 2px;
 
 .#{$module}-small.#{$module}-checked  {
   .#{$module}-handle {
-    left: calc(100% - 22px);
+    left: calc(100% - ($switch-circle-diameter-small + 2px ));
   }
 }
