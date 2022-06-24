@@ -1,12 +1,5 @@
+@import './variables.scss';
 $module: ud-toast;
-
-$toast-padding: var(--ud-toast-padding, 20px 40px);
-$toast-border-radius: var(--ud-toast-border-radius, 1000px);
-$toast-font-size: var(--ud-toast-font-size, 14px);
-$toast-space: var(--ud-toast-space, 60px);
-$toast-translate: var(--ud-toast-translate, 50%);
-$toast-translate-negative: var(--ud-toast-translate-negative, -50%);
-$toast-max-width: var(--ud-toast-max-width, 500px);
 
 .#{$module} {
   padding: $toast-padding;

@@ -1,12 +1,6 @@
+@import './variables.scss';
 $module: ud-radio;
-$radio-padding: var(--ud-radio-padding, 15px 15px 15px 15px);
-$radio-height: var(--ud-radio-height, 40px);
 
-$radio-button-padding: var(--ud-radio-button-padding, 15px 0);
-$radio-button-fontsize: var(--ud-radio-button-fontsize, 16px);
-$radio-button-border-radius: var(--ud-radio-button-border-radius, 4px);
-$radio-button-fontsize: var(--ud-radio-button-fontsize, 16px);
-$radio-button-inner-padding: var(--ud-radio-button-inner-padding, 15px 18px);
 .#{$module}-wrapper {
   display: flex;
   justify-content: flex-start;
@@ -30,7 +24,7 @@ $radio-button-inner-padding: var(--ud-radio-button-inner-padding, 15px 18px);
 .#{$module} {
   &-button {
     display: flex;
-    padding: $radio-button-padding;
+    margin: $radio-button-margin;
     
     &-hidden {
       opacity: 0;

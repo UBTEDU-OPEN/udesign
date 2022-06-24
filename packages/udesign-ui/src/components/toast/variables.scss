@@ -1,0 +1,7 @@
+$toast-padding: var(--ud-toast-padding, 20px 40px); // toast内边距
+$toast-border-radius: var(--ud-toast-border-radius, 1000px); // toast 圆角
+$toast-font-size: var(--ud-toast-font-size, 14px); // toast 字体大小
+$toast-space: var(--ud-toast-space, 60px); // toast 与上 下 左 右的边距
+$toast-translate: var(--ud-toast-translate, 50%); // toast 居中时left 值
+$toast-translate-negative: var(--ud-toast-translate-negative, -50%); // toast 居中移动的宽度
+$toast-max-width: var(--ud-toast-max-width, 500px); // toast 最大宽度

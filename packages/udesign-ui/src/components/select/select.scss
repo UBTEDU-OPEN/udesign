@@ -1,22 +1,4 @@
-
-$select-disabled-color: var(--select-disabled-color, rgb(var(--ud-gray-4)));
-$select-active-color: var(--select-active-color, rgb(var(--ud-purple-6)));
-$select-active-background: var(--select-active-background, rgb(var(--ud-gray-2)));
-$select-border: var(--selete-border, 1px solid rgb(var(--ud-gray-3)));
-$select-border-radius: var(--selete-border-radius, 1000px);
-$select-width: var(--selete-width, 129px);
-$select-height: var(--selete-height, 40px);
-$select-width-large: var(--selete-width-large, 160px);
-$select-height-large: var(--selete-height-large, 50px);
-$select-width-small: var(--selete-width-small, 110px);
-$select-height-small: var(--selete-height-small, 32px);
-$select-padding-left: var(--selete-padding-left, 10px);
-$select-item-height: var(--selete-item-height, 40px);
-$select-item-disabled-color: var(--selete-item-disabled-color, rgb(var(--ud-gray-6)));
-$select-item-padding: var(--selete-item-padding, 0 20px);
-$select-list-top: var(--selete-list-top, 50px);
-$select-list-top-large: var(--selete-list-top-large, 60px);
-$select-list-top-small: var(--selete-list-top-small, 42px);
+@import './variables.scss';
 $module: ud-select;
 
 .#{$module}-wrapper {

@@ -1,0 +1,18 @@
+$select-disabled-color: var(--select-disabled-color, rgb(var(--ud-gray-4))); // 禁用字体颜色
+$select-active-color: var(--select-active-color, rgb(var(--ud-purple-6))); // 选中时字体颜色
+$select-active-background: var(--select-active-background, rgb(var(--ud-gray-2))); // 选中时背景色
+$select-border: var(--selete-border, 1px solid rgb(var(--ud-gray-3))); // border 样式
+$select-border-radius: var(--selete-border-radius, 1000px); // 圆角大小
+$select-width: var(--selete-width, 129px); // 默认宽度
+$select-height: var(--selete-height, 40px); // 默认高度
+$select-width-large: var(--selete-width-large, 160px); // size 为large 时宽度
+$select-height-large: var(--selete-height-large, 50px); // size 为large 时高度
+$select-width-small: var(--selete-width-small, 110px);   // size 为small 时宽度
+$select-height-small: var(--selete-height-small, 32px);  // size 为small 时高度
+$select-padding-left: var(--selete-padding-left, 10px); // 左边距
+$select-item-height: var(--selete-item-height, 40px); // option 高度
+$select-item-disabled-color: var(--selete-item-disabled-color, rgb(var(--ud-gray-6))); // option 禁用时字体颜色
+$select-item-padding: var(--selete-item-padding, 0 20px); // option padding值
+$select-list-top: var(--selete-list-top, 50px); // options 列表与 select 的距离
+$select-list-top-large: var(--selete-list-top-large, 60px); // size 为 large options 列表与 select 的距离
+$select-list-top-small: var(--selete-list-top-small, 42px); // size 为 small options 列表与 select 的距离

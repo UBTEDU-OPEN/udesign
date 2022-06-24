@@ -1,16 +1,5 @@
+@import './variables.scss';
 $module: ud-skeleton;
-
-
-
-
-$module-border-radius-circle: var(--ud-skeleton-border-radius, 1000px); // 圆形border-radius
-$module-border-radius-image: var(--ud-skeleton-border-radius, 6px);  // 图片border-radius
-$module-border-radius: var(--ud-skeleton-border-radius, 4px); // 默认border-radius
-$module-height: var(--ud-skeleton-height, 48px); // 默认height
-$module-small-height: var(--ud-skeleton-small-height, 32px); // small height
-$module-large-height: var(--ud-skeleton-large-height, 58px); // large height
-$module-space: var(--ud-skeleton-space, 16px); // padding margin 间隙
-$module-width: var(--ud-skeleton-width, 150px); // 默认按钮 标题 宽度
 
 
 @keyframes pulse {
@@ -35,14 +24,14 @@ $module-width: var(--ud-skeleton-width, 150px); // 默认按钮 标题 宽度
     display: flex;
     width: 100%;
     > :not([hidden]) ~ :not([hidden]) {
-      margin-right: $module-space;
-      margin-left: $module-space;
+      margin-right: $skeleton-space;
+      margin-left: $skeleton-space;
     }
   }
   &-grow {
     flex: 1;
     > :not([hidden]) ~ :not([hidden]) {
-      margin-top: $module-space;
+      margin-top: $skeleton-space;
     }
   }
   &-active {
@@ -55,70 +44,70 @@ $module-width: var(--ud-skeleton-width, 150px); // 默认按钮 标题 宽度
     animation: pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
   &-avatar {
-    height: $module-height;
-    width: $module-height;
-    border-radius: $module-border-radius-circle;
+    height: $skeleton-height;
+    width: $skeleton-height;
+    border-radius: $skeleton-border-radius-circle;
     &-small {
-      height: $module-small-height;
-      width: $module-small-height;
+      height: $skeleton-small-height;
+      width: $skeleton-small-height;
     }
     &-large {
-      height: $module-large-height;
-      width: $module-large-height;
+      height: $skeleton-large-height;
+      width: $skeleton-large-height;
     }
 
     &-square {
-      border-radius: $module-border-radius;
+      border-radius: $skeleton-border-radius;
     }
     
   }
   &-button {
-    height: $module-height;
-    width: $module-width;
-    border-radius: $module-border-radius-circle;
+    height: $skeleton-height;
+    width: $skeleton-width;
+    border-radius: $skeleton-border-radius-circle;
     &-small {
-      height: $module-small-height;
+      height: $skeleton-small-height;
     }
     &-large {
-      height: $module-large-height;
+      height: $skeleton-large-height;
     }
 
     &-square {
-      border-radius: $module-border-radius;
+      border-radius: $skeleton-border-radius;
     }
     &-circle {
-      width: $module-height;
+      width: $skeleton-height;
     }
     
     
   }
 
   &-title {
-    width: $module-width;
-    height: $module-height;
-    border-radius: $module-border-radius;
+    width: $skeleton-width;
+    height: $skeleton-height;
+    border-radius: $skeleton-border-radius;
     &-small {
-      height: $module-small-height;
+      height: $skeleton-small-height;
     }
     &-large {
-      height: $module-large-height;
+      height: $skeleton-large-height;
     }
   }
 
   &-image {
-    border-radius: $module-border-radius-image;
+    border-radius: $skeleton-border-radius-image;
     background: url('../../assets/skeleton.png') no-repeat center center;
     background-size: cover;
   }
 
   &-paragraph {
-    border-radius: $module-border-radius;
-    height: $module-height;
+    border-radius: $skeleton-border-radius;
+    height: $skeleton-height;
     &-small {
-      height: $module-small-height;
+      height: $skeleton-small-height;
     }
     &-large {
-      height: $module-large-height;
+      height: $skeleton-large-height;
     }
   }
 }
