@@ -12,7 +12,7 @@ export interface IProps<T> {
   rowSelection?: rowSelectionType; // 选择行 相关参数
   bordered?: boolean; // 是否显示border
   rowKey?: string; // todo
-  scroll?: { [key: string]: unknown }; // todo
+  scroll?: { [key: string]: any }; // todo
   showHeader?: boolean; // todo
   summary?: ReactNode; // todo
   onHeaderRow?: () => void; // todo

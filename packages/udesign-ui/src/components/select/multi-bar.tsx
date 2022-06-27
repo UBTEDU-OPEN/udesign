@@ -20,7 +20,7 @@ export type CustomTagProps = {
   value?: string; // tag 对应value
   disabled?: boolean; // 是否禁用
   onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调
-  closable?: boolean; // 是否显示关闭按钮
+  closeable?: boolean; // 是否显示关闭按钮
 };
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;

@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Select, Space, Tag } from '@ubt/udesign-ui';
 import { Demo } from '../../../demo';
 import styles from './index.module.scss';
 
 export type CustomTagProps = {
-  label: React.ReactNode;
-  value: string;
-  onClose: (event?: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-  closeable: boolean;
+  label?: React.ReactNode; // tag 显示内容
+  value?: string; // tag value
+  disabled?: boolean; // 是否禁用
+  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调
+  closeable?: boolean; // 是否显示关闭按钮
 };
 
 export default function SelectPage() {
@@ -18,14 +19,10 @@ export default function SelectPage() {
     { value: 'cyan', closeable: false, label: 'cyan' },
   ];
 
-  const tagRender = (props: CustomTagProps) => {
-    const { label, value, closeable, onClose } = props;
-    const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
-      event.preventDefault();
-      event.stopPropagation();
-    };
+  const tagRender = (CustomTagProps: CustomTagProps) => {
+    const { label, value, closeable, onClose } = CustomTagProps;
     return (
-      <Tag color={value} value={value} onMouseDown={onPreventMouseDown} closeable={closeable} onClose={onClose}>
+      <Tag value={value} closeable={closeable} onClose={onClose}>
         {label}
       </Tag>
     );

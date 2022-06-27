@@ -3,11 +3,9 @@ import classNames from 'classnames';
 import { Radio } from './radio';
 import { RadioContext, reducer, types } from './context';
 
-export type RadioValueType = string | number | boolean;
-
 export type RadioOptionType = {
   label: string; // 对外显示
-  value: RadioValueType; // 真实值
+  value: string; // 真实值
   disabled?: boolean;
 };
 

@@ -17,7 +17,7 @@ export type CustomTagProps = {
   value?: string; // tag value
   disabled?: boolean; // 是否禁用
   onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调
-  closable?: boolean; // 是否显示关闭按钮
+  closeable?: boolean; // 是否显示关闭按钮
 };
 
 export type SelectProps = {
@@ -35,6 +35,19 @@ export type SelectProps = {
   maxTagCount?: number; // 最多显示多少个 tag，
   showSearch?: boolean; // 使单选模式可搜索
   filterOption?: (searchValue: string, option: OptionItem) => boolean; // 是否根据输入项进行筛选。当其为一个函数时，会接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false
+  autoFocus?: boolean; // todo
+  clearIcon?: ReactNode; // todo
+  listHeight?: number; // todo
+  loading?: boolean; // todo
+  maxTagPlaceholder?: string; // todo
+  maxTagTextLength?: number; // todo
+  notFoundContent?: ReactNode; // todo
+  open?: boolean; // todo
+  placeholder?: string; // todo
+  placement?: string; // todo
+  onClear?: () => void; // todo
+  onSelect?: () => void; // todo
+  onDropdownVisibleChange?: () => void; // todo
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;

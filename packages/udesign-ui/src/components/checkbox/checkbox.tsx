@@ -37,7 +37,7 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, children
     } else {
       result = [...(context.value || []), value || ''];
     }
-    return result;
+    return result || [];
   };
 
   function handleClick() {

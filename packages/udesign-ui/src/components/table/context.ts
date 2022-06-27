@@ -5,7 +5,11 @@ export const enum types {
   UPDATE_SELECTED = 'UPDATE_SELECTED',
 }
 
-export function reducer(state: { [key: string]: any }, action: { type: string; payload: any }) {
+export interface actionType {
+  type: string;
+  payload: any;
+}
+export function reducer(state: { [key: string]: any }, action: actionType) {
   switch (action.type) {
     case types.UPDATE_SELECTED:
       return action.payload;
@@ -16,8 +20,8 @@ export function reducer(state: { [key: string]: any }, action: { type: string; p
 
 export interface TableContextState {
   columns?: columnType[];
-  dataSource?: { [key: string]: unknown }[];
-  dispatch?: React.Dispatch<{ type: string; payload: unknown }>;
+  dataSource?: { [key: string]: any }[];
+  dispatch?: React.Dispatch<actionType>;
   rowSelection?: rowSelectionType;
   bordered?: boolean;
   // selectedRowKeys?: string[];

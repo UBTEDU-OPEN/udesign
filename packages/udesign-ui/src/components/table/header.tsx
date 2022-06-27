@@ -19,7 +19,7 @@ export const Header = () => {
     setCheckAll((selectedRowKeys || [])?.length === dataSource.length);
   }, [selectedRowKeys]);
 
-  const getAllKeys = (data: { [key: string]: unknown }[]) => data.map((item: { [key: string]: unknown }) => item.key);
+  const getAllKeys = (data: { [key: string]: any }[]) => data.map((item: { [key: string]: any }) => item.key);
 
   const borderStyle = classNames({
     [`${prefixCls}-border`]: bordered,

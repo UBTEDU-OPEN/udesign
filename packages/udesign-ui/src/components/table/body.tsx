@@ -28,7 +28,7 @@ export const Body = () => {
   });
   return (
     <tbody className={`${prefixCls}-tbody`}>
-      {dataSource.map((outerItem: { [key: string]: unknown }, index: number) => (
+      {dataSource.map((outerItem: { [key: string]: any }, index: number) => (
         <tr key={index}>
           {columns.map((column: columnType, i: number) => {
             if (column.type === 'checkbox') {
