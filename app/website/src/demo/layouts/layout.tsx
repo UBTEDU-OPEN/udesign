@@ -17,7 +17,7 @@ const BaseLayout = ({ sidebar, children }: BaseLayoutProps) => {
     <Layout className='text-gray-700'>
       <Head>
         <title>{appTitle}</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='viewport' content='width=1024, initial-scale=1' />
         <meta charSet='utf-8' />
       </Head>
       <Navigation />

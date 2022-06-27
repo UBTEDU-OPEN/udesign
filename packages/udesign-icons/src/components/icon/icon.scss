@@ -1,0 +1,33 @@
+@import './variables.scss';
+
+$module: ud-icon;
+
+.#{$module} {
+  display: inline-block;
+
+  &-large {
+    font-size: $icon-width-large;
+  }
+  &-middle {
+    font-size: $icon-width-middle;
+  }
+  &-small {
+    font-size: $icon-width-small;
+  }
+
+  &-spin {
+    animation: rotate $icon-animation-duration linear infinite;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

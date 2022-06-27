@@ -1,5 +1,5 @@
 import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
-import { EditOutlined } from '@ant-design/icons';
+import { EditFilled } from '@ubt/udesign-icons';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import Tooltip from '../tooltip';
@@ -18,7 +18,7 @@ export type EditableProps = {
   onChange?: () => void; // 文本域编辑时触发
 } & NativeProps;
 
-export const Editable = ({ icon = <EditOutlined />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className }: EditableProps) => {
+export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className }: EditableProps) => {
   const [isShow, setIsShow] = useState(true);
   const [propChildren, setPropChildren] = useState(
     String(children)

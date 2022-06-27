@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { LeftOutlined, RightOutlined } from '@ubt/udesign-icons';
 import { NativeProps, usePropsValue } from '../../utils';
 import { numbers, prefixCls } from './constants';
 import Input from '../input';

@@ -24,6 +24,9 @@
     ],
     "packages/udesign-ui/*.{js,jsx,ts,tsx}": [
       "eslint --ext '.js,.jsx,.ts,.tsx'"
+    ],
+    "packages/udesign-icons/*.{js,jsx,ts,tsx}": [
+      "eslint --ext '.js,.jsx,.ts,.tsx'"
     ]
   },
   "devDependencies": {

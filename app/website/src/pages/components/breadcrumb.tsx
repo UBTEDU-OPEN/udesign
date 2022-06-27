@@ -1,6 +1,6 @@
 import React from 'react';
-import { SettingIcon } from '@ubt/udesign-ui-alpha';
 import { Breadcrumb, Space } from '@ubt/udesign-ui';
+import { SettingFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 
 export default function BreadcrumbPage() {
@@ -39,10 +39,10 @@ export default function BreadcrumbPage() {
           <Space size='large'>
             <Breadcrumb separator='\'>
               <Breadcrumb.Item>
-                <SettingIcon></SettingIcon>
+                <SettingFilled />
               </Breadcrumb.Item>
               <Breadcrumb.Item href=''>
-                <SettingIcon></SettingIcon>
+                <SettingFilled />
                 Application Center
               </Breadcrumb.Item>
               <Breadcrumb.Item href=''>Application List</Breadcrumb.Item>

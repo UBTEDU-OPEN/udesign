@@ -1,6 +1,6 @@
 import React, { isValidElement, MouseEventHandler, ReactNode } from 'react';
 import classNames from 'classnames';
-import { CheckOutlined, CloseOutlined, ExclamationOutlined } from '@ant-design/icons';
+import { CheckOutlined, CloseOutlined, InfoCircleOutlined } from '@ubt/udesign-icons';
 import Divider, { DividerProps } from '../divider';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
@@ -32,23 +32,18 @@ export const Item = (props: StepProps) => {
       }
     } else if ('status' in props) {
       switch (status) {
-        case 'wait':
-          inner = <span className={`${prefixCls}-icon-number`}>{stepNumber}</span>;
+        case 'finish':
+          inner = <CheckOutlined />;
           break;
         case 'process':
           inner = <span className={`${prefixCls}-icon-number`}>{stepNumber}</span>;
           break;
-        case 'finish':
-          inner = <CheckOutlined />;
-          break;
         case 'error':
           inner = <CloseOutlined />;
           break;
-        case 'warning':
-          inner = <ExclamationOutlined />;
-          break;
+        case 'wait':
         default:
-          inner = null;
+          inner = <span className={`${prefixCls}-icon-number`}>{stepNumber}</span>;
           break;
       }
     }

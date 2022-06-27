@@ -31,7 +31,7 @@ export const Block = ({ title, description, background, transform, compact, debu
         <div className='border mb-10 rounded-lg overflow-hidden'>
           <div className={cls}>
             {debug ? (
-              <Tag className='absolute top-0 right-0' color='warning'>
+              <Tag className='absolute top-0 right-0' color='yellow'>
                 Dev Only
               </Tag>
             ) : null}

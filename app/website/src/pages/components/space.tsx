@@ -1,5 +1,4 @@
 import React from 'react';
-import { SearchOutlined } from '@ant-design/icons';
 import { Space, Button, Typography, Divider } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 

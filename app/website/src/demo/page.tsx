@@ -13,7 +13,6 @@ const basicMenus = [
   {
     name: 'icon',
     text: 'Icon 图标',
-    disabled: true,
   },
   {
     name: 'typography',

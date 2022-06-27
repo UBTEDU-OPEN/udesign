@@ -1,6 +1,6 @@
 import React, { ReactNode, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { CopyOutlined, CheckOutlined } from '@ant-design/icons';
+import { CopyOutlined, CheckOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import Tooltip from '../tooltip';
 import { BASE_CLASS_PREFIX } from '../../constants';

@@ -1,6 +1,6 @@
 const withImages = require('next-images');
 
-const withTM = require('next-transpile-modules')(['@ubt/udesign-ui', '@ubt/udesign-ui-alpha']);
+const withTM = require('next-transpile-modules')(['@ubt/udesign-ui', '@ubt/udesign-icons', '@ubt/udesign-ui-alpha']);
 
 module.exports = withTM(
   withImages({

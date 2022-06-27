@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CloseCircleOutlined, InfoCircleOutlined, SearchOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { CloseCircleOutlined, InfoCircleOutlined, SearchOutlined, SettingFilled, UserOutlined } from '@ubt/udesign-icons';
 import { Button, Space, Input, TextArea } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
@@ -34,7 +34,7 @@ export default function InputPage() {
           <Input prepend='http://' />
           <br />
           <br />
-          <Input append={<SettingOutlined />} />
+          <Input append={<SettingFilled />} />
           <br />
           <br />
           <Input prepend='http://' append='.com' />

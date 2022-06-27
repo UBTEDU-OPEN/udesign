@@ -16,7 +16,7 @@ export default function Toast(p: ToastProps | string): Promise<void> {
     }
     isShowing = true;
     const duration = props?.duration || 2000;
-    const delay = props?.delay ?? 1000;
+    const delay = props?.delay ?? 0;
     setTimeout(() => {
       element.show({
         ...props,
