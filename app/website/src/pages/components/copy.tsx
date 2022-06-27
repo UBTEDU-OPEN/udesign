@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from '@ubt/udesign-ui';
-import { Copy, Toast } from '@ubt/udesign-ui-alpha';
+import { Button, Toast } from '@ubt/udesign-ui';
+import { Copy } from '@ubt/udesign-ui-alpha';
 import { Demo } from '../../demo';
 
 export default function CopyPage() {

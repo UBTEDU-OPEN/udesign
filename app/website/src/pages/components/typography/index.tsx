@@ -1,6 +1,6 @@
 import React from 'react';
-import { EditOutlined } from '@ant-design/icons';
 import { Typography, Space } from '@ubt/udesign-ui';
+import { EditFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../../demo';
 import styles from './index.module.scss';
 
@@ -46,7 +46,7 @@ export default function TypographyPage() {
         </Demo.Block>
         <Demo.Block title='可交互能力' description='提供可编辑和可复制等额外的交互能力。'>
           <Space direction='vertical'>
-            <Typography.Text style={{ width: '100%' }} editable={{ tooltip: '编辑', icon: () => <EditOutlined /> }}>
+            <Typography.Text style={{ width: '100%' }} editable={{ tooltip: '编辑', icon: () => <EditFilled /> }}>
               This is an editable text.
             </Typography.Text>
             <Typography.Text
@@ -54,7 +54,7 @@ export default function TypographyPage() {
               editable={{
                 tooltip: '编辑',
                 autoSize: { minRows: 2 },
-                icon: () => <EditOutlined />,
+                icon: () => <EditFilled />,
               }}
             >
               This is an editable text.

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Avatar, Badge, CheckIcon, SettingIcon } from '@ubt/udesign-ui-alpha';
+import { CheckOutlined, SettingFilled } from '@ubt/udesign-icons';
+import { Avatar, Badge } from '@ubt/udesign-ui-alpha';
 import { ArrowDownOutlined } from '@ant-design/icons';
 import { Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
@@ -44,10 +45,10 @@ export default function BadgePage() {
         </Demo.Block>
         <Demo.Block title='自定义徽标内容' description='通过 content 插槽可以自定义徽标的内容，比如插入一个图标。'>
           <Space>
-            <Badge content={<CheckIcon />}>
+            <Badge content={<CheckOutlined />}>
               <Avatar shape='square' />
             </Badge>
-            <Badge content={<SettingIcon />}>
+            <Badge content={<SettingFilled />}>
               <Avatar shape='square' />
             </Badge>
             <Badge content={<ArrowDownOutlined />}>

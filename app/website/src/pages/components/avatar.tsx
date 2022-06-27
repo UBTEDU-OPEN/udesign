@@ -1,5 +1,6 @@
 import React from 'react';
-import { Avatar, Badge, SettingIcon, UserIcon } from '@ubt/udesign-ui-alpha';
+import { SettingFilled, UserOutlined } from '@ubt/udesign-icons';
+import { Avatar, Badge } from '@ubt/udesign-ui-alpha';
 import { Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
@@ -25,9 +26,9 @@ export default function AvatarPage() {
         <Demo.Block title='图片' description='可以通过 src 设置图片格式的头像。'>
           <Space>
             <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
-            <Avatar icon={<SettingIcon />} />
+            <Avatar icon={<SettingFilled />} />
             <Avatar>
-              <SettingIcon />
+              <SettingFilled />
             </Avatar>
             <Avatar>A</Avatar>
           </Space>
@@ -35,10 +36,10 @@ export default function AvatarPage() {
         <Demo.Block title='和badge组合使用' description='通常用于消息提示，在线状态'>
           <Space>
             <Badge content={1}>
-              <Avatar icon={<UserIcon />} />
+              <Avatar icon={<UserOutlined />} />
             </Badge>
             <Badge content={Badge.Dot}>
-              <Avatar icon={<UserIcon />} size='small' />
+              <Avatar icon={<UserOutlined />} size='small' />
             </Badge>
             <Badge className='bg-green-400 top-auto bottom-0'>
               <Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' />
@@ -49,7 +50,7 @@ export default function AvatarPage() {
           <Space>
             <Avatar className='bg-green-400'>A</Avatar>
             <Avatar className='bg-gray-600'>
-              <SettingIcon />
+              <SettingFilled />
             </Avatar>
           </Space>
         </Demo.Block>

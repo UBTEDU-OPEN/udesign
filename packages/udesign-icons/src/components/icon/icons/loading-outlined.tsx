@@ -1,0 +1,18 @@
+import React from 'react';
+import { convertIcon } from '../icon';
+
+const SvgComponent = () => (
+  <svg height='1em' viewBox='0 0 40 40' width='1em' xmlns='http://www.w3.org/2000/svg'>
+    <path
+      d='m9.50021261.00933571c-5.24119735 0-9.4908769 4.24958291-9.4908769 9.4908769 0 5.24139069 4.24950559 9.49091559 9.4908769 9.49091559.51325129 0 .92931839-.4160865.92931839-.9293184 0-.5132513-.4160671-.9293184-.92931839-.9293184-4.21488809 0-7.63225941-3.4173714-7.63225941-7.63227879 0-4.21479145 3.41754527-7.63225941 7.63227874-7.63225941 4.21488806 0 7.63225946 3.41737132 7.63225946 7.63227874 0 .51323196.4160671.92931846.9293184.92931846.5132319 0 .9293184-.4160865.9293184-.92931846 0-5.24139064-4.2495249-9.49091556-9.49091559-9.49091556z'
+      fill='currentColor'
+      fillRule='evenodd'
+      transform='translate(11 11)'
+    />
+  </svg>
+);
+
+const LoadingOutlined = convertIcon(SvgComponent);
+export default LoadingOutlined;
+
+LoadingOutlined.displayName = 'LoadingOutlined';

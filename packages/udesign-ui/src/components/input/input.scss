@@ -102,6 +102,12 @@ $module: ud-input;
     margin: $input-suffix-margin;
   }
 
+  &-prepend,
+  &-append {
+    display: flex;
+    align-items: center;
+  }
+
   &-prepend {
     padding: $input-prepend-padding;
     background: $input-background;

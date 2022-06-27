@@ -1,6 +1,6 @@
 import React, { useEffect, ReactNode, useState, useRef } from 'react';
 import classNames from 'classnames';
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
 
@@ -44,7 +44,7 @@ export const Spin = (props: SpinProps) => {
 
     return loading ? (
       <div className={`${prefixCls}-wrapper`}>
-        {indicator ? <div className={spinIconCls}>{indicator}</div> : <LoadingOutlined />}
+        {indicator ? <div className={spinIconCls}>{indicator}</div> : <LoadingOutlined spin />}
         {tip ? <div className={`${prefixCls}-tip`}>{tip}</div> : null}
       </div>
     ) : null;

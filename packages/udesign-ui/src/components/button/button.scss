@@ -132,7 +132,7 @@ $module: ud-button;
     height: 1.4em;
     align-items: center;
     justify-content: center;
-    > span {
+    .#{$module}-icon-text {
       margin-left: 10px;
     }
   }

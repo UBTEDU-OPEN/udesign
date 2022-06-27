@@ -4,24 +4,25 @@ import Clipboard from 'clipboard';
 import { NativeProps } from '../../utils';
 
 export type CopyProps = {
-  text: string;
-  onSuccess: () => void;
-  onError: () => void;
+  text?: string;
+  onSuccess?: () => void;
+  onError?: () => void;
 } & NativeProps;
 
-export const Copy = ({ text, onSuccess, onError, children, className }: CopyProps) => {
+export const Copy = ({ text, onSuccess, onError, children, className, style }: CopyProps) => {
   const copyBtnRef = useRef<HTMLAnchorElement>(null);
+
   useEffect(() => {
     const copy = new Clipboard(copyBtnRef.current as HTMLAnchorElement);
-    copy.on('success', onSuccess);
-    copy.on('error', onError);
+    onSuccess && copy.on('success', onSuccess);
+    onError && copy.on('error', onError);
   }, []);
 
-  const cls = classNames('', className);
+  const cls = classNames('cursor-pointer', className);
 
   return (
-    <a className={cls} ref={copyBtnRef} data-clipboard-text={text}>
+    <span className={cls} ref={copyBtnRef} data-clipboard-text={text} style={style}>
       {children}
-    </a>
+    </span>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { SettingIcon } from '@ubt/udesign-ui-alpha';
 import { Button, Space } from '@ubt/udesign-ui';
+import { SettingFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 import { SITE_NAME } from '../../constants/site';
 
@@ -39,7 +39,7 @@ export default function ButtonPage() {
             <Button type='default'>Default</Button>
             <Button type='text'>Text Button</Button>
             <Button type='link'>Link Button</Button>
-            <Button type='text' shape='circle' icon={<SettingIcon />} />
+            <Button type='text' shape='circle' icon={<SettingFilled />} />
           </Space>
         </Demo.Block>
         <Demo.Block
@@ -78,7 +78,7 @@ export default function ButtonPage() {
             <Button type='link' warning>
               Link Button
             </Button>
-            <Button type='text' shape='circle' icon={<SettingIcon />} warning />
+            <Button type='text' shape='circle' icon={<SettingFilled />} warning />
           </Space>
           <br />
           <Space>
@@ -94,7 +94,7 @@ export default function ButtonPage() {
             <Button type='link' danger>
               Link Button
             </Button>
-            <Button type='text' shape='circle' icon={<SettingIcon />} danger />
+            <Button type='text' shape='circle' icon={<SettingFilled />} danger />
           </Space>
         </Demo.Block>
         <Demo.Block title='按钮形状' description='shape 支持 round, default, square, circle，默认为 round。'>
@@ -124,7 +124,7 @@ export default function ButtonPage() {
             <Button type='link' disabled>
               Link Button
             </Button>
-            <Button type='text' shape='circle' icon={<SettingIcon />} disabled />
+            <Button type='text' shape='circle' icon={<SettingFilled />} disabled />
           </Space>
         </Demo.Block>
         <Demo.Block title='加载中状态' description='通过 loading 属性设置按钮为加载状态；如果按钮有图标，加载状态下默认会暂时隐藏原有图标。'>
@@ -132,10 +132,10 @@ export default function ButtonPage() {
             <Button type='primary' loading={loading} onClick={() => setLoading(!loading)}>
               {loading ? 'loading' : 'Click me'}
             </Button>
-            <Button loading={loading} onClick={() => setLoading(!loading)} type='primary' icon={<SettingIcon />}>
+            <Button loading={loading} onClick={() => setLoading(!loading)} type='primary' icon={<SettingFilled />}>
               {loading ? 'loading' : 'Click me'}
             </Button>
-            <Button loading={loading} onClick={() => setLoading(!loading)} type='primary' shape='round' icon={<SettingIcon />} />
+            <Button loading={loading} onClick={() => setLoading(!loading)} type='primary' shape='round' icon={<SettingFilled />} />
           </Space>
         </Demo.Block>
         <Demo.Block
@@ -149,10 +149,10 @@ export default function ButtonPage() {
           }
         >
           <Space>
-            <Button type='primary' shape='default' icon={<SettingIcon />} />
-            <Button type='primary' shape='circle' icon={<SettingIcon />} />
-            <Button type='primary' shape='square' icon={<SettingIcon />} />
-            <Button type='primary' icon={<SettingIcon />}>
+            <Button type='primary' shape='default' icon={<SettingFilled />} />
+            <Button type='primary' shape='circle' icon={<SettingFilled />} />
+            <Button type='primary' shape='square' icon={<SettingFilled />} />
+            <Button type='primary' icon={<SettingFilled />}>
               设置
             </Button>
           </Space>
@@ -181,7 +181,7 @@ export default function ButtonPage() {
               <Button size='small' type='link'>
                 Link Button
               </Button>
-              <Button size='small' type='text' shape='circle' icon={<SettingIcon />} />
+              <Button size='small' type='text' shape='circle' icon={<SettingFilled />} />
             </Space>
             <Space>
               <Button size='middle' type='primary'>
@@ -196,7 +196,7 @@ export default function ButtonPage() {
               <Button size='middle' type='link'>
                 Link Button
               </Button>
-              <Button size='middle' type='text' shape='circle' icon={<SettingIcon />} />
+              <Button size='middle' type='text' shape='circle' icon={<SettingFilled />} />
             </Space>
             <Space>
               <Button size='large' type='primary'>
@@ -211,7 +211,7 @@ export default function ButtonPage() {
               <Button size='large' type='link'>
                 Link Button
               </Button>
-              <Button size='large' type='text' shape='circle' icon={<SettingIcon />} />
+              <Button size='large' type='text' shape='circle' icon={<SettingFilled />} />
             </Space>
             <Space>
               <Button type='primary' size='large' style={{ width: '300px' }}>

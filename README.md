@@ -70,4 +70,6 @@ port: 22
 
 - tsconfig 公共部分抽离
 - 编写脚本将组件API输出为页面（思路：fs 正则（:和//）处理 scss 文件输出 json 文件，页面请求 json 文件作为数据源。）
-- 多语言（ConfigContext 方案）
+- 多语言（Context 方案）
+- website 响应式设计（已使用临时方案处理手机视图）
+- 移除 `udesign-ui-alpha` 库

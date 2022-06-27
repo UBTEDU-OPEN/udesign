@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { CommonSize, CommonShape, BASE_CLASS_PREFIX } from '../../constants';
 
@@ -26,7 +26,7 @@ export type ButtonProps = {
 } & NativeProps;
 
 export const Button = ({ type = 'default', size = 'middle', shape = 'round', loading, block, danger, warning, disabled, glass, icon, onClick, className, children, ...restProps }: ButtonProps) => {
-  const iconElement = icon && !loading ? icon : <LoadingOutlined />;
+  const iconElement = icon && !loading ? icon : <LoadingOutlined spin />;
 
   const hasIcon = loading || Boolean(icon);
 
@@ -52,7 +52,7 @@ export const Button = ({ type = 'default', size = 'middle', shape = 'round', loa
       {icon || loading ? (
         <span className={`${prefixCls}-icon-wrapper`}>
           {iconElement}
-          <span>{children}</span>
+          {children ? <span className={`${prefixCls}-icon-text`}>{children}</span> : null}
         </span>
       ) : (
         children
