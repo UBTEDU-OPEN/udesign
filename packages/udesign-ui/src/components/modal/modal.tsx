@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
@@ -10,6 +10,7 @@ import { ButtonType } from '../button/button';
 import { CloseIcon } from './close';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-modal`;
+export const destroyFns: any[] = [];
 
 export type ModalSize = CommonSize;
 
@@ -18,6 +19,7 @@ export type ModalProps = {
   bodyStyle?: CSSProperties; //	对话框内容的样式
   cancelButtonProps?: ButtonProps; // 取消按钮的 props
   cancelText?: string; // 取消按钮的文字
+  cancelLoading?: boolean; // 取消按钮 loading
   centered?: boolean; // 是否居中显示
   closeable?: boolean; // 是否显示右上角的关闭按钮
   closeIcon?: ReactNode; //	关闭按钮的icon
@@ -26,7 +28,7 @@ export type ModalProps = {
   content?: ReactNode; //	对话框内容，用于命令式调用
   footer?: ReactNode; //	对话框底部
   fullscreen?: boolean; // 对话是否是全屏（会覆盖 width height）
-  getPopupContainer?: () => HTMLElement; //	指定父级 DOM，弹层将会渲染至该 DOM 中，自定义需要设置 position: relative
+  getContainer?: () => HTMLElement; //	指定父级 DOM，弹层将会渲染至该 DOM 中，自定义需要设置 position: relative
   hasCancel?: boolean; //	是否显示取消按钮
   header?: ReactNode; //	对话框头部
   height?: number; //	高度
@@ -40,21 +42,33 @@ export type ModalProps = {
   okText?: string; // 确认按钮的文字
   okType?: ButtonType; //	确认按钮的类型
   size?: ModalSize; //	对话框宽度尺寸，默认small，可选middle,large
-  title?: string; // 对话框的标题，未设置时，则不渲染默认的 header
+  title?: ReactNode; // 对话框的标题，未设置时，则不渲染默认的 header
   visible?: boolean; // 对话框是否可见
   width?: number; // 宽度
   zIndex?: number; // 遮罩的 z-index 值，默认 1000
-  onCancel?: () => void; // 点击取消按钮或关闭按钮时的回调函数
-  onOk?: () => void; // 点击确认按钮时的回调函数
+  onCancel?: (e: React.MouseEvent) => void | Promise<any>; // 点击取消按钮或关闭按钮时的回调函数
+  onOk?: (e: React.MouseEvent) => void | Promise<any>; // 点击确认按钮时的回调函数
 } & NativeProps;
 
 export const Modal = (props: ModalProps) => {
+  useEffect(() => {
+    function handleKeydown(e: any) {
+      const { closeOnEsc = true, onCancel } = props;
+      if (closeOnEsc && e.keyCode === 27) {
+        e.stopPropagation();
+        onCancel?.(e);
+      }
+    }
+    document.addEventListener('keydown', handleKeydown);
+    return () => document.removeEventListener('keydown', handleKeydown);
+  }, []);
+
   const renderMask = () => {
     const { mask = true, maskCloseable = true, maskStyle, onCancel } = props;
 
-    const handleClickMask = () => {
+    const handleClickMask = (e: React.MouseEvent) => {
       if (maskCloseable) {
-        onCancel?.();
+        onCancel?.(e);
       }
     };
 
@@ -68,8 +82,8 @@ export const Modal = (props: ModalProps) => {
 
   const renderCloseBtn = () => {
     const { closeable = true, closeIcon, onCancel } = props;
-    const handleClose = () => {
-      onCancel?.();
+    const handleClose = (e: React.MouseEvent) => {
+      onCancel?.(e);
     };
     return closeable ? (
       <div className={`${prefixCls}-close`}>
@@ -109,17 +123,17 @@ export const Modal = (props: ModalProps) => {
       return props.footer;
     }
 
-    const { hasCancel = true, onOk, okText = '确定', okType = 'primary', okButtonProps, onCancel, cancelText = '取消', cancelButtonProps } = props;
+    const { hasCancel = true, onOk, okText = '确定', okType = 'primary', okButtonProps, confirmLoading, onCancel, cancelText = '取消', cancelLoading, cancelButtonProps } = props;
 
     return (
       <div className={`${prefixCls}-footer`}>
         <Space justify='center'>
           {hasCancel ? (
-            <Button type='default' onClick={onCancel} {...cancelButtonProps}>
+            <Button type='default' onClick={onCancel} loading={cancelLoading} {...cancelButtonProps}>
               {cancelText}
             </Button>
           ) : null}
-          <Button type={okType} onClick={onOk} {...okButtonProps}>
+          <Button type={okType} onClick={onOk} loading={confirmLoading} {...okButtonProps}>
             {okText}
           </Button>
         </Space>
@@ -162,24 +176,32 @@ export const Modal = (props: ModalProps) => {
     );
   };
 
-  const { centered = true, visible, zIndex = 1000, style } = props;
-  const cls = classNames({ [`${prefixCls}-wrap`]: true, [`${prefixCls}-wrap-centered`]: centered });
+  const renderModal = () => {
+    const { centered = true, zIndex = 1000, getContainer, className, style } = props;
 
-  const mergedStyle: React.CSSProperties = {
-    ...style,
+    const cls = classNames({ [`${prefixCls}-wrap`]: true, [`${prefixCls}-wrap-centered`]: centered }, className);
+
+    const mergedStyle: React.CSSProperties = {
+      ...style,
+    };
+    if (zIndex) {
+      mergedStyle.zIndex = zIndex;
+    }
+    if (getContainer) {
+      mergedStyle.position = 'static';
+    }
+
+    return (
+      <Portal getContainer={getContainer}>
+        {renderMask()}
+        <div className={cls} style={mergedStyle}>
+          {renderContent()}
+        </div>
+      </Portal>
+    );
   };
-  if (zIndex) {
-    mergedStyle.zIndex = zIndex;
-  }
 
-  return visible ? (
-    <Portal>
-      {renderMask()}
-      <div className={cls} style={mergedStyle}>
-        {renderContent()}
-      </div>
-    </Portal>
-  ) : null;
+  return props.visible ? renderModal() : null;
 };
 
 Modal.displayName = 'Modal';

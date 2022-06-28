@@ -26,6 +26,14 @@ $module: ud-modal;
     position: absolute;
     top: 0;
     right: 0;
+    margin: $modal-close-button-margin;
+  }
+
+  &-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    font-size: $modal-icon-size;
+    margin: $modal-icon-margin;
   }
 
   &-title {
@@ -61,4 +69,34 @@ $module: ud-modal;
 }
 .#{$module}-large {
   width: $modal-width-large;
+}
+
+// 不同类型图标默认色
+.#{$module}-info {
+  .#{$module}-icon-wrapper {
+    svg {
+      color: $modal-icon-color-info;
+    }
+  }
+}
+.#{$module}-success {
+  .#{$module}-icon-wrapper {
+    svg {
+      color: $modal-icon-color-success;
+    }
+  }
+}
+.#{$module}-error {
+  .#{$module}-icon-wrapper {
+    svg {
+      color: $modal-icon-color-error;
+    }
+  }
+}
+.#{$module}-warning {
+  .#{$module}-icon-wrapper {
+    svg {
+      color: $modal-icon-color-warning;
+    }
+  }
 }

@@ -17,6 +17,102 @@ export default function ModalPage() {
   const [visible9, setVisible9] = useState(false);
   const [visible10, setVisible10] = useState(false);
 
+  const { confirm } = Modal;
+
+  const showConfirm = () => {
+    confirm({
+      title: '搜索结果',
+      icon: null,
+      content: '附近没有机器人',
+      onOk() {
+        console.log('OK');
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  };
+
+  const showPromiseConfirm = () => {
+    confirm({
+      title: '连接wifi',
+      icon: null,
+      content: '正在搜索WiFi…',
+      onOk() {
+        return new Promise((resolve, reject) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+        }).catch(() => console.log('Oops errors!'));
+      },
+      onCancel() {
+        return new Promise((resolve, reject) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+        }).catch(() => console.log('Oops errors!'));
+      },
+    });
+  };
+
+  const showDeleteConfirm = () => {
+    confirm({
+      title: '删除文件',
+      icon: null,
+      content: '确认删除文件后不能恢复',
+      onOk() {
+        console.log('OK');
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  };
+
+  const showInfoModal = () => {
+    Modal.info({
+      title: '这是一则提示信息',
+      content: '这是一则提示信息，这是一则提示信息',
+    });
+  };
+
+  const showSuccessModal = () => {
+    Modal.success({
+      title: '操作成功',
+      content: '这是一则提示信息，这是一则提示信息',
+    });
+  };
+
+  const showErrorModal = () => {
+    Modal.error({
+      title: '操作失败',
+      content: '这是一则提示信息，这是一则提示信息',
+    });
+  };
+
+  const showWarningModal = () => {
+    Modal.warning({
+      title: '这是一则警告信息',
+      content: '这是一则警告信息，这是一则警告信息',
+    });
+  };
+
+  const countDown = () => {
+    let secondsToGo = 5;
+
+    const modal = Modal.info({
+      title: '关闭倒计时',
+    });
+
+    const timer = setInterval(() => {
+      secondsToGo -= 1;
+      modal.update({
+        content: <div className='text-3xl'>{secondsToGo}</div>,
+      });
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(timer);
+      modal.destroy();
+    }, secondsToGo * 1000);
+  };
+
   return (
     <>
       <Demo.Page title='Modal 对话框' description='模态对话框。' todo='当前没有规划全屏Modal'>
@@ -41,7 +137,7 @@ export default function ModalPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='其他尺寸' description='通过 size 使用内置的尺寸，或者直接设置 width'>
-          <Space>
+          <Space wrap>
             <Button
               type='primary'
               onClick={() => {
@@ -80,8 +176,40 @@ export default function ModalPage() {
             </Modal>
           </Space>
         </Demo.Block>
-        <Demo.Block title='确认式对话框' description='使用 confirm() 可以快捷地弹出确认框。onCancel/onOk 返回 promise 可以延迟关闭。' todo='内置函数式调用方法' />
-        <Demo.Block title='信息提示' description='各种类型的信息提示，只提供一个按钮用于关闭。' todo='内置函数式调用方法' />
+        <Demo.Block title='确认式对话框' description='使用 confirm() 可以快捷地弹出确认框。onCancel/onOk 返回 promise 可以延迟关闭。'>
+          <Space wrap>
+            <Button type='primary' onClick={showConfirm}>
+              Confirm
+            </Button>
+            <Button type='primary' onClick={showPromiseConfirm}>
+              With promise
+            </Button>
+            <Button type='primary' danger onClick={showDeleteConfirm}>
+              Delete
+            </Button>
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='命令式调用' description='命令式调用支持四种类型的信息提示方法，自带 icon。你也可以自定义 icon , 其他 Modal 支持的 props 都可以传入。'>
+          <Space wrap>
+            <Button type='primary' onClick={showInfoModal}>
+              Info
+            </Button>
+            <Button type='primary' onClick={showSuccessModal}>
+              Success
+            </Button>
+            <Button type='primary' onClick={showErrorModal}>
+              Error
+            </Button>
+            <Button type='primary' onClick={showWarningModal}>
+              Warning
+            </Button>
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='手动更新和关闭' description='通过 update 方法更新、close 方法来关闭函数方式创建的对话框。'>
+          <Button type='primary' onClick={countDown}>
+            Open modal will close in 5s
+          </Button>
+        </Demo.Block>
         <Demo.Block title='点击遮罩层不可关闭' description='修改 maskClosable 为 false 则不可通过点击遮罩层来关闭对话框。'>
           <Space>
             <Button type='primary' onClick={() => setVisible2(true)}>
