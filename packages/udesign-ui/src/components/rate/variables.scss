@@ -1,0 +1,4 @@
+$rate-star-color: var(--rate-star-color, rgb(var(--ud-gray-3)));  // star 默认颜色
+$rate-active-star-color: var(--rate-active-star-color, rgb(var(--ud-yellow-5))); // star 点亮时的颜色
+$rate-font-size: var(--rate-font-size, 30px); // 评分字体大小，决定star 大小
+$rate-item-margin: var(--rate-item-margin, 0 10px); // star 之间的间距

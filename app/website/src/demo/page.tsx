@@ -121,7 +121,6 @@ const inputMenus = [
   {
     name: 'rate',
     text: 'Rate 评分',
-    disabled: true,
   },
   {
     name: 'select',

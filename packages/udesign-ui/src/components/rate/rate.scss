@@ -1,0 +1,47 @@
+@import './variables.scss';
+
+$module: ud-rate;
+
+
+.#{$module} {
+  display: inline;
+  &-wrapper {
+    display: inline-block;
+  }
+  
+  &-item {
+    color: $rate-star-color;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    font-size: $rate-font-size;
+    margin: $rate-item-margin;
+    &-first,
+    &-second {
+      transition: all .3s;
+    }
+
+    &-focused, &:hover {
+      transform: scale(1.1);
+    }
+
+    &-first {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0;
+    }
+    &-half &-first {
+      opacity: 1;
+      color: $rate-active-star-color;
+    }
+    &-half &-first,
+    &-full &-second {
+      color: $rate-active-star-color;
+    }
+  }
+  
+}

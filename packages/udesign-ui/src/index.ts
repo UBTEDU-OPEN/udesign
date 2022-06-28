@@ -14,6 +14,7 @@ export { default as Menu } from './components/menu';
 export { default as Modal } from './components/modal';
 export { default as Pagination } from './components/pagination';
 export { default as Progress } from './components/progress';
+export { default as Rate } from './components/rate';
 export { default as Result } from './components/result';
 export { default as Row } from './components/row';
 export { default as Radio } from './components/radio';
