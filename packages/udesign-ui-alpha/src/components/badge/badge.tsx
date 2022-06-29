@@ -33,7 +33,7 @@ export type BadgeProps = {
   showZero?: boolean; // 当数值为 0 时，是否展示 Badge
 } & NativeProps;
 
-export const Badge = ({ content, max = 99, size = 'default', title, showZero, className, children, ...restProps }: BadgeProps) => {
+export const Badge = ({ content, max = 99, size = 'default', title, showZero, className, children, style }: BadgeProps) => {
   const isDot = content === Dot;
 
   const badgeClass = classNames(
@@ -62,7 +62,7 @@ export const Badge = ({ content, max = 99, size = 'default', title, showZero, cl
   };
 
   const element = (
-    <div className={badgeClass} title={title || getTitle()}>
+    <div className={badgeClass} title={title || getTitle()} style={style}>
       {!isDot && getCount()}
     </div>
   );

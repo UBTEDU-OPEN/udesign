@@ -1,0 +1,48 @@
+@import './variables.scss';
+
+$module: ud-badge;
+
+.#{$module} {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+
+  .#{$module}-dot:not(.#{$module}-hidden),
+  .#{$module}-content:not(.#{$module}-hidden) {
+    display: block;
+    background: $badge-background-default;
+    color: $badge-color-default;
+    border-radius: $badge-border-radius;
+  }
+
+  .#{$module}-dot {
+    width: $badge-dot-width;
+    height: $badge-dot-height;
+  }
+
+  &-hidden {
+    display: none;
+  }
+
+  &-small {
+    font-size: $badge-font-size-small;
+    height: $badge-height-small;
+    line-height: $badge-height-small;
+    padding: $badge-padding-small;
+  }
+  &-middle {
+    font-size: $badge-font-size-middle;
+    height: $badge-height-middle;
+    line-height: $badge-height-middle;
+    padding: $badge-padding-middle;
+  }
+}
+
+.#{$module}-wrapper .#{$module}-dot,
+.#{$module}-wrapper .#{$module}-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  transform-origin: 100% 0%;
+}

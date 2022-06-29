@@ -169,7 +169,6 @@ const showMenus = [
   {
     name: 'badge',
     text: 'Badge 徽标',
-    disabled: true,
   },
   // {
   //   name: 'calendar',

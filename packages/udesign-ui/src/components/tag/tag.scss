@@ -36,8 +36,8 @@ $module: ud-tag;
     padding: $tag-padding-large;
   }
 
-  // color
-  @each $color in red, orange, yellow, green, cyan, blue, purple {
+  $colors: red, orange, yellow, green, cyan, blue, purple;
+  @each $color in $colors {
     &-#{$color} {
       background: rgba(var(--ud-#{$color}-1), 1);
       border-color: rgba(var(--ud-#{$color}-2), 1);
