@@ -50,7 +50,7 @@ $module: ud-switch;
       left: calc(100% - ($switch-circle-diameter-middle + 2px ));
       &::before {
         background-image: linear-gradient(-180deg, var(--ud-color-primary) 0%, var(--ud-color-primary) 100%);
-        box-shadow: 0 3px 5px 0 rgba(247,130,0,0.33);
+        box-shadow: 0 3px 5px 0 $switch-color-primary-light-checked;
       }
     }
   }
@@ -59,8 +59,8 @@ $module: ud-switch;
     padding-left: $switch-circle-padding-middle;
     color: #A8B4CE;;
     .#{$module}-handle::before {
-      background-image: linear-gradient(-180deg, #BEBEBE 0%, #BEBEBE 98%);
-      box-shadow: 0 3px 5px 0 rgba(196,196,196,0.33);
+      background-image: linear-gradient(-180deg, $switch-color-primary-unchecked 0%, $switch-color-primary-unchecked 98%);
+      box-shadow: 0 3px 5px 0 $switch-color-primary-light-unchecked;
     }
   }
   &-text {
