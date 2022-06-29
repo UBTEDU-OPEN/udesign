@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CheckboxLight: React.FC<{ [key: string]: any }> = (props) => (
+export const CheckboxLight: React.FC<{ [key: string]: any }> = () => (
   <svg height='40' viewBox='0 0 40 40' width='40' xmlns='http://www.w3.org/2000/svg' style={{ cursor: 'pointer' }}>
     <defs>
       <rect id='a' height='24' rx='12' width='24' />

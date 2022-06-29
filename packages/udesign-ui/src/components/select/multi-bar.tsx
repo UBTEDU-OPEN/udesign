@@ -7,12 +7,13 @@ import { OptionItem } from './types';
 import Tag from '../tag';
 
 export type MultiBarProps = {
-  searchValue: string;
-  setSearchValue: (value: string) => void;
-  maxTagCount?: number;
-  selectedList: OptionItem[];
-  tagRender?: (CustomTagProps: CustomTagProps) => ReactNode;
-  handleClose: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => void;
+  searchValue: string; // 搜索框输入的值
+  setSearchValue: (value: string) => void; // 设置searchValue 方法
+  maxTagCount?: number; // 最大展示的tag数
+  selectedList: OptionItem[]; // 选中列表
+  tagRender?: (CustomTagProps: CustomTagProps) => ReactNode; // 自定义tag 方法
+  handleClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => void; // tag 关闭的回调函数
+  placeholder?: string; // 选择框默认文本
 } & NativeProps;
 
 export type CustomTagProps = {
@@ -25,7 +26,7 @@ export type CustomTagProps = {
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
-export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, selectedList, tagRender, handleClose }: MultiBarProps) => {
+export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, selectedList, tagRender, handleClose, placeholder }: MultiBarProps) => {
   const context = useContext(SelectContext);
   const defautTagRender = (CustomTagProps: CustomTagProps) => (
     <Tag
@@ -40,6 +41,21 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
     </Tag>
   );
 
+  const renderBar = () => {
+    if (selectedList.length === 0) return <div className={`${prefixCls}-multi-placeholder`}>{placeholder}</div>;
+    if (maxTagCount) {
+      return (
+        <React.Fragment>
+          {selectedList.slice(0, maxTagCount).map((item: OptionItem) => (
+            <React.Fragment key={item.value}>{tagRender ? tagRender({ onClose: handleClose, ...item }) : defautTagRender({ onClose: handleClose, ...item })}</React.Fragment>
+          ))}
+          {selectedList.length > maxTagCount ? <Tag>+ {selectedList.length - maxTagCount}</Tag> : null}
+        </React.Fragment>
+      );
+    }
+    return selectedList.map((item: OptionItem) => <React.Fragment key={item.value}>{tagRender ? tagRender({ onClose: handleClose, ...item }) : defautTagRender({ onClose: handleClose, ...item })}</React.Fragment>);
+  };
+
   return (
     <>
       <div className={`${prefixCls}-multi-box`}>
@@ -49,9 +65,10 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
             [`${prefixCls}-multi-selected-disabled`]: context.disabled,
           })}
         >
-          {maxTagCount && selectedList.slice(0, maxTagCount).map((item: OptionItem) => <React.Fragment key={item.value}>{tagRender ? tagRender({ onClose: handleClose, ...item }) : defautTagRender({ onClose: handleClose, ...item })}</React.Fragment>)}
+          {renderBar()}
+          {/* {maxTagCount && selectedList.slice(0, maxTagCount).map((item: OptionItem) => <React.Fragment key={item.value}>{tagRender ? tagRender({ onClose: handleClose, ...item }) : defautTagRender({ onClose: handleClose, ...item })}</React.Fragment>)}
           {!maxTagCount && selectedList.map((item: OptionItem) => <React.Fragment key={item.value}>{tagRender ? tagRender({ onClose: handleClose, ...item }) : defautTagRender({ onClose: handleClose, ...item })}</React.Fragment>)}
-          {maxTagCount && selectedList.length > maxTagCount ? <Tag>+ {selectedList.length - maxTagCount}</Tag> : null}
+          {maxTagCount && selectedList.length > maxTagCount ? <Tag>+ {selectedList.length - maxTagCount}</Tag> : null} */}
         </div>
 
         {!context.disabled ? (

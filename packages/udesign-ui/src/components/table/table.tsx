@@ -1,12 +1,14 @@
 /* eslint-disable array-callback-return */
 import React, { ReactNode, useReducer } from 'react';
+import classNames from 'classnames';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { TableContext, reducer } from './context';
 import { Header } from './header';
 import { Body } from './body';
 import { columnType, rowSelectionType } from './types';
+import { NativeProps } from '../../utils';
 
-export interface IProps<T> {
+export type IProps<T> = {
   dataSource: { [key: string]: T }[]; // table 行数据
   columns: columnType[]; // table 列数据
   rowSelection?: rowSelectionType; // 选择行 相关参数
@@ -16,12 +18,13 @@ export interface IProps<T> {
   showHeader?: boolean; // todo
   summary?: ReactNode; // todo
   onHeaderRow?: () => void; // todo
-}
+} & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-table`;
 
 export const Table = <T,>(props: IProps<T>) => {
-  const { dataSource, columns, rowSelection, bordered } = props;
+  const { dataSource, columns, rowSelection, bordered, className, style } = props;
+  const cls = classNames(prefixCls, className);
   const initialState = { rowSelection };
   const [state, dispatch] = useReducer(reducer, initialState);
   const getInnerColumns = () => {
@@ -41,7 +44,7 @@ export const Table = <T,>(props: IProps<T>) => {
         bordered,
       }}
     >
-      <div className={prefixCls}>
+      <div className={cls} style={style}>
         <table className={`${prefixCls}-wrapper`} cellPadding='0' cellSpacing='0'>
           <colgroup>
             {getInnerColumns().map((column: columnType, index) => (

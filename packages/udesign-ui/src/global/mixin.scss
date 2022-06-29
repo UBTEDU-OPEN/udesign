@@ -3,3 +3,21 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin scroll {
+  &::-webkit-scrollbar
+  {
+      width:1px;
+      background-color:#fff;
+  }
+  &::-webkit-scrollbar-track
+  {
+      -webkit-box-shadow:inset 0 0 6px #fff;
+      background-color:#F5F5F5;
+  }
+  &::-webkit-scrollbar-thumb
+  {
+      -webkit-box-shadow:inset 0 0 6px #fff;
+      background-color:#555;
+  }
+}

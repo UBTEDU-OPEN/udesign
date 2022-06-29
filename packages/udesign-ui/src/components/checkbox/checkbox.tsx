@@ -25,7 +25,7 @@ export type CheckboxProps = {
 
 const prefixCls = 'ud-checkbox';
 
-export const Checkbox = ({ defaultChecked = false, disabled, className, children, value, onChange, label, indeterminate, ...restProps }: CheckboxProps) => {
+export const Checkbox = ({ defaultChecked = false, disabled, className, style, children, value, onChange, label, indeterminate, ...restProps }: CheckboxProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;
   const [innerChecked, setInnerChecked] = useState<boolean>(checked!);
   const context = useContext(CheckboxContext);
@@ -66,11 +66,11 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, children
     }
   }, [restProps.checked]);
 
-  const cls = classNames(className, prefixCls);
+  const cls = classNames(prefixCls, className);
 
   return (
     <>
-      <label className={cls}>
+      <label className={cls} style={style}>
         <input
           name={context.name}
           type='checkbox'

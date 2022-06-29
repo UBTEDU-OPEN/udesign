@@ -35,6 +35,7 @@ export type SelectProps = {
   maxTagCount?: number; // 最多显示多少个 tag，
   showSearch?: boolean; // 使单选模式可搜索
   filterOption?: (searchValue: string, option: OptionItem) => boolean; // 是否根据输入项进行筛选。当其为一个函数时，会接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false
+  placeholder?: string; // 选择框默认文本
   autoFocus?: boolean; // todo
   clearIcon?: ReactNode; // todo
   listHeight?: number; // todo
@@ -43,7 +44,6 @@ export type SelectProps = {
   maxTagTextLength?: number; // todo
   notFoundContent?: ReactNode; // todo
   open?: boolean; // todo
-  placeholder?: string; // todo
   placement?: string; // todo
   onClear?: () => void; // todo
   onSelect?: () => void; // todo
@@ -52,11 +52,15 @@ export type SelectProps = {
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
-export const Select = ({ children, className, style, size, value, onChange, disabled, defaultValue, mode, allowClear, status, tagRender, maxTagCount, showSearch = false, filterOption, ...restProps }: SelectProps) => {
-  const cls = classNames(prefixCls, className, {
-    [`${prefixCls}-${size}`]: size,
-    [`${prefixCls}-disabled`]: disabled,
-  });
+export const Select = ({ children, className, style, size, value, onChange, disabled, defaultValue, mode, allowClear, status, tagRender, maxTagCount, showSearch = false, filterOption, placeholder, ...restProps }: SelectProps) => {
+  const cls = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-disabled`]: disabled,
+    },
+    className,
+  );
   const listWrapper = classNames(`${prefixCls}-list-wrapper`, {
     [`${prefixCls}-list-wrapper-${size}`]: size,
   });
@@ -136,11 +140,18 @@ export const Select = ({ children, className, style, size, value, onChange, disa
     }
   };
 
+  const getWidthStyle = () => {
+    if (style?.width) {
+      return { width: style.width };
+    }
+    return {};
+  };
+
   const renderOptions = () => {
     const defaultFilterOption = (searchValue: string, OptionItem: OptionItem) => (searchValue ? OptionItem?.value?.includes(searchValue) : true);
     const fn = filterOption || defaultFilterOption;
     return (
-      <div className={listWrapper} style={style}>
+      <div className={listWrapper} style={getWidthStyle()}>
         {getOptions()
           ?.filter((item: OptionItem) => fn(searchValue, item))
           .map((item: OptionItem) => (
@@ -212,13 +223,13 @@ export const Select = ({ children, className, style, size, value, onChange, disa
   return (
     <>
       <SelectContext.Provider value={{ value: state.value, onChange, dispatch, defaultValue: innerDefaultValue, mode, setVisible, disabled }}>
-        <div className={`${prefixCls}-wrapper`} style={style} ref={triggerRef}>
+        <div className={`${prefixCls}-wrapper`} style={getWidthStyle()} ref={triggerRef}>
           <div className={cls} onClick={handleClick} style={updateStyle()} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
             <div className={`${prefixCls}-arrow`}>{renderIcon()}</div>
             {mode !== 'multiple' ? (
-              <SingleBar searchValue={searchValue} setSearchValue={setSearchValue} visible={visible} showSearch={showSearch} options={getOptions()} innerDefaultValue={innerDefaultValue} />
+              <SingleBar searchValue={searchValue} setSearchValue={setSearchValue} visible={visible} showSearch={showSearch} options={getOptions()} innerDefaultValue={innerDefaultValue} placeholder={placeholder} />
             ) : (
-              <MultiBar searchValue={searchValue} setSearchValue={setSearchValue} maxTagCount={maxTagCount} selectedList={selectedList} tagRender={tagRender} handleClose={handleClose} />
+              <MultiBar searchValue={searchValue} setSearchValue={setSearchValue} maxTagCount={maxTagCount} selectedList={selectedList} tagRender={tagRender} handleClose={handleClose} placeholder={placeholder} />
             )}
           </div>
           {visible ? renderOptions() : null}

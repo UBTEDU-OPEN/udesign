@@ -89,6 +89,7 @@ export default function SelectPage() {
                 showSearch
                 filterOption={(searchValue: string, option: any) => option.value.includes(searchValue)}
                 allowClear
+                placeholder='请选择'
                 options={[
                   {
                     label: 'option1(label)',
@@ -110,7 +111,7 @@ export default function SelectPage() {
         <Demo.Block title='多选' description={<>多选，从已有条目中选择</>}>
           <div style={{ height: '200px' }}>
             <Space>
-              <Select mode='multiple' style={{ width: '100%' }} allowClear maxTagCount={2}>
+              <Select mode='multiple' style={{ width: '100%' }} allowClear maxTagCount={2} placeholder='请选择'>
                 <Select.Option value='option1'>
                   <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                     <img src='https://images.669pic.com/element_min_new_pic/15/7/96/85/73f3ae6a7b0b9346ac8f3f013913c107.png' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />

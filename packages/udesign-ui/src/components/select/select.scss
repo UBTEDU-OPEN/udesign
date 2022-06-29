@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import '../../global/mixin.scss';
 $module: ud-select;
 
 .#{$module}-wrapper {
@@ -29,25 +30,32 @@ $module: ud-select;
     align-items: center;
   }
   &-disabled {
-    background: #F5F5F5;
+    background: $select-disabled-background;
     color: $select-disabled-color;
     border: $select-border;
     cursor: not-allowed;
   }
-  &-single-text {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: $select-padding-left;
-    align-items: center;
-    overflow: hidden;
-    &-content {
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
+  &-single {
+    &-placeholder {
+      font-size: $select-placeholder-font-size;
+      color: $select-placeholder-color;
     }
-    
+    &-text {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-start;
+      padding-left: $select-padding-left;
+      align-items: center;
+      overflow: hidden;
+      &-content {
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+      
+    }
   }
+  
   &-multi {
     &-box {
       flex-grow: 1;
@@ -64,6 +72,11 @@ $module: ud-select;
       &-disabled {
         cursor: not-allowed;
       }
+    }
+    &-placeholder {
+      padding-left: $select-placeholder-padding-left;
+      font-size: $select-placeholder-font-size;
+      color: $select-placeholder-color;
     }
   }
 
@@ -108,10 +121,12 @@ $module: ud-select;
     background: rgb(var(--ud-white));
     box-shadow: 0 7px 18px 0 rgba(198,199,219,0.84);
     border-radius: 8px;
-    overflow: hidden;
+    overflow-y: scroll;
     width: $select-width;
+    max-height: 200px;
     top: $select-list-top;
     z-index: 99;
+    @include scroll;
     &-large {
       width: $select-width-large;
       top: $select-list-top-large;

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { Avatar, AvatarProps } from './avatar';
 import { Paragraph, ParagraphProps } from './paragraph';
@@ -16,7 +16,7 @@ export type SkeletonProps = {
   size?: CommonSize; // type size small | middle | large  默认middle
 } & NativeProps;
 
-export const Skeleton = ({ size = 'middle', active = false, avatar = true, loading = true, paragraph = true, title = true, children }: SkeletonProps) => {
+export const Skeleton = ({ size = 'middle', active = false, avatar = true, loading = true, paragraph = true, title = true, children, className, style }: SkeletonProps) => {
   function getComponentProps<T>(prop: T | boolean | undefined): T | Record<string, never> | { size: CommonSize } {
     if (prop && typeof prop === 'object') {
       return { ...prop, size };
@@ -24,15 +24,20 @@ export const Skeleton = ({ size = 'middle', active = false, avatar = true, loadi
     return { size };
   }
 
-  const wrapperClass = classNames(prefixCls, `${prefixCls}-full`, {
-    [`${prefixCls}-active`]: active,
-  });
+  const wrapperClass = classNames(
+    prefixCls,
+    `${prefixCls}-full`,
+    {
+      [`${prefixCls}-active`]: active,
+    },
+    className,
+  );
 
   return (
     <>
       {loading ? (
         <>
-          <div className={wrapperClass}>
+          <div className={wrapperClass} style={style}>
             {avatar ? <Avatar {...getComponentProps(avatar)} /> : null}
             <div className={classNames(`${prefixCls}-grow`)}>
               {title ? <Title {...getComponentProps(title)} /> : null}

@@ -22,7 +22,7 @@ export type RadioProps = {
 
 const prefixCls = 'ud-radio';
 
-export const Radio = ({ defaultChecked = false, disabled, className, children, value, label, ...restProps }: RadioProps) => {
+export const Radio = ({ defaultChecked = false, disabled, className, style, children, value, label, ...restProps }: RadioProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;
 
   const [innerChecked, setInnerChecked] = useState<boolean>(checked!);
@@ -54,11 +54,11 @@ export const Radio = ({ defaultChecked = false, disabled, className, children, v
     }
   }, [restProps.checked]);
 
-  const cls = classNames(className, prefixCls);
+  const cls = classNames(prefixCls, className);
 
   return (
     <>
-      <label className={cls}>
+      <label className={cls} style={style}>
         <input
           name={context.name}
           type='radio'
