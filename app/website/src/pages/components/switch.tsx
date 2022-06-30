@@ -1,48 +1,54 @@
-import React, { useState } from 'react';
-import { Switch } from '@ubt/udesign-ui-alpha';
-import { Button, Space } from '@ubt/udesign-ui';
+import React from 'react';
+import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
+import { Space, Switch } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function SwitchPage() {
-  const [checked, setChecked] = useState(false);
   return (
     <>
-      <Demo.Page title='Switch 开关' description='开关是用于切换两种互斥状态的交互形式'>
-        <Demo.Block title='基础用法' description='使用 defaultChecked 来设置初始选中'>
-          <Space>
-            <Switch />
+      <Demo.Page title='Switch 开关' description='开关选择器。'>
+        <Demo.Block
+          title='何时使用'
+          description={
+            <>
+              *需要表示开关状态或两种状态之间的切换时；
+              <br />
+              *和 checkbox 的区别是，切换 switch 会直接触发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合。
+            </>
+          }
+        />
+        <Demo.Block title='基础用法' description='默认的开关'>
+          <Space direction='vertical'>
             <Switch defaultChecked />
           </Space>
         </Demo.Block>
-        {/* <Demo.Block title='尺寸' description='使用 size 来设置尺寸，可选值 large, default, small'>
-          <Space>
-            <Switch size='large' />
-            <Switch />
-            <Switch size='small' />
-          </Space>
-        </Demo.Block> */}
-        <Demo.Block title='禁用状态' description='通过 disabled 属性来禁用开关，禁用状态下开关不可点击。'>
+        <Demo.Block title='不可用状态' description='开关不可用状态'>
           <Space>
             <Switch disabled />
-            <Switch defaultChecked disabled />
           </Space>
         </Demo.Block>
-        <Demo.Block title='加载状态' description='通过 loading 属性设置开关为加载状态，加载状态下开关不可点击。'>
-          <Space>
-            <Switch loading />
-            <Switch defaultChecked loading />
-          </Space>
-        </Demo.Block>
-        <Demo.Block title='带文本' description='可以通过 checkedText 与 uncheckedText 设置开关时的文本'>
-          <Space>
-            <Switch checkedText='开' uncheckedText='关' />
+        <Demo.Block title='带有文字' description='开关中带有文字'>
+          <Space direction='vertical'>
             <Switch defaultChecked checkedText='开启' uncheckedText='关闭' />
+            <Switch checkedText='开启' uncheckedText='关闭' />
           </Space>
         </Demo.Block>
-        <Demo.Block title='受控组件' description='组件是否选中完全取决于传入的 checked 值，配合 onChange 回调函数使用'>
-          <Space>
-            <Switch checked={checked} onChange={(value) => setChecked(value)} />
-            <Button onClick={() => setChecked(!checked)}>{String(checked)}</Button>
+        <Demo.Block>
+          <Space direction='vertical'>
+            <Switch defaultChecked checkedText='1' uncheckedText='0' />
+            <Switch checkedText='1' uncheckedText='0' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='带有图标' description='开关中带有图标'>
+          <Space direction='vertical'>
+            <Switch defaultChecked checkedText={<CheckOutlined />} uncheckedText={<CloseOutlined />} />
+            <Switch checkedText={<CheckOutlined />} uncheckedText={<CloseOutlined />} />
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='其它尺寸' description='两种大小的开关。'>
+          <Space direction='vertical'>
+            <Switch defaultChecked />
+            <Switch defaultChecked size='small' />
           </Space>
         </Demo.Block>
       </Demo.Page>

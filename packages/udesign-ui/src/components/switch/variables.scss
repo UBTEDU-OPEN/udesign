@@ -1,0 +1,35 @@
+
+$switch-color-primary-checked: var(--ud-switch-color-primary, var(--ud-color-primary)); // 默认态开关开启主要色
+$switch-color-primary-light-checked: var(--ud-switch-color-primary-light, var(--ud-color-primary-light)); // 默认态开关开启背景色
+$switch-color-primary-unchecked: var(--switch-color-primary-unchecked, rgba(var(--ud-gray-5))); // 默认态开关关闭主要色
+$switch-color-primary-light-unchecked: var(--switch-color-primary-light-unchecked, rgba(var(--ud-gray-3))); // 默认态开关关闭背景色
+
+$switch-font-size-small: var(--switch-font-size-small, 12px); // 开关文字字号-小
+$switch-font-size-middle: var(--switch-font-size-middle, 14px); // 开关文字字号-中
+$switch-font-size-large: var(--switch-font-size-large, 16px); // 开关文字字号-大
+
+$switch-padding-small: var(--switch-padding-small, 0 12px); // 开关内边距-小
+$switch-padding-middle: var(--switch-padding-middle, 0 16px); // 开关内边距-中
+$switch-padding-large: var(--switch-padding-large, 0 20px); // 开关内边距-大
+
+$switch-min-width-small: var(--switch-min-width-small, 50px); // 开关最小宽度-小
+$switch-min-width-middle: var(--switch-min-width-middle, 70px); // 开关最小宽度-中
+$switch-min-width-large: var(--switch-min-width-large, 90px); // 开关最小宽度-大
+
+$switch-height-small: var(--switch-height-small, 26px); // 开关高度-小
+$switch-height-middle: var(--switch-height-middle, 36px); // 开关高度-中
+$switch-height-large: var(--switch-height-large, 46px); // 开关高度-大
+
+$switch-circle-diameter-small: var(--switch-circle-diameter-small, 22px); // 开关内圆直径-小
+$switch-circle-diameter-middle: var(--switch-circle-diameter-middle, 32px); // 开关内圆直径-中
+$switch-circle-diameter-large: var(--switch-circle-diameter-large, 42px); // 开关内圆直径-大
+
+$switch-circle-padding-small: var(--switch-circle-padding-small, 22px); // 开关内圆边距-小
+$switch-circle-padding-middle: var(--switch-circle-padding-middle, 30px); // 开关内圆边距-中
+$switch-circle-padding-large: var(--switch-circle-padding-large, 38px); // 开关内圆边距-大
+
+$switch-border-width: var(--ud-switch-border-width, 1px); // 开关边框宽度
+$switch-border-style: var(--ud-switch-border-style, solid); // 开关边框类型
+$switch-border-color: var(--ud-switch-border-color, var(--ud-color-border)); // 开关边框颜色
+
+$switch-border-radius: var(--ud-switch-border-radius, 2px); // 开关圆角-默认
