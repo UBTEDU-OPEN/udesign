@@ -24,6 +24,7 @@ export interface TableContextState {
   dispatch?: React.Dispatch<actionType>;
   rowSelection?: rowSelectionType;
   bordered?: boolean;
+  rowKey?: string;
   // selectedRowKeys?: string[];
 }
 

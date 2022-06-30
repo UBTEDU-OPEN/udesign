@@ -138,7 +138,7 @@ const data: any[] = [
 ];
 
 export default function TablePage() {
-  const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>(['1']);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
   const [checked, setChecked] = useState<boolean>(false);
   return (
     <div className={styles['grid-root']}>
@@ -189,6 +189,7 @@ export default function TablePage() {
           <Table
             columns={columns}
             dataSource={data}
+            rowKey='name'
             rowSelection={{
               type: `${checked ? 'radio' : 'checkbox'}`,
               onChange: (selectedRowKey, record) => {
@@ -205,9 +206,6 @@ export default function TablePage() {
             }}
           />
         </Demo.Block>
-        {/* <Demo.Block title='单元格自动省略' description={<>设置 column.ellipsis 可以让单元格内容根据宽度自动省略。</>}>
-          <Table columns={columns1} dataSource={data} />
-        </Demo.Block> */}
         <Demo.Block title='自定义单元格省略提示' description={<>使用 Tooltip 替代。</>}>
           <Table columns={columns2} dataSource={data} />
         </Demo.Block>

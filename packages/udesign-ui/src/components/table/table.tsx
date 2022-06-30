@@ -13,9 +13,9 @@ export type IProps<T> = {
   columns: columnType[]; // table 列数据
   rowSelection?: rowSelectionType; // 选择行 相关参数
   bordered?: boolean; // 是否显示border
-  rowKey?: string; // todo
+  rowKey?: string; // 表格行 key 的取值
+  showHeader?: boolean; // 是否显示表头
   scroll?: { [key: string]: any }; // todo
-  showHeader?: boolean; // todo
   summary?: ReactNode; // todo
   onHeaderRow?: () => void; // todo
 } & NativeProps;
@@ -23,7 +23,7 @@ export type IProps<T> = {
 const prefixCls = `${BASE_CLASS_PREFIX}-table`;
 
 export const Table = <T,>(props: IProps<T>) => {
-  const { dataSource, columns, rowSelection, bordered, className, style } = props;
+  const { dataSource, columns, rowSelection, bordered, className, style, rowKey, showHeader = true } = props;
   const cls = classNames(prefixCls, className);
   const initialState = { rowSelection };
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -39,6 +39,7 @@ export const Table = <T,>(props: IProps<T>) => {
       value={{
         columns: getInnerColumns(),
         dataSource,
+        rowKey,
         dispatch,
         rowSelection: state.rowSelection,
         bordered,
@@ -51,7 +52,8 @@ export const Table = <T,>(props: IProps<T>) => {
               <col width={column.width} style={{ width: column.width }} key={index} />
             ))}
           </colgroup>
-          <Header />
+          {showHeader ? <Header /> : null}
+
           <Body />
         </table>
       </div>

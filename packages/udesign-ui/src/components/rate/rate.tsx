@@ -27,8 +27,8 @@ export const Rate = (props: RateProps) => {
 
   const refs: any = {};
 
-  [...new Array(count).keys()].forEach((item: number) => {
-    refs[`ele${item}`] = useRef(null);
+  new Array(count).fill(1).forEach((item: number, index: number) => {
+    refs[`ele${index}`] = useRef(null);
   });
   const getStarValue = (index: number, x: number) => {
     let value = index + 1;
@@ -90,7 +90,7 @@ export const Rate = (props: RateProps) => {
       }}
     >
       <div className={`${prefixCls}-wrapper`}>
-        {[...new Array(count).keys()].map((item: number, index: number) =>
+        {new Array(count).fill(1).map((item: number, index: number) =>
           tooltips && tooltips.length > 0 ? (
             <React.Fragment key={index}>
               <Tooltip content={tooltips[index]}>{renderRate(index)}</Tooltip>

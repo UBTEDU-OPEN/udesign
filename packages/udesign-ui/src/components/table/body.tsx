@@ -11,7 +11,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-table`;
 
 export const Body = () => {
   const context = useContext(TableContext);
-  const { dataSource = [], columns = [], rowSelection, dispatch, bordered } = context;
+  const { dataSource = [], columns = [], rowSelection, dispatch, bordered, rowKey = 'key' } = context;
   const selectedRowKeys = (rowSelection as rowSelectionType)?.selectedRowKeys;
   const getSelectedRowKeys = (checked: boolean, key: string) => {
     let result = selectedRowKeys;
@@ -28,7 +28,7 @@ export const Body = () => {
   });
   return (
     <tbody className={`${prefixCls}-tbody`}>
-      {dataSource.map((outerItem: { [key: string]: any }, index: number) => (
+      {dataSource.map((data: { [key: string]: any }, index: number) => (
         <tr key={index}>
           {columns.map((column: columnType, i: number) => {
             if (column.type === 'checkbox') {
@@ -36,17 +36,17 @@ export const Body = () => {
                 <td key={`${i}`} className={borderStyle}>
                   <div className={classNames(`${prefixCls}-tbody-content`)} style={{ width: '80px' }}>
                     <Checkbox
-                      disabled={(rowSelection?.getCheckboxProps && rowSelection?.getCheckboxProps(outerItem).disabled) || false}
-                      checked={rowSelection?.selectedRowKeys?.includes(outerItem.key as string)}
+                      disabled={(rowSelection?.getCheckboxProps && rowSelection?.getCheckboxProps(data).disabled) || false}
+                      checked={rowSelection?.selectedRowKeys?.includes(data[rowKey] as string)}
                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                        const newSelectedRowkeys = getSelectedRowKeys(event.target.checked, outerItem.key as string);
+                        const newSelectedRowkeys = getSelectedRowKeys(event.target.checked, data[rowKey] as string);
                         if (dispatch) {
                           dispatch({
                             type: types.UPDATE_SELECTED,
                             payload: { rowSelection: { ...rowSelection, selectedRowKeys: newSelectedRowkeys } },
                           });
                         }
-                        rowSelection?.onChange && rowSelection?.onChange(newSelectedRowkeys, outerItem);
+                        rowSelection?.onChange && rowSelection?.onChange(newSelectedRowkeys, data);
                       }}
                     />
                   </div>
@@ -58,26 +58,26 @@ export const Body = () => {
                 <td key={`${i}`} className={borderStyle}>
                   <div className={classNames(`${prefixCls}-tbody-content`)} style={{ width: '80px' }}>
                     <Radio.Group
-                      name={outerItem.key as string}
+                      name={data[rowKey] as string}
                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                         if (dispatch) {
                           dispatch({
                             type: types.UPDATE_SELECTED,
-                            payload: { rowSelection: { ...rowSelection, selectedRowKeys: [outerItem.key] } },
+                            payload: { rowSelection: { ...rowSelection, selectedRowKeys: [data[rowKey]] } },
                           });
                         }
-                        rowSelection?.onChange && rowSelection?.onChange([outerItem.key as string], outerItem);
+                        rowSelection?.onChange && rowSelection?.onChange([data[rowKey] as string], data);
                       }}
                     >
-                      <Radio disabled={rowSelection?.getCheckboxProps && rowSelection?.getCheckboxProps(outerItem).disabled} checked={[...(rowSelection?.selectedRowKeys || [])]?.shift() === outerItem.key} />
+                      <Radio disabled={rowSelection?.getCheckboxProps && rowSelection?.getCheckboxProps(data).disabled} checked={[...(rowSelection?.selectedRowKeys || [])]?.shift() === data[rowKey]} />
                     </Radio.Group>
                   </div>
                 </td>
               );
             }
             return (
-              <td className={borderStyle} key={`${Math.random()}_${i}`} title={column.ellipsis ? (outerItem[column.key as string] as string) : ''} style={{ textOverflow: column.ellipsis ? 'ellipsis' : 'clip' }}>
-                {column.render ? column.render(outerItem) : (outerItem[column.key as string] as React.ReactNode) || null}
+              <td className={borderStyle} key={`${Math.random()}_${i}`} title={column.ellipsis ? (data[column.key as string] as string) : ''} style={{ textOverflow: column.ellipsis ? 'ellipsis' : 'clip' }}>
+                {column.render ? column.render(data) : (data[column.key as string] as React.ReactNode) || null}
               </td>
             );
           })}

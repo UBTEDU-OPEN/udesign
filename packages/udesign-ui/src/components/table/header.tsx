@@ -10,7 +10,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-table`;
 
 export const Header = () => {
   const context = useContext(TableContext);
-  const { dataSource = [], columns = [], rowSelection, dispatch, bordered } = context;
+  const { dataSource = [], columns = [], rowSelection, dispatch, bordered, rowKey = 'key' } = context;
   const selectedRowKeys = (rowSelection as rowSelectionType)?.selectedRowKeys;
   const [checkAll, setCheckAll] = useState(false);
   const [isIndeterminate, setIsIndeterminate] = useState(false);
@@ -19,7 +19,7 @@ export const Header = () => {
     setCheckAll((selectedRowKeys || [])?.length === dataSource.length);
   }, [selectedRowKeys]);
 
-  const getAllKeys = (data: { [key: string]: any }[]) => data.map((item: { [key: string]: any }) => item.key);
+  const getAllKeys = (data: { [key: string]: any }[]) => data.map((item: { [key: string]: any }) => item[rowKey]);
 
   const borderStyle = classNames({
     [`${prefixCls}-border`]: bordered,
