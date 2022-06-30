@@ -19,7 +19,7 @@ export const Block = ({ title, description, background, transform, compact, debu
   const cls = classNames('relative', background ? 'bg-gray-50' : '', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-12', className);
   const code = reactElementToJSXString(React.isValidElement(children) ? children : <>{children}</>, { maxInlineAttributesLineLength: 80, showFunctions: false, sortProps: false, useBooleanShorthandSyntax: false });
   return debug && process.env.NODE_ENV === 'production' ? null : (
-    <>
+    <section className='mb-10'>
       {title || description ? (
         <div className='py-4'>
           <div className='text-2xl font-semibold'>{title}</div>
@@ -28,7 +28,7 @@ export const Block = ({ title, description, background, transform, compact, debu
         </div>
       ) : null}
       {children ? (
-        <div className='border mb-10 rounded-lg overflow-hidden'>
+        <div className='border rounded-lg overflow-hidden'>
           <div className={cls}>
             {debug ? (
               <Tag className='absolute top-0 right-0' color='yellow'>
@@ -46,7 +46,7 @@ export const Block = ({ title, description, background, transform, compact, debu
           </Collapse>
         </div>
       ) : null}
-    </>
+    </section>
   );
 };
 

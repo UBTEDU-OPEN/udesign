@@ -85,9 +85,9 @@ export const Progress = (props: ProgressProps) => {
     // cx, cy is circle center
     const cy = width / 2;
     const cx = width / 2;
-    const radius = (width - strokeWidth) / 2; // radius
+    const radius = (width - strokeWidth) / 2;
     const circumference = radius * 2 * Math.PI;
-    const strokeDashoffset = (1 - percent / 100) * circumference; // Offset
+    const strokeDashoffset = (1 - percent / 100) * circumference;
     const strokeDasharray = `${circumference} ${circumference}`;
 
     const text = format(calcPercent(percent));

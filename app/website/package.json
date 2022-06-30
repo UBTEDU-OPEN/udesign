@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "node ./scripts/designToken.js ./public/designToken.json",
+    "prepare": "node ./scripts/build-api.js ./public/designApi.json && node ./scripts/build-token.js ./public/designToken.json",
     "dev": "yarn prepare && next dev",
     "build": "yarn prepare && next build",
     "start": "next start",

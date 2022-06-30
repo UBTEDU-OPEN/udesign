@@ -16,7 +16,7 @@ const getTokenCategory = (codeLine) => {
   }
 };
 
-// 行内数据拆分
+// 行内数据拆分（key: value; // comment）
 const codeLineSplit = (codeLine) => {
   const [key, value, comment] = codeLine
     .split(/:|\/\/|\/\*/)

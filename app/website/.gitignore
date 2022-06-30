@@ -38,4 +38,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 # json
-public/designToken.json
+public/*.json

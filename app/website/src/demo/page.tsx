@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '@ubt/udesign-utils';
 import { Layout, SideMenu } from './layouts';
+import { DesignAPI } from './design-api';
 import { DesignToken } from './design-token';
 
 // 通用
@@ -362,6 +363,7 @@ export const Page = ({ title, description, todo, children, className }: PageProp
         {description ? <div className='text-gray-600 text-xl my-5'>{description}</div> : null}
         {todo ? <div className='text-indigo-600 my-5'>{todo}</div> : null}
         {children}
+        <DesignAPI />
         <DesignToken />
       </div>
     </Layout>
