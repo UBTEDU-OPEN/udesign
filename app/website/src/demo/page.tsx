@@ -187,7 +187,6 @@ const showMenus = [
   {
     name: 'collapse',
     text: 'Collapse 折叠面板',
-    disabled: true,
   },
   // {
   //   name: 'comment',

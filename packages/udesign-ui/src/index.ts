@@ -30,3 +30,4 @@ export { default as Tooltip } from './components/tooltip';
 export { default as Typography } from './components/typography';
 export { default as Switch } from './components/switch';
 export { default as Empty } from './components/empty';
+export * from './components/collapse';
