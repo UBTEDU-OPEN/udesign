@@ -1,0 +1,20 @@
+$collapse-color-primary-active: var(--ud-collapse-color-primary-active, var(--ud-color-primary)); // 默认态折叠面板主要色
+$collapse-color-primary-light-header: var(--ud-collapse-color-primary-light-header, var(--ud-color-primary-light)); // 默认态折叠面板header背景色
+$collapse-color-primary-light-item: var(--collapse-color-primary-light-item, #F3F4F8); // 默认态折叠面板item背景色
+$collapse-color-primary-bordered: var(--collapse-color-primary-bordered, #fbfcfd); //有边框折叠面板的背景色
+
+$collapse-font-size-header: var(--collapse-font-size-header, 14px); // 折叠面板header字号
+$collapse-font-size-item: var(--collapse-font-size-item, 14px); // 折叠面板item字号
+
+$collapse-padding-header: var(--collapse-padding-header, 16px 20px 16px 40px); // 折叠面板内边距
+$collapse-padding-item: var(--collapse-padding-item, 20px 40px); // 折叠面板内边距
+
+$collapse-margin-header: var(--collapse-margin-header, 0 0 10px); // 折叠面板外边距
+$collapse-margin-item: var(--collapse-margin-item, 0 0 10px); // 折叠面板外边距
+
+$collapse-border-width: var(--ud-collapse-border-width, 1px); // 折叠面板边框宽度
+$collapse-border-style: var(--ud-collapse-border-style, solid); // 折叠面板边框类型
+$collapse-border-color: var(--ud-collapse-border-color, #eee); // 折叠面板边框颜色
+
+$collapse-border-radius-header: var(--ud-collapse-border-radius-header, 25px); // 折叠面板header圆角
+$collapse-border-radius-item: var(--ud-collapse-border-radius-item, 25px); // 折叠面板item圆角

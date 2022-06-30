@@ -28,3 +28,4 @@ export { default as Tag } from './components/tag';
 export { default as Toast } from './components/toast';
 export { default as Tooltip } from './components/tooltip';
 export { default as Typography } from './components/typography';
+export * from './components/collapse';

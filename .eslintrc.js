@@ -32,6 +32,7 @@ module.exports = {
       },
       plugins: ['react', 'react-hooks', 'import', '@typescript-eslint', 'prettier'],
       rules: {
+        'no-nested-ternary': 0,
         'prettier/prettier': 'error',
         'no-useless-escape': 'off',
         'no-useless-concat': 'off',

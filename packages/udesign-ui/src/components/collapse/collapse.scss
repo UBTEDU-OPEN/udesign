@@ -1,0 +1,65 @@
+@import './variables.scss';
+$module: ud-collapse;
+
+.#{$module} {
+	&-header {
+		font-size: $collapse-font-size-header;
+		background: $collapse-color-primary-light-header;
+		border: $collapse-border-width $collapse-border-style $collapse-border-color;
+		border-radius: $collapse-border-radius-header;
+		padding: $collapse-padding-header;
+		margin: $collapse-margin-header;
+		cursor: pointer;
+	}
+
+	&-content {
+		font-size: $collapse-font-size-item;
+		padding: $collapse-padding-item;
+		background: $collapse-color-primary-light-item;
+		border-radius: $collapse-border-radius-item;
+		margin: $collapse-margin-item;
+		transition: all 0.2s ease-in-out;
+	}
+
+	&-icon {
+		float: right;
+	}
+
+	&-unactive {
+		.#{$module}-content {
+			display: none;
+		}
+	}
+
+	&-active {
+		.#{$module}-header {
+			color: $collapse-color-primary-active;
+		}
+
+		.#{$module}-icon {
+			transform: rotate(180deg);
+			transition: all 0.2s ease-in-out;
+		}
+	}
+
+	.#{$module}-border.#{$module}-active {
+		background: $collapse-color-primary-bordered;
+		border: $collapse-border-width $collapse-border-style $collapse-color-primary-active;
+		border-radius: $collapse-border-radius-header;
+		margin: $collapse-margin-header;
+
+		.#{$module}-header {
+			background: $collapse-color-primary-bordered;
+			border: $collapse-border-width $collapse-border-style $collapse-border-color;
+			border-radius: $collapse-border-radius-header $collapse-border-radius-header 0 0;
+			margin: 0;
+			cursor: pointer;
+		}
+
+		.#{$module}-content {
+			background: $collapse-color-primary-bordered;
+			border-radius: 0 0 $collapse-border-radius-item $collapse-border-radius-item;
+			margin: 0;
+		}
+	}
+}
