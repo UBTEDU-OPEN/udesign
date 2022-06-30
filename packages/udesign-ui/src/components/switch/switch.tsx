@@ -1,60 +1,51 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import { NativeProps } from '../../utils';
-import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
+import { NativeProps, usePropsValue } from '../../utils';
+import { CommonSize, BASE_CLASS_PREFIX } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-switch`;
-
 export type SwitchSize = CommonSize;
-export type SwitchChangeEventHandler = (checked: boolean, event: React.MouseEvent<HTMLButtonElement>) => void;
-export type SwitchClickEventHandler = SwitchChangeEventHandler;
 
 export type SwitchProps = {
   checked?: boolean; // 当前是否选中
   defaultChecked?: boolean; // 默认是否选中
   disabled?: boolean; // 是否禁用
   loading?: boolean; // 是否加载中
-  size?: SwitchSize; // TODO: 没有UI，暂不实现
+  size?: SwitchSize; // 大小
   checkedText?: ReactNode; // 选中时的内容
   uncheckedText?: ReactNode; // 非选中时的内容
-  onChange?: SwitchChangeEventHandler; // 变化时回调函数
-  onClick?: SwitchClickEventHandler; // 点击时回调函数
+  onChange?: (checked: boolean) => void; // 变化时回调函数
+  onClick?: (checked: boolean) => void; // 点击时回调函数
 } & NativeProps;
 
-export const Switch = ({ defaultChecked = false, disabled, loading, size = 'middle', checkedText, uncheckedText, onChange, onClick, className, ...restProps }: SwitchProps) => {
-  const [innerChecked, setInnerChecked] = useState(defaultChecked);
-
-  function triggerChange(newChecked: boolean, event: React.MouseEvent<HTMLButtonElement>) {
-    let mergedChecked = innerChecked;
-    if (!disabled && !loading) {
-      mergedChecked = newChecked;
-      setInnerChecked(newChecked);
-      onChange?.(mergedChecked, event);
-    }
-
-    return mergedChecked;
-  }
+export const Switch = ({ defaultChecked = false, disabled, loading, size = 'middle', checkedText, uncheckedText, className, ...props }: SwitchProps) => {
+  const [innerChecked, setInnerChecked] = usePropsValue({
+    value: props.checked,
+    defaultValue: defaultChecked,
+    onChange: props.onChange,
+  });
 
   function onInternalClick(event: React.MouseEvent<HTMLButtonElement>) {
-    const status = triggerChange(!innerChecked, event);
-    onClick?.(status, event);
-  }
-
-  useEffect(() => {
-    if ('checked' in restProps) {
-      setInnerChecked(Boolean(restProps.checked));
+    if (!disabled && !loading) {
+      setInnerChecked(!innerChecked);
     }
-  }, [restProps.checked]);
-
-  const widthClass = (innerChecked && !checkedText) || (!innerChecked && !uncheckedText) ? `${prefixCls}-notext` : '';
-  const checkedClass = innerChecked ? `${prefixCls}-checked` : `${prefixCls}-unchecked`;
-  const disabledClass = disabled || loading ? `${prefixCls}-disabled` : '';
-  const cls = classNames(prefixCls, widthClass, checkedClass, disabledClass);
-
+    props.onClick?.(innerChecked);
+  }
+  const cls = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-loading`]: loading,
+      [`${prefixCls}-disabled`]: disabled,
+      [`${prefixCls}-checked`]: innerChecked,
+      [`${prefixCls}-unchecked`]: !innerChecked,
+    },
+    className,
+  );
   return (
     <>
-      <button className={cls} onClick={onInternalClick} type='button'>
-        <div className={classNames(`${prefixCls}-inner`, `${prefixCls}-inner-${innerChecked ? 'checked' : 'unchecked'}`)}></div>
+      <button onClick={onInternalClick} type='button' className={cls}>
+        <div className={`${prefixCls}-handle`}></div>
         <span className={`${prefixCls}-text`}>{innerChecked ? checkedText : uncheckedText}</span>
       </button>
     </>
