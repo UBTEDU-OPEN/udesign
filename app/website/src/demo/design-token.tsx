@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import lodash from 'lodash';
 import axios from 'axios';
-import { Result } from '@ubt/udesign-ui';
 import { SITE_NAME } from '../constants/site';
 
 interface Token {
@@ -82,10 +81,9 @@ export const DesignToken = (props: DesignTokenProps) => {
     <section className='mb-10'>
       <div className='py-4'>
         <div className='text-2xl font-semibold'>CSS 变量</div>
-        <div className='text-base text-gray-500 mt-2'>{SITE_NAME} 广泛使用了CSS变量，因此你可以通过修改这些变量来轻松定制组件样式。</div>
+        <div className='text-base text-gray-500 mt-2'>{SITE_NAME} 广泛使用了CSS变量，因此你可以通过修改这些变量来轻松定制主题或者组件样式。</div>
       </div>
-      <Result status='info' title='暂未开放' subtitle='将在整理完成后，对外开放，敬请期待。' />
-      {/* {renderTable()} */}
+      {renderTable()}
     </section>
   );
 };
