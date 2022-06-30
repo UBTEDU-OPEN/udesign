@@ -364,7 +364,7 @@ export const Page = ({ title, description, todo, children, className }: PageProp
         {todo ? <div className='text-indigo-600 my-5'>{todo}</div> : null}
         {children}
         <DesignAPI />
-        <DesignToken />
+        {/* <DesignToken /> */}
       </div>
     </Layout>
   );
