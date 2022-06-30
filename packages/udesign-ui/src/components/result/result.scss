@@ -8,8 +8,25 @@ $module: ud-result;
 
   &-icon {
     font-size: $result-icon-font-size;
-    margin: 0 auto;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+
+    // 不同类型图标默认色
+    &-info {
+      color: $result-icon-color-info;
+    }
+    &-success {
+      color: $result-icon-color-success;
+    }
+    &-error {
+      color: $result-icon-color-error;
+    }
+    &-403,
+    &-404,
+    &-500,
+    &-warning {
+      color: $result-icon-color-warning;
+    }
   }
 
   &-title {
