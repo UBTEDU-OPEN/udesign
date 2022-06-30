@@ -23,7 +23,6 @@ import {
   CheckOutlined,
   EditFilled,
   CloseCircleFilled,
-  Loading2Outlined,
   MoreOutlined,
   RightOutlined,
   LeftOutlined,
@@ -40,6 +39,14 @@ import {
   InfoCircleOutlined,
   UserCompileOutlined,
   CloseOutlined,
+  ExclamationCircleOutlined,
+  HintFilled,
+  UploadFilled,
+  SmileOutlined,
+  LinkOutlined,
+  StarFilled,
+  HeartFilled,
+  ExclamationCircleFilled,
 } from '@ubt/udesign-icons';
 import { Copy } from '@ubt/udesign-ui-alpha';
 import { Demo } from '../../demo';
@@ -47,10 +54,10 @@ import { Demo } from '../../demo';
 export default function IconPage() {
   const [type, setType] = useState('outlined');
   const directionIconsOutlined = [
-    { key: 'DownOutlined', node: <DownOutlined /> },
     { key: 'UpOutlined', node: <UpOutlined /> },
-    { key: 'RightOutlined', node: <RightOutlined /> },
+    { key: 'DownOutlined', node: <DownOutlined /> },
     { key: 'LeftOutlined', node: <LeftOutlined /> },
+    { key: 'RightOutlined', node: <RightOutlined /> },
     { key: 'CaretUpOutlined', node: <CaretUpOutlined /> },
     { key: 'CaretDownOutlined', node: <CaretDownOutlined /> },
   ];
@@ -60,19 +67,23 @@ export default function IconPage() {
     { key: 'InfoCircleOutlined', node: <InfoCircleOutlined /> },
     { key: 'ClockCircleOutlined', node: <ClockCircleOutlined /> },
     { key: 'MinusCircleOutlined', node: <MinusCircleOutlined /> },
-    { key: 'CheckOutlined', node: <CheckOutlined /> },
-    { key: 'PlusOutlined', node: <PlusOutlined /> },
+    { key: 'ExclamationCircleOutlined', node: <ExclamationCircleOutlined /> },
     { key: 'CloseOutlined', node: <CloseOutlined /> },
+    { key: 'PlusOutlined', node: <PlusOutlined /> },
+    { key: 'CheckOutlined', node: <CheckOutlined /> },
   ];
   const tipsIconsFilled = [
     { key: 'CheckCircleFilled', node: <CheckCircleFilled /> },
     { key: 'CloseCircleFilled', node: <CloseCircleFilled /> },
     { key: 'InfoCircleFilled', node: <InfoCircleFilled /> },
+    { key: 'ExclamationCircleFilled', node: <ExclamationCircleFilled /> },
+    { key: 'HintFilled', node: <HintFilled /> },
   ];
   const editIconsOutlined = [{ key: 'CopyOutlined', node: <CopyOutlined /> }];
   const editIconsFilled = [
     { key: 'EditFilled', node: <EditFilled /> },
     { key: 'DeleteFilled', node: <DeleteFilled /> },
+    { key: 'UploadFilled', node: <UploadFilled /> },
   ];
   const otherIconsOutlined = [
     { key: 'EyeInvisibleOutlined', node: <EyeInvisibleOutlined /> },
@@ -88,14 +99,17 @@ export default function IconPage() {
     { key: 'SyncOutlined', node: <SyncOutlined /> },
     { key: 'LoadingOutlined', node: <LoadingOutlined /> },
     { key: 'MoreOutlined', node: <MoreOutlined /> },
+    { key: 'SmileOutlined', node: <SmileOutlined /> },
+    { key: 'LinkOutlined', node: <LinkOutlined /> },
   ];
   const otherIconsFilled = [
     { key: 'DataFilled', node: <DataFilled /> },
-    { key: 'PictureFilled', node: <PictureFilled /> },
     { key: 'SettingFilled', node: <SettingFilled /> },
-    { key: 'VoiceFilled', node: <VoiceFilled /> },
-    { key: 'Loading2Outlined', node: <Loading2Outlined /> },
     { key: 'ScreenFilled', node: <ScreenFilled /> },
+    { key: 'PictureFilled', node: <PictureFilled /> },
+    { key: 'VoiceFilled', node: <VoiceFilled /> },
+    { key: 'StarFilled', node: <StarFilled /> },
+    { key: 'HeartFilled', node: <HeartFilled /> },
   ];
 
   const renderIcons = (
@@ -147,7 +161,6 @@ export default function IconPage() {
       <Demo.Block title='旋转'>
         <SyncOutlined spin size='large' />
         <LoadingOutlined spin size='large' />
-        <Loading2Outlined spin size='large' />
       </Demo.Block>
     </Demo.Page>
   );

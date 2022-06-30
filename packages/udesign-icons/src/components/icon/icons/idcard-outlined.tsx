@@ -2,11 +2,15 @@ import React from 'react';
 import { convertIcon } from '../icon';
 
 const SvgComponent = () => (
-  <svg height='1em' viewBox='0 0 40 40' width='1em' xmlns='http://www.w3.org/2000/svg'>
-    <g fill='none' fillRule='evenodd' transform='translate(9 9)'>
-      <path d='m6 3h10c1.6568542 0 3 1.34314575 3 3v10c0 1.6568542-1.3431458 3-3 3h-10c-1.65685425 0-3-1.3431458-3-3v-10c0-1.65685425 1.34314575-3 3-3z' stroke='currentColor' strokeWidth='2' />
-      <rect fill='currentColor' height='8' rx='1' width='2' x='6' y='7' />
-      <path d='m10 8v6h2.5c1.3807119 0 2.5-1.1192881 2.5-2.5v-1c0-1.38071187-1.1192881-2.5-2.5-2.5z' stroke='currentColor' strokeWidth='2' />
+  <svg width='1em' height='1em' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'>
+    <g fill='none' fillRule='evenodd' transform='translate(7.111111 7.111111)'>
+      <path
+        d='m4-1.33333333h17.7777778c2.9455186 0 5.3333333 2.38781466 5.3333333 5.33333333v17.7777778c0 2.9455186-2.3878147 5.3333333-5.3333333 5.3333333h-17.7777778c-2.94551867 0-5.33333333-2.3878147-5.33333333-5.3333333v-17.7777778c0-2.94551867 2.38781466-5.33333333 5.33333333-5.33333333z'
+        stroke='currentColor'
+        strokeWidth='3.555556'
+      />
+      <rect fill='currentColor' height='14.222222' rx='1.777778' width='3.555556' x='4' y='5.777778' />
+      <path d='m11.1111111 7.55555556v10.66666664h4.4444445c2.4545988 0 4.4444444-1.9898455 4.4444444-4.4444444v-1.7777778c0-2.45459889-1.9898456-4.44444444-4.4444444-4.44444444z' stroke='currentColor' strokeWidth='3.555556' />
     </g>
   </svg>
 );

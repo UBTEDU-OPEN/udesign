@@ -2,10 +2,10 @@ import React from 'react';
 import { convertIcon } from '../icon';
 
 const SvgComponent = () => (
-  <svg height='1em' viewBox='0 0 40 40' width='1em' xmlns='http://www.w3.org/2000/svg'>
-    <g fill='none' fillRule='evenodd' stroke='currentColor' strokeWidth='2' transform='translate(10 13)'>
-      <path d='m18.421408 7.20110546c-2.201228-3.97890564-5.0578662-5.90306624-8.64363022-5.90306624-3.58576404 0-6.44240222 1.9241606-8.64363021 5.90306624 2.19071663 3.97741834 5.04688758 5.90085534 8.64363021 5.90085534 3.59674262 0 6.45291362-1.923437 8.64363022-5.90085534z' />
-      <circle cx='9.777778' cy='7.2' r='2.555556' />
+  <svg width='1em' height='1em' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'>
+    <g fill='none' fillRule='evenodd' stroke='currentColor' strokeWidth='3.555556' transform='translate(2.222222 6.222222)'>
+      <path d='m32.7491697 12.8019653c-3.9132941-7.07361006-8.991762-10.49434003-15.3664537-10.49434003-6.3746916 0-11.45315946 3.42072997-15.36645365 10.49434003 3.89460734 7.0709659 8.97224455 10.4904094 15.36645365 10.4904094 6.3942092 0 11.4718464-3.4194435 15.3664537-10.4904094z' />
+      <circle cx='17.382716' cy='12.8' r='4.54321' />
     </g>
   </svg>
 );

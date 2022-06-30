@@ -9,6 +9,7 @@ export { default as CloseCircleOutlined } from './close-circle-outlined';
 export { default as InfoCircleOutlined } from './info-circle-outlined';
 export { default as ClockCircleOutlined } from './clock-circle-outlined';
 export { default as MinusCircleOutlined } from './minus-circle-outlined';
+export { default as ExclamationCircleOutlined } from './exclamation-circle-outlined';
 export { default as CloseOutlined } from './close-outlined';
 export { default as PlusOutlined } from './plus-outlined';
 export { default as CheckOutlined } from './check-outlined';
@@ -27,17 +28,23 @@ export { default as FolderOutlined } from './folder-outlined';
 export { default as SyncOutlined } from './sync-outlined';
 export { default as LoadingOutlined } from './loading-outlined';
 export { default as MoreOutlined } from './more-outlined';
-
-export { default as Loading2Outlined } from './loading2-outlined';
+export { default as SmileOutlined } from './smile-outlined';
+export { default as LinkOutlined } from './link-outlined';
 
 export { default as CheckCircleFilled } from './check-circle-filled';
 export { default as CloseCircleFilled } from './close-circle-filled';
 export { default as InfoCircleFilled } from './info-circle-filled';
+export { default as ExclamationCircleFilled } from './exclamation-circle-filled';
+export { default as HintFilled } from './hint-filled';
+
 export { default as EditFilled } from './edit-filled';
 export { default as DeleteFilled } from './delete-filled';
+export { default as UploadFilled } from './upload-filled';
 
 export { default as DataFilled } from './data-filled';
 export { default as SettingFilled } from './setting-filled';
 export { default as ScreenFilled } from './screen-filled';
 export { default as PictureFilled } from './picture-filled';
 export { default as VoiceFilled } from './voice-filled';
+export { default as StarFilled } from './star-filled';
+export { default as HeartFilled } from './heart-filled';

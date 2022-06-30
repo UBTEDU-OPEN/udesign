@@ -2,15 +2,13 @@ import React from 'react';
 import { convertIcon } from '../icon';
 
 const SvgComponent = () => (
-  <svg height='1em' viewBox='0 0 40 40' width='1em' xmlns='http://www.w3.org/2000/svg'>
-    <g fill='none' fillRule='evenodd'>
-      <circle cx='20' cy='20' opacity='.1' r='20' />
-      <path
-        d='m23 13h-6v-1c0-1.6568542 1.3431458-3 3-3s3 1.3431458 3 3zm0 1v13h-6v-13zm-6 14h6l-2.1393264 3.6162946c-.2811996.4753369-.8944937.6327163-1.3698306.3515166-.1448929-.0857156-.265801-.2066237-.3515166-.3515166z'
-        fill='currentColor'
-        transform='matrix(.8660254 .5 -.5 .8660254 12.956315 -7.246333)'
-      />
-    </g>
+  <svg width='1em' height='1em' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'>
+    <path
+      d='m19 4.75111487h-10v-1.75111487c0-2.76142375 2.2385763-5 5-5s5 2.23857625 5 5zm0 1.68777871v21.94112332h-10v-21.94112332zm-10 23.62890202h10l-3.5526755 6.0814769c-.4669554.7993352-1.4934869 1.0687823-2.2928221.6018268-.2490472-.1454883-.4563386-.3527797-.6018269-.6018268z'
+      fill='currentColor'
+      fillRule='evenodd'
+      transform='matrix(.8660254 .5 -.5 .8660254 16.33993 -1.988778)'
+    />
   </svg>
 );
 

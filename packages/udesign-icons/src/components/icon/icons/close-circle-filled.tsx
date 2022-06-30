@@ -2,28 +2,18 @@ import React from 'react';
 import { convertIcon } from '../icon';
 
 const SvgComponent = () => (
-  <svg width='1em' height='1em' viewBox='0 0 40 40' version='1.1' xmlns='http://www.w3.org/2000/svg'>
-    <title>icon_input_error</title>
-    <desc>Created with Sketch.</desc>
+  <svg width='1em' height='1em' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink'>
     <defs>
-      <rect id='path-1' x='0' y='0' width='20' height='20' rx='10'></rect>
+      <rect id='a' height='35.555556' rx='17.777778' width='35.555556' />
+      <mask id='b' fill='#fff'>
+        <use fill='#fff' fillRule='evenodd' xlinkHref='#a' />
+      </mask>
     </defs>
-    <g id='页面-1' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
-      <g id='图标' transform='translate(-730.000000, -1332.000000)'>
-        <g id='分组-27' transform='translate(730.000000, 1332.000000)'>
-          <g id='icon_input_error' transform='translate(10.000000, 10.000000)'>
-            <mask id='mask-2' fill='white'>
-              <use xlinkHref='#path-1'></use>
-            </mask>
-            <use id='蒙版' fill='currentColor' xlinkHref='#path-1'></use>
-            <g id='分组-11' mask='url(#mask-2)' fill='#FFFFFF'>
-              <g transform='translate(4.615385, 5.384615)' id='形状结合'>
-                <rect transform='translate(5.064103, 5.011113) rotate(-45.000000) translate(-5.064103, -5.011113) ' x='-0.769230769' y='4.17777939' width='11.6666667' height='1.66666667' rx='0.833333333'></rect>
-                <rect transform='translate(5.064103, 5.011113) scale(-1, 1) rotate(-45.000000) translate(-5.064103, -5.011113) ' x='-0.769230769' y='4.17777939' width='11.6666667' height='1.66666667' rx='0.833333333'></rect>
-              </g>
-            </g>
-          </g>
-        </g>
+    <g fill='none' fillRule='evenodd' transform='translate(2.222222 2.222222)'>
+      <use fill='currentColor' xlinkHref='#a' />
+      <g fill='#fff' mask='url(#b)'>
+        <rect height='2.962963' rx='1.481481' transform='matrix(.70710678 -.70710678 .70710678 .70710678 4.542638 18.547907)' width='20.740741' x='-1.367521' y='7.427163' />
+        <rect height='2.962963' rx='1.481481' transform='matrix(-.70710678 -.70710678 -.70710678 .70710678 29.873316 18.547907)' width='20.740741' x='-1.367521' y='7.427163' />
       </g>
     </g>
   </svg>

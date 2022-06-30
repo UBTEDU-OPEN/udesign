@@ -2,13 +2,10 @@ import React from 'react';
 import { convertIcon } from '../icon';
 
 const SvgComponent = () => (
-  <svg height='1em' viewBox='0 0 40 40' width='1em' xmlns='http://www.w3.org/2000/svg'>
-    <g fill='currentColor' fillRule='evenodd' transform='translate(10 11)'>
-      <rect height='19' rx='1.470588' width='2.941176' x='9.264706' />
-      <path
-        d='m10.4411765.38511029c.8197976 0 1.484375.66457733 1.484375 1.484375v15.85477941c0 .8197977-.6645774 1.484375-1.484375 1.484375-.8197977 0-1.48437503-.6645773-1.48437503-1.484375v-15.85477941c0-.81979767.66457733-1.484375 1.48437503-1.484375z'
-        transform='matrix(0 1 -1 0 20.238051 -.644301)'
-      />
+  <svg width='1em' height='1em' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'>
+    <g fill='currentColor' fillRule='evenodd' transform='translate(1.888889 2.222222)'>
+      <rect height='35' rx='2' width='4' x='16' />
+      <path d='m18 0c1.1045695 0 2 .8954305 2 2v31c0 1.1045695-.8954305 2-2 2-1.1045695 0-2-.8954305-2-2v-31c0-1.1045695.8954305-2 2-2z' transform='matrix(0 1 -1 0 35.5 -.5)' />
     </g>
   </svg>
 );

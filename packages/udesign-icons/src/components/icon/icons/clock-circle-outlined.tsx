@@ -2,13 +2,13 @@ import React from 'react';
 import { convertIcon } from '../icon';
 
 const SvgComponent = () => (
-  <svg height='1em' viewBox='0 0 40 40' width='1em' xmlns='http://www.w3.org/2000/svg'>
-    <g fill='none' fillRule='evenodd' transform='translate(10 10)'>
-      <rect height='18.5' rx='9.25' stroke='currentColor' strokeWidth='1.5' width='18.5' x='.75' y='.75' />
+  <svg width='1em' height='1em' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'>
+    <g fill='none' fillRule='evenodd' transform='translate(2.222222 2.222222)'>
+      <rect height='32.888889' rx='16.444444' stroke='currentColor' strokeWidth='2.666667' width='32.888889' x='1.333333' y='1.333333' />
       <path
-        d='m14.7916667 9.79166667v-4.79166667c0-.34517797.279822-.625.625-.625.3451779 0 .625.27982203.625.625v5.4166667c0 .3451779-.2798221.625-.625.625h-6.6666667c-.34517797 0-.625-.2798221-.625-.625 0-.345178.27982203-.62500003.625-.62500003z'
+        d='m26.2962963 17.4074074v-8.51851851c0-.61364972.4974614-1.11111111 1.1111111-1.11111111s1.1111111.49746139 1.1111111 1.11111111v9.62962961c0 .6136497-.4974614 1.1111111-1.1111111 1.1111111h-11.8518518c-.6136498 0-1.1111112-.4974614-1.1111112-1.1111111s.4974614-1.1111111 1.1111112-1.1111111z'
         fill='currentColor'
-        transform='matrix(0 1 -1 0 19.791666 -4.375)'
+        transform='matrix(0 1 -1 0 35.185185 -7.777777)'
       />
     </g>
   </svg>

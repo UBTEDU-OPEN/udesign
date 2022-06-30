@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { InfoCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@ubt/udesign-icons';
+import { InfoCircleFilled, CheckCircleFilled, CloseCircleFilled, ExclamationCircleFilled } from '@ubt/udesign-icons';
 import { destroyFns, ModalProps } from './modal';
 import ConfirmModal, { ConfirmModalProps } from './ConfirmModal';
 
@@ -85,7 +85,7 @@ export function withError(props: ModalProps) {
 export function withWarning(props: ModalProps) {
   return {
     type: 'warning' as const,
-    icon: <InfoCircleFilled />,
+    icon: <ExclamationCircleFilled />,
     ...props,
   };
 }
