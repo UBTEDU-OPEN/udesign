@@ -1,0 +1,18 @@
+@import './variables.scss';
+$module: ud-empty;
+
+.#{$module} {
+  background: $empty-color-primary-light;
+  border-radius: $empty-border-radius;
+  padding: $empty-padding;
+  text-align: center;
+  &-image {
+    width: $empty-width-image;
+    padding: $empty-padding-image;
+    margin: 0 auto;
+  }
+  &-text {
+    color: $empty-font-color;
+    font-size: $empty-font-size;
+  }
+}

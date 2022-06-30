@@ -202,7 +202,6 @@ const showMenus = [
   {
     name: 'empty',
     text: 'Empty 空状态',
-    disabled: true,
   },
   // {
   //   name: 'image',
