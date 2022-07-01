@@ -1,14 +1,14 @@
 
 $tabs-color-primary-active: var(--ud-tabs-color-primary-active, var(--ud-color-primary)); // 默认态标签页高亮
-$tabs-color-primary-unactive: var(--ud-tabs-color-primary-unactive, rgba(var(--ud-gray-3))); // 默认态标签页默认背景色
+$tabs-color-primary-unactive: var(--ud-tabs-color-primary-unactive, rgba(var(--ud-purple-1))); // 默认态标签页默认背景色
 
 $tabs-font-size-small: var(--tabs-font-size-small, 12px); // 标签页文字字号-小
 $tabs-font-size-middle: var(--tabs-font-size-middle, 14px); // 标签页文字字号-中
 $tabs-font-size-large: var(--tabs-font-size-large, 16px); // 标签页文字字号-大
 
-$tabs-padding-tab-small: var(--tabs-padding-tab-small, 8px 20px); // 标签页内边距-小
-$tabs-padding-tab-middle: var(--tabs-padding-tab-middle, 10px 40px); // 标签页内边距-中
-$tabs-padding-tab-large: var(--tabs-padding-tab-large, 12px 50px); // 标签页内边距-大
+$tabs-padding-tab-small: var(--tabs-padding-tab-small, 6px 20px); // 标签页内边距-小
+$tabs-padding-tab-middle: var(--tabs-padding-tab-middle, 8px 40px); // 标签页内边距-中
+$tabs-padding-tab-large: var(--tabs-padding-tab-large, 10px 50px); // 标签页内边距-大
 
 $tabs-margin-tab: var(--tabs-margin-tab, 10px); // 标签页外边距
 
