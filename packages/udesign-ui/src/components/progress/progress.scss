@@ -5,62 +5,105 @@ $module: ud-progress;
 .#{$module} {
   display: flex;
   align-items: center;
-  width: 100%;
 
   &-line {
-    height: $line-height-middle;
-    margin-top: $line-text-marginY;
-    margin-bottom: $line-text-marginY;
+    width: 100%;
+    margin: $progress-line-margin;
 
     &.#{$module}-small {
-      height: $line-height-small;
+      height: $progress-line-height-small;
+      // .#{$module}-text {
+      //   font-size: $progress-text-font-size-small;
+      // }
+    }
+
+    &.#{$module}-middle {
+      height: $progress-line-height-middle;
+      // .#{$module}-text {
+      //   font-size: $progress-text-font-size-middle;
+      // }
     }
 
     &.#{$module}-large {
-      height: $line-height-large;
+      height: $progress-line-height-large;
+      // .#{$module}-text {
+      //   font-size: $progress-text-font-size-large;
+      // }
     }
 
     .#{$module}-track {
       height: 100%;
       width: 100%;
-      background-color: $line-track-background;
-      border-radius: $line-track-border-radius;
+      background: $progress-track-background;
+      border-radius: $progress-track-border-radius;
       overflow: hidden;
     }
 
     .#{$module}-track-inner {
       height: 100%;
-      background-color: $line-track-inner-background;
-      border-radius: $line-track-inner-border-radius;
-      transition: width $transition-duration;
-      transition-timing-function: $transition-timing-function;
+      // background: $progress-track-inner-background-normal;
+      border-radius: $progress-track-inner-border-radius;
+      transition: width $progress-transition-duration;
+      transition-timing-function: $progress-transition-timing-function;
     }
 
-    .#{$module}-line-text {
-      min-width: $line-text-min-width;
-      font-weight: $line-text-font-weight;
-      margin-left: $line-text-margin-left;
-      color: $line-text-color;
+    .#{$module}-text {
+      min-width: $progress-line-text-min-width;
+      font-weight: $progress-line-text-font-weight;
+      margin: $progress-line-text-margin;
     }
+
+    // // 不同状态
+    // &.#{$module}-success {
+    //   .#{$module}-track-inner {
+    //     background: $progress-track-inner-background-success;
+    //   }
+    //   .#{$module}-text {
+    //     color: $progress-text-color-success;
+    //   }
+    // }
+    // &.#{$module}-error {
+    //   .#{$module}-track-inner {
+    //     background: $progress-track-inner-background-error;
+    //   }
+    //   .#{$module}-text {
+    //     color: $progress-text-color-error;
+    //   }
+    // }
+    // &.#{$module}-warning {
+    //   .#{$module}-track-inner {
+    //     background: $progress-track-inner-background-warning;
+    //   }
+    //   .#{$module}-text {
+    //     color: $progress-text-color-warning;
+    //   }
+    // }
+    // &.#{$module}-normal {
+    //   .#{$module}-track-inner {
+    //     background: $progress-track-inner-background-normal;
+    //   }
+    //   .#{$module}-text {
+    //     color: $progress-text-color-normal;
+    //   }
+    // }
   }
 
   &-circle {
     position: relative;
     display: inline-block;
 
-    &-ring {
+    .#{$module}-track {
       display: block;
     }
 
-    &-ring-inner {
-      transition: stroke-dashoffset $transition-duration;
-      transition-timing-function: $transition-timing-function;
-
+    .#{$module}-track-inner {
+      transition: stroke-dashoffset $progress-transition-duration;
+      transition-timing-function: $progress-transition-timing-function;
       transform: rotate(-90deg);
       transform-origin: 50% 50%;
     }
 
-    &-text {
+    .#{$module}-text {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -68,8 +111,63 @@ $module: ud-progress;
       text-align: center;
       transform: translate(-50%, -50%);
       user-select: none;
-      color: $circle-text-color;
-      font-size: $circle-text-font-size;
+      font-weight: $progress-circle-text-font-weight;
+      // color: $progress-text-color;
+    }
+  }
+
+  // 不同尺寸
+  &.#{$module}-small {
+    .#{$module}-text {
+      font-size: $progress-text-font-size-small;
+    }
+  }
+  &.#{$module}-middle {
+    .#{$module}-text {
+      font-size: $progress-text-font-size-middle;
+    }
+  }
+  &.#{$module}-large {
+    .#{$module}-text {
+      font-size: $progress-text-font-size-large;
+    }
+  }
+
+  // 不同状态
+  &.#{$module}-success {
+    .#{$module}-track-inner {
+      background: $progress-track-inner-background-success;
+      stroke: $progress-track-inner-background-success;
+    }
+    .#{$module}-text {
+      color: $progress-text-color-success;
+    }
+  }
+  &.#{$module}-error {
+    .#{$module}-track-inner {
+      background: $progress-track-inner-background-error;
+      stroke: $progress-track-inner-background-error;
+    }
+    .#{$module}-text {
+      color: $progress-text-color-error;
+    }
+  }
+  &.#{$module}-warning {
+    .#{$module}-track-inner {
+      background: $progress-track-inner-background-warning;
+      stroke: $progress-track-inner-background-warning;
+    }
+    .#{$module}-text {
+      color: $progress-text-color-warning;
+    }
+  }
+  &.#{$module}-normal {
+    .#{$module}-track-inner {
+      background: $progress-track-inner-background-normal;
+      stroke: $progress-track-inner-background-normal;
+    }
+    .#{$module}-text {
+      color: $progress-text-color-normal;
     }
   }
 }

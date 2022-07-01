@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { CommonSize, CommonShape } from '../../constants';
+import { Size, Shape } from '../../constants';
 import { prefixCls } from './constants';
 import { NativeProps } from '../../utils';
 
@@ -8,7 +8,7 @@ export type widthUnit = number | string;
 
 export type ParagraphProps = {
   active?: boolean; // 是否展示动画效果
-  size?: CommonSize; // type size small | middle | large  默认middle
+  size?: Size; // type size small | middle | large  默认middle
   width?: widthUnit | Array<widthUnit>; // 对应行数的宽度 type width number | string | Array<number | string>
   rows?: number; // 行数 type rows number
 } & NativeProps;

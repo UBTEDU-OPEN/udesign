@@ -9,12 +9,13 @@ $module: ud-spin;
   @include size($spin-width-middle);
 
   &-wrapper {
-    text-align: center;
     position: absolute;
     width: 100%;
-    transform: translate(0, -50%);
     top: 50%;
+    z-index: var(--ud-z-portal);
+    text-align: center;
     color: $spin-color;
+    transform: translate(0, -50%);
 
     & > svg {
       @include size($spin-width-middle);

@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
 import { ClearIcon } from './icon/clear';
 import './textarea.scss';
-import { BASE_CLASS_PREFIX } from '../../constants';
+import { BASE_CLASS_PREFIX, Status } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-textarea`;
 
-type TextAreaStatus = 'default' | 'error' | 'warning' | 'success';
+type TextAreaStatus = Status;
 
 export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'prefix' | 'style' | 'onChange'>, NativeProps {
   value?: string; // 输入框内容

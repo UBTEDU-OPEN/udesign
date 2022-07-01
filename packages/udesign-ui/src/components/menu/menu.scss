@@ -12,15 +12,6 @@ $module: ud-menu;
 
   overflow: hidden;
 
-  &-horizontal {
-    display: inline-flex;
-  }
-
-  &-vertical {
-    display: flex;
-    flex-direction: column;
-  }
-
   .#{$module}-item {
     padding: var(--item-padding);
     cursor: pointer;
@@ -54,4 +45,13 @@ $module: ud-menu;
   box-shadow: var(--ud-shadow-elevated);
   border-radius: var(--border-radius);
   overflow: hidden;
+}
+
+.#{$module}-horizontal {
+  display: inline-flex;
+}
+
+.#{$module}-vertical {
+  display: flex;
+  flex-direction: column;
 }

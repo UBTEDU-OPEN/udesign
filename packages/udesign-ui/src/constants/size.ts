@@ -1,1 +1,1 @@
-export type CommonSize = 'large' | 'middle' | 'small';
+export type Size = 'large' | 'middle' | 'small';

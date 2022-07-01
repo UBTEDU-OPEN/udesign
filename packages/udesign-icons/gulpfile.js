@@ -91,7 +91,7 @@ function generatePackageJSON() {
           main: './cjs/index.js',
           module: './es/index.js',
           typings: './es/index.d.ts',
-          unpkg: './umd/udesign.js',
+          unpkg: './umd/udesign-icons.js',
         };
         const newParsed = { ...parsed, ...overrideConfig };
         const stringified = JSON.stringify(newParsed, null, 2);
@@ -109,10 +109,10 @@ function umdWebpack() {
       webpackStream(
         {
           output: {
-            filename: 'udesign.js',
+            filename: 'udesign-icons.js',
             library: {
               type: 'umd',
-              name: 'udesign',
+              name: 'udesign-icons',
             },
           },
           mode: 'production',

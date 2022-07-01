@@ -9,7 +9,8 @@ $module: ud-badge;
 
   .#{$module}-dot:not(.#{$module}-hidden),
   .#{$module}-content:not(.#{$module}-hidden) {
-    display: block;
+    display: flex;
+    align-items: center;
     background: $badge-background-default;
     color: $badge-color-default;
     border-radius: $badge-border-radius;
@@ -38,11 +39,13 @@ $module: ud-badge;
   }
 }
 
-.#{$module}-wrapper .#{$module}-dot,
-.#{$module}-wrapper .#{$module}-content {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(50%, -50%);
-  transform-origin: 100% 0%;
+.#{$module}-wrapper {
+  .#{$module}-dot,
+  .#{$module}-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    transform-origin: 100% 0%;
+  }
 }

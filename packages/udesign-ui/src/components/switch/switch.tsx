@@ -1,17 +1,16 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
-import { CommonSize, BASE_CLASS_PREFIX } from '../../constants';
+import { Size, BASE_CLASS_PREFIX } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-switch`;
-export type SwitchSize = CommonSize;
 
 export type SwitchProps = {
   checked?: boolean; // 当前是否选中
   defaultChecked?: boolean; // 默认是否选中
   disabled?: boolean; // 是否禁用
   loading?: boolean; // 是否加载中
-  size?: SwitchSize; // 大小
+  size?: Size; // 大小
   checkedText?: ReactNode; // 选中时的内容
   uncheckedText?: ReactNode; // 非选中时的内容
   onChange?: (checked: boolean) => void; // 变化时回调函数

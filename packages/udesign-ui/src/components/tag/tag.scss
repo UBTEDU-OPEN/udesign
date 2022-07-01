@@ -38,7 +38,7 @@ $module: ud-tag;
 
   $colors: red, orange, yellow, green, cyan, blue, purple;
   @each $color in $colors {
-    &-#{$color} {
+    &-#{'' + $color} {
       background: rgba(var(--ud-#{$color}-1), 1);
       border-color: rgba(var(--ud-#{$color}-2), 1);
       color: rgba(var(--ud-#{$color}-6), 1);

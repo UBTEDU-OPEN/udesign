@@ -37,9 +37,9 @@ export default function MenuPage() {
             <Menu.Item name='4'>Navigation Four - Link</Menu.Item>
           </Menu>
         </Demo.Block>
-        <Demo.Block title='侧边栏内嵌菜单' description='垂直菜单，二级菜单内嵌在一级菜单区域。' todo='依赖Collapse折叠组件' />
-        <Demo.Block title='只展开当前一级别菜单' description='点击一个菜单，收起其他已展开的菜单，保持只显示一个菜单，聚焦简洁。' todo='依赖Collapse折叠组件' />
-        <Demo.Block
+        {/* <Demo.Block title='侧边栏内嵌菜单' description='垂直菜单，二级菜单内嵌在一级菜单区域。' todo='依赖Collapse折叠组件' /> */}
+        {/* <Demo.Block title='只展开当前一级别菜单' description='点击一个菜单，收起其他已展开的菜单，保持只显示一个菜单，聚焦简洁。' todo='依赖Collapse折叠组件' /> */}
+        {/* <Demo.Block
           title='可收起的内嵌菜单'
           description={
             <>
@@ -49,7 +49,7 @@ export default function MenuPage() {
             </>
           }
           todo='依赖Collapse折叠组件'
-        />
+        /> */}
         <Demo.Block title='垂直菜单' description='二级菜单是弹出形式，仅支持至二级菜单。'>
           <Menu className='w-60 border-r' defaultActiveKey='1'>
             <Menu.Item name='1'>Navigation One</Menu.Item>

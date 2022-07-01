@@ -1,7 +1,7 @@
 import React, { CSSProperties, ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, Size } from '../../constants';
 import Mask from '../mask';
 import Portal from '../_portal';
 import Space from '../space';
@@ -12,7 +12,7 @@ import { CloseIcon } from './close';
 const prefixCls = `${BASE_CLASS_PREFIX}-modal`;
 export const destroyFns: any[] = [];
 
-export type ModalSize = CommonSize;
+export type ModalSize = Size;
 
 export type ModalProps = {
   afterClose?: () => void; // Modal 完全关闭后的回调

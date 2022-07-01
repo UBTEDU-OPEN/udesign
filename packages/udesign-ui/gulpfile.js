@@ -148,4 +148,12 @@ function umdWebpack() {
 
 exports.umdWebpack = umdWebpack;
 
-exports.default = gulp.series(clean, buildES, gulp.parallel(buildCJS, buildDeclaration, buildStyle), copyAssets, copyMetaFiles, generatePackageJSON, gulp.parallel(umdWebpack));
+exports.default = gulp.series(
+  clean,
+  buildES,
+  gulp.parallel(buildCJS, buildDeclaration, buildStyle),
+  copyAssets,
+  copyMetaFiles,
+  generatePackageJSON,
+  // gulp.parallel(umdWebpack)
+);

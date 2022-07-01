@@ -4,7 +4,7 @@ $pagination-item-width: var(--ud-pagination-item-width, 40px); // 分页页码�
 $pagination-item-height: var(--ud-pagination-item-height, 40px); // 分页页码高度
 $pagination-item-margin: var(--ud-pagination-item-margin, 0 5px); // 分页页码外边距
 $pagination-item-radius: var(--ud-pagination-item-radius, 9999px); // 分页页码圆角
-$pagination-item-color: var(--ud-pagination-item-color, var(--ud-color-text-0)); // 分页页码文字颜色
+$pagination-item-color: var(--ud-pagination-item-color, rgba(var(--ud-gray-6), 1)); // 分页页码文字颜色
 $pagination-item-color-hover: var(--ud-pagination-item-color-hover, var(--ud-color-text-0)); // 分页页码文字颜色-悬浮
 $pagination-item-color-active: var(--ud-pagination-item-color-active, var(--ud-color-white)); // 分页页码文字颜色-按下
 $pagination-item-background: var(--ud-pagination-item-background, var(--ud-color-white)); // 分页页码背景色

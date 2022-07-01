@@ -1,12 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants';
+import { Size } from '../../constants';
 
 // No `stretch` since many components do not support that.
 export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
 export type SpaceJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
-export type SpaceSize = CommonSize;
+export type SpaceSize = Size;
 
 const getItemsClass = (align: SpaceAlign) => {
   let cls;

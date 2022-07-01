@@ -1,22 +1,32 @@
-$transition-duration: 0.3s; // 进度条动画时长
-$transition-timing-function: cubic-bezier(0.62, 0.05, 0.36, 0.95); // 进度条动画曲线
+$progress-transition-duration: var(--ud-progress-transition-duration, 0.3s); // 通用进度条动画时长
+$progress-transition-timing-function: var(--ud-progress-transition-timing-function, cubic-bezier(0.62, 0.05, 0.36, 0.95)); // 通用进度条动画曲线
 
-$line-height-small: 8px; // 小尺寸水平进度条高度
-$line-height-middle: 12px; // 水平进度条高度
-$line-height-large: 20px; // 大尺寸水平进度条高度
+$progress-track-background: var(--ud-progress-track-background, var(--ud-color-fill-0)); // 通用进度条轨道色
+$progress-track-inner-background-normal: var(--ud-progress-track-inner-background-normal, var(--ud-color-primary)); // 通用进度条进度色-normal
+$progress-track-inner-background-success: var(--ud-progress-track-inner-background-success, var(--ud-color-success)); // 通用进度条进度色-success
+$progress-track-inner-background-error: var(--ud-progress-track-inner-background-error, var(--ud-color-danger)); // 通用进度条进度色-error
+$progress-track-inner-background-warning: var(--ud-progress-track-inner-background-warning, var(--ud-color-warning)); // 通用进度条进度色-warning
 
-$line-text-margin-left: var(--ud-spacing-base); // 水平进度条文本左侧外边距
-$line-text-marginY: var(--ud-spacing-extra-tight); // 水平进度条垂直方向外边距
+$progress-track-border-radius: var(--ud-progress-track-border-radius, var(--ud-border-radius-large)); // 通用进度条背景圆角大小
+$progress-track-inner-border-radius: var(--ud-progress-track-inner-border-radius, var(--ud-border-radius-large)); // 通用进度条圆角大小
 
-$line-track-background: var(--ud-color-fill-0); // 默认背景色
-$line-track-inner-background: var(--ud-color-success); // 默认进度色
-$line-track-border-radius: var(--ud-border-radius-large); // 背景圆角大小
-$line-track-inner-border-radius: var(--ud-border-radius-large); // 进度条圆角大小
+$progress-text-font-size-small: var(--ud-progress-text-font-size-small, 10px); // 通用进度条文本字号-small
+$progress-text-font-size-middle: var(--ud-progress-text-font-size-middle, 14px); // 通用进度条文本字号-middle
+$progress-text-font-size-large: var(--ud-progress-text-font-size-large, 20px); // 通用进度条文本字号-large
 
-$line-text-min-width: 45px; // 进度条文本最小宽度
-$line-text-color: var(--ud-line-text-color, var(--ud-color-primary)); // 进度条文本颜色
-$line-text-font-size: var(--ud-line-text-font-size, 20px); // 进度圈文本字号
-$line-text-font-weight: var(--ud-line-text-font-weight, 600); // 进度圈文本字重
+$progress-text-color-normal: var(--ud-progress-text-color-normal, var(--ud-color-primary)); // 通用进度条文本颜色
+$progress-text-color-success: var(--ud-progress-text-color-success, var(--ud-color-success)); // 通用进度条文本颜色
+$progress-text-color-error: var(--ud-progress-text-color-error, var(--ud-color-danger)); // 通用进度条文本颜色
+$progress-text-color-warning: var(--ud-progress-text-color-warning, var(--ud-color-warning)); // 通用进度条文本颜色
 
-$circle-text-color: var(--ud-circle-text-color, var(--ud-color-primary)); // 进度圈文本颜色
-$circle-text-font-size: var(--ud-circle-text-font-size, 20px); // 进度圈文本字号
+$progress-line-margin: var(--ud-progress-line-margin, var(--ud-spacing-extra-tight) 0); // 水平进度条外边距
+
+$progress-line-text-margin: var(--ud-progress-line-text-margin, 0 0 0 var(--ud-spacing-base)); // 水平进度条文本外边距
+$progress-line-text-min-width: var(--ud-progress-line-text-min-width, 45px); // 水平进度条文本最小宽度
+$progress-line-text-font-weight: var(--ud-progress-line-text-font-weight, 600); // 水平进度条文本字重
+
+$progress-line-height-small: var(--ud-progress-line-height-small, 10px); // 水平进度条高度-small
+$progress-line-height-middle: var(--ud-progress-line-height-middle, 14px); // 水平进度条高度-middle
+$progress-line-height-large: var(--ud-progress-line-height-large, 20px); // 水平进度条高度-large
+
+$progress-circle-text-font-weight: var(--ud-progress-circle-text-font-weight, 600); // 进度圈文本字重

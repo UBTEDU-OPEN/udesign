@@ -1,1 +1,1 @@
-export type CommonType = 'default' | 'primary' | 'success' | 'danger' | 'warning';
+export type Type = 'default' | 'primary' | 'success' | 'danger' | 'warning';

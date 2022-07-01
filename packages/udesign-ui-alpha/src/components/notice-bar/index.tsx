@@ -2,9 +2,9 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { CloseOutlined, RightOutlined, SoundOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
-import { CommonType } from '../../constants';
+import { Type } from '../../constants';
 
-type NoticeType = CommonType;
+type NoticeType = Type;
 
 export const getNoticeTypeClass = (type: NoticeType) => {
   let cls;

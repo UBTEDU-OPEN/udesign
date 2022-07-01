@@ -1,10 +1,10 @@
 import React, { ReactNode, useMemo } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { CommonShape, CommonSize } from '../../constants';
+import { Shape, Size } from '../../constants';
 
-export type AvatarSize = CommonSize | 'mini';
-export type AvatarShape = CommonShape;
+export type AvatarSize = Size | 'mini';
+export type AvatarShape = Shape;
 
 export const getAvatarSizeClass = (size: AvatarSize) => {
   let cls;

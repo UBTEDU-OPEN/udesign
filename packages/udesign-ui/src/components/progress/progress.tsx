@@ -1,19 +1,19 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
+import { CheckCircleFilled, CheckOutlined, CloseCircleFilled, CloseOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
-import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, Size, Status } from '../../constants';
 import { DividerProps } from '../divider';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-progress`;
-export type ProgressSize = CommonSize;
-export type ProgressType = 'line' | 'circle';
 
 export type ProgressProps = {
-  type?: ProgressType; //	进度条类型，默认line，可选 circle
+  type?: 'line' | 'circle'; //	进度条类型，默认line，可选 circle
   percent?: number; // 进度百分比
   width?: number; // 环形进度条宽度
   showInfo?: boolean; // 环形进度条是否显示中间文本，条状进度条后右侧是否显示文本，默认true
-  size?: ProgressSize; // 进度条尺寸，默认middle，可选 large, small
+  size?: Size; // 进度条尺寸，默认middle，可选 large, small
+  status?: Status; // 进度条状态
   strokeLinecap?: 'round' | 'square'; // 圆角round/方角square(仅在 type='circle'模式下生效)
   strokeWidth?: number; // 进度条宽度(仅在 type='circle'模式下生效)
   stroke?: string; // 进度条填充色
@@ -35,17 +35,24 @@ function calcPercent(percent: number): number {
 }
 
 export const Progress = (props: ProgressProps) => {
-  const { percent = 0, showInfo = true, size = 'middle', type = 'line', stroke = 'var(--ud-color-primary)', strokeLinecap = 'round', orbitStroke = 'var(--ud-color-fill-0)', format = (text: number): string => `${text}%`, className, style } = props;
+  const { percent = 0, showInfo = true, size = 'middle', status = 'normal', type = 'line', strokeLinecap = 'round', orbitStroke = 'var(--ud-color-fill-0)', format = (text: number): string => `${text}%` } = props;
 
   if (Number.isNaN(percent)) {
     throw new Error('[uDesign Progress]:percent can not be NaN');
   }
 
   const renderLineProgress = () => {
-    const progressWrapperCls = classNames(prefixCls, className, {
-      [`${prefixCls}-${type}`]: true,
-      [`${prefixCls}-${size}`]: true,
-    });
+    const { stroke, className, style } = props;
+
+    const cls = classNames(
+      prefixCls,
+      {
+        [`${prefixCls}-${type}`]: type,
+        [`${prefixCls}-${size}`]: size,
+        [`${prefixCls}-${status}`]: status,
+      },
+      className,
+    );
 
     const innerStyle: Record<string, any> = {
       backgroundColor: stroke,
@@ -58,18 +65,38 @@ export const Progress = (props: ProgressProps) => {
 
     const text = format(calcPercent(percent));
 
+    const getText = () => {
+      if (status === 'success') {
+        return <CheckCircleFilled />;
+      }
+      if (status === 'error') {
+        return <CloseCircleFilled />;
+      }
+      return text;
+    };
+
     return (
-      <div className={progressWrapperCls} style={style}>
+      <div className={cls} style={style}>
         <div className={`${prefixCls}-track`} style={orbitStroke ? { backgroundColor: orbitStroke } : {}}>
           <div className={`${prefixCls}-track-inner`} style={innerStyle} />
         </div>
-        {showInfo ? <div className={`${prefixCls}-line-text`}>{text}</div> : null}
+        {showInfo ? <div className={`${prefixCls}-text`}>{getText()}</div> : null}
       </div>
     );
   };
 
   const renderCircleProgress = () => {
-    const { strokeWidth = 12 } = props;
+    const { stroke = 'var(--ud-color-primary)', strokeWidth = 12, className, style } = props;
+
+    const cls = classNames(
+      `${prefixCls}`,
+      {
+        [`${prefixCls}-${type}`]: type,
+        [`${prefixCls}-${size}`]: size,
+        [`${prefixCls}-${status}`]: status,
+      },
+      className,
+    );
 
     let width;
     if (props.width) {
@@ -92,13 +119,23 @@ export const Progress = (props: ProgressProps) => {
 
     const text = format(calcPercent(percent));
 
+    const getText = () => {
+      if (status === 'success') {
+        return <CheckOutlined />;
+      }
+      if (status === 'error') {
+        return <CloseOutlined />;
+      }
+      return text;
+    };
+
     return (
-      <div className={classNames(`${prefixCls}-circle`, className)} style={style}>
-        <svg key={size} className={`${prefixCls}-circle-ring`} height={width} width={width}>
+      <div className={cls} style={style}>
+        <svg key={size} className={`${prefixCls}-track`} height={width} width={width}>
           <circle strokeDashoffset={0} strokeWidth={strokeWidth} strokeDasharray={strokeDasharray} strokeLinecap={strokeLinecap} fill='transparent' stroke={orbitStroke} r={radius} cx={cx} cy={cy} />
-          <circle className={`${prefixCls}-circle-ring-inner`} strokeDashoffset={strokeDashoffset} strokeWidth={strokeWidth} strokeDasharray={strokeDasharray} strokeLinecap={strokeLinecap} fill='transparent' stroke={stroke} r={radius} cx={cx} cy={cy} />
+          <circle className={`${prefixCls}-track-inner`} strokeDashoffset={strokeDashoffset} strokeWidth={strokeWidth} strokeDasharray={strokeDasharray} strokeLinecap={strokeLinecap} fill='transparent' stroke={stroke} r={radius} cx={cx} cy={cy} />
         </svg>
-        {showInfo ? <span className={`${prefixCls}-circle-text`}>{text}</span> : null}
+        {showInfo ? <span className={`${prefixCls}-text`}>{getText()}</span> : null}
       </div>
     );
   };

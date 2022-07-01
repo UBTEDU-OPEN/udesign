@@ -8,7 +8,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-tabs`;
 
 export type TabsProps = {
   type?: TabType; // 样式，默认line
-  size: string; // 大小
+  size?: string; // 大小
   position?: Position; // 标签位置
   centered?: boolean; // 标签居中展示
   around?: boolean; // 自动平铺，justify-content: around;

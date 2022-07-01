@@ -1,10 +1,10 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { CommonSize } from '../../constants';
+import { Size } from '../../constants';
 import { CloseCircleFilled } from '@ant-design/icons';
 import { getDisabledCls, NativeProps, usePropsValue } from '../../utils';
 
-export type InputSize = CommonSize;
+export type InputSize = Size;
 
 export const getInputSizeClass = (size: InputSize) => {
   let cls;

@@ -1,7 +1,7 @@
 import React, { useState, ReactNode } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, Size } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-tag`;
 
@@ -10,7 +10,7 @@ const PresetStatusColors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 
 const PresetColorRegex = new RegExp(`^(${PresetColors.join('|')})(-inverse)?$`);
 const PresetStatusColorRegex = new RegExp(`^(${PresetStatusColors.join('|')})(-inverse)?$`);
 
-type TagSize = CommonSize;
+type TagSize = Size;
 
 export type TagProps = {
   closeable?: boolean; // 标签是否可以关闭（点击默认关闭）

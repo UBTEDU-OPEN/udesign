@@ -151,11 +151,11 @@ const inputMenus = [
   //   text: 'TreeSelect 树选择',
   //   disabled: true,
   // },
-  {
-    name: 'upload',
-    text: 'Upload 上传',
-    disabled: true,
-  },
+  // {
+  //   name: 'upload',
+  //   text: 'Upload 上传',
+  //   disabled: true,
+  // },
 ];
 
 // 数据展示
@@ -287,7 +287,7 @@ const feedbackMenus = [
   },
   {
     name: 'result',
-    text: 'Result 结果',
+    text: 'Result 结果反馈',
   },
   {
     name: 'skeleton',
@@ -338,8 +338,8 @@ function Sidebar() {
       <SideMenu menus={showMenus} />
       <div className='my-2 p-3 border-b font-bold'>反馈</div>
       <SideMenu menus={feedbackMenus} />
-      <div className='my-2 p-3 border-b font-bold'>其他</div>
-      <SideMenu menus={otherMenus} />
+      {/* <div className='my-2 p-3 border-b font-bold'>其他</div>
+      <SideMenu menus={otherMenus} /> */}
     </>
   );
 }

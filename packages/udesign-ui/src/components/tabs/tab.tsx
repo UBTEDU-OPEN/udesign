@@ -10,7 +10,7 @@ export type TabProps = {
   name: string; // 用于匹配的标识符
   label: ReactNode; // 对外显示
   disabled?: boolean; // 是否禁用
-  size: string; // 大小
+  size?: string; // 大小
   type?: TabType; // 样式 line | card | button | switch
   position?: Position;
   active?: boolean; // 当前选中

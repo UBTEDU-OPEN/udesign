@@ -1,8 +1,10 @@
-import React from 'react';
-import { Space, Button, Typography, Divider } from '@ubt/udesign-ui';
+import React, { useState } from 'react';
+import { Space, Button, Typography, Divider, Input } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function SpacePage() {
+  const [size, setSize] = useState<number>(100);
+
   return (
     <Demo.Page title='Space 间距' description='设置组件之间的间距。'>
       <Demo.Block
@@ -41,25 +43,27 @@ export default function SpacePage() {
           </>
         }
       >
-        <Space direction='vertical'>
-          <Space size='small' align='center'>
-            small
-            <Button>Button</Button>
-            <Button>Button</Button>
-            <Button>Button</Button>
-          </Space>
-          <Space size='middle' align='center'>
-            middle
-            <Button>Button</Button>
-            <Button>Button</Button>
-            <Button>Button</Button>
-          </Space>
-          <Space size='large' align='center'>
-            large
-            <Button>Button</Button>
-            <Button>Button</Button>
-            <Button>Button</Button>
-          </Space>
+        <Space size='small' align='center'>
+          small
+          <Button>Button</Button>
+          <Button>Button</Button>
+          <Button>Button</Button>
+        </Space>
+      </Demo.Block>
+      <Demo.Block>
+        <Space size='middle' align='center'>
+          middle
+          <Button>Button</Button>
+          <Button>Button</Button>
+          <Button>Button</Button>
+        </Space>
+      </Demo.Block>
+      <Demo.Block>
+        <Space size='large' align='center'>
+          large
+          <Button>Button</Button>
+          <Button>Button</Button>
+          <Button>Button</Button>
         </Space>
       </Demo.Block>
       <Demo.Block title='对齐' description='设置对齐模式（align-items）。'>
@@ -86,8 +90,11 @@ export default function SpacePage() {
           </Space>
         </Space>
       </Demo.Block>
-      <Demo.Block title='自定义尺寸' description='通过向 size 传入 number，来自定义间距大小。' todo='依赖 Slider 组件'>
-        <Space size={100}>
+      <Demo.Block title='自定义尺寸' description='通过向 size 传入 number，来自定义间距大小。'>
+        <Input defaultValue={String(size)} onChange={(value) => setSize(Number(value))} style={{ width: 240 }} />
+        <br />
+        <br />
+        <Space size={size} wrap>
           <Button>Button</Button>
           <Button>Button</Button>
           <Button>Button</Button>

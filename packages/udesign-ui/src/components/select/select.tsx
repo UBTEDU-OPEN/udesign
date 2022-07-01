@@ -2,7 +2,7 @@ import React, { useReducer, useEffect, useState, useRef, ReactNode } from 'react
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { Option } from './option';
-import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, Size } from '../../constants';
 import { IconArrowDown } from './icon-arrow-down';
 import { IconArrowUp } from './icon-arrow-up';
 import { IconDelete } from './icon-delete';
@@ -22,7 +22,7 @@ export type CustomTagProps = {
 
 export type SelectProps = {
   options?: OptionItem[]; // 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能
-  size?: CommonSize; // 选择框大小
+  size?: Size; // 选择框大小
   onChange?: (value: string | string[]) => void; // 选中 option，调用此函数
   value?: string | string[]; // 指定当前选中的条目，多选时为一个数组。
   defaultValue?: string | string[]; // 指定默认选中的条目

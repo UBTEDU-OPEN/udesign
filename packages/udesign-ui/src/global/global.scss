@@ -19,6 +19,7 @@ button {
 
 a {
   color: var(--ud-color-primary);
+  text-decoration: var(--ud-text-decoration, underline);
   transition: opacity ease-in-out 0.2s;
   &:active {
     opacity: 0.8;

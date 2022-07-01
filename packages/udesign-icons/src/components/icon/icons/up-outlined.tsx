@@ -2,7 +2,7 @@ import React from 'react';
 import { convertIcon } from '../icon';
 
 const SvgComponent = () => (
-  <svg height='41' viewBox='0 0 40 41' width='40' xmlns='http://www.w3.org/2000/svg'>
+  <svg width='1em' height='1em' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'>
     <g fill='none' fillRule='evenodd' transform='matrix(1 0 0 -1 0 43)'>
       <path d='m2.666667 15.229167h33.777778v19.708333h-33.777778z' />
       <path

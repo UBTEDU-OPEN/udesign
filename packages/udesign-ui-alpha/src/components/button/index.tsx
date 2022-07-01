@@ -2,12 +2,12 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { LoadingIcon } from '../icon';
 import { getDisabledCls, NativeProps } from '../../utils';
-import { CommonShape, CommonSize, CommonType } from '../../constants';
+import { Shape, Size, Type } from '../../constants';
 
-export type ButtonShape = CommonShape;
-export type ButtonSize = CommonSize | 'mini';
+export type ButtonShape = Shape;
+export type ButtonSize = Size | 'mini';
 
-export type ButtonType = CommonType | 'dark' | 'ghost' | 'dashed' | 'link' | 'text';
+export type ButtonType = Type | 'dark' | 'ghost' | 'dashed' | 'link' | 'text';
 
 export const getButtonTypeClass = (type: ButtonType) => {
   let cls;
@@ -125,7 +125,7 @@ export const Button = ({ icon, block = false, disabled = false, loading = false,
     getButtonTypeClass(type),
     getDisabledCls(disabled),
     block ? 'flex w-full' : 'inline-flex',
-    'items-center justify-center leading-none transition duration-150 ease-in-out'
+    'items-center justify-center leading-none transition duration-150 ease-in-out',
   );
 
   return (

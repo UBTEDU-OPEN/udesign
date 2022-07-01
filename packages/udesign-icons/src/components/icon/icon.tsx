@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import React, { ComponentType, ReactNode } from 'react';
-import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, Size } from '../../constants';
 import { NativeProps } from '../../utils';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-icon`;
 
-export type IconSize = CommonSize | 'inherit';
+export type IconSize = Size | 'inherit';
 
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement>, NativeProps {
   svg: ReactNode; // 自定义图标svg

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Space, Empty } from '@ubt/udesign-ui';
+import { Empty } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
-import { EmptyIcon } from './icon/emptyIcon';
 
 export default function EmptyPage() {
   return (
@@ -15,7 +14,16 @@ export default function EmptyPage() {
           <Empty description={false} />
         </Demo.Block>
         <Demo.Block title='自定义图片' description='可以通过设置 image 为 Empty.PRESENTED_IMAGE_SIMPLE 选择另一种风格的图片。' className='p-0'>
-          <Empty image={<EmptyIcon />} />
+          <Empty image={<img src='/icon_empty_1.svg' />} />
+        </Demo.Block>
+        <Demo.Block>
+          <Empty image={<img src='/icon_empty_2.svg' />} />
+        </Demo.Block>
+        <Demo.Block>
+          <Empty image={<img src='/icon_empty_3.svg' />} />
+        </Demo.Block>
+        <Demo.Block>
+          <Empty image={<img src='/icon_empty_4.svg' />} />
         </Demo.Block>
         <Demo.Block title='自定义文案' description='自定义描述空状态的文案。 image 为 Empty.PRESENTED_IMAGE_SIMPLE 选择另一种风格的图片。' className='p-0'>
           <Empty description='老师还没有为你安排学习计划～' />

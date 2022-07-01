@@ -1,9 +1,9 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { getDisabledCls, NativeProps } from '../../utils';
-import { CommonShape } from '../../constants';
+import { Shape } from '../../constants';
 
-// export type CheckboxShape = CommonShape;
+// export type CheckboxShape = Shape;
 
 export type CheckboxChangeEventType = React.ChangeEvent<HTMLInputElement>;
 

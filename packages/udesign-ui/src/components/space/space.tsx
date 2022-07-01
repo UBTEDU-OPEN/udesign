@@ -1,20 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { BASE_CLASS_PREFIX, CommonSize, Direction } from '../../constants';
-
-export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline';
-export type SpaceJustify = 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly';
-export type SpaceDirection = Direction;
-export type SpaceSize = CommonSize | number;
+import { BASE_CLASS_PREFIX, Size, Direction } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-space`;
 
 export type SpaceProps = {
-  align?: SpaceAlign; // 对齐方式（align-items）
-  justify?: SpaceJustify; // 对齐方式（justify-content）
-  direction?: SpaceDirection; // 间距方向
-  size?: SpaceSize; // 间距大小
+  align?: 'start' | 'end' | 'center' | 'baseline'; // 对齐方式（align-items）
+  justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'; // 对齐方式（justify-content）
+  direction?: Direction; // 间距方向
+  size?: Size | number; // 间距大小
   wrap?: boolean; // 是否自动换行，仅在 horizontal 时有效
 } & NativeProps;
 

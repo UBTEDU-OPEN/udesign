@@ -293,7 +293,7 @@ const feedbackMenus = [
   },
   {
     name: 'result',
-    text: 'Result 结果',
+    text: 'Result 结果反馈',
   },
   {
     name: 'skeleton',

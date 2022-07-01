@@ -1,23 +1,24 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import { CheckCircleFilled, ExclamationCircleFilled, InfoCircleFilled } from '@ubt/udesign-icons';
+import { CheckCircleFilled, CloseCircleFilled, ExclamationCircleFilled, InfoCircleFilled } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
-import { BASE_CLASS_PREFIX } from '../../constants';
+import { BASE_CLASS_PREFIX, Status } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-result`;
 
 export type ResultProps = {
   icon?: ReactNode; // 自定义 icon
-  status?: 'success' | 'info' | 'warning' | '404' | '403' | '500'; // 结果的状态，决定图标和颜色，默认info
+  status?: Status | '404' | '403' | '500'; // 结果的状态，决定图标和颜色，默认info
   title?: ReactNode; // 标题文字
   subtitle?: ReactNode; // 副标题文字
 } & NativeProps;
 
-export const Result = ({ icon, status = 'info', title, subtitle, children, className, style }: ResultProps) => {
+export const Result = ({ icon, status = 'normal', title, subtitle, children, className, style }: ResultProps) => {
   const renderIcon = () => {
     const iconNode = () => {
       if (icon) return icon;
       if (status === 'success') return <CheckCircleFilled />;
+      if (status === 'error') return <CloseCircleFilled />;
       if (status === 'warning') return <ExclamationCircleFilled />;
       if (status === '403') return <ExclamationCircleFilled />;
       if (status === '404') return <ExclamationCircleFilled />;

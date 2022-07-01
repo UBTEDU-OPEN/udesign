@@ -2,9 +2,9 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { LoadingIcon } from '../icon';
 import { getDisabledCls, NativeProps, usePropsValue } from '../../utils';
-import { CommonSize } from '../../constants';
+import { Size } from '../../constants';
 
-export type SwitchSize = CommonSize;
+export type SwitchSize = Size;
 
 const getSizeClass = (size: SwitchSize) => {
   let cls;
@@ -32,7 +32,7 @@ export type SwitchProps = {
   size?: SwitchSize; // TODO: 暂未实现
   checkedText?: ReactNode; // 选中时的内容
   uncheckedText?: ReactNode; // 非选中时的内容
-  onChange?: (checked: boolean) => void;  // 变化时回调函数
+  onChange?: (checked: boolean) => void; // 变化时回调函数
   onClick?: (checked: boolean) => void; // 点击时回调函数
 } & NativeProps;
 

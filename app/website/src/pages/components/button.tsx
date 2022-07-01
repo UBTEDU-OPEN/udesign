@@ -167,57 +167,65 @@ export default function ButtonPage() {
             </>
           }
         >
-          <Space direction='vertical'>
-            <Space>
-              <Button size='small' type='primary'>
-                Primary
-              </Button>
-              <Button size='small' type='default'>
-                Default
-              </Button>
-              <Button size='small' type='text'>
-                Text Button
-              </Button>
-              <Button size='small' type='link'>
-                Link Button
-              </Button>
-              <Button size='small' type='text' shape='circle' icon={<SettingFilled />} />
-            </Space>
-            <Space>
-              <Button size='middle' type='primary'>
-                Primary
-              </Button>
-              <Button size='middle' type='default'>
-                Default
-              </Button>
-              <Button size='middle' type='text'>
-                Text Button
-              </Button>
-              <Button size='middle' type='link'>
-                Link Button
-              </Button>
-              <Button size='middle' type='text' shape='circle' icon={<SettingFilled />} />
-            </Space>
-            <Space>
-              <Button size='large' type='primary'>
-                Primary
-              </Button>
-              <Button size='large' type='default'>
-                Default
-              </Button>
-              <Button size='large' type='text'>
-                Text Button
-              </Button>
-              <Button size='large' type='link'>
-                Link Button
-              </Button>
-              <Button size='large' type='text' shape='circle' icon={<SettingFilled />} />
-            </Space>
-            <Space>
-              <Button type='primary' size='large' style={{ width: '300px' }}>
-                自定义尺寸
-              </Button>
-            </Space>
+          <Space align='center'>
+            small
+            <Button size='small' type='primary'>
+              Primary
+            </Button>
+            <Button size='small' type='default'>
+              Default
+            </Button>
+            <Button size='small' type='text'>
+              Text Button
+            </Button>
+            <Button size='small' type='link'>
+              Link Button
+            </Button>
+            <Button size='small' type='text' shape='circle' icon={<SettingFilled />} />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space align='center'>
+            middle
+            <Button size='middle' type='primary'>
+              Primary
+            </Button>
+            <Button size='middle' type='default'>
+              Default
+            </Button>
+            <Button size='middle' type='text'>
+              Text Button
+            </Button>
+            <Button size='middle' type='link'>
+              Link Button
+            </Button>
+            <Button size='middle' type='text' shape='circle' icon={<SettingFilled />} />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space align='center'>
+            large
+            <Button size='large' type='primary'>
+              Primary
+            </Button>
+            <Button size='large' type='default'>
+              Default
+            </Button>
+            <Button size='large' type='text'>
+              Text Button
+            </Button>
+            <Button size='large' type='link'>
+              Link Button
+            </Button>
+            <Button size='large' type='text' shape='circle' icon={<SettingFilled />} />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space align='center'>
+            自定义
+            <Button type='primary' size='large' style={{ width: '300px', height: '80px' }}>
+              自定义尺寸
+            </Button>
           </Space>
         </Demo.Block>
         <Demo.Block title='Block 按钮' description='通过 block 属性使按钮适合其父宽度。'>

@@ -17,7 +17,7 @@ export default function BadgePage() {
             <Badge content={0} showZero>
               <Avatar shape='square' />
             </Badge>
-            <Badge content={<SettingFilled className='text-xl' />}>
+            <Badge content={<SettingFilled />}>
               <Avatar shape='square' />
             </Badge>
             <Badge dot>
@@ -28,7 +28,7 @@ export default function BadgePage() {
         <Demo.Block title='独立使用' description='不包裹任何元素即是独立使用，可自定义样式展现。'>
           <Space>
             <Badge content='43' />
-            <Badge content={<SettingFilled className='text-xl' />} />
+            <Badge content={<SettingFilled />} />
             <Badge content='120' style={{ background: '#7BDC7B' }} />
           </Space>
         </Demo.Block>

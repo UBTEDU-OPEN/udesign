@@ -1,12 +1,12 @@
 import React, { ReactNode, useState } from 'react';
 import classNames from 'classnames';
 import { CloseOutlined } from '@ant-design/icons';
-import { PresetColors, CommonType, CommonSize } from '../../constants';
+import { PresetColors, Type, Size } from '../../constants';
 import { NativeProps } from '../../utils';
 import { ArrowRightIcon } from '../icon';
 
-type TagSize = CommonSize;
-type TagType = CommonType;
+type TagSize = Size;
+type TagType = Type;
 
 // // 默认配色
 // const DefaultColor = '#eee';

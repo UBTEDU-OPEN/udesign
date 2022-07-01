@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Space, Button, Modal, Input } from '@ubt/udesign-ui';
-import { CommonSize } from '@ubt/udesign-constants';
+import { Size } from '@ubt/udesign-constants';
 import { Demo } from '../../demo';
 
 export default function ModalPage() {
-  const [size, setSize] = useState<CommonSize>('small');
+  const [size, setSize] = useState<Size>('small');
   const [visible, setVisible] = useState(false);
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);

@@ -2,13 +2,13 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
-import { CommonSize, CommonShape, BASE_CLASS_PREFIX } from '../../constants';
+import { Size, Shape, BASE_CLASS_PREFIX } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-button`;
 
 export type ButtonType = 'primary' | 'default' | 'text' | 'link';
-export type ButtonSize = CommonSize;
-export type ButtonShape = CommonShape;
+export type ButtonSize = Size;
+export type ButtonShape = Shape;
 
 export type ButtonProps = {
   block?: boolean; // 将宽度设置为其父宽度

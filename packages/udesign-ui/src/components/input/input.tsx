@@ -1,15 +1,15 @@
 import React, { ReactNode, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
-import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, Size, Status } from '../../constants';
 import { ClearIcon } from './icon/clear';
 import { PasswordOnIcon } from './icon/password-on';
 import { PasswordOffIcon } from './icon/password-off';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-input`;
 
-export type InputSize = CommonSize;
-export type InputStatus = 'default' | 'error' | 'warning' | 'success';
+export type InputSize = Size;
+export type InputStatus = Status;
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'style' | 'onChange'>, NativeProps {
   prepend?: ReactNode; // 前置标签

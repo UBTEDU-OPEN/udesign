@@ -156,7 +156,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
 
   function renderNextBtn() {
     const { nextText } = restProps;
-    const cls = classNames({
+    const cls = classNames(`${prefixCls}-item`, {
       [`${prefixCls}-item`]: true,
       [`${prefixCls}-item-disabled`]: nextDisabled,
     });

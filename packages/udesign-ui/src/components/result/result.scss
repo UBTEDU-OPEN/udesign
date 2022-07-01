@@ -12,8 +12,8 @@ $module: ud-result;
     justify-content: center;
 
     // 不同类型图标默认色
-    &-info {
-      color: $result-icon-color-info;
+    &-normal {
+      color: $result-icon-color-normal;
     }
     &-success {
       color: $result-icon-color-success;

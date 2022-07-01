@@ -2,11 +2,11 @@ import React, { useEffect, ReactNode, useState, useRef } from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
-import { BASE_CLASS_PREFIX, CommonSize } from '../../constants';
+import { BASE_CLASS_PREFIX, Size } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-spin`;
 
-export type SpinSize = CommonSize;
+export type SpinSize = Size;
 
 export type SpinProps = {
   spinning?: boolean; // 是否处于加载中的状态

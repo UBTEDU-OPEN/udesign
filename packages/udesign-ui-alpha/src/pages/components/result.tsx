@@ -5,7 +5,7 @@ import { Button, Result, SuccessIcon, ErrorIcon, Space } from '@ubt/udesign-ui-a
 export default function ResultPage() {
   return (
     <>
-      <Demo.Page title='Result 结果' description='用于反馈一系列操作任务的处理结果。'>
+      <Demo.Page title='Result 结果反馈' description='用于反馈一系列操作任务的处理结果。'>
         <Demo.Block title='基本用法' description='通过 image 设置占位图片，也可以传入自定义的插画。'>
           <Result image={<SuccessIcon className='text-5xl' />} title='功能建设中' description='当前功能暂未开放，敬请期待。' />
         </Demo.Block>

@@ -221,7 +221,7 @@ export default function TabsPage() {
             </Tabs.Item>
           </Tabs>
         </Demo.Block>
-        <Demo.Block title='自定义' description='设置 label 属性即可自定义标签'>
+        {/* <Demo.Block title='自定义' description='设置 label 属性即可自定义标签'>
           <Tabs position='bottom' around>
             <Tabs.Item
               label={
@@ -256,7 +256,7 @@ export default function TabsPage() {
               Content of Tab Pane 3
             </Tabs.Item>
           </Tabs>
-        </Demo.Block>
+        </Demo.Block> */}
       </Demo.Page>
     </>
   );

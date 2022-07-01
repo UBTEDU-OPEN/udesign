@@ -2,11 +2,11 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { RightOutlined } from '@ant-design/icons';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants';
+import { Size } from '../../constants';
 // import { ArrowRightIcon } from '../icon';
 // import { Space } from '../space';
 
-// export type ListSize = CommonSize;
+// export type ListSize = Size;
 
 // export const getListSizeClass = (size: ListSize) => {
 //   let cls;

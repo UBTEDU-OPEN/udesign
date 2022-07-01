@@ -2,10 +2,10 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { LoadingIcon } from '../icon';
 import { NativeProps } from '../../utils';
-import { CommonSize } from '../../constants';
+import { Size } from '../../constants';
 import { Wrapper } from '../_wrapper';
 
-export type SpinSize = CommonSize;
+export type SpinSize = Size;
 
 const getSizeClass = (size: SpinSize) => {
   let cls;

@@ -12,40 +12,40 @@ const prefix = `${BASE_CLASS_PREFIX}-tooltip`;
 const getTranslateStyle = (placement: Placement): React.CSSProperties => {
   let style;
   switch (placement) {
-    case 'topLeft': // 上左角
+    case 'topLeft':
       style = 'translateY(-100%)';
       break;
-    case 'top': // 上中
+    case 'top':
       style = 'translateY(-100%) translateX(-50%)';
       break;
-    case 'topRight': // 上右角
+    case 'topRight':
       style = 'translateY(-100%) translateX(-100%)';
       break;
-    case 'bottomLeft': // 下左角
+    case 'bottomLeft':
       style = '';
       break;
-    case 'bottom': // 下中
+    case 'bottom':
       style = 'translateX(-50%)';
       break;
-    case 'bottomRight': // 下右角
+    case 'bottomRight':
       style = 'translateX(-100%)';
       break;
-    case 'leftTop': // 左上角
+    case 'leftTop':
       style = 'translateX(-100%)';
       break;
-    case 'left': // 左中
+    case 'left':
       style = 'translateX(-100%) translateY(-50%)';
       break;
-    case 'leftBottom': // 左下角
+    case 'leftBottom':
       style = 'translateX(-100%) translateY(-100%)';
       break;
-    case 'rightTop': // 右上角
+    case 'rightTop':
       style = '';
       break;
-    case 'right': // 右中
+    case 'right':
       style = 'translateY(-50%)';
       break;
-    case 'rightBottom': // 右下角
+    case 'rightBottom':
       style = 'translateY(-100%)';
       break;
     default:
@@ -91,7 +91,8 @@ export const Tooltip = ({
   style,
   ...restProps
 }: TooltipProps) => {
-  const [coords, setCoords] = useState({}); // 基点，基于此进行 transform 位移
+  // 基点，基于此进行 transform 位移
+  const [coords, setCoords] = useState({});
   const _timer = useRef(0);
   const triggerRef = useRef<HTMLElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
@@ -332,10 +333,10 @@ export const Tooltip = ({
     }
 
     if (placement.includes('Left')) {
-      arrowStyle.left = '6px';
+      arrowStyle.left = '14px';
     }
     if (placement.includes('Right')) {
-      arrowStyle.right = '6px';
+      arrowStyle.right = '14px';
     }
     if (placement.includes('Top')) {
       arrowStyle.top = '6px';

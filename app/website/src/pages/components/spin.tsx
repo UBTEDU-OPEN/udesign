@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Switch } from '@ubt/udesign-ui-alpha';
-import { Space, Spin } from '@ubt/udesign-ui';
+import { Divider, Space, Spin } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function SpinPage() {
@@ -21,9 +21,9 @@ export default function SpinPage() {
           <Spin />
         </Demo.Block>
         <Demo.Block title='其他尺寸' description='小的用于文本加载，默认用于卡片容器级加载，大的用于页面级加载。'>
-          <Space>
+          <Space align='center'>
             <Spin size='small' />
-            <Spin />
+            <Spin size='middle' />
             <Spin size='large' />
           </Space>
         </Demo.Block>
@@ -35,7 +35,8 @@ export default function SpinPage() {
         <Demo.Block title='带描述文案' description='通过 tip 属性可设置当 Spin 用作包裹元素时的文字。'>
           <Spin tip='加载中'>
             <div className='border p-5'>
-              <p>Alert message title</p>
+              <p className='text-indigo-500 font-bold'>Alert message title</p>
+              <Divider className='my-5' />
               <p>Further details about the context of this alert.</p>
             </div>
           </Spin>
@@ -43,7 +44,8 @@ export default function SpinPage() {
         <Demo.Block title='卡片加载中' description='可以直接把内容内嵌到 Spin 中，将现有容器变为加载状态。'>
           <Spin spinning={spin}>
             <div className='border p-5'>
-              <p>Alert message title</p>
+              <p className='text-indigo-500 font-bold'>Alert message title</p>
+              <Divider className='my-5' />
               <p>Further details about the context of this alert.</p>
             </div>
           </Spin>
@@ -55,7 +57,8 @@ export default function SpinPage() {
         <Demo.Block title='卡片加载延迟' description='延迟显示 loading 效果。当 spinning 状态在 delay 时间内结束，则不显示 loading 状态。' transform>
           <Spin spinning={loading} delay={500}>
             <div className='border p-5'>
-              <p>Alert message title</p>
+              <p className='text-indigo-500 font-bold'>Alert message title</p>
+              <Divider className='my-5' />
               <p>Further details about the context of this alert.</p>
             </div>
           </Spin>

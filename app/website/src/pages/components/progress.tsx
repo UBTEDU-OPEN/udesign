@@ -39,25 +39,108 @@ export default function ProgressPage() {
         />
         <Demo.Block title='基本用法' description='常规进度条用法。'>
           <Space direction='vertical'>
-            <Progress percent={28} stroke='var(--ud-color-warning)' />
             <Progress percent={50} />
+            <Progress percent={50} status='warning' />
+            <Progress percent={100} status='success' />
+            <Progress percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='自定义颜色' description='通过 stroke 传入颜色'>
+          <Space direction='vertical'>
+            <Progress percent={50} />
+            <Progress percent={50} stroke='var(--ud-color-warning)' />
             <Progress percent={100} stroke='var(--ud-color-success)' />
             <Progress percent={40} stroke='var(--ud-color-danger)' />
-            <Progress percent={50} showInfo={false} />
           </Space>
         </Demo.Block>
         <Demo.Block title='不同尺寸的进度条' description='通过 size 来设置进度条尺寸，或者传入style'>
           <Space direction='vertical'>
-            <Progress percent={50} format={() => '自定义'} style={{ height: '4px' }} />
-            <Progress percent={50} format={() => 'small'} size='small' />
-            <Progress percent={50} format={() => 'middle'} />
-            <Progress percent={50} format={() => 'large'} size='large' />
+            small
+            <Progress size='small' percent={50} />
+            <Progress size='small' percent={50} status='warning' />
+            <Progress size='small' percent={100} status='success' />
+            <Progress size='small' percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space direction='vertical'>
+            middle
+            <Progress percent={50} />
+            <Progress percent={50} status='warning' />
+            <Progress percent={100} status='success' />
+            <Progress percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space direction='vertical'>
+            large
+            <Progress size='large' percent={50} />
+            <Progress size='large' percent={50} status='warning' />
+            <Progress size='large' percent={100} status='success' />
+            <Progress size='large' percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space direction='vertical'>
+            自定义
+            <Progress style={{ height: '4px' }} percent={50} />
+            <Progress style={{ height: '4px' }} percent={50} status='warning' />
+            <Progress style={{ height: '4px' }} percent={100} status='success' />
+            <Progress style={{ height: '4px' }} percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='基础进度圈' description='默认圈形的进度显示。'>
+          <Space>
+            <Progress type='circle' percent={75} showInfo={false} />
+            <Progress type='circle' percent={75} />
+            <Progress type='circle' percent={100} status='success' />
+            <Progress type='circle' percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='不同尺寸的进度圈' description='通过 size 或者 width 来设置进度圈的尺寸'>
+          <Space>
+            small
+            <Progress size='small' type='circle' percent={75} showInfo={false} />
+            <Progress size='small' type='circle' percent={75} />
+            <Progress size='small' type='circle' percent={100} status='success' />
+            <Progress size='small' type='circle' percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space>
+            middle
+            <Progress type='circle' percent={75} showInfo={false} />
+            <Progress type='circle' percent={75} />
+            <Progress type='circle' percent={100} status='success' />
+            <Progress type='circle' percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space>
+            large
+            <Progress size='large' type='circle' percent={75} showInfo={false} />
+            <Progress size='large' type='circle' percent={75} />
+            <Progress size='large' type='circle' percent={100} status='success' />
+            <Progress size='large' type='circle' percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space>
+            自定义
+            <Progress width={200} type='circle' percent={75} showInfo={false} />
+            <Progress width={200} type='circle' percent={75} />
+            <Progress width={200} type='circle' percent={100} status='success' />
+            <Progress width={200} type='circle' percent={40} status='error' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='圆角/方角边缘' description='通过设定 strokeLinecap="square|round" 可以调整进度条边缘的形状。'>
+          <Space align='center'>
+            <Progress size='large' percent={50} strokeLinecap='square' />
+            <Progress type='circle' percent={50} size='large' strokeLinecap='square' />
           </Space>
         </Demo.Block>
         <Demo.Block title='动态展示' description='会动的进度条才是好进度条。'>
-          <Space align='center'>
-            <Progress percent={percent} />
-            <Progress type='circle' percent={percent} />
+          <Space className='mb-10' align='center'>
             <Button size='small' onClick={decline}>
               减少
             </Button>
@@ -65,27 +148,9 @@ export default function ProgressPage() {
               增加
             </Button>
           </Space>
-        </Demo.Block>
-        <Demo.Block title='进度圈' description='圈形的进度。'>
-          <Space>
-            <Progress type='circle' percent={50} showInfo={false} />
-            <Progress type='circle' percent={50} />
-            <Progress type='circle' percent={100} stroke='var(--ud-color-success)' />
-            <Progress type='circle' percent={40} stroke='var(--ud-color-danger)' />
-          </Space>
-        </Demo.Block>
-        <Demo.Block title='不同尺寸的进度圈' description='通过 size 或者 width 来设置进度圈的尺寸'>
-          <Space>
-            <Progress type='circle' percent={50} format={() => 'small'} size='small' />
-            <Progress type='circle' percent={50} format={() => 'middle'} />
-            <Progress type='circle' percent={50} format={() => 'large'} size='large' />
-            <Progress type='circle' percent={50} format={() => '自定义宽度'} width={200} />
-          </Space>
-        </Demo.Block>
-        <Demo.Block title='圆角/方角边缘' description='通过设定 strokeLinecap="square|round" 可以调整进度条边缘的形状。'>
           <Space align='center'>
-            <Progress size='large' percent={50} strokeLinecap='square' />
-            <Progress type='circle' percent={50} size='large' strokeLinecap='square' />
+            <Progress percent={percent} />
+            <Progress type='circle' percent={percent} />
           </Space>
         </Demo.Block>
       </Demo.Page>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import lodash from 'lodash';
 import axios from 'axios';
 import { Result } from '@ubt/udesign-ui';
+import { SITE_NAME } from '../constants/site';
 
 interface Token {
   key: string;
@@ -55,29 +56,32 @@ export const DesignAPI = (props: DesignAPIProps) => {
 
   const renderTable = () =>
     designApi && componentName && designApi[componentName]?.length ? (
-      <table className='w-full text-left'>
-        <thead>
-          <tr>
-            <th>属性</th>
-            <th>required</th>
-            <th>类型</th>
-            <th>说明</th>
-          </tr>
-        </thead>
-        <tbody>
-          {designApi[componentName].map((item, index) => (
-            <tr className='hover:bg-indigo-50' key={index}>
-              <td className='border border-bottom p-4'>{item.key}</td>
-              <td className='border border-bottom p-4'>{item.required ? '是' : '否'}</td>
-              <td className='border border-bottom p-4'>{item.value}</td>
-              <td className='border border-bottom p-4'>{item.comment}</td>
+      <>
+        <table className='w-full text-left'>
+          <thead>
+            <tr>
+              <th>属性</th>
+              <th>required</th>
+              <th>类型</th>
+              <th>说明</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {designApi[componentName].map((item, index) => (
+              <tr className='hover:bg-indigo-50' key={index}>
+                <td className='border border-bottom p-4'>{item.key}</td>
+                <td className='border border-bottom p-4'>{item.required ? '是' : '否'}</td>
+                <td className='border border-bottom p-4'>{item.value}</td>
+                <td className='border border-bottom p-4'>{item.comment}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className='text-small text-gray-500 mt-2'>* {SITE_NAME} 组件默认都包含 children、className、style 三个通用 API</div>
+      </>
     ) : (
       <div className='border rounded-lg overflow-hidden'>
-        <Result status='info' title='暂无数据' subtitle='当前组件没有可使用的 API，或者开发者没有正确编写导致无法正确显示。'>
+        <Result title='暂无数据' subtitle='当前组件没有可使用的 API，或者开发者没有正确编写导致无法正确显示。'>
           <div className='text-base text-gray-400'>如果发现 API 不完整，请联系开发人员补充。</div>
         </Result>
       </div>

@@ -1,9 +1,9 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { getDisabledCls, NativeProps } from '../../utils';
-import { CommonShape } from '../../constants';
+import { Shape } from '../../constants';
 
-// export type RadioShape = CommonShape;
+// export type RadioShape = Shape;
 
 export type RadioChangeEventType = React.ChangeEvent<HTMLInputElement>;
 
