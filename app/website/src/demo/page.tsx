@@ -231,7 +231,6 @@ const showMenus = [
   {
     name: 'tabs',
     text: 'Tabs 标签页',
-    disabled: true,
   },
   {
     name: 'tag',
