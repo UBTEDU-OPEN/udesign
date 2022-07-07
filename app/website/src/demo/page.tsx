@@ -56,10 +56,10 @@ const navMenus = [
     name: 'dropdown',
     text: 'Dropdown 下拉菜单',
   },
-  {
-    name: 'menu',
-    text: 'Menu 导航菜单',
-  },
+  // {
+  //   name: 'menu',
+  //   text: 'Menu 导航菜单',
+  // },
   // {
   //   name: 'pageHeader',
   //   text: 'PageHeader 页头',

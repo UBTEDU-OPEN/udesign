@@ -1,31 +1,25 @@
 @import '../../global/mixin.scss';
+@import './variables.scss';
 
 $module: ud-menu;
 
 .#{$module} {
-  --item-padding: var(--ud-menu-item-padding, 16px);
-  --item-background: var(--ud-menu-item-background, var(--ud-color-white));
-  --item-background-active: var(--ud-menu-item-background-active, rgba(var(--ud-purple-2), 1));
-  --item-color-active: var(--ud-menu-item-color-active, var(--ud-color-primary));
-  --item-background-hover: var(--ud-menu-item-background-hover, var(--item-background-active));
-  --item-color-hover: var(--ud-menu-item-color-hover, var(--item-color-active));
-
   overflow: hidden;
 
   .#{$module}-item {
-    padding: var(--item-padding);
+    padding: $menu-item-padding;
+    background: $menu-item-background;
     cursor: pointer;
-
     @include truncate;
 
     &:hover:not(&-disabled) {
-      background: var(--item-background-hover);
-      color: var(--item-color-hover);
+      background: $menu-item-background-hover;
+      color: $menu-item-color-hover;
     }
 
     &-active {
-      background: var(--item-background-active);
-      color: var(--item-color-active);
+      background: $menu-item-background-active;
+      color: $menu-item-color-active;
     }
 
     &-disabled {
@@ -36,19 +30,16 @@ $module: ud-menu;
 }
 
 .#{$module}-submenu {
-  --max-width: var(--ud-dropdown-max-width, 360px);
-  --background: var(--ud-dropdown-background, var(--ud-color-white));
-  --border-radius: var(--ud-dropdown-border-radius, 8px);
-
-  max-width: var(--max-width);
-  background: var(--background);
-  box-shadow: var(--ud-shadow-elevated);
-  border-radius: var(--border-radius);
+  max-width: $menu-submenu-max-width;
+  background: $menu-submenu-background;
+  box-shadow: $menu-submenu-border-shadow;
+  border-radius: $menu-submenu-border-radius;
   overflow: hidden;
 }
 
 .#{$module}-horizontal {
   display: inline-flex;
+  gap: $menu-horizontal-gap;
 }
 
 .#{$module}-vertical {

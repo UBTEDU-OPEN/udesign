@@ -1,6 +1,26 @@
-@import '../../global/variables.scss';
-
 $dropdown-background: var(--ud-dropdown-background, var(--ud-color-white)); // 下拉菜单背景色
+
 $dropdown-border-radius: var(--ud-dropdown-border-radius, 8px); // 下拉菜单圆角
 $dropdown-max-width: var(--ud-dropdown-max-width, 360px); // 下拉菜单最大宽度
 $dropdown-box-shadow: var(--ud-dropdown-box-shadow, var(--ud-shadow-elevated)); // 下拉菜单阴影
+
+$dropdown-item-margin: var(--ud-dropdown-item-margin, 0 20px 0 0); // 下拉菜单子项外边距
+$dropdown-item-padding: var(--ud-dropdown-item-padding, 12px 15px); // 下拉菜单子项内边距
+$dropdown-item-font-size: var(--ud-dropdown-item-font-size, 16px); // 下拉菜单子项字号
+$dropdown-item-font-weight: var(--ud-dropdown-item-font-weight, 400); // 下拉菜单子项字重
+
+$dropdown-item-background: var(--ud-dropdown-item-background, var(--ud-color-white)); // 下拉菜单子项背景色
+$dropdown-item-background-active: var(--ud-dropdown-item-background-active, var(--ud-color-primary-light)); // 下拉菜单子项背景色-active
+$dropdown-item-background-hover: var(--ud-dropdown-item-background-hover, var(--ud-color-primary-light)); // 下拉菜单子项背景色-hover
+$dropdown-item-color: var(--ud-dropdown-item-color, var(--ud-color-text-0)); // 下拉菜单子项文本色
+$dropdown-item-color-active: var(--ud-dropdown-item-color-active, var(--ud-color-primary)); // 下拉菜单子项文本色-active
+$dropdown-item-color-hover: var(--ud-dropdown-item-color-hover, var(--ud-color-primary)); // 下拉菜单子项文本色-hover
+
+$dropdown-item-danger-background: var(--ud-dropdown-item-danger-background, var(--ud-color-white)); // 下拉菜单danger子项背景色
+$dropdown-item-danger-background-active: var(--ud-dropdown-item-danger-background-active, var(--ud-color-danger)); // 下拉菜单danger子项背景色-active
+$dropdown-item-danger-background-hover: var(--ud-dropdown-item-danger-background-hover, var(--ud-color-danger)); // 下拉菜单danger子项背景色-hover
+$dropdown-item-danger-color: var(--ud-dropdown-item-danger-color, var(--ud-color-danger)); // 下拉菜单danger子项文本色
+$dropdown-item-danger-color-active: var(--ud-dropdown-item-danger-color-active, var(--ud-color-white)); // 下拉菜单danger子项文本色-active
+$dropdown-item-danger-color-hover: var(--ud-dropdown-item-danger-color-hover, var(--ud-color-white)); // 下拉菜单danger子项文本色-hover
+
+$dropdown-item-icon-margin: var(--ud-dropdown-item-icon-margin, 0 10px 0 0); // 下拉菜单子项图标外边距

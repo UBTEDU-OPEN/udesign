@@ -54,6 +54,12 @@ export const DesignAPI = (props: DesignAPIProps) => {
     }
   }, []);
 
+  const commonApi = [
+    { key: 'children', required: false, value: 'ReactNode', comment: '子元素' },
+    { key: 'className', required: false, value: 'string', comment: '样式类名' },
+    { key: 'style', required: false, value: 'CSSProperties', comment: '内联样式' },
+  ];
+
   const renderTable = () =>
     designApi && componentName && designApi[componentName]?.length ? (
       <>
@@ -75,9 +81,17 @@ export const DesignAPI = (props: DesignAPIProps) => {
                 <td className='border border-bottom p-4'>{item.comment}</td>
               </tr>
             ))}
+            {commonApi.map((item, index) => (
+              <tr className='hover:bg-indigo-50' key={index}>
+                <td className='border border-bottom p-4'>{item.key}</td>
+                <td className='border border-bottom p-4'>{item.required ? '是' : '否'}</td>
+                <td className='border border-bottom p-4'>{item.value}</td>
+                <td className='border border-bottom p-4'>{item.comment}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
-        <div className='text-small text-gray-500 mt-2'>* {SITE_NAME} 组件默认都包含 children、className、style 三个通用 API</div>
+        {/* <div className='text-small text-gray-500 mt-2'>* {SITE_NAME} 组件默认都包含 children、className、style 三个通用 API</div> */}
       </>
     ) : (
       <div className='border rounded-lg overflow-hidden'>

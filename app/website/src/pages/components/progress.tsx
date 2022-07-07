@@ -3,7 +3,7 @@ import { Progress, Button, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function ProgressPage() {
-  const [percent, setPercent] = useState(0);
+  const [percent, setPercent] = useState(50);
 
   const increase = () => {
     let newPercent = percent + 10;

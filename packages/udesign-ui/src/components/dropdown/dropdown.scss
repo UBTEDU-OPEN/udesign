@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import '../../global/mixin.scss';
 
 $module: ud-dropdown;
 
@@ -77,5 +78,40 @@ $module: ud-dropdown;
     position: absolute;
     color: $dropdown-background;
     transform: translate(var(--arrow-translate-x), var(--arrow-translate-y)) rotate(var(--arrow-rotate));
+  }
+
+  .#{$module}-item {
+    display: flex;
+    align-items: center;
+    padding: $dropdown-item-padding;
+    font-size: $dropdown-item-font-size;
+    font-weight: $dropdown-item-font-weight;
+    cursor: pointer;
+    @include truncate;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      margin: $dropdown-item-icon-margin;
+    }
+
+    &-danger {
+      background: $dropdown-item-danger-background;
+      color: $dropdown-item-danger-color;
+      &:hover {
+        background: $dropdown-item-danger-background-hover;
+        color: $dropdown-item-danger-color-hover;
+      }
+    }
+
+    &:hover:not(&-disabled):not(&-danger) {
+      background: $dropdown-item-background-hover;
+      color: $dropdown-item-color-hover;
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import { CloseCircleFilled } from '@ubt/udesign-icons';
 import { NativeProps, usePropsValue } from '../../utils';
-import { ClearIcon } from './icon/clear';
 import './textarea.scss';
 import { BASE_CLASS_PREFIX, Status } from '../../constants';
 
@@ -12,7 +12,7 @@ type TextAreaStatus = Status;
 export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'prefix' | 'style' | 'onChange'>, NativeProps {
   value?: string; // 输入框内容
   defaultValue?: string; // 输入框内容默认值
-  // autoSize?: boolean; // 是否自适应内容高度，默认为false
+  autoSize?: boolean; // TODO: 是否自适应内容高度，默认为false
   disabled?: boolean; // 是否禁用，默认为false
   showClear?: boolean; // 可以点击清除图标删除内容
   showCount?: boolean; // 是否展示字数
@@ -81,11 +81,12 @@ const TextArea = (props: TextAreaProps) => {
 
   const renderClearBtn = () => {
     const cls = classNames({
-      [`${prefixCls}-clearBtn`]: true,
+      [`${prefixCls}-suffix`]: true,
+      [`${prefixCls}-clear-icon`]: true,
     });
     return Boolean(innerValue) && showClear && !disabled && (focused || hovering) ? (
       <div className={cls} onMouseDown={handleClear}>
-        <ClearIcon />
+        <CloseCircleFilled />
       </div>
     ) : null;
   };

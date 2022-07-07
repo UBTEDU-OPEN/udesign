@@ -1,17 +1,21 @@
 import React from 'react';
-import { Button, Dropdown, Divider, Menu, Space, Input } from '@ubt/udesign-ui';
+import { Button, Dropdown, Divider, Space, Input, Toast } from '@ubt/udesign-ui';
+import { DownOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 
 export default function DropdownPage() {
   const menu = (
-    <Menu>
-      <Menu.Item name='1'>1 st menu item</Menu.Item>
-      <Menu.Item name='2'>2 st menu item</Menu.Item>
-      <Divider />
-      <Menu.Item name='3' disabled>
+    <Dropdown.Menu onClick={(name) => Toast(name)}>
+      <Dropdown.Item name='1'>1 st menu item</Dropdown.Item>
+      <Dropdown.Item name='2'>2 st menu item</Dropdown.Item>
+      <Dropdown.Item name='3' disabled>
         3 st menu item(disabled)
-      </Menu.Item>
-    </Menu>
+      </Dropdown.Item>
+      <Divider />
+      <Dropdown.Item name='4' danger>
+        a danger item
+      </Dropdown.Item>
+    </Dropdown.Menu>
   );
 
   return (
@@ -32,7 +36,11 @@ export default function DropdownPage() {
         />
         <Demo.Block title='基础用法' description='最简单的下拉菜单。'>
           <Dropdown content={menu}>
-            <Button>Hover me</Button>
+            <Button type='text'>
+              <div className='flex items-center'>
+                Hover me <DownOutlined className='ml-5' />
+              </div>
+            </Button>
           </Dropdown>
         </Demo.Block>
         <Demo.Block title='弹出位置' description='支持 6 个弹出位置。'>

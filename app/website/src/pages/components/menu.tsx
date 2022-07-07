@@ -34,7 +34,9 @@ export default function MenuPage() {
               Navigation Two
             </Menu.Item>
             <Menu.Submenu title='Navigation Three - Submenu'>{Submenu}</Menu.Submenu>
-            <Menu.Item name='4'>Navigation Four - Link</Menu.Item>
+            <Menu.Item name='4'>
+              <a href='#'>Navigation Four - Link</a>
+            </Menu.Item>
           </Menu>
         </Demo.Block>
         {/* <Demo.Block title='侧边栏内嵌菜单' description='垂直菜单，二级菜单内嵌在一级菜单区域。' todo='依赖Collapse折叠组件' /> */}
@@ -57,7 +59,6 @@ export default function MenuPage() {
               Navigation Two
             </Menu.Item>
             <Menu.Submenu title='Navigation Three - Submenu'>{Submenu}</Menu.Submenu>
-            <Menu.Item name='4'>Navigation Four - Link</Menu.Item>
           </Menu>
         </Demo.Block>
       </Demo.Page>

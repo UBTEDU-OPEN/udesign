@@ -8,7 +8,10 @@ const isUseless = (codeLine) => lodash.startsWith(codeLine, '//') || lodash.star
 // 行内数据拆分（key: value; // comment）
 const codeLineSplit = (codeLine) => {
   const [key, ...rest] = codeLine.split(':').map((code) => code.trim());
-  const [value, comment] = rest.join(':').split('//').map((code) => code.trim());
+  const [value, comment] = rest
+    .join(':')
+    .split('//')
+    .map((code) => code.trim());
   // const [key, value, comment] = codeLine
   //   .split(/:|\/\/|\/\*/)
   //   .map((code) => code.trim())
@@ -21,6 +24,7 @@ async function main() {
   const componentVariablesMap = {};
   const udesignDir = path.join(__dirname, '../../../packages/udesign-ui/src/components');
   fs.readdirSync(udesignDir).map((dirname) => {
+    // TODO: 部分组件需要特殊处理（例如：Grid 实际上是 col, row 的组合组件）
     const propsPath = path.join(udesignDir, dirname, `${dirname}.tsx`);
     if (fs.existsSync(propsPath)) {
       const raw = fs.readFileSync(propsPath, { encoding: 'utf-8' });

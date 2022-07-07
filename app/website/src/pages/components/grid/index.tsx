@@ -3,31 +3,6 @@ import { Row, Col, Typography, Divider } from '@ubt/udesign-ui';
 import { Demo } from '../../../demo';
 import styles from './index.module.scss';
 
-const GridShow = () => (
-  <div className='gridShow'>
-    <Row className='gridShow-row'>
-      <Col className='gridShow-col' span={24}>
-        100%
-      </Col>
-    </Row>
-    <Row className='gridShow-row'>
-      <Col span={6}>25%</Col>
-      <Col span={6}>25%</Col>
-      <Col span={6}>25%</Col>
-      <Col span={6}>25%</Col>
-    </Row>
-    <Row className='gridShow-row'>
-      <Col span={8}>33.33%</Col>
-      <Col span={8}>33.33%</Col>
-      <Col span={8}>33.33%</Col>
-    </Row>
-    <Row className='gridShow-row'>
-      <Col span={12}>50%</Col>
-      <Col span={12}>50%</Col>
-    </Row>
-  </div>
-);
-
 export default function GridPage() {
   return (
     <div className={styles['grid-root']}>
@@ -40,10 +15,12 @@ export default function GridPage() {
               <br />
               <br />
               划分之后的信息区块我们称之为『盒子』。建议横向排列的盒子数量最多四个，最少一个。『盒子』在整个屏幕上占比见上图。设计部分基于盒子的单位定制盒子内部的排版规则，以保证视觉层面的舒适感。
+              <br />
+              <br />
+              <img src='/grid.svg' />
             </>
           }
-        ></Demo.Block>
-        <GridShow />
+        />
         <Demo.Block
           title='概述'
           description={

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CloseCircleOutlined, InfoCircleOutlined, SearchOutlined, SettingFilled, UserOutlined } from '@ubt/udesign-icons';
+import { CloseCircleOutlined, InfoCircleOutlined, RightOutlined, SearchOutlined, SettingFilled, UserCompileOutlined, UserOutlined } from '@ubt/udesign-icons';
 import { Button, Space, Input, TextArea } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
@@ -40,13 +40,10 @@ export default function InputPage() {
           <Input prepend='http://' append='.com' />
         </Demo.Block>
         <Demo.Block title='前缀/后缀' description='通过 prefix 属性设置前缀，suffix 属性设置后缀，支持 ReactNode'>
-          <Input prefix={<UserOutlined />} suffix={<InfoCircleOutlined />} />
+          <Input placeholder='请输入账号名称' prefix={<UserOutlined />} />
           <br />
           <br />
-          <Input prefix='￥' suffix='RMB' />
-          <br />
-          <br />
-          <Input prefix='￥' suffix='RMB' disabled />
+          <Input placeholder='昵称' prefix={<UserCompileOutlined />} suffix={<RightOutlined />} />
         </Demo.Block>
         <Demo.Block title='搜索输入框' description='带有搜索功能的输入框'>
           <Input placeholder='input search text' suffix={<SearchOutlined />} />
@@ -58,7 +55,7 @@ export default function InputPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='密码框' description='密码输入框，支持加密字符。'>
-          <Input type='password' value='Basic usage' />
+          <Input type='password' defaultValue='Basic usage' />
         </Demo.Block>
         <Demo.Block title='字数提示' description='通过 maxLength 属性限定总输入字数，showCount 来显示可输入字数提示'>
           <Space direction='vertical'>
@@ -67,7 +64,10 @@ export default function InputPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='带删除图标' description='通过 showClear 属性设置移除图标，点击图标删除所有内容'>
-          <Input placeholder='input with clear icon' showClear />
+          <Input placeholder='请输入名称' showClear />
+        </Demo.Block>
+        <Demo.Block>
+          <TextArea placeholder='给你的作品写一个操作指南，并告诉大家如何操作' showClear />
         </Demo.Block>
         <Demo.Block title='自定义状态' description='使用 status 为输入框添加状态，可选 error 或者 warning。'>
           <Space direction='vertical'>

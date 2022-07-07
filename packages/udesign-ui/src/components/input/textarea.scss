@@ -30,11 +30,6 @@ $module: ud-textarea;
   outline: none;
   background: transparent;
 
-  // &:hover {
-  //   background: $input-background-hover;
-  //   // border-color: $input-border-color-focus;
-  // }
-
   &:focus {
     background: $input-background-focus;
     border-color: $input-border-color-focus;
@@ -45,12 +40,15 @@ $module: ud-textarea;
   }
 
   &-count,
-  &-clearBtn {
+  &-clear-icon {
     position: absolute;
     right: 10px;
     bottom: 10px;
     z-index: 1;
     cursor: pointer;
+  }
+  &-clear-icon {
+    color: $input-clear-icon-color;
   }
 }
 

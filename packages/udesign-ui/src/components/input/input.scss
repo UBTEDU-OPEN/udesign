@@ -57,25 +57,6 @@ $module: ud-input;
     cursor: not-allowed;
     opacity: 0.5;
   }
-
-  // // 尺寸
-  // &-small {
-  //   height: $input-wrapper-height-small;
-  //   line-height: $input-wrapper-height-small;
-  //   font-size: $input-font-size-small;
-  // }
-
-  // &-middle {
-  //   height: $input-wrapper-height-middle;
-  //   line-height: $input-wrapper-height-middle;
-  //   font-size: $input-font-size-middle;
-  // }
-
-  // &-large {
-  //   height: $input-wrapper-height-large;
-  //   line-height: $input-wrapper-height-large;
-  //   font-size: $input-font-size-large;
-  // }
 }
 
 .#{$module} {
@@ -84,11 +65,6 @@ $module: ud-input;
   width: 100%;
   padding: $input-padding;
   border-radius: $input-border-radius;
-
-  // &:hover {
-  //   background: $input-background-hover;
-  //   // border-color: $input-border-color-focus;
-  // }
 
   &:focus {
     background: $input-background-focus;
@@ -101,18 +77,22 @@ $module: ud-input;
     align-items: center;
     margin: $input-suffix-margin;
   }
+  &-prefix {
+    font-size: $input-prefix-font-size;
+  }
+  &-suffix {
+    font-size: $input-suffix-font-size;
+  }
 
   &-prepend,
   &-append {
     display: flex;
     align-items: center;
   }
-
   &-prepend {
     padding: $input-prepend-padding;
     background: $input-background;
   }
-
   &-append {
     padding: $input-append-padding;
     background: $input-background;
@@ -122,9 +102,15 @@ $module: ud-input;
     color: $input-count-color;
   }
 
-  &-clearBtn,
-  &-passwordBtn {
+  &-clear-icon,
+  &-password-icon {
     cursor: pointer;
+  }
+  &-clear-icon {
+    color: $input-clear-icon-color;
+  }
+  &-password-icon {
+    color: $input-password-icon-color;
   }
 
   // 尺寸

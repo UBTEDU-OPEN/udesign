@@ -1,0 +1,19 @@
+$menu-item-padding: var(--ud-menu-item-padding, 15px);
+$menu-item-background: var(--ud-menu-item-background, var(--ud-color-white));
+$menu-item-background-active: var(--ud-menu-item-background-active, var(--ud-color-primary-light));
+$menu-item-background-hover: var(--ud-menu-item-background-hover, var(--ud-color-primary-light));
+$menu-item-color: var(--ud-menu-item-color, var(--ud-color-primary));
+$menu-item-color-active: var(--ud-menu-item-color-active, var(--ud-color-primary));
+$menu-item-color-hover: var(--ud-menu-item-color-hover, var(--ud-color-primary));
+
+$menu-submenu-max-width: var(--ud-menu-submenu-max-width, 360px);
+$menu-submenu-background: var(--ud-menu-submenu-background, var(--ud-color-white));
+$menu-submenu-border-shadow: var(--ud-menu-submenu-border-shadow, var(--ud-shadow-elevated));
+$menu-submenu-border-radius: var(--ud-menu-submenu-border-radius, 8px);
+
+// 水平式
+$menu-horizontal-gap: var(--ud-menu-horizontal-gap, 20px);
+
+// 内嵌式
+
+// 垂直式

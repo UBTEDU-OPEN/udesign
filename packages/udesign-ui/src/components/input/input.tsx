@@ -1,10 +1,8 @@
 import React, { ReactNode, useState } from 'react';
 import classNames from 'classnames';
+import { CloseCircleFilled, EyeInvisibleOutlined, EyeOutlined } from '@ubt/udesign-icons';
 import { NativeProps, usePropsValue } from '../../utils';
 import { BASE_CLASS_PREFIX, Size, Status } from '../../constants';
-import { ClearIcon } from './icon/clear';
-import { PasswordOnIcon } from './icon/password-on';
-import { PasswordOffIcon } from './icon/password-off';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-input`;
 
@@ -121,11 +119,12 @@ const Input = (props: InputProps) => {
 
   const renderClearBtn = () => {
     const cls = classNames({
-      [`${prefixCls}-clearBtn`]: true,
+      [`${prefixCls}-suffix`]: true,
+      [`${prefixCls}-clear-icon`]: true,
     });
     return Boolean(innerValue) && showClear && !disabled && (focused || hovering) ? (
       <div className={cls} onMouseDown={handleClear}>
-        <ClearIcon />
+        <CloseCircleFilled />
       </div>
     ) : null;
   };
@@ -141,11 +140,12 @@ const Input = (props: InputProps) => {
     };
     const showPasswordBtn = type === 'password' && innerValue && !disabled && (focused || hovering);
     const cls = classNames({
-      [`${prefixCls}-passwordBtn`]: true,
+      [`${prefixCls}-suffix`]: true,
+      [`${prefixCls}-password-icon`]: true,
     });
     return showPasswordBtn ? (
       <div className={cls} onClick={onVisibleChange}>
-        {visible ? <PasswordOnIcon /> : <PasswordOffIcon />}
+        {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
       </div>
     ) : null;
   };

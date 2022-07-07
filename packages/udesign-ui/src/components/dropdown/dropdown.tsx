@@ -6,6 +6,7 @@ import Tooltip from '../tooltip';
 const prefixCls = `${BASE_CLASS_PREFIX}-dropdown`;
 
 export type DropdownProps = {
+  clickToHide?: boolean; //	在弹出层内点击时是否自动关闭弹出层
   showArrow?: boolean; // 是否显示箭头
   content?: React.ReactNode; // 弹出层的内容
   placement?: Placement; // 弹出层的位置
@@ -13,9 +14,9 @@ export type DropdownProps = {
   getContainer?: () => HTMLElement; // 渲染的父节点，默认 document.body
 } & NativeProps;
 
-export const Dropdown = ({ showArrow = false, placement = 'bottomLeft', children, className, ...restProps }: DropdownProps) => (
+export const Dropdown = ({ showArrow, clickToHide = true, placement = 'bottomLeft', children, className, ...restProps }: DropdownProps) => (
   <>
-    <Tooltip prefixCls={prefixCls} showArrow={showArrow} placement={placement} {...restProps}>
+    <Tooltip prefixCls={prefixCls} clickToHide={clickToHide} showArrow={showArrow} placement={placement} {...restProps}>
       {children}
     </Tooltip>
   </>

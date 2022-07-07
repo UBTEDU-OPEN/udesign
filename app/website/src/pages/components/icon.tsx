@@ -125,7 +125,7 @@ export default function IconPage() {
         {data.map((icon, index) => (
           <Copy className='p-3 text-4xl rounded-lg text-center hover:bg-white hover:text-blue-600' key={index} text={`<${icon.key} />`} onSuccess={() => Toast('复制成功')} onError={() => Toast('复制失败')}>
             {icon.node}
-            <div className='text-base'>{icon.key}</div>
+            <div className='text-xs'>{icon.key}</div>
           </Copy>
         ))}
       </div>
