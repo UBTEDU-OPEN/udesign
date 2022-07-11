@@ -32,3 +32,4 @@ export { default as Switch } from './components/switch';
 export { default as Empty } from './components/empty';
 export * from './components/collapse';
 export * from './components/tabs';
+export { default as Upload } from './components/upload';

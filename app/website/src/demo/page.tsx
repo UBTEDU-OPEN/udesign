@@ -151,11 +151,10 @@ const inputMenus = [
   //   text: 'TreeSelect 树选择',
   //   disabled: true,
   // },
-  // {
-  //   name: 'upload',
-  //   text: 'Upload 上传',
-  //   disabled: true,
-  // },
+  {
+    name: 'upload',
+    text: 'Upload 上传',
+  },
 ];
 
 // 数据展示
