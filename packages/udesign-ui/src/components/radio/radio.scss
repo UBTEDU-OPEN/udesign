@@ -18,6 +18,9 @@ $module: ud-radio;
     display: inline-block;
     height: $radio-height;
     line-height: $radio-height;
+    &-disabled {
+      color: $radio-disabled-color;
+    }
   }
 }
 
@@ -35,42 +38,42 @@ $module: ud-radio;
     }
     &-normal {
       font-size: $radio-button-fontsize;
-      color: rgb(var(--ud-gray-12));
+      color: $radio-button-normal-color;
       letter-spacing: 0;
       text-align: center;
-      background: rgb(var(--ud-color-white));
-      border: 1px solid rgb(var(--ud-gray-3));
+      background: $radio-button-normal-background;
+      border: $radio-button-border;
       border-radius: $radio-button-border-radius;
       padding: $radio-button-inner-padding;
       cursor: pointer;
     }
     &-light {
       font-size: $radio-button-fontsize;
-      color: rgb(var(--ud-purple-6));
+      color: $radio-button-light-color;
       letter-spacing: 0;
       text-align: center;
-      background: rgb(var(--ud-purple-2));
-      border: 1px solid rgb(var(--ud-purple-6));
+      background: $radio-button-light-background;
+      border: $radio-button-light-border;
       border-radius: $radio-button-border-radius;
       padding: $radio-button-inner-padding;
       cursor: pointer;
     }
     &-normal-disabled {
       font-size: $radio-button-fontsize;
-      color: rgb(var(--ud-gray-6));
+      color: $radio-disabled-color;
       letter-spacing: 0;
-      background: rgb(var(--ud-gray-2));
-      border: 1px solid rgb(var(--ud-gray-3));
+      background: $radio-button-disabled-background;
+      border: $radio-button-border;
       border-radius: $radio-button-border-radius;
       padding: $radio-button-inner-padding;
       cursor: not-allowed;
     }
     &-light-disabled {
       font-size: $radio-button-fontsize;
-      color: rgb(var(--ud-gray-6));
+      color: $radio-disabled-color;
       letter-spacing: 0;
-      background: rgb(var(--ud-gray-2));
-      border: 1px solid rgb(var(--ud-gray-3));
+      background: $radio-button-disabled-background;
+      border: $radio-button-border;
       border-radius: $radio-button-border-radius;
       padding: $radio-button-inner-padding;
       cursor: not-allowed;

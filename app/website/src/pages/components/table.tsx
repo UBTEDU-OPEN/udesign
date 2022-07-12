@@ -1,15 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { Table, Radio, Tooltip, Pagination } from '@ubt/udesign-ui';
-import { Demo } from '../../../demo';
-import styles from './index.module.scss';
-
-interface DataType {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-  tags: string[];
-}
+import { Demo } from '../../demo';
 
 interface column {
   title: string;
@@ -141,7 +132,7 @@ export default function TablePage() {
   const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
   const [checked, setChecked] = useState<boolean>(false);
   return (
-    <div className={styles['grid-root']}>
+    <div>
       <Demo.Page title='Table 表格' description='展示行列数据。'>
         <Demo.Block
           title='何时使用'

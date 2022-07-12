@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rate, Space } from '@ubt/udesign-ui';
-import { Demo } from '../../../demo';
+import { Demo } from '../../demo';
 
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 

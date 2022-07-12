@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Select, Space, Tag } from '@ubt/udesign-ui';
-import { Demo } from '../../../demo';
-import styles from './index.module.scss';
+import { Demo } from '../../demo';
 
 export type CustomTagProps = {
   label?: React.ReactNode; // tag 显示内容
@@ -28,7 +27,7 @@ export default function SelectPage() {
     );
   };
   return (
-    <div className={styles['select-root']}>
+    <div>
       <Demo.Page title='Select 选择器' description='下拉选择器。'>
         <Demo.Block
           title='何时使用'
@@ -181,26 +180,32 @@ export default function SelectPage() {
           </div>
         </Demo.Block>
         <Demo.Block title='不同尺寸' description={<>三种尺寸的选择器</>}>
-          <div style={{ height: '200px' }}>
-            <Space>
-              <Select>
-                <Select.Option value='option1'>option1</Select.Option>
-                <Select.Option value='option2'>option2</Select.Option>
-                <Select.Option value='option3'>option3</Select.Option>
-              </Select>
-              <Select size='large'>
-                <Select.Option value='option1'>option1</Select.Option>
-                <Select.Option value='option2'>option2</Select.Option>
-                <Select.Option value='option3'>option3</Select.Option>
-              </Select>
-              <Select size='small'>
-                <Select.Option value='option1'>option1</Select.Option>
-                <Select.Option value='option2' disabled>
-                  option2
-                </Select.Option>
-                <Select.Option value='option3'>option3</Select.Option>
-              </Select>
-            </Space>
+          <div style={{ height: '150px' }}>
+            <Select size='small'>
+              <Select.Option value='option1'>option1</Select.Option>
+              <Select.Option value='option2' disabled>
+                option2
+              </Select.Option>
+              <Select.Option value='option3'>option3</Select.Option>
+            </Select>
+          </div>
+        </Demo.Block>
+        <Demo.Block>
+          <div style={{ height: '150px' }}>
+            <Select>
+              <Select.Option value='option1'>option1</Select.Option>
+              <Select.Option value='option2'>option2</Select.Option>
+              <Select.Option value='option3'>option3</Select.Option>
+            </Select>
+          </div>
+        </Demo.Block>
+        <Demo.Block>
+          <div style={{ height: '150px' }}>
+            <Select size='large'>
+              <Select.Option value='option1'>option1</Select.Option>
+              <Select.Option value='option2'>option2</Select.Option>
+              <Select.Option value='option3'>option3</Select.Option>
+            </Select>
           </div>
         </Demo.Block>
         <Demo.Block title='自定义状态' description={<>使用 status 为 Select 添加状态，可选 error 或者 warning。</>}>

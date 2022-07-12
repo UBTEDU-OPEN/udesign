@@ -11,7 +11,7 @@ $module: ud-toast;
   letter-spacing: 0;
   position: fixed;
   text-align: center;
-  
+  z-index: $toast-z-index;
   &-left {
     left: $toast-space;
     top: $toast-space;

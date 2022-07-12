@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, Row, Col, Divider } from '@ubt/udesign-ui';
-import { Demo } from '../../../demo';
-import styles from './index.module.scss';
+import { Button, Checkbox, Row, Col } from '@ubt/udesign-ui';
+import { Demo } from '../../demo';
 
 export default function CheckboxPage() {
   const [checked, setChecked] = useState<boolean>(false);
@@ -15,7 +14,7 @@ export default function CheckboxPage() {
     { label: 'C', value: 'C' },
   ];
   return (
-    <div className={styles['checkbox-root']}>
+    <div>
       <Demo.Page
         title='Checkbox 复选框'
         description={`在一组可选项中进行多项选择时；
@@ -39,11 +38,13 @@ export default function CheckboxPage() {
           </Checkbox>
         </Demo.Block>
         <Demo.Block title='受控组件' description='组件是否选中完全取决于传入的 checked 值，配合 onChange 回调函数使用'>
+          <div className='mb-4'>
+            <Button onClick={() => setChecked(!checked)}>{checked ? 'unchecked' : 'checked'}</Button>
+            <Button onClick={() => setDisabled(!disabled)}>{disabled ? 'enable' : 'disable'}</Button>
+          </div>
           <Checkbox checked={checked} disabled={disabled} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setChecked((event.nativeEvent.target as HTMLInputElement)?.checked)}>
             复选框
           </Checkbox>
-          <Button onClick={() => setChecked(!checked)}>{checked ? 'unchecked' : 'checked'}</Button>
-          <Button onClick={() => setDisabled(!disabled)}>{disabled ? 'enable' : 'disable'}</Button>
         </Demo.Block>
         <Demo.Block title='复选框组' description='通过在 CheckboxGroup 内部放置 Checkbox 元素，可以声明 Checkbox 组'>
           <Checkbox.Group
@@ -64,9 +65,7 @@ export default function CheckboxPage() {
         </Demo.Block>
         <Demo.Block title='复选框组（数组方式）' description='复选框组可以通过 options 属性生成 Checkbox。'>
           <Checkbox.Group options={['A', 'B', 'C']} defaultValue={['A', 'B', 'C']} name='array1' />
-          <Divider />
           <Checkbox.Group options={['A', 'B', 'C']} name='array2' />
-          <Divider />
           <Checkbox.Group options={optionsWithDisabled} defaultValue={['A']} name='array3' disabled />
         </Demo.Block>
         <Demo.Block title='全选' description='在实现全选效果时，你可能会用到 indeterminate 属性。'>
@@ -105,7 +104,7 @@ export default function CheckboxPage() {
               console.log(checkedValue, 'checkedValue');
             }}
           >
-            <div className={'gridstyle'}>
+            <div style={{ width: '100%' }}>
               <Row>
                 <Col span={8}>
                   <Checkbox value='A'>A</Checkbox>
@@ -119,14 +118,15 @@ export default function CheckboxPage() {
               </Row>
             </div>
           </Checkbox.Group>
-          <Divider />
+        </Demo.Block>
+        <Demo.Block>
           <Checkbox.Group
             name='grid2'
             onChange={(checkedValue: string[]) => {
               console.log(checkedValue, 'checkedValue');
             }}
           >
-            <div className={'gridstyle'}>
+            <div style={{ width: '100%' }}>
               <Row>
                 <Col span={6}>
                   <Checkbox value='A'>A</Checkbox>
