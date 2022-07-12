@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
