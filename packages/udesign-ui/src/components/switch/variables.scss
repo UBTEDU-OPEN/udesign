@@ -1,7 +1,7 @@
 
 $switch-color-primary-checked: var(--ud-switch-color-primary, var(--ud-color-primary)); // 默认态开关开启主要色
 $switch-color-primary-light-checked: var(--ud-switch-color-primary-light, var(--ud-color-primary-light)); // 默认态开关开启背景色
-$switch-color-primary-unchecked: var(--switch-color-primary-unchecked, rgba(var(--ud-gray-5))); // 默认态开关关闭主要色
+$switch-color-primary-unchecked: var(--switch-color-primary-unchecked, rgba(var(--ud-gray-6))); // 默认态开关关闭主要色
 $switch-color-primary-light-unchecked: var(--switch-color-primary-light-unchecked, rgba(var(--ud-gray-3))); // 默认态开关关闭背景色
 
 $switch-font-size-small: var(--switch-font-size-small, 12px); // 开关文字字号-小

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Collapse } from '@ubt/udesign-ui';
-import { CaretDownOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 
 export default function CollapsePage() {
