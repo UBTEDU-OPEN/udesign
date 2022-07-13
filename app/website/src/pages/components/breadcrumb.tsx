@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Space } from '@ubt/udesign-ui';
-import { SettingFilled } from '@ubt/udesign-icons';
+import { CopyOutlined, IdcardOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 
 export default function BreadcrumbPage() {
@@ -39,11 +39,11 @@ export default function BreadcrumbPage() {
           <Space size='large'>
             <Breadcrumb separator='\'>
               <Breadcrumb.Item>
-                <SettingFilled />
+                <CopyOutlined />
               </Breadcrumb.Item>
               <Breadcrumb.Item href=''>
-                <SettingFilled />
-                Application Center
+                <IdcardOutlined style={{ marginRight: '5px' }} />
+                <span> Application Center</span>
               </Breadcrumb.Item>
               <Breadcrumb.Item href=''>Application List</Breadcrumb.Item>
               <Breadcrumb.Item href=''>An Application</Breadcrumb.Item>
