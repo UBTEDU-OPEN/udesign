@@ -1,0 +1,7 @@
+$layout-transition-duration: var(--ud-layout-transition-duration, 0.2s); // 侧边栏收缩过度时间
+$layout-transform-rotate: var(--ud-layout-transform-rotate, rotateY(180deg)); // 侧边栏底部图标收缩时旋转的角度
+$layout-icon-size: var(--ud-layout-icon-size, 32px); // 侧边栏底部图标大小-默认
+$layout-icon-color: var(--ud-layout-icon-color, #fff); // 侧边栏底部图标颜色
+$layout-special-trigger-size: var(--ud-layout-special-trigger, 32px); // 自定义触发器大小-默认
+$layout-special-trigger-top: var(--ud-layout-special-top, 0); // 自定义触发器距顶部位置-默认
+$layout-special-trigger-left: var(--ud-layout-special-left, 100%); // 自定义触发器距左侧位置-默认

@@ -5,3 +5,10 @@ $height-control-small: 32px; // 表单项高度 - 小尺寸
 $height-control-middle: 42px; // 表单项高度 - 中尺寸
 $height-control-large: 52px; // 表单项高度 - 大尺寸
 $border-width-control: 1px; // 描边宽度 - 默认
+
+$breakpoint-xs: 480px; // 屏幕宽度-超小
+$breakpoint-sm: 576px; // 屏幕宽度-小
+$breakpoint-md: 768px; // 屏幕宽度-中等
+$breakpoint-lg: 992px; // 屏幕宽度-大
+$breakpoint-xl: 1200px; // 屏幕宽度-超大
+$breakpoint-xxl: 1600px; // 屏幕宽度-特大
