@@ -1,5 +1,6 @@
 import React from 'react';
 import { Rate, Space } from '@ubt/udesign-ui';
+import { SmileOutlined, HeartFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
@@ -37,10 +38,11 @@ export default function RadioPage() {
             <Rate character={'6'} count={6} />{' '}
           </Space>
           <Space>
-            <Rate character={'A'} />
+            <Rate character={<SmileOutlined />} activeColor='#1A9BFF' allowHalf />
           </Space>
+
           <Space>
-            <Rate character={'Z'} />
+            <Rate character={<HeartFilled />} activeColor='#FF493F' allowHalf />
           </Space>
           <Space>
             <Rate character={'好'} allowHalf />

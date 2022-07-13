@@ -21,7 +21,7 @@ export default function SelectPage() {
   const tagRender = (CustomTagProps: CustomTagProps) => {
     const { label, value, closeable, onClose } = CustomTagProps;
     return (
-      <Tag value={value} closeable={closeable} onClose={onClose}>
+      <Tag value={value} closeable={closeable} onClose={onClose} color={value}>
         {label}
       </Tag>
     );
@@ -113,20 +113,26 @@ export default function SelectPage() {
               <Select mode='multiple' style={{ width: '100%' }} allowClear maxTagCount={2} placeholder='请选择'>
                 <Select.Option value='option1'>
                   <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <img src='https://images.669pic.com/element_min_new_pic/15/7/96/85/73f3ae6a7b0b9346ac8f3f013913c107.png' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
-                    <div style={{ display: 'flex', alignItems: 'center' }}>option1(101)</div>
+                    <img src='/icon_cn.svg' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
+                    <div style={{ display: 'flex', alignItems: 'center' }}>中国</div>
                   </div>
                 </Select.Option>
                 <Select.Option value='option2'>
                   <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <img src='https://images.669pic.com/element_min_new_pic/15/7/96/85/73f3ae6a7b0b9346ac8f3f013913c107.png' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
-                    <div style={{ display: 'flex', alignItems: 'center' }}>option2(101)</div>
+                    <img src='/icon_us.svg' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
+                    <div style={{ display: 'flex', alignItems: 'center' }}>美国</div>
                   </div>
                 </Select.Option>
                 <Select.Option value='option3'>
                   <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <img src='https://images.669pic.com/element_min_new_pic/15/7/96/85/73f3ae6a7b0b9346ac8f3f013913c107.png' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
-                    <div style={{ display: 'flex', alignItems: 'center' }}>option3(101)</div>
+                    <img src='/icon_gl.svg' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
+                    <div style={{ display: 'flex', alignItems: 'center' }}>全球</div>
+                  </div>
+                </Select.Option>
+                <Select.Option value='option4'>
+                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                    <img src='/icon_bl.svg' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
+                    <div style={{ display: 'flex', alignItems: 'center' }}>波兰</div>
                   </div>
                 </Select.Option>
               </Select>

@@ -229,7 +229,7 @@ export const Select = ({ children, className, style, size, value, onChange, disa
             {mode !== 'multiple' ? (
               <SingleBar searchValue={searchValue} setSearchValue={setSearchValue} visible={visible} showSearch={showSearch} options={getOptions()} innerDefaultValue={innerDefaultValue} placeholder={placeholder} />
             ) : (
-              <MultiBar searchValue={searchValue} setSearchValue={setSearchValue} maxTagCount={maxTagCount} selectedList={selectedList} tagRender={tagRender} handleClose={handleClose} placeholder={placeholder} />
+              <MultiBar searchValue={searchValue} setSearchValue={setSearchValue} visible={visible} maxTagCount={maxTagCount} selectedList={selectedList} tagRender={tagRender} handleClose={handleClose} placeholder={placeholder} />
             )}
           </div>
           {visible ? renderOptions() : null}
