@@ -1,5 +1,6 @@
 import React, { useRef, useState, ReactNode } from 'react';
 import classNames from 'classnames';
+import { StarFilled } from '@ubt/udesign-icons';
 import Tooltip from '../tooltip';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
@@ -12,15 +13,16 @@ export type RateProps = {
   allowHalf?: boolean; // 是否允许半选
   defaultValue?: number; // 默认值
   value?: number; // 当前数，受控值
-  character?: string | ((index: number) => ReactNode); // 自定义字符
+  character?: ReactNode | ((index: number) => ReactNode); // 自定义字符
   tooltips?: string[]; // 自定义每项的提示信息
   disabled?: boolean; // 只读，无法进行鼠标交互
   onChange?: (value: number) => void; // 选择时的回调
   onHoverChange?: (value: number) => void; // 选择时的回调
+  activeColor?: string; // 高亮的颜色
 } & NativeProps;
 
 export const Rate = (props: RateProps) => {
-  const { count = 5, character = '★', style, onHoverChange, onChange, allowHalf, tooltips = [], disabled = false, defaultValue, value } = props;
+  const { count = 5, character = <StarFilled />, style, onHoverChange, onChange, allowHalf, tooltips = [], disabled = false, defaultValue, value, activeColor } = props;
   const cls = classNames(prefixCls);
   const [hoverValue, SetHoverValue] = useState<number>(-1);
   const [cleanedValue, setCleanedValue] = useState<number>(defaultValue || value || -1);
@@ -64,6 +66,18 @@ export const Rate = (props: RateProps) => {
       [`${prefixCls}-item-half`]: index < cleanedValue || index < hoverValue,
       [`${prefixCls}-item-full`]: index < cleanedValue - 0.5 || index < hoverValue - 0.5,
     });
+    const halfStyle =
+      index < cleanedValue || index < hoverValue
+        ? {
+            color: activeColor,
+          }
+        : {};
+    const fullStyle =
+      index < cleanedValue - 0.5 || index < hoverValue - 0.5
+        ? {
+            color: activeColor,
+          }
+        : {};
     return (
       <div
         className={itemCls}
@@ -75,8 +89,12 @@ export const Rate = (props: RateProps) => {
         }}
         ref={refs[`ele${index}`]}
       >
-        <div className={`${prefixCls}-item-first`}>{typeof character === 'function' ? character(index) : character}</div>
-        <div className={`${prefixCls}-item-second`}>{typeof character === 'function' ? character(index) : character}</div>
+        <div className={`${prefixCls}-item-first`} style={halfStyle}>
+          {typeof character === 'function' ? character(index) : character}
+        </div>
+        <div className={`${prefixCls}-item-second`} style={fullStyle}>
+          {typeof character === 'function' ? character(index) : character}
+        </div>
       </div>
     );
   };

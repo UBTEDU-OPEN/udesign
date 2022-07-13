@@ -1,4 +1,4 @@
-import React, { useContext, ReactNode } from 'react';
+import React, { useContext, ReactNode, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
@@ -14,6 +14,7 @@ export type MultiBarProps = {
   tagRender?: (CustomTagProps: CustomTagProps) => ReactNode; // 自定义tag 方法
   handleClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => void; // tag 关闭的回调函数
   placeholder?: string; // 选择框默认文本
+  visible?: boolean; // 是否展开列表
 } & NativeProps;
 
 export type CustomTagProps = {
@@ -26,8 +27,9 @@ export type CustomTagProps = {
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
-export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, selectedList, tagRender, handleClose, placeholder }: MultiBarProps) => {
+export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, selectedList, tagRender, handleClose, placeholder, visible }: MultiBarProps) => {
   const context = useContext(SelectContext);
+  const inputRef = useRef<HTMLInputElement>(null);
   const defautTagRender = (CustomTagProps: CustomTagProps) => (
     <Tag
       closeable={!context.disabled}
@@ -42,7 +44,7 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
   );
 
   const renderBar = () => {
-    if (selectedList.length === 0) return <div className={`${prefixCls}-multi-placeholder`}>{placeholder}</div>;
+    if (selectedList.length === 0 && !visible) return <div className={`${prefixCls}-multi-placeholder`}>{placeholder}</div>;
     if (maxTagCount) {
       return (
         <React.Fragment>
@@ -56,6 +58,10 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
     return selectedList.map((item: OptionItem) => <React.Fragment key={item.value}>{tagRender ? tagRender({ onClose: handleClose, ...item }) : defautTagRender({ onClose: handleClose, ...item })}</React.Fragment>);
   };
 
+  useEffect(() => {
+    visible && inputRef.current?.focus();
+  }, [visible]);
+
   return (
     <>
       <div className={`${prefixCls}-multi-box`}>
@@ -66,9 +72,6 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
           })}
         >
           {renderBar()}
-          {/* {maxTagCount && selectedList.slice(0, maxTagCount).map((item: OptionItem) => <React.Fragment key={item.value}>{tagRender ? tagRender({ onClose: handleClose, ...item }) : defautTagRender({ onClose: handleClose, ...item })}</React.Fragment>)}
-          {!maxTagCount && selectedList.map((item: OptionItem) => <React.Fragment key={item.value}>{tagRender ? tagRender({ onClose: handleClose, ...item }) : defautTagRender({ onClose: handleClose, ...item })}</React.Fragment>)}
-          {maxTagCount && selectedList.length > maxTagCount ? <Tag>+ {selectedList.length - maxTagCount}</Tag> : null} */}
         </div>
 
         {!context.disabled ? (
@@ -79,6 +82,7 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
             })}
             value={searchValue}
             type='text'
+            ref={inputRef}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const value = event.target.value;
               setSearchValue(value);

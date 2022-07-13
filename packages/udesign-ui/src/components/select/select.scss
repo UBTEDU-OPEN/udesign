@@ -90,6 +90,10 @@ $module: ud-select;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      &:hover {
+        background: $select-item-background-hover;
+        color: $select-item-color-hover;
+      }
     }
     &-multi {
       padding: $select-item-padding;
@@ -101,6 +105,10 @@ $module: ud-select;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
+      &:hover {
+        background: $select-item-background-hover;
+        color: $select-item-color-hover;
+      }
       &-text {
         flex-grow: 1;
       }
@@ -141,6 +149,7 @@ $module: ud-select;
     background: transparent;
     outline: none;
     width: 6px;
+    height: 100%;
     padding: 0 1px;
     flex-grow: 1;
     padding-left: $select-padding-left;
