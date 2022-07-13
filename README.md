@@ -37,6 +37,7 @@ yarn dev
 
 ```bash
 cd packages/udesign-ui
+# 目前需要临时更改package.json里面的版本号（但不能提交到git库）
 yarn deploy
 ```
 

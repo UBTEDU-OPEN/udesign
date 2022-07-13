@@ -59,6 +59,7 @@ const getTranslateStyle = (placement: Placement): React.CSSProperties => {
 export type TooltipProps = {
   prefixCls?: string; // 接收上层组件的 className 改写，比如 Dropdown 组件
   showArrow?: boolean; // 是否显示箭头
+  clickToHide?: boolean; //	在弹出层内点击时是否自动关闭弹出层
   content?: React.ReactNode; // 弹出层的内容
   placement?: Placement; // 弹出层的位置
   trigger?: Trigger; // 触发下拉的行为, 移动端不支持 hover
@@ -78,6 +79,7 @@ const getDefaultContainer = () => document.body;
 export const Tooltip = ({
   prefixCls = prefix,
   showArrow = true,
+  clickToHide,
   content,
   placement = 'top',
   trigger = 'hover',
@@ -97,7 +99,7 @@ export const Tooltip = ({
   const triggerRef = useRef<HTMLElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
 
-  // controled
+  // controlled
   const [visible, setVisible] = usePropsValue({
     value: restProps.visible,
     defaultValue: defaultVisible,
@@ -204,28 +206,17 @@ export const Tooltip = ({
 
         portalEventSet = { ...triggerEventSet };
         portalEventSet.onMouseEnter = () => {
-          // setCache('isClickToHide', false);
           delayShow();
         };
-
-        // if (getProp('clickToHide')) {
-        //   portalEventSet.onClick = () => {
-        //     // setCache('isClickToHide', true);
-        //     hide();
-        //   };
-
-        //   portalEventSet.onMouseEnter = () => {
-        //     if (getCache('isClickToHide')) {
-        //       return;
-        //     }
-
-        //     delayShow();
-        //   };
-        // }
+        if (clickToHide) {
+          portalEventSet.onClick = () => {
+            hide();
+          };
+        }
         break;
       case 'custom':
         // when trigger type is 'custom', no need to bind eventHandler
-        // show/hide completely depond on props.visible which change by user
+        // show/hide completely depend on props.visible which change by user
         break;
       default:
         break;

@@ -37,8 +37,8 @@ export default function TooltipPage() {
           <br />
           <br />
           <Tooltip content={content} trigger='click' visible={visible}>
-            <Button onClick={() => setVisible(true)}>Controled show</Button>
-            <Button onClick={() => setVisible(false)}>Controled hide</Button>
+            <Button onClick={() => setVisible(true)}>Controlled show</Button>
+            <Button onClick={() => setVisible(false)}>Controlled hide</Button>
           </Tooltip>
         </Demo.Block>
         <Demo.Block title='弹出位置' description='支持弹出层在不同方向展示，共有 12 个方向'>
