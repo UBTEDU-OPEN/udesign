@@ -1,20 +1,24 @@
+@import './variables.scss';
+
 $module: ud-breadcrumb;
 
 .#{$module} {
-    --color: var(--ud-breadcrumb-color,rgb(var(--ud-gray-8)));
-    --color-hover: var( --ud-breadcrumb-color-hover, var(--ud-color-primary));
-    --color-selected: var(--ud-breadcrumb-color-selected, rgb(var(--ud-gray-12)));
-    --font-size: var(--ud-breadcrumb-font-size, 16px);
-    
-    font-size: var(--font-size);
 
+    
+    font-size: $breadcrumb-font-size;
+    display: flex;
+    align-items: center;
+
+  
     &-item > a ,  &-item > span{
-        color: var(--color);
+        color: $breadcrumb-color; 
+        display: flex;
+        align-items: center;
     }
 
     &-item:last-child:hover span,
     &-item:last-child:hover>a {
-        color: var(--color-hover);
+        color: $breadcrumb-color-hover;
         cursor: pointer;
     }
 
@@ -23,10 +27,11 @@ $module: ud-breadcrumb;
     }
 
     &-last {
-        color: var(--color-selected);
+        color: $breadcrumb-color-selected;
 
         a {
             color: inherit;
+           
         }
     }
 
@@ -34,7 +39,11 @@ $module: ud-breadcrumb;
         display: none;
     }
     &-separator {
-        margin: 0 5px 0 10px;
-        color: var(--color);
+        margin: $breadcrumb-separator-margin;
+        color: $breadcrumb-color;
+    }
+    &-wrapper{
+        display: flex;
+        flex-wrap: nowrap;
     }
 }

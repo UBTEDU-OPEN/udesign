@@ -1,0 +1,63 @@
+@import '../../global/theme.scss';
+
+$typography-color: var(--ud-typography-color, rgb(var(--ud-gray-12))); // 字体颜色-默认
+$typography-color-icon: var(--ud-typography-color-icon, var(--ud-color-primary)); // 图标颜色-默认
+$typography-color-copyabled: var(--ud-typography-color-copyabled, var(--ud-color-success)); // 复制图标颜色-点击
+
+$typography-border-radius: var(--ud-typography-border-radius, var(--ud-border-radius-small)); // 边框圆角-默认
+$typography-border-radius-edit: var(--ud-typography-border-radius-edit, 25px);  // 边框圆角-编辑
+
+$typography-font-size-h1: var(--ud-typography-font-size-h1, 38px); // 1级标题-字体
+$typography-font-size-h2: var(--ud-typography-font-size-h2, 30px); // 2级标题-字体
+$typography-font-size-h3: var(--ud-typography-font-size-h3, 24px); // 3级标题-字体
+$typography-font-size-h4: var(--ud-typography-font-size-h4, 20px); // 4级标题-字体
+$typography-font-size-h5: var(--ud-typography-font-size-h5, 16px); // 5级标题-字体
+
+$typography-line-height-h1: var(--ud-typography-line-height-h1, var(--ud-font-size-header-5)); // 1级标题-行高
+$typography-line-height-h2: var(--ud-typography-line-height-h2, var(--ud-font-size-header-4)); // 2级标题-行高
+$typography-line-height-h3: var(--ud-typography-line-height-h3, var(--ud-font-size-header-3)); // 3级标题-行高
+$typography-line-height-h4: var(--ud-typography-line-height-h4, var(--ud-font-size-header-2)); // 4级标题-行高
+$typography-line-height-h5: var(--ud-typography-line-height-h5, var(--ud-font-size-header-1)); // 5级标题-行高
+
+$typography-margin-top-h1: var(--ud-typography-margin-top-h1, 1.5em); // 1级标题-外边距-上
+$typography-margin-top-h2: var(--ud-typography-margin-top-h2, 1.5em); // 2级标题-外边距-上
+$typography-margin-top-h3: var(--ud-typography-margin-top-h3, 1.5em); // 3级标题-外边距-上
+$typography-margin-top-h4: var(--ud-typography-margin-top-h4, 1.5em); // 4级标题-外边距-上
+$typography-margin-top-h5: var(--ud-typography-margin-top-h5, 1.5em); // 5级标题-外边距-上
+
+$typography-margin-bottom-h1: var(--ud-typography-margin-bottom-h1, 0.5em); // 1级标题-外边距-下
+$typography-margin-bottom-h2: var(--ud-typography-margin-bottom-h2, 0.5em); // 2级标题-外边距-下
+$typography-margin-bottom-h3: var(--ud-typography-margin-bottom-h3, 0.5em); // 3级标题-外边距-下
+$typography-margin-bottom-h4: var(--ud-typography-margin-bottom-h4, 0.5em); // 4级标题-外边距-下
+$typography-margin-bottom-h5: var(--ud-typography-margin-bottom-h5, 0.5em); // 5级标题-外边距-下
+
+$typography-text-underline: var(--ud-typography-text-underline, underline); // 字体样式-下划线
+$typography-text-del: var(--ud-typography-text-del, line-through); // 字体样式-删除线
+$typography-font-italic: var(--ud-typography-font-italic, italic); // 字体样式-斜体
+$typography-text-link: var(--ud-typography-text-link, underline); // 字体样式-链接
+$typography-color-link: var(--ud-typography-color-link, var(--ud-color-primary)); // 字体颜色-链接
+$typography-font-strong: var(--ud-typography-font-strong, bold); // 字体样式-加粗
+$typography-background-mark: var(--ud-typography-background-mark, #d8ddf9); // 字体样式-标记
+
+$typography-background-code: var(--ud-typography-background-code, #f2f4fa); // 文本样式- code 背景颜色
+$typography-border-color-code: var(--ud-typography-border-color-code, rgba(100, 100, 100, 0.2)); // 文本样式- code 边框颜色
+$typography-border-width-code: var(--ud-typography-border-width-code, 1px); // 文本样式- code 边框宽度
+$typography-border-style-code: var(--ud-typography-border-style-code, solid); // 文本样式- code 边框样式
+
+$typography-background-keyboard: var(--ud-typography-background-keyboard, #eeeeee); // 文本样式- code 背景颜色
+$typography-border-color-keyboard: var(--ud-typography-border-color-keyboard, var(--ud-color-code-border));  // 文本样式- keyboard 边框颜色
+$typography-border-width-keyboard: var(--ud-typography-border-width-keyboard, 1px); // 文本样式- keyboard 边框颜色
+$typography-border-style-keyboard: var(--ud-typography-border-style-keyboard, solid); // 文本样式- keyboard 边框宽度
+$typography-box-shadow-keyboard: var(--ud-typography-box-shadow-keyboard, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.5)); // 文本样式- keyboard 边框阴影
+$typography-border-radius-keyboard: var(--ud-typography-border-radius-keyboard, 3px); // 文本样式- code 边框圆角
+
+$typography-font-size: var(--ud-text-size, 16px); // 字体大小-默认
+
+$typography-color-secondary: var( --ud-typography-color-secondary, rgb(var(--ud-gray-6))); // 字体颜色-成功
+$typography-color-success: var( --ud-typography-color-success, var(--ud-color-success)); // 字体颜色-成功
+$typography-color-warning: var( --ud-typography-color-warning, var(--ud-color-warning)); // 字体颜色-警告
+$typography-color-danger: var( --ud-typography-color-danger, var(--ud-color-danger)); // 字体颜色-危险
+$typography-color-disabled: var( --ud-typography-color-disabled, var(--ud-color-disabled)); // 字体颜色-禁用
+
+
+$typography-padding: var( --ud-typography-padding , 0 5px); // 内边距-默认

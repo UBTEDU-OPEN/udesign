@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Typography, Breadcrumb, Menu } from '@ubt/udesign-ui';
-import { RightOutlined } from '@ubt/udesign-icons';
+import { RightOutlined, LeftOutlined } from '@ubt/udesign-icons';
 import styles from './index.module.scss';
 import { Demo } from '../../../demo';
 
@@ -229,7 +229,7 @@ export default function LayoutPage() {
           }
         >
           <Layout hasSider className='sider-layout'>
-            <Sider onCollapse={onbreak} collapsedWidth={100} collapsible trigger={<RightOutlined />} style={{ display: 'flex', flexDirection: 'column' }}>
+            <Sider onCollapse={onbreak} collapsedWidth={100} collapsible trigger={<LeftOutlined />} style={{ display: 'flex', flexDirection: 'column' }}>
               <div className='logo' style={{ margin: '12px 25px 0 25px' }}></div>
               <div style={{ flexGrow: '1', textAlign: 'center', lineHeight: '200px', color: '#fff', overflow: 'hidden' }}>menu</div>
             </Sider>

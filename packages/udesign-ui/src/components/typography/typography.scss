@@ -1,177 +1,127 @@
+@import './variables.scss';
+
 $module: ud-typography;
 
 .#{$module} {
 
-   --color: var(--ud-typography-color, rgb(var(--ud-gray-12)));
-   --color-icon: var(--ud-typography-color-icon, var(--ud-color-primary));
-   --color-copyabled: var(--ud-typography-color-copyabled, var(--ud-color-success));
-
-   --border-radius: var(--ud-typography-border-radius, var(--ud-border-radius-small));
-   --border-radius-edit: var(--ud-typography-border-radius-edit, 25px);
-
-   --font-size-h1:var(--ud-typography-font-size-h1, 38px);
-   --font-size-h2:var(--ud-typography-font-size-h2, 30px);
-   --font-size-h3:var(--ud-typography-font-size-h3, 24px);
-   --font-size-h4:var(--ud-typography-font-size-h4, 20px);
-   --font-size-h5:var(--ud-typography-font-size-h5, 16px);
-
-   --line-height-h1:var(--ud-typography-line-height-h1, var(--ud-font-size-header-5));
-   --line-height-h2:var(--ud-typography-line-height-h2, var(--ud-font-size-header-4));
-   --line-height-h3:var(--ud-typography-line-height-h3, var(--ud-font-size-header-3));
-   --line-height-h4:var(--ud-typography-line-height-h4, var(--ud-font-size-header-2));
-   --line-height-h5:var(--ud-typography-line-height-h5, var(--ud-font-size-header-1));
-
-   --margin-top-h1:var(--ud-typography-margin-top-h1, 1.5em);
-   --margin-top-h2:var(--ud-typography-margin-top-h2, 1.5em);
-   --margin-top-h3:var(--ud-typography-margin-top-h3, 1.5em);
-   --margin-top-h4:var(--ud-typography-margin-top-h4, 1.5em);
-   --margin-top-h5:var(--ud-typography-margin-top-h5, 1.5em);
-
-   --margin-bottom-h1:var(--ud-typography-margin-bottom-h1, 0.5em);
-   --margin-bottom-h2:var(--ud-typography-margin-bottom-h2, 0.5em);
-   --margin-bottom-h3:var(--ud-typography-margin-bottom-h3, 0.5em);
-   --margin-bottom-h4:var(--ud-typography-margin-bottom-h4, 0.5em);
-   --margin-bottom-h5:var(--ud-typography-margin-bottom-h5, 0.5em);
-
-   --color-secondary: var( --ud-typography-color-secondary, rgb(var(--ud-gray-6)));
-   --color-success: var( --ud-typography-color-success, var(--ud-color-success));
-   --color-warning: var( --ud-typography-color-warning, var(--ud-color-warning));
-   --color-danger: var( --ud-typography-color-danger, var(--ud-color-danger));
-   --color-disabled: var( --ud-typography-color-disabled, rgb(var(--ud-gray-4)));
-
-   --text-underline: var(--ud-typography-text-underline, underline);
-   --text-del: var(--ud-typography-text-del, line-through);
-   --font-italic: var(--ud-typography-font-italic, italic);
-   --text-link: var(--ud-typography-text-link, underline);
-   --color-link: var(--ud-typography-color-link, var(--ud-color-primary));
-   --font-strong: var(--ud-typography-font-strong, bold);
-
-   --background-mark: var(--ud-typography-background-mark, #D8DDF9);
-
-   --background-code: var(--ud-typography-background-code, #F2F4FA);
-   --border-color-code: var(--ud-typography-border-color-code, rgba(100,100,100,.2));
-   --border-width-code: var(--ud-typography-border-width-code, 1px);
-   --border-style-code: var(--ud-typography-border-style-code, solid);
-
-   --background-keyboard: var(--ud-typography-background-keyboard, #EEEEEE);
-   --border-color-keyboard: var(--ud-typography-border-color-keyboard,var(--ud-color-code-border));
-   --border-width-keyboard: var(--ud-typography-border-width-keyboard, 1px);
-   --border-style-keyboard: var(--ud-typography-border-style-keyboard, solid);
-   --box-shadow-keyboard: var(--ud-typography-box-shadow-keyboard, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.50));
-   --border-radius-keyboard: var(--ud-typography-border-radius-keyboard, 3px);
-
    display: block;
-   --font-size: var(--ud-text-size, 16px);
-   --px-5: 0;
-   --px-10: 5px;
+
    position: relative;
 
-   font-size: var(--font-size);
-   color: var(--color);
+   font-size: $typography-font-size;
+   color: $typography-color;
 
    &-title-h1 {
-      font-size: var(--font-size-h1);
-      line-height: var(--line-height-h1);
-      margin-top: var(--margin-top-h1);
-      margin-bottom: var(--margin-bottom-h1);
+      font-size: $typography-font-size-h1;
+      line-height: $typography-line-height-h1;
+      margin-top: $typography-margin-top-h1;
+      margin-bottom: $typography-margin-bottom-h1;
    }
 
    &-title-h2 {
-      font-size: var(--font-size-h2);
-      line-height: var(--line-height-h2);
-      margin-top: var(--margin-top-h2);
-      margin-bottom: var(--margin-bottom-h2);
+      font-size: $typography-font-size-h2;
+      line-height: $typography-line-height-h2;
+      margin-top: $typography-margin-top-h2;
+      margin-bottom: $typography-margin-bottom-h2;
    }
 
    &-title-h3 {
-      font-size: var(--font-size-h3);
-      line-height: var(--line-height-h3);
-      margin-top: var(--margin-top-h3);
-      margin-bottom: var(--margin-bottom-h3);
+      font-size: $typography-font-size-h3;
+      line-height: $typography-line-height-h3;
+      margin-top: $typography-margin-top-h3;
+      margin-bottom:$typography-margin-bottom-h3;
    }
 
    &-title-h4 {
-      font-size: var(--font-size-h4);
-      line-height: var(--line-height-h4);
-      margin-top: var(--margin-top-h4);
-      margin-bottom: var(--margin-bottom-h4);
+      font-size: $typography-font-size-h4;
+      line-height: $typography-line-height-h4;
+      margin-top: $typography-margin-top-h4;
+      margin-bottom: $typography-margin-bottom-h4;
    }
 
    &-title-h5 {
-      font-size: var(--font-size-5);
-      line-height: var(--line-height-h5);
-      margin-top: var(--margin-top-h5);
-      margin-bottom: var(--margin-bottom-h5);
+      font-size: $typography-font-size-h5;
+      line-height: $typography-line-height-h5;
+      margin-top: $typography-margin-top-h5;
+      margin-bottom: $typography-margin-bottom-h5;
    }
 
    &-text-secondary {
-      color: var(--color-secondary);
+      color: $typography-color-secondary;
 
    }
 
    &-text-success {
-      color: var(--ud-color-success);
+      color: $typography-color-success;
    }
 
    &-text-warning {
-      color: var(--ud-color-warning);
+      color: $typography-color-warning;
    }
 
    &-text-danger {
-      color: var(--ud-color-danger)
+      color: $typography-color-danger
    }
 
    &-text-disabled {
-      color: var(--color-disabled);
+      color: $typography-color-disabled;
    }
 
    &-text-mark {
       display: inline-block;
-      background-color: var(--background-mark);
-      padding: var(--px-5) var(--px-10);
+      background-color: $typography-background-mark;
+      padding: $typography-padding;
    }
 
    &-text-code {
       display: inline-block;
-      padding: var(--px-5) var(--px-10);
-      border-radius: var(--border-radius);
-      background: var(--background-code);
-      border: var(--border-width-code) var(--border-style-code) var(--border-color-code);
+      padding: $typography-padding;
+      border-radius: $typography-border-radius;
+      background: $typography-background-code;
+      border: $typography-border-width-code $typography-border-style-code $typography-border-color-code;
       line-height: 18px;
-   }
+      -webkit-border-radius: $typography-border-radius;
+      -moz-border-radius: $typography-border-radius;
+      -ms-border-radius: $typography-border-radius;
+      -o-border-radius: $typography-border-radius;
+}
 
    &-text-keyboard {
       display: inline-block;
-      padding: var(--px-5) var(--px-10);
-      background: var(--background-keyboard);
-      border: var(--border-width-keyboard) var(--border-style-keyboard) var(--border-color-keyboard);
-      box-shadow: var(--box-shadow-keyboard);
-      border-radius: var(--border-radius-keyboard);
+      padding: $typography-padding;
+      background: $typography-background-keyboard;
+      border: $typography-border-width-keyboard $typography-border-style-keyboard $typography-border-color-keyboard;
+      box-shadow: $typography-box-shadow-keyboard;
+      border-radius: $typography-border-radius-keyboard;
       line-height: 20px;
-   }
+      -webkit-border-radius: $typography-border-radius-keyboard;
+      -moz-border-radius: $typography-border-radius-keyboard;
+      -ms-border-radius: $typography-border-radius-keyboard;
+      -o-border-radius: $typography-border-radius-keyboard;
+}
 
    &-text-underline {
-      color: var(--color);
-      text-decoration: var(--text-underline);
+      color: $typography-color;
+      text-decoration: $typography-text-underline;
    }
 
    &-text-del {
-      color: var(--color);
-      text-decoration: var(--text-del);
+      color: $typography-color;
+      text-decoration: $typography-text-del;
    }
 
    &-text-italic {
-      color: var(--color);
-      font-style: var(--font-italic);
+      color: $typography-color;
+      font-style: $typography-font-italic;
    }
 
    &-text-link {
-      color: var(--color-link);
-      text-decoration: var(--text-link);
+      color: $typography-color-link;
+      text-decoration: $typography-text-link;
    }
 
    &-text-strong {
-      font-weight: var(--font-strong);
+      font-weight: $typography-font-strong;
    }
 
    &-editable {
@@ -214,12 +164,16 @@ $module: ud-typography;
       margin-left: -10px;
       margin-top: -10px;
       width: 100%;
-      border-radius: var(--border-radius-edit);
-   }
+      border-radius: $typography-border-radius-edit;
+      -webkit-border-radius: $typography-border-radius-edit;
+      -moz-border-radius: $typography-border-radius-edit;
+      -ms-border-radius: $typography-border-radius-edit;
+      -o-border-radius: $typography-border-radius-edit;
+}
 
    &-editable-isShow-icon {
       margin-left: 5px;
-      color: var(--color-icon);
+      color: $typography-color-icon;
       cursor: pointer;
    }
 
@@ -228,7 +182,7 @@ $module: ud-typography;
       margin: 0 0 0 5px;
       position: relative;
       padding: 0;
-      color: var(--color-icon);
+      color: $typography-color-icon;
    }
 
    &-copy-icon {
@@ -236,7 +190,7 @@ $module: ud-typography;
    }
 
    &-copy-clicked {
-      color: var(--color-copyabled);
+      color: $typography-color-copyabled;
    }
 
    &-paragraph {
@@ -256,7 +210,7 @@ $module: ud-typography;
    }
 
    &-paragraph-ellipsis-symbol {
-      color: var(--ud-color-primary);
+      color: $typography-color;
       cursor: pointer;
       margin: 0;
       padding: 0;
