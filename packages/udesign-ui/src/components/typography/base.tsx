@@ -38,5 +38,6 @@ export interface EditableConfig {
   onStart?: () => void;
   onEnd?: () => void;
   onCancel?: () => void;
+  onChange?: () => void;
   autoSize?: { minRows?: number; maxRows?: number };
 }

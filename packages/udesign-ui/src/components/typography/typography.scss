@@ -3,237 +3,229 @@
 $module: ud-typography;
 
 .#{$module} {
+  display: block;
 
-   display: block;
+  position: relative;
 
-   position: relative;
+  font-size: $typography-font-size;
+  color: $typography-color;
 
-   font-size: $typography-font-size;
-   color: $typography-color;
+  &-title-h1 {
+    font-size: $typography-font-size-h1;
+    line-height: $typography-line-height-h1;
+    margin-top: $typography-margin-top-h1;
+    margin-bottom: $typography-margin-bottom-h1;
+  }
 
-   &-title-h1 {
-      font-size: $typography-font-size-h1;
-      line-height: $typography-line-height-h1;
-      margin-top: $typography-margin-top-h1;
-      margin-bottom: $typography-margin-bottom-h1;
-   }
+  &-title-h2 {
+    font-size: $typography-font-size-h2;
+    line-height: $typography-line-height-h2;
+    margin-top: $typography-margin-top-h2;
+    margin-bottom: $typography-margin-bottom-h2;
+  }
 
-   &-title-h2 {
-      font-size: $typography-font-size-h2;
-      line-height: $typography-line-height-h2;
-      margin-top: $typography-margin-top-h2;
-      margin-bottom: $typography-margin-bottom-h2;
-   }
+  &-title-h3 {
+    font-size: $typography-font-size-h3;
+    line-height: $typography-line-height-h3;
+    margin-top: $typography-margin-top-h3;
+    margin-bottom: $typography-margin-bottom-h3;
+  }
 
-   &-title-h3 {
-      font-size: $typography-font-size-h3;
-      line-height: $typography-line-height-h3;
-      margin-top: $typography-margin-top-h3;
-      margin-bottom:$typography-margin-bottom-h3;
-   }
+  &-title-h4 {
+    font-size: $typography-font-size-h4;
+    line-height: $typography-line-height-h4;
+    margin-top: $typography-margin-top-h4;
+    margin-bottom: $typography-margin-bottom-h4;
+  }
 
-   &-title-h4 {
-      font-size: $typography-font-size-h4;
-      line-height: $typography-line-height-h4;
-      margin-top: $typography-margin-top-h4;
-      margin-bottom: $typography-margin-bottom-h4;
-   }
+  &-title-h5 {
+    font-size: $typography-font-size-h5;
+    line-height: $typography-line-height-h5;
+    margin-top: $typography-margin-top-h5;
+    margin-bottom: $typography-margin-bottom-h5;
+  }
 
-   &-title-h5 {
-      font-size: $typography-font-size-h5;
-      line-height: $typography-line-height-h5;
-      margin-top: $typography-margin-top-h5;
-      margin-bottom: $typography-margin-bottom-h5;
-   }
+  &-text-secondary {
+    color: $typography-color-secondary;
+  }
 
-   &-text-secondary {
-      color: $typography-color-secondary;
+  &-text-success {
+    color: $typography-color-success;
+  }
 
-   }
+  &-text-warning {
+    color: $typography-color-warning;
+  }
 
-   &-text-success {
-      color: $typography-color-success;
-   }
+  &-text-danger {
+    color: $typography-color-danger;
+  }
 
-   &-text-warning {
-      color: $typography-color-warning;
-   }
+  &-text-disabled {
+    color: $typography-color-disabled;
+  }
 
-   &-text-danger {
-      color: $typography-color-danger
-   }
+  &-text-mark {
+    display: inline-block;
+    background-color: $typography-background-mark;
+    padding: $typography-padding;
+  }
 
-   &-text-disabled {
-      color: $typography-color-disabled;
-   }
+  &-text-code {
+    display: inline-block;
+    padding: $typography-padding;
+    border-radius: $typography-border-radius;
+    background: $typography-background-code;
+    border: $typography-border-width-code $typography-border-style-code $typography-border-color-code;
+    line-height: 18px;
+    -webkit-border-radius: $typography-border-radius;
+    -moz-border-radius: $typography-border-radius;
+    -ms-border-radius: $typography-border-radius;
+    -o-border-radius: $typography-border-radius;
+  }
 
-   &-text-mark {
-      display: inline-block;
-      background-color: $typography-background-mark;
-      padding: $typography-padding;
-   }
+  &-text-keyboard {
+    display: inline-block;
+    padding: $typography-padding;
+    background: $typography-background-keyboard;
+    border: $typography-border-width-keyboard $typography-border-style-keyboard $typography-border-color-keyboard;
+    box-shadow: $typography-box-shadow-keyboard;
+    border-radius: $typography-border-radius-keyboard;
+    line-height: 20px;
+    -webkit-border-radius: $typography-border-radius-keyboard;
+    -moz-border-radius: $typography-border-radius-keyboard;
+    -ms-border-radius: $typography-border-radius-keyboard;
+    -o-border-radius: $typography-border-radius-keyboard;
+  }
 
-   &-text-code {
-      display: inline-block;
-      padding: $typography-padding;
-      border-radius: $typography-border-radius;
-      background: $typography-background-code;
-      border: $typography-border-width-code $typography-border-style-code $typography-border-color-code;
-      line-height: 18px;
-      -webkit-border-radius: $typography-border-radius;
-      -moz-border-radius: $typography-border-radius;
-      -ms-border-radius: $typography-border-radius;
-      -o-border-radius: $typography-border-radius;
-}
+  &-text-underline {
+    color: $typography-color;
+    text-decoration: $typography-text-underline;
+  }
 
-   &-text-keyboard {
-      display: inline-block;
-      padding: $typography-padding;
-      background: $typography-background-keyboard;
-      border: $typography-border-width-keyboard $typography-border-style-keyboard $typography-border-color-keyboard;
-      box-shadow: $typography-box-shadow-keyboard;
-      border-radius: $typography-border-radius-keyboard;
-      line-height: 20px;
-      -webkit-border-radius: $typography-border-radius-keyboard;
-      -moz-border-radius: $typography-border-radius-keyboard;
-      -ms-border-radius: $typography-border-radius-keyboard;
-      -o-border-radius: $typography-border-radius-keyboard;
-}
+  &-text-del {
+    color: $typography-color;
+    text-decoration: $typography-text-del;
+  }
 
-   &-text-underline {
-      color: $typography-color;
-      text-decoration: $typography-text-underline;
-   }
+  &-text-italic {
+    color: $typography-color;
+    font-style: $typography-font-italic;
+  }
 
-   &-text-del {
-      color: $typography-color;
-      text-decoration: $typography-text-del;
-   }
+  &-text-link {
+    color: $typography-color-link;
+    text-decoration: $typography-text-link;
+  }
 
-   &-text-italic {
-      color: $typography-color;
-      font-style: $typography-font-italic;
-   }
+  &-text-strong {
+    font-weight: $typography-font-strong;
+  }
 
-   &-text-link {
-      color: $typography-color-link;
-      text-decoration: $typography-text-link;
-   }
+  &-editable {
+    width: 100%;
+    height: auto;
+    resize: none;
+    word-wrap: break-word;
+    word-break: normal;
+  }
 
-   &-text-strong {
-      font-weight: $typography-font-strong;
-   }
+  &-editable > span {
+    position: relative;
+  }
 
-   &-editable {
-      width: 100%;
-      height: auto;
-      resize: none;
-      word-wrap: break-word;
-      word-break: normal;
-   }
+  &-editable-focus {
+    overflow-y: hidden;
+    word-wrap: break-word;
+    word-break: normal;
+  }
 
-   &-editable>span {
-      position: relative;
-   }
+  &-editable-focus:focus {
+    outline: none;
+  }
 
-   &-editable-focus {
-      overflow-y: hidden;
-      border: none;
-      word-wrap: break-word;
-      word-break: normal;
-   }
+  &-editable-input {
+    display: none;
+  }
 
-   &-editable-focus:focus {
-      outline: none;
-      background-color: #ebeefd;
-   }
+  &-editable-wrapper {
+    width: 100%;
+    box-shadow: none;
+    background-color: transparent;
+  }
 
-   &-editable-input {
-      display: none;
-   }
+  &-editable-isShow {
+    width: 100%;
+    border-radius: $typography-border-radius-edit;
+    -webkit-border-radius: $typography-border-radius-edit;
+    -moz-border-radius: $typography-border-radius-edit;
+    -ms-border-radius: $typography-border-radius-edit;
+    -o-border-radius: $typography-border-radius-edit;
+  }
 
-   &-editable-wrapper {
-      width: 100%;
-      border: none;
-      box-shadow: none;
-      background-color: transparent;
-   }
+  &-editable-isShow-icon {
+    margin-left: 5px;
+    color: $typography-color-icon;
+    cursor: pointer;
+  }
 
-   &-editable-isShow {
-      padding: 10px 10px;
-      margin-left: -10px;
-      margin-top: -10px;
-      width: 100%;
-      border-radius: $typography-border-radius-edit;
-      -webkit-border-radius: $typography-border-radius-edit;
-      -moz-border-radius: $typography-border-radius-edit;
-      -ms-border-radius: $typography-border-radius-edit;
-      -o-border-radius: $typography-border-radius-edit;
-}
+  &-copy {
+    display: inline-block;
+    margin: 0 0 0 5px;
+    position: relative;
+    padding: 0;
+    color: $typography-color-icon;
+  }
 
-   &-editable-isShow-icon {
-      margin-left: 5px;
-      color: $typography-color-icon;
-      cursor: pointer;
-   }
+  &-copy-icon {
+    margin-bottom: 2px;
+  }
 
-   &-copy {
-      display: inline-block;
-      margin: 0 0 0 5px;
-      position: relative;
-      padding: 0;
-      color: $typography-color-icon;
-   }
+  &-copy-clicked {
+    color: $typography-color-copyabled;
+  }
 
-   &-copy-icon {
-      margin-bottom: 2px;
-   }
+  &-paragraph {
+    position: relative;
+  }
 
-   &-copy-clicked {
-      color: $typography-color-copyabled;
-   }
+  &-paragraph-editable {
+    width: 100%;
+  }
 
-   &-paragraph {
-      position: relative;
-   }
+  &-paragraph-ellipsis-rows {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    margin: 0;
+  }
 
-   &-paragraph-editable {
-      width: 100%;
-   }
+  &-paragraph-ellipsis-symbol {
+    color: $typography-color;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: inherit;
+    --tooltip-bg-color: #fff;
+  }
 
-   &-paragraph-ellipsis-rows {
-      display: -webkit-box;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-box-orient: vertical;
-      margin: 0;
-   }
+  &-paragraph-ellipsis-tooltip {
+    --tooltip-bg-color: #fff;
+    --tooltip-color: #000;
+    --tooltip-font-size: 6px;
+    --width: 100%;
+    border: 1px solid rgb(var(--ud-gray-4));
+  }
 
-   &-paragraph-ellipsis-symbol {
-      color: $typography-color;
-      cursor: pointer;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      text-decoration: inherit;
-      --tooltip-bg-color: #fff;
-   }
+  &-paragraph-ellipsis-suffix {
+    float: right;
+    margin-right: 5px;
+  }
 
-   &-paragraph-ellipsis-tooltip {
-      --tooltip-bg-color: #fff;
-      --tooltip-color:#000;
-      --tooltip-font-size: 6px;
-      --width: 100%;
-      border: 1px solid rgb(var(--ud-gray-4));
-   }
-
-   &-paragraph-ellipsis-suffix {
-      float: right;
-      margin-right: 5px;
-   }
-
-   &-paragraph-ellipsis-symbol:hover+&-paragraph-ellipsis-tooltip {
-      display: inline-block;
-      z-index: 99;
-   }
+  &-paragraph-ellipsis-symbol:hover + &-paragraph-ellipsis-tooltip {
+    display: inline-block;
+    z-index: 99;
+  }
 }

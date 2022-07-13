@@ -1,6 +1,8 @@
 import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
 import { EditFilled } from '@ubt/udesign-icons';
 import classNames from 'classnames';
+import Input from '../input';
+import TextArea from '../input/textarea';
 import { NativeProps } from '../../utils';
 import Tooltip from '../tooltip';
 import { BASE_CLASS_PREFIX } from '../../constants';
@@ -67,17 +69,12 @@ export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength,
     setPropChildren(textArea.current!.value);
   };
 
-  const editChange = (event: ChangeEvent) => {
-    textArea.current!.style.height = `${(autoSize?.minRows ? autoSize.minRows : 1) * 34}px`;
-    textArea.current!.style.height = `${event.target.scrollHeight}px`;
-  };
-
   const onKeyHandler = (e: KeyboardEvent) => {
     if (e.keyCode === 27 || e.keyCode === 13) {
       setIsShow(!isShow);
       if (e.keyCode === 13) onEnd?.();
       else onCancel?.();
-      setPropChildren(editText.current!.value);
+      editText.current ? setPropChildren(editText.current!.value) : setPropChildren(textArea.current!.value);
     }
   };
 
@@ -90,22 +87,27 @@ export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength,
         </span>
       </div>
       {autoSize ? (
-        <textarea
-          rows={autoSize.minRows}
-          maxLength={maxLength}
-          hidden={isShow}
-          className={!isShow ? cls : ''}
-          onBlur={textareaBlur}
-          ref={textArea}
-          onChange={(Event) => {
-            editChange(Event);
-            onChange?.();
-          }}
-          onKeyDown={onKeyHandler}
-          defaultValue={propChildren}
-        ></textarea>
+        <span hidden={isShow}>
+          <TextArea
+            hidden={isShow}
+            rows={autoSize.minRows}
+            maxLength={maxLength}
+            className={!isShow ? cls : ''}
+            onBlur={textareaBlur}
+            ref={textArea}
+            onChange={() => {
+              onChange?.();
+            }}
+            onKeyDown={onKeyHandler}
+            defaultValue={propChildren}
+          />
+        </span>
       ) : (
-        <input onKeyDown={onKeyHandler} className={cls} hidden={isShow} onBlur={onBlur} ref={editText} type='text' defaultValue={propChildren} maxLength={maxLength}></input>
+        <span hidden={isShow}>
+          <Input hidden={isShow} onKeyDown={onKeyHandler} className={cls} onBlur={onBlur} ref={editText} type='text' defaultValue={propChildren} maxLength={maxLength} />
+        </span>
+
+        // <input onKeyDown={onKeyHandler} className={cls} hidden={isShow} onBlur={onBlur} ref={editText} type='text' defaultValue={propChildren} maxLength={maxLength}></input>
       )}
     </>
   );
