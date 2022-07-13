@@ -1,5 +1,4 @@
 import React from 'react';
-import { HomeFilled, UnorderedListOutlined } from '@ant-design/icons';
 import { Tabs } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
@@ -11,7 +10,12 @@ export default function TabsPage() {
           title='何时使用'
           description={
             <>
-              提供平级的区域将大块内容进行收纳和展现，保持界面整洁。 Ant Design 依次提供了三级选项卡，分别用于不同的场景。
+              <span className='font-bold'>
+                提供平级的区域将大块内容进行收纳和展现，保持界面整洁。
+                <br />
+                Ant Design 依次提供了三级选项卡，分别用于不同的场景。
+              </span>
+              <br />
               <br />
               *.卡片式的页签，提供可关闭的样式，常用于容器顶部。
               <br />
@@ -49,7 +53,7 @@ export default function TabsPage() {
         </Demo.Block>
         <Demo.Block title='不同位置显示' description='标签页左侧、居中、右侧显示。'>
           <p className='pb-5'>左侧</p>
-          <Tabs>
+          <Tabs type='card'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -64,7 +68,7 @@ export default function TabsPage() {
 
         <Demo.Block>
           <p className='pb-5'>居中</p>
-          <Tabs centered>
+          <Tabs type='card' centered>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
