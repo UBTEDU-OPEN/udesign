@@ -37,7 +37,7 @@ export default function TablePage() {
             <div>
               {[...fileList].map((item: any) => (
                 <div key={item.name} className='flex mt-2.5' style={{ color: '#7586FB' }}>
-                  <div className='mr-2.5 flex justify-center align-center' style={{ fontSize: '22px', color: '#6a7078' }}>
+                  <div className='mr-2.5 flex justify-center items-center' style={{ fontSize: '22px', color: '#6a7078' }}>
                     <LoadingOutlined spin />
                   </div>
                   <div className='h-8 leading-8 text-sm underline'>{item.name}</div>
@@ -60,7 +60,7 @@ export default function TablePage() {
           <div>
             {[...multipleFileList].map((item: any) => (
               <div key={item.name} className='flex mt-2.5' style={{ color: '#7586FB' }}>
-                <div className='mr-2.5 flex justify-center align-center' style={{ fontSize: '22px', color: '#6a7078' }}>
+                <div className='mr-2.5 flex justify-center items-center' style={{ fontSize: '22px', color: '#6a7078' }}>
                   <LoadingOutlined spin />
                 </div>
                 <div className='h-8 leading-8 text-sm underline'>{item.name}</div>
@@ -76,7 +76,7 @@ export default function TablePage() {
               });
             }}
           >
-            <div className='w-40 h-40 rounded-xl border border-solid'>
+            <div className='w-40 h-40 rounded-xl' style={{ background: '#F4F4F6' }}>
               {imgUrl ? (
                 <React.Fragment>
                   <img src={imgUrl} alt='' className='w-40 h-40 rounded-xl' />
@@ -108,7 +108,7 @@ export default function TablePage() {
                 });
               }}
             >
-              <div className='w-40 h-40 rounded-xl border border-solid'>
+              <div className='w-40 h-40 rounded-xl' style={{ background: '#F4F4F6' }}>
                 <div className='flex px-0 pt-14 pb-2.5 justify-center text-3xl'>
                   <PlusOutlined />
                 </div>
@@ -133,7 +133,7 @@ export default function TablePage() {
           <div>
             {[...fileList1].map((item: any) => (
               <div key={item.name} className='flex mt-2.5' style={{ color: '#7586FB' }}>
-                <div className='mr-2.5 flex justify-center align-center' style={{ fontSize: '22px', color: '#6a7078' }}>
+                <div className='mr-2.5 flex justify-center items-center' style={{ fontSize: '22px', color: '#6a7078' }}>
                   <LoadingOutlined spin />
                 </div>
                 <div className='h-8 leading-8 text-sm underline'>{item.name}</div>
@@ -156,7 +156,7 @@ export default function TablePage() {
           <div>
             {[...directoryList].map((item: any) => (
               <div key={item.name} className='flex mt-2.5' style={{ color: '#7586FB' }}>
-                <div className='mr-2.5 flex justify-center align-center' style={{ fontSize: '22px', color: '#6a7078' }}>
+                <div className='mr-2.5 flex justify-center items-center' style={{ fontSize: '22px', color: '#6a7078' }}>
                   <LoadingOutlined spin />
                 </div>
                 <div className='h-8 leading-8 text-sm underline'>{item.name}</div>

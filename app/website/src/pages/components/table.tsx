@@ -154,7 +154,9 @@ export default function TablePage() {
             </>
           }
         >
-          <Table columns={columns} dataSource={data} />
+          <div className='bg-white p-5'>
+            <Table columns={columns} dataSource={data} />
+          </div>
         </Demo.Block>
         <Demo.Block
           title='带勾选'
@@ -166,48 +168,56 @@ export default function TablePage() {
             </>
           }
         >
-          <Radio.Group
-            name='type'
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setChecked(!checked);
-            }}
-          >
-            <React.Fragment>
-              <Radio checked={!checked}>多选</Radio>
-              <Radio checked={checked}>单选</Radio>
-            </React.Fragment>
-          </Radio.Group>
-          <Table
-            columns={columns}
-            dataSource={data}
-            rowKey='name'
-            rowSelection={{
-              type: `${checked ? 'radio' : 'checkbox'}`,
-              onChange: (selectedRowKey, record) => {
-                console.log(selectedRowKey, record, 'select');
-              },
-              onSelectAll: (selected, selectedRows) => {
-                console.log(selected, selectedRows, 'selectall');
-              },
-              selectedRowKeys,
-              getCheckboxProps: (record: any) => ({
-                disabled: record.age === 37,
-              }),
-              hideSelectAll: false,
-            }}
-          />
+          <div className='bg-white p-5'>
+            <Radio.Group
+              name='type'
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setChecked(!checked);
+              }}
+            >
+              <React.Fragment>
+                <Radio checked={!checked}>多选</Radio>
+                <Radio checked={checked}>单选</Radio>
+              </React.Fragment>
+            </Radio.Group>
+            <Table
+              columns={columns}
+              dataSource={data}
+              rowKey='name'
+              rowSelection={{
+                type: `${checked ? 'radio' : 'checkbox'}`,
+                onChange: (selectedRowKey, record) => {
+                  console.log(selectedRowKey, record, 'select');
+                },
+                onSelectAll: (selected, selectedRows) => {
+                  console.log(selected, selectedRows, 'selectall');
+                },
+                selectedRowKeys,
+                getCheckboxProps: (record: any) => ({
+                  disabled: record.age === 37,
+                }),
+                hideSelectAll: false,
+              }}
+            />
+          </div>
         </Demo.Block>
         <Demo.Block title='自定义单元格省略提示' description={<>使用 Tooltip 替代。</>}>
-          <Table columns={columns2} dataSource={data} />
+          <div className='bg-white p-5'>
+            <Table columns={columns2} dataSource={data} />
+          </div>
         </Demo.Block>
         <Demo.Block title='带边框' description={<>添加表格边框线。</>}>
-          <Table columns={columns1} dataSource={data} bordered />
+          <div className='bg-white p-5'>
+            <Table columns={columns1} dataSource={data} bordered />
+          </div>
         </Demo.Block>
 
         <Demo.Block title='分页设置' description={<>与分页组件配合使用</>}>
-          <Table columns={columns1} dataSource={data} />
-          <div style={{ marginTop: '20px' }}>
-            <Pagination total={100} />
+          <div className='bg-white p-5'>
+            <Table columns={columns1} dataSource={data} />
+            <div style={{ marginTop: '20px' }}>
+              <Pagination total={100} />
+            </div>
           </div>
         </Demo.Block>
       </Demo.Page>

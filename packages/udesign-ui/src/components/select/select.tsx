@@ -1,12 +1,10 @@
 import React, { useReducer, useEffect, useState, useRef, ReactNode } from 'react';
 import classNames from 'classnames';
+import { UpOutlined, DownOutlined, SearchOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { Option } from './option';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
-import { IconArrowDown } from './icon-arrow-down';
-import { IconArrowUp } from './icon-arrow-up';
 import { IconDelete } from './icon-delete';
-import { IconSearch } from './icon-search';
 import { SelectContext, reducer, types } from './context';
 import { OptionItem } from './types';
 import { MultiBar } from './multi-bar';
@@ -52,7 +50,7 @@ export type SelectProps = {
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
-export const Select = ({ children, className, style, size, value, onChange, disabled, defaultValue, mode, allowClear, status, tagRender, maxTagCount, showSearch = false, filterOption, placeholder, ...restProps }: SelectProps) => {
+export const Select = ({ children, className, style, size = 'middle', value, onChange, disabled, defaultValue, mode, allowClear, status, tagRender, maxTagCount, showSearch = false, filterOption, placeholder, ...restProps }: SelectProps) => {
   const cls = classNames(
     prefixCls,
     {
@@ -163,9 +161,13 @@ export const Select = ({ children, className, style, size, value, onChange, disa
     );
   };
 
+  const iconCls = classNames(`${prefixCls}-arrow`, {
+    [`${prefixCls}-icon-${size}`]: size,
+  });
+
   const renderIcon = () => {
     if (mode !== 'multiple' && showSearch && visible) {
-      return <IconSearch />;
+      return <SearchOutlined />;
     }
 
     if (showClear) {
@@ -183,10 +185,14 @@ export const Select = ({ children, className, style, size, value, onChange, disa
       );
     }
     if (visible) {
-      return <IconArrowUp />;
+      return <UpOutlined style={{ color: '#7284FB' }} />;
     }
 
-    return <IconArrowDown />;
+    if (disabled) {
+      return <DownOutlined style={{ color: '#D4D4DA' }} />;
+    }
+
+    return <DownOutlined />;
   };
   useEffect(() => {
     const clickOutsideHandler = (e: Event) => {
@@ -225,7 +231,7 @@ export const Select = ({ children, className, style, size, value, onChange, disa
       <SelectContext.Provider value={{ value: state.value, onChange, dispatch, defaultValue: innerDefaultValue, mode, setVisible, disabled }}>
         <div className={`${prefixCls}-wrapper`} style={getWidthStyle()} ref={triggerRef}>
           <div className={cls} onClick={handleClick} style={updateStyle()} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-            <div className={`${prefixCls}-arrow`}>{renderIcon()}</div>
+            <div className={iconCls}>{renderIcon()}</div>
             {mode !== 'multiple' ? (
               <SingleBar searchValue={searchValue} setSearchValue={setSearchValue} visible={visible} showSearch={showSearch} options={getOptions()} innerDefaultValue={innerDefaultValue} placeholder={placeholder} />
             ) : (
