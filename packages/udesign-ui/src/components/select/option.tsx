@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import classNames from 'classnames';
+import { CheckOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { SelectContext, types } from './context';
-import { IconApplyTick } from './icon-apply-tick';
 
 export type OptionProps = {
   value?: string; // 默认根据此属性值进行筛选
@@ -84,7 +84,7 @@ export const Option = ({ label, disabled, className, children, style, value }: O
             {label || children}
           </div>
 
-          {innerChecked ? <IconApplyTick /> : null}
+          {innerChecked ? <CheckOutlined /> : null}
         </div>
       ) : (
         <div className={cls} style={style} onClick={handleClick}>

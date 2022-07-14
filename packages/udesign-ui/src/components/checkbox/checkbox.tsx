@@ -100,9 +100,11 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, style, c
 
         {disabled && innerChecked && !indeterminate && <CheckboxLightDisabled />}
 
-        <span className={`${prefixCls}-text`} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
-          {children || label}
-        </span>
+        {children || label ? (
+          <span className={`${prefixCls}-text`} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
+            {children || label}
+          </span>
+        ) : null}
       </label>
     </>
   );

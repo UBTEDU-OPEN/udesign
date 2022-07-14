@@ -77,9 +77,11 @@ export const Radio = ({ defaultChecked = false, disabled, className, style, chil
         {!disabled && innerChecked && <RadioLight />}
         {disabled && !innerChecked && <RadioNormalDisabled />}
         {disabled && innerChecked && <RadioLightDisabled />}
-        <span className={classNames(`${prefixCls}-text`, disabled ? `${prefixCls}-text-disabled` : '')} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
-          {children || label}
-        </span>
+        {children || label ? (
+          <span className={classNames(`${prefixCls}-text`, disabled ? `${prefixCls}-text-disabled` : '')} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
+            {children || label}
+          </span>
+        ) : null}
       </label>
     </>
   );

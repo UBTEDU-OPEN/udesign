@@ -84,7 +84,6 @@ export default function SelectPage() {
                 <Select.Option value='option3'>option3(101)</Select.Option>
               </Select>
               <Select
-                style={{ width: '100%' }}
                 showSearch
                 filterOption={(searchValue: string, option: any) => option.value.includes(searchValue)}
                 allowClear
@@ -110,28 +109,28 @@ export default function SelectPage() {
         <Demo.Block title='多选' description={<>多选，从已有条目中选择</>}>
           <div style={{ height: '200px' }}>
             <Space>
-              <Select mode='multiple' style={{ width: '100%' }} allowClear maxTagCount={2} placeholder='请选择'>
+              <Select mode='multiple' style={{ width: '500px' }} allowClear maxTagCount={2} placeholder='请选择'>
                 <Select.Option value='option1'>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <img src='/icon_cn.svg' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
+                  <div className='flex items-center'>
+                    <img src='/icon_cn.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
                     <div style={{ display: 'flex', alignItems: 'center' }}>中国</div>
                   </div>
                 </Select.Option>
                 <Select.Option value='option2'>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <img src='/icon_us.svg' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
+                  <div className='flex items-center'>
+                    <img src='/icon_us.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
                     <div style={{ display: 'flex', alignItems: 'center' }}>美国</div>
                   </div>
                 </Select.Option>
                 <Select.Option value='option3'>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <img src='/icon_gl.svg' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
+                  <div className='flex items-center'>
+                    <img src='/icon_gl.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
                     <div style={{ display: 'flex', alignItems: 'center' }}>全球</div>
                   </div>
                 </Select.Option>
                 <Select.Option value='option4'>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <img src='/icon_bl.svg' style={{ width: '34xp', height: '34px', marginRight: '10px' }} />
+                  <div className='flex items-center'>
+                    <img src='/icon_bl.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
                     <div style={{ display: 'flex', alignItems: 'center' }}>波兰</div>
                   </div>
                 </Select.Option>
@@ -141,7 +140,7 @@ export default function SelectPage() {
             <Space>
               <Select
                 mode='multiple'
-                style={{ width: '100%' }}
+                style={{ width: '500px' }}
                 allowClear
                 options={[
                   {
@@ -163,7 +162,7 @@ export default function SelectPage() {
             <Space>
               <Select
                 mode='multiple'
-                style={{ width: '100%' }}
+                style={{ width: '500px' }}
                 defaultValue={['option1']}
                 disabled
                 allowClear
@@ -217,7 +216,7 @@ export default function SelectPage() {
         <Demo.Block title='自定义状态' description={<>使用 status 为 Select 添加状态，可选 error 或者 warning。</>}>
           <div style={{ height: '200px' }}>
             <Space>
-              <Select style={{ width: '100%' }} status='error'>
+              <Select style={{ width: '500px' }} status='error'>
                 <Select.Option value='option1'>option1(101)</Select.Option>
                 <Select.Option value='option2'>option2(101)</Select.Option>
                 <Select.Option value='option3'>option3(101)</Select.Option>
@@ -227,7 +226,7 @@ export default function SelectPage() {
             <Space>
               <Select
                 mode='multiple'
-                style={{ width: '100%' }}
+                style={{ width: '500px' }}
                 status='warning'
                 allowClear
                 options={[
@@ -251,7 +250,7 @@ export default function SelectPage() {
         <Demo.Block title='自定义选择标签' description={<>允许自定义选择标签的样式。</>}>
           <div style={{ height: '200px' }}>
             <Space>
-              <Select mode='multiple' style={{ width: '100%' }} allowClear tagRender={tagRender} options={options}></Select>
+              <Select mode='multiple' style={{ width: '500px' }} allowClear tagRender={tagRender} options={options}></Select>
             </Space>
           </div>
         </Demo.Block>
