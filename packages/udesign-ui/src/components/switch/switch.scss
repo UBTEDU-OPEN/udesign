@@ -42,14 +42,14 @@ $module: ud-switch;
     cursor: not-allowed;
   }
   &-checked {
-    background: var(--ud-color-primary-light);
-    border-color: var(--ud-color-primary);
-    color: var(--ud-color-primary);
+    background: $switch-background-checked;
+    border-color: $switch-circle-background-checked;
+    color: $switch-circle-background-checked;
     padding-right: $switch-circle-padding-middle;
     .#{$module}-handle {
       left: calc(100% - ($switch-circle-diameter-middle + 2px ));
       &::before {
-        background-image: linear-gradient(-180deg, var(--ud-color-primary-light) 0%, var(--ud-color-primary) 100%);
+        background-image: linear-gradient(-180deg, rgba(var(--ud-purple-4)) 0%, $switch-circle-background-checked 100%);
         box-shadow: 0 3px 5px 0 $switch-circle-background-checked;
       }
     }

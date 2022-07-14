@@ -5,7 +5,6 @@ $module: ud-collapse;
 	&-header {
 		font-size: $collapse-header-font-size;
 		background: $collapse-header-background;
-		border: $collapse-border-width $collapse-border-style $collapse-border-color;
 		border-radius: $collapse-header-border-radius;
 		padding: $collapse-header-padding;
 		margin: $collapse-header-margin;
@@ -51,6 +50,7 @@ $module: ud-collapse;
 
 		.#{$module}-header {
 			background: $collapse-bordered-background;
+			border-bottom: $collapse-border-width $collapse-border-style $collapse-border-color;
 			border-radius: $collapse-header-border-radius $collapse-header-border-radius 0 0;
 			margin: 0;
 			cursor: pointer;

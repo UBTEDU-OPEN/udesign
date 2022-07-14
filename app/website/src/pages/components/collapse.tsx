@@ -137,8 +137,8 @@ export default function CollapsePage() {
           </Collapse>
         </Demo.Block>
         <Demo.Block title='自定义面板' description='自定义各个面板的背景色、圆角、边距和图标。'>
-          <Collapse accordion activeKey='1' expandIcon={<CaretDownOutlined />} className='site-collapse-custom-collapse'>
-            <Collapse.Item title='这里是标题1' name='1'>
+          <Collapse accordion activeKey='1' expandIcon={<CaretDownOutlined />} style={{ background: '#EDF1FF', borderRadius: '30px' }}>
+            <Collapse.Item title='这里是标题1' name='1' style={{ background: '#C1CBFF', borderRadius: '6px' }}>
               是一个致力于提升“用户”和“设计者”使用体验的多端设计语言。产品经理、交互设计师、视觉设计师、前端工程师、开发工程师等角色，在此统称为“设计者”，利用统一的规范进行设计赋能，帮助“设计者”提高多端产品体验和研发效率。U
               Design高度重视“设计者”的使用体验，践行敏捷开发的设计模式。
             </Collapse.Item>
