@@ -27,9 +27,6 @@ $module: ud-layout;
     transform: translate(0, 0);
   }
 
-  &-sider-toggle {
-    transition: all $layout-transition-duration;
-  }
 
   &-sider-trigger {
     width: 100%;
@@ -47,14 +44,7 @@ $module: ud-layout;
   &-sider-trigger-rotate {
     transform: $layout-transform-rotate;
   }
-  &-sider-special-trigger {
-    display: inline-block;
-    line-height: $layout-special-trigger-size;
-    position: absolute;
-    top: $layout-special-trigger-top;
-    left: $layout-special-trigger-left;
-    cursor: pointer;
-  }
+
 
   &-direction-column {
     flex-direction: column;
@@ -62,5 +52,26 @@ $module: ud-layout;
 
   &-direction-row {
     flex-direction: row;
+  }
+
+  &-sider-trigger-top {
+    display: inline-block;
+    position: absolute;
+    left: $layout-sider-trigger-top-left;
+    margin-left: $layout-sider-trigger-top-margin-left;
+    font-size: 35px;
+    cursor: pointer;
+    
+    width: $layout-sider-trigger-width;
+    height: $layout-sider-trigger-height;
+    border-radius: $layout-sider-trigger-top-boder-radius;
+  }
+  &-sider-trigger-top-flod {
+    color: $layout-sider-trigger-top-flod-color;
+    background-color: $layout-sider-trigger-top-flod-background;
+  }
+  &-sider-trigger-top-extend {
+    color: $layout-sider-trigger-top-extend-color;
+    background-color: $layout-sider-trigger-top-extend-background;
   }
 }

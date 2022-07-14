@@ -8,66 +8,60 @@ const prefixCls = `${BASE_CLASS_PREFIX}-layout-sider`;
 export type CollapseType = 'clickTrigger' | 'responsive';
 
 export type SiderProps = {
-  width?: number | string; // 宽度
   collapsible?: boolean; // 是否可收起
-  trigger?: ReactNode; // 自定义 trigger，设置为 null 时隐藏 trigger
-  collapsedWidth?: number; // 收缩宽度，设置为 0 会出现特殊 trigger
+  trigger?: ReactNode; // 自定义 侧边栏底部trigger，设置为 null 时隐藏 trigger
   defaultCollapsed?: boolean; // 是否默认收起
-  onCollapse?: (collapsed: boolean, type: CollapseType) => void; // 展开-收起时的回调函数
+  triggerTop?: ReactNode; // 自定义 trigger，设置为 null 时隐藏 trigger
+  onCollapse?: (collapsed: boolean) => void; // 展开-收起时的回调函数
   collapsed?: boolean; // 当前收起状态
 } & NativeProps;
-export const Sider = ({ width = 200, defaultCollapsed = false, style, collapsible = false, trigger, collapsedWidth = 100, onCollapse, children, className, ...props }: SiderProps) => {
-  const [toggle, steToggle] = useState(false);
-  const [stateWidth, setStateWidth] = useState(width);
-
+export const Sider = ({ defaultCollapsed = false, style, trigger, triggerTop, onCollapse, children, className, ...props }: SiderProps) => {
   const [collapsed, setCollapsed] = usePropsValue({
     value: props.collapsed,
     defaultValue: defaultCollapsed,
+    onChange: onCollapse,
   });
-  const cls = classNames(
-    prefixCls,
-    {
-      [`${prefixCls}-toggle`]: toggle,
-    },
-    className,
-  );
 
-  const triggerCls = classNames(
-    `${prefixCls}-trigger`,
-    {
-      [`${prefixCls}-trigger-rotate`]: stateWidth !== width,
-    },
-    className,
-  );
-
-  useEffect(() => {
-    setStateWidth(collapsed ? collapsedWidth : width);
-  }, [collapsed]);
+  const cls = classNames(prefixCls, className);
 
   const togglehandler = () => {
-    if (collapsible) {
-      steToggle(!toggle);
-      setCollapsed(toggle);
-      setStateWidth(collapsed ? width : collapsedWidth);
-      onCollapse?.(toggle, 'clickTrigger');
-    } else {
-      defaultCollapsed ? setStateWidth(collapsedWidth) : setStateWidth(width);
-    }
+    onCollapse?.(collapsed);
+  };
+
+  const renderTrigger = () => {
+    const triggerCls = classNames(`${prefixCls}-trigger`, {
+      [`${prefixCls}-trigger-rotate`]: collapsed,
+    });
+    return trigger ? (
+      <div onClick={togglehandler} className={triggerCls}>
+        {trigger}
+      </div>
+    ) : null;
+  };
+  const renderTriggerTop = () => {
+    const triggerTopCls = classNames({
+      [`${prefixCls}-trigger-top`]: true,
+      [`${prefixCls}-trigger-top-flod`]: collapsed,
+      [`${prefixCls}-trigger-top-extend`]: !collapsed,
+    });
+    return triggerTop ? (
+      <div onClick={togglehandler} className={triggerTopCls}>
+        {triggerTop}
+      </div>
+    ) : null;
   };
   return (
     <>
-      <aside className={cls} style={{ width: `${stateWidth}px`, ...style }}>
+      <aside
+        className={cls}
+        style={{
+          ...style,
+        }}
+      >
+        {renderTriggerTop()}
         {children}
-        {(collapsedWidth === 0 || trigger === null) && stateWidth === 0 ? (
-          <span onClick={togglehandler} className={`${prefixCls}-special-trigger`}>
-            {trigger}
-          </span>
-        ) : null}
-        {collapsible && trigger ? (
-          <div onClick={togglehandler} className={triggerCls}>
-            {trigger}
-          </div>
-        ) : null}
+
+        {renderTrigger()}
       </aside>
     </>
   );
