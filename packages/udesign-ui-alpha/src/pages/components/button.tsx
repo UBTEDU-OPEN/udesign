@@ -21,7 +21,7 @@ export default function ButtonPage() {
             <Button type='link'>link</Button>
           </Space>
         </Demo.Block>
-        <Demo.Block title='按钮形状' description='shape 支持 round, default, square 三种，默认为 default。'>
+        <Demo.Block title='按钮形状' description='shape 支持 circle，round, square, 默认为 round。'>
           <Space>
             <Button type='primary' shape='round'>
               圆形按钮

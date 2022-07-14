@@ -121,7 +121,7 @@ export default function IconPage() {
       | null,
   ) =>
     data ? (
-      <div className='bg-gray-50 p-5 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5'>
+      <div className='bg-gray-50 p-5 grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-5 text-gray-500'>
         {data.map((icon, index) => (
           <Copy className='p-3 text-4xl rounded-lg text-center hover:bg-white hover:text-blue-600' key={index} text={`<${icon.key} />`} onSuccess={() => Toast('复制成功')} onError={() => Toast('复制失败')}>
             {icon.node}

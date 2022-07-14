@@ -3,9 +3,9 @@
 $module: ud-tag;
 
 .#{$module} {
-  background: $tag-background-default;
-  color: $tag-color-default;
-  border: 1px solid $tag-background-default;
+  background: $tag-background;
+  color: $tag-color;
+  border: $tag-border;
   border-radius: $tag-border-radius;
 
   box-sizing: border-box;
@@ -47,11 +47,31 @@ $module: ud-tag;
 
   .#{$module}-close-icon {
     margin: $tag-close-icon-margin;
+    color: $tag-close-icon-color;
+    font-weight: bold;
     vertical-align: middle;
     cursor: pointer;
   }
 
   &-hidden {
     display: none;
+  }
+
+  &-checkable {
+    cursor: pointer;
+  }
+}
+.#{$module}-checked {
+  background: $tag-background-checked;
+  color: $tag-color-checked;
+  border: $tag-border-checked;
+
+  $colors: red, orange, yellow, green, cyan, blue, purple;
+  @each $color in $colors {
+    &.#{$module}-#{'' + $color} {
+      background: rgba(var(--ud-#{$color}-1), 1);
+      border-color: rgba(var(--ud-#{$color}-6), 1);
+      color: rgba(var(--ud-#{$color}-6), 1);
+    }
   }
 }

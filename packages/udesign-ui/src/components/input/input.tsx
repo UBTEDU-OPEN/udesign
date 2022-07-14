@@ -2,12 +2,9 @@ import React, { ReactNode, useState } from 'react';
 import classNames from 'classnames';
 import { CloseCircleFilled, EyeInvisibleOutlined, EyeOutlined } from '@ubt/udesign-icons';
 import { NativeProps, usePropsValue } from '../../utils';
-import { BASE_CLASS_PREFIX, Size, Status } from '../../constants';
+import { BASE_CLASS_PREFIX, Shape, Size, Status } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-input`;
-
-export type InputSize = Size;
-export type InputStatus = Status;
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'style' | 'onChange'>, NativeProps {
   prepend?: ReactNode; // 前置标签
@@ -20,8 +17,9 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   type?: string; // 声明input类型，同原生input标签的type属性
   showClear?: boolean; // 可以点击清除图标删除内容
   showCount?: boolean; // 是否展示字数
-  size?: InputSize; // 输入框大小
-  status?: InputStatus; // 校验状态，可选值default、error、warning，默认default。仅影响展示样式
+  size?: Size; // 输入框大小
+  shape?: Shape; // 输入框形状
+  status?: Status; // 校验状态，可选值default、error、warning，默认default。仅影响展示样式
   maxLength?: number; // 内容最大长度
   underlined?: boolean; // 是否横线式的输入框
   inputStyle?: React.CSSProperties; // 输入框的样式
@@ -32,7 +30,31 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
 }
 
 const Input = (props: InputProps) => {
-  const { defaultValue = '', onChange, onClear, onEnterPress, onFocus, onBlur, onKeyDown, prepend, append, className, disabled, prefix, status, type, size = 'middle', suffix, style, showClear, showCount, inputStyle, forwardRef, ...restProps } = props;
+  const {
+    defaultValue = '',
+    onChange,
+    onClear,
+    onEnterPress,
+    onFocus,
+    onBlur,
+    onKeyDown,
+    prepend,
+    append,
+    className,
+    disabled,
+    prefix,
+    status,
+    type,
+    size = 'middle',
+    shape = 'circle',
+    suffix,
+    style,
+    showClear,
+    showCount,
+    inputStyle,
+    forwardRef,
+    ...restProps
+  } = props;
 
   const [innerValue, setInnerValue] = usePropsValue<string>({
     value: props.value,
@@ -178,6 +200,7 @@ const Input = (props: InputProps) => {
     [`${prefixCls}-wrapper-with-append-only`]: append && !prepend,
     [`${prefixCls}-wrapper-with-prepend-only`]: !append && prepend,
     [`${prefixCls}-wrapper-focused`]: focused,
+    [`${prefixCls}-wrapper-shape-${shape}`]: shape,
     [`${prefixCls}-wrapper-${status}`]: status,
     [`${prefixCls}-wrapper-${size}`]: size,
   });

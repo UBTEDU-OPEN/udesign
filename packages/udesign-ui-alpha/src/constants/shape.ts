@@ -1,1 +1,1 @@
-export type Shape = 'round' | 'default' | 'square';
+export type Shape = 'round' | 'circle' | 'square';

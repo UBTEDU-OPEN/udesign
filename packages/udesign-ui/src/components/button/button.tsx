@@ -7,15 +7,13 @@ import { Size, Shape, BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-button`;
 
 export type ButtonType = 'primary' | 'default' | 'text' | 'link';
-export type ButtonSize = Size;
-export type ButtonShape = Shape;
 
 export type ButtonProps = {
   block?: boolean; // 将宽度设置为其父宽度
   danger?: boolean; // 设置2级警示
   type?: ButtonType; // 设置类型
-  size?: ButtonSize; // 设置大小
-  shape?: ButtonShape; // 设置形状
+  size?: Size; // 设置大小
+  shape?: Shape; // 设置形状
   loading?: boolean; // 设置载入状态
   warning?: boolean; // 设置1级警示
   disabled?: boolean; // 不可用状态
@@ -25,7 +23,7 @@ export type ButtonProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>; // 点击时的回调
 } & NativeProps;
 
-export const Button = ({ type = 'default', size = 'middle', shape = 'round', loading, block, danger, warning, disabled, glass, icon, onClick, className, children, ...restProps }: ButtonProps) => {
+export const Button = ({ type = 'default', size = 'middle', shape = 'circle', loading, block, danger, warning, disabled, glass, icon, onClick, className, children, ...restProps }: ButtonProps) => {
   const iconElement = icon && !loading ? icon : <LoadingOutlined spin />;
 
   const hasIcon = loading || Boolean(icon);

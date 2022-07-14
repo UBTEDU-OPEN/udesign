@@ -31,7 +31,7 @@ export const getAvatarSizeClass = (size: AvatarSize) => {
 export const getAvatarShapeClass = (shape: AvatarShape) => {
   let cls;
   switch (shape) {
-    case 'round':
+    case 'circle':
       cls = 'rounded-full';
       break;
 
@@ -53,7 +53,7 @@ export type AvatarProps = {
   shape?: AvatarShape;
 } & NativeProps;
 
-export const Avatar = ({ src, icon, size = 'middle', shape = 'default', className, children, ...restProps }: AvatarProps) => {
+export const Avatar = ({ src, icon, size = 'middle', shape = 'round', className, children, ...restProps }: AvatarProps) => {
   const cls = classNames('inline-flex justify-center items-center overflow-hidden', !src ? 'bg-gray-200 text-white capitalize' : '', getAvatarSizeClass(size), getAvatarShapeClass(shape), className);
 
   const content = useMemo(() => {

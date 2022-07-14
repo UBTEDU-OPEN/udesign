@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { CloseCircleOutlined, InfoCircleOutlined, RightOutlined, SearchOutlined, SettingFilled, UserCompileOutlined, UserOutlined } from '@ubt/udesign-icons';
+import { CloseCircleFilled, ExclamationCircleFilled, RightOutlined, SearchOutlined, SettingFilled, UserCompileOutlined, UserOutlined } from '@ubt/udesign-icons';
 import { Button, Space, Input, TextArea } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function InputPage() {
   const [value, setValue] = useState('controlled');
+  const [loading, setLoading] = useState(false);
+
   return (
     <>
       <Demo.Page title='Input 输入框' description='通过键盘输入内容。'>
@@ -20,11 +22,18 @@ export default function InputPage() {
         <Demo.Block title='基础用法' description='基础的输入框'>
           <Input placeholder='Basic usage' />
         </Demo.Block>
-        <Demo.Block title='尺寸' description='通过 size 属性设置尺寸'>
-          <Space direction='vertical'>
-            <Input placeholder='large' size='large' />
-            <Input placeholder='middle' />
-            <Input placeholder='small' size='small' />
+        <Demo.Block title='尺寸' description='我们为 <Input /> 输入框定义了三种尺寸（大、默认、小），高度分别为 （50px、42px 和 32px）'>
+          <Space direction='vertical' size='middle'>
+            <Input placeholder='Large size' size='large' />
+            <Input placeholder='Default size' />
+            <Input placeholder='Small size' size='small' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='形状' description='shape 支持 circle，round, square, 默认为 circle。'>
+          <Space direction='vertical' size='middle'>
+            <Input placeholder='circle' shape='circle' />
+            <Input placeholder='round' shape='round' />
+            <Input placeholder='square' shape='square' />
           </Space>
         </Demo.Block>
         <Demo.Block title='禁用状态' description='通过 disabled 属性设置禁用状态'>
@@ -40,18 +49,24 @@ export default function InputPage() {
           <Input prepend='http://' append='.com' />
         </Demo.Block>
         <Demo.Block title='前缀/后缀' description='通过 prefix 属性设置前缀，suffix 属性设置后缀，支持 ReactNode'>
-          <Input placeholder='请输入账号名称' prefix={<UserOutlined />} />
+          <Input placeholder='请输入账号名称' prefix={<UserOutlined size='middle' />} />
           <br />
           <br />
-          <Input placeholder='昵称' prefix={<UserCompileOutlined />} suffix={<RightOutlined />} />
+          <Input placeholder='昵称' prefix={<UserCompileOutlined size='middle' />} suffix={<RightOutlined />} />
         </Demo.Block>
         <Demo.Block title='搜索输入框' description='带有搜索功能的输入框'>
-          <Input placeholder='input search text' suffix={<SearchOutlined />} />
-          <br />
-          <br />
-          <Space>
+          <Space size={10}>
             <Input placeholder='input search text' />
-            <Button type='primary' icon={<SearchOutlined />} />
+            <Button type='primary' loading={loading} onClick={() => setLoading(!loading)} icon={<SearchOutlined size='small' />} />
+          </Space>
+          <br />
+          <br />
+          <Space size={10}>
+            <Input placeholder='input search text' />
+            <Button type='primary' loading={loading} onClick={() => setLoading(!loading)}>
+              Search
+              {/* <SearchOutlined size='small' /> */}
+            </Button>
           </Space>
         </Demo.Block>
         <Demo.Block title='密码框' description='密码输入框，支持加密字符。'>
@@ -73,8 +88,8 @@ export default function InputPage() {
           <Space direction='vertical'>
             <Input status='error' placeholder='Error' />
             <Input status='warning' placeholder='Warning' />
-            <Input status='error' suffix={<CloseCircleOutlined />} placeholder='Error with suffix' />
-            <Input status='warning' suffix={<InfoCircleOutlined />} placeholder='Warning with suffix' />
+            <Input status='error' suffix={<CloseCircleFilled size='small' />} placeholder='Error with suffix' />
+            <Input status='warning' suffix={<ExclamationCircleFilled size='small' />} placeholder='Warning with suffix' />
           </Space>
         </Demo.Block>
         <Demo.Block title='受控组件' description='当传入 value 时，输入框将变成受控组件，必须配合 onChange 回调函数使用。如果不希望使用受控组件，请使用 defaultValue。'>
