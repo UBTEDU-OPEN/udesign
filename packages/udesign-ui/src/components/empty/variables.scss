@@ -1,7 +1,7 @@
-$empty-color-primary-light: var(--ud-empty-color-primary-light, var(--ud-color-primary-light)); // 默认态背景色
+$empty-background: var(--ud-empty-background, var(--ud-color-primary-light)); // 默认态背景色
 $empty-font-size: var(--empty-font-size, 20px); // 文字字号
 $empty-padding: var(--empty-padding, 64px 0 44px); // 内边距
 $empty-border-radius: var(--ud-empty-border-radius, 6px); // 开关圆角-默认
-$empty-width-image: var(--empty-width-image, 200px); // 图片宽度
-$empty-padding-image: var(--empty-padding, 0 0 20px); // 图片内边距
+$empty-image-width: var(--empty-image-width, 200px); // 图片宽度
+$empty-image-padding: var(--empty-padding, 0 0 20px); // 图片内边距
 $empty-font-color: var(--empty-font-color, rgb(var(--ud-gray-12))); // 文字颜色

@@ -15,8 +15,8 @@ $module: ud-switch;
   height: $switch-height-middle;
   line-height: $switch-height-middle;
   vertical-align: middle;
-  border: $switch-border-width solid $switch-color-primary-unchecked;
-  background: $switch-color-primary-light-unchecked;
+  border: $switch-border-width solid $switch-circle-background-unchecked;
+  background: $switch-background-unchecked;
   border-radius: $switch-height-middle;
   cursor: pointer;
   transition: all .2s;
@@ -50,17 +50,17 @@ $module: ud-switch;
       left: calc(100% - ($switch-circle-diameter-middle + 2px ));
       &::before {
         background-image: linear-gradient(-180deg, var(--ud-color-primary-light) 0%, var(--ud-color-primary) 100%);
-        box-shadow: 0 3px 5px 0 $switch-color-primary-checked;
+        box-shadow: 0 3px 5px 0 $switch-circle-background-checked;
       }
     }
   }
   &-unchecked {
-    background: $switch-color-primary-light-unchecked;
+    background: $switch-background-unchecked;
     padding-left: $switch-circle-padding-middle;
     color: #A8B4CE;;
     .#{$module}-handle::before {
-      background-image: linear-gradient(-180deg, $switch-color-primary-light-unchecked 0%, $switch-color-primary-unchecked 100%);
-      box-shadow: 0 3px 5px 0 $switch-color-primary-light-unchecked;
+      background-image: linear-gradient(-180deg, $switch-background-unchecked 0%, $switch-circle-background-unchecked 100%);
+      box-shadow: 0 3px 5px 0 $switch-background-unchecked;
     }
   }
   &-text {

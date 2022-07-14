@@ -3,21 +3,21 @@ $module: ud-collapse;
 
 .#{$module} {
 	&-header {
-		font-size: $collapse-font-size-header;
-		background: $collapse-color-primary-light-header;
+		font-size: $collapse-header-font-size;
+		background: $collapse-header-background;
 		border: $collapse-border-width $collapse-border-style $collapse-border-color;
-		border-radius: $collapse-border-radius-header;
-		padding: $collapse-padding-header;
-		margin: $collapse-margin-header;
+		border-radius: $collapse-header-border-radius;
+		padding: $collapse-header-padding;
+		margin: $collapse-header-margin;
 		cursor: pointer;
 	}
 
 	&-content {
-		font-size: $collapse-font-size-item;
-		padding: $collapse-padding-item;
-		background: $collapse-color-primary-light-item;
-		border-radius: $collapse-border-radius-item;
-		margin: $collapse-margin-item;
+		font-size: $collapse-item-font-size;
+		padding: $collapse-item-padding;
+		background: $collapse-item-background;
+		border-radius: $collapse-item-border-radius;
+		margin: $collapse-item-margin;
 		transition: all 0.2s ease-in-out;
 	}
 
@@ -33,7 +33,7 @@ $module: ud-collapse;
 
 	&-active {
 		.#{$module}-header {
-			color: $collapse-color-primary-active;
+			color: $collapse-background-active;
 			font-weight: 700;
 		}
 
@@ -44,21 +44,21 @@ $module: ud-collapse;
 	}
 
 	.#{$module}-border.#{$module}-active {
-		background: $collapse-color-primary-bordered;
-		border: $collapse-border-width $collapse-border-style $collapse-color-primary-active;
-		border-radius: $collapse-border-radius-header;
-		margin: $collapse-margin-header;
+		background: $collapse-bordered-background;
+		border: $collapse-border-width $collapse-border-style $collapse-background-active;
+		border-radius: $collapse-header-border-radius;
+		margin: $collapse-header-margin;
 
 		.#{$module}-header {
-			background: $collapse-color-primary-bordered;
-			border-radius: $collapse-border-radius-header $collapse-border-radius-header 0 0;
+			background: $collapse-bordered-background;
+			border-radius: $collapse-header-border-radius $collapse-header-border-radius 0 0;
 			margin: 0;
 			cursor: pointer;
 		}
 
 		.#{$module}-content {
-			background: $collapse-color-primary-bordered;
-			border-radius: 0 0 $collapse-border-radius-item $collapse-border-radius-item;
+			background: $collapse-bordered-background;
+			border-radius: 0 0 $collapse-item-border-radius $collapse-item-border-radius;
 			margin: 0;
 		}
 	}
