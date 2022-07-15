@@ -86,7 +86,7 @@ export default function GridPage() {
             </>
           }
         >
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Horizontal
           </Divider>
           <Row gutter={[16, 16]}>
@@ -103,7 +103,7 @@ export default function GridPage() {
               <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
             </Col>
           </Row>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Responsive
           </Divider>
           <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, xl: 40, xxl: 48 }}>
@@ -120,7 +120,7 @@ export default function GridPage() {
               <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '8px 0' }}>col-6</div>
             </Col>
           </Row>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Vertical
           </Divider>
           <Row gutter={[16, 16]}>
@@ -215,55 +215,55 @@ export default function GridPage() {
             </>
           }
         >
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             sub-element align left
           </Divider>
-          <Row justify='start'>
+          <Row justify='start' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='center'>
+          <Divider plain orientation='center' style={{ margin: '16px 0' }}>
             sub-element align center
           </Divider>
-          <Row justify='center'>
+          <Row justify='center' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='right'>
+          <Divider plain orientation='right' style={{ margin: '16px 0' }}>
             sub-element align right
           </Divider>
-          <Row justify='end'>
+          <Row justify='end' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             sub-element align arrangement
           </Divider>
-          <Row justify='space-between'>
+          <Row justify='space-between' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             sub-element align full
           </Divider>
-          <Row justify='space-around'>
+          <Row justify='space-around' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             sub-element align evenly
           </Divider>
-          <Row justify='space-evenly'>
+          <Row justify='space-evenly' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
             <Col span={4}>col-4</Col>
@@ -271,10 +271,10 @@ export default function GridPage() {
           </Row>
         </Demo.Block>
         <Demo.Block title='对齐' description={<>子元素垂直对齐。</>}>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Align Top
           </Divider>
-          <Row justify='center' align='top'>
+          <Row justify='center' align='top' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>
               <p style={{ height: '20px' }}>col-4</p>
             </Col>
@@ -288,10 +288,10 @@ export default function GridPage() {
               <p style={{ height: '50px' }}>col-4</p>
             </Col>
           </Row>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Align Middle
           </Divider>
-          <Row justify='space-around' align='middle'>
+          <Row justify='space-around' align='middle' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>
               <p style={{ height: '20px' }}>col-4</p>
             </Col>
@@ -305,10 +305,10 @@ export default function GridPage() {
               <p style={{ height: '50px' }}>col-4</p>
             </Col>
           </Row>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Align Bottom
           </Divider>
-          <Row justify='space-between' align='bottom'>
+          <Row justify='space-between' align='bottom' style={{ padding: '8px 0', background: '#eee' }}>
             <Col span={4}>
               <p style={{ height: '20px' }}>col-4</p>
             </Col>
@@ -324,7 +324,7 @@ export default function GridPage() {
           </Row>
         </Demo.Block>
         <Demo.Block title='排序' description={<>通过 order 来改变元素的排序。</>}>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Normal
           </Divider>
           <Row>
@@ -341,7 +341,7 @@ export default function GridPage() {
               4 col-order-1
             </Col>
           </Row>
-          <Divider plain orientation='left'>
+          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Responsive
           </Divider>
           <Row>
@@ -360,17 +360,23 @@ export default function GridPage() {
           </Row>
         </Demo.Block>
         <Demo.Block title='Flex填充' description={<>Col 提供 flex 属性以支持填充。</>}>
-          <Divider orientation='left'>Percentage columns</Divider>
+          <Divider orientation='left' style={{ margin: '16px 0' }}>
+            Percentage columns
+          </Divider>
           <Row>
             <Col flex={2}>2 / 5</Col>
             <Col flex={3}>3 / 5</Col>
           </Row>
-          <Divider orientation='left'>Fill rest</Divider>
+          <Divider orientation='left' style={{ margin: '16px 0' }}>
+            Fill rest
+          </Divider>
           <Row>
             <Col flex='100px'>100px</Col>
             <Col flex='auto'>Fill Rest</Col>
           </Row>
-          <Divider orientation='left'>Raw flex style</Divider>
+          <Divider orientation='left' style={{ margin: '16px 0' }}>
+            Raw flex style
+          </Divider>
           <Row>
             <Col flex='1 1 200px'>1 1 200px</Col>
             <Col flex='0 1 300px'>0 1 300px</Col>
