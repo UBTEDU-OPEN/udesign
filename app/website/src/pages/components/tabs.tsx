@@ -107,7 +107,7 @@ export default function TabsPage() {
           </Tabs>
         </Demo.Block>
         <Demo.Block title='水平滚动' description=''>
-          <Tabs defaultActiveKey={'2'} onChange={console.log}>
+          <Tabs defaultActiveKey={'2'} onChange={console.log} type='card'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -132,7 +132,7 @@ export default function TabsPage() {
           </Tabs>
         </Demo.Block>
         <Demo.Block title='自动平铺' description='设置 around 属性即可自动平铺'>
-          <Tabs around>
+          <Tabs around type='card'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -145,7 +145,7 @@ export default function TabsPage() {
           </Tabs>
         </Demo.Block>
         <Demo.Block title='位置' description='设置 position 属性即可调整位置'>
-          <Tabs position='left' type='line'>
+          <Tabs position='left' type='card'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>

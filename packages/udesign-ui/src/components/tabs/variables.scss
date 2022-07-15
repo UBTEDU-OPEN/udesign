@@ -1,6 +1,6 @@
 
 $tabs-background-active: var(--ud-tabs-background-active, var(--ud-color-primary)); // 默认态标签页高亮
-$tabs-background-unactive: var(--ud-tabs-background-unactive, rgba(var(--ud-purple-1))); // 默认态标签页默认背景色
+$tabs-background-inactive: var(--ud-tabs-background-inactive, rgba(var(--ud-purple-1))); // 默认态标签页默认背景色
 
 $tabs-font-color: var(--tabs-font-color, rgba(var(--ud-gray-9))); // 标签页文字颜色
 $tabs-font-size-small: var(--tabs-font-size-small, 12px); // 标签页文字字号-小

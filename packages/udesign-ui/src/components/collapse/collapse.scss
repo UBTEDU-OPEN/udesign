@@ -2,7 +2,7 @@
 $module: ud-collapse;
 
 .#{$module} {
-	&-header {
+	&-item-header {
 		font-size: $collapse-header-font-size;
 		background: $collapse-header-background;
 		border-radius: $collapse-header-border-radius;
@@ -11,7 +11,7 @@ $module: ud-collapse;
 		cursor: pointer;
 	}
 
-	&-content {
+	&-item-content {
 		font-size: $collapse-item-font-size;
 		padding: $collapse-item-padding;
 		background: $collapse-item-background;
@@ -20,35 +20,35 @@ $module: ud-collapse;
 		transition: all 0.2s ease-in-out;
 	}
 
-	&-icon {
+	&-item-icon {
 		float: right;
 	}
 
-	&-unactive {
-		.#{$module}-content {
+	&-item-inactive {
+		.#{$module}-item-content {
 			display: none;
 		}
 	}
 
-	&-active {
-		.#{$module}-header {
+	&-item-active {
+		.#{$module}-item-header {
 			color: $collapse-background-active;
 			font-weight: 700;
 		}
 
-		.#{$module}-icon {
+		.#{$module}-item-icon {
 			transform: rotate(180deg);
 			transition: all 0.2s ease-in-out;
 		}
 	}
 
-	.#{$module}-border.#{$module}-active {
+	.#{$module}-item-border.#{$module}-item-active {
 		background: $collapse-bordered-background;
 		border: $collapse-border-width $collapse-border-style $collapse-background-active;
 		border-radius: $collapse-header-border-radius;
 		margin: $collapse-header-margin;
 
-		.#{$module}-header {
+		.#{$module}-item-header {
 			background: $collapse-bordered-background;
 			border-bottom: $collapse-border-width $collapse-border-style $collapse-border-color;
 			border-radius: $collapse-header-border-radius $collapse-header-border-radius 0 0;
@@ -56,7 +56,7 @@ $module: ud-collapse;
 			cursor: pointer;
 		}
 
-		.#{$module}-content {
+		.#{$module}-item-content {
 			background: $collapse-bordered-background;
 			border-radius: 0 0 $collapse-item-border-radius $collapse-item-border-radius;
 			margin: 0;

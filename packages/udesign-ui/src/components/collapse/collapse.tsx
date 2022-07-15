@@ -9,7 +9,8 @@ type ValueProps<T> = {
   bordered?: boolean; // 是否显示边框
   showArrow?: boolean; // 是否展示当前面板上的箭头
   expandIcon?: ReactNode; // 自定义图标
-  style?: object; // 自定义样式
+  headerStyle?: object; // header自定义样式
+  bodyStyle?: object; // body自定义样式
   activeKey?: T;
   defaultActiveKey?: T;
   onChange?: (activeKey: T) => void;
@@ -23,7 +24,7 @@ export type CollapseProps = (
     } & ValueProps<string | null>)
 ) &
   NativeProps;
-export const Collapse = ({ accordion, bordered, showArrow, expandIcon, activeKey, defaultActiveKey, className, style, children }: CollapseProps) => {
+export const Collapse = ({ accordion, bordered, showArrow, expandIcon, activeKey, defaultActiveKey, className, headerStyle, bodyStyle, children }: CollapseProps) => {
   const [innerActiveKey, setInnerActiveKey] = useState(activeKey || defaultActiveKey || []);
   const activeKeyList = innerActiveKey === null ? [] : Array.isArray(innerActiveKey) ? innerActiveKey : [innerActiveKey];
 
@@ -58,7 +59,8 @@ export const Collapse = ({ accordion, bordered, showArrow, expandIcon, activeKey
         bordered,
         showArrow,
         expandIcon,
-        style,
+        headerStyle,
+        bodyStyle,
         onItemClick,
       };
       return React.cloneElement(child, childProps);
