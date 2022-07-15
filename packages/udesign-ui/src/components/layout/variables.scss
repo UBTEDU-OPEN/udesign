@@ -1,7 +1,18 @@
 $layout-transition-duration: var(--ud-layout-transition-duration, 0.2s); // 侧边栏收缩过度时间
-$layout-transform-rotate: var(--ud-layout-transform-rotate, rotateY(180deg)); // 侧边栏底部图标收缩时旋转的角度
-$layout-icon-size: var(--ud-layout-icon-size, 32px); // 侧边栏底部图标大小-默认
-$layout-icon-color: var(--ud-layout-icon-color, #fff); // 侧边栏底部图标颜色
-$layout-special-trigger-size: var(--ud-layout-special-trigger, 32px); // 自定义触发器大小-默认
-$layout-special-trigger-top: var(--ud-layout-special-top, 0); // 自定义触发器距顶部位置-默认
-$layout-special-trigger-left: var(--ud-layout-special-left, 100%); // 自定义触发器距左侧位置-默认
+$layout-transform-rotate: var(--ud-layout-transform-rotate, rotateY(180deg)); // 侧边栏底部trigger图标收缩时旋转的角度
+$layout-icon-size: var(--ud-layout-icon-size, 24px); // 侧边栏底部trigger图标大小-默认
+$layout-icon-color: var(--ud-layout-icon-color, #fff); // 侧边栏底部trigger图标颜色
+
+$layout-sider-trigger-size: var(--ud-layout-sider-trigger-top-size, 35px); // 自定义trigger大小
+$layout-sider-trigger-top-left: var(--ud-layout-sider-trigger-top-left, 100%); // 自定义trigger 离侧边栏左侧距离
+$layout-sider-trigger-width: var(--ud-layout-sider-trigger-top-size, 40px); // 自定义trigger容器宽度
+$layout-sider-trigger-height: var(--ud-layout-sider-trigger-top-size, 40px); // 自定义trigger容器高度
+$layout-sider-trigger-line-height: var(--ud-layout-sider-trigger-top-line-height, 40px); // 自定义trigger容器行高
+$layout-sider-trigger-top-boder-radius: var(--ud-layout-sider-trigger-top-boder-radius, 5px); // 自定义trigger容器圆角
+$layout-sider-trigger-top-margin-left: var(--ud-layout-sider-trigger-top-margin-left, 10px); // 自定义trigger容器左侧外边距
+
+$layout-sider-trigger-top-flod-color: var(--ud-layout-sider-trigger-top-flod-color, rgb(114, 132, 251)); // 自定义trigger折叠时颜色
+$layout-sider-trigger-top-flod-background: var(--ud-layout-sider-trigger-top-flod-background, #fff); // 自定义trigger折叠时背景颜色
+
+$layout-sider-trigger-top-extend-color: var(--ud-layout-sider-trigger-top-extend-color, #fff); // 自定义trigger展开时颜色
+$layout-sider-trigger-top-extend-background: var(--ud-layout-sider-trigger-top-extend-background, rgb(114, 132, 251)); // 自定义trigger展开时背景颜色

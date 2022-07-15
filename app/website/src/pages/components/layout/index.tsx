@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Typography, Breadcrumb, Menu } from '@ubt/udesign-ui';
-import { RightOutlined, LeftOutlined } from '@ubt/udesign-icons';
+import { LeftOutlined, PictureFilled, VoiceFilled, DataFilled, MenuOutlined } from '@ubt/udesign-icons';
 import styles from './index.module.scss';
 import { Demo } from '../../../demo';
 
@@ -9,14 +9,16 @@ const { Header, Footer, Content, Sider } = Layout;
 export default function LayoutPage() {
   const { Text } = Typography;
 
+  const width = '200px';
+  const collapsedWidth = '100px';
   const [collapsed, setCollapsed] = useState(true);
 
-  const toggle = () => {
-    setCollapsed(!collapsed);
+  const onbreak = (value: boolean) => {
+    setCollapsed(!value);
   };
 
-  const onbreak = (collapsed: boolean, type: string) => {
-    console.log(collapsed, type);
+  const reback = (value: boolean) => {
+    setCollapsed(!value);
   };
   return (
     <div className={styles['layout-root']}>
@@ -162,7 +164,7 @@ export default function LayoutPage() {
             <Footer style={{ textAlign: 'center' }}>&copy;2022 Ubtech Robotics Corp. All rights reserved</Footer>
           </Layout>
         </Demo.Block>
-        <Demo.Block className='layout-menu' title='顶部-侧边布局-通栏' description='同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。'>
+        <Demo.Block className='layout-top-asider layout-menu' title='顶部-侧边布局-通栏' description='同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。'>
           <Layout>
             <Header style={{ background: 'rgba(114,132,251,.8)', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
               <div className='logo' style={{ width: '150px' }} />
@@ -175,7 +177,23 @@ export default function LayoutPage() {
               </Menu>
             </Header>
             <Layout hasSider>
-              <Sider style={{ textAlign: 'center', lineHeight: '200px', color: '#fff' }}>Sider</Sider>
+              <Sider style={{ textAlign: 'center', lineHeight: '200px', backgroundColor: '#fff', paddingTop: '40px', width }}>
+                <Menu className='layout-top-asider-menu'>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />
+                    <span>Option 1</span>
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 2
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <DataFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 3
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <PictureFilled style={{ margin: '0 10px', fontSize: '25px' }} /> Option 4
+                  </Menu.Item>
+                </Menu>
+              </Sider>
               <Layout style={{ padding: '0  40px 30px', textAlign: 'left' }}>
                 <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
                   <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
@@ -189,7 +207,7 @@ export default function LayoutPage() {
             </Layout>
           </Layout>
         </Demo.Block>
-        <Demo.Block className='layout-menu' title='顶部-侧边布局' description='拥有顶部导航及侧边栏的页面，多用于展示类网站。'>
+        <Demo.Block className='layout-top-asider layout-menu' title='顶部-侧边布局' description='拥有顶部导航及侧边栏的页面，多用于展示类网站。'>
           <Layout>
             <Header style={{ display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
               <div className='logo' style={{ width: '150px' }} />
@@ -208,7 +226,23 @@ export default function LayoutPage() {
                 <Breadcrumb.Item>App</Breadcrumb.Item>
               </Breadcrumb>
               <Layout hasSider style={{ textAlign: 'left' }}>
-                <Sider style={{ textAlign: 'center', lineHeight: '200px', color: '#fff' }}>Sider</Sider>
+                <Sider style={{ textAlign: 'center', padding: '24px 0', background: '#ffff', width }}>
+                  <Menu className='layout-top-asider-menu bg'>
+                    <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                      <PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />
+                      <span>Option 1</span>
+                    </Menu.Item>
+                    <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                      <VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 2
+                    </Menu.Item>
+                    <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                      <DataFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 3
+                    </Menu.Item>
+                    <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                      <PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 4
+                    </Menu.Item>
+                  </Menu>
+                </Sider>
                 <Content>
                   <div className='site-layout-content'>Content</div>
                 </Content>
@@ -229,9 +263,25 @@ export default function LayoutPage() {
           }
         >
           <Layout hasSider className='sider-layout'>
-            <Sider onCollapse={onbreak} collapsedWidth={100} collapsible trigger={<LeftOutlined />} style={{ display: 'flex', flexDirection: 'column' }}>
+            <Sider trigger={<LeftOutlined />} collapsible onCollapse={onbreak} collapsed={collapsed} style={{ display: 'flex', flexDirection: 'column', width: collapsed ? width : collapsedWidth }}>
               <div className='logo' style={{ margin: '12px 25px 0 25px' }}></div>
-              <div style={{ flexGrow: '1', textAlign: 'center', lineHeight: '200px', color: '#fff', overflow: 'hidden' }}>menu</div>
+              <div style={{ flexGrow: '1', textAlign: 'center', marginTop: '30px' }}>
+                <Menu>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />
+                    <span>Option 1</span>
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 2
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <DataFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 3
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <PictureFilled style={{ margin: '0 10px', fontSize: '25px' }} /> Option 4
+                  </Menu.Item>
+                </Menu>
+              </div>
             </Sider>
             <Layout style={{ padding: '0 20px' }}>
               <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
@@ -258,32 +308,28 @@ export default function LayoutPage() {
           }
         >
           <Layout hasSider>
-            <Sider collapsed={collapsed} collapsible width={200} collapsedWidth={100} trigger={null}>
+            <Sider triggerTop={<MenuOutlined />} trigger={<LeftOutlined />} onCollapse={reback} collapsed={collapsed} style={{ width: collapsed ? width : collapsedWidth, justifyContent: 'space-between' }}>
               <div className='logo' style={{ margin: '12px 25px 0 25px' }}></div>
-              <div style={{ textAlign: 'center', color: '#fff', overflow: 'hidden', lineHeight: '250px' }}>sider</div>
+              <div style={{ textAlign: 'center', color: '#fff', overflow: 'hidden', marginTop: '30px', flexGrow: '1' }}>
+                <Menu>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />
+                    <span>Option 1</span>
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 2
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <DataFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 3
+                  </Menu.Item>
+                  <Menu.Item style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
+                    <PictureFilled style={{ margin: '0 10px', fontSize: '25px' }} /> Option 4
+                  </Menu.Item>
+                </Menu>
+              </div>
             </Sider>
             <Layout>
-              <Header style={{ background: '#fff', padding: '0 20px' }}>
-                <div style={{ width: '44px', height: '44px', margin: '10px 0', cursor: 'pointer', backgroundColor: '#7284FB' }} onClick={toggle}></div>
-              </Header>
-              <Layout hasSider style={{ textAlign: 'left', padding: '20px 20px 0  20px' }}>
-                <Content>
-                  <div className='site-layout-content'>Content</div>
-                </Content>
-              </Layout>
-              <Footer style={{ textAlign: 'center' }}>&copy;2022 Ubtech Robotics Corp. All rights reserved</Footer>
-            </Layout>
-          </Layout>
-        </Demo.Block>
-
-        <Demo.Block title='响应式布局' description={<>Layout.Sider 支持响应 </>}>
-          <Layout hasSider>
-            <Sider collapsible trigger={<RightOutlined />} collapsedWidth={0} onCollapse={onbreak}>
-              <div className='logo' style={{ margin: '12px 25px 0 25px' }}></div>
-              <div style={{ overflow: 'hidden', textAlign: 'center', lineHeight: '200px', color: '#fff' }}>Sider</div>
-            </Sider>
-            <Layout>
-              <Header style={{ background: '#fff', margin: '20px 20px 0 20px' }}></Header>
+              <Header style={{ background: '#fff', padding: '0 20px' }}></Header>
               <Layout hasSider style={{ textAlign: 'left', padding: '20px 20px 0  20px' }}>
                 <Content>
                   <div className='site-layout-content'>Content</div>
@@ -322,8 +368,8 @@ export default function LayoutPage() {
         <Demo.Block title='固定侧边栏' description={<>当内容较长时，使用固定侧边栏可以提供更好的体验。</>}>
           <div className='sider-fixed-body'>
             <Layout hasSider>
-              <Sider collapsedWidth={200} style={{ transform: 'translate(0, 0)' }}>
-                <div className='logo' style={{ margin: '12px 25px' }}></div>
+              <Sider style={{ transform: 'translate(0, 0)' }}>
+                <div className='logo' style={{ margin: '12px 25px', width }}></div>
                 <div style={{ overflow: 'auto', height: '465px', flexGrow: '0', textAlign: 'center', color: '#fff' }}>
                   <ul>
                     <li>List-1</li>
