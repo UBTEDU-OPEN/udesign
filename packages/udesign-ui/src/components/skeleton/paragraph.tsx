@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Size, Shape } from '../../constants';
+import { Size } from '../../constants';
 import { prefixCls } from './constants';
 import { NativeProps } from '../../utils';
 

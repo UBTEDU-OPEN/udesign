@@ -8,19 +8,14 @@ import { CheckboxLight } from './checkbox-light';
 import { CheckboxNormalDisabled } from './checkbox-normal-disabled';
 import { CheckboxLightDisabled } from './checkbox-light-disabled';
 
-export type CheckboxChangeEventType = React.ChangeEvent<HTMLInputElement>;
-
-export type CheckboxChangeEventHandler = (event: CheckboxChangeEventType) => void;
-export type CheckboxClickEventHandler = CheckboxChangeEventHandler;
-
 export type CheckboxProps = {
   label?: React.ReactNode; // 多选框显示的内容
-  onChange?: CheckboxChangeEventHandler; // function (event: React.ChangeEvent<HTMLInputElement>)=> void
   checked?: boolean; // 指定当前是否选中
   defaultChecked?: boolean; // 初始是否选中
   disabled?: boolean; // 禁用 Checkbox
   value?: string; // 根据 value 进行比较，判断是否选中
   indeterminate?: boolean; // 设置 indeterminate 状态，只负责样式控制
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 变化时回调函数
 } & NativeProps;
 
 const prefixCls = 'ud-checkbox';
@@ -79,7 +74,7 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, style, c
           value={value}
           disabled={disabled}
           onClick={handleClick}
-          onChange={(event: CheckboxChangeEventType) => {
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             if (onChange) {
               onChange(event);
             }

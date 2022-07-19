@@ -1,8 +1,32 @@
-import React from 'react';
-import { Space, Tag } from '@ubt/udesign-ui';
+import React, { useState } from 'react';
+import { Input, Space, Tag } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
+const defaultTagList = [
+  {
+    label: 'Unremovable',
+  },
+  {
+    label: 'Tag2',
+    closeable: true,
+  },
+  {
+    label: 'Tag3',
+    closeable: true,
+  },
+];
+
 export default function TagPage() {
+  const [label, setLabel] = useState('');
+  const [tagList, setTagList] = useState(defaultTagList);
+
+  const handleAddTag = () => {
+    if (!label) return;
+    const newTagList = [...tagList];
+    newTagList.push({ label });
+    setTagList(newTagList);
+  };
+
   return (
     <>
       <Demo.Page title='Tag 标签' description='进行标记和分类的小标签。'>
@@ -16,20 +40,40 @@ export default function TagPage() {
             </Tag>
           </Space>
         </Demo.Block>
-        <Demo.Block title='多彩标签' description='多种预设色彩的标签样式，用作不同场景使用。如果预设值不能满足你的需求，可以设置为具体的色值。'>
+        <Demo.Block title='添加和删除' description='用数组生成一组标签，可以动态添加和删除。'>
+          <Input style={{ width: 240 }} defaultValue={label} onChange={setLabel} onEnterPress={handleAddTag} placeholder='回车键入' />
+          <br />
+          <br />
           <Space wrap>
-            <Tag color='purple'>Purple/紫色</Tag>
-            <Tag color='red'>Red/红色</Tag>
-            <Tag color='orange'>Orange/橘色</Tag>
-            <Tag color='yellow'>Yellow/黄色</Tag>
-            <Tag color='green'>Green/绿色</Tag>
-            <Tag color='cyan'>Cyan/青色</Tag>
-            <Tag color='blue'>Blue/蓝色</Tag>
-            <Tag color='#f50' textColor='#fff'>
-              #f50
+            {tagList.map((tag, index) => (
+              <Tag key={index} closeable={tag.closeable}>
+                {tag.label}
+              </Tag>
+            ))}
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='多彩标签' description='多种预设色彩的标签样式，用作不同场景使用。'>
+          <Space wrap>
+            <Tag checkable color='purple'>
+              Purple/紫色
             </Tag>
-            <Tag color='#eee' textColor='#999'>
-              #eee
+            <Tag checkable color='red'>
+              Red/红色
+            </Tag>
+            <Tag checkable color='orange'>
+              Orange/橘色
+            </Tag>
+            <Tag checkable color='yellow'>
+              Yellow/黄色
+            </Tag>
+            <Tag checkable color='green'>
+              Green/绿色
+            </Tag>
+            <Tag checkable color='cyan'>
+              Cyan/青色
+            </Tag>
+            <Tag checkable color='blue'>
+              Blue/蓝色
             </Tag>
           </Space>
         </Demo.Block>
@@ -44,6 +88,26 @@ export default function TagPage() {
           <Tag closeable onClose={(value) => console.log('onClose', value)}>
             标签
           </Tag>
+        </Demo.Block>
+        <Demo.Block title='可选择标签' description='可通过 checkable 实现类似 Checkbox 的效果，点击切换选中效果。该组件为完全受控组件，不支持非受控用法。'>
+          <Space>
+            <Tag checkable defaultChecked>
+              uCode
+            </Tag>
+            <Tag checkable>uDesign</Tag>
+            <Tag checkable>uExplore</Tag>
+            <Tag checkable>uSim</Tag>
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='自定义标签' description='如果预设值不能满足你的需求，可以设置为具体的色值。自定义色值不支持选中配色，需要自行处理。'>
+          <Space>
+            <Tag color='#f50' textColor='#fff'>
+              #f50
+            </Tag>
+            <Tag color='#eee' textColor='#999'>
+              #eee
+            </Tag>
+          </Space>
         </Demo.Block>
       </Demo.Page>
     </>

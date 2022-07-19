@@ -17,7 +17,6 @@ $module: ud-button;
   font-weight: $button-font-weight;
   text-align: center;
   border: $button-border-width $button-border-style $button-border-color;
-  border-radius: $button-border-radius;
   cursor: pointer;
   transition: opacity ease 0.15s;
   user-select: none;
@@ -171,10 +170,10 @@ $module: ud-button;
 
   // shape
   &-shape-circle {
-    border-radius: var(--ud-border-radius-circle);
+    border-radius: var(--ud-border-radius-full);
   }
   &-shape-round {
-    border-radius: var(--ud-border-radius-full);
+    border-radius: $button-border-radius;
   }
   &-shape-square {
     border-radius: 0;

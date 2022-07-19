@@ -1,4 +1,4 @@
-$tooltip-background: var(--ud-tooltip-background, var(--ud-color-black)); // 文字提示背景色
+$tooltip-background: var(--ud-tooltip-background, rgba(0, 0, 0, 0.7)); // 文字提示背景色
 $tooltip-color: var(--ud-tooltip-color, var(--ud-color-white)); // 文字提示文字颜色
 $tooltip-border-radius: var(--ud-tooltip-border-radius, var(--ud-border-radius-medium)); // 文字提示圆角
 $tooltip-max-width: var(--ud-tooltip-max-width, 240px); // 文字提示最大宽度

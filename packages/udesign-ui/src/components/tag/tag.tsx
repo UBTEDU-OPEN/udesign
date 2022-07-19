@@ -1,6 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import classNames from 'classnames';
-import { NativeProps } from '../../utils';
+import { NativeProps, usePropsValue } from '../../utils';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-tag`;
@@ -18,14 +18,24 @@ export type TagProps = {
   color?: string; // 标签颜色
   textColor?: string; // 标签文本颜色
   size?: TagSize; // 标签大小
+  checkable?: boolean; // 标签是否可以选中（点击默认选中）
+  checked?: boolean; // 是否选中状态
+  defaultChecked?: boolean; // 是否默认选中状态
   visible?: boolean; // 是否显示标签
   value?: string; // 标签的value
+  onChange?: (checked: boolean) => void; //	点击标签时触发的回调
   onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void; // 单击标签时的回调函数
   onClose?: (value: { label: ReactNode; value: string }, event: React.MouseEvent<HTMLElement>) => void; // 关闭标签时的回调函数
 } & NativeProps;
 
-const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = ({ size = 'middle', color, textColor, style, onClick, onClose, className, children, value, ...props }, ref) => {
+const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = ({ size = 'middle', color, textColor, style, checkable, onChange, onClick, onClose, className, children, value, ...props }, ref) => {
   const [visible, setVisible] = useState(true);
+
+  const [checked, setChecked] = usePropsValue({
+    value: props.checked,
+    defaultValue: props.defaultChecked || false,
+    onChange,
+  });
 
   React.useEffect(() => {
     if ('visible' in props) {
@@ -55,6 +65,15 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
     }
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLSpanElement>) => {
+    onClick?.(event);
+
+    if (checkable) {
+      setChecked(!checked);
+      onChange?.(!checked);
+    }
+  };
+
   const renderCloseIcon = () => {
     const { closeable, closeIcon } = props;
     return closeable ? (
@@ -68,6 +87,8 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
     prefixCls,
     {
       [`${prefixCls}-${color}`]: isPresetColor(),
+      [`${prefixCls}-checkable`]: checkable,
+      [`${prefixCls}-checked`]: checked,
       [`${prefixCls}-hidden`]: !visible,
       [`${prefixCls}-${size}`]: size,
     },
@@ -99,7 +120,7 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
   };
 
   return (
-    <span className={cls} onClick={onClick} style={tagStyle} ref={ref}>
+    <span className={cls} onClick={handleClick} style={tagStyle} ref={ref}>
       {children}
       {renderCloseIcon()}
     </span>

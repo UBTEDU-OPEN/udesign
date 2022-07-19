@@ -12,8 +12,18 @@ $module: ud-input;
   background: $input-background;
   color: $input-color;
   border: $border-width-control solid $input-border-color;
-  border-radius: $input-border-radius;
   overflow: hidden;
+
+  // shape
+  &-shape-circle {
+    border-radius: var(--ud-border-radius-full);
+  }
+  &-shape-round {
+    border-radius: $input-border-radius;
+  }
+  &-shape-square {
+    border-radius: 0;
+  }
 
   &-with-prepend,
   &-with-append {
@@ -63,8 +73,10 @@ $module: ud-input;
   background: transparent;
   outline: none;
   width: 100%;
-  padding: $input-padding;
-  border-radius: $input-border-radius;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
 
   &:focus {
     background: $input-background-focus;
@@ -79,9 +91,11 @@ $module: ud-input;
   }
   &-prefix {
     font-size: $input-prefix-font-size;
+    color: $input-prefix-color;
   }
   &-suffix {
     font-size: $input-suffix-font-size;
+    color: $input-suffix-color;
   }
 
   &-prepend,
@@ -118,16 +132,19 @@ $module: ud-input;
     height: $input-height-small;
     line-height: $input-height-small;
     font-size: $input-font-size-small;
+    padding: $input-padding-small;
   }
   &-middle {
     height: $input-height-middle;
     line-height: $input-height-middle;
     font-size: $input-font-size-middle;
+    padding: $input-padding-middle;
   }
   &-large {
     height: $input-height-large;
     line-height: $input-height-large;
     font-size: $input-font-size-large;
+    padding: $input-padding-large;
   }
 }
 
@@ -147,6 +164,10 @@ $module: ud-input;
       }
     }
   }
+
+  .#{$module}-suffix {
+    color: $input-border-color-error;
+  }
 }
 .#{$module}-wrapper-warning {
   background: $input-background-warning;
@@ -163,5 +184,9 @@ $module: ud-input;
         border-color: transparent;
       }
     }
+  }
+
+  .#{$module}-suffix {
+    color: $input-border-color-warning;
   }
 }

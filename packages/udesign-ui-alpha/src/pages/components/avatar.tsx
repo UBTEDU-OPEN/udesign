@@ -14,11 +14,11 @@ export default function AvatarPage() {
             <Avatar size='mini'>i</Avatar>
           </Space>
         </Demo.Block>
-        <Demo.Block title='形状' description='Avatar 支持 round、default, square 三种形状，默认为 round。'>
+        <Demo.Block title='形状' description='Avatar 支持 circle、round、square 三种形状，默认为 round。'>
           <Space>
-            <Avatar shape='square' />
-            <Avatar shape='default' />
+            <Avatar shape='circle' />
             <Avatar shape='round' />
+            <Avatar shape='square' />
           </Space>
         </Demo.Block>
         <Demo.Block title='图片' description='可以通过 src 设置图片格式的头像。'>

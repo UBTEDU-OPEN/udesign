@@ -246,6 +246,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
         <span>跳至</span>
         <div className={`${prefixCls}-quickJump-input`}>
           <Input
+            shape='round'
             size='small'
             value={quickJumpPage}
             disabled={isDisabled}

@@ -1,17 +1,24 @@
-$tag-background-default: var(--tag-background-default, var(--ud-color-fill-0)); // 标签背景色-默认
-$tag-color-default: var(--tag-color-default, var(--ud-color-text-0)); // 标签文字色-默认
-$tag-border-radius: var(--tag-border-radius, var(--ud-border-radius-full)); // 标签圆角
+$tag-border-radius: var(--ud-tag-border-radius, var(--ud-border-radius-full)); // 标签圆角
 
-$tag-height-small: var(--tag-height-small, 28px); // 标签高度-小
-$tag-height-middle: var(--tag-height-middle, 34px); // 标签高度-中
-$tag-height-large: var(--tag-height-large, 40px); // 标签高度-大
+$tag-background: var(--ud-tag-background, var(--ud-color-fill-0)); // 标签背景色
+$tag-color: var(--ud-tag-color, var(--ud-color-text-0)); // 标签文字色
+$tag-border: var(--ud-tag-border, 1px solid var(--ud-color-fill-0)); // 标签边框
 
-$tag-font-size-small: var(--tag-font-size-small, 14px); // 标签字号-小
-$tag-font-size-middle: var(--tag-font-size-middle, 16px); // 标签字号-中
-$tag-font-size-large: var(--tag-font-size-large, 18px); // 标签字号-大
+$tag-background-checked: var(--ud-tag-background-checked, var(--ud-color-fill-0)); // 标签背景色-选中
+$tag-color-checked: var(--ud-tag-color-checked, var(--ud-color-text-0)); // 标签文字色-选中
+$tag-border-checked: var(--ud-tag-border-checked, 1px solid var(--ud-color-primary)); // 标签边框-选中
 
-$tag-padding-small: var(--tag-padding-small, 0 15px); // 标签内边距-小
-$tag-padding-middle: var(--tag-padding-middle, 0 20px); // 标签内边距-中
-$tag-padding-large: var(--tag-padding-large, 0 25px); // 标签内边距-大
+$tag-height-small: var(--ud-tag-height-small, 28px); // 标签高度-小
+$tag-height-middle: var(--ud-tag-height-middle, 34px); // 标签高度-中
+$tag-height-large: var(--ud-tag-height-large, 40px); // 标签高度-大
 
-$tag-close-icon-margin: var(--tag-close-icon-margin, 0 0 0 10px); // 标签关闭图标外边距
+$tag-font-size-small: var(--ud-tag-font-size-small, 14px); // 标签字号-小
+$tag-font-size-middle: var(--ud-tag-font-size-middle, 16px); // 标签字号-中
+$tag-font-size-large: var(--ud-tag-font-size-large, 18px); // 标签字号-大
+
+$tag-padding-small: var(--ud-tag-padding-small, 0 15px); // 标签内边距-小
+$tag-padding-middle: var(--ud-tag-padding-middle, 0 20px); // 标签内边距-中
+$tag-padding-large: var(--ud-tag-padding-large, 0 25px); // 标签内边距-大
+
+$tag-close-icon-color: var(--ud-tag-close-icon-color, rgba(var(--ud-gray-7), 1)); // 标签关闭图标颜色
+$tag-close-icon-margin: var(--ud-tag-close-icon-margin, 0 0 0 10px); // 标签关闭图标外边距

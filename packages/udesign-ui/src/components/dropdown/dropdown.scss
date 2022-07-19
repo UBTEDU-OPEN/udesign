@@ -86,6 +86,7 @@ $module: ud-dropdown;
     padding: $dropdown-item-padding;
     font-size: $dropdown-item-font-size;
     font-weight: $dropdown-item-font-weight;
+    color: $dropdown-item-color;
     cursor: pointer;
     @include truncate;
 

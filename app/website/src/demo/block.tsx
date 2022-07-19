@@ -29,7 +29,7 @@ export const Block = ({ title, description, background, transform, compact, debu
       ) : null}
       {children ? (
         <div className='border rounded-lg overflow-hidden'>
-          <div className={cls}>
+          <div className={cls} style={{ background: 'rgba(242,244,250,0.45)' }}>
             {debug ? (
               <Tag className='absolute top-0 right-0' color='yellow'>
                 Dev Only

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Space, Badge } from '@ubt/udesign-ui';
-import { SettingFilled } from '@ubt/udesign-icons';
+import { HintFilled } from '@ubt/udesign-icons';
 import { Avatar } from '@ubt/udesign-ui-alpha';
 import { Demo } from '../../demo';
 
@@ -17,7 +17,7 @@ export default function BadgePage() {
             <Badge content={0} showZero>
               <Avatar shape='square' />
             </Badge>
-            <Badge content={<SettingFilled />}>
+            <Badge content={<HintFilled />}>
               <Avatar shape='square' />
             </Badge>
             <Badge dot>
@@ -28,7 +28,7 @@ export default function BadgePage() {
         <Demo.Block title='独立使用' description='不包裹任何元素即是独立使用，可自定义样式展现。'>
           <Space>
             <Badge content='43' />
-            <Badge content={<SettingFilled />} />
+            <Badge content={<HintFilled />} />
             <Badge content='120' style={{ background: '#7BDC7B' }} />
           </Space>
         </Demo.Block>
@@ -51,7 +51,7 @@ export default function BadgePage() {
         <Demo.Block title='极简显示' description='只有小红点提示，没有具体数值。'>
           <Space align='center'>
             <Badge dot>
-              <SettingFilled className='text-4xl' />
+              <HintFilled className='text-4xl text-indigo-500' />
             </Badge>
             <Badge dot>
               <a href='#'>Link Something</a>
@@ -73,9 +73,15 @@ export default function BadgePage() {
         </Demo.Block>
         <Demo.Block title='尺寸' description='通过 size 属性指定尺寸，可选 middle, small'>
           <Space>
+            大
             <Badge content='5' size='middle'>
               <Avatar shape='square' />
             </Badge>
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space>
+            小
             <Badge content='5' size='small'>
               <Avatar shape='square' />
             </Badge>

@@ -311,16 +311,16 @@ export const Tooltip = ({
     };
 
     if (placement.indexOf('top') === 0) {
-      arrowStyle.bottom = '-6px';
+      arrowStyle.bottom = '-7px';
     }
     if (placement.indexOf('bottom') === 0) {
-      arrowStyle.top = '-6px';
+      arrowStyle.top = '-7px';
     }
     if (placement.indexOf('left') === 0) {
-      arrowStyle.right = '-6px';
+      arrowStyle.right = '-7px';
     }
     if (placement.indexOf('right') === 0) {
-      arrowStyle.left = '-6px';
+      arrowStyle.left = '-7px';
     }
 
     if (placement.includes('Left')) {

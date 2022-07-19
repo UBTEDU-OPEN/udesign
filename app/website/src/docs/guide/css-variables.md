@@ -85,12 +85,12 @@ color: rgba(var(--ud-color-primary), 0.7);
 
 比如：`--ud-pagination-item-color-hover`
 
-默认使用小写，如果名称有多个单词，使用 `-`分开，也可以使用小驼峰。例如：`--ud-steps-item-padding-left` 和 `--ud-steps-item-paddingLeft`
+默认使用小写，如果名称有多个单词，使用 `-`分开。例如：`--ud-steps-item-padding-left`
 
 ### 书写
 
 ```scss
-$item-paddingLeft: var(--ud-steps-item-paddingLeft, 16px); // 步骤条左侧内边距
+$steps-item-padding-left: var(--ud-steps-item-padding-left, 16px); // 步骤条左侧内边距
 ```
 
 未来我们会编写脚本（正则）自动将组件的 `variables.scss` 输出为页面内容，因此对书写有一定的要求，务必严格遵守。

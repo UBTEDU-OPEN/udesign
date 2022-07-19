@@ -97,13 +97,13 @@ export default function ButtonPage() {
             <Button type='text' shape='circle' icon={<SettingFilled />} danger />
           </Space>
         </Demo.Block>
-        <Demo.Block title='按钮形状' description='shape 支持 round, default, square, circle，默认为 round。'>
+        <Demo.Block title='按钮形状' description='shape 支持 circle，round, square, 默认为 round。'>
           <Space>
+            <Button type='primary' shape='circle'>
+              circle
+            </Button>
             <Button type='primary' shape='round'>
               round
-            </Button>
-            <Button type='primary' shape='default'>
-              default
             </Button>
             <Button type='primary' shape='square'>
               square
@@ -149,7 +149,7 @@ export default function ButtonPage() {
           }
         >
           <Space>
-            <Button type='primary' shape='default' icon={<SettingFilled />} />
+            <Button type='primary' shape='round' icon={<SettingFilled />} />
             <Button type='primary' shape='circle' icon={<SettingFilled />} />
             <Button type='primary' shape='square' icon={<SettingFilled />} />
             <Button type='primary' icon={<SettingFilled />}>
