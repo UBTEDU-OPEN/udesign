@@ -1,10 +1,12 @@
-import React from 'react';
-import { Typography, Space } from '@ubt/udesign-ui';
-import { EditFilled } from '@ubt/udesign-icons';
+import React, { useState } from 'react';
+import { Typography, Space, Copy, Toast } from '@ubt/udesign-ui';
+import { EditFilled, CopyOutlined, CheckOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../../demo';
 import styles from './index.module.scss';
 
 export default function TypographyPage() {
+  const [copyIcon, setCopyIcon] = useState(true);
+
   return (
     <div className={styles['typography-root']}>
       <Demo.Page title='Typography 排版' description='文本的基本格式'>
@@ -59,7 +61,23 @@ export default function TypographyPage() {
             >
               This is an editable text.
             </Typography.Text>
-            <Typography.Text copyable>This is an editable text.</Typography.Text>
+            <Typography.Text>
+              This is an editable text.
+              <Copy
+                style={{ color: '#7284fb', marginLeft: '5px' }}
+                text='复制成功'
+                onSuccess={() => {
+                  setCopyIcon(!copyIcon);
+                  Toast('复制成功');
+                  setTimeout(() => {
+                    setCopyIcon(copyIcon);
+                  }, 2000);
+                }}
+                onError={() => Toast('复制失败')}
+              >
+                {copyIcon ? <CopyOutlined /> : <CheckOutlined style={{ color: '#7bdc7b' }} />}
+              </Copy>
+            </Typography.Text>
           </Space>
         </Demo.Block>
         <Demo.Block title='省略展示' description='多行文本省略。你可以通过 tooltip 属性配置省略展示内容，大量文本时推荐优先使用 expandable。'>

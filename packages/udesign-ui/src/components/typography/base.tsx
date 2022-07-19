@@ -23,13 +23,6 @@ export interface TextConfig {
   icon?: ReactNode;
 }
 
-export interface CopyableConfig {
-  tooltip?: ReactNode;
-  icon?: [ReactNode, ReactNode];
-  text?: string;
-  onCopy?: () => void;
-}
-
 export interface EditableConfig {
   icon?: ReactNode;
   tooltip?: boolean | ReactNode;

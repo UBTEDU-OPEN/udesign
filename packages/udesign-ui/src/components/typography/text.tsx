@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
-import { Copyable } from './copyable';
-import { EllipsisConfig, EditableConfig, CopyableConfig } from './base';
+import { EllipsisConfig, EditableConfig } from './base';
 import { Editable } from './editable';
 import { Ellipsis } from './ellipsis';
 import { BASE_CLASS_PREFIX } from '../../constants';
@@ -21,30 +20,11 @@ export type TextProps = {
   strong?: boolean; // 是否加粗
   keyboard?: boolean; // 添加键盘样式
   ellipsis?: EllipsisConfig | boolean; // 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等
-  copyable?: CopyableConfig | boolean; // 是否可拷贝，为对象时可进行各种自定义
   editable?: EditableConfig | boolean; // 是否可编辑，为对象时可对编辑进行控制
   onClick?: React.MouseEventHandler<HTMLSpanElement>;
 } & NativeProps;
 
-export const Text = ({
-  type = 'default',
-  mark = false,
-  disabled = false,
-  code = false,
-  underline = false,
-  del = false,
-  italic = false,
-  link,
-  strong = false,
-  keyboard = false,
-  className,
-  ellipsis,
-  copyable,
-  editable,
-  onClick,
-  children,
-  style,
-}: TextProps) => {
+export const Text = ({ type = 'default', mark = false, disabled = false, code = false, underline = false, del = false, italic = false, link, strong = false, keyboard = false, className, ellipsis, editable, onClick, children, style }: TextProps) => {
   const cls = classNames(
     prefixCls,
     {
@@ -58,26 +38,18 @@ export const Text = ({
       [`${prefixCls}-text-link`]: link,
       [`${prefixCls}-text-strong`]: strong,
       [`${prefixCls}-text-keyboard`]: keyboard,
-      [`${prefixCls}-copy-wrapper`]: copyable,
     },
     className,
   );
 
   const wrapperCls = '';
 
-  if (ellipsis || copyable || editable) {
+  if (ellipsis || editable) {
     return (
       <>
         {ellipsis ? (
           <span onClick={onClick} className={cls} style={{ position: 'relative' }}>
             <Ellipsis {...ellipsis}>{children}</Ellipsis>
-          </span>
-        ) : null}
-        {copyable ? (
-          <span onClick={onClick} className={cls} style={style}>
-            <Copyable {...copyable} className={wrapperCls}>
-              {children}
-            </Copyable>
           </span>
         ) : null}
         {editable ? (

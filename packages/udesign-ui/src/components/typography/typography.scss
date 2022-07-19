@@ -169,22 +169,6 @@ $module: ud-typography;
     cursor: pointer;
   }
 
-  &-copy {
-    display: inline-block;
-    margin: 0 0 0 5px;
-    position: relative;
-    padding: 0;
-    color: $typography-color-icon;
-  }
-
-  &-copy-icon {
-    margin-bottom: 2px;
-  }
-
-  &-copy-clicked {
-    color: $typography-color-copyabled;
-  }
-
   &-paragraph {
     position: relative;
   }
