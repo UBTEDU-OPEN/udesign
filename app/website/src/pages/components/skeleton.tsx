@@ -28,17 +28,21 @@ export default function SkeletonPage() {
           <Skeleton active avatar paragraph={{ width: ['60%', '100%', '100%', '80%'], rows: 4 }} />
         </Demo.Block>
         <Demo.Block title='包含子组件' description='加载占位图包含子组件。'>
-          <div className='mb-6'>
-            <Button onClick={() => setLoading(!loading)}>loading:{String(loading)}</Button>
-            <Button onClick={() => setActive(!active)}>active:{String(active)}</Button>
-          </div>
+          <Space className='mb-10'>
+            <Button type={loading ? 'primary' : 'default'} onClick={() => setLoading(!loading)}>
+              加载占位图
+            </Button>
+            <Button type={active ? 'primary' : 'default'} onClick={() => setActive(!active)}>
+              动画效果
+            </Button>
+          </Space>
           <Skeleton active={active} loading={loading}>
             <h4>This is the title</h4>
             <p>Lorem ipsum dolor, sit amet cons ectetur adipis icing elit. Praesen tium, quibusdam facere quo laborum maiores sequi nam tenetur laud.</p>
           </Skeleton>
         </Demo.Block>
         <Demo.Block title='按钮头像文本标题段落' description='骨架头像、按钮、标题、段落和图像。'>
-          <Space direction='vertical'>
+          <Space direction='vertical' align='start'>
             <Space>
               <Skeleton.Avatar />
               <Skeleton.Avatar shape={'square'} />
@@ -58,10 +62,10 @@ export default function SkeletonPage() {
         <Demo.Block title='图文用法' description='复杂的组合。'>
           <div className='flex justify-center p-5'>
             <div className='bg-white pb-5 rounded-xl'>
-              <Space direction='vertical'>
+              <Space direction='vertical' align='start'>
                 <Skeleton.Image width='280px' height='178px' />
                 <div className='px-5 py-0'>
-                  <Space direction='vertical'>
+                  <Space direction='vertical' align='start'>
                     <Skeleton.Paragraph rows={3} width={[120, 240, 240]} size='small' />
                   </Space>
                 </div>
@@ -72,17 +76,17 @@ export default function SkeletonPage() {
         <Demo.Block>
           <div className='flex justify-center p-5'>
             <div className='bg-white p-5 rounded-xl'>
-              <Space direction='vertical'>
+              <Space direction='vertical' align='start'>
                 <div className='flex w-full'>
                   <Skeleton.Avatar />
                   <div className='grow ml-6'>
-                    <Space direction='vertical'>
+                    <Space direction='vertical' align='start'>
                       <Skeleton.Paragraph rows={2} width={[120, 180]} size='small' />
                     </Space>
                   </div>
                 </div>
 
-                <Space direction='vertical'>
+                <Space direction='vertical' align='start'>
                   <Skeleton.Paragraph rows={3} width={[120, 244, 244]} size='small' />
                 </Space>
               </Space>
@@ -95,7 +99,7 @@ export default function SkeletonPage() {
               <div className={`flex w-full mb-6`}>
                 <Skeleton.Avatar />
                 <div className='grow  ml-6'>
-                  <Space direction='vertical'>
+                  <Space direction='vertical' align='start'>
                     <Skeleton.Paragraph rows={3} width={['100%', '100%', '100%']} size='small' />
                   </Space>
                 </div>
@@ -103,7 +107,7 @@ export default function SkeletonPage() {
               <div className={`flex w-full mb-6`}>
                 <Skeleton.Avatar />
                 <div className='grow ml-6'>
-                  <Space direction='vertical'>
+                  <Space direction='vertical' align='start'>
                     <Skeleton.Paragraph rows={3} width={[220, '100%', '100%']} size='small' />
                   </Space>
                 </div>
@@ -111,7 +115,7 @@ export default function SkeletonPage() {
               <div className={`flex w-full mb-6`}>
                 <Skeleton.Image width='152px' height='152px' />
                 <div className='grow ml-6'>
-                  <Space direction='vertical'>
+                  <Space direction='vertical' align='start'>
                     <Skeleton.Paragraph rows={3} width={['100%', '100%', '100%']} size='small' />
                   </Space>
                 </div>
@@ -119,7 +123,7 @@ export default function SkeletonPage() {
               <div className={`flex w-full`}>
                 <Skeleton.Image width='152px' height='152px' />
                 <div className='grow ml-6'>
-                  <Space direction='vertical'>
+                  <Space direction='vertical' align='start'>
                     <Skeleton.Paragraph rows={3} width={[220, '100%', '100%']} size='small' />
                   </Space>
                 </div>
@@ -141,7 +145,7 @@ export default function SkeletonPage() {
           <div className='flex justify-center p-5'>
             <div className='bg-white p-5 rounded-xl' style={{ width: '700px' }}>
               {active2 ? (
-                <Space direction='vertical'>
+                <Space direction='vertical' align='start'>
                   <div className='flex justify-between w-full items-end'>
                     <div style={{ color: '#25303F', fontSize: '20px' }}>帖子</div>
                     <div>
@@ -158,7 +162,7 @@ export default function SkeletonPage() {
                   <Divider />
                   <div className='flex justify-between w-full'>
                     <div className='grow mr-6'>
-                      <Space direction='vertical'>
+                      <Space direction='vertical' align='start'>
                         <div style={{ color: '#25303F', fontSize: '18px' }}>帖子标题帖子标题帖子标题帖子标题，帖子标题…</div>
                         <div>小伙子我看你骨骼清奇，天庭饱满，并非凡人，乃是，来不来？</div>
                         <div className='flex'>
@@ -179,7 +183,7 @@ export default function SkeletonPage() {
                   <Divider />
                   <div className='flex justify-between w-full'>
                     <div className='grow mr-6'>
-                      <Space direction='vertical'>
+                      <Space direction='vertical' align='start'>
                         <div style={{ color: '#25303F', fontSize: '18px' }}>正经帖子标题</div>
                         <div>正经帖子正文，至少8个字以上。还是带封面的，封面截取视频的。</div>
                         <div className='flex'>
@@ -193,7 +197,7 @@ export default function SkeletonPage() {
                   <Divider />
                 </Space>
               ) : (
-                <Space direction='vertical'>
+                <Space direction='vertical' align='start'>
                   <div className='flex justify-between w-full items-end'>
                     <Skeleton.Paragraph width={100} rows={1} />
                     <Skeleton.Title size={'small'} />
@@ -207,7 +211,7 @@ export default function SkeletonPage() {
                   <Divider />
                   <div className='flex justify-between w-full'>
                     <div className='grow mr-6'>
-                      <Space direction='vertical'>
+                      <Space direction='vertical' align='start'>
                         <Skeleton.Paragraph rows={2} width={['100%', '100%']} size='small' />
                         <div className='flex'>
                           <Skeleton.Avatar style={{ marginRight: '10px' }} size='small'></Skeleton.Avatar>
@@ -226,7 +230,7 @@ export default function SkeletonPage() {
                   <Divider />
                   <div className='flex justify-between w-full'>
                     <div className='grow mr-6'>
-                      <Space direction='vertical'>
+                      <Space direction='vertical' align='start'>
                         <Skeleton.Paragraph rows={2} width={['100%', '100%']} size='small' />
                         <div className='flex'>
                           <Skeleton.Avatar style={{ marginRight: '10px' }} size='small'></Skeleton.Avatar>

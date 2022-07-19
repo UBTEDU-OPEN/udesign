@@ -4,10 +4,6 @@ $tag-background: var(--ud-tag-background, var(--ud-color-fill-0)); // 标签背�
 $tag-color: var(--ud-tag-color, var(--ud-color-text-0)); // 标签文字色
 $tag-border: var(--ud-tag-border, 1px solid var(--ud-color-fill-0)); // 标签边框
 
-$tag-background-checked: var(--ud-tag-background-checked, var(--ud-color-fill-0)); // 标签背景色-选中
-$tag-color-checked: var(--ud-tag-color-checked, var(--ud-color-text-0)); // 标签文字色-选中
-$tag-border-checked: var(--ud-tag-border-checked, 1px solid var(--ud-color-primary)); // 标签边框-选中
-
 $tag-height-small: var(--ud-tag-height-small, 28px); // 标签高度-小
 $tag-height-middle: var(--ud-tag-height-middle, 34px); // 标签高度-中
 $tag-height-large: var(--ud-tag-height-large, 40px); // 标签高度-大
@@ -22,3 +18,16 @@ $tag-padding-large: var(--ud-tag-padding-large, 0 25px); // 标签内边距-大
 
 $tag-close-icon-color: var(--ud-tag-close-icon-color, rgba(var(--ud-gray-7), 1)); // 标签关闭图标颜色
 $tag-close-icon-margin: var(--ud-tag-close-icon-margin, 0 0 0 10px); // 标签关闭图标外边距
+
+// 可选中标签
+$tag-checkable-background: var(--ud-tag-checkable-background, transparent); // 可选中标签背景色
+$tag-checkable-color: var(--ud-tag-checkable-color, var(--ud-color-text-0)); // 可选中标签文字色
+$tag-checkable-border: var(--ud-tag-checkable-border, 1px solid transparent); // 可选中标签边框
+
+$tag-checkable-background-hover: var(--ud-tag-checkable-background-hover, transparent); // 可选中标签背景色-悬浮
+$tag-checkable-color-hover: var(--ud-tag-checkable-color-hover, var(--ud-color-primary)); // 可选中标签文字色-悬浮
+$tag-checkable-border-hover: var(--ud-tag-checkable-border-hover, 1px solid transparent); // 可选中标签边框-悬浮
+
+$tag-checkable-background-active: var(--ud-tag-checkable-background-active, var(--ud-color-fill-0)); // 可选中标签背景色-激活
+$tag-checkable-color-active: var(--ud-tag-checkable-color-active, var(--ud-color-primary)); // 可选中标签文字色-激活
+$tag-checkable-border-active: var(--ud-tag-checkable-border-active, 1px solid transparent); // 可选中标签边框-激活

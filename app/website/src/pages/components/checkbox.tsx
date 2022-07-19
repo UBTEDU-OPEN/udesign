@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, Row, Col } from '@ubt/udesign-ui';
+import { Button, Checkbox, Row, Col, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function CheckboxPage() {
@@ -38,10 +38,14 @@ export default function CheckboxPage() {
           </Checkbox>
         </Demo.Block>
         <Demo.Block title='受控组件' description='组件是否选中完全取决于传入的 checked 值，配合 onChange 回调函数使用'>
-          <div className='mb-4'>
-            <Button onClick={() => setChecked(!checked)}>{checked ? 'unchecked' : 'checked'}</Button>
-            <Button onClick={() => setDisabled(!disabled)}>{disabled ? 'enable' : 'disable'}</Button>
-          </div>
+          <Space className='mb-4'>
+            <Button type='primary' onClick={() => setChecked(!checked)}>
+              {checked ? 'unchecked' : 'checked'}
+            </Button>
+            <Button type='primary' onClick={() => setDisabled(!disabled)}>
+              {disabled ? 'enable' : 'disable'}
+            </Button>
+          </Space>
           <Checkbox checked={checked} disabled={disabled} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setChecked((event.nativeEvent.target as HTMLInputElement)?.checked)}>
             复选框
           </Checkbox>

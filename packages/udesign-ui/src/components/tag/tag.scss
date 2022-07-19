@@ -56,22 +56,22 @@ $module: ud-tag;
   &-hidden {
     display: none;
   }
-
-  &-checkable {
-    cursor: pointer;
-  }
 }
-.#{$module}-checked {
-  background: $tag-background-checked;
-  color: $tag-color-checked;
-  border: $tag-border-checked;
+.#{$module}-checkable {
+  background: $tag-checkable-background;
+  color: $tag-checkable-color;
+  border: $tag-checkable-border;
+  cursor: pointer;
 
-  $colors: red, orange, yellow, green, cyan, blue, purple;
-  @each $color in $colors {
-    &.#{$module}-#{'' + $color} {
-      background: rgba(var(--ud-#{$color}-1), 1);
-      border-color: rgba(var(--ud-#{$color}-6), 1);
-      color: rgba(var(--ud-#{$color}-6), 1);
-    }
+  &:hover:not(.#{$module}-checkable-active) {
+    background: $tag-checkable-background-hover;
+    color:$tag-checkable-color-hover;
+    border: $tag-checkable-border-hover;
+  }
+
+  &-active {
+    background: $tag-checkable-background-active;
+    color:$tag-checkable-color-active;
+    border: $tag-checkable-border-active;
   }
 }

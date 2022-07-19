@@ -121,7 +121,7 @@ export default function IconPage() {
       | null,
   ) =>
     data ? (
-      <div className='bg-gray-50 p-5 grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-5 text-gray-500'>
+      <div className=' p-5 grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-5 text-gray-500' style={{ background: 'rgba(242,244,250,0.45)' }}>
         {data.map((icon, index) => (
           <Copy className='p-3 text-4xl rounded-lg text-center hover:bg-white hover:text-blue-600' key={index} text={`<${icon.key} />`} onSuccess={() => Toast('复制成功')} onError={() => Toast('复制失败')}>
             {icon.node}
@@ -153,7 +153,7 @@ export default function IconPage() {
         <div className='text-xl my-6'>其他类图标</div>
         {renderIcons(type === 'outlined' ? otherIconsOutlined : otherIconsFilled)}
       </div>
-      <Demo.Block title='尺寸' description='Icon组件封装了size属性，可以更方便地定义图标尺寸，支持 small， middle， large，当size指定为inherit时，图标大小继承当前上下文字体大小'>
+      <Demo.Block title='尺寸' description='Icon 组件封装了 size 属性，可以更方便地定义图标尺寸，支持 small， middle， large，当 size 指定为 inherit 时，图标大小继承当前上下文字体大小'>
         <SettingFilled size='small' />
         <SettingFilled size='middle' />
         <SettingFilled size='large' />

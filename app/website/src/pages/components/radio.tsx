@@ -58,10 +58,10 @@ export default function RadioPage() {
           </Radio.Group>
         </Demo.Block>
         <Demo.Block title='受控组件' description='checked 值指定是否选中， disabled 是否禁用'>
-          <div className='mb-4'>
+          <Space className='mb-4'>
             <Button onClick={() => setChecked(!checked)}>{checked ? 'unchecked' : 'checked'}</Button>
             <Button onClick={() => setDisabled(!disabled)}>{disabled ? 'abled' : 'unabled'}</Button>
-          </div>
+          </Space>
           <Radio checked={checked} disabled={disabled}>
             单选框
           </Radio>

@@ -87,10 +87,10 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
     prefixCls,
     {
       [`${prefixCls}-${color}`]: isPresetColor(),
-      [`${prefixCls}-checkable`]: checkable,
-      [`${prefixCls}-checked`]: checked,
-      [`${prefixCls}-hidden`]: !visible,
       [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-hidden`]: !visible,
+      [`${prefixCls}-checkable`]: checkable,
+      [`${prefixCls}-checkable-active`]: checked,
     },
     className,
   );
