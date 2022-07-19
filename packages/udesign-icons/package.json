@@ -5,8 +5,9 @@
   "author": "Arvin <arvin.xiang@ubtrobot.com>",
   "license": "MIT",
   "scripts": {
-    "compile": "gulp",
-    "deploy": "npm run compile && npm publish ./dist",
+    "build:icon": "node scripts/build-icon",
+    "build": "npm run build:icon && gulp",
+    "deploy": "npm run build && npm publish ./dist",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --cache --fix",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --cache"
   },
@@ -26,7 +27,10 @@
     "./src/global/index.ts"
   ],
   "dependencies": {
-    "classnames": "^2.3.1"
+    "@svgr/core": "^5.5.0",
+    "camelcase": "^6.2.0",
+    "classnames": "^2.3.1",
+    "svgo": "^2.7.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",
@@ -39,8 +43,10 @@
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
+    "@svgr/webpack": "^6.2.1",
     "@types/react": "^17.0.29",
     "@types/react-dom": "^17.0.10",
+    "@types/svgo": "^2.3.1",
     "autoprefixer": "^10.3.7",
     "babel-loader": "^8.2.3",
     "babel-plugin-import": "^1.13.3",
@@ -54,6 +60,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "postcss": "^8.3.9",
+    "prettier": "^2.6.2",
     "sass": "^1.49.0",
     "style-loader": "^3.3.1",
     "through2": "^4.0.2",
