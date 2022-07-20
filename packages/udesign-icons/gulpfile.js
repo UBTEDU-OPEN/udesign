@@ -24,7 +24,11 @@ function buildStyle() {
 }
 
 function copyAssets() {
-  return gulp.src('./src/assets/**/*').pipe(gulp.dest('dist/assets')).pipe(gulp.dest('dist/es/assets')).pipe(gulp.dest('dist/cjs/assets'));
+  return gulp
+    .src('./src/assets/**/*')
+    .pipe(gulp.dest('dist/assets'))
+    .pipe(gulp.dest('dist/es/assets'))
+    .pipe(gulp.dest('dist/cjs/assets'));
 }
 
 function buildCJS() {

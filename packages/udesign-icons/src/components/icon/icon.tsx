@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React, { ComponentType, ReactNode } from 'react';
+import classNames from 'classnames';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
 import { NativeProps } from '../../utils';
 
