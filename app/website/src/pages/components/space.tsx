@@ -3,7 +3,7 @@ import { Space, Button, Typography, Divider, Input } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function SpacePage() {
-  const [size, setSize] = useState<number>(100);
+  const [size, setSize] = useState<number>(10);
 
   return (
     <Demo.Page title='Space 间距' description='设置组件之间的间距。'>
@@ -28,7 +28,7 @@ export default function SpacePage() {
         </Space>
       </Demo.Block>
       <Demo.Block title='垂直间距' description='相邻组件垂直间距。'>
-        <Space direction='vertical'>
+        <Space direction='vertical' align='start'>
           <Button>Button</Button>
           <Button>Button</Button>
           <Button>Button</Button>
@@ -91,13 +91,11 @@ export default function SpacePage() {
         </Space>
       </Demo.Block>
       <Demo.Block title='自定义尺寸' description='通过向 size 传入 number，来自定义间距大小。'>
-        <Input defaultValue={String(size)} onChange={(value) => setSize(Number(value))} style={{ width: 240 }} />
-        <br />
-        <br />
         <Space size={size} wrap>
           <Button>Button</Button>
           <Button>Button</Button>
           <Button>Button</Button>
+          <Input defaultValue={String(size)} onChange={(value) => setSize(Number(value))} style={{ width: 150 }} />
         </Space>
       </Demo.Block>
       <Demo.Block title='自动换行' description='当间距为水平方向时，可使用 wrap 设置是否自动换行，默认情况下为 false。'>

@@ -49,7 +49,7 @@ export default function BadgePage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='极简显示' description='只有小红点提示，没有具体数值。'>
-          <Space align='center'>
+          <Space align='center' size='large'>
             <Badge dot>
               <HintFilled className='text-4xl text-indigo-500' />
             </Badge>

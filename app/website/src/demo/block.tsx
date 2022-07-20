@@ -15,21 +15,21 @@ type DemoBlockProps = {
   todo?: string;
 } & NativeProps;
 
-export const Block = ({ title, description, background, transform, compact, debug, todo, children, className }: DemoBlockProps) => {
-  const cls = classNames('relative', background ? 'bg-gray-50' : '', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-12', className);
+export const Block = ({ title, description, background = true, transform, compact, debug, todo, children, className }: DemoBlockProps) => {
+  const cls = classNames('relative', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-12', className);
   const code = reactElementToJSXString(React.isValidElement(children) ? children : <>{children}</>, { maxInlineAttributesLineLength: 80, showFunctions: false, sortProps: false, useBooleanShorthandSyntax: false });
   return debug && process.env.NODE_ENV === 'production' ? null : (
-    <section className='mb-10'>
+    <section className='my-12'>
       {title || description ? (
-        <div className='py-4'>
-          <div className='text-2xl font-semibold'>{title}</div>
-          <div className='text-base text-gray-500 mt-2'>{description}</div>
-          <div className='text-indigo-600 mt-2'>{todo ? `TODO: ${todo}` : ''}</div>
+        <div className='mb-10'>
+          {title ? <div className='text-2xl font-semibold'>{title}</div> : null}
+          {description ? <div className='text-base text-gray-500 mt-7'>{description}</div> : null}
+          {todo ? <div className='text-indigo-600 mt-2'>TODO: {todo}</div> : null}
         </div>
       ) : null}
       {children ? (
         <div className='border rounded-lg overflow-hidden'>
-          <div className={cls} style={{ background: 'rgba(242,244,250,0.45)' }}>
+          <div className={cls} style={background ? { background: 'rgba(242,244,250,0.45)' } : {}}>
             {debug ? (
               <Tag className='absolute top-0 right-0' color='yellow'>
                 Dev Only

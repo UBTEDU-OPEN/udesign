@@ -76,7 +76,8 @@
 
   // shadow
   --ud-color-shadow: rgba(var(--ud-black), 0.04); // 模拟边框的阴影颜色
-  --ud-shadow-elevated: 0 7px 18px 0 rgba(198, 199, 219, 0.84); // 用于toast, modal, dropdown等需要提升层级的界面元素
+  // --ud-shadow-elevated: 0 7px 18px 0 rgba(198, 199, 219, 0.84); // 用于toast, modal, dropdown等需要提升层级的界面元素
+  --ud-shadow-elevated: 0 3px 6px -4px rgb(0 0 0 / 30%), 0 6px 16px 0 rgb(0 0 0 / 24%); // 用于toast, modal, dropdown等需要提升层级的界面元素
 
   // border-radius
   --ud-border-radius-extra-small: 3px; // 超小圆角，用于 checkbox 内圆角

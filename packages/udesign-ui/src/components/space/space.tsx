@@ -13,7 +13,7 @@ export type SpaceProps = {
   wrap?: boolean; // 是否自动换行，仅在 horizontal 时有效
 } & NativeProps;
 
-export const Space = ({ align = 'start', justify = 'start', direction = 'horizontal', size = 'small', wrap, className, children, ...restProps }: SpaceProps) => {
+export const Space = ({ align = 'center', justify = 'start', direction = 'horizontal', size = 'small', wrap, className, children, ...restProps }: SpaceProps) => {
   const cls = classNames(
     prefixCls,
     {

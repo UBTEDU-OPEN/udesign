@@ -28,9 +28,9 @@ $button-font-size-small: var(--button-font-size-small, 14px); // 按钮文字字
 $button-font-size-middle: var(--button-font-size-middle, 16px); // 按钮文字字号-中
 $button-font-size-large: var(--button-font-size-large, 16px); // 按钮文字字号-大
 
-$button-padding-small: var(--button-padding-small, 0 12px); // 按钮内边距-小
-$button-padding-middle: var(--button-padding-middle, 0 16px); // 按钮内边距-中
-$button-padding-large: var(--button-padding-large, 0 20px); // 按钮内边距-大
+$button-padding-small: var(--button-padding-small, 0 16px); // 按钮内边距-小
+$button-padding-middle: var(--button-padding-middle, 0 20px); // 按钮内边距-中
+$button-padding-large: var(--button-padding-large, 0 30px); // 按钮内边距-大
 
 $button-min-width-small: var(--button-min-width-small, 120px); // 按钮最小宽度-小
 $button-min-width-middle: var(--button-min-width-middle, 150px); // 按钮最小宽度-中

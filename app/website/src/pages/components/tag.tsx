@@ -41,40 +41,24 @@ export default function TagPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='添加和删除' description='用数组生成一组标签，可以动态添加和删除。'>
-          <Input style={{ width: 240 }} defaultValue={label} onChange={setLabel} onEnterPress={handleAddTag} placeholder='回车键入' />
-          <br />
-          <br />
           <Space wrap>
             {tagList.map((tag, index) => (
               <Tag key={index} closeable={tag.closeable}>
                 {tag.label}
               </Tag>
             ))}
+            <Input size='small' style={{ width: 120 }} defaultValue={label} onChange={setLabel} onEnterPress={handleAddTag} placeholder='回车键入' />
           </Space>
         </Demo.Block>
         <Demo.Block title='多彩标签' description='多种预设色彩的标签样式，用作不同场景使用。'>
           <Space wrap>
-            <Tag checkable color='purple'>
-              Purple/紫色
-            </Tag>
-            <Tag checkable color='red'>
-              Red/红色
-            </Tag>
-            <Tag checkable color='orange'>
-              Orange/橘色
-            </Tag>
-            <Tag checkable color='yellow'>
-              Yellow/黄色
-            </Tag>
-            <Tag checkable color='green'>
-              Green/绿色
-            </Tag>
-            <Tag checkable color='cyan'>
-              Cyan/青色
-            </Tag>
-            <Tag checkable color='blue'>
-              Blue/蓝色
-            </Tag>
+            <Tag color='purple'>Purple/紫色</Tag>
+            <Tag color='red'>Red/红色</Tag>
+            <Tag color='orange'>Orange/橘色</Tag>
+            <Tag color='yellow'>Yellow/黄色</Tag>
+            <Tag color='green'>Green/绿色</Tag>
+            <Tag color='cyan'>Cyan/青色</Tag>
+            <Tag color='blue'>Blue/蓝色</Tag>
           </Space>
         </Demo.Block>
         <Demo.Block title='标签大小' description='通过 size 属性调整标签大小。'>
@@ -89,7 +73,7 @@ export default function TagPage() {
             标签
           </Tag>
         </Demo.Block>
-        <Demo.Block title='可选择标签' description='可通过 checkable 实现类似 Checkbox 的效果，点击切换选中效果。该组件为完全受控组件，不支持非受控用法。'>
+        <Demo.Block title='可选择标签' description='可通过 checkable 实现类似 Checkbox 的效果，点击切换选中效果。'>
           <Space>
             <Tag checkable defaultChecked>
               uCode
@@ -99,7 +83,7 @@ export default function TagPage() {
             <Tag checkable>uSim</Tag>
           </Space>
         </Demo.Block>
-        <Demo.Block title='自定义标签' description='如果预设值不能满足你的需求，可以设置为具体的色值。自定义色值不支持选中配色，需要自行处理。'>
+        <Demo.Block title='自定义标签' description='如果预设值不能满足你的需求，可以设置为具体的色值。'>
           <Space>
             <Tag color='#f50' textColor='#fff'>
               #f50
