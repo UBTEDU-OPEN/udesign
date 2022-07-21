@@ -15,7 +15,7 @@ export type TitleProps = {
 } & NativeProps &
   TextProps;
 
-export const Title = ({ level, ellipsis, editable, onClick, className, children, ...restProps }: TitleProps) => {
+export const Title = ({ level, ellipsis, editable, onClick, className, children, style, ...restProps }: TitleProps) => {
   const cls = classNames(
     prefixCls,
     {
@@ -26,7 +26,7 @@ export const Title = ({ level, ellipsis, editable, onClick, className, children,
 
   return (
     <>
-      <Text className={cls} {...restProps} ellipsis={ellipsis} editable={editable}>
+      <Text className={cls} {...restProps} ellipsis={ellipsis} editable={editable} style={style}>
         {children}
       </Text>
     </>

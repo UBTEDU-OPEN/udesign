@@ -63,11 +63,13 @@ export const Text = ({ type = 'default', mark = false, disabled = false, code = 
   return (
     <>
       {link ? (
-        <a className={cls} href={link}>
+        <a className={cls} href={link} style={style}>
           {children}
         </a>
       ) : (
-        <span className={cls}>{children}</span>
+        <span className={cls} style={style}>
+          {children}
+        </span>
       )}
     </>
   );

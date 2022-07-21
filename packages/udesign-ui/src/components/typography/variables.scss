@@ -12,11 +12,11 @@ $typography-font-size-h3: var(--ud-typography-font-size-h3, 24px); // 3级标题
 $typography-font-size-h4: var(--ud-typography-font-size-h4, 20px); // 4级标题-字体
 $typography-font-size-h5: var(--ud-typography-font-size-h5, 16px); // 5级标题-字体
 
-$typography-line-height-h1: var(--ud-typography-line-height-h1, var(--ud-font-size-header-5)); // 1级标题-行高
-$typography-line-height-h2: var(--ud-typography-line-height-h2, var(--ud-font-size-header-4)); // 2级标题-行高
+$typography-line-height-h1: var(--ud-typography-line-height-h1, var(--ud-font-size-header-1)); // 1级标题-行高
+$typography-line-height-h2: var(--ud-typography-line-height-h2, var(--ud-font-size-header-2)); // 2级标题-行高
 $typography-line-height-h3: var(--ud-typography-line-height-h3, var(--ud-font-size-header-3)); // 3级标题-行高
-$typography-line-height-h4: var(--ud-typography-line-height-h4, var(--ud-font-size-header-2)); // 4级标题-行高
-$typography-line-height-h5: var(--ud-typography-line-height-h5, var(--ud-font-size-header-1)); // 5级标题-行高
+$typography-line-height-h4: var(--ud-typography-line-height-h4, var(--ud-font-size-header-4)); // 4级标题-行高
+$typography-line-height-h5: var(--ud-typography-line-height-h5, var(--ud-font-size-header-5)); // 5级标题-行高
 
 $typography-margin-top-h1: var(--ud-typography-margin-top-h1, 1.5em); // 1级标题-外边距-上
 $typography-margin-top-h2: var(--ud-typography-margin-top-h2, 1.5em); // 2级标题-外边距-上

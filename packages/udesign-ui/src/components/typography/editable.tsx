@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
+import React, { ReactNode, useState, useRef, ChangeEvent, KeyboardEvent, CSSProperties } from 'react';
 import { EditFilled } from '@ubt/udesign-icons';
 import classNames from 'classnames';
 import Input from '../input';
@@ -14,13 +14,14 @@ export type EditableProps = {
   tooltip?: boolean | ReactNode;
   maxLength?: number; // 编辑中文本域最大长度
   autoSize?: { minRows?: number; maxRows?: number }; // 自动 resize 文本域
+  editStyle?: CSSProperties;
   onStart?: () => void; // 进入编辑中状态时触发
   onEnd?: () => void; // 按 ENTER 结束编辑状态时触发
   onCancel?: () => void; // 按 ESC 退出编辑状态时触发
   onChange?: () => void; // 文本域编辑时触发
 } & NativeProps;
 
-export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className }: EditableProps) => {
+export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className, editStyle }: EditableProps) => {
   const [isShow, setIsShow] = useState(true);
   const [propChildren, setPropChildren] = useState(
     String(children)
@@ -100,14 +101,13 @@ export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength,
             }}
             onKeyDown={onKeyHandler}
             defaultValue={propChildren}
+            textAreaStyle={editStyle}
           />
         </span>
       ) : (
         <span hidden={isShow}>
-          <Input hidden={isShow} onKeyDown={onKeyHandler} className={cls} onBlur={onBlur} ref={editText} type='text' defaultValue={propChildren} maxLength={maxLength} />
+          <Input hidden={isShow} onKeyDown={onKeyHandler} className={cls} onBlur={onBlur} ref={editText} type='text' defaultValue={propChildren} maxLength={maxLength} inputStyle={editStyle} />
         </span>
-
-        // <input onKeyDown={onKeyHandler} className={cls} hidden={isShow} onBlur={onBlur} ref={editText} type='text' defaultValue={propChildren} maxLength={maxLength}></input>
       )}
     </>
   );

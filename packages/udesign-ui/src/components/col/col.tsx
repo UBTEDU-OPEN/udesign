@@ -32,7 +32,7 @@ export type ColProps = {
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const;
 
 export const Col = (props: ColProps) => {
-  const { flex, offset = 0, order = 0, pull = 0, push = 0, span, xs, sm, md, lg, xl, xxl, children, className } = props;
+  const { flex, offset = 0, order = 0, pull = 0, push = 0, span, xs, sm, md, lg, xl, xxl, children, className, style } = props;
   const colRef = useRef<HTMLDivElement>(null);
   const { gutter } = useContext(RowContext);
   let sizeClassObj = {};
@@ -115,7 +115,7 @@ export const Col = (props: ColProps) => {
   }, [size]);
 
   return (
-    <div ref={colRef} className={cls} style={styleCss}>
+    <div ref={colRef} className={cls} style={{ ...style, ...styleCss }}>
       {children}
     </div>
   );

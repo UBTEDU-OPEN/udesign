@@ -1,4 +1,4 @@
-import React, { ReactNode, SetStateAction } from 'react';
+import React, { ReactNode, SetStateAction, CSSProperties } from 'react';
 
 export interface EllipsisConfig {
   rows?: number;
@@ -28,6 +28,7 @@ export interface EditableConfig {
   tooltip?: boolean | ReactNode;
   editing?: boolean;
   maxLength?: number;
+  editStyle?: CSSProperties;
   onStart?: () => void;
   onEnd?: () => void;
   onCancel?: () => void;
