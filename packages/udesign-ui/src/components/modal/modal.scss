@@ -21,6 +21,8 @@ $module: ud-modal;
   box-shadow: $modal-box-shadow;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   &-close {
     position: absolute;
@@ -53,6 +55,8 @@ $module: ud-modal;
     font-weight: $modal-body-font-weight;
     color: $modal-body-color;
     text-align: $modal-body-text-align;
+    flex: 1;
+    overflow: auto;
   }
 
   &-footer {
@@ -69,6 +73,11 @@ $module: ud-modal;
 }
 .#{$module}-large {
   width: $modal-width-large;
+}
+.#{$module}-fullscreen {
+  width: $modal-width-fullscreen;
+  height: $modal-height-fullscreen;
+  border-radius: $modal-border-radius-fullscreen;
 }
 
 // 不同类型图标默认色

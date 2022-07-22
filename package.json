@@ -9,8 +9,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run --parallel build",
-    "lint:fix": "lerna run --parallel lint:fix",
     "lint": "lerna run --parallel lint",
+    "lint:fix": "lerna run --parallel lint:fix",
     "gerrit:verify": "yarn lint"
   },
   "husky": {

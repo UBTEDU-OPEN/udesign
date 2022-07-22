@@ -75,3 +75,4 @@ port: 22
 - 完全移除 `udesign-ui-alpha` 库
 - website 代码高亮和复制等
 - 单元测试
+- 图片压缩

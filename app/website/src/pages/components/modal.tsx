@@ -16,6 +16,8 @@ export default function ModalPage() {
   const [visible8, setVisible8] = useState(false);
   const [visible9, setVisible9] = useState(false);
   const [visible10, setVisible10] = useState(false);
+  const [visible11, setVisible11] = useState(false);
+  const [visible12, setVisible12] = useState(false);
 
   const { confirm } = Modal;
 
@@ -136,7 +138,7 @@ export default function ModalPage() {
             </Modal>
           </Space>
         </Demo.Block>
-        <Demo.Block title='其他尺寸' description='通过 size 使用内置的尺寸，或者直接设置 width'>
+        <Demo.Block title='其他尺寸' description='通过 size 使用内置的尺寸，或者直接设置 width 或 height。'>
           <Space wrap>
             <Button
               type='primary'
@@ -172,6 +174,18 @@ export default function ModalPage() {
               自定义宽度
             </Button>
             <Modal width={1000} visible={visible9} title='对话框标题' onCancel={() => setVisible9(false)} onOk={() => setVisible9(false)}>
+              对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+            </Modal>
+            <Button type='primary' onClick={() => setVisible11(true)}>
+              自定义高度
+            </Button>
+            <Modal height={500} visible={visible11} title='对话框标题' onCancel={() => setVisible11(false)} onOk={() => setVisible11(false)}>
+              对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+            </Modal>
+            <Button type='primary' onClick={() => setVisible12(true)}>
+              全屏（Beta版本）
+            </Button>
+            <Modal fullscreen visible={visible12} title='对话框标题' onCancel={() => setVisible12(false)} onOk={() => setVisible12(false)}>
               对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
             </Modal>
           </Space>
@@ -245,34 +259,21 @@ export default function ModalPage() {
             <Button type='primary' onClick={() => setVisible5(true)}>
               自定义对话框的样式
             </Button>
-            <Modal visible={visible5} title='对话框标题' onCancel={() => setVisible5(false)} onOk={() => setVisible5(false)} bodyStyle={{ overflow: 'auto', height: 200, textAlign: 'left' }}>
-              对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+            <Modal visible={visible5} title='对话框标题' onCancel={() => setVisible5(false)} onOk={() => setVisible5(false)} bodyStyle={{ textAlign: 'right' }}>
+              一个意在统一所有教育产品设计风格的项目，包含设计规范、开发规范和开箱即用的 React 组件库。一个意在统一所有教育产品设计风格的项目，包含设计规范、开发规范和开箱即用的 React 组件库。
             </Modal>
           </Space>
         </Demo.Block>
-        <Demo.Block title='自定义对话框头部和页脚' description='如果需要实现更丰富的个性化需求，可以通过 header 自定义头部，footer 自定义页脚的按钮。把 header 设为 null时则不展示头部区域；不需要显示任何按钮时，同样可以把 footer 设为 null。'>
+        <Demo.Block
+          title='自定义对话框头部和页脚'
+          description='如果需要实现更丰富的个性化需求，可以通过 header 自定义头部，footer 自定义页脚的按钮。把 header 设为 null 时，则不展示头部区域（包括关闭按钮区域）；不需要显示任何按钮时，可以把 footer 设为 null。'
+        >
           <Space>
             <Button type='primary' onClick={() => setVisible6(true)}>
               自定义对话框头部和页脚
             </Button>
-            <Modal
-              visible={visible6}
-              onCancel={() => setVisible6(false)}
-              onOk={() => setVisible6(false)}
-              header={null}
-              footer={
-                <Space className='my-10' direction='vertical' size={10}>
-                  <Button block type='primary' onClick={() => setVisible6(false)}>
-                    下一步
-                  </Button>
-                  <Button block type='text' onClick={() => setVisible6(false)}>
-                    忘记密码
-                  </Button>
-                </Space>
-              }
-            >
-              <h3 style={{ color: 'var(--ud-color-text-0)', fontSize: 24, margin: 40 }}>登录/注册</h3>
-              <Input />
+            <Modal visible={visible6} onCancel={() => setVisible6(false)} onOk={() => setVisible6(false)} header={null} footer={null}>
+              没有header和footer，完全自定义
             </Modal>
           </Space>
         </Demo.Block>

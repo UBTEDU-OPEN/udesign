@@ -58,11 +58,11 @@ export const getButtonTypeClass = (type: ButtonType) => {
 export const getButtonShapeClass = (shape: ButtonShape) => {
   let cls;
   switch (shape) {
-    case 'round':
+    case 'circle':
       cls = 'rounded-full';
       break;
 
-    case 'default':
+    case 'round':
       cls = 'rounded';
       break;
 
@@ -107,7 +107,7 @@ export type ButtonProps = {
   onClick?: () => void; // 点击按钮时的回调
 } & NativeProps;
 
-export const Button = ({ icon, block = false, disabled = false, loading = false, shape = 'default', size = 'middle', type = 'default', onClick, children, ...restProps }: ButtonProps) => {
+export const Button = ({ icon, block = false, disabled = false, loading = false, shape = 'round', size = 'middle', type = 'default', onClick, children, ...restProps }: ButtonProps) => {
   const hasIcon = loading || Boolean(icon);
   const iconOnly = !children && hasIcon;
 
