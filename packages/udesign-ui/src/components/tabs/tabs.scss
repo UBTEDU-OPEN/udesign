@@ -128,7 +128,7 @@ $module: ud-tabs;
 		.#{$module}-active {
 			border-color:  $tabs-background-active;
 		}
-		.#{$module}-unactive {
+		.#{$module}-inactive {
 			border-color: transparent;
 		}
 	}
@@ -137,13 +137,13 @@ $module: ud-tabs;
 			background: $tabs-background-active;
 			color: #fff;
 		}
-		.#{$module}-unactive {
-			background: $tabs-background-unactive;
+		.#{$module}-inactive {
+			background: $tabs-background-inactive;
 		}
 	}
 	&-type-button {
 		flex-direction: row;
-		border: none!important;
+		border: none;
 		.#{$module}-tab {
 			border-radius: $tabs-border-radius;
 		}
@@ -151,14 +151,14 @@ $module: ud-tabs;
 			background: $tabs-background-active;
 			color: #fff;
 		}
-		.#{$module}-unactive {
-			background: $tabs-background-unactive;
+		.#{$module}-inactive {
+			background: $tabs-background-inactive;
 		}
 	}
 	&-type-switch {
-		background: $tabs-background-unactive;
+		background: $tabs-background-inactive;
 		border-radius: 999px;
-		border: none!important;
+		border: none;
 		li {
 			border-radius: 999px;
 		}
@@ -166,8 +166,8 @@ $module: ud-tabs;
 			border-width: $tabs-border-width;
 			background: #fff;
 		}
-		.#{$module}-unactive {
-			background: $tabs-background-unactive;
+		.#{$module}-inactive {
+			background: $tabs-background-inactive;
 			border-color: transparent;
 			border-width: $tabs-border-width;
 		}

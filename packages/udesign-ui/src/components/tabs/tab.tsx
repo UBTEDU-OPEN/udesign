@@ -29,7 +29,7 @@ export const Tab = ({ name, label, disabled, type = 'line', position = 'top', si
     `${prefixCls}-tab`,
     {
       [`${prefixCls}-active`]: active,
-      [`${prefixCls}-unactive`]: !active,
+      [`${prefixCls}-inactive`]: !active,
       [`${prefixCls}-disabled`]: disabled,
     },
     className,
