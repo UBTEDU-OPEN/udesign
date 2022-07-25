@@ -134,6 +134,11 @@ export default function IconPage() {
   return (
     <Demo.Page title='Icon 图标' description='语义化的矢量图形。'>
       <div className='py-4'>
+        <div className='text-2xl'>如何使用</div>
+        <div className='text-gray-500 my-2'>语义化的矢量图形。使用图标组件，你需要安装 @ubt/udesign-icons 图标组件包：</div>
+        <code>$ yarn add @ubt/udesign-icons@latest</code>
+      </div>
+      <div className='py-4'>
         <div className='text-2xl'>图标列表</div>
         <div className='text-gray-500 my-2'>提供2种风格常用图标。</div>
         <Space>

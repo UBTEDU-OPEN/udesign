@@ -7,7 +7,7 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-dropdown-item`;
 
-export type DropdownItemProps = {
+export type ItemProps = {
   name: string; // 子项唯一标志符
   icon?: ReactNode; // 子项图标
   label?: ReactNode; // 子项标题
@@ -16,7 +16,7 @@ export type DropdownItemProps = {
   danger?: boolean; //	子项是否错误状态
 } & NativeProps;
 
-export const Item = (props: DropdownItemProps) => {
+export const Item = (props: ItemProps) => {
   const { name, icon, label, disabled, danger, children, className, style } = props;
 
   const context = useContext(DropdownContext);

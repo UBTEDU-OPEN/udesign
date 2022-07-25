@@ -15,14 +15,14 @@ export const destroyFns: any[] = [];
 export type ModalSize = Size;
 
 export type ModalProps = {
-  afterClose?: () => void; // Modal 完全关闭后的回调
-  bodyStyle?: CSSProperties; //	对话框内容的样式
-  cancelButtonProps?: ButtonProps; // 取消按钮的 props
+  afterClose?: () => void; // 对话框完全关闭后的回调
+  bodyStyle?: CSSProperties; //	对话框body的样式
+  cancelButtonProps?: ButtonProps; // 取消按钮的 props，继承 ButtonProps，优先级高
   cancelText?: string; // 取消按钮的文字
   cancelLoading?: boolean; // 取消按钮 loading
   centered?: boolean; // 是否居中显示
   closeable?: boolean; // 是否显示右上角的关闭按钮
-  closeIcon?: ReactNode; //	关闭按钮的icon
+  closeIcon?: ReactNode; //	自定义关闭按钮的图标
   closeOnEsc?: boolean; // 允许通过键盘事件Esc触发关闭
   confirmLoading?: boolean; // 确认按钮 loading
   content?: ReactNode; //	对话框内容，用于命令式调用
@@ -31,20 +31,20 @@ export type ModalProps = {
   getContainer?: () => HTMLElement; //	指定父级 DOM，弹层将会渲染至该 DOM 中，自定义需要设置 position: relative
   hasCancel?: boolean; //	是否显示取消按钮
   header?: ReactNode; //	对话框头部
-  height?: number; //	高度
+  height?: number; //	自定义高度，内容溢出会出现滚动条，内容不足会补空白
   icon?: ReactNode; // 自定义 icon
   keepDOM?: boolean; //	关闭对话框时是否销毁, 默认false
   lazyRender?: boolean; // 配合 keepDOM 使用，为 true 时挂载时不会渲染对话框组件，默认 true
   mask?: boolean; // 是否展示遮罩，默认 true
   maskCloseable?: boolean; // 是否允许通过点击遮罩来关闭对话框，默认 true
   maskStyle?: CSSProperties; //	遮罩的样式
-  okButtonProps?: ButtonProps; // 确认按钮的 props
+  okButtonProps?: ButtonProps; // 确认按钮的 props，继承 ButtonProps，优先级高
   okText?: string; // 确认按钮的文字
   okType?: ButtonType; //	确认按钮的类型
   size?: ModalSize; //	对话框宽度尺寸，默认small，可选middle,large
   title?: ReactNode; // 对话框的标题，未设置时，则不渲染默认的 header
   visible?: boolean; // 对话框是否可见
-  width?: number; // 宽度
+  width?: number; // 自定义宽度
   zIndex?: number; // 遮罩的 z-index 值，默认 1000
   onCancel?: (e: React.MouseEvent) => void | Promise<any>; // 点击取消按钮或关闭按钮时的回调函数
   onOk?: (e: React.MouseEvent) => void | Promise<any>; // 点击确认按钮时的回调函数
@@ -151,11 +151,11 @@ export const Modal = (props: ModalProps) => {
     if (height) {
       style.height = height;
     }
-    if (fullscreen) {
-      style.width = '100%';
-      style.height = '100%';
-      style.margin = 'unset';
-    }
+    // if (fullscreen) {
+    //   style.width = '100vw';
+    //   style.height = '100vh';
+    //   style.margin = 'unset';
+    // }
 
     const cls = classNames(
       prefixCls,

@@ -12,14 +12,21 @@ $module: ud-input;
   background: $input-background;
   color: $input-color;
   border: $border-width-control solid $input-border-color;
-  overflow: hidden;
 
   // shape
   &-shape-circle {
     border-radius: var(--ud-border-radius-full);
+
+    .#{$module} {
+      border-radius: var(--ud-border-radius-full);
+    }
   }
   &-shape-round {
     border-radius: $input-border-radius;
+
+    .#{$module} {
+      border-radius: $input-border-radius;
+    }
   }
   &-shape-square {
     border-radius: 0;

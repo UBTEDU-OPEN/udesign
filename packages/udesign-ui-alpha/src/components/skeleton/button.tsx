@@ -8,7 +8,7 @@ export interface ButtonProps {
   size?: ButtonSize;
 }
 
-export const Button = ({ block = false, shape = 'default', size = 'middle' }: ButtonProps) => {
+export const Button = ({ block = false, shape = 'round', size = 'middle' }: ButtonProps) => {
   const cls = classNames('bg-gray-200', block ? 'block w-full' : 'inline-block w-20', getButtonShapeClass(shape), getButtonSizeClass(size));
 
   return (

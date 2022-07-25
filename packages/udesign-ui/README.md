@@ -2,14 +2,35 @@
 
 一个意在统一所有教育产品设计风格的项目，包含设计规范、开发规范和开箱即用的 React 组件库。
 
+## 如何使用
+
 ```bash
-$ npm install --save @ubt/udesign-ui@latest
-# or
 $ yarn add @ubt/udesign-ui@latest
+# or
+$ npm install --save @ubt/udesign-ui@latest
 ```
 
-目前还在不断完善和打磨中，如果你想在生产环境接入使用，请联系: 向明（arvin.xiang@ubtrobot.com）
+## 如何贡献
 
-## 临时文档网站
+### 拉取代码仓库
 
-http://10.10.18.65:8083/
+http://gerrit.edu.ubtrobot.com/admin/repos/edu-libraries/udesign
+
+### 启动服务
+
+```
+cd app\website
+yarn dev
+```
+
+在 `packages\udesign-ui` 里写组件的代码，在 `app\website` 里写组件的演示和文档。
+
+访问 `http://localhost:3000/` 查看你的组件演示和文档。
+
+### 遵守开发规范
+
+正式开发组件前，请务必阅读 [uDesign 组件开发规范](\spec.md)
+
+### 提交代码
+
+提交代码到 gerrit，记得 add reviewer（向明）
