@@ -2,26 +2,26 @@
 @import './variables.scss';
 @import './theme.scss';
 
-:root {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
+// :root {
+//   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+// }
 
-body {
-  color: var(--ud-color-text-0);
-  font-size: var(--ud-font-size-regular);
-  font-family: var(--ud-font-family);
-}
+// body {
+//   color: var(--ud-color-text-0);
+//   font-size: var(--ud-font-size-regular);
+//   font-family: var(--ud-font-family);
+// }
 
-a,
-button {
-  cursor: pointer;
-}
+// a,
+// button {
+//   cursor: pointer;
+// }
 
-a {
-  color: var(--ud-color-primary);
-  text-decoration: var(--ud-text-decoration, underline);
-  transition: opacity ease-in-out 0.2s;
-  &:active {
-    opacity: 0.8;
-  }
-}
+// a {
+//   color: var(--ud-color-primary);
+//   text-decoration: var(--ud-text-decoration, underline);
+//   transition: opacity ease-in-out 0.2s;
+//   &:active {
+//     opacity: 0.8;
+//   }
+// }

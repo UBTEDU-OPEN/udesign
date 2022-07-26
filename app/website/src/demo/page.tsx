@@ -178,11 +178,11 @@ const showMenus = [
   //   text: 'Card 卡片',
   //   disabled: true,
   // },
-  // {
-  //   name: 'carousel',
-  //   text: 'Carousel 走马灯',
-  //   disabled: true,
-  // },
+  {
+    name: 'carousel',
+    text: 'Carousel 走马灯',
+    disabled: true,
+  },
   {
     name: 'collapse',
     text: 'Collapse 折叠面板',
@@ -270,11 +270,11 @@ const feedbackMenus = [
     name: 'modal',
     text: 'Modal 对话框',
   },
-  // {
-  //   name: 'notification',
-  //   text: 'Notification 通知提醒框',
-  //   disabled: true,
-  // },
+  {
+    name: 'notification',
+    text: 'Notification 通知提醒框',
+    disabled: true,
+  },
   // {
   //   name: 'popconfirm',
   //   text: 'Popconfirm 气泡确认框',
@@ -337,8 +337,8 @@ function Sidebar() {
       <SideMenu menus={showMenus} />
       <div className='my-2 p-3 border-b font-bold'>反馈</div>
       <SideMenu menus={feedbackMenus} />
-      {/* <div className='my-2 p-3 border-b font-bold'>其他</div>
-      <SideMenu menus={otherMenus} /> */}
+      <div className='my-2 p-3 border-b font-bold'>其他</div>
+      <SideMenu menus={otherMenus} />
     </>
   );
 }

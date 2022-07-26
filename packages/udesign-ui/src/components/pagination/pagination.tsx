@@ -146,6 +146,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
     const cls = classNames({
       [`${prefixCls}-item`]: true,
       [`${prefixCls}-item-disabled`]: prevDisabled,
+      [`${prefixCls}-item-prev`]: prevText,
     });
     return (
       <li onClick={() => !prevDisabled && goPrev()} className={cls} tab-index={0}>
@@ -156,9 +157,10 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
 
   function renderNextBtn() {
     const { nextText } = restProps;
-    const cls = classNames(`${prefixCls}-item`, {
+    const cls = classNames({
       [`${prefixCls}-item`]: true,
       [`${prefixCls}-item-disabled`]: nextDisabled,
+      [`${prefixCls}-item-next`]: nextText,
     });
     return (
       <li onClick={() => !nextDisabled && goNext()} className={cls} tab-index={0}>

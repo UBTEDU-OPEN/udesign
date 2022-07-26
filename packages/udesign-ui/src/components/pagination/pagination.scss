@@ -23,7 +23,7 @@ $module: ud-pagination;
   }
 
   .#{$module}-item {
-    width: $pagination-item-width;
+    min-width: $pagination-item-min-width;
     height: $pagination-item-height;
     margin: $pagination-item-margin;
     display: flex;
@@ -32,6 +32,7 @@ $module: ud-pagination;
     border-radius: $pagination-item-radius;
     background: $pagination-item-background;
     color: $pagination-item-color;
+    user-select: none;
 
     &:hover:not(&-disabled):not(&-active) {
       background: $pagination-item-background-hover;
@@ -47,6 +48,13 @@ $module: ud-pagination;
     &-disabled {
       cursor: not-allowed;
       opacity: 0.5;
+    }
+
+    &-prev {
+      min-width: $pagination-item-prev-min-width;
+    }
+    &-next {
+      min-width: $pagination-item-next-min-width;
     }
   }
 }

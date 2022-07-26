@@ -1,6 +1,8 @@
 $pagination-padding: var(--ud-pagination-padding, 0px); // 分页内边距
 
-$pagination-item-width: var(--ud-pagination-item-width, 40px); // 分页页码宽度
+$pagination-item-min-width: var(--ud-pagination-item-min-width, 40px); // 分页页码最小宽度
+$pagination-item-prev-min-width: var(--ud-pagination-item-prev-min-width, 80px); // 上一页最小宽度
+$pagination-item-next-min-width: var(--ud-pagination-item-next-min-width, 80px); // 下一页最小宽度
 $pagination-item-height: var(--ud-pagination-item-height, 40px); // 分页页码高度
 $pagination-item-margin: var(--ud-pagination-item-margin, 0 5px); // 分页页码外边距
 $pagination-item-radius: var(--ud-pagination-item-radius, 9999px); // 分页页码圆角

@@ -6,11 +6,9 @@ import { BASE_CLASS_PREFIX, Size } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-spin`;
 
-export type SpinSize = Size;
-
 export type SpinProps = {
   spinning?: boolean; // 是否处于加载中的状态
-  size?: SpinSize; // 组件大小，默认middle，可选 small, large
+  size?: Size; // 组件大小，默认middle，可选 small, large
   tip?: ReactNode; // 当 spin 作为包裹元素时，可以自定义描述文字
   delay?: number; // 延迟显示加载效果的时间
   indicator?: ReactNode; // 加载指示符
@@ -38,13 +36,13 @@ export const Spin = (props: SpinProps) => {
   const renderSpin = () => {
     const { indicator, tip } = props;
 
-    const spinIconCls = classNames({
+    const cls = classNames({
       [`${prefixCls}-animate`]: loading,
     });
 
     return loading ? (
       <div className={`${prefixCls}-wrapper`}>
-        {indicator ? <div className={spinIconCls}>{indicator}</div> : <LoadingOutlined spin />}
+        {indicator ? <div className={cls}>{indicator}</div> : <LoadingOutlined spin />}
         {tip ? <div className={`${prefixCls}-tip`}>{tip}</div> : null}
       </div>
     ) : null;

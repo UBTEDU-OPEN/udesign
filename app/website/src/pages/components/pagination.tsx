@@ -19,6 +19,9 @@ export default function PaginationPage() {
         <Demo.Block title='基础用法' description='常规分页用法'>
           <Pagination total={500} />
         </Demo.Block>
+        <Demo.Block title='翻页文本' description='通过 prevText 指定上一页文本，nextText 指定下一页文本'>
+          <Pagination total={500} prevText='上一页' nextText='下一页' />
+        </Demo.Block>
         <Demo.Block title='带缩略分页' description='一般用于超过10页面，或更多分页时。' todo='依赖 select 组件'>
           <Pagination total={500} showSizeChanger />
         </Demo.Block>

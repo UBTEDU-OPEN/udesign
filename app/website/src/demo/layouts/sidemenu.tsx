@@ -27,7 +27,7 @@ export const SideMenu = ({ menus, base = 'components', ...restProps }: SideMenuP
       <Menu onChange={handleChange} defaultActiveKey={defaultActiveKey} {...restProps}>
         {menus.map((menu) => (
           <Menu.Item key={menu.name} name={menu.name} disabled={menu.disabled}>
-            {menu.text}
+            {menu.disabled ? <div title='规划中'>{menu.text}</div> : menu.text}
           </Menu.Item>
         ))}
       </Menu>
