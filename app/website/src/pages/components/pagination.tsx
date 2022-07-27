@@ -1,8 +1,10 @@
-import React from 'react';
-import { Pagination } from '@ubt/udesign-ui';
+import React, { useState } from 'react';
+import { Button, Pagination, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function PaginationPage() {
+  const [total, setTotal] = useState(500);
+
   return (
     <>
       <Demo.Page title='Pagination 分页' description='采用分页的形式分隔长列表，每次只加载一个页面。'>
@@ -30,6 +32,20 @@ export default function PaginationPage() {
         </Demo.Block>
         <Demo.Block title='总数' description='通过设置 showTotal 展示总共有多少数据。'>
           <Pagination total={500} showTotal />
+        </Demo.Block>
+        <Demo.Block title='动态更新' description='响应外部 total 变化'>
+          <Space>
+            Total:
+            <Button type={total === 100 ? 'primary' : 'default'} onClick={() => setTotal(100)}>
+              100
+            </Button>
+            <Button type={total === 500 ? 'primary' : 'default'} onClick={() => setTotal(500)}>
+              500
+            </Button>
+          </Space>
+          <br />
+          <br />
+          <Pagination total={total} />
         </Demo.Block>
       </Demo.Page>
     </>

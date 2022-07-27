@@ -155,6 +155,9 @@ export default function ButtonPage() {
             <Button type='primary' icon={<SettingFilled />}>
               设置
             </Button>
+            <Button type='primary'>
+              <SettingFilled />
+            </Button>
           </Space>
         </Demo.Block>
         <Demo.Block

@@ -29,19 +29,21 @@ export type PaginationProps = {
   onPageSizeChange?: (pageSize: number) => void; // 每页容量变化时的回调函数
 } & NativeProps;
 
-export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
+export const Pagination = (props: PaginationProps) => {
+  const { total = 0, pageSizeOptions = [10, 20, 40, 100] } = props;
+
   const [quickJumpPage, setQuickJumpPage] = useState<string>('');
 
   const [currentPage, setCurrentPage] = usePropsValue({
-    value: restProps.currentPage,
-    defaultValue: restProps.defaultCurrentPage ?? 1,
-    onChange: restProps.onPageChange,
+    value: props.currentPage,
+    defaultValue: props.defaultCurrentPage ?? 1,
+    onChange: props.onPageChange,
   });
 
   const [pageSize, setPageSize] = usePropsValue({
-    value: restProps.pageSize,
-    defaultValue: restProps.defaultPageSize ?? 10,
-    onChange: restProps.onPageSizeChange,
+    value: props.pageSize,
+    defaultValue: props.defaultPageSize || pageSizeOptions[0] || 10,
+    onChange: props.onPageSizeChange,
   });
 
   const [prevDisabled, setPrevDisabled] = useState(true);
@@ -50,9 +52,9 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
   const [pageList, setPageList] = useState<PageRenderText[]>([]);
 
   useEffect(() => {
-    _updateDisabled(currentPage);
-    _updatePageList(currentPage);
-  }, []);
+    _updateDisabled({ currentPage, total, pageSize });
+    _updatePageList({ currentPage, total, pageSize });
+  }, [props.currentPage, props.total, props.pageSize]);
 
   // 关键函数：切换页码
   function goPage(targetPageIndex: PageRenderText) {
@@ -65,17 +67,18 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
     }
 
     setCurrentPage(targetPageIndex);
-    _updateDisabled(targetPageIndex);
-    _updatePageList(targetPageIndex);
+    _updateDisabled({ currentPage: targetPageIndex, total, pageSize });
+    _updatePageList({ currentPage: targetPageIndex, total, pageSize });
   }
 
   // 切换页码时，更新 disabled UI
-  function _updateDisabled(targetPageIndex: PageRenderText) {
+  function _updateDisabled(pageInfo: { currentPage: number; total: number; pageSize: number }) {
+    const { currentPage, total, pageSize } = pageInfo;
     const totalPageNum = _getTotalPageNumber(total, pageSize);
-    if (targetPageIndex === 1) {
+    if (currentPage === 1) {
       setPrevDisabled(true);
       setNextDisabled(totalPageNum < 2);
-    } else if (targetPageIndex === totalPageNum) {
+    } else if (currentPage === totalPageNum) {
       setPrevDisabled(false);
       setNextDisabled(true);
     } else {
@@ -85,7 +88,8 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
   }
 
   // 核心函数：每次切换页码时，更新UI
-  function _updatePageList(targetPageIndex: number) {
+  function _updatePageList(pageListInfo: { currentPage: number; total: number; pageSize: number }) {
+    const { currentPage, total, pageSize } = pageListInfo;
     let pageList: PageList = [];
     /**
         分页器截断逻辑（t为总页数，c为当前页）：
@@ -103,18 +107,18 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
       pageList = Array.from({ length: totalPageNum }, (v, i) => i + 1);
     } else {
       switch (true) {
-        case targetPageIndex < 4:
+        case currentPage < 4:
           pageList = [1, 2, 3, 4, '•••', totalPageNum - 1, totalPageNum];
           break;
-        case targetPageIndex === 4:
+        case currentPage === 4:
           pageList = [1, 2, 3, 4, 5, '•••', totalPageNum];
           break;
-        case targetPageIndex > 4 && targetPageIndex < totalPageNum - 3:
+        case currentPage > 4 && currentPage < totalPageNum - 3:
           // eslint-disable-next-line
-          const middle = Array.from({ length: 3 }, (v, i) => targetPageIndex + (i - 1));
+          const middle = Array.from({ length: 3 }, (v, i) => currentPage + (i - 1));
           pageList = ([1] as PageList).concat('•••', middle, '•••', totalPageNum);
           break;
-        case targetPageIndex - 3 <= targetPageIndex && targetPageIndex <= totalPageNum:
+        case currentPage - 3 <= currentPage && currentPage <= totalPageNum:
           // eslint-disable-next-line
           const right = Array.from({ length: 5 }, (v, i) => totalPageNum - (4 - i));
           pageList = [1, '•••' as const].concat(right);
@@ -142,7 +146,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
   };
 
   function renderPrevBtn() {
-    const { prevText } = restProps;
+    const { prevText } = props;
     const cls = classNames({
       [`${prefixCls}-item`]: true,
       [`${prefixCls}-item-disabled`]: prevDisabled,
@@ -156,7 +160,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
   }
 
   function renderNextBtn() {
-    const { nextText } = restProps;
+    const { nextText } = props;
     const cls = classNames({
       [`${prefixCls}-item`]: true,
       [`${prefixCls}-item-disabled`]: nextDisabled,
@@ -199,7 +203,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
   }
 
   function renderQuickJump() {
-    const { showQuickJumper } = restProps;
+    const { showQuickJumper } = props;
     if (!showQuickJumper) {
       return null;
     }
@@ -284,7 +288,7 @@ export const Pagination = ({ total = 0, ...restProps }: PaginationProps) => {
   }
 
   function renderDefaultPage() {
-    const { showTotal, className, style, hideOnSinglePage = true } = restProps;
+    const { showTotal, className, style, hideOnSinglePage = true } = props;
     const totalPageNum = _getTotalPageNumber(total, pageSize);
     if (totalPageNum < 2 && hideOnSinglePage) {
       return null;
