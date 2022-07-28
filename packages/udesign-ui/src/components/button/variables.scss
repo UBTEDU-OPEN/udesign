@@ -21,8 +21,8 @@ $button-color-warning-light: var(--ud-button-color-warning-light, var(--ud-color
 $button-color-warning-light-hover: var(--ud-button-color-warning-light-hover, var(--ud-color-warning-light-hover)); // 浅版一级警示按钮主要色-悬浮
 $button-color-warning-light-active: var(--ud-button-color-warning-light-active, var(--ud-color-warning-light-active)); // 浅版一级警示按钮主要色-按下
 
-$button-color-disabled: var(--ud-button-color-disabled, rgba(var(--ud-gray-6), 1)); // 禁用按钮主要色
-$button-color-disabled-light: var(--ud-button-color-disabled-light, var(--ud-color-disabled-fill)); // 浅版禁用按钮主要色
+// $button-color-disabled: var(--ud-button-color-disabled, rgba(var(--ud-gray-6), 1)); // 禁用按钮主要色
+// $button-color-disabled-light: var(--ud-button-color-disabled-light, var(--ud-color-disabled-fill)); // 浅版禁用按钮主要色
 
 $button-font-size-small: var(--button-font-size-small, 14px); // 按钮文字字号-小
 $button-font-size-middle: var(--button-font-size-middle, 16px); // 按钮文字字号-中
