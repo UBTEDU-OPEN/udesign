@@ -47,6 +47,7 @@ import {
   StarFilled,
   HeartFilled,
   ExclamationCircleFilled,
+  RefreshOutlined,
 } from '@ubt/udesign-icons';
 import { Copy } from '@ubt/udesign-ui-alpha';
 import { Demo } from '../../demo';
@@ -101,6 +102,7 @@ export default function IconPage() {
     { key: 'MoreOutlined', node: <MoreOutlined /> },
     { key: 'SmileOutlined', node: <SmileOutlined /> },
     { key: 'LinkOutlined', node: <LinkOutlined /> },
+    { key: 'RefreshOutlined', node: <RefreshOutlined /> },
   ];
   const otherIconsFilled = [
     { key: 'DataFilled', node: <DataFilled /> },
