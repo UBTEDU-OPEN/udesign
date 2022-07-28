@@ -1,19 +1,33 @@
+$menu-margin: var(--ud-menu--margin, 0 0 0 4px);
 $menu-item-padding: var(--ud-menu-item-padding, 15px);
+$menu-item-margin: var(--ud-menu-item-margin, 5px 0);
 $menu-item-background: var(--ud-menu-item-background, var(--ud-color-white));
-$menu-item-background-active: var(--ud-menu-item-background-active, var(--ud-color-primary-light));
-$menu-item-background-hover: var(--ud-menu-item-background-hover, var(--ud-color-primary-light));
+$menu-item-background-active: var(--ud-menu-item-background-active, #e2e6f7);
+$menu-item-background-hover: var(--ud-menu-item-background-hover, #e2e6f7);
 $menu-item-color: var(--ud-menu-item-color, var(--ud-color-primary));
 $menu-item-color-active: var(--ud-menu-item-color-active, var(--ud-color-primary));
 $menu-item-color-hover: var(--ud-menu-item-color-hover, var(--ud-color-primary));
+$menu-item-color-disabled: var(--ud-menu-item-color-disabled, #a8b4ce);
+$menu-item-border-color: var(--ud-menu-item-border-color, var(--ud-color-primary));
+$menu-item-border-width: var(--ud-menu-item-border-width, 2px);
+$menu-item-border-radius: var(--ud-menu-item-border-radius, 100px 0 0 100px);
 
 $menu-submenu-max-width: var(--ud-menu-submenu-max-width, 360px);
 $menu-submenu-background: var(--ud-menu-submenu-background, var(--ud-color-white));
 $menu-submenu-border-shadow: var(--ud-menu-submenu-border-shadow, var(--ud-shadow-elevated));
 $menu-submenu-border-radius: var(--ud-menu-submenu-border-radius, 8px);
+$menu-submenu-body-padding-left:var(--ud-menu-submenu-body-padding-left, 20px);
+
+$menu-horizontal-submenu-min-width: var(--ud-menu-horizontal-submenu-min-width, 160px); // 弹出二级导航最小宽度
 
 // 水平式
 $menu-horizontal-gap: var(--ud-menu-horizontal-gap, 20px);
 
 // 内嵌式
+$menu-inline-submenu-item-background: var(--ud-menu-inline-submenu-item-background, #f2f4fa); //内嵌式二级导航北背景色
+$menu-inline-collapsed-background: var(--ud-menu-inline-collapsed-background, #fff); // 内嵌式-收起时背景
 
 // 垂直式
+$menu-vertical-right-top-submenu-item-background: var(--ud-menu-vertical-right-top-submenu-item-background, var(--ud-color-white)); //垂直-右上-二级导航背景色
+$menu-vertical-bottom-left-submenu-item-background: var(--ud-menu-vertical-bottom-left-submenu-item-background, var(--ud-color-white)); //垂直-左下-二级导航背景色
+

@@ -5,36 +5,111 @@ $module: ud-menu;
 
 .#{$module} {
   overflow: hidden;
+  padding: $menu-margin;
+}
 
-  .#{$module}-item {
-    padding: $menu-item-padding;
-    background: $menu-item-background;
-    cursor: pointer;
-    @include truncate;
+.#{$module}-item {
+  padding: $menu-item-padding;
+  margin: $menu-item-margin;
+  background: $menu-item-background;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
 
-    &:hover:not(&-disabled) {
-      background: $menu-item-background-hover;
-      color: $menu-item-color-hover;
-    }
+  border-right: $menu-item-border-width solid transparent;
+  border-bottom: $menu-item-border-width solid transparent;
 
-    &-active {
-      background: $menu-item-background-active;
-      color: $menu-item-color-active;
-    }
+  @include truncate;
 
-    &-disabled {
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
+  &:hover:not(&-disabled) {
+    background: $menu-item-background-hover;
+    color: $menu-item-color-hover;
   }
+
+  .#{$module}-item-border-hasLine-vertical:hover:not(&-disabled),
+  .#{$module}-item-border-hasLine-inline:hover:not(&-disabled) {
+    border-right-color: $menu-item-border-color;
+    border-right-width: $menu-item-border-width;
+  }
+  .#{$module}-item-border-hasLine-horizontal:hover:not(&-disabled) {
+    border-bottom-color: $menu-item-border-color;
+    border-bottom-width: $menu-item-border-width;
+  }
+  &-active {
+    background: $menu-item-background-active;
+    color: $menu-item-color-active;
+  }
+  &-active.#{$module}-item-border-hasLine-horizontal {
+    border-bottom-color: $menu-item-border-color;
+    border-bottom-width: $menu-item-border-width;
+  }
+  &-active.#{$module}-item-border-hasLine-vertical,
+  &-active.#{$module}-item-border-hasLine-inline {
+    border-right-color: $menu-item-border-color;
+    border-right-width: $menu-item-border-width;
+  }
+
+  &-item-link {
+    border: none;
+  }
+  &-active.#{$module}-item-link {
+    border: none;
+  }
+}
+
+.#{$module}-item-link:hover {
+  border: none;
 }
 
 .#{$module}-submenu {
   max-width: $menu-submenu-max-width;
   background: $menu-submenu-background;
-  box-shadow: $menu-submenu-border-shadow;
-  border-radius: $menu-submenu-border-radius;
   overflow: hidden;
+  width: 100%;
+  &-horizontal {
+    box-shadow: $menu-submenu-border-shadow;
+    border-radius: $menu-submenu-border-radius;
+    background-color: #fff;
+  }
+
+  .#{$module}-item {
+    background-color: $menu-inline-submenu-item-background;
+  }
+
+  .#{$module}-item-border-hasLine-horizontal:hover:not(.ud-menu-item-disabled) {
+    border-right-color: $menu-item-border-color;
+    border-right-width: $menu-item-border-width;
+    border-bottom-color: transparent;
+  }
+
+  .#{$module}-item-active.#{$module}-item-border-hasLine-horizontal {
+    border-right-color: $menu-item-border-color;
+    border-right-width: $menu-item-border-width;
+    border-bottom-color: transparent;
+  }
+
+  .#{$module}-item:hover:not(.ud-menu-item-disabled) {
+    background: $menu-item-background-hover;
+    color: $menu-item-color-hover;
+  }
+}
+
+.#{$module}-submenu-rightTop {
+  .#{$module}-item {
+    background-color: $menu-vertical-right-top-submenu-item-background;
+  }
+}
+
+.#{$module}-submenu-bottomLeft {
+  .#{$module}-item {
+    background-color: $menu-vertical-bottom-left-submenu-item-background;
+  }
+}
+
+.#{$module}-submenu-is-collapsed {
+  justify-content: center;
 }
 
 .#{$module}-horizontal {
@@ -42,7 +117,68 @@ $module: ud-menu;
   gap: $menu-horizontal-gap;
 }
 
+.#{$module}-item-disabled {
+  color: $menu-item-color-disabled;
+  gap: $menu-horizontal-gap;
+}
+
 .#{$module}-vertical {
   display: flex;
   flex-direction: column;
+}
+
+.#{$module}-inline {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+}
+
+.#{$module}-is-collapsed {
+  width: 90px;
+  transition: all 0.2s;
+  justify-content: center;
+}
+.#{$module}-item-radius {
+  border-radius: $menu-item-border-radius;
+}
+.ud-portal-inner {
+  min-width: $menu-horizontal-submenu-min-width;
+}
+
+
+.#{$module}-submenu-wrapper {
+  background-color: $menu-submenu-background;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.#{$module}-submenu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $menu-item-padding;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+.#{$module}-submenu-header-focus {
+  color: $menu-item-color-active;
+}
+.#{$module}-submenu-header-left {
+  display: flex;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+.#{$module}-submenu-body{
+  padding-left: $menu-submenu-body-padding-left;
+  background-color: $menu-inline-submenu-item-background;
+  .#{$module}-item{
+    background-color: $menu-inline-submenu-item-background;
+  }
+  .#{$module}-item-active{
+    background-color: $menu-item-background-active;
+  }
+}
+.#{$module}-submenu-body-hidden {
+  display: none;
 }
