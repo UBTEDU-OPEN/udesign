@@ -1,0 +1,9 @@
+// 滚动轴样式
+$scrollbar-width: var(--ud-scrollbar-width, 8px); // 滚动条-宽度(竖向)
+$scrollbar-height:var(--ud-scrollbar-height, 8px);// 滚动条-宽度(横向)
+$scrollbar-thumb-color: var(--ud-scrollbar-thumb-color, #dadee0); // 滚动条-滑块-颜色
+$scrollbar-thumb-border-radius: var(--ud-scrollbar-thumb-border-radius, 100px); // 滚动条-滑块-圆角
+$scrollbar-track-color: var(--ud-scrollbar-track-color, inherit); // 滚动条-外层轨道-颜色
+$scrollbar-track-border-radius: var(--ud-scrollbar-track-border-radius, 100px); // 滚动条-外层轨道-圆角
+$scrollbar-track-width: var(--ud-scrollbar-track-width, 8px);// 滚动条-外层轨道-宽度(竖向)
+$scrollbar-track-height: var(--ud-scrollbar-track-height, 8px);// 滚动条-外层轨道-宽度(横向)

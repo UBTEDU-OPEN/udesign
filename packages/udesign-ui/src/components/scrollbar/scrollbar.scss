@@ -1,0 +1,41 @@
+@import './variables.scss';
+
+$module: ud-scrollbar;
+.#{$module} {
+  // overflow: scroll;
+  &-normal {
+    overflow: auto;
+  }
+  &-vertical {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  &-horizontal {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+.#{$module}::-webkit-scrollbar {
+  width: $scrollbar-width;
+  height: $scrollbar-height;
+}
+.#{$module}-thumb-show::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-thumb-color;
+  border-radius: $scrollbar-thumb-border-radius;
+}
+
+.#{$module}::-webkit-scrollbar-track {
+  background-color: $scrollbar-track-color;
+  width: $scrollbar-track-width;
+  border-radius: $scrollbar-track-border-radius;
+  height: $scrollbar-track-height;
+}
+.#{$module}-thumb-hidden::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.#{$module}-thumb-hover:hover::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-thumb-color;
+  border-radius: $scrollbar-thumb-border-radius;
+}
+

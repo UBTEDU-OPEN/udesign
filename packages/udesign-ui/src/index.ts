@@ -19,6 +19,7 @@ export { default as Rate } from './components/rate';
 export { default as Result } from './components/result';
 export { default as Row } from './components/row';
 export { default as Radio } from './components/radio';
+export { default as Scrollbar } from './components/scrollbar';
 export { default as Select } from './components/select';
 export { default as Skeleton } from './components/skeleton';
 export { default as Space } from './components/space';
