@@ -56,5 +56,6 @@ yarn dev
 例如 1.0.0-1 更改为 1.0.0-2
 
 ```bash
+cd packages/udesign-icons
 yarn deploy
 ```
