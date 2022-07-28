@@ -46,10 +46,10 @@ $module: ud-button;
     background: var(--button-color);
     color: var(--ud-color-white);
 
-    &:hover {
+    &:hover:not(.#{$module}-disabled) {
       background: var(--button-color-hover);
     }
-    &:active {
+    &:active:not(.#{$module}-disabled) {
       background: var(--button-color-active);
     }
   }
@@ -58,20 +58,20 @@ $module: ud-button;
     color: var(--button-color);
     border-color: transparent;
 
-    &:hover {
+    &:hover:not(.#{$module}-disabled) {
       background: var(--button-color-light-hover);
     }
-    &:active {
+    &:active:not(.#{$module}-disabled) {
       background: var(--button-color-light-active);
     }
   }
   &-text {
     color: var(--button-color);
     border-color: transparent;
-    &:hover {
+    &:hover:not(.#{$module}-disabled) {
       color: var(--button-color-hover);
     }
-    &:active {
+    &:active:not(.#{$module}-disabled) {
       color: var(--button-color-active);
     }
   }
@@ -79,10 +79,10 @@ $module: ud-button;
     color: var(--button-color);
     border-color: transparent;
     text-decoration: underline;
-    &:hover {
+    &:hover:not(.#{$module}-disabled) {
       color: var(--button-color-hover);
     }
-    &:active {
+    &:active:not(.#{$module}-disabled) {
       color: var(--button-color-active);
     }
   }
@@ -103,14 +103,16 @@ $module: ud-button;
     --button-color-light-hover: #{$button-color-warning-light-hover};
     --button-color-light-active: #{$button-color-warning-light-active};
   }
-  &-disabled {
-    --button-color: #{$button-color-disabled};
-    --button-color-hover: #{$button-color-disabled};
-    --button-color-active: #{$button-color-disabled};
-    --button-color-light: #{$button-color-disabled-light};
-    --button-color-light-hover: #{$button-color-disabled-light};
-    --button-color-light-active: #{$button-color-disabled-light};
-  }
+  
+  // 置灰版本禁用态
+  // &-disabled {
+  //   --button-color: #{$button-color-disabled};
+  //   --button-color-hover: #{$button-color-disabled};
+  //   --button-color-active: #{$button-color-disabled};
+  //   --button-color-light: #{$button-color-disabled-light};
+  //   --button-color-light-hover: #{$button-color-disabled-light};
+  //   --button-color-light-active: #{$button-color-disabled-light};
+  // }
 
   &-block {
     display: block;
@@ -119,15 +121,15 @@ $module: ud-button;
 
   &-disabled {
     cursor: not-allowed;
-    // opacity: 0.5;
-    &:active::before {
-      display: none;
-    }
+    opacity: 0.6;
+    // &:active::before {
+    //   display: none;
+    // }
   }
 
-  &-loading {
-    opacity: 0.7;
-  }
+  // &-loading {
+  //   opacity: 0.7;
+  // }
 
   &-icon-wrapper {
     display: flex;
@@ -142,7 +144,7 @@ $module: ud-button;
   // 尺寸
   &-small {
     height: $button-height-small;
-    line-height: $button-height-small;
+    // line-height: $button-height-small;
     font-size: $button-font-size-small;
     min-width: $button-min-width-small;
     padding: $button-padding-small;
@@ -152,7 +154,7 @@ $module: ud-button;
   }
   &-middle {
     height: $button-height-middle;
-    line-height: $button-height-middle;
+    // line-height: $button-height-middle;
     font-size: $button-font-size-middle;
     min-width: $button-min-width-middle;
     padding: $button-padding-middle;
@@ -162,7 +164,7 @@ $module: ud-button;
   }
   &-large {
     height: $button-height-large;
-    line-height: $button-height-large;
+    // line-height: $button-height-large;
     font-size: $button-font-size-large;
     min-width: $button-min-width-large;
     padding: $button-padding-large;

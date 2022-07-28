@@ -126,6 +126,38 @@ export default function ButtonPage() {
             </Button>
             <Button type='text' shape='circle' icon={<SettingFilled />} disabled />
           </Space>
+          <br />
+          <Space>
+            <Button type='primary' warning disabled>
+              取消
+            </Button>
+            <Button type='default' warning disabled>
+              取消
+            </Button>
+            <Button type='text' warning disabled>
+              Text Button
+            </Button>
+            <Button type='link' warning disabled>
+              Link Button
+            </Button>
+            <Button type='text' shape='circle' icon={<SettingFilled />} warning disabled />
+          </Space>
+          <br />
+          <Space>
+            <Button type='primary' danger disabled>
+              删除
+            </Button>
+            <Button type='default' danger disabled>
+              删除
+            </Button>
+            <Button type='text' danger disabled>
+              Text Button
+            </Button>
+            <Button type='link' danger disabled>
+              Link Button
+            </Button>
+            <Button type='text' shape='circle' icon={<SettingFilled />} danger disabled />
+          </Space>
         </Demo.Block>
         <Demo.Block title='加载中状态' description='通过 loading 属性设置按钮为加载状态；如果按钮有图标，加载状态下默认会暂时隐藏原有图标。'>
           <Space>
@@ -226,8 +258,8 @@ export default function ButtonPage() {
         <Demo.Block>
           <Space align='center'>
             自定义
-            <Button type='primary' size='large' style={{ width: '300px', height: '80px' }}>
-              自定义尺寸
+            <Button type='primary' style={{ minWidth: '100px', height: '40px' }}>
+              连接
             </Button>
           </Space>
         </Demo.Block>

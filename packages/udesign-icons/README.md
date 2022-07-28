@@ -51,11 +51,13 @@ yarn dev
 
 代码没问题，你可以自行发版到 NPM。
 
-记得更改 `package.json` 里面的版本号。
-
-例如 1.0.0-1 更改为 1.0.0-2
-
 ```bash
 cd packages/udesign-icons
 yarn deploy
 ```
+
+你需要手动更改 `package.json` 里面的版本号，在 NPM 的基础上 `+1`，否则 NPM 发不上去。
+
+`deploy` 完成后，再改回 `1.0.0`。（临时方案，后面会优化）
+
+例如 1.0.0-1 更改为 1.0.0-2
