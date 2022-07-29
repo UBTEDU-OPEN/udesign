@@ -4,5 +4,5 @@ import type { CSSProperties } from 'react';
 export interface NativeProps {
   children?: ReactNode;
   className?: string;
-  style?: CSSProperties;
+  style?: CSSProperties | any;
 }

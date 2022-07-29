@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import lodash from 'lodash';
 import axios from 'axios';
 import { Result } from '@ubt/udesign-ui';
-import { SITE_NAME } from '../constants/site';
 
 interface Token {
   key: string;

@@ -4,10 +4,12 @@ import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-scrollbar`;
+
 export type ScrollbarProps = {
   direction?: 'horizontal' | 'vertical' | 'normal';
   hover?: boolean;
 } & NativeProps;
+
 export const Scrollbar = ({ direction = 'normal', hover, children, style, className }: ScrollbarProps) => {
   const cls = classNames(
     prefixCls,
