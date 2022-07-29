@@ -56,10 +56,10 @@ const navMenus = [
     name: 'dropdown',
     text: 'Dropdown 下拉菜单',
   },
-  // {
-  //   name: 'menu',
-  //   text: 'Menu 导航菜单',
-  // },
+  {
+    name: 'menu',
+    text: 'Menu 导航菜单',
+  },
   // {
   //   name: 'pageHeader',
   //   text: 'PageHeader 页头',
@@ -315,6 +315,10 @@ const otherMenus = [
   //   text: 'BackTop 回到顶部',
   //   disabled: true,
   // },
+  {
+    name: 'Scrollbar',
+    text: 'Scrollbar 滚动条',
+  },
   {
     name: 'configprovider',
     text: 'ConfigProvider 全局化配置',

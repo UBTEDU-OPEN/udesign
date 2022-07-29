@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import { Layout, Scrollbar } from '@ubt/udesign-ui-alpha';
+import { Layout } from '@ubt/udesign-ui-alpha';
+import { Scrollbar } from '@ubt/udesign-ui';
 import { NativeProps } from '@ubt/udesign-utils';
 import Navigation from './navigation';
 import { SITE_NAME } from '../../constants/site';
@@ -24,7 +25,9 @@ const BaseLayout = ({ sidebar, children }: BaseLayoutProps) => {
       <Layout hasSider={hasSider}>
         {hasSider ? (
           <Sider className='fixed z-1 w-72 h-full pb-12 border-r bg-white'>
-            <Scrollbar className='p-4'>{sidebar}</Scrollbar>
+            <Scrollbar hover className='p-4'>
+              {sidebar}
+            </Scrollbar>
           </Sider>
         ) : null}
         <Layout>
