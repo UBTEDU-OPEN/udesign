@@ -92,7 +92,7 @@ $module: ud-menu;
     background-color: $menu-item-background-active;
   }
 
-  .#{$module}-item:hover:not(.ud-menu-item-disabled) {
+  .#{$module}-item.ud-menu-item-horizontal:hover:not(.ud-menu-item-disabled) {
     background: $menu-item-background-hover;
     color: $menu-item-color-hover;
   }
@@ -178,9 +178,21 @@ $module: ud-menu;
     background-color: $menu-inline-submenu-item-background;
   }
   .#{$module}-item-active {
-    background-color: $menu-item-background-active;
+    background-color: $menu-submenu-item-active-background;
+  }
+  .#{$module}-item:hover:not(.ud-menu-item-disabled) {
+    background:$menu-submenu-item-hover-background;
+    color: $menu-item-color-hover;
   }
 }
 .#{$module}-submenu-body-hidden {
   display: none;
+}
+
+.#{$module}-item-horizontal{
+  background-color: transparent;
+  margin: 0;
+}
+.#{$module}-item.#{$module}-item-horizontal:hover:not(.ud-menu-item-disabled){
+  background-color: transparent;
 }

@@ -2,8 +2,8 @@ $menu-padding: var(--ud-menu--padding, 0 0 0 4px);
 $menu-item-padding: var(--ud-menu-item-padding, 15px);
 $menu-item-margin: var(--ud-menu-item-margin, 5px 0);
 $menu-item-background: var(--ud-menu-item-background, var(--ud-color-white));
-$menu-item-background-active: var(--ud-menu-item-background-active, #e2e6f7);
-$menu-item-background-hover: var(--ud-menu-item-background-hover, #e2e6f7);
+$menu-item-background-active: var(--ud-menu-item-background-active, #eef0fc);
+$menu-item-background-hover: var(--ud-menu-item-background-hover, #eef0fc);
 $menu-item-color: var(--ud-menu-item-color, var(--ud-color-primary));
 $menu-item-color-active: var(--ud-menu-item-color-active, var(--ud-color-primary));
 $menu-item-color-hover: var(--ud-menu-item-color-hover, var(--ud-color-primary));
@@ -17,6 +17,8 @@ $menu-submenu-background: var(--ud-menu-submenu-background, var(--ud-color-white
 $menu-submenu-border-shadow: var(--ud-menu-submenu-border-shadow, var(--ud-shadow-elevated));
 $menu-submenu-border-radius: var(--ud-menu-submenu-border-radius, 8px);
 $menu-submenu-body-padding-left:var(--ud-menu-submenu-body-padding-left, 20px);
+$menu-submenu-item-active-background: var(--ud-menu-submenu-item-active-background, #e2e6f7);
+$menu-submenu-item-hover-background: var(--ud-menu-submenu-item-hover-background, #e2e6f7);
 
 $menu-horizontal-submenu-min-width: var(--ud-menu-horizontal-submenu-min-width, 160px); // 弹出二级导航最小宽度
 

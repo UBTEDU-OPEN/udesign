@@ -40,7 +40,7 @@ export default function MenuPage() {
           }
         />
         <Demo.Block title='顶部下拉抽屉式导航' description='水平的顶部单行tab一级导航菜单，下拉展示抽屉二级菜单。'>
-          <Menu hasLine defaultActiveKey='1' mode='horizontal' style={{ '--ud-menu-item-background': 'transparent', '--ud-menu-item-background-hover': 'transparent', '--ud-menu-item-background-active': 'transparent' }}>
+          <Menu hasLine defaultActiveKey='1' mode='horizontal'>
             <Menu.Item name='1' icon={<FolderOutlined style={{ paddingRight: '10px' }} />}>
               Navigation One
             </Menu.Item>
