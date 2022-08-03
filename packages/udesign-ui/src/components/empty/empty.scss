@@ -1,17 +1,17 @@
 @import './variables.scss';
+
 $module: ud-empty;
 
 .#{$module} {
-  border-radius: $empty-border-radius;
-  padding: $empty-padding;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &-image {
-    width: $empty-image-width;
-    padding: $empty-image-padding;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
-  &-text {
-    color: $empty-font-color;
-    font-size: $empty-font-size;
+  &-description {
+    text-align: center;
+    margin-top: $empty-description-margin;
   }
 }
