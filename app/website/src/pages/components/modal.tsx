@@ -117,7 +117,7 @@ export default function ModalPage() {
 
   return (
     <>
-      <Demo.Page title='Modal 对话框' description='模态对话框。' todo='当前没有规划全屏Modal'>
+      <Demo.Page title='Modal 对话框' description='模态对话框。'>
         <Demo.Block
           title='何时使用'
           description={
@@ -179,8 +179,8 @@ export default function ModalPage() {
             <Button type='primary' onClick={() => setVisible11(true)}>
               自定义高度
             </Button>
-            <Modal height={500} visible={visible11} title='对话框标题' onCancel={() => setVisible11(false)} onOk={() => setVisible11(false)}>
-              对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+            <Modal height={300} visible={visible11} title='对话框标题' onCancel={() => setVisible11(false)} onOk={() => setVisible11(false)}>
+              对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文 对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文 对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
             </Modal>
             <Button type='primary' onClick={() => setVisible12(true)}>
               全屏（Beta版本）

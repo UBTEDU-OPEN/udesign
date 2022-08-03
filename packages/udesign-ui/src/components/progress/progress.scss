@@ -12,23 +12,14 @@ $module: ud-progress;
 
     &.#{$module}-small {
       height: $progress-line-height-small;
-      // .#{$module}-text {
-      //   font-size: $progress-text-font-size-small;
-      // }
     }
 
     &.#{$module}-middle {
       height: $progress-line-height-middle;
-      // .#{$module}-text {
-      //   font-size: $progress-text-font-size-middle;
-      // }
     }
 
     &.#{$module}-large {
       height: $progress-line-height-large;
-      // .#{$module}-text {
-      //   font-size: $progress-text-font-size-large;
-      // }
     }
 
     .#{$module}-track {
@@ -41,51 +32,18 @@ $module: ud-progress;
 
     .#{$module}-track-inner {
       height: 100%;
-      // background: $progress-track-inner-background-normal;
+      background: $progress-track-inner-background-normal;
       border-radius: $progress-track-inner-border-radius;
       transition: width $progress-transition-duration;
       transition-timing-function: $progress-transition-timing-function;
     }
 
     .#{$module}-text {
+      color: $progress-text-color-normal;
       min-width: $progress-line-text-min-width;
       font-weight: $progress-line-text-font-weight;
       margin: $progress-line-text-margin;
     }
-
-    // // 不同状态
-    // &.#{$module}-success {
-    //   .#{$module}-track-inner {
-    //     background: $progress-track-inner-background-success;
-    //   }
-    //   .#{$module}-text {
-    //     color: $progress-text-color-success;
-    //   }
-    // }
-    // &.#{$module}-error {
-    //   .#{$module}-track-inner {
-    //     background: $progress-track-inner-background-error;
-    //   }
-    //   .#{$module}-text {
-    //     color: $progress-text-color-error;
-    //   }
-    // }
-    // &.#{$module}-warning {
-    //   .#{$module}-track-inner {
-    //     background: $progress-track-inner-background-warning;
-    //   }
-    //   .#{$module}-text {
-    //     color: $progress-text-color-warning;
-    //   }
-    // }
-    // &.#{$module}-normal {
-    //   .#{$module}-track-inner {
-    //     background: $progress-track-inner-background-normal;
-    //   }
-    //   .#{$module}-text {
-    //     color: $progress-text-color-normal;
-    //   }
-    // }
   }
 
   &-circle {
@@ -112,7 +70,6 @@ $module: ud-progress;
       transform: translate(-50%, -50%);
       user-select: none;
       font-weight: $progress-circle-text-font-weight;
-      // color: $progress-text-color;
     }
   }
 
@@ -159,15 +116,6 @@ $module: ud-progress;
     }
     .#{$module}-text {
       color: $progress-text-color-warning;
-    }
-  }
-  &.#{$module}-normal {
-    .#{$module}-track-inner {
-      background: $progress-track-inner-background-normal;
-      stroke: $progress-track-inner-background-normal;
-    }
-    .#{$module}-text {
-      color: $progress-text-color-normal;
     }
   }
 }

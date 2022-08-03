@@ -45,14 +45,6 @@ export default function ProgressPage() {
             <Progress percent={40} status='error' />
           </Space>
         </Demo.Block>
-        <Demo.Block title='自定义颜色' description='通过 stroke 传入颜色'>
-          <Space className='max-w-3xl' direction='vertical'>
-            <Progress percent={50} />
-            <Progress percent={50} stroke='var(--ud-color-warning)' />
-            <Progress percent={100} stroke='var(--ud-color-success)' />
-            <Progress percent={40} stroke='var(--ud-color-danger)' />
-          </Space>
-        </Demo.Block>
         <Demo.Block title='不同尺寸的进度条' description='通过 size 来设置进度条尺寸，或者传入style'>
           <Space>
             small
@@ -136,6 +128,12 @@ export default function ProgressPage() {
           <Space className='max-w-3xl'>
             <Progress size='large' percent={50} strokeLinecap='square' />
             <Progress type='circle' percent={50} size='large' strokeLinecap='square' />
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='自定义颜色' description='通过 stroke 传入颜色'>
+          <Space className='max-w-3xl'>
+            <Progress percent={50} stroke='orange' />
+            <Progress type='circle' percent={50} stroke='orange' />
           </Space>
         </Demo.Block>
         <Demo.Block title='动态展示' description='会动的进度条才是好进度条。'>
