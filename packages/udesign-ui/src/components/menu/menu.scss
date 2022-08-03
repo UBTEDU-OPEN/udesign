@@ -77,7 +77,7 @@ $module: ud-menu;
     background-color: $menu-inline-submenu-item-background;
   }
 
-  .#{$module}-item-border-hasLine-horizontal:hover:not(.ud-menu-item-disabled) {
+  .#{$module}-item-border-hasLine-horizontal:hover:not(.#{$module}-item-disabled) {
     border-right-color: $menu-item-border-color;
     border-right-width: $menu-item-border-width;
     border-bottom-color: transparent;
@@ -92,7 +92,7 @@ $module: ud-menu;
     background-color: $menu-item-background-active;
   }
 
-  .#{$module}-item.ud-menu-item-horizontal:hover:not(.ud-menu-item-disabled) {
+  .#{$module}-item.ud-menu-item-horizontal:hover:not(.#{$module}-item-disabled) {
     background: $menu-item-background-hover;
     color: $menu-item-color-hover;
   }
@@ -144,9 +144,6 @@ $module: ud-menu;
 .#{$module}-item-radius {
   border-radius: $menu-item-border-radius;
 }
-.ud-portal-inner {
-  min-width: $menu-horizontal-submenu-min-width;
-}
 
 .#{$module}-submenu-wrapper {
   background-color: $menu-submenu-background;
@@ -180,8 +177,8 @@ $module: ud-menu;
   .#{$module}-item-active {
     background-color: $menu-submenu-item-active-background;
   }
-  .#{$module}-item:hover:not(.ud-menu-item-disabled) {
-    background:$menu-submenu-item-hover-background;
+  .#{$module}-item:hover:not(.#{$module}-item-disabled) {
+    background: $menu-submenu-item-hover-background;
     color: $menu-item-color-hover;
   }
 }
@@ -189,10 +186,10 @@ $module: ud-menu;
   display: none;
 }
 
-.#{$module}-item-horizontal{
+.#{$module}-item-horizontal {
   background-color: transparent;
   margin: 0;
 }
-.#{$module}-item.#{$module}-item-horizontal:hover:not(.ud-menu-item-disabled){
+.#{$module}-item.#{$module}-item-horizontal:hover:not(.#{$module}-item-disabled) {
   background-color: transparent;
 }

@@ -48,6 +48,7 @@ import {
   HeartFilled,
   ExclamationCircleFilled,
   RefreshOutlined,
+  FirstRightOutlined,
 } from '@ubt/udesign-icons';
 import { Copy } from '@ubt/udesign-ui-alpha';
 import { Demo } from '../../demo';
@@ -59,6 +60,7 @@ export default function IconPage() {
     { key: 'DownOutlined', node: <DownOutlined /> },
     { key: 'LeftOutlined', node: <LeftOutlined /> },
     { key: 'RightOutlined', node: <RightOutlined /> },
+    { key: 'FirstRightOutlined', node: <FirstRightOutlined /> },
     { key: 'CaretUpOutlined', node: <CaretUpOutlined /> },
     { key: 'CaretDownOutlined', node: <CaretDownOutlined /> },
   ];

@@ -1,0 +1,51 @@
+$calendar-border: var(--ud-calendar-border, 1px solid rgba(0, 0, 0, 0.15)); 
+$calendar-color: var(--ud-calendar-color, #3e4967);
+$calendar-margin: var(--ud-calendar-margin-top, 10px 0 0 0);
+$calendar-padding: var(--ud-calendar-padding, 10px 20px);
+$calendar-border-radius: var(--ud-calendar-border-radius, 12px);
+
+// 星期样式
+$calendar-week-box-height: var(--ud-calendar-week-box-height, 50px);
+$calendar-week-days-width: var(--ud-calendar-week-days-width, calc(100% / 7));
+
+// 具体日期
+$calendar-common-days-border-radius: var(--ud-calendar-common-days-border-radius,50%);
+$calendar-common-days-width: var(--ud-calendar-common-days-width, calc(100% / 7));
+$calendar-common-days-margin: var(--ud-calendar-common-days-margin, 4px 0);
+
+// 非当权月份的日期
+$calendar-other-days-color: var(--ud-calendar-other-days-color, #999);
+
+// 当权月份的日期
+$calendar-now-days-color: var(--ud-calendar-now-days-color, #000);
+
+// 具体日期样式
+$calendar-date-text-line-height: var(--ud-calendar-date-text-line-height,32px);
+$calendar-date-text-width: var(--ud-calendar-date-text-width, 32px);
+$calendar-date-text-height: var(--ud-calendar-date-text-height, 32px);
+$calendar-date-text-font-size: var(--ud-calendar-date-text-font-size, 16px);
+
+// 选中时日期样式
+$calendar-common-days-active-border-radius: var(--ud-calendar-common-days-active-border-radius, 50%);
+$calendar-common-days-active-background-image: var(--ud-calendar-common-days-active-background-image, linear-gradient(155deg, #74e3ff 0%, #9c6bff 100%));
+$calendar-common-days-active-color: var(--ud-calendar-common-days-active-color, #fff);
+
+// 顶部中间年月样式
+$calendar-year-number-font-size: var(--ud-calendar-year-number-font-size, 18.67px);
+$calendar-year-number-color: var(--ud-calendar-year-number-color, #3e4967);
+$calendar-year-number-height: var(--ud-calendar-year-number-height, 36px);
+$calendar-year-number-line-height: var(--ud-calendar-year-number-line-height, 36px);
+
+$calendar-year-margin-left: var(--ud-calendar-year-margin-left, 20px);
+
+// 顶部样式
+$calendar-title-font-size: var(--ud-calendar-title-font-size, 12px);
+$calendar-title-height: var(--ud-calendar-title-height, 36px);
+
+// 顶部按钮 
+$calendar-titleImgBox: var(--ud-calendar-titleImgBox, 36px);
+
+// 鼠标悬停样式
+$calendar-date-text-hover-background-image: var(--ud-calendar-date-text-hover-background-image, linear-gradient(155deg, #74e3ff 0%, #9c6bff 100%));
+$calendar-date-text-hover-color: var(--ud-calendar-date-text-hover-color, #fff);
+$calendar-date-text-hover-border-radius: var(--ud-calendar-date-text-hover-border-radius, 50%);

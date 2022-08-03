@@ -1,0 +1,97 @@
+@import './variables.scss';
+
+$module: ud-calendar;
+.#{$module} {
+  border: $calendar-border;
+  padding: $calendar-padding;
+  border-radius: $calendar-border-radius;
+  margin: $calendar-margin;
+  box-sizing: border-box;
+  color: $calendar-color;
+
+  .#{$module}-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.#{$module}-week-box {
+  height: $calendar-week-box-height;
+  display: flex;
+  width: 100%;
+  .#{$module}-week-days {
+    width: $calendar-week-days-width;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.#{$module}-date-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  .#{$module}-common-days {
+    width: $calendar-common-days-width;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: $calendar-common-days-margin;
+    cursor: pointer;
+    border-radius: $calendar-common-days-border-radius;
+  }
+  .other-days {
+    color: $calendar-other-days-color;
+  }
+  .now-days {
+    color: $calendar-now-days-color;
+  }
+  .date-text {
+    text-align: center;
+    line-height: $calendar-date-text-line-height;
+    width: $calendar-date-text-width;
+    height: $calendar-date-text-height;
+    cursor: pointer;
+    font-size: $calendar-date-text-font-size;
+  }
+  .common-days-active {
+    border-radius: $calendar-common-days-active-border-radius;
+    background-image: $calendar-common-days-active-background-image;
+    color: $calendar-common-days-active-color;
+  }
+}
+
+.left-icon {
+  transform: rotate(180deg);
+  
+}
+
+.#{$module}-year-number {
+  font-size: $calendar-year-number-font-size;
+  color: $calendar-year-number-color;
+  height: $calendar-year-number-height;
+  line-height: $calendar-year-number-line-height;
+  .#{$module}-year {
+    margin-left: $calendar-year-margin-left;
+  }
+}
+.#{$module}-title {
+  font-size: $calendar-title-font-size;
+  display: flex;
+  height: $calendar-title-height;
+  justify-content: space-between;
+  align-items: center;
+ 
+  .#{$module}-titleImgBox {
+    height: $calendar-titleImgBox;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.date-text:hover {
+  background-image: $calendar-date-text-hover-background-image;
+  color: $calendar-date-text-hover-color;
+  border-radius: $calendar-date-text-hover-border-radius;
+}

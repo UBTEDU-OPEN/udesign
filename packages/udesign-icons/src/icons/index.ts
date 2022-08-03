@@ -18,6 +18,7 @@ export { default as ExclamationCircleOutlined } from './ExclamationCircleOutline
 export { default as EyeInvisibleOutlined } from './EyeInvisibleOutlined';
 export { default as EyeOutlined } from './EyeOutlined';
 export { default as FileOutlined } from './FileOutlined';
+export { default as FirstRightOutlined } from './FirstRightOutlined';
 export { default as FolderOutlined } from './FolderOutlined';
 export { default as HeartFilled } from './HeartFilled';
 export { default as HintFilled } from './HintFilled';
