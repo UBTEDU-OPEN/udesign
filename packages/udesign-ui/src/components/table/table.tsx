@@ -8,21 +8,21 @@ import { Body } from './body';
 import { columnType, rowSelectionType } from './types';
 import { NativeProps } from '../../utils';
 
-export type IProps<T> = {
+export type TableProps<T> = {
   dataSource: { [key: string]: T }[]; // table 行数据
   columns: columnType[]; // table 列数据
   rowSelection?: rowSelectionType; // 选择行 相关参数
   bordered?: boolean; // 是否显示border
   rowKey?: string; // 表格行 key 的取值
   showHeader?: boolean; // 是否显示表头
-  scroll?: { [key: string]: any }; // todo
-  summary?: ReactNode; // todo
-  onHeaderRow?: () => void; // todo
+  // scroll?: { [key: string]: any };
+  // summary?: ReactNode;
+  // onHeaderRow?: () => void;
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-table`;
 
-export const Table = <T,>(props: IProps<T>) => {
+export const Table = <T,>(props: TableProps<T>) => {
   const { dataSource, columns, rowSelection, bordered, className, style, rowKey, showHeader = true } = props;
   const cls = classNames(prefixCls, className);
   const initialState = { rowSelection };

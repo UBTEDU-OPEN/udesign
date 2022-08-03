@@ -2,6 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react';
 import classNames from 'classnames';
 import { Checkbox } from './checkbox';
 import { CheckboxContext, reducer, types } from './context';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
 export type CheckboxOptionType = {
   label: string; // 对外显示
@@ -19,7 +20,7 @@ export interface GroupProps {
   onChange?: (checkedValue: string[]) => void; // 选项变化时的回调函数  function(checkedValue)
 }
 
-const prefixCls = 'ud-checkbox';
+const prefixCls = `${BASE_CLASS_PREFIX}-checkbox`;
 
 export const Group = ({ defaultValue = [], disabled, options, children, name, onChange, ...restProps }: GroupProps) => {
   // 用于支持简单的数组作为options

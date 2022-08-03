@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { RadioContext, types } from './context';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
 export type RadioChangeEventType = React.ChangeEvent<HTMLInputElement>;
 
@@ -15,7 +16,7 @@ export type RadioProps = {
   value?: string; // 根据 value 进行比较，判断是否选中
 } & NativeProps;
 
-const prefixCls = 'ud-radio-button';
+const prefixCls = `${BASE_CLASS_PREFIX}-radio-button`;
 
 export const Button = ({ defaultChecked = false, disabled, className, children, value, ...restProps }: RadioProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;

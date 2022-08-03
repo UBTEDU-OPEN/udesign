@@ -320,9 +320,8 @@ const otherMenus = [
     text: 'Scrollbar 滚动条',
   },
   {
-    name: 'configprovider',
-    text: 'ConfigProvider 全局化配置',
-    disabled: true,
+    name: 'config-provider',
+    text: 'ConfigProvider 全局配置',
   },
 ];
 

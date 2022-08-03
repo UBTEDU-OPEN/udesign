@@ -34,18 +34,18 @@ export type SelectProps = {
   showSearch?: boolean; // 使单选模式可搜索
   filterOption?: (searchValue: string, option: OptionItem) => boolean; // 是否根据输入项进行筛选。当其为一个函数时，会接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false
   placeholder?: string; // 选择框默认文本
-  autoFocus?: boolean; // todo
-  clearIcon?: ReactNode; // todo
-  listHeight?: number; // todo
-  loading?: boolean; // todo
-  maxTagPlaceholder?: string; // todo
-  maxTagTextLength?: number; // todo
-  notFoundContent?: ReactNode; // todo
-  open?: boolean; // todo
-  placement?: string; // todo
-  onClear?: () => void; // todo
-  onSelect?: () => void; // todo
-  onDropdownVisibleChange?: () => void; // todo
+  // autoFocus?: boolean; // todo
+  // clearIcon?: ReactNode; // todo
+  // listHeight?: number; // todo
+  // loading?: boolean; // todo
+  // maxTagPlaceholder?: string; // todo
+  // maxTagTextLength?: number; // todo
+  // notFoundContent?: ReactNode; // todo
+  // open?: boolean; // todo
+  // placement?: string; // todo
+  // onClear?: () => void; // todo
+  // onSelect?: () => void; // todo
+  // onDropdownVisibleChange?: () => void; // todo
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;

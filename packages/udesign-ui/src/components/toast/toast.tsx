@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
 export type ToastProps = {
   delay?: number; // 延时出现时间，单位ms, 默认延时1000ms
@@ -11,7 +12,7 @@ export type ToastProps = {
 } & NativeProps;
 
 export const Toast = ({ content, position = 'top', className, style }: ToastProps) => {
-  const prefixCls = 'ud-toast';
+  const prefixCls = `${BASE_CLASS_PREFIX}-toast`;
   const cls = classNames(
     `${prefixCls}`,
     {

@@ -323,7 +323,7 @@ const otherMenus = [
   },
   {
     name: 'configprovider',
-    text: 'ConfigProvider 全局化配置',
+    text: 'ConfigProvider 全局配置',
     disabled: true,
   },
 ];
