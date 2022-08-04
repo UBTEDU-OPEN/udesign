@@ -1,8 +1,9 @@
 import React from 'react';
 import { Space, Badge } from '@ubt/udesign-ui';
 import { HintFilled } from '@ubt/udesign-icons';
-import { Avatar } from '@ubt/udesign-ui-alpha';
 import { Demo } from '../../demo';
+
+const Avatar = () => <div className='w-20 h-20 bg-indigo-100'></div>;
 
 export default function BadgePage() {
   return (
@@ -12,16 +13,16 @@ export default function BadgePage() {
         <Demo.Block title='基础用法' description='简单的徽章展示，当 count 为 0 时，默认不显示，但是可以使用 showZero 修改为显示。'>
           <Space>
             <Badge content='5'>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
             <Badge content={0} showZero>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
             <Badge content={<HintFilled />}>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
             <Badge dot>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
           </Space>
         </Demo.Block>
@@ -35,16 +36,16 @@ export default function BadgePage() {
         <Demo.Block title='封顶数字' description='超过 overflowCount 的会显示为 {overflowCount}+，默认的 overflowCount 为 99'>
           <Space>
             <Badge content='99'>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
             <Badge content='20' overflowCount='10'>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
             <Badge content='200' overflowCount='99'>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
             <Badge content='2000' overflowCount='999'>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
           </Space>
         </Demo.Block>
@@ -61,13 +62,13 @@ export default function BadgePage() {
         <Demo.Block title='设置徽标样式' description='通过 style 可以自定义徽标的样式。'>
           <Space>
             <Badge content='5' style={{ background: '#7284fb' }}>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
             <Badge content='5' style={{ background: '#7BDC7B' }}>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
             <Badge content='5' style={{ background: 'gray' }}>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
           </Space>
         </Demo.Block>
@@ -75,7 +76,7 @@ export default function BadgePage() {
           <Space>
             大
             <Badge content='5' size='middle'>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
           </Space>
         </Demo.Block>
@@ -83,13 +84,13 @@ export default function BadgePage() {
           <Space>
             小
             <Badge content='5' size='small'>
-              <Avatar shape='square' />
+              <Avatar />
             </Badge>
           </Space>
         </Demo.Block>
         <Demo.Block title='title' description='通过 title 属性指定鼠标hover时的提示文案'>
           <Badge content='5' title='我是title'>
-            <Avatar shape='square' />
+            <Avatar />
           </Badge>
         </Demo.Block>
       </Demo.Page>

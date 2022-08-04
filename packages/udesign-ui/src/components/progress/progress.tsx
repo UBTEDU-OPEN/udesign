@@ -23,15 +23,15 @@ export type ProgressProps = {
   Pick<DividerProps, 'dashed'>;
 
 function calcPercent(percent: number): number {
-  let perc;
+  let result;
   if (percent > 100) {
-    perc = 100;
+    result = 100;
   } else if (percent < 0) {
-    perc = 0;
+    result = 0;
   } else {
-    perc = percent;
+    result = percent;
   }
-  return perc;
+  return result;
 }
 
 export const Progress = (props: ProgressProps) => {

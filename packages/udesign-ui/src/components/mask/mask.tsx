@@ -9,7 +9,7 @@ export type MaskProps = {
   onClick?: (e: React.MouseEvent) => void; // 点击蒙层自身触发
 } & NativeProps;
 
-export const Mask = ({ onClick, className }: MaskProps) => {
+export const Mask = ({ onClick, className, style }: MaskProps) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClick?.(e);
@@ -18,7 +18,7 @@ export const Mask = ({ onClick, className }: MaskProps) => {
 
   const cls = classNames(prefixCls, className);
 
-  return <div className={cls} onClick={handleClick}></div>;
+  return <div className={cls} onClick={handleClick} style={style}></div>;
 };
 
 Mask.displayName = 'Mask';

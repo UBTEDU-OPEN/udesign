@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Toast, Space, Button } from '@ubt/udesign-ui';
+import { Toast, Space, Button, Copy } from '@ubt/udesign-ui';
 import {
   PlusOutlined,
   FolderOutlined,
@@ -50,7 +50,6 @@ import {
   RefreshOutlined,
   FirstRightOutlined,
 } from '@ubt/udesign-icons';
-import { Copy } from '@ubt/udesign-ui-alpha';
 import { Demo } from '../../demo';
 
 export default function IconPage() {

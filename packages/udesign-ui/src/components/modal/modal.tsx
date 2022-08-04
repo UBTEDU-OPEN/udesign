@@ -7,9 +7,10 @@ import Portal from '../_portal';
 import Space from '../space';
 import Button, { ButtonProps } from '../button';
 import { ButtonType } from '../button/button';
-import { CloseIcon } from './close';
 import LocaleConsumer from '../locale/consumer';
 import { Locale } from '../locale/interface';
+import Close from '../close';
+import Scrollbar from '../scrollbar';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-modal`;
 export const destroyFns: any[] = [];
@@ -87,11 +88,7 @@ export const Modal = (props: ModalProps) => {
     const handleClose = (e: React.MouseEvent) => {
       onCancel?.(e);
     };
-    return closeable ? (
-      <div className={`${prefixCls}-close`}>
-        <Button size='small' type='link' onClick={handleClose} icon={closeIcon || <CloseIcon />} />
-      </div>
-    ) : null;
+    return closeable ? <div className={`${prefixCls}-close`}>{closeIcon ? <Button size='small' type='link' onClick={handleClose} icon={closeIcon} /> : <Close onClick={handleClose} />}</div> : null;
   };
 
   const renderHeader = () => {
@@ -115,7 +112,7 @@ export const Modal = (props: ModalProps) => {
     const { bodyStyle, children } = props;
     return (
       <div className={`${prefixCls}-body`} style={bodyStyle}>
-        {children}
+        <Scrollbar>{children}</Scrollbar>
       </div>
     );
   };
