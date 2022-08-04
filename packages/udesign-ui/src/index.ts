@@ -6,6 +6,7 @@ export { default as Button } from './components/button';
 export { default as Calendar } from './components/calendar';
 export { default as Checkbox } from './components/checkbox';
 export { default as Col } from './components/col';
+export { default as ConfigProvider } from './components/config-provider';
 export { default as Copy } from './components/copy';
 export { default as Divider } from './components/divider';
 export { default as Dropdown } from './components/dropdown';

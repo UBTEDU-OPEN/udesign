@@ -3,10 +3,13 @@ import classNames from 'classnames';
 import { LeftOutlined, RightOutlined } from '@ubt/udesign-icons';
 import { NativeProps, usePropsValue } from '../../utils';
 import { numbers, prefixCls } from './constants';
+import { Locale } from '../locale/interface';
+import LocaleConsumer from '../locale/consumer';
 import Input from '../input';
 
 const _getTotalPageNumber = (total: number, pageSize: number) => Math.ceil(total / pageSize);
 
+export type PaginationLocale = Locale['Pagination'];
 export type PageRenderText = number | '•••';
 export type PageList = PageRenderText[];
 
@@ -287,7 +290,7 @@ export const Pagination = (props: PaginationProps) => {
     });
   }
 
-  function renderDefaultPage() {
+  function renderDefaultPage(locale: PaginationLocale) {
     const { showTotal, className, style, hideOnSinglePage = true } = props;
     const totalPageNum = _getTotalPageNumber(total, pageSize);
     if (totalPageNum < 2 && hideOnSinglePage) {
@@ -296,7 +299,13 @@ export const Pagination = (props: PaginationProps) => {
     const cls = classNames(`${prefixCls}`, className);
     return (
       <ul className={cls} style={style}>
-        {showTotal ? <li className={`${prefixCls}-total`}>共{` ${totalPageNum} `}页</li> : null}
+        {showTotal ? (
+          <li className={`${prefixCls}-total`}>
+            {locale.total}
+            {` ${totalPageNum} `}
+            {locale.page}
+          </li>
+        ) : null}
         {renderPrevBtn()}
         {renderPageList()}
         {renderNextBtn()}
@@ -306,5 +315,9 @@ export const Pagination = (props: PaginationProps) => {
     );
   }
 
-  return <>{renderDefaultPage()}</>;
+  return (
+    <>
+      <LocaleConsumer componentName='Pagination'>{(locale: PaginationLocale) => renderDefaultPage(locale)}</LocaleConsumer>
+    </>
+  );
 };

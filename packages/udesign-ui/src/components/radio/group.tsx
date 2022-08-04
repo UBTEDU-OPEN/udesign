@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from 'react';
 import classNames from 'classnames';
 import { Radio } from './radio';
 import { RadioContext, reducer, types } from './context';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
 export type RadioOptionType = {
   label: string; // 对外显示
@@ -19,7 +20,7 @@ export interface GroupProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 选项变化时的回调函数  function(e:Event)
 }
 
-const prefixCls = 'ud-radio';
+const prefixCls = `${BASE_CLASS_PREFIX}-radio`;
 
 export const Group = ({ defaultValue = '', disabled, options, children, name, onChange, ...restProps }: GroupProps) => {
   // 用于支持简单的数组作为options

@@ -39,14 +39,14 @@ export const Body = () => {
                       disabled={(rowSelection?.getCheckboxProps && rowSelection?.getCheckboxProps(data).disabled) || false}
                       checked={rowSelection?.selectedRowKeys?.includes(data[rowKey] as string)}
                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                        const newSelectedRowkeys = getSelectedRowKeys(event.target.checked, data[rowKey] as string);
+                        const newSelectedRowKeys = getSelectedRowKeys(event.target.checked, data[rowKey] as string);
                         if (dispatch) {
                           dispatch({
                             type: types.UPDATE_SELECTED,
-                            payload: { rowSelection: { ...rowSelection, selectedRowKeys: newSelectedRowkeys } },
+                            payload: { rowSelection: { ...rowSelection, selectedRowKeys: newSelectedRowKeys } },
                           });
                         }
-                        rowSelection?.onChange && rowSelection?.onChange(newSelectedRowkeys, data);
+                        rowSelection?.onChange && rowSelection?.onChange(newSelectedRowKeys, data);
                       }}
                     />
                   </div>

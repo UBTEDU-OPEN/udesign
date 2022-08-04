@@ -6,6 +6,7 @@ import { RadioNormal } from './radio-normal';
 import { RadioLight } from './radio-light';
 import { RadioNormalDisabled } from './radio-normal-disabled';
 import { RadioLightDisabled } from './radio-light-disabled';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
 export type RadioChangeEventType = React.ChangeEvent<HTMLInputElement>;
 
@@ -20,7 +21,7 @@ export type RadioProps = {
   label?: string; // 单选框显示文字
 } & NativeProps;
 
-const prefixCls = 'ud-radio';
+const prefixCls = `${BASE_CLASS_PREFIX}-radio`;
 
 export const Radio = ({ defaultChecked = false, disabled, className, style, children, value, label, ...restProps }: RadioProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;

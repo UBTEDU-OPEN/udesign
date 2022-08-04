@@ -12,12 +12,12 @@ export const Upload = (props: UploadProps) => {
   const { accept, multiple, onChange, children, webkitdirectory } = props;
   const inputRef = useRef<HTMLInputElement>(null);
   const onInnerChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange && onChange(event);
+    onChange?.(event);
   };
 
   const handleClick = () => {
     const el: HTMLInputElement | null = inputRef?.current;
-    el && el?.click?.();
+    el?.click?.();
   };
 
   useEffect(() => {

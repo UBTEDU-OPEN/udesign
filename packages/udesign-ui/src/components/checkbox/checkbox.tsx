@@ -7,6 +7,7 @@ import { CheckboxNormal } from './checkbox-normal';
 import { CheckboxLight } from './checkbox-light';
 import { CheckboxNormalDisabled } from './checkbox-normal-disabled';
 import { CheckboxLightDisabled } from './checkbox-light-disabled';
+import { BASE_CLASS_PREFIX } from '../../constants';
 
 export type CheckboxProps = {
   label?: React.ReactNode; // 多选框显示的内容
@@ -18,7 +19,7 @@ export type CheckboxProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 变化时回调函数
 } & NativeProps;
 
-const prefixCls = 'ud-checkbox';
+const prefixCls = `${BASE_CLASS_PREFIX}-checkbox`;
 
 export const Checkbox = ({ defaultChecked = false, disabled, className, style, children, value, onChange, label, indeterminate, ...restProps }: CheckboxProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;

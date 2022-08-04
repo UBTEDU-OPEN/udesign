@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { DefaultImage } from './default-image';
+import LocaleConsumer from '../locale/consumer';
+import { Locale } from '../locale/interface';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-empty`;
 
@@ -11,13 +13,17 @@ export type EmptyProps = {
   description?: ReactNode; // 自定义描述
 } & NativeProps;
 
-export const Empty = ({ image = <DefaultImage />, description = '暂无数据', className, ...props }: EmptyProps) => {
+export const Empty = ({ image = <DefaultImage />, description, className, ...props }: EmptyProps) => {
   const cls = classNames(prefixCls, className);
   return (
-    <div className={cls} {...props}>
-      <div className={`${prefixCls}-image`}>{image}</div>
-      <div className={`${prefixCls}-description`}>{description}</div>
-    </div>
+    <LocaleConsumer componentName='Empty'>
+      {(locale: Locale['Empty']) => (
+        <div className={cls} {...props}>
+          <div className={`${prefixCls}-image`}>{image}</div>
+          <div className={`${prefixCls}-description`}>{description || locale.description}</div>
+        </div>
+      )}
+    </LocaleConsumer>
   );
 };
 

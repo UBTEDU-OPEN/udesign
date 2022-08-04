@@ -8,6 +8,8 @@ import Space from '../space';
 import Button, { ButtonProps } from '../button';
 import { ButtonType } from '../button/button';
 import { CloseIcon } from './close';
+import LocaleConsumer from '../locale/consumer';
+import { Locale } from '../locale/interface';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-modal`;
 export const destroyFns: any[] = [];
@@ -123,21 +125,25 @@ export const Modal = (props: ModalProps) => {
       return props.footer;
     }
 
-    const { hasCancel = true, onOk, okText = '确定', okType = 'primary', okButtonProps, confirmLoading, onCancel, cancelText = '取消', cancelLoading, cancelButtonProps } = props;
+    const { hasCancel = true, onOk, okText, okType = 'primary', okButtonProps, confirmLoading, onCancel, cancelText, cancelLoading, cancelButtonProps } = props;
 
     return (
-      <div className={`${prefixCls}-footer`}>
-        <Space justify='center'>
-          {hasCancel ? (
-            <Button type='default' onClick={onCancel} loading={cancelLoading} {...cancelButtonProps}>
-              {cancelText}
-            </Button>
-          ) : null}
-          <Button type={okType} onClick={onOk} loading={confirmLoading} {...okButtonProps}>
-            {okText}
-          </Button>
-        </Space>
-      </div>
+      <LocaleConsumer componentName='Modal'>
+        {(locale: Locale['Modal']) => (
+          <div className={`${prefixCls}-footer`}>
+            <Space justify='center'>
+              {hasCancel ? (
+                <Button type='default' onClick={onCancel} loading={cancelLoading} {...cancelButtonProps}>
+                  {cancelText || locale.cancel}
+                </Button>
+              ) : null}
+              <Button type={okType} onClick={onOk} loading={confirmLoading} {...okButtonProps}>
+                {okText || locale.confirm}
+              </Button>
+            </Space>
+          </div>
+        )}
+      </LocaleConsumer>
     );
   };
 
