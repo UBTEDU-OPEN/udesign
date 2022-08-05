@@ -1,76 +1,60 @@
-import React, { useState, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
-import { toArray, NativeProps } from '../../utils';
+import { DownOutlined } from '@ubt/udesign-icons';
+import CollapseContext from './context';
+import { NativeProps, usePropsValue } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-collapse`;
-type ValueProps<T> = {
-  accordion?: boolean; // 手风琴
-  bordered?: boolean; // 是否显示边框
-  showArrow?: boolean; // 是否展示当前面板上的箭头
-  expandIcon?: ReactNode; // 自定义图标
-  headerStyle?: object; // header自定义样式
-  bodyStyle?: object; // body自定义样式
-  activeKey?: T;
-  defaultActiveKey?: T;
-  onChange?: (activeKey: T) => void;
-};
-export type CollapseProps = (
-  | ({
-      accordion?: false;
-    } & ValueProps<string[]>)
-  | ({
-      accordion: true;
-    } & ValueProps<string | null>)
-) &
-  NativeProps;
-export const Collapse = ({ accordion, bordered, showArrow, expandIcon, activeKey, defaultActiveKey, className, headerStyle, bodyStyle, children }: CollapseProps) => {
-  const [innerActiveKey, setInnerActiveKey] = useState(activeKey || defaultActiveKey || []);
-  const activeKeyList = innerActiveKey === null ? [] : Array.isArray(innerActiveKey) ? innerActiveKey : [innerActiveKey];
+type CollapseProps = {
+  accordion?: boolean; // 手风琴。默认值：false
+  bordered?: boolean; // 是否显示边框。默认值：false
+  showArrow?: boolean; // 是否展示当前面板上的箭头。默认值：true
+  expandIcon?: ReactNode; // 自定义展开图标。默认值：<DownOutlined />
+  headerStyle?: object; // header自定义样式。默认值：-
+  bodyStyle?: object; // body自定义样式。默认值：-
+  radius?: boolean; // 这是圆角。默认值：false
+  activeKey?: string | number | string[] | number[]; // 当前展开时的name。默认值: -
+  defaultActiveKey?: string | number | string[] | number[]; // 默认展开的name。默认值: -
+  onChange?: (activeKey: string | number | string[] | number[]) => void; // 展开/收起时的回调。默认值：-
+} & NativeProps;
 
-  const onItemClick = (key: string) => {
-    const active = activeKeyList.includes(key);
-    if (accordion) {
-      if (active) {
-        setInnerActiveKey([]);
-      } else {
-        setInnerActiveKey([key]);
-      }
-    } else if (active) {
-      setInnerActiveKey(activeKeyList.filter((k) => k !== key));
+export const Collapse = ({ accordion = false, radius, bordered, showArrow = true, expandIcon = <DownOutlined />, headerStyle, bodyStyle, children, onChange, style, className, ...props }: CollapseProps) => {
+  const cls = classNames(prefixCls, className);
+  const [activeKey, setActiveKey] = usePropsValue({
+    value: props.activeKey,
+    defaultValue: props.defaultActiveKey ?? '',
+    onChange,
+  });
+  const onClick = (name: string | number, active: boolean) => {
+    // 通过判断点击前所处的active的状态，来判断本次点击是否折叠或展开
+    if (active) {
+      setActiveKey('');
     } else {
-      setInnerActiveKey([...activeKeyList, key]);
+      setActiveKey(name);
+      console.log(2);
     }
   };
 
-  // 为 Item 挂载 active 属性和点击事件
-  const getItems = () =>
-    toArray(children).map((child: React.ReactElement, index: number) => {
-      const key = child.props.name || String(index);
-      let active = false;
-      if (accordion) {
-        active = innerActiveKey[0] === key;
-      } else {
-        active = innerActiveKey.includes(key);
-      }
-      const childProps = {
-        key,
-        active,
-        bordered,
-        showArrow,
-        expandIcon,
-        headerStyle,
-        bodyStyle,
-        onItemClick,
-      };
-      return React.cloneElement(child, childProps);
-    });
-
-  const cls = classNames(prefixCls, className);
-
   return (
     <>
-      <div className={cls}>{getItems()}</div>
+      <CollapseContext.Provider
+        value={{
+          expandIcon,
+          accordion,
+          activeKey,
+          headerStyle,
+          bodyStyle,
+          radius,
+          bordered,
+          showArrow,
+          onClick,
+        }}
+      >
+        <div className={cls} style={style}>
+          {children}
+        </div>
+      </CollapseContext.Provider>
     </>
   );
 };

@@ -1,65 +1,71 @@
 @import './variables.scss';
 $module: ud-collapse;
 
-.#{$module} {
-	&-item-header {
-		font-size: $collapse-header-font-size;
-		background: $collapse-header-background;
-		border-radius: $collapse-header-border-radius;
-		padding: $collapse-header-padding;
-		margin: $collapse-header-margin;
-		cursor: pointer;
-	}
+.#{$module}-item {
+  cursor: pointer;
+}
 
-	&-item-content {
-		font-size: $collapse-item-font-size;
-		padding: $collapse-item-padding;
-		background: $collapse-item-background;
-		border-radius: $collapse-item-border-radius;
-		margin: $collapse-item-margin;
-		transition: all 0.2s ease-in-out;
-	}
+.#{$module}-item-wrapper {
+  margin: $collapse-item-wrapper-margin;
+}
 
-	&-item-icon {
-		float: right;
-	}
+.#{$module}-item-wrapper-radius {
+  border-radius: $collapse-item-wrapper-border-radius;
+}
 
-	&-item-inactive {
-		.#{$module}-item-content {
-			display: none;
-		}
-	}
+.#{$module}-item-wrapper-border {
+  border: $collapse-item-wrapper-border;
+  overflow: hidden;
+  background-color: $collapse-item-wrapper-border-background-color;
 
-	&-item-active {
-		.#{$module}-item-header {
-			color: $collapse-background-active;
-			font-weight: 700;
-		}
+}
 
-		.#{$module}-item-icon {
-			transform: rotate(180deg);
-			transition: all 0.2s ease-in-out;
-		}
-	}
+.#{$module}-item-header {
+  padding: $collapse-item-header-padding;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $collapse-item-header-background-color;
+  border-radius: $collapse-item-header-border-radius;
+}
 
-	.#{$module}-item-border.#{$module}-item-active {
-		background: $collapse-bordered-background;
-		border: $collapse-border-width $collapse-border-style $collapse-background-active;
-		border-radius: $collapse-header-border-radius;
-		margin: $collapse-header-margin;
+.#{$module}-item-header-active {
+  color: $collapse-item-header-active-color;
+  background-color: $collapse-item-header-active-background-color;
+  $collapse-item-header-active-border-radius: $collapse-item-header-active-border-radius;
+}
 
-		.#{$module}-item-header {
-			background: $collapse-bordered-background;
-			border-bottom: $collapse-border-width $collapse-border-style $collapse-border-color;
-			border-radius: $collapse-header-border-radius $collapse-header-border-radius 0 0;
-			margin: 0;
-			cursor: pointer;
-		}
+.#{$module}-item-header-disabled {
+  cursor: not-allowed;
+  background-color: $collapse-item-header-disabled-background-color;
+  color: $collapse-item-header-disabled-color;
+}
 
-		.#{$module}-item-content {
-			background: $collapse-bordered-background;
-			border-radius: 0 0 $collapse-item-border-radius $collapse-item-border-radius;
-			margin: 0;
-		}
-	}
+.#{$module}-item-header-border {
+  border-bottom: $collapse-item-header-border-bottom;
+}
+.#{$module}-item-header-active-border-radius{
+  border-radius: $collapse-item-header-active-border-border-radius;
+}
+.#{$module}-item-header-icon {
+  display: inline-block;
+  display: flex;
+  align-content: center;
+}
+
+.#{$module}-item-header-icon-rotate {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+.#{$module}-item-body {
+  padding: $collapse-item-body-padding;
+}
+
+.#{$module}-item-body-active {
+  display: block;
+}
+
+.#{$module}-item-body-hidden {
+  display: none;
 }
