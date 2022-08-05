@@ -19,7 +19,7 @@ function generator({ prefixCls, tagName, displayName }: GeneratorProps) {
 
 export type BasicProps = {
   prefixCls?: string;
-  hasSider?: boolean;
+  hasSider?: boolean; // 表示子元素里有 Sider。默认值：false
 } & NativeProps;
 
 interface BasicPropsWithTagName extends BasicProps {

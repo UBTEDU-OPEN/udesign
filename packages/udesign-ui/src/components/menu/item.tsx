@@ -8,11 +8,11 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-menu-item`;
 
 export type MenuItemProps = {
-  name?: string; // 唯一标志符
-  icon?: ReactNode; // 图标
-  disabled?: boolean; // 是否禁用
-  danger?: boolean; //	展示错误状态样式
-  link?: boolean;
+  name?: string; // 唯一标志符。默认值：''
+  icon?: ReactNode; // 图标。默认值：-
+  disabled?: boolean; // 是否禁用。默认值：false
+  danger?: boolean; // 展示错误状态样式。默认值：false
+  link?: boolean; // 链接状态。默认值：false
 } & NativeProps;
 
 export const MenuItem = ({ name = '', icon, disabled, link = false, children, className, style, ...restProps }: MenuItemProps) => {

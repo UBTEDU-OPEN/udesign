@@ -8,8 +8,8 @@ import { NativeProps } from '../../utils';
 const prefixCls = `${BASE_CLASS_PREFIX}-calendar`;
 
 export type CalendarProps = {
-  selectedValue?: string; // 指定日期
-  onChange?: (dates: string) => void; // 切换日期时的回调
+  selectedValue?: string; // 指定日期。默认值：-
+  onChange?: (dates: string) => void; // 切换日期时的回调。默认值：-
 } & NativeProps;
 const Calendar = (props: CalendarProps) => {
   const nowDate = moment().format('YYYY-MM').split('-');

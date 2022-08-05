@@ -9,18 +9,18 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-typography`;
 
 export type TextProps = {
-  type?: string; // 文本类型
-  mark?: boolean; // 添加标记样式
-  disabled?: boolean; // 禁用文本
-  code?: boolean; // 添加代码样式
-  underline?: boolean; // 添加下划线样式
-  del?: boolean; // 添加删除线样式
-  italic?: boolean; // 是否斜体
-  link?: string; // 是否是连接,值为链接地址
-  strong?: boolean; // 是否加粗
-  keyboard?: boolean; // 添加键盘样式
-  ellipsis?: EllipsisConfig | boolean; // 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等
-  editable?: EditableConfig | boolean; // 是否可编辑，为对象时可对编辑进行控制
+  type?: string; // 文本类型。默认值：'default'
+  mark?: boolean; // 添加标记样式。默认值：false
+  disabled?: boolean; // 禁用文本。默认值：false
+  code?: boolean; // 添加代码样式。默认值：false
+  underline?: boolean; // 添加下划线样式。默认值：false
+  del?: boolean; // 添加删除线样式。默认值：false
+  italic?: boolean; // 是否斜体。默认值：false
+  link?: string; // 是否是连接,值为链接地址。默认值：-
+  strong?: boolean; // 是否加粗。默认值：false
+  keyboard?: boolean; // 添加键盘样式。默认值：false
+  ellipsis?: EllipsisConfig | boolean; // 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等。默认值：false
+  editable?: EditableConfig | boolean; // 是否可编辑，为对象时可对编辑进行控制。默认值：false
   onClick?: React.MouseEventHandler<HTMLSpanElement>;
 } & NativeProps;
 

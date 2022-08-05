@@ -15,18 +15,18 @@ export interface ColSize {
 }
 
 export type ColProps = {
-  flex?: string | number; // flex 布局属性
-  offset?: number; // 栅格左侧的间隔格数，间隔内不可以有栅格
-  order?: number; // 栅格顺序
-  pull?: number; // 栅格向左移动格数
-  push?: number; // 栅格向右移动格数
-  span?: number; // 栅格占位格数，为 0 时相当于 display: none
-  xs?: number | ColSize; // 屏幕 < 576px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  sm?: number | ColSize; // 屏幕 ≥ 576px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  md?: number | ColSize; // 屏幕 ≥ 768px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  lg?: number | ColSize; // 屏幕 ≥ 992px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  xl?: number | ColSize; // 屏幕 ≥ 1200px 响应式栅格，可为栅格数或一个包含其他属性的对象
-  xxl?: number | ColSize; // 屏幕 ≥ 1600px 响应式栅格，可为栅格数或一个包含其他属性的对象
+  flex?: string | number; // flex 布局属性。默认值：-
+  offset?: number; // 栅格左侧的间隔格数，间隔内不可以有栅格。默认值：0
+  order?: number; // 栅格顺序。默认值：0
+  pull?: number; // 栅格向左移动格数。默认值：0
+  push?: number; // 栅格向右移动格数。默认值：0
+  span?: number; // 栅格占位格数，为 0 时相当于 display: none。默认值：-
+  xs?: number | ColSize; // 屏幕 < 576px 响应式栅格，可为栅格数或一个包含其他属性的对象。默认值：-
+  sm?: number | ColSize; // 屏幕 ≥ 576px 响应式栅格，可为栅格数或一个包含其他属性的对象。默认值：-
+  md?: number | ColSize; // 屏幕 ≥ 768px 响应式栅格，可为栅格数或一个包含其他属性的对象。默认值：-
+  lg?: number | ColSize; // 屏幕 ≥ 992px 响应式栅格，可为栅格数或一个包含其他属性的对象。默认值：-
+  xl?: number | ColSize; // 屏幕 ≥ 1200px 响应式栅格，可为栅格数或一个包含其他属性的对象。默认值：-
+  xxl?: number | ColSize; // 屏幕 ≥ 1600px 响应式栅格，可为栅格数或一个包含其他属性的对象。默认值：-
 } & NativeProps;
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'] as const;

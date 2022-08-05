@@ -13,19 +13,19 @@ const PresetStatusColorRegex = new RegExp(`^(${PresetStatusColors.join('|')})(-i
 type TagSize = Size;
 
 export type TagProps = {
-  closeable?: boolean; // 标签是否可以关闭（点击默认关闭）
-  closeIcon?: ReactNode; //	自定义关闭按钮
-  color?: string; // 标签颜色
-  textColor?: string; // 标签文本颜色
-  size?: TagSize; // 标签大小
-  checkable?: boolean; // 标签是否可以选中（点击默认选中）
-  checked?: boolean; // 是否选中状态
-  defaultChecked?: boolean; // 是否默认选中状态
-  visible?: boolean; // 是否显示标签
-  value?: string; // 标签的value
-  onChange?: (checked: boolean) => void; //	点击标签时触发的回调
-  onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void; // 单击标签时的回调函数
-  onClose?: (value: { label: ReactNode; value: string }, event: React.MouseEvent<HTMLElement>) => void; // 关闭标签时的回调函数
+  closeable?: boolean; // 标签是否可以关闭（点击默认关闭）。默认值：false
+  closeIcon?: ReactNode; //	自定义关闭按钮。默认值：-
+  color?: string; // 标签颜色。默认值：-
+  textColor?: string; // 标签文本颜色。默认值：-
+  size?: TagSize; // 标签大小。默认值：middle
+  checkable?: boolean; // 标签是否可以选中（点击默认选中）。默认值：false
+  checked?: boolean; // 是否选中状态。默认值：false
+  defaultChecked?: boolean; // 是否默认选中状态。默认值：false
+  visible?: boolean; // 是否显示标签。
+  value?: string; // 标签的value。默认值：-
+  onChange?: (checked: boolean) => void; //	点击标签时触发的回调。默认值：-
+  onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void; // 单击标签时的回调函数。默认值：-
+  onClose?: (value: { label: ReactNode; value: string }, event: React.MouseEvent<HTMLElement>) => void; // 关闭标签时的回调函数。默认值：-
 } & NativeProps;
 
 const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = ({ size = 'middle', color, textColor, style, checkable, onChange, onClick, onClose, className, children, value, ...props }, ref) => {

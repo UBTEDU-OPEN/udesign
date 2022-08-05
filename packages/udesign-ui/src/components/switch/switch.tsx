@@ -6,15 +6,15 @@ import { Size, BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-switch`;
 
 export type SwitchProps = {
-  checked?: boolean; // 当前是否选中
-  defaultChecked?: boolean; // 默认是否选中
-  disabled?: boolean; // 是否禁用
-  loading?: boolean; // 是否加载中
-  size?: Size; // 大小
-  checkedText?: ReactNode; // 选中时的内容
-  uncheckedText?: ReactNode; // 非选中时的内容
-  onChange?: (checked: boolean) => void; // 变化时回调函数
-  onClick?: (checked: boolean) => void; // 点击时回调函数
+  checked?: boolean; // 当前是否选中。默认值：false
+  defaultChecked?: boolean; // 默认是否选中。默认值：false
+  disabled?: boolean; // 是否禁用。默认值：false
+  loading?: boolean; // 是否加载中。默认值：false
+  size?: Size; // 大小。默认值：middle
+  checkedText?: ReactNode; // 选中时的内容。默认值：-
+  uncheckedText?: ReactNode; // 非选中时的内容。默认值：-
+  onChange?: (checked: boolean) => void; // 变化时回调函数。默认值：-
+  onClick?: (checked: boolean) => void; // 点击时回调函数。默认值：-
 } & NativeProps;
 
 export const Switch = ({ defaultChecked = false, disabled, loading, size = 'middle', checkedText, uncheckedText, className, ...props }: SwitchProps) => {

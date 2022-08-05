@@ -3,7 +3,7 @@ import Button from '../button';
 import { CloseIcon } from './close-icon';
 
 export type CloseProps = {
-  onClick: (e: React.MouseEvent) => void;
+  onClick: (e: React.MouseEvent) => void; // 关闭时的回调。默认值：-
 };
 
 export const Close = (props: CloseProps) => {

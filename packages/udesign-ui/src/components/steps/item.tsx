@@ -10,13 +10,13 @@ const prefixCls = `${BASE_CLASS_PREFIX}-steps-item`;
 export type StepStatus = 'wait' | 'process' | 'finish' | 'error' | 'warning';
 
 export type StepProps = {
-  description?: ReactNode; // 步骤的详情描述，可选
-  icon?: ReactNode; // 步骤图标的类型，可选
-  status?: StepStatus; // 指定状态。当不配置该属性时，会使用 Steps 的 current 来自动指定状态。
-  title?: ReactNode; // 标题
-  stepNumber?: string; // 内部尺码
-  onChange?: () => void; // 改变步骤条的回调
-  onClick?: MouseEventHandler<HTMLDivElement>; // 点击步骤条的回调
+  description?: ReactNode; // 步骤的详情描述，可选。默认值：-
+  icon?: ReactNode; // 步骤图标的类型，可选。默认值：-
+  status?: StepStatus; // 指定状态。当不配置该属性时，会使用 Steps 的 current 来自动指定状态。。默认值：-
+  title?: ReactNode; // 标题。默认值：-
+  stepNumber?: string; // 内部尺码。默认值：-
+  onChange?: () => void; // 改变步骤条的回调。默认值：-
+  onClick?: MouseEventHandler<HTMLDivElement>; // 点击步骤条的回调。默认值：-
 } & NativeProps &
   Pick<DividerProps, 'dashed'>;
 

@@ -14,11 +14,11 @@ export type RadioChangeEventHandler = (checked: boolean, event: RadioChangeEvent
 export type RadioClickEventHandler = RadioChangeEventHandler;
 
 export type RadioProps = {
-  checked?: boolean; // 指定当前是否选中
-  defaultChecked?: boolean; // 初始是否选中
-  disabled?: boolean; // 禁用 Radio
-  value?: string; // 根据 value 进行比较，判断是否选中
-  label?: string; // 单选框显示文字
+  checked?: boolean; // 指定当前是否选中。默认值：false
+  defaultChecked?: boolean; // 初始是否选中。默认值：false
+  disabled?: boolean; // 禁用 Radio。默认值：false
+  value?: string; // 根据 value 进行比较，判断是否选中。默认值：-
+  label?: string; // 单选框显示文字。默认值：-
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-radio`;

@@ -7,22 +7,22 @@ import { OptionItem } from './types';
 import Tag from '../tag';
 
 export type MultiBarProps = {
-  searchValue: string; // 搜索框输入的值
-  setSearchValue: (value: string) => void; // 设置searchValue 方法
-  maxTagCount?: number; // 最大展示的tag数
-  selectedList: OptionItem[]; // 选中列表
-  tagRender?: (CustomTagProps: CustomTagProps) => ReactNode; // 自定义tag 方法
-  handleClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => void; // tag 关闭的回调函数
-  placeholder?: string; // 选择框默认文本
-  visible?: boolean; // 是否展开列表
+  searchValue: string; // 搜索框输入的值。默认值：''
+  setSearchValue: (value: string) => void; // 设置searchValue 方法。默认值：-
+  maxTagCount?: number; // 最大展示的tag数。默认值：-
+  selectedList: OptionItem[]; // 选中列表。默认值：-
+  tagRender?: (CustomTagProps: CustomTagProps) => ReactNode; // 自定义tag 方法。默认值：-
+  handleClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => void; // tag 关闭的回调函数。默认值：-
+  placeholder?: string; // 选择框默认文本。默认值：-
+  visible?: boolean; // 是否展开列表。默认值：false
 } & NativeProps;
 
 export type CustomTagProps = {
-  label?: React.ReactNode; // tag 显示内容
-  value?: string; // tag 对应value
-  disabled?: boolean; // 是否禁用
-  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调
-  closeable?: boolean; // 是否显示关闭按钮
+  label?: React.ReactNode; // tag 显示内容。默认值：
+  value?: string; // tag 对应value。默认值：
+  disabled?: boolean; // 是否禁用。默认值：
+  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调。默认值：
+  closeable?: boolean; // 是否显示关闭按钮。默认值：
 };
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;

@@ -7,16 +7,16 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-menu`;
 
 export type MenuProps = {
-  isCollapsed?: boolean; // 设置是否折叠
-  hasLine?: boolean; // 设置悬停或选中时出现线条
-  mode?: MenuMode; // 水平 or 垂直
-  activeKey?: string; // 当前选中的菜单项
-  defaultActiveKey?: string; // 默认选中的菜单项
-  subActiveKey?: string; // 当前选中的菜单项
-  defaultSubActiveKey?: string; // 默认选中的菜单项
-  radius?: boolean;
-  onlyOne?: boolean; // 只展开一个
-  onChange?: (name: string) => void; // 选中的菜单项变化时触发
+  isCollapsed?: boolean; // 设置是否折叠。默认值：false
+  hasLine?: boolean; // 设置悬停或选中时出现线条。默认值：false
+  mode?: MenuMode; // 水平 or 垂直。默认值：vertical
+  activeKey?: string; // 当前选中的菜单项。默认值：-
+  defaultActiveKey?: string; // 默认选中的菜单项。默认值：-
+  subActiveKey?: string;
+  defaultSubActiveKey?: string;
+  radius?: boolean; // 是否设置圆角。默认值：false
+  onlyOne?: boolean; // 只展开一个。默认值：false
+  onChange?: (name: string) => void; // 选中的菜单项变化时触发。默认值：-
 } & NativeProps;
 
 export const Menu = ({ isCollapsed = false, mode = 'vertical', hasLine, onlyOne, onChange, className, radius, children, style, ...props }: MenuProps) => {

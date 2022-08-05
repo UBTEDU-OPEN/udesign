@@ -9,8 +9,8 @@ import { Locale } from '../locale/interface';
 const prefixCls = `${BASE_CLASS_PREFIX}-empty`;
 
 export type EmptyProps = {
-  image?: ReactNode; // 自定义图片
-  description?: ReactNode; // 自定义描述
+  image?: ReactNode; // 自定义图片。默认值：<DefaultImage />
+  description?: ReactNode; // 自定义描述。默认值：-
 } & NativeProps;
 
 export const Empty = ({ image = <DefaultImage />, description, className, ...props }: EmptyProps) => {

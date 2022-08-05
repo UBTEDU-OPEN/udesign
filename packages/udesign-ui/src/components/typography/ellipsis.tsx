@@ -7,12 +7,12 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-typography`;
 
 export type EllipsisProps = {
-  rows?: number; //	最多显示的行数
-  expandable?: boolean; // 是否可展开
-  suffix?: string; // 自定义省略内容后缀
-  symbol?: ReactNode; // 自定义展开描述文案
+  rows?: number; //	最多显示的行数。默认值：1
+  expandable?: boolean; // 是否可展开。默认值：false
+  suffix?: string; // 自定义省略内容后缀。默认值：undefined
+  symbol?: ReactNode; // 自定义展开描述文案。默认值：null
   onExpand?: () => void; // 点击展开时的回调
-  tooltip?: false | ReactNode; // 省略时，展示提示信息
+  tooltip?: false | ReactNode; // 省略时，展示提示信息。默认值：false
 } & NativeProps;
 
 export const Ellipsis = ({ rows = 1, expandable, suffix, className, tooltip, symbol, children, onExpand }: EllipsisProps) => {

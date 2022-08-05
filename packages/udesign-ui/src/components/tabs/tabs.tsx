@@ -7,14 +7,14 @@ import { Position, BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-tabs`;
 
 export type TabsProps = {
-  type?: TabType; // 样式，默认line
-  size?: string; // 大小
-  position?: Position; // 标签位置
-  centered?: boolean; // 标签居中展示
-  around?: boolean; // 自动平铺，justify-content: around;
-  activeKey?: string; // 当前激活 tab 面板的 key
-  defaultActiveKey?: string; // 初始化选中面板的 key，如果没有设置 activeKey
-  onChange?: (name: string) => void;
+  type?: TabType; // 样式。默认值：line
+  size?: string; // 大小。默认值：middle
+  position?: Position; // 标签位置。默认值：top
+  centered?: boolean; // 标签居中展示。默认值：false
+  around?: boolean; // 自动平铺'justify-content: around;'。默认值：false
+  activeKey?: string; // 当前激活 tab 面板的 key。默认值：-
+  defaultActiveKey?: string; // 初始化选中面板的 key，如果没有设置 activeKey。默认值：-
+  onChange?: (name: string) => void; // 切换时的回调。默认值：-
 } & NativeProps;
 
 export const Tabs = ({ type = 'line', position = 'top', size = 'middle', centered, around, activeKey, defaultActiveKey, onChange, className, children }: TabsProps) => {

@@ -11,13 +11,13 @@ export type RadioOptionType = {
 };
 
 export interface GroupProps {
-  defaultValue?: string; // 默认选中的值
-  value?: string; // 用于设置当前选中的值
-  disabled?: boolean; // 禁选所有子单选器
-  children?: React.ReactElement; // 子组件
-  options?: Array<RadioOptionType | string>; // 以配置形式设置子元素
-  name: string; // RadioGroup 下所有 input[type="radio"] 的 name 属性
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 选项变化时的回调函数  function(e:Event)
+  defaultValue?: string; // 默认选中的值。默认值：''
+  value?: string; // 用于设置当前选中的值。默认值：-
+  disabled?: boolean; // 禁选所有子单选器。默认值：false
+  children?: React.ReactElement; // 子组件。默认值：-
+  options?: Array<RadioOptionType | string>; // 以配置形式设置子元素。默认值：-
+  name: string; // RadioGroup 下所有 input[type="radio"] 的 name 属性。默认值：-
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 选项变化时的回调函数  function(e:Event)。默认值：-
 }
 
 const prefixCls = `${BASE_CLASS_PREFIX}-radio`;

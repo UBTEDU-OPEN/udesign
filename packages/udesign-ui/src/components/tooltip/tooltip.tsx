@@ -57,22 +57,22 @@ const getTranslateStyle = (placement: Placement): React.CSSProperties => {
 };
 
 export type TooltipProps = {
-  prefixCls?: string; // 接收上层组件的 className 改写，比如 Dropdown 组件
-  showArrow?: boolean; // 是否显示箭头
-  clickToHide?: boolean; //	在弹出层内点击时是否自动关闭弹出层
-  content?: React.ReactNode; // 弹出层的内容
-  placement?: Placement; // 弹出层的位置
-  trigger?: Trigger; // 触发下拉的行为, 移动端不支持 hover
-  getContainer?: () => HTMLElement; // 渲染的父节点，默认 document.body
-  mouseEnterDelay?: number; //	鼠标移入后，延迟显示的时间，单位毫秒（仅当 trigger 为 hover/focus 时生效
-  mouseLeaveDelay?: number; //	鼠标移出后，延迟消失的时间，单位毫秒（仅当 trigger 为 hove/focus 时生效），不小于 mouseEnterDelay
-  spacing?: number; //	弹出层与 children 元素的距离，单位 px
-  defaultVisible?: boolean; //	默认是否显隐
-  visible?: boolean; //	当trigger为custom时，通过该属性控制是否展示弹出层
-  clickTriggerToHide?: boolean; // 点击trigger时关闭
-  zIndex?: number; //	弹层层级
-  onVisibleChange?: (visible: boolean) => void; //	显示隐藏的回调
-  onClickOutSide?: (e: Event) => void; //	当弹出层处于展示状态，点击非Children、非浮层内部区域时的回调（仅trigger为custom、click时有效）
+  prefixCls?: string; // 接收上层组件的 className 改写，比如 Dropdown 组件。默认值：prefix
+  showArrow?: boolean; // 是否显示箭头。默认值：true
+  clickToHide?: boolean; //	在弹出层内点击时是否自动关闭弹出层。默认值：false
+  content?: React.ReactNode; // 弹出层的内容。默认值：-
+  placement?: Placement; // 弹出层的位置。默认值：top
+  trigger?: Trigger; // 触发下拉的行为, 移动端不支持 hover。默认值：hover
+  getContainer?: () => HTMLElement; // 渲染的父节点，默认 document.body。默认值：getDefaultContainer
+  mouseEnterDelay?: number; //	鼠标移入后，延迟显示的时间，单位毫秒（仅当 trigger 为 hover/focus 时生效。默认值：50
+  mouseLeaveDelay?: number; //	鼠标移出后，延迟消失的时间，单位毫秒（仅当 trigger 为 hove/focus 时生效），不小于 mouseEnterDelay。默认值：50
+  spacing?: number; //	弹出层与 children 元素的距离，单位 px。默认值：8
+  defaultVisible?: boolean; //	默认是否显隐。默认值：false
+  visible?: boolean; //	当trigger为custom时，通过该属性控制是否展示弹出层。默认值：false
+  clickTriggerToHide?: boolean; // 点击trigger时关闭。默认值：false
+  zIndex?: number; //	弹层层级。默认值：-
+  onVisibleChange?: (visible: boolean) => void; //	显示隐藏的回调。默认值：-
+  onClickOutSide?: (e: Event) => void; //	当弹出层处于展示状态，点击非Children、非浮层内部区域时的回调（仅trigger为custom、click时有效）。默认值：-
 } & NativeProps;
 
 const getDefaultContainer = () => document.body;

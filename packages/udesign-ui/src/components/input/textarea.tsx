@@ -10,18 +10,18 @@ const prefixCls = `${BASE_CLASS_PREFIX}-textarea`;
 type TextAreaStatus = Status;
 
 export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'prefix' | 'style' | 'onChange'>, NativeProps {
-  value?: string; // 输入框内容
-  defaultValue?: string; // 输入框内容默认值
-  autoSize?: boolean; // TODO: 是否自适应内容高度，默认为false
-  disabled?: boolean; // 是否禁用，默认为false
-  showClear?: boolean; // 可以点击清除图标删除内容
-  showCount?: boolean; // 是否展示字数
-  status?: TextAreaStatus; // 校验状态，可选值default、error、warning，默认default。仅影响展示样式
-  maxLength?: number; // 内容最大长度
-  textAreaStyle?: React.CSSProperties; // 输入框的样式
-  onChange?: (value: string) => void;
-  onClear?: (e: React.MouseEvent<HTMLDivElement>) => void; // 点击清除按钮时的回调
-  onEnterPress?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void; // 按回车时回调（keypress）
+  value?: string; // 输入框内容。默认值：-
+  defaultValue?: string; // 输入框内容默认值。默认值：''
+  autoSize?: boolean; // TODO: 是否自适应内容高度。默认值false：
+  disabled?: boolean; // 是否禁用。默认值：false
+  showClear?: boolean; // 可以点击清除图标删除内容。默认值：false
+  showCount?: boolean; // 是否展示字数。默认值：false
+  status?: TextAreaStatus; // 校验状态，可选值default、error、warning，仅影响展示样式。默认值：default
+  maxLength?: number; // 内容最大长度。默认值：-
+  textAreaStyle?: React.CSSProperties; // 输入框的样式。默认值：-
+  onChange?: (value: string) => void; // 输入框内容变化时的回调。默认值：-
+  onClear?: (e: React.MouseEvent<HTMLDivElement>) => void; // 点击清除按钮时的回调。默认值：-
+  onEnterPress?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void; // 按回车时回调（keypress）。默认值：-
   forwardRef?: ((instance: any) => void) | React.MutableRefObject<any> | null;
 }
 

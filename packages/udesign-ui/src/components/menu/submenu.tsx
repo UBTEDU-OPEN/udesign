@@ -7,12 +7,12 @@ import MenuContext from './context';
 import SubMenuContext from './SubMenuContext';
 
 export type SubmenuProps = MenuItemProps & {
-  title: string; // 子菜单显示文案
-  icon?: ReactNode; // 左侧图标
-  expendIcon?: ReactNode; // 展开收起图标
-  subMode?: string;
-  name?: string;
-  subActive?: boolean;
+  title: string; // 子菜单显示文案。默认值：-
+  icon?: ReactNode; // 左侧图标。默认值：-
+  expendIcon?: ReactNode; // 展开收起图标。默认值：-
+  subMode?: 'vertical' | 'horizontal' | 'inline'; // 设置子级菜单水平 or 垂直显示。默认值：-
+  name?: string; // 唯一标志。默认值：-
+  subActive?: boolean; // 父级菜单选中状态。默认值：false
 };
 
 export const Submenu = ({ title, children, icon, subMode, subActive, name = '', style, ...restProps }: SubmenuProps) => {

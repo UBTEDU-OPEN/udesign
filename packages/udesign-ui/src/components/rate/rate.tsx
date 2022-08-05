@@ -9,16 +9,16 @@ import { getOffsetLeft } from './utils';
 const prefixCls = `${BASE_CLASS_PREFIX}-rate`;
 
 export type RateProps = {
-  count?: number; // star 总数
-  allowHalf?: boolean; // 是否允许半选
-  defaultValue?: number; // 默认值
-  value?: number; // 当前数，受控值
-  character?: ReactNode | ((index: number) => ReactNode); // 自定义字符
-  tooltips?: string[]; // 自定义每项的提示信息
-  disabled?: boolean; // 只读，无法进行鼠标交互
-  onChange?: (value: number) => void; // 选择时的回调
-  onHoverChange?: (value: number) => void; // 选择时的回调
-  activeColor?: string; // 高亮的颜色
+  count?: number; // star 总数。默认值：5
+  allowHalf?: boolean; // 是否允许半选。默认值：false
+  defaultValue?: number; // 默认值。默认值：-
+  value?: number; // 当前数，受控值。默认值：-
+  character?: ReactNode | ((index: number) => ReactNode); // 自定义字符。默认值：<StarFilled />
+  tooltips?: string[]; // 自定义每项的提示信息。默认值：[]
+  disabled?: boolean; // 只读，无法进行鼠标交互。默认值：false
+  onChange?: (value: number) => void; // 选择时的回调。默认值：-
+  onHoverChange?: (value: number) => void; // 选择时的回调。默认值：-
+  activeColor?: string; // 高亮的颜色。默认值：-
 } & NativeProps;
 
 export const Rate = (props: RateProps) => {

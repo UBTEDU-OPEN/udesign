@@ -7,25 +7,25 @@ import { BASE_CLASS_PREFIX, Shape, Size, Status } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-input`;
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'style' | 'onChange'>, NativeProps {
-  prepend?: ReactNode; // 前置标签
-  append?: ReactNode; // 后置标签
-  prefix?: ReactNode; // 前缀标签
-  suffix?: ReactNode; // 后缀标签
-  value?: string; // 输入框内容
-  defaultValue?: string; // 输入框内容默认值
-  disabled?: boolean; // 是否禁用，默认为false
-  type?: string; // 声明input类型，同原生input标签的type属性
-  showClear?: boolean; // 可以点击清除图标删除内容
-  showCount?: boolean; // 是否展示字数
-  size?: Size; // 输入框大小
-  shape?: Shape; // 输入框形状
-  status?: Status; // 校验状态，可选值default、error、warning，默认default。仅影响展示样式
-  maxLength?: number; // 内容最大长度
-  underlined?: boolean; // 是否横线式的输入框
-  inputStyle?: React.CSSProperties; // 输入框的样式
-  onChange?: (value: string) => void;
-  onClear?: (e: React.MouseEvent<HTMLDivElement>) => void; // 点击清除按钮时的回调
-  onEnterPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void; // 按回车时回调（keypress）
+  prepend?: ReactNode; // 前置标签。默认值：-
+  append?: ReactNode; // 后置标签。默认值：-
+  prefix?: ReactNode; // 前缀标签。默认值：-
+  suffix?: ReactNode; // 后缀标签。默认值：-
+  value?: string; // 输入框内容。默认值：-
+  defaultValue?: string; // 输入框内容默认值。默认值：''
+  disabled?: boolean; // 是否禁用，默认为false。默认值：false
+  type?: string; // 声明input类型，同原生input标签的type属性。默认值：-
+  showClear?: boolean; // 可以点击清除图标删除内容。默认值：false
+  showCount?: boolean; // 是否展示字数。默认值：false
+  size?: Size; // 输入框大小。默认值：middle
+  shape?: Shape; // 输入框形状。默认值：circle
+  status?: Status; // 校验状态，可选值default、error、warning。仅影响展示样式。默认值：default
+  maxLength?: number; // 内容最大长度。默认值：-
+  underlined?: boolean; // 是否横线式的输入框。默认值：-
+  inputStyle?: React.CSSProperties; // 输入框的样式。默认值：-
+  onChange?: (value: string) => void; // 输入框内容变化时的回调。默认值：-
+  onClear?: (e: React.MouseEvent<HTMLDivElement>) => void; // 点击清除按钮时的回调。默认值：-
+  onEnterPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void; // 按回车时回调（keypress）。默认值：-
   forwardRef?: ((instance: any) => void) | React.MutableRefObject<any> | null;
 }
 

@@ -7,9 +7,9 @@ import { NativeProps } from '../../utils';
 export type AvatarSize = Size | number;
 export type AvatarShape = Extract<Shape, 'circle' | 'square'>;
 export type AvatarProps = {
-  active?: boolean; // 是否展示动画效果
-  shape?: AvatarShape; // type shape circle | square  默认circle
-  size?: AvatarSize; // type size small | middle | large | number  默认middle
+  active?: boolean; // 是否展示动画效果。默认值：false
+  shape?: AvatarShape; // type shape circle | square。默认值：circle
+  size?: AvatarSize; // type size small | middle | large | number。默认值：middle
 } & NativeProps;
 
 export const Avatar = ({ shape = 'circle', size = 'middle', active = false, className, style }: AvatarProps) => {

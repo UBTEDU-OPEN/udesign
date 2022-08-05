@@ -7,12 +7,12 @@ import { BASE_CLASS_PREFIX, Size } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-spin`;
 
 export type SpinProps = {
-  spinning?: boolean; // 是否处于加载中的状态
-  size?: Size; // 组件大小，默认middle，可选 small, large
-  tip?: ReactNode; // 当 spin 作为包裹元素时，可以自定义描述文字
-  delay?: number; // 延迟显示加载效果的时间
-  indicator?: ReactNode; // 加载指示符
-  childStyle?: React.CSSProperties; // 包裹子元素的样式
+  spinning?: boolean; // 是否处于加载中的状态。默认值：true
+  size?: Size; // 组件大小，可选 small, middle, large。默认值：middle
+  tip?: ReactNode; // 当 spin 作为包裹元素时，可以自定义描述文字。默认值：-
+  delay?: number; // 延迟显示加载效果的时间。默认值：-
+  indicator?: ReactNode; // 加载指示符。默认值：-
+  childStyle?: React.CSSProperties; // 包裹子元素的样式。默认值：-
 } & NativeProps;
 
 export const Spin = (props: SpinProps) => {

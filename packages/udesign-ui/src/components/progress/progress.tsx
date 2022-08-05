@@ -8,17 +8,17 @@ import { DividerProps } from '../divider';
 const prefixCls = `${BASE_CLASS_PREFIX}-progress`;
 
 export type ProgressProps = {
-  type?: 'line' | 'circle'; //	进度条类型，默认line，可选 circle
-  percent?: number; // 进度百分比
-  width?: number; // 环形进度条宽度
-  showInfo?: boolean; // 环形进度条是否显示中间文本，条状进度条后右侧是否显示文本，默认true
-  size?: Size; // 进度条尺寸，默认middle，可选 large, small
-  status?: Status; // 进度条状态
-  strokeLinecap?: 'round' | 'square'; // 圆角round/方角square(仅在 type='circle'模式下生效)
-  strokeWidth?: number; // 进度条宽度(仅在 type='circle'模式下生效)
-  stroke?: string; // 进度条填充色
-  orbitStroke?: string; // 进度条轨道填充色
-  format?: (percent: number) => ReactNode; // 格式化函数，入参为当前百分比，return 的结果将会直接渲染在圆形进度条中心
+  type?: 'line' | 'circle'; //	进度条类型，可选line，circle。默认值：line
+  percent?: number; // 进度百分比。默认值：0
+  width?: number; // 环形进度条宽度。默认值：-
+  showInfo?: boolean; // 环形进度条是否显示中间文本，条状进度条后右侧是否显示文本。默认值：true
+  size?: Size; // 进度条尺寸，可选middle，large，small。默认值：middle
+  status?: Status; // 进度条状态。默认值：normal
+  strokeLinecap?: 'round' | 'square'; // 圆角round/方角square(仅在 type='circle'模式下生效)。默认值：round
+  strokeWidth?: number; // 进度条宽度(仅在 type='circle'模式下生效)。默认值：12
+  stroke?: string; // 进度条填充色。默认值：-
+  orbitStroke?: string; // 进度条轨道填充色。默认值：var(--ud-color-fill-0)
+  format?: (percent: number) => ReactNode; // 格式化函数，入参为当前百分比，return 的结果将会直接渲染在圆形进度条中心。默认值：(text: number): string => `${text}%`
 } & NativeProps &
   Pick<DividerProps, 'dashed'>;
 

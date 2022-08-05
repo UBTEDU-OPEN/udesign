@@ -8,8 +8,8 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-typography`;
 
 export type ParagraphProps = {
-  ellipsis?: EllipsisConfig | boolean; // 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等
-  editable?: EditableConfig | boolean; // 是否可编辑，为对象时可对编辑进行控制
+  ellipsis?: EllipsisConfig | boolean; // 自动溢出省略，为对象时可设置省略行数、是否可展开、添加后缀等。默认值：false
+  editable?: EditableConfig | boolean; // 是否可编辑，为对象时可对编辑进行控制。默认值：false
 } & NativeProps &
   TextProps;
 

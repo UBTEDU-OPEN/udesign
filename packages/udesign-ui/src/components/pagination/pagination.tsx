@@ -14,22 +14,22 @@ export type PageRenderText = number | '•••';
 export type PageList = PageRenderText[];
 
 export type PaginationProps = {
-  currentPage?: number; //	当前页码
-  defaultCurrentPage?: number; //	默认的当前页码, 1
-  hideOnSinglePage?: boolean; // 只有一页时是否隐藏分页器
-  pageSize?: number; //	每页条数
-  defaultPageSize?: number; // 默认的每页条数, 10
-  pageSizeOptions?: number[]; // 指定每页可以显示多少条, [10, 20, 50, 100]
-  disabled?: boolean; // 禁用分页
-  prevText?: string | ReactNode; //	上一页文本
-  nextText?: string | ReactNode; //	下一页文本
-  showTotal?: boolean; //	是否显示总页数
-  showQuickJumper?: boolean; //	是否可以快速跳转至某页
-  showSizeChanger?: boolean; //	是否展示 pageSize 切换器，当 total 大于 50 时默认为 true
-  total?: number; // 总条数
-  onChange?: (currentPage: number, pageSize: number) => void; // 页码、每页容量变化时的回调函数
-  onPageChange?: (currentPage: number) => void; // 页码变化的回调函数
-  onPageSizeChange?: (pageSize: number) => void; // 每页容量变化时的回调函数
+  currentPage?: number; //	当前页码。默认值：-
+  defaultCurrentPage?: number; //	默认的当前页码。默认值：1
+  hideOnSinglePage?: boolean; // 只有一页时是否隐藏分页器。默认值：true
+  pageSize?: number; //	每页条数。默认值：-
+  defaultPageSize?: number; // 默认的每页条数。默认值：10
+  pageSizeOptions?: number[]; // 指定每页可以显示多少条。默认值：[10, 20, 50, 100]
+  disabled?: boolean; // 禁用分页。默认值：false
+  prevText?: string | ReactNode; //	上一页文本。默认值：-
+  nextText?: string | ReactNode; //	下一页文本。默认值：-
+  showTotal?: boolean; //	是否显示总页数。默认值：false
+  showQuickJumper?: boolean; //	是否可以快速跳转至某页。默认值：false
+  showSizeChanger?: boolean; //	是否展示 pageSize 切换器，当 total 大于 50 时默认为true。
+  total?: number; // 总条数。默认值：-
+  onChange?: (currentPage: number, pageSize: number) => void; // 页码、每页容量变化时的回调函数。默认值：-
+  onPageChange?: (currentPage: number) => void; // 页码变化的回调函数。默认值：-
+  onPageSizeChange?: (pageSize: number) => void; // 每页容量变化时的回调函数。默认值：-
 } & NativeProps;
 
 export const Pagination = (props: PaginationProps) => {

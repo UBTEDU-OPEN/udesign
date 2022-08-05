@@ -11,29 +11,29 @@ import { MultiBar } from './multi-bar';
 import { SingleBar } from './single-bar';
 
 export type CustomTagProps = {
-  label?: React.ReactNode; // tag 显示内容
-  value?: string; // tag value
-  disabled?: boolean; // 是否禁用
-  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调
-  closeable?: boolean; // 是否显示关闭按钮
+  label?: React.ReactNode; // tag 显示内容。默认值：-
+  value?: string; // tag value。默认值：-
+  disabled?: boolean; // 是否禁用。默认值：false
+  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭时回调。默认值：-
+  closeable?: boolean; // 是否显示关闭按钮。默认值：false
 };
 
 export type SelectProps = {
-  options?: OptionItem[]; // 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能
-  size?: Size; // 选择框大小
-  onChange?: (value: string | string[]) => void; // 选中 option，调用此函数
-  value?: string | string[]; // 指定当前选中的条目，多选时为一个数组。
-  defaultValue?: string | string[]; // 指定默认选中的条目
-  disabled?: boolean; // 是否禁用
-  mode?: 'multiple'; // 设置 Select 的模式为多选
+  options?: OptionItem[]; // 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能。默认值：-
+  size?: Size; // 选择框大小。默认值：middle
+  onChange?: (value: string | string[]) => void; // 选中 option，调用此函数。默认值：-
+  value?: string | string[]; // 指定当前选中的条目，多选时为一个数组。默认值：-
+  defaultValue?: string | string[]; // 指定默认选中的条目。默认值：-
+  disabled?: boolean; // 是否禁用。默认值：false
+  mode?: 'multiple'; // 设置 Select 的模式为多选。默认值：-
   children?: any;
-  allowClear?: boolean; // 支持清除
-  status?: 'error' | 'warning'; // 设置校验状态
-  tagRender?: (CustomTagProps: CustomTagProps) => ReactNode; // 自定义 tag 内容 render，仅在 mode 为 multiple时生效
-  maxTagCount?: number; // 最多显示多少个 tag，
-  showSearch?: boolean; // 使单选模式可搜索
-  filterOption?: (searchValue: string, option: OptionItem) => boolean; // 是否根据输入项进行筛选。当其为一个函数时，会接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false
-  placeholder?: string; // 选择框默认文本
+  allowClear?: boolean; // 支持清除。默认值：false
+  status?: 'error' | 'warning'; // 设置校验状态。默认值：-
+  tagRender?: (CustomTagProps: CustomTagProps) => ReactNode; // 自定义 tag 内容 render，仅在 mode 为 multiple时生效。默认值：-
+  maxTagCount?: number; // 最多显示多少个 tag，。默认值：-
+  showSearch?: boolean; // 使单选模式可搜索。默认值：false
+  filterOption?: (searchValue: string, option: OptionItem) => boolean; // 是否根据输入项进行筛选。当其为一个函数时，会接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false。默认值：-
+  placeholder?: string; // 选择框默认文本。默认值：-
   // autoFocus?: boolean; // todo
   // clearIcon?: ReactNode; // todo
   // listHeight?: number; // todo

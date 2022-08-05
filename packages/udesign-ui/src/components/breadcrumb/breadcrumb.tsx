@@ -6,7 +6,7 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-breadcrumb`;
 
 export type BreadcrumbProps = {
-  separator?: ReactNode; // 设置分隔符
+  separator?: ReactNode; // 设置分隔符。默认值：\
 } & NativeProps;
 
 export const Breadcrumb = ({ separator = '\\', className, children, style, ...restProps }: BreadcrumbProps) => {

@@ -10,15 +10,15 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-typography-editable`;
 
 export type EditableProps = {
-  icon?: ReactNode; // 自定义编辑图标
-  tooltip?: boolean | ReactNode;
-  maxLength?: number; // 编辑中文本域最大长度
-  autoSize?: { minRows?: number; maxRows?: number }; // 自动 resize 文本域
-  editStyle?: CSSProperties;
-  onStart?: () => void; // 进入编辑中状态时触发
-  onEnd?: () => void; // 按 ENTER 结束编辑状态时触发
-  onCancel?: () => void; // 按 ESC 退出编辑状态时触发
-  onChange?: () => void; // 文本域编辑时触发
+  icon?: ReactNode; // 自定义编辑图标。默认值：null
+  tooltip?: boolean | ReactNode; // 自定义提示文案。默认值：false
+  maxLength?: number; // 编辑中文本域最大长度 undefined
+  autoSize?: { minRows?: number; maxRows?: number }; // 自动 resize 文本域。默认值：undefined
+  editStyle?: CSSProperties; // 编辑框样式。默认值：undefined
+  onStart?: () => void; // 进入编辑中状态时触发。默认值：-
+  onEnd?: () => void; // 按 ENTER 结束编辑状态时触发。默认值：-
+  onCancel?: () => void; // 按 ESC 退出编辑状态时触发。默认值：-
+  onChange?: () => void; // 文本域编辑时触发。默认值：-
 } & NativeProps;
 
 export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className, editStyle }: EditableProps) => {

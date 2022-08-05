@@ -5,19 +5,19 @@ import { CheckboxContext, reducer, types } from './context';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
 export type CheckboxOptionType = {
-  label: string; // 对外显示
-  value: string; // 真实值
-  disabled?: boolean; // 是否禁用
+  label: string; // 对外显示。默认值：-
+  value: string; // 真实值。默认值：-
+  disabled?: boolean; // 是否禁用。默认值：false
 };
 
 export interface GroupProps {
-  defaultValue?: string[]; // 默认选中的值
-  value?: string[]; // 用于设置当前选中的值
-  disabled?: boolean; // 禁选所有子多选器
-  children?: React.ReactElement; // 子组件
-  options?: Array<CheckboxOptionType | string>; // 以配置形式设置子元素
-  name: string; // CheckboxGroup 下所有 input[type="radio"] 的 name 属性
-  onChange?: (checkedValue: string[]) => void; // 选项变化时的回调函数  function(checkedValue)
+  defaultValue?: string[]; // 默认选中的值。默认值：[]
+  value?: string[]; // 用于设置当前选中的值。默认值：-
+  disabled?: boolean; // 禁选所有子多选器。默认值：false
+  children?: React.ReactElement; // 子组件。默认值：-
+  options?: Array<CheckboxOptionType | string>; // 以配置形式设置子元素。默认值：-
+  name: string; // CheckboxGroup 下所有 input[type="radio"] 的 name 属性。默认值：-
+  onChange?: (checkedValue: string[]) => void; // 选项变化时的回调函数  function(checkedValue)。默认值：-
 }
 
 const prefixCls = `${BASE_CLASS_PREFIX}-checkbox`;
