@@ -5,18 +5,22 @@ const lodash = require('lodash');
 // 过滤无效行
 const isUseless = (codeLine) => lodash.startsWith(codeLine, '//') || lodash.startsWith(codeLine, '/*') || !lodash.includes(codeLine, '//');
 
-// 行内数据拆分（key: value; // comment）
+// 行内数据拆分（key?: value; // comment。默认值：default）
 const codeLineSplit = (codeLine) => {
-  const [key, ...rest] = codeLine.split(':').map((code) => code.trim());
-  const [value, comment] = rest
+  const [key, ...keyRest] = codeLine.split(':').map((code) => code.trim());
+  const [value, ...valueRest] = keyRest
     .join(':')
     .split('//')
+    .map((code) => code.trim());
+  const [comment, defaults] = valueRest
+    .join('//')
+    .split('默认值：')
     .map((code) => code.trim());
   // const [key, value, comment] = codeLine
   //   .split(/:|\/\/|\/\*/)
   //   .map((code) => code.trim())
   //   .filter((code) => code);
-  return { key: lodash.trimEnd(key, '?'), required: !lodash.endsWith(key, '?'), value: lodash.trimEnd(value, ';'), comment, raw: codeLine };
+  return { key: lodash.trimEnd(key, '?'), required: !lodash.endsWith(key, '?'), value: lodash.trimEnd(value, ';'), comment, default: defaults, raw: codeLine };
 };
 
 // 主程序：抽离所有的变量
