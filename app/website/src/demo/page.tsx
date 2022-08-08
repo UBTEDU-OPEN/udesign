@@ -168,11 +168,10 @@ const showMenus = [
     name: 'badge',
     text: 'Badge 徽标',
   },
-  // {
-  //   name: 'calendar',
-  //   text: 'Calendar 日历',
-  //   disabled: true,
-  // },
+  {
+    name: 'calendar',
+    text: 'Calendar 日历',
+  },
   // {
   //   name: 'card',
   //   text: 'Card 卡片',

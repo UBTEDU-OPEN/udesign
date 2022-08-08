@@ -1,56 +1,115 @@
-import React, { ReactNode } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
-import { DownOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
+import CollapseContext from './context';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-collapse-item`;
 export type ItemProps = {
-  title: string; // 标题
-  description?: string; //
-  name: string; // 唯一标识符
-  active?: boolean; // 是否展开
-  bordered?: boolean; // 是否显示边框
-  disabled?: boolean; // 是否禁用
-  showArrow?: boolean; // 是否展示当前面板上的箭头
-  expandIcon?: ReactNode; // 自定义图标
-  headerStyle?: object; // header自定义样式
-  bodyStyle?: object; // body自定义样式
-  onItemClick?: (name: string, e: React.MouseEvent<HTMLDivElement>) => void;
+  title: string; // 标题。默认值：-
+  name: string | number; // 唯一标识符。默认值：-
+  disabled?: boolean; // 是否禁用。默认值：false
 } & NativeProps;
 
-export const Item = ({ title, description, active, disabled, bordered, name, className, headerStyle, bodyStyle, showArrow = true, expandIcon, onItemClick, children, ...restProps }: ItemProps) => {
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (disabled) return;
-    onItemClick?.(name, e);
+export const Item = ({ title, disabled = false, name, className, children, style }: ItemProps) => {
+  const context = useContext(CollapseContext);
+  const { expandIcon, showArrow, accordion, activeKey, headerStyle, bodyStyle, radius, bordered } = context;
+  let active: boolean;
+  const expandControl = () => {
+    if (typeof activeKey === 'string' || typeof activeKey === 'number') {
+      active = activeKey === name;
+    }
   };
-  const iconElement = expandIcon || <DownOutlined />;
+  // eslint-disable-next-line consistent-return
+  const renderItem = () => {
+    expandControl();
+    const [isActive, setIsActive] = useState(active);
+    if (accordion) {
+      const handleClick = () => {
+        if (disabled) return;
+        context?.onClick?.(name, active);
+      };
+      const wrapperCls = classNames({
+        [`${prefixCls}-wrapper`]: true,
+        [`${prefixCls}-wrapper-border`]: active && bordered,
+        [`${prefixCls}-wrapper-radius`]: radius,
+      });
+      const headerCls = classNames(
+        prefixCls,
+        {
+          [`${prefixCls}-header`]: true,
+          [`${prefixCls}-header-active`]: active,
+          [`${prefixCls}-header-disabled`]: disabled,
+          [`${prefixCls}-header-border`]: bordered,
+        },
+        className,
+      );
+      const bodyCls = classNames(`${prefixCls}-body`, {
+        [`${prefixCls}-body-active`]: active,
+        [`${prefixCls}-body-hidden`]: !active,
+      });
+      const iconCls = classNames({
+        [`${prefixCls}-header-icon`]: !active,
+        [`${prefixCls}-header-icon-rotate`]: active,
+      });
 
-  const cls = classNames(
-    prefixCls,
-    {
-      [`${prefixCls}-disabled`]: disabled,
-      [`${prefixCls}-active`]: active,
-      [`${prefixCls}-border`]: bordered,
-      [`${prefixCls}-inactive`]: !active,
-    },
-    className,
-  );
-  return (
-    <>
-      <div className={cls} {...restProps}>
-        <div className={`${prefixCls}-header`} onClick={handleClick} style={headerStyle}>
-          {title}
-          {showArrow ? <div className={`${prefixCls}-icon`}>{iconElement}</div> : null}
-        </div>
-        {children ? (
-          <div className={`${prefixCls}-content`} style={bodyStyle}>
+      return (
+        <div className={wrapperCls} style={style}>
+          <div className={headerCls} onClick={handleClick} style={headerStyle}>
+            <span>{title}</span>
+            {showArrow ? <span className={iconCls}>{expandIcon}</span> : null}
+          </div>
+          <div className={bodyCls} style={bodyStyle}>
             {children}
           </div>
-        ) : null}
-      </div>
-    </>
-  );
+        </div>
+      );
+    }
+    if (!accordion) {
+      const handleClick = () => {
+        context?.onClick?.(name, active);
+        setIsActive(!isActive);
+      };
+      const wrapperCls = classNames({
+        [`${prefixCls}-wrapper`]: true,
+        [`${prefixCls}-wrapper-border`]: isActive && bordered,
+        [`${prefixCls}-wrapper-radius`]: radius,
+      });
+      const headerCls = classNames(
+        prefixCls,
+        {
+          [`${prefixCls}-header`]: true,
+          [`${prefixCls}-header-active`]: isActive,
+          [`${prefixCls}-header-disabled`]: disabled,
+          [`${prefixCls}-header-border`]: bordered,
+          [`${prefixCls}-header-active-border-radius`]: bordered && isActive,
+        },
+        className,
+      );
+      const bodyCls = classNames(`${prefixCls}-body`, {
+        [`${prefixCls}-body-active`]: isActive,
+        [`${prefixCls}-body-hidden`]: !isActive,
+      });
+      const iconCls = classNames({
+        [`${prefixCls}-header-icon`]: !isActive,
+        [`${prefixCls}-header-icon-rotate`]: isActive,
+      });
+
+      return (
+        <div className={wrapperCls} style={style}>
+          <div className={headerCls} onClick={handleClick} style={headerStyle}>
+            <span>{title}</span>
+            {showArrow ? <span className={iconCls}>{expandIcon}</span> : null}
+          </div>
+          <div className={bodyCls} style={bodyStyle}>
+            {children}
+          </div>
+        </div>
+      );
+    }
+  };
+
+  return <>{renderItem()}</>;
 };
 
-Item.displayName = 'Collapse.Item';
+Item.displayName = 'Item';
