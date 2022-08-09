@@ -64,16 +64,16 @@ export default function CollapsePage() {
         </Demo.Block>
 
         <Demo.Block title='隐藏箭头样式' description='隐藏箭头。'>
-          <Collapse showArrow={false} headerStyle={{ backgroundColor: '#edf1ff', borderRadius: '30px', marginBottom: '10px' }} bodyStyle={{ backgroundColor: '#F3F4F8', borderRadius: '25px' }}>
-            <Collapse.Item title='这里是标题1' name='1'>
+          <Collapse headerStyle={{ backgroundColor: '#edf1ff', borderRadius: '30px', marginBottom: '10px' }} bodyStyle={{ backgroundColor: '#F3F4F8', borderRadius: '25px' }}>
+            <Collapse.Item showArrow={false} title='这里是标题1' name='1'>
               是一个致力于提升“用户”和“设计者”使用体验的多端设计语言。产品经理、交互设计师、视觉设计师、前端工程师、开发工程师等角色，在此统称为“设计者”，利用统一的规范进行设计赋能，帮助“设计者”提高多端产品体验和研发效率。U
               Design高度重视“设计者”的使用体验，践行敏捷开发的设计模式。
             </Collapse.Item>
-            <Collapse.Item title='这里是标题2' name='2'>
+            <Collapse.Item showArrow={false} title='这里是标题2' name='2'>
               是一个致力于提升“用户”和“设计者”使用体验的多端设计语言。产品经理、交互设计师、视觉设计师、前端工程师、开发工程师等角色，在此统称为“设计者”，利用统一的规范进行设计赋能，帮助“设计者”提高多端产品体验和研发效率。U
               Design高度重视“设计者”的使用体验，践行敏捷开发的设计模式。
             </Collapse.Item>
-            <Collapse.Item title='这里是标题3' name='3'>
+            <Collapse.Item showArrow={false} title='这里是标题3' name='3'>
               是一个致力于提升“用户”和“设计者”使用体验的多端设计语言。产品经理、交互设计师、视觉设计师、前端工程师、开发工程师等角色，在此统称为“设计者”，利用统一的规范进行设计赋能，帮助“设计者”提高多端产品体验和研发效率。U
               Design高度重视“设计者”的使用体验，践行敏捷开发的设计模式。
             </Collapse.Item>
