@@ -5,8 +5,8 @@
   "author": "Arvin <arvin.xiang@ubtrobot.com>",
   "license": "MIT",
   "scripts": {
-    "compile": "gulp",
-    "deploy": "npm run compile && npm publish ./dist",
+    "build": "gulp",
+    "deploy": "npm run build && npm publish ./dist",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --cache --fix",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --cache"
   },
@@ -18,12 +18,10 @@
     "registry": "http://npm.edu.ubtrobot.com"
   },
   "sideEffects": [
-    "**/*.css",
-    "**/*.scss",
-    "./es/index.js",
-    "./src/index.ts",
-    "./es/global/index.js",
-    "./src/global/index.ts"
+    "*.scss",
+    "*.css",
+    "dist/es/index.js",
+    "./src/index.ts"
   ],
   "dependencies": {
     "@ubt/udesign-icons": "^1.0.2",

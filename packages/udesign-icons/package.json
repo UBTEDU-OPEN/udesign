@@ -19,12 +19,10 @@
     "registry": "http://npm.edu.ubtrobot.com"
   },
   "sideEffects": [
-    "**/*.css",
-    "**/*.scss",
-    "./es/index.js",
-    "./src/index.ts",
-    "./es/global/index.js",
-    "./src/global/index.ts"
+    "*.scss",
+    "*.css",
+    "dist/es/index.js",
+    "./src/index.ts"
   ],
   "dependencies": {
     "classnames": "^2.3.1"
