@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.2",
-    "@ubt/udesign-ui": "^1.0.2",
     "@ubt/udesign-icons": "^1.0.2",
-    "@ubt/udesign-ui-alpha": "^1.0.0",
+    "@ubt/udesign-ui": "^1.0.2",
+    "@ubt/udesign-ui-alpha": "^1.0.2",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "react": "17.0.2",
