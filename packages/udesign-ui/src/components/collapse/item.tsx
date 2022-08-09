@@ -5,6 +5,7 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 import CollapseContext from './context';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-collapse-item`;
+
 export type ItemProps = {
   title: string; // 标题。默认值：-
   name: string | number; // 唯一标识符。默认值：-
@@ -29,13 +30,13 @@ export const Item = ({ title, disabled = false, name, className, children, style
         if (disabled) return;
         context?.onClick?.(name, active);
       };
-      const wrapperCls = classNames({
-        [`${prefixCls}-wrapper`]: true,
-        [`${prefixCls}-wrapper-border`]: active && bordered,
-        [`${prefixCls}-wrapper-radius`]: radius,
+      const wrapperCls = classNames(prefixCls, {
+        // [`${prefixCls}-wrapper`]: true,
+        [`${prefixCls}-border`]: active && bordered,
+        [`${prefixCls}-radius`]: radius,
       });
       const headerCls = classNames(
-        prefixCls,
+        // prefixCls,
         {
           [`${prefixCls}-header`]: true,
           [`${prefixCls}-header-active`]: active,
@@ -44,7 +45,8 @@ export const Item = ({ title, disabled = false, name, className, children, style
         },
         className,
       );
-      const bodyCls = classNames(`${prefixCls}-body`, {
+      const bodyCls = classNames({
+        [`${prefixCls}-body`]: true,
         [`${prefixCls}-body-active`]: active,
         [`${prefixCls}-body-hidden`]: !active,
       });
@@ -65,18 +67,19 @@ export const Item = ({ title, disabled = false, name, className, children, style
         </div>
       );
     }
+
     if (!accordion) {
       const handleClick = () => {
         context?.onClick?.(name, active);
         setIsActive(!isActive);
       };
       const wrapperCls = classNames({
-        [`${prefixCls}-wrapper`]: true,
-        [`${prefixCls}-wrapper-border`]: isActive && bordered,
-        [`${prefixCls}-wrapper-radius`]: radius,
+        [`${prefixCls}`]: true,
+        [`${prefixCls}-border`]: isActive && bordered,
+        [`${prefixCls}-radius`]: radius,
       });
       const headerCls = classNames(
-        prefixCls,
+        // prefixCls,
         {
           [`${prefixCls}-header`]: true,
           [`${prefixCls}-header-active`]: isActive,
@@ -86,7 +89,8 @@ export const Item = ({ title, disabled = false, name, className, children, style
         },
         className,
       );
-      const bodyCls = classNames(`${prefixCls}-body`, {
+      const bodyCls = classNames({
+        [`${prefixCls}-body`]: true,
         [`${prefixCls}-body-active`]: isActive,
         [`${prefixCls}-body-hidden`]: !isActive,
       });

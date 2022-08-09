@@ -6,6 +6,7 @@ import { NativeProps, usePropsValue } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-collapse`;
+
 type CollapseProps = {
   accordion?: boolean; // 手风琴。默认值：false
   bordered?: boolean; // 是否显示边框。默认值：false

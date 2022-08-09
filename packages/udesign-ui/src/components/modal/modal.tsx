@@ -112,7 +112,7 @@ export const Modal = (props: ModalProps) => {
     const { bodyStyle, children } = props;
     return (
       <div className={`${prefixCls}-body`} style={bodyStyle}>
-        <Scrollbar>{children}</Scrollbar>
+        <Scrollbar className={`${prefixCls}-body-scrollbar`}>{children}</Scrollbar>
       </div>
     );
   };

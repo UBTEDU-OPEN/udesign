@@ -79,6 +79,7 @@ $module: ud-input;
 .#{$module} {
   background: transparent;
   outline: none;
+  border: none;
   width: 100%;
 
   &::placeholder {
@@ -87,7 +88,6 @@ $module: ud-input;
 
   &:focus {
     background: $input-background-focus;
-    border-color: $input-border-color-focus;
   }
 
   &-prefix,

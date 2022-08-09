@@ -366,7 +366,7 @@ export default function LayoutPage() {
           }
         >
           <Layout hasSider>
-            <Sider trigger={<LeftOutlined />} collapsible onCollapse={onbreak} collapsed={collapsed} style={{ background: '#7284FB ', width: collapsed ? width : collapsedWidth }}>
+            <Sider trigger={<LeftOutlined />} onCollapse={onbreak} collapsed={collapsed} style={{ background: '#7284FB ', width: collapsed ? width : collapsedWidth }}>
               <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all .2s' }}></div>
               <div style={{ flexGrow: '1', textAlign: 'center', marginTop: '30px' }}>
                 <Menu radius isCollapsed={!collapsed} style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF' }}>

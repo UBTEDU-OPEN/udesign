@@ -15,7 +15,6 @@ $module: ud-modal;
 }
 
 .#{$module} {
-  padding: $modal-padding;
   background: $modal-background;
   border-radius: $modal-border-radius;
   box-shadow: $modal-box-shadow;
@@ -51,12 +50,20 @@ $module: ud-modal;
   }
 
   &-body {
+    margin: $modal-body-margin;
+    padding: $modal-body-padding;
     font-size: $modal-body-font-size;
     font-weight: $modal-body-font-weight;
     color: $modal-body-color;
     text-align: $modal-body-text-align;
     flex: 1;
     overflow: auto;
+
+    .#{$module}-body-scrollbar {
+      width: unset;
+      margin-right: $modal-body-scrollbar-margin;
+      padding-right: $modal-body-scrollbar-padding;
+    }
   }
 
   &-footer {

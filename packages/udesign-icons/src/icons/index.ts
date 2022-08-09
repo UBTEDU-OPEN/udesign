@@ -4,7 +4,7 @@ export { default as CheckCircleFilled } from './CheckCircleFilled';
 export { default as CheckCircleOutlined } from './CheckCircleOutlined';
 export { default as CheckOutlined } from './CheckOutlined';
 export { default as ClockCircleOutlined } from './ClockCircleOutlined';
-export { default as CloseCirceFlilled } from './CloseCirceFlilled';
+export { default as CloseCirceFilled } from './CloseCirceFilled';
 export { default as CloseCircleFilled } from './CloseCircleFilled';
 export { default as CloseCircleOutlined } from './CloseCircleOutlined';
 export { default as CloseOutlined } from './CloseOutlined';

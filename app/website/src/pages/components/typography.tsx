@@ -18,7 +18,7 @@ export default function TypographyPage() {
           </>
         }
       ></Demo.Block>
-      <Demo.Block title='基本排版' description='展示文档样例 标题+正 多级标题+正文' todo='缺少文案' />
+      {/* <Demo.Block title='基本排版' description='展示文档样例 标题+正 多级标题+正文' todo='缺少文案' /> */}
       <Demo.Block title='标题组件' description='展示不同级别的标题。'>
         <Typography.Title level={1} style={{ marginTop: '0' }}>
           h1. U Design

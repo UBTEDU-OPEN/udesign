@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { GithubOutlined } from '@ant-design/icons';
 import { Menu } from '@ubt/udesign-ui';
 import { SITE_NAME } from '../../constants/site';
 
@@ -41,9 +40,6 @@ const Navigation = () => {
           </Menu.Item>
           <Menu.Item name='community' disabled>
             社区
-          </Menu.Item>
-          <Menu.Item name='github' disabled>
-            <GithubOutlined className='text-xl flex' />
           </Menu.Item>
         </Menu>
       </div>

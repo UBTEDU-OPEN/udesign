@@ -8,8 +8,6 @@ $modal-width-fullscreen: var(--ud-modal-width-fullscreen, 100vw); // 对话框�
 $modal-height-fullscreen: var(--ud-modal-height-fullscreen, 100vh); // 对话框高度-全屏
 $modal-border-radius-fullscreen: var(--ud-modal-border-radius-fullscreen, 0); // 对话框圆角-全屏
 
-$modal-padding: var(--ud-modal-paddingY, 0 35px); // 对话框内边距
-
 $modal-border-radius: var(--ud-modal-border-radius, 20px); // 对话框圆角
 $modal-background: var(--ud-modal-background, var(--ud-color-white)); // 对话框背景色
 $modal-box-shadow: var(--ud-modal-box-shadow, var(--ud-shadow-elevated)); // 对话框阴影
@@ -22,11 +20,15 @@ $modal-title-font-weight: var(--ud-modal-title-font-weight, 700); // 对话框ti
 $modal-title-color: var(--ud-modal-title-color, var(--ud-color-text-0)); // 对话框title颜色
 $modal-title-text-align: var(--ud-modal-title-text-align, center); // 对话框title对齐
 
+$modal-close-button-margin: var(--ud-modal-close-button-margin, 10px); // 对话框关闭按钮外边距
+
 $modal-header-margin: var(--ud-modal-header-margin, 40px 0 20px); // 对话框header外边距
 $modal-header-padding: var(--ud-modal-header-padding, 0); // 对话框header内边距
 
-$modal-close-button-margin: var(--ud-modal-close-button-margin, 10px); // 对话框关闭按钮外边距
-
+$modal-body-margin: var(--ud-modal-body-margin, 0); // 对话框body外边距
+$modal-body-padding: var(--ud-modal-body-padding, 0 35px); // 对话框body内边距
+$modal-body-scrollbar-margin: var(--ud-modal-body-scrollbar-margin, -25px); // 对话框body-scrollbar外边距
+$modal-body-scrollbar-padding: var(--ud-modal-body-scrollbar-padding, 25px); // 对话框body-scrollbar内边距
 $modal-body-font-size: var(--ud-modal-body-font-size, 16px); // 对话框body字号
 $modal-body-font-weight: var(--ud-modal-body-font-weight, 400); // 对话框body字重
 $modal-body-color: var(--ud-modal-body-color, var(--ud-color-text-2)); // 对话框body颜色

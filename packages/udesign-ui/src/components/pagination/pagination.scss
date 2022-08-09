@@ -3,9 +3,11 @@
 $module: ud-pagination;
 
 .#{$module} {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: inline-flex;
   align-items: center;
-  padding: $pagination-padding;
 
   .#{$module}-total {
     margin: $pagination-total-margin;

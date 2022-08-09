@@ -1,6 +1,6 @@
 import React from 'react';
-import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import { Space, Switch } from '@ubt/udesign-ui';
+import { CloseOutlined, CheckOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 
 export default function SwitchPage() {

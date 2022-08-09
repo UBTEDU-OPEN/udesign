@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
@@ -15,6 +15,7 @@ export type SiderProps = {
   onCollapse?: (collapsed: boolean) => void; // 展开-收起时的回调函数。默认值：-
   collapsed?: boolean; // 当前收起状态。默认值：-
 } & NativeProps;
+
 export const Sider = ({ defaultCollapsed = false, style, trigger, triggerTop, onCollapse, children, className, ...props }: SiderProps) => {
   const [collapsed, setCollapsed] = usePropsValue({
     value: props.collapsed,
@@ -24,7 +25,7 @@ export const Sider = ({ defaultCollapsed = false, style, trigger, triggerTop, on
 
   const cls = classNames(prefixCls, className);
 
-  const togglehandler = () => {
+  const toggleHandler = () => {
     onCollapse?.(collapsed);
   };
 
@@ -33,7 +34,7 @@ export const Sider = ({ defaultCollapsed = false, style, trigger, triggerTop, on
       [`${prefixCls}-trigger-rotate`]: collapsed,
     });
     return trigger ? (
-      <div onClick={togglehandler} className={triggerCls}>
+      <div onClick={toggleHandler} className={triggerCls}>
         {trigger}
       </div>
     ) : null;
@@ -45,7 +46,7 @@ export const Sider = ({ defaultCollapsed = false, style, trigger, triggerTop, on
       [`${prefixCls}-trigger-top-extend`]: !collapsed,
     });
     return triggerTop ? (
-      <div onClick={togglehandler} className={triggerTopCls}>
+      <div onClick={toggleHandler} className={triggerTopCls}>
         {triggerTop}
       </div>
     ) : null;

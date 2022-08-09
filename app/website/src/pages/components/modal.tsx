@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Space, Button, Modal, Input } from '@ubt/udesign-ui';
+import { Space, Button, Modal } from '@ubt/udesign-ui';
 import { Size } from '@ubt/udesign-constants';
 import { Demo } from '../../demo';
 

@@ -88,6 +88,7 @@ export const Tooltip = ({
   mouseLeaveDelay = 50,
   spacing = 8,
   defaultVisible = false,
+  zIndex,
   children,
   className,
   style,
@@ -371,7 +372,7 @@ export const Tooltip = ({
     <>
       {newChild}
       {visible ? (
-        <Portal getContainer={getContainer}>
+        <Portal getContainer={getContainer} style={{ zIndex }}>
           <div className={`${BASE_CLASS_PREFIX}-portal-inner`} style={{ ...coords, ...getTranslateStyle(placement) }} ref={popupRef}>
             <div className={cls} style={style} {...restProps} {...portalEventSet}>
               {content}

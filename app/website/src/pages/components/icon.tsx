@@ -162,11 +162,12 @@ export default function IconPage() {
         {renderIcons(type === 'outlined' ? otherIconsOutlined : otherIconsFilled)}
       </div>
       <Demo.Block title='尺寸' description='Icon 组件封装了 size 属性，可以更方便地定义图标尺寸，支持 small， middle， large，当 size 指定为 inherit 时，图标大小继承当前上下文字体大小'>
+        <SettingFilled size='inherit' />
         <SettingFilled size='small' />
         <SettingFilled size='middle' />
         <SettingFilled size='large' />
       </Demo.Block>
-      <Demo.Block title='旋转'>
+      <Demo.Block title='旋转' description='通过设置 spin 属性，可以方便地开启旋转效果'>
         <SyncOutlined spin size='large' />
         <LoadingOutlined spin size='large' />
       </Demo.Block>

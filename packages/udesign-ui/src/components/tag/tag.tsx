@@ -21,7 +21,7 @@ export type TagProps = {
   checkable?: boolean; // 标签是否可以选中（点击默认选中）。默认值：false
   checked?: boolean; // 是否选中状态。默认值：false
   defaultChecked?: boolean; // 是否默认选中状态。默认值：false
-  visible?: boolean; // 是否显示标签。
+  visible?: boolean; // 是否显示标签。默认值：false
   value?: string; // 标签的value。默认值：-
   onChange?: (checked: boolean) => void; //	点击标签时触发的回调。默认值：-
   onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void; // 单击标签时的回调函数。默认值：-

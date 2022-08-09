@@ -74,13 +74,19 @@ $module: ud-dropdown;
     --arrow-translate-y: 0;
   }
 
-  .#{$module}-arrow {
+  &-arrow {
     position: absolute;
     color: $dropdown-background;
     transform: translate(var(--arrow-translate-x), var(--arrow-translate-y)) rotate(var(--arrow-rotate));
   }
 
-  .#{$module}-item {
+  &-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-item {
     display: flex;
     align-items: center;
     padding: $dropdown-item-padding;
