@@ -4,7 +4,7 @@ $module: ud-scrollbar;
 .#{$module} {
   width: 100%;
   height: 100%;
-  &-normal {
+  &-auto {
     overflow: auto;
   }
   &-vertical {

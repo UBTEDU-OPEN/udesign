@@ -24,11 +24,11 @@ export default function ScrollbarPage() {
           </div>
         </Space>
       </Demo.Block>
-      <Demo.Block title='滚动条出现位置' description='滚动条出现位置，有三个值：normal（水平和垂直都显示）、vertical（只显示垂直滚动条）、horizontal（只显示水平滚动条）；默认值为 normal'>
+      <Demo.Block title='滚动条出现位置' description='滚动条出现位置，有三个值：auto（水平和垂直都显示）、vertical（只显示垂直滚动条）、horizontal（只显示水平滚动条）；默认值为 auto'>
         <Space justify='between'>
           <div className='w-48 h-80'>
             <Scrollbar>{item}</Scrollbar>
-            <div className='text-center mt-5'>normal</div>
+            <div className='text-center mt-5'>auto</div>
           </div>
           <div className='w-48 h-80'>
             <Scrollbar direction='vertical'>{item}</Scrollbar>
@@ -44,7 +44,7 @@ export default function ScrollbarPage() {
         <Space justify='between'>
           <div className='w-48 h-80'>
             <Scrollbar hover>{item}</Scrollbar>
-            <div className='text-center mt-5'>normal</div>
+            <div className='text-center mt-5'>auto</div>
           </div>
           <div className='w-48 h-80'>
             <Scrollbar hover direction='vertical'>

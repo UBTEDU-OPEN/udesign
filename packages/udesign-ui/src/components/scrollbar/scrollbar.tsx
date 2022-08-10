@@ -6,11 +6,11 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-scrollbar`;
 
 export type ScrollbarProps = {
-  direction?: 'horizontal' | 'vertical' | 'normal'; // 显示哪个方向的滚动条，默认值：normal
+  direction?: 'horizontal' | 'vertical' | 'auto'; // 显示哪个方向的滚动条，默认值：auto
   hover?: boolean; // 悬浮状态下才显示滚动条，默认值：false
 } & NativeProps;
 
-export const Scrollbar = ({ direction = 'normal', hover = false, children, style, className }: ScrollbarProps) => {
+export const Scrollbar = ({ direction = 'auto', hover = false, children, style, className }: ScrollbarProps) => {
   const cls = classNames(
     prefixCls,
     {
