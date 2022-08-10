@@ -7,15 +7,14 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 const prefixCls = `${BASE_CLASS_PREFIX}-dropdown-item`;
 
 export type ItemProps = {
-  name: string; // 子项唯一标志符
-  icon?: ReactNode; // 子项图标
-  label?: ReactNode; // 子项标题
-  disabled?: boolean; // 子项是否禁用
-  danger?: boolean; //	子项是否错误状态
+  disabled?: boolean; // 是否禁用
+  danger?: boolean; //	是否错误状态
+  name: string; // 唯一标志符
+  icon?: ReactNode; // 图标
 } & NativeProps;
 
 export const Item = (props: ItemProps) => {
-  const { name, label, disabled, danger, children, className, style } = props;
+  const { name, disabled, danger, children, className, style } = props;
 
   const context = useContext(DropdownContext);
 
@@ -43,7 +42,7 @@ export const Item = (props: ItemProps) => {
   return (
     <li className={cls} onClick={handleClick} style={style}>
       {renderIcon()}
-      {label || children}
+      {children}
     </li>
   );
 };

@@ -36,8 +36,8 @@ export type ModalProps = {
   header?: ReactNode; //	对话框头部。默认值：-
   height?: number; //	自定义高度，内容溢出会出现滚动条，内容不足会补空白。默认值：-
   icon?: ReactNode; // 自定义 icon。默认值：-
-  keepDOM?: boolean; //	关闭对话框时是否销毁。默认值：false
-  lazyRender?: boolean; // 配合 keepDOM 使用，为 true 时挂载时不会渲染对话框组件 。默认值：true
+  // keepDOM?: boolean; //	关闭对话框时是否销毁。默认值：false
+  // lazyRender?: boolean; // 配合 keepDOM 使用，为 true 时挂载时不会渲染对话框组件 。默认值：true
   mask?: boolean; // 是否展示遮罩。默认值：true
   maskCloseable?: boolean; // 是否允许通过点击遮罩来关闭对话框。默认值：true
   maskStyle?: CSSProperties; //	遮罩的样式。默认值：-
@@ -49,6 +49,7 @@ export type ModalProps = {
   visible?: boolean; // 对话框是否可见。默认值：false
   width?: number; // 自定义宽度。默认值：-
   zIndex?: number; // 遮罩的 z-index 值。默认值：1000
+  showScrollbar?: boolean; // 是否使用内置滚动条。默认值：true
   onCancel?: (e: React.MouseEvent) => void | Promise<any>; // 点击取消按钮或关闭按钮时的回调函数。默认值：-
   onOk?: (e: React.MouseEvent) => void | Promise<any>; // 点击确认按钮时的回调函数。默认值：-
 } & NativeProps;
@@ -109,10 +110,10 @@ export const Modal = (props: ModalProps) => {
   };
 
   const renderBody = () => {
-    const { bodyStyle, children } = props;
+    const { bodyStyle, showScrollbar = true, children } = props;
     return (
       <div className={`${prefixCls}-body`} style={bodyStyle}>
-        <Scrollbar className={`${prefixCls}-body-scrollbar`}>{children}</Scrollbar>
+        {showScrollbar ? <Scrollbar className={`${prefixCls}-body-scrollbar`}>{children}</Scrollbar> : children}
       </div>
     );
   };

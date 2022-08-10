@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Dropdown, Divider, Space, Input, Toast } from '@ubt/udesign-ui';
-import { DownOutlined } from '@ubt/udesign-icons';
+import { DownOutlined, ExclamationCircleFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 
+const menu = (
+  <Dropdown.Menu onClick={(name) => Toast(name)}>
+    <Dropdown.Item name='1'>1 st menu item</Dropdown.Item>
+    <Dropdown.Item name='2'>2 st menu item</Dropdown.Item>
+    <Dropdown.Item name='3' disabled>
+      3 st menu item(disabled)
+    </Dropdown.Item>
+    <Divider />
+    <Dropdown.Item name='4' danger icon={<ExclamationCircleFilled />}>
+      a danger item
+    </Dropdown.Item>
+  </Dropdown.Menu>
+);
+
 export default function DropdownPage() {
-  const menu = (
-    <Dropdown.Menu onClick={(name) => Toast(name)}>
-      <Dropdown.Item name='1'>1 st menu item</Dropdown.Item>
-      <Dropdown.Item name='2'>2 st menu item</Dropdown.Item>
-      <Dropdown.Item name='3' disabled>
-        3 st menu item(disabled)
-      </Dropdown.Item>
-      <Divider />
-      <Dropdown.Item name='4' danger>
-        a danger item
-      </Dropdown.Item>
-    </Dropdown.Menu>
-  );
+  const [visible, setVisible] = useState<boolean>(true);
 
   return (
     <>
@@ -34,8 +36,17 @@ export default function DropdownPage() {
             </>
           }
         />
-        <Demo.Block title='基础用法' description='最简单的下拉菜单。'>
+        <Demo.Block title='基础用法' description='最简单的下拉菜单。通过设置 disabled 可以禁用某个选项。通过在 Dropdown.Item 上设置 icon 可以快速配置图标。'>
           <Dropdown content={menu}>
+            <Button type='text'>
+              <div className='flex items-center'>
+                Hover me <DownOutlined className='ml-5' />
+              </div>
+            </Button>
+          </Dropdown>
+        </Demo.Block>
+        <Demo.Block title='点击不关闭' description='通过 clickToHide 控制在弹出层内点击时是否自动关闭弹出层。'>
+          <Dropdown content={menu} clickToHide={false}>
             <Button type='text'>
               <div className='flex items-center'>
                 Hover me <DownOutlined className='ml-5' />
@@ -108,6 +119,14 @@ export default function DropdownPage() {
           <br />
           <Dropdown content={menu} trigger='click'>
             <Button>Click me</Button>
+          </Dropdown>
+          <br />
+          <br />
+          <Dropdown content={menu} trigger='custom' visible={visible}>
+            <Space>
+              <Button onClick={() => setVisible(true)}>Controlled show</Button>
+              <Button onClick={() => setVisible(false)}>Controlled hide</Button>
+            </Space>
           </Dropdown>
         </Demo.Block>
       </Demo.Page>

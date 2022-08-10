@@ -116,4 +116,4 @@ export const Item = ({ title, disabled = false, name, className, children, style
   return <>{renderItem()}</>;
 };
 
-Item.displayName = 'Item';
+Item.displayName = 'Collapse.Item';

@@ -1,6 +1,6 @@
-import { attachPropertiesToComponent } from '../../utils';
-import { Tabs as InnerTabs } from './tabs';
-import { Item } from './item';
 import './tabs.scss';
+import { attachPropertiesToComponent } from '../../utils';
+import { Tabs } from './tabs';
+import { Item } from './item';
 
-export const Tabs = attachPropertiesToComponent(InnerTabs, { Item });
+export default attachPropertiesToComponent(Tabs, { Item });
