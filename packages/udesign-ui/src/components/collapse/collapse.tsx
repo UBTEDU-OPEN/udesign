@@ -20,8 +20,15 @@ type CollapseProps = {
   onChange?: (activeKey: string | number | string[] | number[]) => void; // 展开/收起时的回调。默认值：-
 } & NativeProps;
 
-export const Collapse = ({ accordion = false, radius, bordered, showArrow = true, expandIcon = <DownOutlined />, headerStyle, bodyStyle, children, onChange, style, className, ...props }: CollapseProps) => {
-  const cls = classNames(prefixCls, className);
+export const Collapse = ({ accordion = false, radius, bordered, expandIcon = <DownOutlined />, headerStyle, bodyStyle, children, onChange, style, className, ...props }: CollapseProps) => {
+  const cls = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-bordered`]: bordered,
+      [`${prefixCls}-radius`]: radius,
+    },
+    className,
+  );
   const [activeKey, setActiveKey] = usePropsValue({
     value: props.activeKey,
     defaultValue: props.defaultActiveKey ?? '',
@@ -46,9 +53,6 @@ export const Collapse = ({ accordion = false, radius, bordered, showArrow = true
           activeKey,
           headerStyle,
           bodyStyle,
-          radius,
-          bordered,
-          showArrow,
           onClick,
         }}
       >

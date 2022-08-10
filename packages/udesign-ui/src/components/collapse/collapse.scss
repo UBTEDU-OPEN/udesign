@@ -1,23 +1,36 @@
 @import './variables.scss';
 $module: ud-collapse;
 
+.#{$module}-bordered {
+  .#{$module}-item {
+    cursor: pointer;
+  }
+
+  .#{$module}-item-border {
+    border: $collapse-item-border;
+    overflow: hidden;
+    background-color: $collapse-item-border-background-color;
+  }
+
+  .#{$module}-item-header-active-border-radius {
+    border-radius: $collapse-item-header-active-border-border-radius;
+  }
+
+  .#{$module}-item-header-border {
+    border-bottom: $collapse-item-header-border-bottom;
+  }
+
+}
+
+.#{$module}-radius {
+  .#{$module}-item-radius {
+    border-radius: $collapse-item-border-radius;
+  }
+}
+
 .#{$module}-item {
   cursor: pointer;
-}
-
-.#{$module}-item-wrapper {
-  margin: $collapse-item-wrapper-margin;
-}
-
-.#{$module}-item-wrapper-radius {
-  border-radius: $collapse-item-wrapper-border-radius;
-}
-
-.#{$module}-item-wrapper-border {
-  border: $collapse-item-wrapper-border;
-  overflow: hidden;
-  background-color: $collapse-item-wrapper-border-background-color;
-
+  margin: $collapse-item-margin;
 }
 
 .#{$module}-item-header {
@@ -41,12 +54,6 @@ $module: ud-collapse;
   color: $collapse-item-header-disabled-color;
 }
 
-.#{$module}-item-header-border {
-  border-bottom: $collapse-item-header-border-bottom;
-}
-.#{$module}-item-header-active-border-radius{
-  border-radius: $collapse-item-header-active-border-border-radius;
-}
 .#{$module}-item-header-icon {
   display: inline-block;
   display: flex;
