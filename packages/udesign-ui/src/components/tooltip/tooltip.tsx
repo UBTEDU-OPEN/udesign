@@ -2,7 +2,7 @@ import React, { isValidElement, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { get } from 'lodash';
 import { Arrow } from './arrow';
-import { mergeEvents, NativeProps, usePropsValue } from '../../utils';
+import { mergeEvents, NativeProps, stopPropagation, usePropsValue } from '../../utils';
 import { BASE_CLASS_PREFIX, Placement, Trigger } from '../../constants';
 import Portal from '../_portal';
 import { ArrowVertical } from './arrow-vertical';
@@ -62,8 +62,8 @@ export type TooltipProps = {
   clickToHide?: boolean; //	在弹出层内点击时是否自动关闭弹出层。默认值：false
   content?: React.ReactNode; // 弹出层的内容。默认值：-
   placement?: Placement; // 弹出层的位置。默认值：top
+  stopPropagation?: boolean; //	是否阻止弹出层上的点击事件冒泡。默认值：false
   trigger?: Trigger; // 触发下拉的行为, 移动端不支持 hover。默认值：hover
-  getContainer?: () => HTMLElement; // 渲染的父节点，默认 document.body。默认值：getDefaultContainer
   mouseEnterDelay?: number; //	鼠标移入后，延迟显示的时间，单位毫秒（仅当 trigger 为 hover/focus 时生效。默认值：50
   mouseLeaveDelay?: number; //	鼠标移出后，延迟消失的时间，单位毫秒（仅当 trigger 为 hove/focus 时生效），不小于 mouseEnterDelay。默认值：50
   spacing?: number; //	弹出层与 children 元素的距离，单位 px。默认值：8
@@ -71,6 +71,7 @@ export type TooltipProps = {
   visible?: boolean; //	当trigger为custom时，通过该属性控制是否展示弹出层。默认值：false
   clickTriggerToHide?: boolean; // 点击trigger时关闭。默认值：false
   zIndex?: number; //	弹层层级。默认值：-
+  getContainer?: () => HTMLElement; // 渲染的父节点，默认值：document.body
   onVisibleChange?: (visible: boolean) => void; //	显示隐藏的回调。默认值：-
   onClickOutSide?: (e: Event) => void; //	当弹出层处于展示状态，点击非Children、非浮层内部区域时的回调（仅trigger为custom、click时有效）。默认值：-
 } & NativeProps;
@@ -107,11 +108,15 @@ export const Tooltip = ({
     onChange: restProps.onVisibleChange,
   });
 
+  const getTriggerBounding = () => {
+    let triggerDOM = triggerRef.current!;
+    return triggerDOM && (triggerDOM as Element).getBoundingClientRect();
+  };
+
   // 基准点
-  const updateCoords = (e: React.SyntheticEvent<HTMLElement>) => {
+  const updateCoords = () => {
     // https://zh.javascript.info/coordinates
-    // const rect = (e.target as HTMLElement).getBoundingClientRect();
-    const rect = e.currentTarget.getBoundingClientRect();
+    const rect = getTriggerBounding();
 
     // 根据 placement 改变基准点
     const newCoords = {
@@ -178,8 +183,8 @@ export const Tooltip = ({
     let portalEventSet: { [key: string]: (e: React.MouseEvent<HTMLElement>) => void } = {};
     switch (trigger) {
       case 'focus':
-        triggerEventSet.onFocus = (e: React.MouseEvent<HTMLElement>) => {
-          updateCoords(e);
+        triggerEventSet.onFocus = () => {
+          updateCoords();
           delayShow();
         };
         triggerEventSet.onBlur = () => {
@@ -188,17 +193,17 @@ export const Tooltip = ({
         portalEventSet = triggerEventSet;
         break;
       case 'click':
-        triggerEventSet.onClick = (e: React.MouseEvent<HTMLElement>) => {
-          updateCoords(e);
+        triggerEventSet.onClick = () => {
+          updateCoords();
           show();
         };
         portalEventSet = {};
         // Click outside needs special treatment, can not be directly tied to the trigger Element, need to be bound to the document
         break;
       case 'hover':
-        triggerEventSet.onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+        triggerEventSet.onMouseEnter = () => {
           // setCache('isClickToHide', false);
-          updateCoords(e);
+          updateCoords();
           delayShow();
         };
         triggerEventSet.onMouseLeave = () => {
@@ -266,6 +271,15 @@ export const Tooltip = ({
     }
   };
 
+  const handlePortalInnerClick = (e: React.MouseEvent) => {
+    if (clickToHide) {
+      hide();
+    }
+    if (restProps.stopPropagation) {
+      stopPropagation(e);
+    }
+  };
+
   // 点击外部处理（TODO: 抽到公用hook）
   useEffect(() => {
     const clickOutsideHandler = (e: Event) => {
@@ -279,6 +293,10 @@ export const Tooltip = ({
     return () => {
       document.removeEventListener('click', clickOutsideHandler, false);
     };
+  }, []);
+
+  useEffect(() => {
+    updateCoords();
   }, []);
 
   const wrapSpan = (elem: React.ReactNode | React.ReactElement) => {
@@ -374,7 +392,7 @@ export const Tooltip = ({
       {visible ? (
         <Portal getContainer={getContainer} style={{ zIndex }}>
           <div className={`${BASE_CLASS_PREFIX}-portal-inner`} style={{ ...coords, ...getTranslateStyle(placement) }} ref={popupRef}>
-            <div className={cls} style={style} {...restProps} {...portalEventSet}>
+            <div className={cls} style={style} {...restProps} {...portalEventSet} onClick={handlePortalInnerClick}>
               {content}
               {renderArrow()}
             </div>

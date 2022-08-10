@@ -3,7 +3,7 @@ import { Button, Space, Tooltip, Input } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function TooltipPage() {
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(true);
 
   const content = <>Hi Tooltip</>;
 
@@ -39,7 +39,7 @@ export default function TooltipPage() {
           </Tooltip>
           <br />
           <br />
-          <Tooltip content={content} trigger='click' visible={visible}>
+          <Tooltip content={content} trigger='custom' visible={visible}>
             <Space>
               <Button onClick={() => setVisible(true)}>Controlled show</Button>
               <Button onClick={() => setVisible(false)}>Controlled hide</Button>

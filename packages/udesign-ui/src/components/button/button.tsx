@@ -17,13 +17,13 @@ export type ButtonProps = {
   loading?: boolean; // 设置载入状态。 默认值：false
   warning?: boolean; // 设置1级警示。 默认值：false
   disabled?: boolean; // 不可用状态。 默认值：false
-  glass?: boolean; // 半透明状态。 默认值：false
+  // glass?: boolean; // 半透明状态。 默认值：false
   // href?: string; // 点击跳转的地址，指定此属性 button 的行为和 a 链接一致
   icon?: ReactNode; // 设置图标组件。 默认值：null
   onClick?: React.MouseEventHandler<HTMLButtonElement>; // 点击时的回调。默认值：-
 } & NativeProps;
 
-export const Button = ({ type = 'default', size = 'middle', shape = 'circle', loading, block, danger, warning, disabled, glass, icon, onClick, className, children, ...restProps }: ButtonProps) => {
+export const Button = ({ type = 'default', size = 'middle', shape = 'circle', loading, block, danger, warning, disabled, icon, onClick, className, children, ...restProps }: ButtonProps) => {
   const iconElement = icon && !loading ? icon : <LoadingOutlined spin />;
 
   const hasIcon = loading || Boolean(icon);
@@ -39,7 +39,7 @@ export const Button = ({ type = 'default', size = 'middle', shape = 'circle', lo
       [`${prefixCls}-danger`]: danger,
       [`${prefixCls}-warning`]: warning,
       [`${prefixCls}-disabled`]: disabled,
-      [`${prefixCls}-glass`]: glass,
+      // [`${prefixCls}-glass`]: glass,
       [`${prefixCls}-icon-only`]: !children && hasIcon,
     },
     className,

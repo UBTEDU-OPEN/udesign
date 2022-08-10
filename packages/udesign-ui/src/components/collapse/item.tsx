@@ -72,4 +72,4 @@ export const Item = ({ title, disabled = false, showArrow = true, name, classNam
   return <>{renderItem()}</>;
 };
 
-Item.displayName = 'Item';
+Item.displayName = 'Collapse.Item';
