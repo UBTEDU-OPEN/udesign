@@ -1,0 +1,10 @@
+$carousel-icon-width: var(--ud-carousel-icon-width, 49px); // 两侧图标 宽度
+$carousel-icon-height: var(--ud-carousel-icon-height, 49px); // 两侧图标 高度
+$carousel-icon-transform-translateY: var(--ud-carousel-icon-transform-translateY,  translateY(-50%)); // 两侧图标 纵向位置
+$carousel-icon-border-radius: var(--ud-carousel-icon-border-radius, 50%); // 两侧图标 圆角
+$carousel-icon-background: var(--ud-carousel-icon-background, rgba(168,180,206,0.60)); // 两侧图标 背景颜色
+$carousel-icon-background-hover: var(--ud-carousel-icon-background-hover, rgba(114,132,251,0.6)); // 两侧图标 悬停时背景
+$carousel-icon-background-disabled: var(--ud-carousel-icon-background-disabled, rgba(168,180,206,0.3));// 两侧图标 禁用时背景
+$carousel-icon-color: var(--ud-carousel-icon-color, #fff);// 两侧图标 颜色
+$carousel-icon-left: var(--ud-carousel-icon-left, 0);// 左侧图标 左侧绝对定位-left
+$carousel-icon-right: var(--ud-carousel-icon-right, 0);// 右侧图标 右侧绝对定位-right

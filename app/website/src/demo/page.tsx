@@ -180,7 +180,6 @@ const showMenus = [
   {
     name: 'carousel',
     text: 'Carousel 走马灯',
-    disabled: true,
   },
   {
     name: 'collapse',

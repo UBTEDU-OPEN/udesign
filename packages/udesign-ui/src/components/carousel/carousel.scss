@@ -1,0 +1,132 @@
+@import './variables.scss';
+$module: ud-carousel;
+
+.#{$module}-wrapper {
+    width: 100%;
+    position: relative;
+
+    .#{$module} {
+        position: absolute;
+        white-space: nowrap;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        overflow: hidden;
+
+    }
+
+    .#{$module}-item {
+        visibility: hidden;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+
+
+    }
+
+    .#{$module}-item-active {
+        visibility: visible;
+    }
+
+    .#{$module}-item-left-enter-animation {
+        animation-name: leftEnter;
+    }
+
+    .#{$module}-item-left-leave-animation {
+        animation-name: leftLeave;
+    }
+
+    .#{$module}-item-right-enter-animation {
+        animation-name: rightEnter;
+    }
+
+    .#{$module}-item-right-leave-animation {
+        animation-name: rightLeave;
+    }
+
+    .#{$module}-icon {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        top: 50%;
+        width: $carousel-icon-width;
+        height: $carousel-icon-height;
+        transform: $carousel-icon-transform-translateY;
+        z-index: 9;
+        border-radius: $carousel-icon-border-radius;
+        text-align: center;
+        background-color: $carousel-icon-background;
+        color: $carousel-icon-color;
+        cursor: pointer;
+    }
+
+    .#{$module}-icon:hover:not(.#{$module}-icon-left-disabled) {
+        background-color: $carousel-icon-background-hover;
+    }
+
+    .#{$module}-icon:hover:not(.#{$module}-icon-right-disabled) {
+        background-color: $carousel-icon-background-hover;
+    }
+
+    .#{$module}-icon-left-disabled,
+    .#{$module}-icon-right-disabled {
+        cursor: no-drop;
+        background-color: $carousel-icon-background-disabled;
+    }
+
+    .#{$module}-icon.#{$module}-icon-right-disabled:hover,
+    .#{$module}-icon.#{$module}-icon-left-disabled:hover {
+        background-color: $carousel-icon-background-disabled;
+    }
+
+    .#{$module}-icon-left {
+        left: $carousel-icon-left;
+    }
+
+    .#{$module}-icon-right {
+        right: $carousel-icon-right;
+    }
+
+    @keyframes leftEnter {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    @keyframes rightEnter {
+        0% {
+            transform: translateX(-100%);
+
+        }
+
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    @keyframes leftLeave {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes rightLeave {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+}
