@@ -15,9 +15,7 @@ export const Scrollbar = ({ direction = 'normal', hover = false, children, style
     prefixCls,
     {
       [`${prefixCls}-${direction}`]: direction,
-      [`${prefixCls}-thumb-show`]: !hover,
-      [`${prefixCls}-thumb-hidden`]: hover,
-      [`${prefixCls}-thumb-hover`]: hover,
+      [`${prefixCls}-hover`]: hover,
     },
     className,
   );
