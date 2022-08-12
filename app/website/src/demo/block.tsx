@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { Tag, Collapse } from '@ubt/udesign-ui';
-// import { Collapse } from '@ubt/udesign-ui-alpha';
 import { NativeProps } from '@ubt/udesign-utils';
 
 type DemoBlockProps = {

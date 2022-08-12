@@ -17,8 +17,8 @@ yarn dev
 │   └── @ubt/udesign-website    (next.js, tailwindcss, react, typescript)
 └── packages
     ├── @ubt/udesign-ui         (react, typescript, scss)
-    ├── @ubt/udesign-utils
-    └── @ubt/udesign-ui-alpha
+    ├── @ubt/udesign-icons
+    └── @ubt/udesign-utils
 ```
 
 ### app
@@ -28,8 +28,8 @@ yarn dev
 ### packages
 
 @ubt/udesign-ui： React 组件库源码，是 uDesign 的核心内容。
+@ubt/udesign-icons： React 图标库源码，是 uDesign 的核心内容。
 @ubt/udesign-utils: 工具库，目前 udesign 内部使用，后面可能会单独发包。
-@ubt/udesign-ui-alpha： 预研版本，使用 tailwind 构建，仅用于临时网站演示，后面会废弃。不要使用！！！
 
 ## Deploy
 
@@ -71,9 +71,8 @@ port: 22
 
 - tsconfig 公共部分抽离
 - website 响应式设计（已使用临时方案处理手机视图）
-- 完全移除 `udesign-ui-alpha` 库
 - website 代码高亮和复制等
 - 单元测试
 - 图片压缩
 - RTL 支持
-- utils 抽到单独包
+- utils 抽到 udesign-utils

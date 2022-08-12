@@ -20,7 +20,7 @@ const codeLineSplit = (codeLine) => {
   //   .split(/:|\/\/|\/\*/)
   //   .map((code) => code.trim())
   //   .filter((code) => code);
-  return { key: lodash.trimEnd(key, '?'), required: !lodash.endsWith(key, '?'), value: lodash.trimEnd(value, ';'), comment, default: defaults, raw: codeLine };
+  return { key: lodash.trimEnd(key, '?'), required: !lodash.endsWith(key, '?'), value: lodash.trimEnd(value, ';'), comment: lodash.trimEnd(comment, '。'), default: defaults, raw: codeLine };
 };
 
 // 主程序：抽离所有的变量
