@@ -2,11 +2,11 @@ import { createContext, ReactNode } from 'react';
 
 export type CollapseContextProps = {
   expandIcon?: ReactNode;
-  accordion?: boolean;
-  activeKey?: string | number | string[] | number[];
+  closeIcon?: ReactNode;
   headerStyle?: object; // header自定义样式
   bodyStyle?: object; // body自定义样式
-  onClick?: (activeKey: string | number, active: boolean) => void;
+  activeSet: Set<string>;
+  onClick?: (activeKey: string) => void;
 };
 
-export default createContext<CollapseContextProps>({});
+export default createContext<CollapseContextProps>({} as CollapseContextProps);

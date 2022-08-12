@@ -9,12 +9,10 @@ $module: ud-collapse;
   .#{$module}-item-border {
     border: $collapse-item-border;
     overflow: hidden;
-    background-color: $collapse-item-border-background-color;
+    background: $collapse-item-border-background;
   }
 
-  .#{$module}-item-header-active-border-radius {
-    border-radius: $collapse-item-header-active-border-border-radius;
-  }
+
 
   .#{$module}-item-header-border {
     border-bottom: $collapse-item-header-border-bottom;
@@ -26,6 +24,14 @@ $module: ud-collapse;
   .#{$module}-item-radius {
     border-radius: $collapse-item-border-radius;
   }
+
+  .#{$module}-item-header-active-border-radius {
+    border-radius: $collapse-item-header-border-border-radius-active;
+}
+
+  .#{$module}-item-body-active-border-radius {
+    border-radius: $collapse-item-body-border-radius-active;
+}
 }
 
 .#{$module}-item {
@@ -38,20 +44,19 @@ $module: ud-collapse;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $collapse-item-header-background-color;
-  border-radius: $collapse-item-header-border-radius;
+  background: $collapse-item-header-background;
+
+  &-active {
+    color: $collapse-item-header-color-active;
+    background: $collapse-item-header-background-active;
+    border-radius: $collapse-item-header-border-radius-active;
 }
 
-.#{$module}-item-header-active {
-  color: $collapse-item-header-active-color;
-  background-color: $collapse-item-header-active-background-color;
-  $collapse-item-header-active-border-radius: $collapse-item-header-active-border-radius;
-}
-
-.#{$module}-item-header-disabled {
-  cursor: not-allowed;
-  background-color: $collapse-item-header-disabled-background-color;
-  color: $collapse-item-header-disabled-color;
+  &-disabled {
+    cursor: not-allowed;
+    background: $collapse-item-header-background-disabled;
+    color: $collapse-item-header-color-disabled;
+  }
 }
 
 .#{$module}-item-header-icon {
@@ -60,19 +65,14 @@ $module: ud-collapse;
   align-content: center;
 }
 
-.#{$module}-item-header-icon-rotate {
-  display: inline-block;
-  transform: rotate(180deg);
-}
-
 .#{$module}-item-body {
   padding: $collapse-item-body-padding;
-}
 
-.#{$module}-item-body-active {
-  display: block;
-}
+  &-active {
+    display: block;
+  }
 
-.#{$module}-item-body-hidden {
-  display: none;
+  &-hidden {
+    display: none;
+  }
 }

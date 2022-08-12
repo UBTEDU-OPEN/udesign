@@ -2,21 +2,22 @@
 $collapse-item-margin: var(--ud-collapse-item-margin, 0 0 10px 0); // 折叠面板 外边距
 $collapse-item-border: var(--ud-collapse-item-border, 1px solid #7284FB); // 折叠面板 边框
 $collapse-item-border-radius: var(--ud-collapse-item-border-radius, 20px); // 折叠面板 圆角
-$collapse-item-border-background-color: var(--ud-collapse-item-border-background-color, #fff); // 折叠面板设置边框后,选中状态的时下 背景颜色
+$collapse-item-border-background: var(--ud-collapse-item-border-background, #fff); // 折叠面板设置边框后,选中状态的时下 背景颜色
 
 // item 头部
 $collapse-item-header-padding: var(--ud-collapse-item-header-padding, 22px 20px 22px 40px); // 折叠面板头部 内边距
-$collapse-item-header-background-color: var(--ud-collapse-item-header-background-color, transparent); // 折叠面板头部 背景颜色
+$collapse-item-header-background: var(--ud-collapse-item-header-background, transparent); // 折叠面板头部 背景颜色
 $collapse-item-header-border-bottom: var(--ud-collapse-item-header-border-bottom, 1px solid #ecf0f3); // 折叠面板头部 底部边框
 $collapse-item-header-border-radius: var(--ud-collapse-item-header-border-radius, 30px); // 折叠面板头部 圆角
 // 头部选中时
-$collapse-item-header-active-color: var(--ud-collapse-item-header-active-color, #7586FB); // 选中状态下折叠面板头部 颜色
-$collapse-item-header-active-background-color: var(--ud-collapse-item-header-active-background-color, transparent); // 选中状态下折叠面板头部 背景
-$collapse-item-header-active-border-radius: var(--ud-collapse-item-header-active-border-radius, 30px); // 选中状态下折叠面板头部 圆角
-$collapse-item-header-active-border-border-radius: var(--ud-collapse-item-header-active-border-border-radius, 0px);// 在设置边框后,选中状态下头部 圆角
+$collapse-item-header-color-active: var(--ud-collapse-item-header-color-active, #7586FB); // 选中状态下折叠面板头部 颜色
+$collapse-item-header-background-active: var(--ud-collapse-item-header-background-active, transparent); // 选中状态下折叠面板头部 背景
+$collapse-item-header-border-radius-active: var(--ud-collapse-item-header-border-radius-active, 30px); // 选中状态下折叠面板头部 圆角
+$collapse-item-header-border-border-radius-active: var(--ud-collapse-item-header-border-border-radius-active, 0px);// 在设置边框后,选中状态下头部 圆角
 
-$collapse-item-header-disabled-background-color: var(--ud-collapse-item-header-disabled-background-color, var(--ud-color-disabled-bg)); // 禁用状态 背景
-$collapse-item-header-disabled-color: var(--ud-collapse-item-header-disabled-color, var(--ud-color-disabled-text)); // 禁用状态 颜色
+$collapse-item-header-background-disabled: var(--ud-collapse-item-header-background-disabled, var(--ud-color-disabled-bg)); // 禁用状态 背景
+$collapse-item-header-color-disabled: var(--ud-collapse-item-header-color-disabled, var(--ud-color-disabled-text)); // 禁用状态 颜色
 $collapse-item-header-border: var(--ud-collapse-item-header-border, var(--ud-color-disabled-text)); // 头部 背边框
 
 $collapse-item-body-padding: var(--ud-collapse-item-body-padding, 22px 20px 22px 40px); // 折叠体 内边距
+$collapse-item-body-border-radius-active: var(--ud-collapse-item-body-border-radius-active, 30px);// 在设置边框后,选中状态下头部 圆角
