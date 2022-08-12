@@ -4,6 +4,8 @@ $module: ud-icon;
 
 .#{$module} {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &-large {
     font-size: $icon-width-large;
