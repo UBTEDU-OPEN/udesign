@@ -15,7 +15,7 @@ export type ItemProps = {
 
 export const Item = ({ title, disabled = false, showArrow = true, name, className, children, style }: ItemProps) => {
   const context = useContext(CollapseContext);
-  const { expandIcon, closeIcon, activeSet, headerStyle, bodyStyle } = context;
+  const { expandIcon, closeIcon, activeSet } = context;
 
   const active = activeSet.has(name);
 
@@ -45,7 +45,7 @@ export const Item = ({ title, disabled = false, showArrow = true, name, classNam
     };
 
     return (
-      <div className={cls} onClick={handleClick} style={headerStyle}>
+      <div className={cls} onClick={handleClick} style={style}>
         <span>{title}</span>
         {renderIcon()}
       </div>
@@ -56,23 +56,19 @@ export const Item = ({ title, disabled = false, showArrow = true, name, classNam
     const cls = classNames(`${prefixCls}-body`, {
       [`${prefixCls}-body-active`]: active,
       [`${prefixCls}-body-hidden`]: !active,
-      [`${prefixCls}-body-active-border-radius`]: true,
+      [`${prefixCls}-body-active-border-radius`]: active,
     });
-    return (
-      <div className={cls} style={bodyStyle}>
-        {children}
-      </div>
-    );
+    return <div className={cls}>{children}</div>;
   };
 
   const cls = classNames({
     [`${prefixCls}`]: true,
-    [`${prefixCls}-border`]: active,
+    [`${prefixCls}-border-active`]: active,
     [`${prefixCls}-radius`]: true,
   });
 
   return (
-    <div className={cls} style={style}>
+    <div className={cls}>
       {renderHeader()}
       {renderBody()}
     </div>

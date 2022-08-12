@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import { Tag } from '@ubt/udesign-ui';
-import { Collapse } from '@ubt/udesign-ui-alpha';
+import { Tag, Collapse } from '@ubt/udesign-ui';
+// import { Collapse } from '@ubt/udesign-ui-alpha';
 import { NativeProps } from '@ubt/udesign-utils';
 
 type DemoBlockProps = {
@@ -37,8 +37,8 @@ export const Block = ({ title, description, background = true, transform, compac
             ) : null}
             {children}
           </div>
-          <Collapse className='border-t'>
-            <Collapse.Item title='代码' name='1'>
+          <Collapse className='border-t m-0' style={{ '--ud-collapse-item-margin': '0' }}>
+            <Collapse.Item title='代码' name='1' style={{ padding: '10px' }}>
               <div className='px-6 py-5 bg-gray-50 text-gray-500 overflow-auto'>
                 <pre className='whitespace-pre-wrap'>{code}</pre>
               </div>

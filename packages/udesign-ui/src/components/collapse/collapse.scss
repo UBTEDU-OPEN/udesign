@@ -1,37 +1,35 @@
 @import './variables.scss';
 $module: ud-collapse;
 
-.#{$module}-bordered {
-  .#{$module}-item {
-    cursor: pointer;
-  }
-
-  .#{$module}-item-border {
-    border: $collapse-item-border;
-    overflow: hidden;
-    background: $collapse-item-border-background;
-  }
-
-
-
-  .#{$module}-item-header-border {
-    border-bottom: $collapse-item-header-border-bottom;
-  }
-
+.#{$module}-item {
+  cursor: pointer;
 }
 
-.#{$module}-radius {
-  .#{$module}-item-radius {
-    border-radius: $collapse-item-border-radius;
-  }
-
-  .#{$module}-item-header-active-border-radius {
-    border-radius: $collapse-item-header-border-border-radius-active;
+.#{$module}-item-border-active {
+  border: $collapse-item-border;
+  overflow: hidden;
+  background: $collapse-item-border-background;
 }
 
-  .#{$module}-item-body-active-border-radius {
-    border-radius: $collapse-item-body-border-radius-active;
+.#{$module}-item-header-active-border-radius {
+  border-radius: $collapse-item-header-border-radius-active-border;
 }
+
+.#{$module}-item-header-border {
+  border-bottom: $collapse-item-header-border-bottom;
+}
+
+
+.#{$module}-item-radius {
+  border-radius: $collapse-item-border-radius;
+}
+
+.#{$module}-item-header-active-border-radius {
+  border-radius: $collapse-item-header-border-radius-active-border;
+}
+
+.#{$module}-item-body-active-border-radius {
+  border-radius: $collapse-item-body-border-radius-active;
 }
 
 .#{$module}-item {
@@ -45,12 +43,14 @@ $module: ud-collapse;
   justify-content: space-between;
   align-items: center;
   background: $collapse-item-header-background;
+  border-radius: $collapse-item-header-border-radius;
 
   &-active {
     color: $collapse-item-header-color-active;
     background: $collapse-item-header-background-active;
     border-radius: $collapse-item-header-border-radius-active;
-}
+    font-weight: $collapse-item-header-font-weight-active;
+  }
 
   &-disabled {
     cursor: not-allowed;

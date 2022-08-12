@@ -9,26 +9,15 @@ const prefixCls = `${BASE_CLASS_PREFIX}-collapse`;
 
 type CollapseProps = {
   accordion?: boolean; // 手风琴。默认值：false
-  bordered?: boolean; // 是否显示边框。默认值：false
   expandIcon?: ReactNode; // 自定义展开图标。默认值：<UpOutlined />
   closeIcon?: ReactNode; // 自定义折叠图标。默认值：<DownOutlined />
-  headerStyle?: object; // header自定义样式。默认值：-
-  bodyStyle?: object; // body自定义样式。默认值：-
-  radius?: boolean; // 设置圆角。默认值：false
   activeKey?: string | string[]; // 当前展开时的name。默认值: -
   defaultActiveKey?: string | string[]; // 默认展开的name。默认值: -
   onChange?: (activeKey: string | string[]) => void; // 展开/收起时的回调。默认值：-
 } & NativeProps;
 
-export const Collapse = ({ accordion = false, activeKey, defaultActiveKey, radius, bordered, expandIcon = <UpOutlined />, closeIcon = <DownOutlined />, headerStyle, bodyStyle, children, onChange, style, className }: CollapseProps) => {
-  const cls = classNames(
-    prefixCls,
-    {
-      [`${prefixCls}-bordered`]: bordered,
-      [`${prefixCls}-radius`]: radius,
-    },
-    className,
-  );
+export const Collapse = ({ accordion = false, activeKey, defaultActiveKey, expandIcon = <UpOutlined />, closeIcon = <DownOutlined />, children, onChange, style, className }: CollapseProps) => {
+  const cls = classNames(prefixCls, className);
 
   const initActiveKey = () => {
     let activeKeyList = activeKey || defaultActiveKey;
@@ -65,8 +54,6 @@ export const Collapse = ({ accordion = false, activeKey, defaultActiveKey, radiu
           expandIcon,
           closeIcon,
           activeSet,
-          headerStyle,
-          bodyStyle,
           onClick,
         }}
       >
