@@ -101,6 +101,90 @@ export default function ButtonPage() {
             </Carousel>
           </Space>
         </Demo.Block>
+        <Demo.Block title='自动轮播' description='当图片或者卡片超过4个，需要启动轮播展示。'>
+          <Space justify='center'>
+            <Carousel autoplay style={{ height: '174px', width: '516px', '--ud-carousel-icon-left': '-60px', '--ud-carousel-icon-right': '-60px' }}>
+              <div className='h-full text-center'>
+                <div className='inline-block'>
+                  <img src='/icon_bluetooth.svg' alt='' />
+                  <span className='text-sm'>蓝牙</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_bluetooth.svg' alt='' />
+                  <span className='text-sm'>蓝牙</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_bluetooth.svg' alt='' />
+                  <span className='text-sm'>蓝牙</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_bluetooth.svg' alt='' />
+                  <span className='text-sm'>蓝牙</span>
+                </div>
+              </div>
+              <div className='h-full text-center'>
+                <div className='inline-block'>
+                  <img src='/icon_wifi.svg' alt='' />
+                  <span className='text-sm'>WIFI</span>
+                  <span></span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_wifi.svg' alt='' />
+                  <span className='text-sm'>WIFI</span>
+                  <span></span>
+                </div>
+
+                <div className='inline-block'>
+                  <img src='/icon_wifi.svg' alt='' />
+                  <span className='text-sm'>WIFI</span>
+                  <span></span>
+                </div>
+
+                <div className='inline-block'>
+                  <img src='/icon_wifi.svg' alt='' />
+                  <span className='text-sm'>WIFI</span>
+                  <span></span>
+                </div>
+              </div>
+              <div className='h-full text-center'>
+                <div className='inline-block'>
+                  <img src='/icon_bluetooth.svg' alt='' />
+                  <span className='text-sm'>蓝牙</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_bluetooth.svg' alt='' />
+                  <span className='text-sm'>蓝牙</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_bluetooth.svg' alt='' />
+                  <span className='text-sm'>蓝牙</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_bluetooth.svg' alt='' />
+                  <span className='text-sm'>蓝牙</span>
+                </div>
+              </div>
+              <div className='h-full text-center'>
+                <div className='inline-block'>
+                  <img src='/icon_ip.svg' alt='' />
+                  <span>IP</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_ip.svg' alt='' />
+                  <span>IP</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_ip.svg' alt='' />
+                  <span>IP</span>
+                </div>
+                <div className='inline-block'>
+                  <img src='/icon_ip.svg' alt='' />
+                  <span>IP</span>
+                </div>
+              </div>
+            </Carousel>
+          </Space>
+        </Demo.Block>
       </Demo.Page>
     </>
   );

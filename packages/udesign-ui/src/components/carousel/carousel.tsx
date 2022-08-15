@@ -7,27 +7,31 @@ import { NativeProps, toArray } from '../../utils';
 const prefixCls = `${BASE_CLASS_PREFIX}-carousel`;
 
 export type CarouselProps = {
-  // autoplay?: boolean; // 是否自动切换。默认值：false
+  autoplay?: boolean; // 是否自动切换。默认值：false
   speed?: number; // 切换时间（单位ms）。默认值：1000
   iconLeft?: ReactNode; // 左侧图标。默认值：<LeftOutlined />
   iconRight?: ReactNode; // 右侧图标。默认值：<RightOutlined />
   loop?: boolean; // 是否循环轮播。默认值：false
 } & NativeProps;
+let timer: NodeJS.Timeout;
 
 export const Carousel = (props: CarouselProps) => {
-  const { speed = 1000, loop = true, children, iconLeft = <LeftOutlined />, iconRight = <RightOutlined />, style, className } = props;
+  const { autoplay = false, speed = 1000, loop = true, children, iconLeft = <LeftOutlined />, iconRight = <RightOutlined />, style, className } = props;
 
   const [count, setCount] = useState(0);
   const [animationDirection, setAnimationDirection] = useState('left');
+  const [isFlag, setIsFlag] = useState(false);
   const [animation, setAnimation] = useState({
     animationDuration: `${speed}ms`,
     transitionDuration: `${speed}ms`,
     transitionTimingFunction: 'ease',
     animationTimingFunction: 'ease',
   });
-  let timer: NodeJS.Timeout;
+
+  const [init, setInit] = useState('');
 
   useEffect(() => {
+    setInit('0');
     setAnimation({
       animationDuration: `${speed}ms`,
       transitionDuration: `${speed}ms`,
@@ -36,18 +40,22 @@ export const Carousel = (props: CarouselProps) => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   if (autoplay) {
-  //     setAnimationDirection('left');
-  //     timer = setTimeout(() => {
-  //       preMove();
-  //     }, speed);
-  //   }
-  //   return () => clearTimeout(timer);
-  // });
+  const loopMove = () => {
+    if (autoplay && !isFlag) {
+      timer = setInterval(() => {
+        preMove();
+        setInit('NaN');
+      }, speed);
+    }
+  };
+
+  useEffect(() => {
+    loopMove();
+    return () => clearInterval(timer);
+  });
 
   const nextMove = () => {
-    setAnimationDirection('right');
+    if (animationDirection !== 'right') setAnimationDirection('right');
     if (count === 0) {
       setCount(toArray(children).length - 1);
     } else {
@@ -56,7 +64,7 @@ export const Carousel = (props: CarouselProps) => {
   };
 
   const preMove = () => {
-    setAnimationDirection('left');
+    if (animationDirection !== 'left') setAnimationDirection('left');
     if (count === toArray(children).length - 1) {
       setCount(0);
     } else {
@@ -70,11 +78,11 @@ export const Carousel = (props: CarouselProps) => {
         {toArray(children).map((item, index) => {
           const cls = classNames(`${prefixCls}-item`, {
             [`${prefixCls}-item-active`]: count === index,
-            [`${prefixCls}-item-${animationDirection}-enter-animation`]: count === index,
+            [`${prefixCls}-item-${animationDirection}-enter-animation`]: count === index && Number(init) !== index,
             [`${prefixCls}-item-${animationDirection}-leave-animation`]: count !== index,
           });
           return (
-            <div className={`${cls}`} key={index} style={{ ...animation }}>
+            <div className={`${cls}`} data-index={index} key={index} style={{ ...animation }}>
               {item}
             </div>
           );
@@ -84,7 +92,6 @@ export const Carousel = (props: CarouselProps) => {
 
     return item;
   };
-
   const renderLeftIcon = () => {
     const cls = classNames({
       [`${prefixCls}-icon`]: true,
@@ -95,11 +102,11 @@ export const Carousel = (props: CarouselProps) => {
     const handleClick = () => {
       if (!loop) {
         if (count !== 0) {
-          setAnimationDirection('right');
           setCount(count - 1);
+          if (animationDirection !== 'right') setAnimationDirection('right');
         } else return;
       }
-      setAnimationDirection('right');
+
       if (loop) {
         nextMove();
       }
@@ -127,7 +134,6 @@ export const Carousel = (props: CarouselProps) => {
       }
 
       if (loop) {
-        setAnimationDirection('left');
         preMove();
       }
     };
@@ -137,21 +143,18 @@ export const Carousel = (props: CarouselProps) => {
       </span>
     );
   };
-  // const mouseEnter = () => {
-  //   clearInterval(timer);
-  // };
-  // const mouseLeave = () => {
-  //   if (autoplay) {
-  //     setAnimationDirection('left');
-  //     timer = setTimeout(() => {
-  //       preMove();
-  //     }, speed);
-  //   }
-  // };
+  const mouseEnter = () => {
+    setIsFlag(true);
+    clearInterval(timer);
+  };
+  const mouseLeave = () => {
+    setIsFlag(false);
+    loopMove();
+  };
   const cls = classNames(`${prefixCls}-wrapper`, className);
   return (
     <>
-      <div className={cls} style={style}>
+      <div className={cls} style={style} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
         {renderItems()}
         {renderLeftIcon()}
         {renderRightIcon()}
