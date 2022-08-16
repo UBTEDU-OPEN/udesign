@@ -49,6 +49,8 @@ import {
   ExclamationCircleFilled,
   RefreshOutlined,
   FirstRightOutlined,
+  RadioFilled,
+  RadioOutlined,
 } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 
@@ -73,6 +75,8 @@ export default function IconPage() {
     { key: 'CloseOutlined', node: <CloseOutlined /> },
     { key: 'PlusOutlined', node: <PlusOutlined /> },
     { key: 'CheckOutlined', node: <CheckOutlined /> },
+    { key: 'RadioFilled', node: <RadioFilled /> },
+    { key: 'RadioOutlined', node: <RadioOutlined /> },
   ];
   const tipsIconsFilled = [
     { key: 'CheckCircleFilled', node: <CheckCircleFilled /> },
