@@ -6,10 +6,22 @@ $radio-button-margin: var(--ud-radio-button-margin, 15px 0); // radio button 外
 $radio-button-fontsize: var(--ud-radio-button-fontsize, 16px); // radio button 字体大小
 $radio-button-border-radius: var(--ud-radio-button-border-radius, 4px); // radio button 圆角
 $radio-button-inner-padding: var(--ud-radio-button-inner-padding, 10px 18px); // radio button 内边距
-$radio-button-normal-color: var(--ud-radio-button-normal-color, rgb(var(--ud-gray-12))); // radio button 字体颜色
-$radio-button-normal-background: var(--ud-radio-button-normal-background, rgb(var(--ud-color-white))); // radio button 背景
-$radio-button-light-color: var(--ud-radio-button-light-color, rgb(var(--ud-purple-6))); // radio button 高亮字体颜色
-$radio-button-light-background: var(--ud-radio-button-light-background, rgb(var(--ud-purple-2))); // radio button 高亮背景
+$radio-button-unchecked-color: var(--ud-radio-button-unchecked-color, rgb(var(--ud-gray-12))); // radio button 字体颜色
+$radio-button-unchecked-background: var(--ud-radio-button-unchecked-background, rgb(var(--ud-color-white))); // radio button 背景
+$radio-button-checked-color: var(--ud-radio-button-checked-color, rgb(var(--ud-purple-6))); // radio button 高亮字体颜色
+$radio-button-checked-background: var(--ud-radio-button-checked-background, rgb(var(--ud-purple-2))); // radio button 高亮背景
 $radio-button-border: var(--ud-radio-button-border, 1px solid rgb(var(--ud-gray-3))); // radio button border
-$radio-button-light-border: var(--ud-radio-button-light-border, 1px solid rgb(var(--ud-purple-6))); // radio button 高亮border
+$radio-button-checked-border: var(--ud-radio-button-checked-border, 1px solid rgb(var(--ud-purple-6))); // radio button 高亮border
 $radio-button-disabled-background: var(--ud-radio-button-disabled-background, 1px solid rgb(var(--ud-gray-2))); // radio button 禁用背景色
+
+$radio-icon-margin: var(--ud-radio-icon-margin, 0 10px 0 0); // radio 图标 外边距
+$radio-icon-font-size: var(--ud-radio-icon-font-size, 24px); // radio 图标大小
+$radio-icon-width:  var(--ud-radio-icon-width, 24px);
+$radio-icon-height:  var(--ud-radio-icon-height, 24px);
+$radio-icon-border-radius:  var(--ud-radio-icon-border-radius, 50%);
+$radio-icon-color-checked: var(--ud-radio-icon-color-checked, #7284fb); // radio 图标 选中状态 颜色
+$radio-icon-color-unchecked: var(--ud-radio-icon-color-unchecked, #e9e9ec); // radio 图标 未选中状态 颜色
+$radio-icon-color-checked-disabled: var(--ud-radio-icon-color-checked-disabled, #d4d4da); // radio 图标 禁用时选中状态 颜色(color + background)
+$radio-icon-background-checked-disabled: var(--ud-radio-icon-background-checked-disabled, #f2f4fa); // radio 图标 禁用时选中状态 颜色(color + background)
+$radio-icon-color-unchecked-disabled: var(--ud-radio-icon-color-unchecked-disabled, #e9e9ec); // radio 图标 禁用时未选中状态 颜色(color + background)
+$radio-icon-background-unchecked-disabled: var(--ud-radio-icon-background-unchecked-disabled, #f2f4fa); // radio 图标 禁用时未选中状态 颜色(color + background)

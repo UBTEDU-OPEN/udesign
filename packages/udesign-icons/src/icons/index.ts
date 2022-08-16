@@ -35,6 +35,8 @@ export { default as MinusCircleOutlined } from './MinusCircleOutlined';
 export { default as MoreOutlined } from './MoreOutlined';
 export { default as PictureFilled } from './PictureFilled';
 export { default as PlusOutlined } from './PlusOutlined';
+export { default as RadioFilled } from './RadioFilled';
+export { default as RadioOutlined } from './RadioOutlined';
 export { default as RefreshOutlined } from './RefreshOutlined';
 export { default as RightOutlined } from './RightOutlined';
 export { default as ScreenFilled } from './ScreenFilled';

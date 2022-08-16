@@ -24,10 +24,10 @@ export const Button = ({ defaultChecked = false, disabled, className, children, 
   const context = useContext(RadioContext);
   const [cusInput, setCusInput] = useState(
     classNames(`${prefixCls}-cus-input`, {
-      [`${prefixCls}-normal`]: !disabled && !innerChecked,
-      [`${prefixCls}-light`]: !disabled && innerChecked,
-      [`${prefixCls}-normal-disabled`]: disabled && !innerChecked,
-      [`${prefixCls}-light-disabled`]: disabled && innerChecked,
+      [`${prefixCls}-unchecked`]: !disabled && !innerChecked,
+      [`${prefixCls}-checked`]: !disabled && innerChecked,
+      [`${prefixCls}-unchecked-disabled`]: disabled && !innerChecked,
+      [`${prefixCls}-checked-disabled`]: disabled && innerChecked,
     }),
   );
 
@@ -60,10 +60,10 @@ export const Button = ({ defaultChecked = false, disabled, className, children, 
   useEffect(() => {
     setCusInput(
       classNames(`${prefixCls}-cus-input`, {
-        [`${prefixCls}-normal`]: !disabled && !innerChecked,
-        [`${prefixCls}-light`]: !disabled && innerChecked,
-        [`${prefixCls}-normal-disabled`]: disabled && !innerChecked,
-        [`${prefixCls}-light-disabled`]: disabled && innerChecked,
+        [`${prefixCls}-unchecked`]: !disabled && !innerChecked,
+        [`${prefixCls}-checked`]: !disabled && innerChecked,
+        [`${prefixCls}-unchecked-disabled`]: disabled && !innerChecked,
+        [`${prefixCls}-checked-disabled`]: disabled && innerChecked,
       }),
     );
   }, [innerChecked, disabled]);

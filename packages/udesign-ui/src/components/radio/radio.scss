@@ -5,19 +5,22 @@ $module: ud-radio;
   display: flex;
   justify-content: flex-start;
 }
+
 .#{$module} {
   padding: $radio-padding;
-  > svg {
-    display: inline-block;
-  }
+  display: inline-flex;
+  align-self: flex-start;
+
   &-hidden {
     opacity: 0;
     width: 0;
   }
+
   &-text {
     display: inline-block;
     height: $radio-height;
     line-height: $radio-height;
+
     &-disabled {
       color: $radio-disabled-color;
     }
@@ -28,37 +31,42 @@ $module: ud-radio;
   &-button {
     display: flex;
     margin: $radio-button-margin;
-    
+
+
     &-hidden {
       opacity: 0;
       width: 0;
     }
+
     &-cus-input {
       display: inline-block;
     }
-    &-normal {
+
+    &-unchecked {
       font-size: $radio-button-fontsize;
-      color: $radio-button-normal-color;
+      color: $radio-button-unchecked-color;
       letter-spacing: 0;
       text-align: center;
-      background: $radio-button-normal-background;
+      background: $radio-button-unchecked-background;
       border: $radio-button-border;
       border-radius: $radio-button-border-radius;
       padding: $radio-button-inner-padding;
       cursor: pointer;
     }
-    &-light {
+
+    &-checked {
       font-size: $radio-button-fontsize;
-      color: $radio-button-light-color;
+      color: $radio-button-checked-color;
       letter-spacing: 0;
       text-align: center;
-      background: $radio-button-light-background;
-      border: $radio-button-light-border;
+      background: $radio-button-checked-background;
+      border: $radio-button-checked-border;
       border-radius: $radio-button-border-radius;
       padding: $radio-button-inner-padding;
       cursor: pointer;
     }
-    &-normal-disabled {
+
+    &-unchecked-disabled {
       font-size: $radio-button-fontsize;
       color: $radio-disabled-color;
       letter-spacing: 0;
@@ -68,7 +76,8 @@ $module: ud-radio;
       padding: $radio-button-inner-padding;
       cursor: not-allowed;
     }
-    &-light-disabled {
+
+    &-checked-disabled {
       font-size: $radio-button-fontsize;
       color: $radio-disabled-color;
       letter-spacing: 0;
@@ -79,5 +88,33 @@ $module: ud-radio;
       cursor: not-allowed;
     }
   }
-  
+
+}
+
+.#{$module}-icon {
+  display: inline-flex;
+  align-self: center;
+  font-size: $radio-icon-font-size;
+  margin: $radio-icon-margin;
+  width: $radio-icon-width;
+  height: $radio-icon-height;
+  border-radius: $radio-icon-border-radius;
+
+  &-checked {
+    color: $radio-icon-color-checked;
+  }
+
+  &-unchecked {
+    color: $radio-icon-color-unchecked;
+  }
+
+  &-checked-disabled {
+    color: $radio-icon-color-checked-disabled;
+    background: $radio-icon-background-checked-disabled;
+  }
+
+  &-unchecked-disabled {
+    color: $radio-icon-color-unchecked-disabled;
+    background: $radio-icon-background-unchecked-disabled;
+  }
 }
