@@ -16,12 +16,10 @@ $radio-button-disabled-background: var(--ud-radio-button-disabled-background, 1p
 
 $radio-icon-margin: var(--ud-radio-icon-margin, 0 10px 0 0); // radio 图标 外边距
 $radio-icon-font-size: var(--ud-radio-icon-font-size, 24px); // radio 图标大小
-$radio-icon-width:  var(--ud-radio-icon-width, 24px);
-$radio-icon-height:  var(--ud-radio-icon-height, 24px);
+$radio-icon-width:  var(--ud-radio-icon-width, 24px); // radio 图标宽度
+$radio-icon-height:  var(--ud-radio-icon-height, 24px); // radio 图标高度
 $radio-icon-border-radius:  var(--ud-radio-icon-border-radius, 50%);
 $radio-icon-color-checked: var(--ud-radio-icon-color-checked, #7284fb); // radio 图标 选中状态 颜色
 $radio-icon-color-unchecked: var(--ud-radio-icon-color-unchecked, #e9e9ec); // radio 图标 未选中状态 颜色
-$radio-icon-color-checked-disabled: var(--ud-radio-icon-color-checked-disabled, #d4d4da); // radio 图标 禁用时选中状态 颜色(color + background)
-$radio-icon-background-checked-disabled: var(--ud-radio-icon-background-checked-disabled, #f2f4fa); // radio 图标 禁用时选中状态 颜色(color + background)
-$radio-icon-color-unchecked-disabled: var(--ud-radio-icon-color-unchecked-disabled, #e9e9ec); // radio 图标 禁用时未选中状态 颜色(color + background)
-$radio-icon-background-unchecked-disabled: var(--ud-radio-icon-background-unchecked-disabled, #f2f4fa); // radio 图标 禁用时未选中状态 颜色(color + background)
+$radio-icon-color-disabled: var(--ud-radio-icon-color-disabled, #d4d4da); // radio 图标 禁用状态 颜色(color + background)
+$radio-icon-background-disabled: var(--ud-radio-icon-background-checked-disabled, #f2f4fa); // radio 图标 禁用状态 颜色(color + background)

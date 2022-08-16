@@ -22,12 +22,20 @@ export const Button = ({ defaultChecked = false, disabled, className, children, 
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;
   const [innerChecked, setInnerChecked] = useState<boolean>(checked!);
   const context = useContext(RadioContext);
+  // const [cusInput, setCusInput] = useState(
+  //   classNames(`${prefixCls}-cus-input`, {
+  //     [`${prefixCls}-unchecked`]: !disabled && !innerChecked,
+  //     [`${prefixCls}-checked`]: !disabled && innerChecked,
+  //     [`${prefixCls}-unchecked-disabled`]: disabled && !innerChecked,
+  //     [`${prefixCls}-checked-disabled`]: disabled && innerChecked,
+  //   }),
+  // );
   const [cusInput, setCusInput] = useState(
     classNames(`${prefixCls}-cus-input`, {
-      [`${prefixCls}-unchecked`]: !disabled && !innerChecked,
-      [`${prefixCls}-checked`]: !disabled && innerChecked,
-      [`${prefixCls}-unchecked-disabled`]: disabled && !innerChecked,
-      [`${prefixCls}-checked-disabled`]: disabled && innerChecked,
+      [`${prefixCls}-unchecked`]: !innerChecked,
+      [`${prefixCls}-checked`]: innerChecked,
+      [`${prefixCls}-disabled`]: disabled,
+      [`${prefixCls}-cus-input-common`]: true,
     }),
   );
 
@@ -59,11 +67,17 @@ export const Button = ({ defaultChecked = false, disabled, className, children, 
 
   useEffect(() => {
     setCusInput(
+      // classNames(`${prefixCls}-cus-input`, {
+      //   [`${prefixCls}-unchecked`]: !disabled && !innerChecked,
+      //   [`${prefixCls}-checked`]: !disabled && innerChecked,
+      //   [`${prefixCls}-unchecked-disabled`]: disabled && !innerChecked,
+      //   [`${prefixCls}-checked-disabled`]: disabled && innerChecked,
+      // }),
       classNames(`${prefixCls}-cus-input`, {
-        [`${prefixCls}-unchecked`]: !disabled && !innerChecked,
-        [`${prefixCls}-checked`]: !disabled && innerChecked,
-        [`${prefixCls}-unchecked-disabled`]: disabled && !innerChecked,
-        [`${prefixCls}-checked-disabled`]: disabled && innerChecked,
+        [`${prefixCls}-unchecked`]: !innerChecked,
+        [`${prefixCls}-checked`]: innerChecked,
+        [`${prefixCls}-disabled`]: disabled,
+        [`${prefixCls}-cus-input-common`]: true,
       }),
     );
   }, [innerChecked, disabled]);

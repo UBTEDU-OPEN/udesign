@@ -61,27 +61,27 @@ export const Checkbox = ({ defaultChecked = false, disabled, className, style, c
   }, [restProps.checked]);
 
   const renderCheckedIcon = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked`]: innerChecked });
     return !disabled && innerChecked && !indeterminate && <span className={cls}>{checkedIcon}</span>;
   };
   const renderUncheckedIcon = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-unchecked`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-unchecked`]: !innerChecked });
     return !disabled && !innerChecked && !indeterminate && <span className={cls}></span>;
   };
   const renderUncheckedIconDisabled = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-unchecked-icon-disabled`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-disabled`]: disabled });
     return disabled && !innerChecked && !indeterminate && <span className={cls}></span>;
   };
   const renderCheckedIconDisabled = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-checked-icon-disabled`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked`]: innerChecked, [`${prefixCls}-icon-disabled`]: true });
     return disabled && innerChecked && !indeterminate && <span className={cls}>{uncheckedIcon}</span>;
   };
   const renderIndeterminateCheckedIcon = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-checked-icon-indeterminate`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-indeterminate`]: indeterminate });
     return !disabled && indeterminate && <span className={cls}></span>;
   };
   const renderIndeterminateCheckedIconDisabled = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-checked-icon-indeterminate-disabled`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-indeterminate`]: indeterminate, [`${prefixCls}-icon-indeterminate-disabled`]: disabled });
     return disabled && indeterminate && <span className={cls}></span>;
   };
   const cls = classNames(prefixCls, { [`${prefixCls}-disabled`]: disabled }, className);
