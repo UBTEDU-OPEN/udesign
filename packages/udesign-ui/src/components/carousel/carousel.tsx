@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 import { RightOutlined, LeftOutlined } from '@ubt/udesign-icons';
 import classNames from 'classnames';
+import { debounce } from 'lodash';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { NativeProps, toArray } from '../../utils';
 
@@ -8,7 +9,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-carousel`;
 
 export type CarouselProps = {
   autoplay?: boolean; // 是否自动切换。默认值：false
-  speed?: number; // 切换时间（单位ms）。默认值：1000
+  speed?: number; // 切换时间（单位ms）。默认值：1500
   iconLeft?: ReactNode; // 左侧图标。默认值：<LeftOutlined />
   iconRight?: ReactNode; // 右侧图标。默认值：<RightOutlined />
   loop?: boolean; // 是否循环轮播。默认值：false
@@ -16,7 +17,7 @@ export type CarouselProps = {
 let timer: NodeJS.Timeout;
 
 export const Carousel = (props: CarouselProps) => {
-  const { autoplay = false, speed = 1000, loop = true, children, iconLeft = <LeftOutlined />, iconRight = <RightOutlined />, style, className } = props;
+  const { autoplay = false, speed = 1500, loop = true, children, iconLeft = <LeftOutlined />, iconRight = <RightOutlined />, style, className } = props;
 
   const [count, setCount] = useState(0);
   const [animationDirection, setAnimationDirection] = useState('left');
@@ -28,7 +29,7 @@ export const Carousel = (props: CarouselProps) => {
     animationTimingFunction: 'ease',
   });
 
-  const [init, setInit] = useState('');
+  const [init, setInit] = useState('NaN');
 
   useEffect(() => {
     setInit('0');
@@ -44,7 +45,7 @@ export const Carousel = (props: CarouselProps) => {
     if (autoplay && !isFlag) {
       timer = setInterval(() => {
         preMove();
-        setInit('NaN');
+        // setInit('NaN');
       }, speed);
     }
   };
@@ -55,6 +56,7 @@ export const Carousel = (props: CarouselProps) => {
   });
 
   const nextMove = () => {
+    // setInit('NaN');
     if (animationDirection !== 'right') setAnimationDirection('right');
     if (count === 0) {
       setCount(toArray(children).length - 1);
@@ -71,6 +73,7 @@ export const Carousel = (props: CarouselProps) => {
       setCount(count + 1);
     }
   };
+  console.log(init);
 
   const renderItems = () => {
     const item = (
@@ -111,9 +114,10 @@ export const Carousel = (props: CarouselProps) => {
         nextMove();
       }
     };
+    const click = debounce(handleClick, speed);
 
     return (
-      <span className={cls} onClick={handleClick}>
+      <span className={cls} onClick={click}>
         {iconLeft}
       </span>
     );
@@ -126,6 +130,7 @@ export const Carousel = (props: CarouselProps) => {
       [`${prefixCls}-icon-right-disabled`]: !loop && count === toArray(children).length - 1,
     });
     const handleClick = () => {
+      if (init !== 'NaN') setInit('NaN');
       if (!loop) {
         if (count !== toArray(children).length - 1) {
           setAnimationDirection('left');
@@ -137,8 +142,10 @@ export const Carousel = (props: CarouselProps) => {
         preMove();
       }
     };
+    const click = debounce(handleClick, speed);
+
     return (
-      <span className={cls} onClick={handleClick}>
+      <span className={cls} onClick={click}>
         {iconRight}
       </span>
     );
