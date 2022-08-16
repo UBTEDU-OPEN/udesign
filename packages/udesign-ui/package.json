@@ -18,10 +18,12 @@
     "registry": "http://npm.edu.ubtrobot.com"
   },
   "sideEffects": [
-    "*.scss",
-    "*.css",
-    "dist/es/index.js",
-    "./src/index.ts"
+    "**/*.css",
+    "**/*.scss",
+    "./es/index.js",
+    "./src/index.ts",
+    "./es/global/index.js",
+    "./src/global/index.ts"
   ],
   "dependencies": {
     "@ubt/udesign-icons": "^1.1.0",
