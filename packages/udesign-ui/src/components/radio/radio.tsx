@@ -54,19 +54,19 @@ export const Radio = ({ defaultChecked = false, disabled, checkedIcon = <RadioFi
   }, [restProps.checked]);
 
   const renderCheckedIcon = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-unchecked`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-unchecked`]: !innerChecked });
     return !disabled && !innerChecked && <span className={cls}>{uncheckedIcon}</span>;
   };
   const renderUncheckedIcon = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked`]: innerChecked });
     return !disabled && innerChecked && <span className={cls}>{checkedIcon}</span>;
   };
   const renderCheckedIconDisabled = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-unchecked-disabled`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-unchecked`]: !innerChecked, [`${prefixCls}-icon-disabled`]: disabled });
     return disabled && !innerChecked && <span className={cls}>{uncheckedIcon}</span>;
   };
   const renderUncheckedIconDisabled = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked-disabled`]: true });
+    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked`]: innerChecked, [`${prefixCls}-icon-disabled`]: disabled });
     return disabled && innerChecked && <span className={cls}>{checkedIcon}</span>;
   };
 
@@ -91,9 +91,7 @@ export const Radio = ({ defaultChecked = false, disabled, checkedIcon = <RadioFi
         />
         {renderCheckedIcon()}
         {renderUncheckedIcon()}
-        {/* {disabled && !innerChecked && <RadioNormalDisabled />} */}
         {renderCheckedIconDisabled()}
-        {/* {disabled && innerChecked && <RadioLightDisabled />} */}
         {renderUncheckedIconDisabled()}
         {children || label ? (
           <span className={classNames(`${prefixCls}-text`, disabled ? `${prefixCls}-text-disabled` : '')} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>

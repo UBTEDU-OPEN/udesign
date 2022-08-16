@@ -42,51 +42,34 @@ $module: ud-radio;
       display: inline-block;
     }
 
-    &-unchecked {
+    &-cus-input-common {
       font-size: $radio-button-fontsize;
-      color: $radio-button-unchecked-color;
       letter-spacing: 0;
-      text-align: center;
-      background: $radio-button-unchecked-background;
-      border: $radio-button-border;
       border-radius: $radio-button-border-radius;
       padding: $radio-button-inner-padding;
       cursor: pointer;
+    }
+
+    &-unchecked {
+      color: $radio-button-unchecked-color;
+      background: $radio-button-unchecked-background;
+      border: $radio-button-border;
     }
 
     &-checked {
-      font-size: $radio-button-fontsize;
       color: $radio-button-checked-color;
-      letter-spacing: 0;
-      text-align: center;
       background: $radio-button-checked-background;
       border: $radio-button-checked-border;
-      border-radius: $radio-button-border-radius;
-      padding: $radio-button-inner-padding;
-      cursor: pointer;
     }
 
-    &-unchecked-disabled {
-      font-size: $radio-button-fontsize;
+    &-disabled {
       color: $radio-disabled-color;
-      letter-spacing: 0;
       background: $radio-button-disabled-background;
       border: $radio-button-border;
-      border-radius: $radio-button-border-radius;
-      padding: $radio-button-inner-padding;
       cursor: not-allowed;
     }
 
-    &-checked-disabled {
-      font-size: $radio-button-fontsize;
-      color: $radio-disabled-color;
-      letter-spacing: 0;
-      background: $radio-button-disabled-background;
-      border: $radio-button-border;
-      border-radius: $radio-button-border-radius;
-      padding: $radio-button-inner-padding;
-      cursor: not-allowed;
-    }
+
   }
 
 }
@@ -108,13 +91,8 @@ $module: ud-radio;
     color: $radio-icon-color-unchecked;
   }
 
-  &-checked-disabled {
-    color: $radio-icon-color-checked-disabled;
-    background: $radio-icon-background-checked-disabled;
-  }
-
-  &-unchecked-disabled {
-    color: $radio-icon-color-unchecked-disabled;
-    background: $radio-icon-background-unchecked-disabled;
+  &-disabled {
+    color: $radio-icon-color-disabled;
+    background: $radio-icon-background-disabled;
   }
 }

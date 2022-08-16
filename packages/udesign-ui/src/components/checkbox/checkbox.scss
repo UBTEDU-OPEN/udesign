@@ -33,22 +33,17 @@ $module: ud-checkbox;
     border: $checkbox-icon-border-unchecked;
   }
 
-  .#{$module}-unchecked-icon-disabled {
-    border: $checkbox-icon-border-unchecked-disabled;
-    background: $checkbox-icon-background-unchecked-disabled;
+  .#{$module}-icon-disabled {
+    color: $checkbox-icon-color-disabled;
+    background: $checkbox-icon-background-disabled;
   }
 
-  .#{$module}-checked-icon-disabled {
-    color: $checkbox-icon-color-checked-disabled;
-    background: $checkbox-icon-background-checked-disabled;
+  .#{$module}-icon-indeterminate {
+    border: $checkbox-icon-border-indeterminate;
   }
 
-  .#{$module}-checked-icon-indeterminate {
-    border: $checkbox-icon-border-checked-indeterminate;
-  }
-
-  .#{$module}-checked-icon-indeterminate-disabled {
-    border: $checkbox-icon-border-checked-indeterminate-disabled;
+  .#{$module}-icon-indeterminate-disabled {
+    border: $checkbox-icon-border-indeterminate-disabled;
   }
 
   &-hidden {

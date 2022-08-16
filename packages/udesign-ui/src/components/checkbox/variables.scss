@@ -10,11 +10,8 @@ $checkbox-icon-border-radius: var(--ud-checkbox-icon-border-radius, 50%); // che
 $checkbox-icon-color-checked: var(--ud-checkbox-icon-color-checked, #7284fb); // checkbox 选中时图标 颜色
 $checkbox-icon-border-unchecked: var(--ud-checkbox-icon-border-unchecked, 2px solid #e9e9ec); // checkbox 未选中时图标 颜色
 
-$checkbox-icon-border-unchecked-disabled: var(--ud-checkbox-icon-border-unchecked-disabled, 2px solid #e9e9ec); // checkbox 未选中图标禁用状态 颜色(border + background)
-$checkbox-icon-background-unchecked-disabled: var(--ud-checkbox-icon-background-unchecked-disabled, #f2f4fa); // checkbox 未选中图标禁用状态 颜色(border + background)
+$checkbox-icon-color-disabled: var(--ud-checkbox-icon-color-checked-disabled, #d4d4da); // checkbox 选中图标禁用状态 颜色(color + background)
+$checkbox-icon-background-disabled: var(--ud-checkbox-icon-background-checked-disabled, #f2f4fa); // checkbox 选中图标禁用状态 颜色(color + background)
 
-$checkbox-icon-color-checked-disabled: var(--ud-checkbox-icon-color-checked-disabled, #d4d4da); // checkbox 选中图标禁用状态 颜色(color + background)
-$checkbox-icon-background-checked-disabled: var(--ud-checkbox-icon-background-checked-disabled, #f2f4fa); // checkbox 选中图标禁用状态 颜色(color + background)
-
-$checkbox-icon-border-checked-indeterminate: var(--ud-checkbox-icon-border-checked-indeterminate, 2px solid #7284fb); // 多选下 未全选中时图标 颜色(border)
-$checkbox-icon-border-checked-indeterminate-disabled: var(--ud-checkbox-icon-border-checked-indeterminate-disabled, 2px solid #e9e9ec); // 多选下 未全选中时图标禁用状态 颜色(border)
+$checkbox-icon-border-indeterminate: var(--ud-checkbox-icon-border-checked-indeterminate, 2px solid #7284fb); // 多选下 未全选中时图标 颜色(border)
+$checkbox-icon-border-indeterminate-disabled: var(--ud-checkbox-icon-border-checked-indeterminate-disabled, 2px solid #e9e9ec); // 多选下 未全选中时图标禁用状态 颜色(border)
