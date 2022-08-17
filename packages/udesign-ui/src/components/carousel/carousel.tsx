@@ -1,24 +1,34 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, useEffect, ReactNode, useCallback } from 'react';
 import { RightOutlined, LeftOutlined } from '@ubt/udesign-icons';
 import classNames from 'classnames';
-import { debounce } from 'lodash';
+import { get, isObject } from 'lodash';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { NativeProps, toArray } from '../../utils';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-carousel`;
 
+export interface CarouselRef {
+  goTo: (index: number) => void;
+  next: () => void;
+  prev: () => void;
+}
+
 export type CarouselProps = {
-  autoplay?: boolean; // 是否自动切换。默认值：false
+  autoPlay?: boolean | { interval?: number }; // 是否自动切换。默认值：false
   speed?: number; // 切换时间（单位ms）。默认值：1500
   iconLeft?: ReactNode; // 左侧图标。默认值：<LeftOutlined />
   iconRight?: ReactNode; // 右侧图标。默认值：<RightOutlined />
   loop?: boolean; // 是否循环轮播。默认值：false
 } & NativeProps;
-let timer: NodeJS.Timeout;
+let _interval: NodeJS.Timeout;
+const numbers = {
+  DEFAULT_ACTIVE_INDEX: 0,
+  DEFAULT_INTERVAL: 2000,
+  DEFAULT_SPEED: 300,
+};
 
-export const Carousel = (props: CarouselProps) => {
-  const { autoplay = false, speed = 1500, loop = true, children, iconLeft = <LeftOutlined />, iconRight = <RightOutlined />, style, className } = props;
-
+export const Carousel = React.forwardRef<CarouselRef, CarouselProps>(({ autoPlay = false, speed = 600, loop = true, children, iconLeft = <LeftOutlined />, iconRight = <RightOutlined />, style, className }, ref) => {
+  const slickRef = React.useRef<any>();
   const [count, setCount] = useState(0);
   const [animationDirection, setAnimationDirection] = useState('left');
   const [isFlag, setIsFlag] = useState(false);
@@ -33,47 +43,58 @@ export const Carousel = (props: CarouselProps) => {
 
   useEffect(() => {
     setInit('0');
-    setAnimation({
-      animationDuration: `${speed}ms`,
-      transitionDuration: `${speed}ms`,
-      transitionTimingFunction: 'ease',
-      animationTimingFunction: 'ease',
-    });
   }, []);
 
-  const loopMove = () => {
-    if (autoplay && !isFlag) {
-      timer = setInterval(() => {
+  const getSwitchingTime: () => number = () => {
+    const autoPlayType = typeof autoPlay;
+    if (autoPlayType === 'boolean' && autoPlay) {
+      return numbers.DEFAULT_INTERVAL + speed;
+    }
+    if (isObject(autoPlay)) {
+      return get(autoPlay, 'interval', numbers.DEFAULT_INTERVAL) + speed;
+    }
+    return speed;
+  };
+
+  const play = (interval: number) => {
+    if (!isFlag && autoPlay) {
+      if (_interval) {
+        clearInterval(_interval);
+      }
+      _interval = setInterval(() => {
         preMove();
-        // setInit('NaN');
-      }, speed);
+      }, interval);
     }
   };
 
   useEffect(() => {
-    loopMove();
-    return () => clearInterval(timer);
+    play(getSwitchingTime());
+    return () => clearInterval(_interval);
   });
 
   const nextMove = () => {
-    // setInit('NaN');
-    if (animationDirection !== 'right') setAnimationDirection('right');
-    if (count === 0) {
-      setCount(toArray(children).length - 1);
-    } else {
-      setCount(count - 1);
-    }
+    if (!loop && count === 0) return;
+    animationDirection !== 'right' && setAnimationDirection('right');
+    count === 0 ? setCount(toArray(children).length - 1) : setCount(count - 1);
+    init !== 'NaN' && setInit('NaN');
   };
 
   const preMove = () => {
-    if (animationDirection !== 'left') setAnimationDirection('left');
-    if (count === toArray(children).length - 1) {
-      setCount(0);
-    } else {
-      setCount(count + 1);
-    }
+    if (!loop && count === toArray(children).length - 1) return;
+    animationDirection !== 'left' && setAnimationDirection('left');
+    count === toArray(children).length - 1 ? setCount(0) : setCount(count + 1);
+    init !== 'NaN' && setInit('NaN');
   };
-  console.log(init);
+
+  const goTo = (index: number) => {
+    setCount(index);
+  };
+
+  React.useImperativeHandle(ref, () => ({
+    goTo,
+    prev: nextMove,
+    next: preMove,
+  }));
 
   const renderItems = () => {
     const item = (
@@ -107,17 +128,13 @@ export const Carousel = (props: CarouselProps) => {
         if (count !== 0) {
           setCount(count - 1);
           if (animationDirection !== 'right') setAnimationDirection('right');
-        } else return;
+        }
       }
-
-      if (loop) {
-        nextMove();
-      }
+      if (loop) nextMove();
     };
-    const click = debounce(handleClick, speed);
 
     return (
-      <span className={cls} onClick={click}>
+      <span className={cls} onClick={handleClick}>
         {iconLeft}
       </span>
     );
@@ -142,32 +159,35 @@ export const Carousel = (props: CarouselProps) => {
         preMove();
       }
     };
-    const click = debounce(handleClick, speed);
 
     return (
-      <span className={cls} onClick={click}>
+      <span className={cls} onClick={handleClick}>
         {iconRight}
       </span>
     );
   };
+
   const mouseEnter = () => {
     setIsFlag(true);
-    clearInterval(timer);
+    clearInterval(_interval);
   };
+
   const mouseLeave = () => {
     setIsFlag(false);
-    loopMove();
+    play(getSwitchingTime());
   };
+
   const cls = classNames(`${prefixCls}-wrapper`, className);
+
   return (
     <>
-      <div className={cls} style={style} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+      <div className={cls} style={style} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} ref={slickRef}>
         {renderItems()}
         {renderLeftIcon()}
         {renderRightIcon()}
       </div>
     </>
   );
-};
+});
 
 Carousel.displayName = 'Carousel';
