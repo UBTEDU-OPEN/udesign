@@ -32,7 +32,7 @@ export const Result = ({ icon, status = 'normal', title, subtitle, children, cla
     return <div className={cls}>{iconNode()}</div>;
   };
 
-  const renderTitle = () => (title ? <h4 className={`${prefixCls}-title`}>{title}</h4> : null);
+  const renderTitle = () => (title ? <div className={`${prefixCls}-title`}>{title}</div> : null);
 
   const renderSubtitle = () => (subtitle ? <div className={`${prefixCls}-subtitle`}>{subtitle}</div> : null);
 
