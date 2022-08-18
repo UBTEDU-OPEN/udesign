@@ -113,11 +113,24 @@ export const Tooltip = ({
     return triggerDOM && (triggerDOM as Element).getBoundingClientRect();
   };
 
+  useEffect(() => {
+    window.addEventListener('resize', updateCoords);
+    return () => window.removeEventListener('resize', updateCoords);
+  }, []);
+
+  useEffect(() => {
+    // 滚动条滚动时触发
+    triggerRef.current?.parentNode?.addEventListener('scroll', updateCoords);
+    return () => {
+      triggerRef.current?.parentNode?.removeEventListener('scroll', updateCoords);
+    };
+  }, []);
+
   // 基准点
   const updateCoords = () => {
     // https://zh.javascript.info/coordinates
     const rect = getTriggerBounding();
-
+    console.log(rect);
     // 根据 placement 改变基准点
     const newCoords = {
       left: rect.left,
