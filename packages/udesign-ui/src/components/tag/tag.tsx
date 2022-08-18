@@ -22,13 +22,14 @@ export type TagProps = {
   checked?: boolean; // 是否选中状态。默认值：false
   defaultChecked?: boolean; // 是否默认选中状态。默认值：false
   visible?: boolean; // 是否显示标签。默认值：false
-  value?: string; // 标签的value。默认值：-
+  value?: string | number; // 标签的value。默认值：-
   onChange?: (checked: boolean) => void; //	点击标签时触发的回调。默认值：-
   onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void; // 单击标签时的回调函数。默认值：-
   onClose?: (value: { label: ReactNode; value: string }, event: React.MouseEvent<HTMLElement>) => void; // 关闭标签时的回调函数。默认值：-
 } & NativeProps;
 
 const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = ({ size = 'middle', color, textColor, style, checkable, onChange, onClick, onClose, className, children, value, ...props }, ref) => {
+  let valueStr = String(value);
   const [visible, setVisible] = useState(true);
 
   const [checked, setChecked] = usePropsValue({
@@ -53,7 +54,7 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
   const handleCloseClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
 
-    onClose?.({ label: children, value: value || '' }, e);
+    onClose?.({ label: children, value: valueStr || '' }, e);
 
     // https://developer.mozilla.org/zh-CN/docs/Web/API/Event/defaultPrevented
     if (e.defaultPrevented) {

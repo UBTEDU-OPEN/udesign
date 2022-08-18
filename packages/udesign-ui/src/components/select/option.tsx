@@ -6,7 +6,7 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 import { SelectContext, types } from './context';
 
 export type OptionProps = {
-  value?: string; // 默认根据此属性值进行筛选
+  value?: string | number; // 默认根据此属性值进行筛选
   label?: string; // 显示内容
   disabled?: boolean; // 是否禁用
 } & NativeProps;
@@ -17,10 +17,10 @@ export const Option = ({ label, disabled, className, children, style, value }: O
   const context = useContext(SelectContext);
   const [innerChecked, setInnerChecked] = useState<boolean>(context.defaultValue?.includes(value || '') || false);
   const getResult = () => {
-    let result: string[] = context.value || [];
+    let result: any[] = context.value || [];
     if (context.mode === 'multiple') {
       if (innerChecked) {
-        result = (context.value || []).filter((item: string) => item !== value);
+        result = (context.value || []).filter((item) => item !== value);
       } else {
         result = value ? [...(context.value || []), value] : context.value || [];
       }
@@ -49,6 +49,7 @@ export const Option = ({ label, disabled, className, children, style, value }: O
           },
         });
       }
+
       if (!innerChecked && context.mode !== 'multiple') {
         if (context.setVisible) {
           context.setVisible(false);
@@ -95,4 +96,4 @@ export const Option = ({ label, disabled, className, children, style, value }: O
   );
 };
 
-Option.displayName = 'Select.Option';
+Option.displayName = 'Option';

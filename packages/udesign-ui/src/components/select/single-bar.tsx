@@ -10,7 +10,7 @@ export type SingleBarProps = {
   visible?: boolean; // 是否展开列表
   showSearch?: boolean; // 是否显示搜索框
   options?: OptionItem[]; // 下拉列表options
-  innerDefaultValue?: string[]; // 默认选中的value
+  innerDefaultValue?: string[] | number[]; // 默认选中的value
   placeholder?: string; // 选择框默认文本
 } & NativeProps;
 
@@ -19,7 +19,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearch, options = [], innerDefaultValue = [], placeholder }: SingleBarProps) => {
   const context = useContext(SelectContext);
   const searchRef = useRef<HTMLInputElement>(null);
-  const getSingleLabel = (value: string, options: OptionItem[] = []) => {
+  const getSingleLabel = (value: string | number, options: OptionItem[] = []) => {
     let label: ReactNode = '';
     options?.forEach((item: OptionItem) => {
       if (item.value === value) {

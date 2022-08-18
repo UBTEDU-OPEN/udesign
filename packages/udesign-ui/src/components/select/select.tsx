@@ -2,6 +2,7 @@ import React, { useReducer, useEffect, useState, useRef, ReactNode } from 'react
 import classNames from 'classnames';
 import { UpOutlined, DownOutlined, SearchOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
+import { Dropdown } from '../dropdown/dropdown';
 import { Option } from './option';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
 import { IconDelete } from './icon-delete';
@@ -12,7 +13,7 @@ import { SingleBar } from './single-bar';
 
 export type CustomTagProps = {
   label?: React.ReactNode; // tag 显示内容。默认值：-
-  value?: string; // tag value。默认值：-
+  value?: string | number; // tag value。默认值：-
   disabled?: boolean; // 是否禁用。默认值：false
   onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭时回调。默认值：-
   closeable?: boolean; // 是否显示关闭按钮。默认值：false
@@ -21,9 +22,9 @@ export type CustomTagProps = {
 export type SelectProps = {
   options?: OptionItem[]; // 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能。默认值：-
   size?: Size; // 选择框大小。默认值：middle
-  onChange?: (value: string | string[]) => void; // 选中 option，调用此函数。默认值：-
-  value?: string | string[]; // 指定当前选中的条目，多选时为一个数组。默认值：-
-  defaultValue?: string | string[]; // 指定默认选中的条目。默认值：-
+  onChange?: (value: string | number | any[]) => void; // 选中 option，调用此函数。默认值：-
+  value?: string | number | any[]; // 指定当前选中的条目，多选时为一个数组。默认值：-
+  defaultValue?: string | number | any[]; // 指定默认选中的条目。默认值：-
   disabled?: boolean; // 是否禁用。默认值：false
   mode?: 'multiple'; // 设置 Select 的模式为多选。默认值：-
   children?: any;
@@ -62,12 +63,18 @@ export const Select = ({ children, className, style, size = 'middle', value, onC
   const listWrapper = classNames(`${prefixCls}-list-wrapper`, {
     [`${prefixCls}-list-wrapper-${size}`]: size,
   });
-  const formatValue = (value?: string | string[]) => {
-    let result: string[] = [];
+  const formatValue = (value?: string | number | any[]) => {
+    let result: any[] = [];
     if (Array.isArray(value)) {
       result = value;
     }
+    // if (Array.isArray(value) && (typeof value)[0] === 'string') {
+    //   result = value;
+    // }
     if (typeof value === 'string') {
+      result = [value];
+    }
+    if (typeof value === 'number') {
       result = [value];
     }
     return result;
@@ -88,7 +95,7 @@ export const Select = ({ children, className, style, size = 'middle', value, onC
   };
   const triggerRef = useRef<HTMLDivElement>(null);
   const [showClear, setShowClear] = useState<boolean>(false);
-  const [innerDefaultValue, setInnerDefaultValue] = useState<string[]>(formatValue(defaultValue));
+  const [innerDefaultValue, setInnerDefaultValue] = useState<any[]>(formatValue(defaultValue));
   const initialState = { value: formatValue(value) };
   const [state, dispatch] = useReducer(reducer, initialState);
   const [visible, setVisible] = useState<boolean>(false);
@@ -117,7 +124,7 @@ export const Select = ({ children, className, style, size = 'middle', value, onC
       }
     }
   };
-  const handleClose = (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => {
+  const handleClose = (data: { value: string | number; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => {
     dispatch({
       type: types.UPDATE_VALUE,
       payload: {
@@ -146,7 +153,15 @@ export const Select = ({ children, className, style, size = 'middle', value, onC
   };
 
   const renderOptions = () => {
-    const defaultFilterOption = (searchValue: string, OptionItem: OptionItem) => (searchValue ? OptionItem?.value?.includes(searchValue) : true);
+    const defaultFilterOption = (searchValue: string | number, OptionItem: OptionItem) => {
+      let result: boolean;
+      if (searchValue && typeof searchValue === 'string') {
+        result = typeof OptionItem?.value === 'string' && OptionItem?.value?.includes(searchValue);
+      } else if (searchValue && typeof searchValue === 'number') {
+        result = typeof OptionItem?.value === 'number' && OptionItem?.value === searchValue;
+      } else return true;
+      return result;
+    };
     const fn = filterOption || defaultFilterOption;
     return (
       <div className={listWrapper} style={getWidthStyle()}>
