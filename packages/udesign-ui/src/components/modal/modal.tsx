@@ -103,7 +103,7 @@ export const Modal = (props: ModalProps) => {
     return title === null || title === undefined ? null : (
       <div className={`${prefixCls}-header`}>
         {icon}
-        <h5 className={`${prefixCls}-title`}>{title}</h5>
+        <div className={`${prefixCls}-title`}>{title}</div>
         {closer}
       </div>
     );

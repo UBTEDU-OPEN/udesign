@@ -37,7 +37,7 @@ export default function SkeletonPage() {
             </Button>
           </Space>
           <Skeleton active={active} loading={loading}>
-            <h4>This is the title</h4>
+            <div className='font-bold text-lg'>This is the title</div>
             <p>Lorem ipsum dolor, sit amet cons ectetur adipis icing elit. Praesen tium, quibusdam facere quo laborum maiores sequi nam tenetur laud.</p>
           </Skeleton>
         </Demo.Block>
