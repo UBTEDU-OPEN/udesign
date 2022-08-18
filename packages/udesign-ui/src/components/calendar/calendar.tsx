@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import moment from 'dayjs';
 import { FirstRightOutlined, RightOutlined, LeftOutlined } from '@ubt/udesign-icons';
+import classNames from 'classnames';
 import { getMonth, weekArr, monthArr } from './moment';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { NativeProps } from '../../utils';
@@ -73,9 +74,10 @@ const Calendar = (props: CalendarProps) => {
       })}
     </div>
   );
+  const cls = classNames(`${prefixCls}`, className);
   return (
     <div
-      className={`${prefixCls}`}
+      className={cls}
       onClick={(e) => {
         e.stopPropagation();
       }}

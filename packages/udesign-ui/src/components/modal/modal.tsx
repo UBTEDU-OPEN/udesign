@@ -34,7 +34,7 @@ export type ModalProps = {
   getContainer?: () => HTMLElement; //	指定父级 DOM，弹层将会渲染至该 DOM 中，自定义需要设置 position: relative。默认值：-
   hasCancel?: boolean; //	是否显示取消按钮。默认值：
   header?: ReactNode; //	对话框头部。默认值：-
-  height?: number; //	自定义高度，内容溢出会出现滚动条，内容不足会补空白。默认值：-
+  height?: number | string; //	自定义高度，内容溢出会出现滚动条，内容不足会补空白。默认值：-
   icon?: ReactNode; // 自定义 icon。默认值：-
   // keepDOM?: boolean; //	关闭对话框时是否销毁。默认值：false
   // lazyRender?: boolean; // 配合 keepDOM 使用，为 true 时挂载时不会渲染对话框组件 。默认值：true
@@ -47,7 +47,7 @@ export type ModalProps = {
   size?: ModalSize; //	对话框宽度尺寸，可选small,middle,large。默认值：small
   title?: ReactNode; // 对话框的标题，未设置时，则不渲染默认的 header。默认值：-
   visible?: boolean; // 对话框是否可见。默认值：false
-  width?: number; // 自定义宽度。默认值：-
+  width?: number | string; // 自定义宽度。默认值：-
   zIndex?: number; // 遮罩的 z-index 值。默认值：1000
   showScrollbar?: boolean; // 是否使用内置滚动条。默认值：true
   onCancel?: (e: React.MouseEvent) => void | Promise<any>; // 点击取消按钮或关闭按钮时的回调函数。默认值：-
