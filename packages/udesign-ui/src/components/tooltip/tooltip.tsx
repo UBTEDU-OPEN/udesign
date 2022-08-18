@@ -1,6 +1,6 @@
 import React, { isValidElement, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { get } from 'lodash';
+import { get, throttle } from 'lodash';
 import { Arrow } from './arrow';
 import { mergeEvents, NativeProps, stopPropagation, usePropsValue } from '../../utils';
 import { BASE_CLASS_PREFIX, Placement, Trigger } from '../../constants';
@@ -114,15 +114,22 @@ export const Tooltip = ({
   };
 
   useEffect(() => {
-    window.addEventListener('resize', updateCoords);
-    return () => window.removeEventListener('resize', updateCoords);
+    window.addEventListener('resize', throttle(updateCoords, 200));
+    return () => window.removeEventListener('resize', throttle(updateCoords, 200));
   }, []);
 
   useEffect(() => {
-    // 滚动条滚动时触发
-    triggerRef.current?.parentNode?.addEventListener('scroll', updateCoords);
+    // 父元素滚动条滚动时触发
+    triggerRef.current?.parentNode?.addEventListener('scroll', throttle(updateCoords, 500));
     return () => {
-      triggerRef.current?.parentNode?.removeEventListener('scroll', updateCoords);
+      triggerRef.current?.parentNode?.removeEventListener('scroll', throttle(updateCoords, 500));
+    };
+  }, []);
+  useEffect(() => {
+    // 页面滚动条滚动时触发
+    window.addEventListener('scroll', throttle(updateCoords, 500));
+    return () => {
+      window.removeEventListener('scroll', throttle(updateCoords, 500));
     };
   }, []);
 
@@ -130,7 +137,6 @@ export const Tooltip = ({
   const updateCoords = () => {
     // https://zh.javascript.info/coordinates
     const rect = getTriggerBounding();
-    console.log(rect);
     // 根据 placement 改变基准点
     const newCoords = {
       left: rect.left,
