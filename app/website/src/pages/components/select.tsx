@@ -4,7 +4,7 @@ import { Demo } from '../../demo';
 
 export type CustomTagProps = {
   label?: React.ReactNode; // tag 显示内容
-  value?: string; // tag value
+  value?: string | number; // tag value
   disabled?: boolean; // 是否禁用
   onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调
   closeable?: boolean; // 是否显示关闭按钮
@@ -21,7 +21,7 @@ export default function SelectPage() {
   const tagRender = (CustomTagProps: CustomTagProps) => {
     const { label, value, closeable, onClose } = CustomTagProps;
     return (
-      <Tag value={value} closeable={closeable} onClose={onClose} color={value}>
+      <Tag value={value} closeable={closeable} onClose={onClose} color={String(value)}>
         {label}
       </Tag>
     );

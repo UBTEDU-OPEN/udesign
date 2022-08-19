@@ -20,10 +20,10 @@ export function reducer(state: { [key: string]: any }, action: actionType) {
 }
 
 export interface SelectContextState {
-  value?: string[];
-  defaultValue?: string[];
+  value?: any[];
+  defaultValue?: any[];
   name?: string;
-  onChange?: (value: string | string[]) => void;
+  onChange?: (value: string | number | any[]) => void;
   dispatch?: React.Dispatch<actionType>;
   mode?: 'multiple';
   setVisible?: (visible: boolean) => void;

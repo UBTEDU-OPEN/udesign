@@ -12,16 +12,16 @@ export type MultiBarProps = {
   maxTagCount?: number; // 最大展示的tag数。默认值：-
   selectedList: OptionItem[]; // 选中列表。默认值：-
   tagRender?: (CustomTagProps: CustomTagProps) => ReactNode; // 自定义tag 方法。默认值：-
-  handleClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => void; // tag 关闭的回调函数。默认值：-
+  handleClose?: (data: { value: string | number; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => void; // tag 关闭的回调函数。默认值：-
   placeholder?: string; // 选择框默认文本。默认值：-
   visible?: boolean; // 是否展开列表。默认值：false
 } & NativeProps;
 
 export type CustomTagProps = {
   label?: React.ReactNode; // tag 显示内容。默认值：
-  value?: string; // tag 对应value。默认值：
+  value?: string | number; // tag 对应value。默认值：
   disabled?: boolean; // 是否禁用。默认值：
-  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调。默认值：
+  onClose?: (data: { value: string | number; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调。默认值：
   closeable?: boolean; // 是否显示关闭按钮。默认值：
 };
 
