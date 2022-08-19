@@ -27,7 +27,7 @@ export const Block = ({ title, description, background = true, transform, compac
         </div>
       ) : null}
       {children ? (
-        <div className='border rounded-lg overflow-hidden'>
+        <div className='border rounded-lg'>
           <div className={cls} style={background ? { background: 'rgba(242,244,250,0.45)' } : {}}>
             {debug ? (
               <Tag className='absolute top-0 right-0' color='yellow'>

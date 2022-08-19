@@ -29,7 +29,6 @@ export type TagProps = {
 } & NativeProps;
 
 const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = ({ size = 'middle', color, textColor, style, checkable, onChange, onClick, onClose, className, children, value, ...props }, ref) => {
-  let valueStr = String(value);
   const [visible, setVisible] = useState(true);
 
   const [checked, setChecked] = usePropsValue({
@@ -54,7 +53,7 @@ const InternalTag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (
   const handleCloseClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
 
-    onClose?.({ label: children, value: valueStr || '' }, e);
+    onClose?.({ label: children, value: String(value) || '' }, e);
 
     // https://developer.mozilla.org/zh-CN/docs/Web/API/Event/defaultPrevented
     if (e.defaultPrevented) {

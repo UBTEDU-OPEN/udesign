@@ -34,6 +34,9 @@ export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearc
       searchRef.current?.focus();
     }
   }, [visible]);
+  useEffect(() => {
+    if (context.autoFocus) searchRef.current?.focus();
+  });
   return (
     <React.Fragment>
       {visible && showSearch ? (
@@ -45,6 +48,7 @@ export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearc
             type='text'
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const value = event.target.value;
+              context.onChange && context?.onChange(value);
               setSearchValue(value);
             }}
           />

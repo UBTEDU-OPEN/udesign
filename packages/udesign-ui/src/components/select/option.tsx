@@ -39,7 +39,9 @@ export const Option = ({ label, disabled, className, children, style, value }: O
 
   const handleClick = () => {
     if (!disabled) {
-      context.onChange && context.onChange(getResult() || '');
+      const options = { value, label, disabled };
+      !context.value?.includes(value) && context.onChange && context.onChange(getResult() || '');
+      context.onSelect && context.onSelect(options);
       // 选中时更新value值
       if (context.dispatch) {
         context.dispatch({
@@ -96,4 +98,4 @@ export const Option = ({ label, disabled, className, children, style, value }: O
   );
 };
 
-Option.displayName = 'Option';
+Option.displayName = 'Select.Option';

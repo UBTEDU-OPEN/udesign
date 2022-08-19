@@ -5,6 +5,7 @@ $module: ud-select;
 .#{$module}-wrapper {
   position: relative;
 }
+
 .#{$module} {
   width: $select-width;
   height: $select-height;
@@ -15,46 +16,55 @@ $module: ud-select;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  flex-direction: row-reverse ;
+  flex-direction: row-reverse;
+
   &-large {
     width: $select-width-large;
     height: $select-height-large;
   }
+
   &-small {
     width: $select-width-small;
     height: $select-height-small;
   }
+
   &-icon {
     &-large {
       width: 50px;
       height: 50px;
     }
+
     &-small {
       width: 32px;
       height: 32px;
     }
+
     &-middle {
       width: 40px;
       height: 40px;
     }
   }
+
   &-arrow {
     border-radius: 0 $select-border-radius $select-border-radius 0;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   &-disabled {
     background: $select-disabled-background;
     color: $select-disabled-color;
     border: $select-border;
     cursor: not-allowed;
   }
+
   &-single {
     &-placeholder {
       font-size: $select-placeholder-font-size;
       color: $select-placeholder-color;
     }
+
     &-text {
       flex-grow: 1;
       display: flex;
@@ -62,15 +72,16 @@ $module: ud-select;
       padding-left: $select-padding-left;
       align-items: center;
       overflow: hidden;
+
       &-content {
-        overflow:hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
-      
+
     }
   }
-  
+
   &-multi {
     &-box {
       flex-grow: 1;
@@ -79,15 +90,17 @@ $module: ud-select;
       align-items: center;
       overflow: hidden;
     }
-    
+
     &-selected {
       display: flex;
       align-items: center;
       cursor: pointer;
+
       &-disabled {
         cursor: not-allowed;
       }
     }
+
     &-placeholder {
       padding-left: $select-placeholder-padding-left;
       font-size: $select-placeholder-font-size;
@@ -105,11 +118,13 @@ $module: ud-select;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+
       &:hover {
         background: $select-item-background-hover;
         color: $select-item-color-hover;
       }
     }
+
     &-multi {
       padding: $select-item-padding;
       height: $select-item-height;
@@ -120,40 +135,46 @@ $module: ud-select;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
+
       &:hover {
         background: $select-item-background-hover;
         color: $select-item-color-hover;
       }
+
       &-text {
         flex-grow: 1;
       }
     }
+
     &-active {
       background: $select-active-background;
       color: $select-active-color;
     }
+
     &-disabled {
       color: $select-item-disabled-color;
       cursor: not-allowed;
     }
   }
-  
-  
+
+
   &-list-wrapper {
     position: absolute;
     background: rgb(var(--ud-white));
-    box-shadow: 0 7px 18px 0 rgba(198,199,219,0.84);
+    box-shadow: 0 7px 18px 0 rgba(198, 199, 219, 0.84);
     border-radius: 8px;
     overflow-y: scroll;
     width: $select-width;
-    max-height: 200px;
+    max-height: $select-list-max-height;
     top: $select-list-top;
     z-index: 99;
     @include scroll;
+
     &-large {
       width: $select-width-large;
       top: $select-list-top-large;
     }
+
     &-small {
       width: $select-width-small;
       top: $select-list-top-small;
@@ -169,10 +190,9 @@ $module: ud-select;
     flex-grow: 1;
     padding-left: $select-padding-left;
     cursor: pointer;
+
     &-disabled {
       cursor: not-allowed;
     }
   }
 }
-
-

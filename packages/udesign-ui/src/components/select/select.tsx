@@ -2,7 +2,6 @@ import React, { useReducer, useEffect, useState, useRef, ReactNode } from 'react
 import classNames from 'classnames';
 import { UpOutlined, DownOutlined, SearchOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
-import { Dropdown } from '../dropdown/dropdown';
 import { Option } from './option';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
 import { IconDelete } from './icon-delete';
@@ -35,23 +34,39 @@ export type SelectProps = {
   showSearch?: boolean; // 使单选模式可搜索。默认值：false
   filterOption?: (searchValue: string, option: OptionItem) => boolean; // 是否根据输入项进行筛选。当其为一个函数时，会接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false。默认值：-
   placeholder?: string; // 选择框默认文本。默认值：-
-  // autoFocus?: boolean; // todo
-  // clearIcon?: ReactNode; // todo
-  // listHeight?: number; // todo
-  // loading?: boolean; // todo
-  // maxTagPlaceholder?: string; // todo
-  // maxTagTextLength?: number; // todo
-  // notFoundContent?: ReactNode; // todo
-  // open?: boolean; // todo
-  // placement?: string; // todo
-  // onClear?: () => void; // todo
-  // onSelect?: () => void; // todo
+  clearIcon?: ReactNode; // 清除的图标(hover时显示)。默认值：<IconDelete />
+  autoFocus?: boolean; // todo
+  placement?: string; // todo
+  onClear?: () => void; // 清除内容时回调
+  onSelect?: (value: string | number | OptionItem) => void; // 被选中时调用，参数为选中项的 value (或 key) 值
   // onDropdownVisibleChange?: () => void; // todo
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
-export const Select = ({ children, className, style, size = 'middle', value, onChange, disabled, defaultValue, mode, allowClear, status, tagRender, maxTagCount, showSearch = false, filterOption, placeholder, ...restProps }: SelectProps) => {
+export const Select = ({
+  children,
+  className,
+  style,
+  size = 'middle',
+  value,
+  onChange,
+  disabled,
+  defaultValue,
+  mode,
+  allowClear,
+  status,
+  tagRender,
+  maxTagCount,
+  showSearch = false,
+  filterOption,
+  onSelect,
+  onClear,
+  autoFocus,
+  clearIcon = <IconDelete />,
+  placeholder,
+  ...restProps
+}: SelectProps) => {
   const cls = classNames(
     prefixCls,
     {
@@ -68,9 +83,6 @@ export const Select = ({ children, className, style, size = 'middle', value, onC
     if (Array.isArray(value)) {
       result = value;
     }
-    // if (Array.isArray(value) && (typeof value)[0] === 'string') {
-    //   result = value;
-    // }
     if (typeof value === 'string') {
       result = [value];
     }
@@ -124,6 +136,9 @@ export const Select = ({ children, className, style, size = 'middle', value, onC
       }
     }
   };
+  useEffect(() => {
+    if (autoFocus) setVisible(!visible);
+  }, []);
   const handleClose = (data: { value: string | number; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => {
     dispatch({
       type: types.UPDATE_VALUE,
@@ -186,18 +201,7 @@ export const Select = ({ children, className, style, size = 'middle', value, onC
     }
 
     if (showClear) {
-      return (
-        <IconDelete
-          onClick={() => {
-            dispatch({
-              type: types.UPDATE_VALUE,
-              payload: {
-                value: [],
-              },
-            });
-          }}
-        />
-      );
+      return clearIcon;
     }
     if (visible) {
       return <UpOutlined style={{ color: '#7284FB' }} />;
@@ -243,10 +247,24 @@ export const Select = ({ children, className, style, size = 'middle', value, onC
   }, [state.value]);
   return (
     <>
-      <SelectContext.Provider value={{ value: state.value, onChange, dispatch, defaultValue: innerDefaultValue, mode, setVisible, disabled }}>
+      <SelectContext.Provider value={{ value: state.value, onChange, dispatch, defaultValue: innerDefaultValue, mode, setVisible, disabled, onSelect, autoFocus }}>
         <div className={`${prefixCls}-wrapper`} style={getWidthStyle()} ref={triggerRef}>
           <div className={cls} onClick={handleClick} style={updateStyle()} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-            <div className={iconCls}>{renderIcon()}</div>
+            <div
+              className={iconCls}
+              onClick={() => {
+                dispatch({
+                  type: types.UPDATE_VALUE,
+                  payload: {
+                    value: [],
+                  },
+                });
+                onClear?.();
+                onChange?.('');
+              }}
+            >
+              {renderIcon()}
+            </div>
             {mode !== 'multiple' ? (
               <SingleBar searchValue={searchValue} setSearchValue={setSearchValue} visible={visible} showSearch={showSearch} options={getOptions()} innerDefaultValue={innerDefaultValue} placeholder={placeholder} />
             ) : (

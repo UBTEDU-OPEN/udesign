@@ -9,7 +9,11 @@ export type CustomTagProps = {
   onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭回调
   closeable?: boolean; // 是否显示关闭按钮
 };
-
+export type OptionItem = {
+  value?: string | number; // value 值
+  label?: ReactNode; // 显示的内容
+  disabled?: boolean; // 是否禁用
+};
 export default function SelectPage() {
   const options = [
     { value: 'gold', closeable: true, label: 'gold' },
@@ -85,7 +89,9 @@ export default function SelectPage() {
               </Select>
               <Select
                 showSearch
-                filterOption={(searchValue: string, option: any) => option.value.includes(searchValue)}
+                filterOption={function filterOption(searchValue: string, option: OptionItem) {
+                  return typeof option.value === 'string' && option.value.includes(searchValue);
+                }}
                 allowClear
                 placeholder='请选择'
                 options={[
@@ -185,33 +191,37 @@ export default function SelectPage() {
           </div>
         </Demo.Block>
         <Demo.Block title='不同尺寸' description={<>三种尺寸的选择器</>}>
-          <div style={{ height: '150px' }}>
-            <Select size='small'>
+          <Space style={{ height: '150px' }}>
+            <span>Size：大</span>
+            <Select size='large'>
               <Select.Option value='option1'>option1</Select.Option>
               <Select.Option value='option2' disabled>
                 option2
               </Select.Option>
               <Select.Option value='option3'>option3</Select.Option>
             </Select>
-          </div>
+          </Space>
         </Demo.Block>
         <Demo.Block>
-          <div style={{ height: '150px' }}>
+          <Space style={{ height: '150px' }}>
+            <span>Size：默认</span>
             <Select>
               <Select.Option value='option1'>option1</Select.Option>
               <Select.Option value='option2'>option2</Select.Option>
               <Select.Option value='option3'>option3</Select.Option>
             </Select>
-          </div>
+          </Space>
         </Demo.Block>
         <Demo.Block>
-          <div style={{ height: '150px' }}>
-            <Select size='large'>
+          <Space style={{ height: '150px' }}>
+            <span>Size：小</span>
+            <Select size='small'>
               <Select.Option value='option1'>option1</Select.Option>
               <Select.Option value='option2'>option2</Select.Option>
               <Select.Option value='option3'>option3</Select.Option>
             </Select>
-          </div>
+            <span></span>
+          </Space>
         </Demo.Block>
         <Demo.Block title='自定义状态' description={<>使用 status 为 Select 添加状态，可选 error 或者 warning。</>}>
           <div style={{ height: '200px' }}>

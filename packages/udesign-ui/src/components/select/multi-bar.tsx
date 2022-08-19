@@ -85,6 +85,7 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
             ref={inputRef}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               const value = event.target.value;
+              context.onChange && context?.onChange(value);
               setSearchValue(value);
             }}
           />

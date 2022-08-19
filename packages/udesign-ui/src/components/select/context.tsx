@@ -23,12 +23,14 @@ export interface SelectContextState {
   value?: any[];
   defaultValue?: any[];
   name?: string;
-  onChange?: (value: string | number | any[]) => void;
+  onChange?: (value: string | string[]) => void;
+  onSelect?: (value: string | number | OptionItem) => void;
   dispatch?: React.Dispatch<actionType>;
   mode?: 'multiple';
   setVisible?: (visible: boolean) => void;
   options?: OptionItem[];
   disabled?: boolean;
+  autoFocus?: boolean;
 }
 
 export const SelectContext: Context<SelectContextState> = createContext({});
