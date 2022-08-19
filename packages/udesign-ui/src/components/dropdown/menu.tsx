@@ -20,7 +20,14 @@ export const Menu = (props: DropdownMenuProps) => {
           onClick,
         }}
       >
-        <ul className={cls}>{children}</ul>
+        <ul
+          className={cls}
+          onMouseDown={(event: React.MouseEvent<HTMLUListElement>) => {
+            event.preventDefault();
+          }}
+        >
+          {children}
+        </ul>
       </DropdownContext.Provider>
     </>
   );
