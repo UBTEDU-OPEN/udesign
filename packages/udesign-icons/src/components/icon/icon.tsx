@@ -5,11 +5,9 @@ import { NativeProps } from '../../utils';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-icon`;
 
-export type IconSize = Size | 'inherit';
-
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement>, NativeProps {
   svg: ReactNode; // 自定义图标svg。默认值：null
-  size?: IconSize; // 内置图标尺寸。默认值：'inherit'
+  size?: Size | 'inherit'; // 内置图标尺寸。默认值：'inherit'
   spin?: boolean; // 是否有旋转动画。默认值：false
 }
 

@@ -4,11 +4,11 @@ import { UpOutlined, DownOutlined, SearchOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { Option } from './option';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
-import { IconDelete } from './icon-delete';
 import { SelectContext, reducer, types } from './context';
 import { OptionItem } from './types';
 import { MultiBar } from './multi-bar';
 import { SingleBar } from './single-bar';
+import Close from '../close';
 
 export type CustomTagProps = {
   label?: React.ReactNode; // tag 显示内容。默认值：-
@@ -34,7 +34,7 @@ export type SelectProps = {
   showSearch?: boolean; // 使单选模式可搜索。默认值：false
   filterOption?: (searchValue: string, option: OptionItem) => boolean; // 是否根据输入项进行筛选。当其为一个函数时，会接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false。默认值：-
   placeholder?: string; // 选择框默认文本。默认值：-
-  clearIcon?: ReactNode; // 清除的图标(hover时显示)。默认值：<IconDelete />
+  clearIcon?: ReactNode; // 清除的图标(hover时显示)。默认值：<Close />
   autoFocus?: boolean; // todo
   placement?: string; // todo
   onClear?: () => void; // 清除内容时回调
@@ -63,7 +63,7 @@ export const Select = ({
   onSelect,
   onClear,
   autoFocus,
-  clearIcon = <IconDelete />,
+  clearIcon = <Close size='small' />,
   placeholder,
   ...restProps
 }: SelectProps) => {

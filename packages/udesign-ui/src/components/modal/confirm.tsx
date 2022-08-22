@@ -93,7 +93,7 @@ export function withWarning(props: ModalProps) {
 export function withConfirm(props: ModalProps) {
   return {
     type: 'confirm' as const,
-    icon: <InfoCircleFilled />,
+    icon: null,
     ...props,
   };
 }

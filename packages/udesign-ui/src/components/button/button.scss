@@ -24,6 +24,7 @@ $module: ud-button;
   background-color: transparent;
   background-image: none;
   appearance: button;
+  white-space: nowrap;
 
   &:focus {
     outline: none;
@@ -103,7 +104,7 @@ $module: ud-button;
     --button-color-light-hover: #{$button-color-warning-light-hover};
     --button-color-light-active: #{$button-color-warning-light-active};
   }
-  
+
   // 置灰版本禁用态
   // &-disabled {
   //   --button-color: #{$button-color-disabled};
@@ -133,7 +134,7 @@ $module: ud-button;
 
   &-icon-wrapper {
     display: flex;
-    height: 1.4em;
+    // height: 1.4em;
     align-items: center;
     justify-content: center;
     .#{$module}-icon-text {

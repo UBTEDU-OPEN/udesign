@@ -20,7 +20,11 @@ $modal-title-font-weight: var(--ud-modal-title-font-weight, 700); // 对话框ti
 $modal-title-color: var(--ud-modal-title-color, var(--ud-color-text-0)); // 对话框title颜色
 $modal-title-text-align: var(--ud-modal-title-text-align, center); // 对话框title对齐
 
-$modal-close-button-margin: var(--ud-modal-close-button-margin, 10px); // 对话框关闭按钮外边距
+$modal-header-icon-margin: var(--ud-modal-header-icon-margin, 10px); // 对话框header功能按钮间距
+$modal-header-leftArea-top: var(--ud-modal-header-leftArea-top, 10px); // 对话框header左侧内容位置-top
+$modal-header-leftArea-left: var(--ud-modal-header-leftArea-left, 10px); // 对话框header左侧内容位置-left
+$modal-header-rightArea-top: var(--ud-modal-header-rightArea-top, 10px); // 对话框header右侧内容位置-top
+$modal-header-rightArea-right: var(--ud-modal-header-rightArea-right, 10px); // 对话框header右侧内容位置-right
 
 $modal-header-margin: var(--ud-modal-header-margin, 40px 0 20px); // 对话框header外边距
 $modal-header-padding: var(--ud-modal-header-padding, 0); // 对话框header内边距

@@ -23,13 +23,6 @@ $module: ud-modal;
   display: flex;
   flex-direction: column;
 
-  &-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: $modal-close-button-margin;
-  }
-
   &-icon-wrapper {
     display: flex;
     justify-content: center;
@@ -47,6 +40,24 @@ $module: ud-modal;
   &-header {
     margin: $modal-header-margin;
     padding: $modal-header-padding;
+
+    &-left {
+      position: absolute;
+      top: $modal-header-leftArea-top;
+      left: $modal-header-leftArea-left;
+    }
+
+    &-right {
+      position: absolute;
+      top: $modal-header-rightArea-top;
+      right: $modal-header-rightArea-right;
+      display: flex;
+    }
+
+    &-icon {
+      margin-left: $modal-header-icon-margin;
+      cursor: pointer;
+    }
   }
 
   &-body {

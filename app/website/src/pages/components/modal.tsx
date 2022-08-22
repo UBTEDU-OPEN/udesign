@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Space, Button, Modal, Close } from '@ubt/udesign-ui';
+import { Space, Button, Modal, Toast } from '@ubt/udesign-ui';
 import { Size } from '@ubt/udesign-constants';
 import { Demo } from '../../demo';
 
@@ -26,7 +26,6 @@ export default function ModalPage() {
   const showConfirm = () => {
     confirm({
       title: '搜索结果',
-      icon: null,
       content: '附近没有机器人',
       maskStyle: { background: 'rgba(0,0,0,.7)' },
       onOk() {
@@ -41,7 +40,6 @@ export default function ModalPage() {
   const showPromiseConfirm = () => {
     confirm({
       title: '连接wifi',
-      icon: null,
       content: '正在搜索WiFi…',
       onOk() {
         return new Promise((resolve, reject) => {
@@ -59,7 +57,6 @@ export default function ModalPage() {
   const showDeleteConfirm = () => {
     confirm({
       title: '删除文件',
-      icon: null,
       content: '确认删除文件后不能恢复',
       onOk() {
         console.log('OK');
@@ -279,7 +276,6 @@ export default function ModalPage() {
               header={
                 <div className='p-5'>
                   <div className='font-bold'>对话框标题</div>
-                  <Close className='absolute top-2.5 right-2.5' onClick={() => setVisible14(false)} />
                 </div>
               }
             >
@@ -351,6 +347,79 @@ export default function ModalPage() {
               <img className='mx-auto' src='/demo.svg' alt='' />
               对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
             </Modal>
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='对话框顶部按钮' description='顶部按钮组合'>
+          <Space>
+            <Button
+              type='primary'
+              onClick={() =>
+                confirm({
+                  title: '对话框标题',
+                  content: '右侧有关闭按钮',
+                })
+              }
+            >
+              单关闭按钮
+            </Button>
+            <Button
+              type='primary'
+              onClick={() =>
+                confirm({
+                  title: '对话框标题',
+                  content: '页头左侧有返回按钮，右侧有关闭按钮',
+                  showBack: true,
+                  onBack: () => Toast('onBack'),
+                })
+              }
+            >
+              返回+关闭按钮
+            </Button>
+            <Button
+              type='primary'
+              onClick={() =>
+                confirm({
+                  title: '对话框标题',
+                  content: '右侧有关闭、缩小按钮',
+                  showMinus: true,
+                  onMinus: () => Toast('onMinus'),
+                })
+              }
+            >
+              关闭+缩小按钮
+            </Button>
+            <Button
+              type='primary'
+              onClick={() =>
+                confirm({
+                  title: '对话框标题',
+                  content: '页头左侧有返回按钮，右侧有关闭、缩小按钮',
+                  showBack: true,
+                  onBack: () => Toast('onBack'),
+                  showMinus: true,
+                  onMinus: () => Toast('onMinus'),
+                })
+              }
+            >
+              返回+关闭+缩小按钮
+            </Button>
+            <Button
+              type='primary'
+              onClick={() =>
+                confirm({
+                  title: '对话框标题',
+                  content: '页头左侧有返回按钮, 右侧有关闭、缩小、帮助按钮',
+                  showBack: true,
+                  onBack: () => Toast('onBack'),
+                  showHelp: true,
+                  onHelp: () => Toast('onHelp'),
+                  showMinus: true,
+                  onMinus: () => Toast('onMinus'),
+                })
+              }
+            >
+              返回+关闭+缩小+帮助按钮
+            </Button>
           </Space>
         </Demo.Block>
       </Demo.Page>

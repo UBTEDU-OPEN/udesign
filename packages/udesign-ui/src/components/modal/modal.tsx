@@ -1,5 +1,6 @@
 import React, { CSSProperties, ReactNode, useEffect } from 'react';
 import classNames from 'classnames';
+import { Icon } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
 import Mask from '../mask';
@@ -9,8 +10,11 @@ import Button, { ButtonProps } from '../button';
 import { ButtonType } from '../button/button';
 import LocaleConsumer from '../locale/consumer';
 import { Locale } from '../locale/interface';
-import Close from '../close';
 import Scrollbar from '../scrollbar';
+import Close from '../close';
+import Back from '../back';
+import Minus from '../minus';
+import Help from '../help';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-modal`;
 export const destroyFns: any[] = [];
@@ -50,6 +54,15 @@ export type ModalProps = {
   width?: number | string; // 自定义宽度。默认值：-
   zIndex?: number; // 遮罩的 z-index 值。默认值：1000
   showScrollbar?: boolean; // 是否使用内置滚动条。默认值：true
+  showBack?: boolean; // 是否显示左上角的回退按钮。默认值：false
+  backIcon?: ReactNode; //	自定义回退按钮的图标。默认值：-
+  onBack?: (e: React.MouseEvent) => void; // 点击回退按钮时的回调函数。默认值：-
+  showHelp?: boolean; // 是否显示右上角的缩小按钮。默认值：false
+  helpIcon?: ReactNode; //	自定义缩小按钮的图标。默认值：-
+  onHelp?: (e: React.MouseEvent) => void; // 点击缩小按钮时的回调函数。默认值：-
+  showMinus?: boolean; // 是否显示右上角的缩小按钮。默认值：false
+  minusIcon?: ReactNode; //	自定义缩小按钮的图标。默认值：-
+  onMinus?: (e: React.MouseEvent) => void; // 点击缩小按钮时的回调函数。默认值：-
   onCancel?: (e: React.MouseEvent) => void | Promise<any>; // 点击取消按钮或关闭按钮时的回调函数。默认值：-
   onOk?: (e: React.MouseEvent) => void | Promise<any>; // 点击确认按钮时的回调函数。默认值：-
 } & NativeProps;
@@ -84,12 +97,55 @@ export const Modal = (props: ModalProps) => {
     return icon ? <div className={`${prefixCls}-icon-wrapper`}>{icon}</div> : null;
   };
 
+  const renderBackBtn = () => {
+    const { showBack, backIcon, onBack, onCancel } = props;
+    const handleClick = (e: React.MouseEvent) => {
+      onCancel?.(e);
+      onBack?.(e);
+    };
+    return showBack ? (
+      <div className={`${prefixCls}-back`} onClick={handleClick}>
+        {backIcon ? <Icon size='middle' svg={backIcon} /> : <Back size='middle' />}
+      </div>
+    ) : null;
+  };
+
+  const renderHelpBtn = () => {
+    const { showHelp, helpIcon, onHelp, onCancel } = props;
+    const handleClick = (e: React.MouseEvent) => {
+      onCancel?.(e);
+      onHelp?.(e);
+    };
+    return showHelp ? (
+      <div className={`${prefixCls}-header-icon`} onClick={handleClick}>
+        {helpIcon ? <Icon size='middle' svg={helpIcon} /> : <Help size='middle' />}
+      </div>
+    ) : null;
+  };
+
+  const renderMinusBtn = () => {
+    const { showMinus, minusIcon, onMinus, onCancel } = props;
+    const handleClick = (e: React.MouseEvent) => {
+      onCancel?.(e);
+      onMinus?.(e);
+    };
+    return showMinus ? (
+      <div className={`${prefixCls}-header-icon`} onClick={handleClick}>
+        {minusIcon ? <Icon size='middle' svg={minusIcon} /> : <Minus size='middle' />}
+      </div>
+    ) : null;
+  };
+
   const renderCloseBtn = () => {
     const { closeable = true, closeIcon, onCancel } = props;
-    const handleClose = (e: React.MouseEvent) => {
+    const handleClick = (e: React.MouseEvent) => {
       onCancel?.(e);
     };
-    return closeable ? <div className={`${prefixCls}-close`}>{closeIcon ? <Button size='small' type='link' onClick={handleClose} icon={closeIcon} /> : <Close onClick={handleClose} />}</div> : null;
+    return closeable ? (
+      <div className={`${prefixCls}-header-icon`} onClick={handleClick}>
+        {closeIcon ? <Icon size='middle' svg={closeIcon} /> : <Close size='middle' />}
+      </div>
+    ) : null;
   };
 
   const renderHeader = () => {
@@ -98,13 +154,16 @@ export const Modal = (props: ModalProps) => {
     }
 
     const { title } = props;
-    const icon = renderIcon();
-    const closer = renderCloseBtn();
     return title === null || title === undefined ? null : (
       <div className={`${prefixCls}-header`}>
-        {icon}
+        {renderIcon()}
         <div className={`${prefixCls}-title`}>{title}</div>
-        {closer}
+        <div className={`${prefixCls}-header-left`}>{renderBackBtn()}</div>
+        <div className={`${prefixCls}-header-right`}>
+          {renderHelpBtn()}
+          {renderMinusBtn()}
+          {renderCloseBtn()}
+        </div>
       </div>
     );
   };
