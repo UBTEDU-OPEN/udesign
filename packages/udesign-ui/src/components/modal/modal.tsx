@@ -52,7 +52,7 @@ export type ModalProps = {
   title?: ReactNode; // 对话框的标题，未设置时，则不渲染默认的 header。默认值：-
   visible?: boolean; // 对话框是否可见。默认值：false
   width?: number | string; // 自定义宽度。默认值：-
-  zIndex?: number; // 遮罩的 z-index 值。默认值：1000
+  zIndex?: number; // 对话框的 z-index 值。默认值：1000
   showScrollbar?: boolean; // 是否使用内置滚动条。默认值：true
   showBack?: boolean; // 是否显示左上角的回退按钮。默认值：false
   backIcon?: ReactNode; //	自定义回退按钮的图标。默认值：-
@@ -98,22 +98,20 @@ export const Modal = (props: ModalProps) => {
   };
 
   const renderBackBtn = () => {
-    const { showBack, backIcon, onBack, onCancel } = props;
+    const { showBack, backIcon, onBack } = props;
     const handleClick = (e: React.MouseEvent) => {
-      onCancel?.(e);
       onBack?.(e);
     };
     return showBack ? (
-      <div className={`${prefixCls}-back`} onClick={handleClick}>
+      <div className={`${prefixCls}-header-icon`} onClick={handleClick}>
         {backIcon ? <Icon size='middle' svg={backIcon} /> : <Back size='middle' />}
       </div>
     ) : null;
   };
 
   const renderHelpBtn = () => {
-    const { showHelp, helpIcon, onHelp, onCancel } = props;
+    const { showHelp, helpIcon, onHelp } = props;
     const handleClick = (e: React.MouseEvent) => {
-      onCancel?.(e);
       onHelp?.(e);
     };
     return showHelp ? (
@@ -124,9 +122,8 @@ export const Modal = (props: ModalProps) => {
   };
 
   const renderMinusBtn = () => {
-    const { showMinus, minusIcon, onMinus, onCancel } = props;
+    const { showMinus, minusIcon, onMinus } = props;
     const handleClick = (e: React.MouseEvent) => {
-      onCancel?.(e);
       onMinus?.(e);
     };
     return showMinus ? (

@@ -52,10 +52,13 @@ $module: ud-modal;
       top: $modal-header-rightArea-top;
       right: $modal-header-rightArea-right;
       display: flex;
+
+      &-icon {
+        margin-left: $modal-header-icon-margin;
+      }
     }
 
     &-icon {
-      margin-left: $modal-header-icon-margin;
       cursor: pointer;
     }
   }
