@@ -53,7 +53,7 @@ $module: ud-modal;
       right: $modal-header-rightArea-right;
       display: flex;
 
-      &-icon {
+      .#{$module}-header-icon {
         margin-left: $modal-header-icon-margin;
       }
     }
