@@ -15,6 +15,7 @@ import Close from '../close';
 import Back from '../back';
 import Minus from '../minus';
 import Help from '../help';
+import DragM from './drgam';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-modal`;
 export const destroyFns: any[] = [];
@@ -152,16 +153,18 @@ export const Modal = (props: ModalProps) => {
 
     const { title } = props;
     return title === null || title === undefined ? null : (
-      <div className={`${prefixCls}-header`}>
-        {renderIcon()}
-        <div className={`${prefixCls}-title`}>{title}</div>
-        <div className={`${prefixCls}-header-left`}>{renderBackBtn()}</div>
-        <div className={`${prefixCls}-header-right`}>
-          {renderHelpBtn()}
-          {renderMinusBtn()}
-          {renderCloseBtn()}
+      <DragM updateTransform={updateTransform}>
+        <div className={`${prefixCls}-header`}>
+          {renderIcon()}
+          <div className={`${prefixCls}-title`}>{title}</div>
+          <div className={`${prefixCls}-header-left`}>{renderBackBtn()}</div>
+          <div className={`${prefixCls}-header-right`}>
+            {renderHelpBtn()}
+            {renderMinusBtn()}
+            {renderCloseBtn()}
+          </div>
         </div>
-      </div>
+      </DragM>
     );
   };
 
@@ -254,7 +257,7 @@ export const Modal = (props: ModalProps) => {
     return (
       <Portal getContainer={getContainer}>
         {renderMask()}
-        <div className={cls} style={mergedStyle}>
+        <div className={cls} style={mergedStyle} ref={modalRef}>
           {renderContent()}
         </div>
       </Portal>
@@ -262,6 +265,13 @@ export const Modal = (props: ModalProps) => {
   };
 
   return props.visible ? renderModal() : null;
+};
+let modalDom: HTMLDivElement;
+const modalRef = () => {
+  modalDom = document.getElementsByClassName('ud-modal-wrap')[0] as HTMLDivElement;
+};
+const updateTransform = (transformStr: string) => {
+  if (modalDom) modalDom.style.transform = transformStr;
 };
 
 Modal.displayName = 'Modal';
