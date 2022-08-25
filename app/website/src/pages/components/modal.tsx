@@ -20,6 +20,7 @@ export default function ModalPage() {
   const [visible12, setVisible12] = useState(false);
   const [visible13, setVisible13] = useState(false);
   const [visible14, setVisible14] = useState(false);
+  const [visible15, setVisible15] = useState(false);
 
   const { confirm } = Modal;
 
@@ -420,6 +421,16 @@ export default function ModalPage() {
             >
               返回+关闭+缩小+帮助按钮
             </Button>
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='可拖拽弹框' description='默认是关闭的。'>
+          <Space>
+            <Button type='primary' onClick={() => setVisible15(true)}>
+              Open Modal
+            </Button>
+            <Modal draggable mask={false} visible={visible15} title='对话框标题' onCancel={() => setVisible15(false)} onOk={() => setVisible15(false)}>
+              对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+            </Modal>
           </Space>
         </Demo.Block>
       </Demo.Page>

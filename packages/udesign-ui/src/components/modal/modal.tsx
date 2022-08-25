@@ -59,6 +59,7 @@ export type ModalProps = {
   backIcon?: ReactNode; //	自定义回退按钮的图标。默认值：-
   onBack?: (e: React.MouseEvent) => void; // 点击回退按钮时的回调函数。默认值：-
   showHelp?: boolean; // 是否显示右上角的缩小按钮。默认值：false
+  draggable?: boolean; // 是否开启拖拽。
   helpIcon?: ReactNode; //	自定义缩小按钮的图标。默认值：-
   onHelp?: (e: React.MouseEvent) => void; // 点击缩小按钮时的回调函数。默认值：-
   showMinus?: boolean; // 是否显示右上角的缩小按钮。默认值：false
@@ -153,18 +154,16 @@ export const Modal = (props: ModalProps) => {
 
     const { title } = props;
     return title === null || title === undefined ? null : (
-      <DragM updateTransform={updateTransform}>
-        <div className={`${prefixCls}-header`}>
-          {renderIcon()}
-          <div className={`${prefixCls}-title`}>{title}</div>
-          <div className={`${prefixCls}-header-left`}>{renderBackBtn()}</div>
-          <div className={`${prefixCls}-header-right`}>
-            {renderHelpBtn()}
-            {renderMinusBtn()}
-            {renderCloseBtn()}
-          </div>
+      <div className={`${prefixCls}-header`}>
+        {renderIcon()}
+        <div className={`${prefixCls}-title`}>{title}</div>
+        <div className={`${prefixCls}-header-left`}>{renderBackBtn()}</div>
+        <div className={`${prefixCls}-header-right`}>
+          {renderHelpBtn()}
+          {renderMinusBtn()}
+          {renderCloseBtn()}
         </div>
-      </DragM>
+      </div>
     );
   };
 
@@ -205,7 +204,7 @@ export const Modal = (props: ModalProps) => {
   };
 
   const renderContent = () => {
-    const { centered, className, fullscreen, size = 'small', width, height } = props;
+    const { centered, className, fullscreen, size = 'small', width, height, draggable = false } = props;
 
     const style: CSSProperties = {};
     if (width) {
@@ -232,7 +231,7 @@ export const Modal = (props: ModalProps) => {
 
     return (
       <div className={cls} style={style}>
-        {renderHeader()}
+        {draggable ? <DragM updateTransform={updateTransform}>{renderHeader()}</DragM> : renderHeader()}
         {renderBody()}
         {renderFooter()}
       </div>
