@@ -15,7 +15,9 @@ export default class DragM extends React.Component<DragMProps> {
     },
   };
 
+  // state = {
   tdom: HTMLElement | null = null;
+  // }
 
   position = {
     startX: 0,
@@ -51,6 +53,12 @@ export default class DragM extends React.Component<DragMProps> {
 
   componentDidMount() {
     this.tdom?.addEventListener('mousedown', this.start);
+    const rect = this.tdom?.parentElement?.getBoundingClientRect();
+    console.log(rect);
+    if (rect) {
+      this.position.dx = -(rect.width / 2);
+      this.position.dy = -(rect?.height / 2);
+    }
     // 用document移除对mousemove事件的监听
     document.addEventListener('mouseup', this.docMouseUp);
   }
