@@ -114,22 +114,22 @@ export const Tooltip = ({
   };
 
   useEffect(() => {
-    window.addEventListener('resize', throttle(updateCoords, 200));
-    return () => window.removeEventListener('resize', throttle(updateCoords, 200));
+    window.addEventListener('resize', updateCoords);
+    return () => window.removeEventListener('resize', updateCoords);
   }, []);
 
   useEffect(() => {
     // 父元素滚动条滚动时触发
-    triggerRef.current?.parentNode?.addEventListener('scroll', throttle(updateCoords, 500));
+    triggerRef.current?.parentNode?.addEventListener('scroll', updateCoords);
     return () => {
-      triggerRef.current?.parentNode?.removeEventListener('scroll', throttle(updateCoords, 500));
+      triggerRef.current?.parentNode?.removeEventListener('scroll', updateCoords);
     };
   }, []);
   useEffect(() => {
     // 页面滚动条滚动时触发
-    window.addEventListener('scroll', throttle(updateCoords, 500));
+    window.addEventListener('scroll', updateCoords);
     return () => {
-      window.removeEventListener('scroll', throttle(updateCoords, 500));
+      window.removeEventListener('scroll', updateCoords);
     };
   }, []);
 
@@ -139,39 +139,39 @@ export const Tooltip = ({
     const rect = getTriggerBounding();
     // 根据 placement 改变基准点
     const newCoords = {
-      left: rect.left,
-      top: rect.bottom,
+      left: rect?.left,
+      top: rect?.bottom,
     };
     switch (placement) {
       case 'bottomLeft':
       case 'leftBottom':
         break;
       case 'bottom':
-        newCoords.left += rect.width / 2;
+        newCoords.left += rect?.width / 2;
         break;
       case 'bottomRight':
       case 'rightBottom':
-        newCoords.left = rect.right;
+        newCoords.left = rect?.right;
         break;
       case 'topLeft':
       case 'leftTop':
-        newCoords.top = rect.top;
+        newCoords.top = rect?.top;
         break;
       case 'top':
-        newCoords.left += rect.width / 2;
-        newCoords.top = rect.top;
+        newCoords.left += rect?.width / 2;
+        newCoords.top = rect?.top;
         break;
       case 'topRight':
       case 'rightTop':
-        newCoords.left = rect.right;
-        newCoords.top = rect.top;
+        newCoords.left = rect?.right;
+        newCoords.top = rect?.top;
         break;
       case 'left':
-        newCoords.top -= rect.height / 2;
+        newCoords.top -= rect?.height / 2;
         break;
       case 'right':
-        newCoords.left = rect.right;
-        newCoords.top -= rect.height / 2;
+        newCoords.left = rect?.right;
+        newCoords.top -= rect?.height / 2;
         break;
       default:
         break;
