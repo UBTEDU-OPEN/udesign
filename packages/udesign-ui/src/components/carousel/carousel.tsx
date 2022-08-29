@@ -147,6 +147,7 @@ export const Carousel = React.forwardRef<CarouselRef, CarouselProps>(({ autoPlay
       [`${prefixCls}-icon-right-disabled`]: !loop && count === toArray(children).length - 1,
     });
     const handleClick = () => {
+      if (toArray(children).length === 1) return;
       if (init !== 'NaN') setInit('NaN');
       if (!loop) {
         if (count !== toArray(children).length - 1) {
