@@ -2,6 +2,7 @@ import React, { useContext, ReactNode, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
+import Input from '../input';
 import { SelectContext } from './context';
 import { OptionItem } from './types';
 import Tag from '../tag';
@@ -44,7 +45,6 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
   );
 
   const renderBar = () => {
-    if (selectedList.length === 0 && !visible) return <div className={`${prefixCls}-multi-placeholder`}>{placeholder}</div>;
     if (maxTagCount) {
       return (
         <React.Fragment>
@@ -62,6 +62,12 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
     visible && inputRef.current?.focus();
   }, [visible]);
 
+  useEffect(() => {
+    if (context?.autoFocus) {
+      inputRef.current?.focus();
+    }
+  }, []);
+
   return (
     <>
       <div className={`${prefixCls}-multi-box`}>
@@ -75,18 +81,18 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
         </div>
 
         {!context.disabled ? (
-          <input
+          <Input
             className={classNames({
               [`${prefixCls}-search`]: true,
               [`${prefixCls}-search-disabled`]: context.disabled,
             })}
+            placeholder={selectedList.length === 0 && !visible ? placeholder : ''}
             value={searchValue}
             type='text'
             ref={inputRef}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              const value = event.target.value;
-              context.onChange && context?.onChange(value);
-              setSearchValue(value);
+            onChange={(val: string) => {
+              context.onChange && context?.onChange(val);
+              setSearchValue(val);
             }}
           />
         ) : null}

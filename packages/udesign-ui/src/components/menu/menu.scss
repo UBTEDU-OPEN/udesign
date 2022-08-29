@@ -35,18 +35,22 @@ $module: ud-menu;
     border-right-color: $menu-item-border-color;
     border-right-width: $menu-item-border-width;
   }
+
   .#{$module}-item-border-hasLine-horizontal:hover:not(&-disabled) {
     border-bottom-color: $menu-item-border-color;
     border-bottom-width: $menu-item-border-width;
   }
+
   &-active {
     background: $menu-item-background-active;
     color: $menu-item-color-active;
   }
+
   &-active.#{$module}-item-border-hasLine-horizontal {
     border-bottom-color: $menu-item-border-color;
     border-bottom-width: $menu-item-border-width;
   }
+
   &-active.#{$module}-item-border-hasLine-vertical,
   &-active.#{$module}-item-border-hasLine-inline {
     border-right-color: $menu-item-border-color;
@@ -56,6 +60,7 @@ $module: ud-menu;
   &-item-link {
     border: none;
   }
+
   &-active.#{$module}-item-link {
     border: none;
   }
@@ -70,6 +75,7 @@ $module: ud-menu;
   background: $menu-submenu-background;
   overflow: hidden;
   width: 100%;
+
   &-horizontal {
     box-shadow: $menu-submenu-border-shadow;
     border-radius: $menu-submenu-border-radius;
@@ -91,6 +97,7 @@ $module: ud-menu;
     border-right-width: $menu-item-border-width;
     border-bottom-color: transparent;
   }
+
   .#{$module}-item.#{$module}-item-active {
     background-color: $menu-item-background-active;
   }
@@ -125,6 +132,7 @@ $module: ud-menu;
 .#{$module}-item-disabled {
   color: $menu-item-color-disabled;
   gap: $menu-horizontal-gap;
+  cursor: not-allowed;
 }
 
 .#{$module}-vertical {
@@ -144,6 +152,7 @@ $module: ud-menu;
   transition: all 0.2s;
   justify-content: center;
 }
+
 .#{$module}-item-radius {
   border-radius: $menu-item-border-radius;
 }
@@ -163,28 +172,35 @@ $module: ud-menu;
   flex-wrap: nowrap;
   overflow: hidden;
 }
+
 .#{$module}-submenu-header-focus {
   color: $menu-item-color-active;
 }
+
 .#{$module}-submenu-header-left {
   display: flex;
   align-content: center;
   flex-wrap: nowrap;
 }
+
 .#{$module}-submenu-body {
   padding-left: $menu-submenu-body-padding-left;
   background-color: $menu-inline-submenu-item-background;
+
   .#{$module}-item {
     background-color: $menu-inline-submenu-item-background;
   }
+
   .#{$module}-item-active {
     background-color: $menu-submenu-item-active-background;
   }
+
   .#{$module}-item:hover:not(.#{$module}-item-disabled) {
     background: $menu-submenu-item-hover-background;
     color: $menu-item-color-hover;
   }
 }
+
 .#{$module}-submenu-body-hidden {
   display: none;
 }
@@ -193,6 +209,7 @@ $module: ud-menu;
   background-color: transparent;
   margin: 0;
 }
+
 .#{$module}-item.#{$module}-item-horizontal:hover:not(.#{$module}-item-disabled) {
   background-color: transparent;
 }

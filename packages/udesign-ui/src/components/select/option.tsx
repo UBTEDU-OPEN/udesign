@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, ReactNode } from 'react';
 import classNames from 'classnames';
 import { CheckOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
@@ -7,13 +7,13 @@ import { SelectContext, types } from './context';
 
 export type OptionProps = {
   value?: string | number; // 默认根据此属性值进行筛选
-  label?: string; // 显示内容
+  label?: ReactNode | string; // 显示内容
   disabled?: boolean; // 是否禁用
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select-item`;
 
-export const Option = ({ label, disabled, className, children, style, value }: OptionProps) => {
+export const Option = ({ label, disabled = false, className, children, style, value }: OptionProps) => {
   const context = useContext(SelectContext);
   const [innerChecked, setInnerChecked] = useState<boolean>(context.defaultValue?.includes(value || '') || false);
   const getResult = () => {
