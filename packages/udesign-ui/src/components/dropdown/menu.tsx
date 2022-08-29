@@ -33,4 +33,4 @@ export const Menu = (props: DropdownMenuProps) => {
   );
 };
 
-Menu.displayName = 'DropdownMenu';
+Menu.displayName = 'Dropdown.Menu';

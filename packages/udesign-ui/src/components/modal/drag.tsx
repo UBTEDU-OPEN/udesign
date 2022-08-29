@@ -1,23 +1,19 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 
-type DragMProps = {
-  updateTransform: (transformStr: string, tx: number, ty: number, tdom: HTMLElement) => void;
-  // tdom: HTMLElement;
+export type DragProps = {
+  updateTransform: (transformStr: string, tx: number, ty: number, target: HTMLElement) => void;
   children?: React.ReactNode;
 };
 
-export default class DragM extends React.Component<DragMProps> {
+export default class Drag extends React.Component<DragProps> {
   static defaultProps = {
-    // 默认是移动children dom,覆盖该方法，可以把tranform行为同步给外部
-    updateTransform: (transformStr: string, tx: number, ty: number, tdom: HTMLElement) => {
-      tdom.style.transform = transformStr;
+    // 默认是移动children dom,覆盖该方法，可以把transform行为同步给外部
+    updateTransform: (transformStr: string, tx: number, ty: number, target: HTMLElement) => {
+      target.style.transform = transformStr;
     },
   };
 
-  // state = {
-  tdom: HTMLElement | null = null;
-  // }
+  target: HTMLElement | null = null;
 
   position = {
     startX: 0,
@@ -30,7 +26,7 @@ export default class DragM extends React.Component<DragMProps> {
 
   start = (event: MouseEvent) => {
     if (event.button !== 0) {
-      // 只允许左键，右键问题在于不选择conextmenu就不会触发mouseup事件
+      // 只允许左键，右键问题在于不选择contextmenu就不会触发mouseup事件
       return;
     }
     document.addEventListener('mousemove', this.docMove);
@@ -42,7 +38,7 @@ export default class DragM extends React.Component<DragMProps> {
     const tx = event.pageX - this.position.startX;
     const ty = event.pageY - this.position.startY;
     const transformStr = `translate(${tx}px,${ty}px)`;
-    this.props.updateTransform(transformStr, tx, ty, this.tdom as HTMLElement);
+    this.props.updateTransform(transformStr, tx, ty, this.target as HTMLElement);
     this.position.dx = tx;
     this.position.dy = ty;
   };
@@ -52,9 +48,8 @@ export default class DragM extends React.Component<DragMProps> {
   };
 
   componentDidMount() {
-    this.tdom?.addEventListener('mousedown', this.start);
-    const rect = this.tdom?.parentElement?.getBoundingClientRect();
-    console.log(rect);
+    this.target?.addEventListener('mousedown', this.start);
+    const rect = this.target?.parentElement?.getBoundingClientRect();
     if (rect) {
       this.position.dx = -(rect.width / 2);
       this.position.dy = -(rect?.height / 2);
@@ -64,7 +59,7 @@ export default class DragM extends React.Component<DragMProps> {
   }
 
   componentWillUnmount() {
-    this.tdom?.removeEventListener('mousedown', this.start);
+    this.target?.removeEventListener('mousedown', this.start);
     document.removeEventListener('mouseup', this.docMouseUp);
     document.removeEventListener('mousemove', this.docMove);
   }
@@ -73,8 +68,8 @@ export default class DragM extends React.Component<DragMProps> {
     const { children } = this.props;
     const newStyle = { cursor: 'move', userSelect: 'none' };
     return React.cloneElement(children as React.ReactElement, {
-      ref: (tdom: HTMLElement) => {
-        this.tdom = tdom;
+      ref: (target: HTMLElement) => {
+        this.target = target;
       },
       style: newStyle,
     });

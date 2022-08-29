@@ -15,7 +15,7 @@ import Close from '../close';
 import Back from '../back';
 import Minus from '../minus';
 import Help from '../help';
-import DragM from './drgam';
+import Drag from './drag';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-modal`;
 export const destroyFns: any[] = [];
@@ -231,7 +231,7 @@ export const Modal = (props: ModalProps) => {
 
     return (
       <div className={cls} style={style}>
-        {draggable ? <DragM updateTransform={updateTransform}>{renderHeader()}</DragM> : renderHeader()}
+        {draggable ? <Drag updateTransform={updateTransform}>{renderHeader()}</Drag> : renderHeader()}
         {renderBody()}
         {renderFooter()}
       </div>

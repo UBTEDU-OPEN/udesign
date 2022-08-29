@@ -423,7 +423,7 @@ export default function ModalPage() {
             </Button>
           </Space>
         </Demo.Block>
-        <Demo.Block title='可拖拽弹框' description='默认是关闭的。'>
+        <Demo.Block title='可拖拽弹框' description='通过 draggable 开启对话框的拖拽功能。'>
           <Space>
             <Button type='primary' onClick={() => setVisible15(true)}>
               Open Modal
