@@ -114,22 +114,15 @@ export const Tooltip = ({
   };
 
   useEffect(() => {
-    window.addEventListener('resize', updateCoords);
-    return () => window.removeEventListener('resize', updateCoords);
+    window.addEventListener('resize', updateCoords, false);
+    return () => window.removeEventListener('resize', updateCoords, false);
   }, []);
 
   useEffect(() => {
-    // 父元素滚动条滚动时触发
-    triggerRef.current?.parentNode?.addEventListener('scroll', updateCoords);
-    return () => {
-      triggerRef.current?.parentNode?.removeEventListener('scroll', updateCoords);
-    };
-  }, []);
-  useEffect(() => {
     // 页面滚动条滚动时触发
-    window.addEventListener('scroll', updateCoords);
+    window.addEventListener('scroll', updateCoords, true);
     return () => {
-      window.removeEventListener('scroll', updateCoords);
+      window.removeEventListener('scroll', updateCoords, true);
     };
   }, []);
 
