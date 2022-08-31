@@ -21,7 +21,6 @@ export const Submenu = ({ title, children, icon, subMode, subActive, name = '', 
 
   const renderInline = () => {
     if (onlyOne) {
-      console.log(subActiveKey);
       let active = subActiveKey === name;
       const handleClick = () => {
         context?.handleClick?.(name);

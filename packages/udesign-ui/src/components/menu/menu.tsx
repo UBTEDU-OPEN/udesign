@@ -40,7 +40,6 @@ export const Menu = ({ isCollapsed = false, mode = 'vertical', hasLine, onlyOne,
     setSubActiveKey(name);
   };
   const subClick = (name: string, item: string) => {
-    console.log(name, item);
     setAffectedByChildrenSubActiveKey(item);
   };
 
