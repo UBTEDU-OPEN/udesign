@@ -3,6 +3,7 @@ import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { SelectContext } from './context';
 import { OptionItem } from './types';
+import Input from '../input';
 
 export type SingleBarProps = {
   searchValue: string; // 搜索框输入的值
@@ -12,11 +13,12 @@ export type SingleBarProps = {
   options?: OptionItem[]; // 下拉列表options
   innerDefaultValue?: string[] | number[]; // 默认选中的value
   placeholder?: string; // 选择框默认文本
+  onClick?: (e: MouseEvent) => void;
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
-export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearch, options = [], innerDefaultValue = [], placeholder }: SingleBarProps) => {
+export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearch, options = [], innerDefaultValue = [], placeholder, onClick }: SingleBarProps) => {
   const context = useContext(SelectContext);
   const searchRef = useRef<HTMLInputElement>(null);
   const getSingleLabel = (value: string | number, options: OptionItem[] = []) => {
@@ -34,25 +36,25 @@ export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearc
       searchRef.current?.focus();
     }
   }, [visible]);
+
   useEffect(() => {
-    if (context.autoFocus) searchRef.current?.focus();
-  });
+    if (context?.autoFocus) {
+      searchRef.current?.focus();
+    }
+  }, []);
   return (
     <React.Fragment>
       {visible && showSearch ? (
-        <div className={`${prefixCls}-single-text`}>
-          <input
-            ref={searchRef}
-            className={`${prefixCls}-search`}
-            value={searchValue}
-            type='text'
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              const value = event.target.value;
-              context.onChange && context?.onChange(value);
-              setSearchValue(value);
-            }}
-          />
-        </div>
+        <Input
+          ref={searchRef}
+          className={`${prefixCls}-search`}
+          value={searchValue}
+          type='text'
+          onChange={(val: string) => {
+            context.onChange && context?.onChange(val);
+            setSearchValue(val);
+          }}
+        />
       ) : (
         <div className={`${prefixCls}-single-text`}>
           <div className={`${prefixCls}-single-text-content`}>{getSingleLabel((context.value || [])[0], options) || getSingleLabel(innerDefaultValue[0], options) || <div className={`${prefixCls}-single-placeholder`}>{placeholder}</div>}</div>

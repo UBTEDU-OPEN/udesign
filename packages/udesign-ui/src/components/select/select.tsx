@@ -1,7 +1,8 @@
 import React, { useReducer, useEffect, useState, useRef, ReactNode } from 'react';
 import classNames from 'classnames';
-import { UpOutlined, DownOutlined, SearchOutlined } from '@ubt/udesign-icons';
+import { DownOutlined, SearchOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
+import Tooltip from '../tooltip';
 import { Option } from './option';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
 import { SelectContext, reducer, types } from './context';
@@ -11,16 +12,17 @@ import { SingleBar } from './single-bar';
 import Close from '../close';
 
 export type CustomTagProps = {
-  label?: React.ReactNode; // tag 显示内容。默认值：-
+  label?: React.ReactNode | string; // tag 显示内容。默认值：-
   value?: string | number; // tag value。默认值：-
   disabled?: boolean; // 是否禁用。默认值：false
-  onClose?: (data: { value: string; label: ReactNode }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭时回调。默认值：-
+  onClose?: (data: { value: string; label: ReactNode | string }, event: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 关闭时回调。默认值：-
   closeable?: boolean; // 是否显示关闭按钮。默认值：false
 };
 
 export type SelectProps = {
   options?: OptionItem[]; // 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能。默认值：-
   size?: Size; // 选择框大小。默认值：middle
+  arrowIcon?: ReactNode; // 自定义右侧下拉箭头Icon，当showClear开关打开且当前有选中值时，hover会优先显示clear icon
   onChange?: (value: string | number | any[]) => void; // 选中 option，调用此函数。默认值：-
   value?: string | number | any[]; // 指定当前选中的条目，多选时为一个数组。默认值：-
   defaultValue?: string | number | any[]; // 指定默认选中的条目。默认值：-
@@ -35,8 +37,8 @@ export type SelectProps = {
   filterOption?: (searchValue: string, option: OptionItem) => boolean; // 是否根据输入项进行筛选。当其为一个函数时，会接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false。默认值：-
   placeholder?: string; // 选择框默认文本。默认值：-
   clearIcon?: ReactNode; // 清除的图标(hover时显示)。默认值：<Close />
-  autoFocus?: boolean; // todo
-  placement?: string; // todo
+  autoFocus?: boolean; // 初始渲染时是否自动 focus。默认值：false
+  placement?: 'top' | 'bottom'; // 改变下拉菜单出现的位置。默认值：'bottom'
   onClear?: () => void; // 清除内容时回调
   onSelect?: (value: string | number | OptionItem) => void; // 被选中时调用，参数为选中项的 value (或 key) 值
   // onDropdownVisibleChange?: () => void; // todo
@@ -65,6 +67,7 @@ export const Select = ({
   autoFocus,
   clearIcon = <Close size='small' />,
   placeholder,
+  placement = 'bottom',
   ...restProps
 }: SelectProps) => {
   const cls = classNames(
@@ -98,9 +101,9 @@ export const Select = ({
       result = restProps.options || [];
     } else if (children) {
       if (Array.isArray(children)) {
-        result = children.map((item: any) => ({ value: item.props.value, label: item.props.children || item.props.label }));
+        result = children.map((item: any) => ({ value: item.props.value, label: item.props.children || item.props.label, disabled: item.props.disabled }));
       } else {
-        result = [{ value: children.props.value, label: children.props.children || children.props.label }];
+        result = [{ value: children.props.value, label: children.props.children || children.props.label, disabled: children.props.disabled }];
       }
     }
     return result;
@@ -139,7 +142,7 @@ export const Select = ({
   useEffect(() => {
     if (autoFocus) setVisible(!visible);
   }, []);
-  const handleClose = (data: { value: string | number; label: ReactNode }, event: React.MouseEvent<HTMLElement>) => {
+  const handleClose = (data: { value: string | number; label: ReactNode | string }, event: React.MouseEvent<HTMLElement>) => {
     dispatch({
       type: types.UPDATE_VALUE,
       payload: {
@@ -179,11 +182,17 @@ export const Select = ({
     };
     const fn = filterOption || defaultFilterOption;
     return (
-      <div className={listWrapper} style={getWidthStyle()}>
+      <div
+        className={listWrapper}
+        style={getWidthStyle()}
+        onMouseDown={(event: React.MouseEvent<HTMLDivElement>) => {
+          event.preventDefault();
+        }}
+      >
         {getOptions()
           ?.filter((item: OptionItem) => fn(searchValue, item))
           .map((item: OptionItem) => (
-            <Option key={item.value} value={item.value}>
+            <Option key={item.value} value={item.value} {...item}>
               {item.label}
             </Option>
           ))}
@@ -197,14 +206,15 @@ export const Select = ({
 
   const renderIcon = () => {
     if (mode !== 'multiple' && showSearch && visible) {
-      return <SearchOutlined />;
+      return (
+        <div className={iconCls}>
+          <SearchOutlined />
+        </div>
+      );
     }
 
     if (showClear) {
       return clearIcon;
-    }
-    if (visible) {
-      return <UpOutlined style={{ color: '#7284FB' }} />;
     }
 
     if (disabled) {
@@ -245,33 +255,55 @@ export const Select = ({
   useEffect(() => {
     setSelectedList(getOptions().filter((item: OptionItem) => state.value.includes(item.value)));
   }, [state.value]);
+
+  const renderSelect = () => (
+    <div className={cls} onClick={handleClick} style={updateStyle()} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+      <div
+        className={iconCls}
+        onClick={() => {
+          if (disabled) return;
+          dispatch({
+            type: types.UPDATE_VALUE,
+            payload: {
+              value: [],
+            },
+          });
+          onClear?.();
+          onChange?.('');
+        }}
+      >
+        {renderIcon()}
+      </div>
+      {mode !== 'multiple' ? (
+        <SingleBar searchValue={searchValue} visible={visible} setSearchValue={setSearchValue} showSearch={showSearch} options={getOptions()} innerDefaultValue={innerDefaultValue} placeholder={placeholder} />
+      ) : (
+        <MultiBar searchValue={searchValue} visible={visible} setSearchValue={setSearchValue} maxTagCount={maxTagCount} selectedList={selectedList} tagRender={tagRender} handleClose={handleClose} placeholder={placeholder} />
+      )}
+    </div>
+  );
+
   return (
     <>
       <SelectContext.Provider value={{ value: state.value, onChange, dispatch, defaultValue: innerDefaultValue, mode, setVisible, disabled, onSelect, autoFocus }}>
         <div className={`${prefixCls}-wrapper`} style={getWidthStyle()} ref={triggerRef}>
-          <div className={cls} onClick={handleClick} style={updateStyle()} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-            <div
-              className={iconCls}
-              onClick={() => {
-                dispatch({
-                  type: types.UPDATE_VALUE,
-                  payload: {
-                    value: [],
-                  },
-                });
-                onClear?.();
-                onChange?.('');
+          {disabled ? (
+            renderSelect()
+          ) : (
+            <Tooltip
+              prefixCls={`${prefixCls}-tooltip`}
+              content={renderOptions()}
+              placement={placement}
+              showArrow={false}
+              className={`${prefixCls}-inner`}
+              trigger={`${showSearch ? 'focus' : 'click'}`}
+              clickToHide
+              onVisibleChange={(e) => {
+                setVisible(e);
               }}
             >
-              {renderIcon()}
-            </div>
-            {mode !== 'multiple' ? (
-              <SingleBar searchValue={searchValue} setSearchValue={setSearchValue} visible={visible} showSearch={showSearch} options={getOptions()} innerDefaultValue={innerDefaultValue} placeholder={placeholder} />
-            ) : (
-              <MultiBar searchValue={searchValue} setSearchValue={setSearchValue} visible={visible} maxTagCount={maxTagCount} selectedList={selectedList} tagRender={tagRender} handleClose={handleClose} placeholder={placeholder} />
-            )}
-          </div>
-          {visible ? renderOptions() : null}
+              {renderSelect()}
+            </Tooltip>
+          )}
         </div>
       </SelectContext.Provider>
     </>

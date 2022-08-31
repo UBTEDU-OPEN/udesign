@@ -6,7 +6,16 @@ $module: ud-select;
   position: relative;
 }
 
+.#{$module}-inner {
+  .#{$module}-tooltip {
+    padding: 0;
+    color: #6A7078;
+    background: #fff;
+  }
+}
+
 .#{$module} {
+
   width: $select-width;
   height: $select-height;
   background: rgb(var(--ud-white));
@@ -17,6 +26,7 @@ $module: ud-select;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
+  overflow: hidden;
 
   &-large {
     width: $select-width-large;
@@ -69,7 +79,7 @@ $module: ud-select;
       flex-grow: 1;
       display: flex;
       justify-content: flex-start;
-      padding-left: $select-padding-left;
+      padding: $select-padding;
       align-items: center;
       overflow: hidden;
 
@@ -115,11 +125,10 @@ $module: ud-select;
       width: 100%;
       text-align: center;
       display: flex;
-      justify-content: center;
       align-items: center;
       cursor: pointer;
 
-      &:hover {
+      &:hover:not(.#{$module}-item-disabled) {
         background: $select-item-background-hover;
         color: $select-item-color-hover;
       }
@@ -159,14 +168,12 @@ $module: ud-select;
 
 
   &-list-wrapper {
-    position: absolute;
     background: rgb(var(--ud-white));
     box-shadow: 0 7px 18px 0 rgba(198, 199, 219, 0.84);
     border-radius: 8px;
     overflow-y: scroll;
     width: $select-width;
-    max-height: $select-list-max-height;
-    top: $select-list-top;
+    max-height: 200px;
     z-index: 99;
     @include scroll;
 
@@ -186,13 +193,20 @@ $module: ud-select;
     outline: none;
     width: 6px;
     height: 100%;
-    padding: 0 1px;
     flex-grow: 1;
-    padding-left: $select-padding-left;
+    padding: $select-padding;
     cursor: pointer;
 
     &-disabled {
       cursor: not-allowed;
     }
+
+    border: $select-item-input-border;
+
+    &.ud-input-wrapper.ud-input-wrapper-focused:not(.ud-input-wrapper-with-prepend):not(.ud-input-wrapper-with-append) {
+      border-color: $select-item-input-border-focus;
+      background: $select-item-input-background-focus;
+    }
   }
+
 }
