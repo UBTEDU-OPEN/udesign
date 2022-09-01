@@ -7,8 +7,6 @@ import { BASE_CLASS_PREFIX, Status } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-textarea`;
 
-type TextAreaStatus = Status;
-
 export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'prefix' | 'style' | 'onChange'>, NativeProps {
   value?: string; // 输入框内容。默认值：-
   defaultValue?: string; // 输入框内容默认值。默认值：''
@@ -16,7 +14,7 @@ export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTex
   disabled?: boolean; // 是否禁用。默认值：false
   showClear?: boolean; // 可以点击清除图标删除内容。默认值：false
   showCount?: boolean; // 是否展示字数。默认值：false
-  status?: TextAreaStatus; // 校验状态，可选值default、error、warning，仅影响展示样式。默认值：default
+  status?: Status; // 校验状态，仅影响展示样式。默认值：normal
   maxLength?: number; // 内容最大长度。默认值：-
   textAreaStyle?: React.CSSProperties; // 输入框的样式。默认值：-
   onChange?: (value: string) => void; // 输入框内容变化时的回调。默认值：-

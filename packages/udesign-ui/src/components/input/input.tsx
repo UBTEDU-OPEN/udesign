@@ -19,7 +19,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   showCount?: boolean; // 是否展示字数。默认值：false
   size?: Size; // 输入框大小。默认值：middle
   shape?: Shape; // 输入框形状。默认值：circle
-  status?: Status; // 校验状态，可选值default、error、warning。仅影响展示样式。默认值：default
+  status?: Status; // 校验状态，仅影响展示样式。默认值：normal
   maxLength?: number; // 内容最大长度。默认值：-
   underlined?: boolean; // 是否横线式的输入框。默认值：-
   inputStyle?: React.CSSProperties; // 输入框的样式。默认值：-

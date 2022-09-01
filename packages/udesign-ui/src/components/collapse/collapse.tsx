@@ -16,11 +16,11 @@ type CollapseProps = {
   onChange?: (activeKey: string | string[]) => void; // 展开/收起时的回调。默认值：-
 } & NativeProps;
 
-export const Collapse = ({ accordion = false, activeKey, defaultActiveKey, expandIcon = <UpOutlined />, closeIcon = <DownOutlined />, children, onChange, style, className }: CollapseProps) => {
-  const cls = classNames(prefixCls, className);
+export const Collapse = (props: CollapseProps) => {
+  const { accordion, defaultActiveKey = '', expandIcon = <UpOutlined />, closeIcon = <DownOutlined />, children, onChange, style, className } = props;
 
   const initActiveKey = () => {
-    let activeKeyList = activeKey || defaultActiveKey;
+    let activeKeyList = props.activeKey || defaultActiveKey;
     if (accordion) {
       activeKeyList = Array.isArray(activeKeyList) ? activeKeyList[0] : activeKeyList;
     }
@@ -36,16 +36,18 @@ export const Collapse = ({ accordion = false, activeKey, defaultActiveKey, expan
     let newSet = new Set(activeSet);
     if (newSet.has(name)) {
       newSet.delete(name);
-    } else if (!newSet.has(name)) {
-      if (accordion) {
-        newSet = new Set([name]);
-      } else {
-        newSet.add(name);
-      }
+    } else if (accordion) {
+      newSet = new Set([name]);
+    } else {
+      newSet.add(name);
     }
-    setActiveSet(newSet);
+    if (typeof props.activeKey === 'undefined') {
+      setActiveSet(newSet);
+    }
     onChange?.(name);
   };
+
+  const cls = classNames(prefixCls, className);
 
   return (
     <>

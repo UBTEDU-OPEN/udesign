@@ -204,7 +204,7 @@ export const Modal = (props: ModalProps) => {
   };
 
   const renderContent = () => {
-    const { centered, className, fullscreen, size = 'small', width, height, draggable = false } = props;
+    const { centered, fullscreen, size = 'small', width, height, draggable = false } = props;
 
     const style: CSSProperties = {};
     if (width) {
@@ -219,15 +219,11 @@ export const Modal = (props: ModalProps) => {
     //   style.margin = 'unset';
     // }
 
-    const cls = classNames(
-      prefixCls,
-      {
-        [`${prefixCls}-fullscreen`]: fullscreen,
-        [`${prefixCls}-centered`]: centered,
-        [`${prefixCls}-${size}`]: size,
-      },
-      className,
-    );
+    const cls = classNames(prefixCls, {
+      [`${prefixCls}-fullscreen`]: fullscreen,
+      [`${prefixCls}-centered`]: centered,
+      [`${prefixCls}-${size}`]: size,
+    });
 
     return (
       <div className={cls} style={style}>

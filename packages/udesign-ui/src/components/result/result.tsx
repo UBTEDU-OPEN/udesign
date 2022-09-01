@@ -8,7 +8,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-result`;
 
 export type ResultProps = {
   icon?: ReactNode; // 自定义 icon。默认值：-
-  status?: Status | '404' | '403' | '500'; // 结果的状态，决定图标和颜色。默认值：info
+  status?: Status | '404' | '403' | '500'; // 结果的状态，决定图标和颜色。默认值：normal
   title?: ReactNode; // 标题文字。默认值：-
   subtitle?: ReactNode; // 副标题文字。默认值：-
 } & NativeProps;
