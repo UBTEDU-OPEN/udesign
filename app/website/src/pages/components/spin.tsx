@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Divider, Space, Spin, Switch } from '@ubt/udesign-ui';
+import { Divider, Space, Spin, Switch, Button } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 
 export default function SpinPage() {
+  const { showLoading, hideLoading } = Spin;
+
   const [loading, setLoading] = useState(false);
   const [spin, setSpin] = useState(false);
 
@@ -62,6 +64,16 @@ export default function SpinPage() {
             Loading state：
             <Switch onClick={delayToggle} checked={loading} />
           </div>
+        </Demo.Block>
+        <Demo.Block title='全局加载' description='加载位置全局剧中，默认时长1s，超时关闭'>
+          <Space>
+            <Button onClick={() => showLoading({})} type='primary'>
+              show Spin
+            </Button>
+            <Button onClick={() => hideLoading()} type='primary'>
+              hide Spin
+            </Button>
+          </Space>
         </Demo.Block>
       </Demo.Page>
     </div>
