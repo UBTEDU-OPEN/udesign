@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { DownOutlined, UpOutlined } from '@ubt/udesign-icons';
 import CollapseContext from './context';
@@ -18,6 +18,10 @@ type CollapseProps = {
 
 export const Collapse = (props: CollapseProps) => {
   const { accordion, defaultActiveKey = '', expandIcon = <UpOutlined />, closeIcon = <DownOutlined />, children, onChange, style, className } = props;
+
+  useEffect(() => {
+    setActiveSet(new Set(initActiveKey()));
+  }, [props.activeKey]);
 
   const initActiveKey = () => {
     let activeKeyList = props.activeKey || defaultActiveKey;
