@@ -106,4 +106,11 @@ $module: ud-spin;
   height: $spin-height-global;
   border-radius: $spin-border-radius-global;
   box-shadow: $spin-box-shadow-global;
+
+  .#{$module}-wrapper {
+    display: flex;
+    width: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
