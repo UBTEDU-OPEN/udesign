@@ -4,7 +4,7 @@ import { DownOutlined, SearchOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import Tooltip from '../tooltip';
 import { Option } from './option';
-import { BASE_CLASS_PREFIX, Size } from '../../constants';
+import { BASE_CLASS_PREFIX, Size, Trigger } from '../../constants';
 import { SelectContext, reducer, types } from './context';
 import { OptionItem } from './types';
 import { MultiBar } from './multi-bar';
@@ -295,7 +295,7 @@ export const Select = ({
               placement={placement}
               showArrow={false}
               className={`${prefixCls}-inner`}
-              trigger={`${showSearch ? 'focus' : 'click'}`}
+              trigger={`${showSearch ? 'focus' : 'click'}` as Trigger}
               clickToHide
               onVisibleChange={(e) => {
                 setVisible(e);
