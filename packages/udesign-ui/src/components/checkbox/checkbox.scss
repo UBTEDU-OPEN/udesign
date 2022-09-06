@@ -9,6 +9,7 @@ $module: ud-checkbox;
 .#{$module} {
   padding: $checkbox-padding;
   display: inline-flex;
+  cursor: pointer;
 
   &-disabled {
     cursor: not-allowed;
