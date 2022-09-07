@@ -10,6 +10,7 @@ $module: ud-radio;
   padding: $radio-padding;
   display: inline-flex;
   align-self: flex-start;
+  cursor: pointer;
 
   &-hidden {
     opacity: 0;
@@ -25,13 +26,15 @@ $module: ud-radio;
       color: $radio-disabled-color;
     }
   }
+  &-disabled {
+    cursor: not-allowed;
+  }
 }
 
 .#{$module} {
   &-button {
     display: flex;
     margin: $radio-button-margin;
-
 
     &-hidden {
       opacity: 0;
@@ -68,10 +71,7 @@ $module: ud-radio;
       border: $radio-button-border;
       cursor: not-allowed;
     }
-
-
   }
-
 }
 
 .#{$module}-icon {

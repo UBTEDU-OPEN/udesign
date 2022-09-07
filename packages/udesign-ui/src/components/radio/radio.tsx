@@ -70,7 +70,7 @@ export const Radio = ({ defaultChecked = false, disabled, checkedIcon = <RadioFi
     return disabled && innerChecked && <span className={cls}>{checkedIcon}</span>;
   };
 
-  const cls = classNames(prefixCls, className);
+  const cls = classNames(prefixCls, { [`${prefixCls}-disabled`]: disabled }, className);
 
   return (
     <>
