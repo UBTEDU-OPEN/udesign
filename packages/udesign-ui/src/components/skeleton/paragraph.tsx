@@ -36,9 +36,11 @@ export const Paragraph = ({ width = ['100%', '100%', '60%'], rows = 3, size = 'm
 
   return (
     <>
-      {[...Array(rows)].map((_, index) => (
-        <div key={index} className={cls} style={{ ...style, width: getWidth(index) }}></div>
-      ))}
+      {Array(rows)
+        .fill(1)
+        .map((_, index) => (
+          <div key={index} className={cls} style={{ ...style, width: getWidth(index) }}></div>
+        ))}
     </>
   );
 };
