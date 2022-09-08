@@ -39,7 +39,7 @@ export const DesignToken = (props: DesignTokenProps) => {
       setDesignToken(window?.__ud__?.designToken);
     } else {
       (async (): Promise<void> => {
-        const { data: designTokenFromServer } = await axios.get('/designToken.json');
+        const { data: designTokenFromServer } = await axios.get(`${process.env.UDESIGN_BASE_PATH ? process.env.UDESIGN_BASE_PATH : ''}/designToken.json`);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         window.__ud__ = {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Typography, Divider } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { Img } from '../../components';
 
 export default function GridPage() {
   return (
@@ -15,7 +16,7 @@ export default function GridPage() {
             划分之后的信息区块我们称之为『盒子』。建议横向排列的盒子数量最多四个，最少一个。『盒子』在整个屏幕上占比见上图。设计部分基于盒子的单位定制盒子内部的排版规则，以保证视觉层面的舒适感。
             <br />
             <br />
-            <img src='/grid.svg' />
+            <Img src='/grid.svg' />
           </>
         }
       />
@@ -264,16 +265,16 @@ export default function GridPage() {
           sub-element align center
         </Divider>
         <Row justify='center' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
         </Row>
@@ -281,16 +282,16 @@ export default function GridPage() {
           sub-element align right
         </Divider>
         <Row justify='end' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
         </Row>
@@ -298,16 +299,16 @@ export default function GridPage() {
           sub-element align arrangement
         </Divider>
         <Row justify='space-between' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
         </Row>
@@ -315,16 +316,16 @@ export default function GridPage() {
           sub-element align full
         </Divider>
         <Row justify='space-around' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
         </Row>
@@ -332,16 +333,16 @@ export default function GridPage() {
           sub-element align evenly
         </Divider>
         <Row justify='space-evenly' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             col-4
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             col-4
           </Col>
         </Row>
@@ -351,16 +352,16 @@ export default function GridPage() {
           Align Top
         </Divider>
         <Row justify='center' align='top' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             <p style={{ height: '20px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             <p style={{ height: '100px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             <p style={{ height: '80px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             <p style={{ height: '50px' }}>col-4</p>
           </Col>
         </Row>
@@ -368,16 +369,16 @@ export default function GridPage() {
           Align Middle
         </Divider>
         <Row justify='space-around' align='middle' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             <p style={{ height: '20px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             <p style={{ height: '100px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             <p style={{ height: '80px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             <p style={{ height: '50px' }}>col-4</p>
           </Col>
         </Row>
@@ -385,16 +386,16 @@ export default function GridPage() {
           Align Bottom
         </Divider>
         <Row justify='space-between' align='bottom' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             <p style={{ height: '20px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             <p style={{ height: '100px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             <p style={{ height: '80px' }}>col-4</p>
           </Col>
-          <Col span={4} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             <p style={{ height: '50px' }}>col-4</p>
           </Col>
         </Row>
@@ -404,16 +405,16 @@ export default function GridPage() {
           Normal
         </Divider>
         <Row className='text-center text-white'>
-          <Col span={6} order={4} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={6} order={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             1 col-order-4
           </Col>
-          <Col span={6} order={3} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={6} order={3} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             2 col-order-3
           </Col>
-          <Col span={6} order={2} className='py-4 py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Col span={6} order={2} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
             3 col-order-2
           </Col>
-          <Col span={6} order={1} className='py-4 py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+          <Col span={6} order={1} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
             4 col-order-1
           </Col>
         </Row>

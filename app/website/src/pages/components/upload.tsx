@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Upload, Button } from '@ubt/udesign-ui';
 import { UploadFilled, LoadingOutlined, PlusOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { Img } from '../../components';
 
 export default function TablePage() {
   const [fileList, setFileList] = useState<any[]>([]);
@@ -70,6 +71,7 @@ export default function TablePage() {
         </Demo.Block>
         <Demo.Block title='单张图片上传'>
           <Upload
+            accept='image/*'
             onChange={(event: any) => {
               getBase64(event.target.files[0], (url: string) => {
                 setImgUrl(url);
@@ -79,7 +81,7 @@ export default function TablePage() {
             <div className='w-40 h-40 rounded-xl' style={{ background: '#F4F4F6' }}>
               {imgUrl ? (
                 <React.Fragment>
-                  <img src={imgUrl} alt='' className='w-40 h-40 rounded-xl' />
+                  <Img src={imgUrl} alt='' className='w-40 h-40 rounded-xl' />
                 </React.Fragment>
               ) : (
                 <React.Fragment>
@@ -98,10 +100,11 @@ export default function TablePage() {
           <div className='flex flex-1'>
             {[...pictures].map((item: any, index: number) => (
               <div className='mb-2.5 mr-2.5' key={item.name}>
-                <img src={pictures[index]} alt='' className='w-40 h-40 rounded-xl' />
+                <Img src={pictures[index]} alt='' className='w-40 h-40 rounded-xl' />
               </div>
             ))}
             <Upload
+              accept='image/*'
               onChange={(event: any) => {
                 getBase64(event.target.files[0], (url: string) => {
                   setPicture([...pictures, url]);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Space, Button, Modal, Toast } from '@ubt/udesign-ui';
 import { Size } from '@ubt/udesign-constants';
 import { Demo } from '../../demo';
+import { Img } from '../../components';
 
 export default function ModalPage() {
   const [size, setSize] = useState<Size>('small');
@@ -345,7 +346,7 @@ export default function ModalPage() {
               图文对话框
             </Button>
             <Modal hasCancel={false} size='middle' visible={visible10} title='对话框标题' onCancel={() => setVisible10(false)} onOk={() => setVisible10(false)}>
-              <img className='mx-auto' src='/demo.svg' alt='' />
+              <Img className='mx-auto' src='/demo.svg' alt='' />
               对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
             </Modal>
           </Space>
