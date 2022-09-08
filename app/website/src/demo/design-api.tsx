@@ -41,7 +41,7 @@ export const DesignAPI = (props: DesignAPIProps) => {
       setDesignAPI(window?.__ud__?.designApi);
     } else {
       (async (): Promise<void> => {
-        const { data: designApiFromServer } = await axios.get('/designApi.json');
+        const { data: designApiFromServer } = await axios.get(`${process.env.UDESIGN_BASE_PATH ? process.env.UDESIGN_BASE_PATH : ''}/designApi.json`);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         window.__ud__ = {

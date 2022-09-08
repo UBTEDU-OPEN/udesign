@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Select, Space, Tag } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { Img } from '../../components';
 
 export type CustomTagProps = {
   label?: React.ReactNode; // tag 显示内容
@@ -118,25 +119,25 @@ export default function SelectPage() {
               <Select mode='multiple' style={{ width: '500px' }} allowClear maxTagCount={2} placeholder='请选择'>
                 <Select.Option value='option1'>
                   <div className='flex items-center'>
-                    <img src='/icon_cn.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
+                    <Img src='/icon_cn.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
                     <div style={{ display: 'flex', alignItems: 'center' }}>中国</div>
                   </div>
                 </Select.Option>
                 <Select.Option value='option2'>
                   <div className='flex items-center'>
-                    <img src='/icon_us.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
+                    <Img src='/icon_us.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
                     <div style={{ display: 'flex', alignItems: 'center' }}>美国</div>
                   </div>
                 </Select.Option>
                 <Select.Option value='option3'>
                   <div className='flex items-center'>
-                    <img src='/icon_gl.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
+                    <Img src='/icon_gl.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
                     <div style={{ display: 'flex', alignItems: 'center' }}>全球</div>
                   </div>
                 </Select.Option>
                 <Select.Option value='option4'>
                   <div className='flex items-center'>
-                    <img src='/icon_bl.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
+                    <Img src='/icon_bl.svg' style={{ width: '34xp', height: '24px', marginRight: '10px' }} />
                     <div style={{ display: 'flex', alignItems: 'center' }}>波兰</div>
                   </div>
                 </Select.Option>

@@ -1,30 +1,47 @@
+/* eslint-disable camelcase */
 import React, { useRef } from 'react';
 import { Space, Carousel, Button } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import icon_ip from '../../../public/icon_ip.svg';
+import icon_wifi from '../../../public/icon_wifi.svg';
+import icon_bluetooth from '../../../public/icon_bluetooth.svg';
+
+const itemsData = [
+  {
+    name: '蓝牙 1',
+    image: icon_bluetooth,
+  },
+  {
+    name: 'WIFI 2',
+    image: icon_wifi,
+  },
+  {
+    name: '蓝牙 3',
+    image: icon_bluetooth,
+  },
+  {
+    name: 'IP 4',
+    image: icon_ip,
+  },
+];
 
 export default function ButtonPage() {
   const ref = useRef<any>();
 
-  const items = (url: string, name: string) => (
-    <div className='h-full text-center'>
-      <div className='inline-block'>
-        <img src={url} alt='' />
-        <span className='text-sm'>{name}</span>
+  const renderItems = () =>
+    itemsData.map((item, index) => (
+      <div className='h-full text-center' key={index}>
+        {Array(4)
+          .fill(1)
+          .map((_, key) => (
+            <div className='inline-block' key={key}>
+              <img src={item.image} alt='' />
+              <span className='text-sm'>{item.name}</span>
+            </div>
+          ))}
       </div>
-      <div className='inline-block'>
-        <img src={url} alt='' />
-        <span className='text-sm'>{name}</span>
-      </div>
-      <div className='inline-block'>
-        <img src={url} alt='' />
-        <span className='text-sm'>{name}</span>
-      </div>
-      <div className='inline-block'>
-        <img src={url} alt='' />
-        <span className='text-sm'>{name}</span>
-      </div>
-    </div>
-  );
+    ));
+
   return (
     <>
       <Demo.Page title='Carousel 走马灯' description='旋转木马，一组轮播的区域。'>
@@ -41,41 +58,27 @@ export default function ButtonPage() {
         />
         <Demo.Block title='基本使用' description='当图片或者卡片超过4个，需要启动轮播展示。'>
           <Space justify='center'>
-            <Carousel ref={ref} style={{ height: '174px', width: '516px', '--ud-carousel-icon-left': '-60px', '--ud-carousel-icon-right': '-60px' }}>
-              {items('/icon_bluetooth.svg', '蓝牙 1')}
-              {items('/icon_wifi.svg', 'WIFI 2')}
-              {items('/icon_bluetooth.svg', '蓝牙 3')}
-              {items('/icon_ip.svg', 'IP 4')}
-            </Carousel>
+            <Carousel style={{ height: '174px', width: '516px', '--ud-carousel-icon-left': '-60px', '--ud-carousel-icon-right': '-60px' }}>{renderItems()}</Carousel>
           </Space>
         </Demo.Block>
         <Demo.Block title='不进行循环切换' description='当图片或者卡片达到最后一个或第一个,不会再切换。'>
           <Space justify='center'>
-            <Carousel ref={ref} loop={false} style={{ height: '174px', width: '516px', '--ud-carousel-icon-left': '-60px', '--ud-carousel-icon-right': '-60px' }}>
-              {items('/icon_bluetooth.svg', '蓝牙 1')}
-              {items('/icon_wifi.svg', 'WIFI 2')}
-              {items('/icon_bluetooth.svg', '蓝牙 3')}
-              {items('/icon_ip.svg', 'IP 4')}
+            <Carousel loop={false} style={{ height: '174px', width: '516px', '--ud-carousel-icon-left': '-60px', '--ud-carousel-icon-right': '-60px' }}>
+              {renderItems()}
             </Carousel>
           </Space>
         </Demo.Block>
         <Demo.Block title='自动轮播' description='当图片或者卡片超过4个，需要启动轮播展示。'>
           <Space justify='center'>
             <Carousel loop={true} autoPlay={{ interval: 1500 }} style={{ height: '174px', width: '516px', '--ud-carousel-icon-left': '-60px', '--ud-carousel-icon-right': '-60px' }}>
-              {items('/icon_bluetooth.svg', '蓝牙 1')}
-              {items('/icon_wifi.svg', 'WIFI 2')}
-              {items('/icon_bluetooth.svg', '蓝牙 3')}
-              {items('/icon_ip.svg', 'IP 4')}
+              {renderItems()}
             </Carousel>
           </Space>
         </Demo.Block>
         <Demo.Block title='调用函数进行切换' description='prev()：上一个；next()：下一个；goTo( index : number )：跳到制指定图片(轮播图片或卡片索引从0开始)；'>
           <Space justify='center'>
             <Carousel ref={ref} loop={false} style={{ height: '174px', width: '516px', '--ud-carousel-icon-left': '-60px', '--ud-carousel-icon-right': '-60px' }}>
-              {items('/icon_bluetooth.svg', '蓝牙 1')}
-              {items('/icon_wifi.svg', 'WIFI 2')}
-              {items('/icon_bluetooth.svg', '蓝牙 3')}
-              {items('/icon_ip.svg', 'IP 4')}
+              {renderItems()}
             </Carousel>
           </Space>
 

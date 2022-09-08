@@ -1,6 +1,11 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { Empty } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import icon_empty_1 from '../../../public/icon_empty_1.svg';
+import icon_empty_2 from '../../../public/icon_empty_2.svg';
+import icon_empty_3 from '../../../public/icon_empty_3.svg';
+import icon_empty_4 from '../../../public/icon_empty_4.svg';
 
 export default function EmptyPage() {
   return (
@@ -14,16 +19,16 @@ export default function EmptyPage() {
           <Empty description={null} />
         </Demo.Block>
         <Demo.Block title='自定义图片' description='可以通过 image 自定义图片。'>
-          <Empty image={<img src='/icon_empty_1.svg' />} />
+          <Empty image={<img src={icon_empty_1} />} />
         </Demo.Block>
         <Demo.Block>
-          <Empty image={<img src='/icon_empty_2.svg' />} />
+          <Empty image={<img src={icon_empty_2} />} />
         </Demo.Block>
         <Demo.Block>
-          <Empty image={<img src='/icon_empty_3.svg' />} />
+          <Empty image={<img src={icon_empty_3} />} />
         </Demo.Block>
         <Demo.Block>
-          <Empty image={<img src='/icon_empty_4.svg' />} />
+          <Empty image={<img src={icon_empty_4} />} />
         </Demo.Block>
         <Demo.Block title='自定义文案' description='自定义描述空状态的文案。 '>
           <Empty description='老师还没有为你安排学习计划～' />

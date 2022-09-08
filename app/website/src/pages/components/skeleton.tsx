@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Space, Divider, Skeleton, Switch } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { Img } from '../../components';
 
 export default function SkeletonPage() {
   const [active, setActive] = useState(true);
@@ -156,7 +157,7 @@ export default function SkeletonPage() {
                   <div style={{ color: '#25303F', fontSize: '18px' }}>帖子标题帖子标题帖子标题帖子标题，帖子标题帖子标题帖子标题显示到最后一…</div>
                   <div>小伙子我看你骨骼清奇，天庭饱满，并非凡人，乃是百年不遇的奇才，我们公会缺人150Q币，来不来？</div>
                   <div className='flex'>
-                    <img style={{ width: '26px', height: '26px', borderRadius: '100%', marginRight: '10px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/timg%2Cjpg_1606101400880' />
+                    <Img style={{ width: '26px', height: '26px', borderRadius: '100%', marginRight: '10px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/timg%2Cjpg_1606101400880' />
                     <div style={{ lineHeight: '26px' }}>超级小熊布迪</div>
                   </div>
                   <Divider />
@@ -166,18 +167,18 @@ export default function SkeletonPage() {
                         <div style={{ color: '#25303F', fontSize: '18px' }}>帖子标题帖子标题帖子标题帖子标题，帖子标题…</div>
                         <div>小伙子我看你骨骼清奇，天庭饱满，并非凡人，乃是，来不来？</div>
                         <div className='flex'>
-                          <img style={{ width: '26px', height: '26px', borderRadius: '100%', marginRight: '10px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/timg%2Cjpg_1606101400880' />
+                          <Img style={{ width: '26px', height: '26px', borderRadius: '100%', marginRight: '10px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/timg%2Cjpg_1606101400880' />
                           <div style={{ lineHeight: '26px' }}>超级小熊布迪</div>
                         </div>
                       </Space>
                     </div>
-                    <img style={{ width: '162px', borderRadius: '4px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/activity/aPw2GoflP8-1654518271841_416x249@1x.jpg' alt='' />
+                    <Img style={{ width: '162px', borderRadius: '4px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/activity/aPw2GoflP8-1654518271841_416x249@1x.jpg' alt='' />
                   </div>
                   <Divider />
                   <div style={{ color: '#25303F', fontSize: '18px' }}>正经帖子标题</div>
                   <div>正经帖子正文，至少8个字以上</div>
                   <div className='flex'>
-                    <img style={{ width: '26px', height: '26px', borderRadius: '100%', marginRight: '10px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/timg%2Cjpg_1606101400880' />
+                    <Img style={{ width: '26px', height: '26px', borderRadius: '100%', marginRight: '10px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/timg%2Cjpg_1606101400880' />
                     <div style={{ lineHeight: '26px' }}>超级小熊布迪</div>
                   </div>
                   <Divider />
@@ -187,12 +188,12 @@ export default function SkeletonPage() {
                         <div style={{ color: '#25303F', fontSize: '18px' }}>正经帖子标题</div>
                         <div>正经帖子正文，至少8个字以上。还是带封面的，封面截取视频的。</div>
                         <div className='flex'>
-                          <img style={{ width: '26px', height: '26px', borderRadius: '100%', marginRight: '10px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/timg%2Cjpg_1606101400880' />
+                          <Img style={{ width: '26px', height: '26px', borderRadius: '100%', marginRight: '10px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/timg%2Cjpg_1606101400880' />
                           <div style={{ lineHeight: '26px' }}>超级小熊布迪</div>
                         </div>
                       </Space>
                     </div>
-                    <img style={{ width: '162px', borderRadius: '4px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/activity/aPw2GoflP8-1654518271841_416x249@1x.jpg' alt='' />
+                    <Img style={{ width: '162px', borderRadius: '4px' }} src='https://ubtrobot-edu.oss-cn-shenzhen.aliyuncs.com/activity/aPw2GoflP8-1654518271841_416x249@1x.jpg' alt='' />
                   </div>
                   <Divider />
                 </Space>

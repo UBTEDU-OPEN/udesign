@@ -2,7 +2,7 @@ const withImages = require('next-images');
 
 const withTM = require('next-transpile-modules')(['@ubt/udesign-ui', '@ubt/udesign-icons']);
 
-const basePath = process.env.UDESIGN_BASE_PATH || "";
+const basePath = process.env.UDESIGN_BASE_PATH || '';
 
 module.exports = withTM(
   withImages({
