@@ -3,6 +3,7 @@ import lodash from 'lodash';
 import axios from 'axios';
 import { Result } from '@ubt/udesign-ui';
 import classNames from 'classnames';
+import { useRouter } from 'next/router';
 
 interface Token {
   key: string;
@@ -22,6 +23,7 @@ export type DesignAPIProps = {
 };
 
 export const DesignAPI = (props: DesignAPIProps) => {
+  const router = useRouter();
   const [componentName, setComponentName] = useState(props.componentName?.toLowerCase());
   const [designApi, setDesignAPI] = useState<DesignAPI>({});
 
@@ -41,7 +43,7 @@ export const DesignAPI = (props: DesignAPIProps) => {
       setDesignAPI(window?.__ud__?.designApi);
     } else {
       (async (): Promise<void> => {
-        const { data: designApiFromServer } = await axios.get(`${process.env.UDESIGN_BASE_PATH ? process.env.UDESIGN_BASE_PATH : ''}/designApi.json`);
+        const { data: designApiFromServer } = await axios.get(`${router.basePath}/designApi.json`);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         window.__ud__ = {

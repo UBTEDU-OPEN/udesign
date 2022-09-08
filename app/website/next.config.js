@@ -1,3 +1,6 @@
+const webpack = require('webpack');
+const pkg = require('./package.json');
+
 const withImages = require('next-images');
 
 const withTM = require('next-transpile-modules')(['@ubt/udesign-ui', '@ubt/udesign-icons']);
@@ -10,5 +13,15 @@ module.exports = withTM(
     reactStrictMode: true,
     trailingSlash: true,
     basePath,
+    webpack: (config, options) => {
+      // Perform customizations to config
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          'process.env.UDESIGN_VERSION': JSON.stringify(pkg.version),
+        }),
+      );
+      // Important: return the modified config
+      return config;
+    },
   }),
 );

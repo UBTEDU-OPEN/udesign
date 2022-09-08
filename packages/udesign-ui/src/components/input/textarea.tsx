@@ -10,7 +10,6 @@ const prefixCls = `${BASE_CLASS_PREFIX}-textarea`;
 export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'prefix' | 'style' | 'onChange'>, NativeProps {
   value?: string; // 输入框内容。默认值：-
   defaultValue?: string; // 输入框内容默认值。默认值：''
-  autoSize?: boolean; // TODO: 是否自适应内容高度。默认值false：
   disabled?: boolean; // 是否禁用。默认值：false
   showClear?: boolean; // 可以点击清除图标删除内容。默认值：false
   showCount?: boolean; // 是否展示字数。默认值：false

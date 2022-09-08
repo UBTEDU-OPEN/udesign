@@ -16,7 +16,7 @@ const Index = () => (
           <Button>开始使用</Button>
         </a>
       </Space>
-      <div className='mt-5 text-gray-500'>当前版本：v1.1.9</div>
+      {process.env.UDESIGN_VERSION ? <div className='mt-5 text-gray-500'>当前版本：v{process.env.UDESIGN_VERSION}</div> : null}
     </div>
   </div>
 );

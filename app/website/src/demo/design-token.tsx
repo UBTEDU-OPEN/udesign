@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import lodash from 'lodash';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import classNames from 'classnames';
 import { SITE_NAME } from '../constants/site';
 
 interface Token {
@@ -20,6 +22,7 @@ export type DesignTokenProps = {
 };
 
 export const DesignToken = (props: DesignTokenProps) => {
+  const router = useRouter();
   const [componentName, setComponentName] = useState(props.componentName?.toLowerCase());
   const [designToken, setDesignToken] = useState<DesignToken>({});
 
@@ -39,7 +42,7 @@ export const DesignToken = (props: DesignTokenProps) => {
       setDesignToken(window?.__ud__?.designToken);
     } else {
       (async (): Promise<void> => {
-        const { data: designTokenFromServer } = await axios.get(`${process.env.UDESIGN_BASE_PATH ? process.env.UDESIGN_BASE_PATH : ''}/designToken.json`);
+        const { data: designTokenFromServer } = await axios.get(`${router.basePath}/designToken.json`);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         window.__ud__ = {
@@ -53,22 +56,23 @@ export const DesignToken = (props: DesignTokenProps) => {
     }
   }, []);
 
-  const renderTable = () =>
-    designToken && componentName && designToken[componentName] ? (
+  const renderTable = () => {
+    const cls = 'border border-bottom p-4';
+    return designToken && componentName && designToken[componentName] ? (
       <table className='w-full text-left'>
         <thead>
           <tr>
-            <th>变量</th>
-            <th>默认值</th>
-            <th>说明</th>
+            <th className={classNames(cls, 'bg-gray-100')}>变量</th>
+            <th className={classNames(cls, 'bg-gray-100')}>说明</th>
+            <th className={classNames(cls, 'bg-gray-100')}>默认值</th>
           </tr>
         </thead>
         <tbody>
           {designToken[componentName].map((item, index) => (
             <tr className='hover:bg-indigo-50' key={index}>
               <td className='border border-bottom p-4'>{item.key}</td>
-              <td className='border border-bottom p-4'>{item.value}</td>
               <td className='border border-bottom p-4'>{item.comment}</td>
+              <td className='border border-bottom p-4'>{item.value}</td>
             </tr>
           ))}
         </tbody>
@@ -76,6 +80,7 @@ export const DesignToken = (props: DesignTokenProps) => {
     ) : (
       <div className='text-indigo-500'>当前组件没有可使用的 CSS 变量，或者开发者没有正确编写导致无法显示。</div>
     );
+  };
 
   return (
     <section className='mb-10'>
