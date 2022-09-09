@@ -23,7 +23,7 @@ $module: ud-carousel;
     }
 
     .#{$module}-item-active {
-        visibility: visible;
+        visibility: inherit;
     }
 
     .#{$module}-item-left-enter-animation {
