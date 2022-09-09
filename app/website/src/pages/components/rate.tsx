@@ -2,6 +2,7 @@ import React from 'react';
 import { Rate, Space } from '@ubt/udesign-ui';
 import { SmileOutlined, HeartFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
@@ -55,3 +56,5 @@ export default function RadioPage() {
     </>
   );
 }
+
+RadioPage.getLayout = getLayout;

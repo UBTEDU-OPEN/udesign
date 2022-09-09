@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { Select, Space, Tag } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 import { Img } from '../../components';
+import { getLayout } from '../../demo/getLayout';
 
 export type CustomTagProps = {
   label?: React.ReactNode; // tag 显示内容
@@ -269,3 +270,5 @@ export default function SelectPage() {
     </div>
   );
 }
+
+SelectPage.getLayout = getLayout;

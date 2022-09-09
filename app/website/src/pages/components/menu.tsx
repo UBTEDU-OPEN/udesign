@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, Button } from '@ubt/udesign-ui';
 import { FolderOutlined, PictureFilled, VoiceFilled, DataFilled, MenuOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function MenuPage() {
   const Submenu = (
@@ -190,3 +191,5 @@ export default function MenuPage() {
     </>
   );
 }
+
+MenuPage.getLayout = getLayout;

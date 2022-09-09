@@ -1,8 +1,9 @@
 import React from 'react';
 import { Space, Calendar } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
-export default function ButtonPage() {
+export default function CalendarPage() {
   return (
     <>
       <Demo.Page title='Calendar 日历' description='按照日历形式展示数据的容器。'>
@@ -21,3 +22,5 @@ export default function ButtonPage() {
     </>
   );
 }
+
+CalendarPage.getLayout = getLayout;

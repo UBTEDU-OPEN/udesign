@@ -6,6 +6,7 @@ import icon_empty_1 from '../../../public/icon_empty_1.svg';
 import icon_empty_2 from '../../../public/icon_empty_2.svg';
 import icon_empty_3 from '../../../public/icon_empty_3.svg';
 import icon_empty_4 from '../../../public/icon_empty_4.svg';
+import { getLayout } from '../../demo/getLayout';
 
 export default function EmptyPage() {
   return (
@@ -40,3 +41,5 @@ export default function EmptyPage() {
     </>
   );
 }
+
+EmptyPage.getLayout = getLayout;

@@ -3,12 +3,13 @@ import { Button, Space } from '@ubt/udesign-ui';
 import { SettingFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 import { SITE_NAME } from '../../constants/site';
+import { getLayout } from '../../demo/getLayout';
 
 export default function ButtonPage() {
   const [loading, setLoading] = useState<boolean>(true);
   return (
     <>
-      <Demo.Page title='Button 按钮' description='按钮用于开始一个即时操作。'>
+      <Demo.Page title='Button 按钮' description='标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。'>
         <Demo.Block title='何时使用' description='标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。' />
         <Demo.Block
           title='按钮类型'
@@ -277,3 +278,5 @@ export default function ButtonPage() {
     </>
   );
 }
+
+ButtonPage.getLayout = getLayout;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Divider, Space, Spin, Switch, Button } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function SpinPage() {
   const { showLoading, hideLoading } = Spin;
@@ -79,3 +80,5 @@ export default function SpinPage() {
     </div>
   );
 }
+
+SpinPage.getLayout = getLayout;

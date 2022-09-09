@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Pagination, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function PaginationPage() {
   const [total, setTotal] = useState(500);
@@ -51,3 +52,5 @@ export default function PaginationPage() {
     </>
   );
 }
+
+PaginationPage.getLayout = getLayout;

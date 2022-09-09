@@ -5,6 +5,7 @@ import { Demo } from '../../demo';
 import icon_ip from '../../../public/icon_ip.svg';
 import icon_wifi from '../../../public/icon_wifi.svg';
 import icon_bluetooth from '../../../public/icon_bluetooth.svg';
+import { getLayout } from '../../demo/getLayout';
 
 const itemsData = [
   {
@@ -25,7 +26,7 @@ const itemsData = [
   },
 ];
 
-export default function ButtonPage() {
+export default function CarouselPage() {
   const ref = useRef<any>();
 
   const renderItems = () =>
@@ -110,3 +111,5 @@ export default function ButtonPage() {
     </>
   );
 }
+
+CarouselPage.getLayout = getLayout;

@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { Button, Space, Tooltip, Input } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function TooltipPage() {
   const [visible, setVisible] = useState<boolean>(true);
@@ -100,3 +101,5 @@ export default function TooltipPage() {
     </>
   );
 }
+
+TooltipPage.getLayout = getLayout;

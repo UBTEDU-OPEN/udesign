@@ -2,6 +2,7 @@ import React from 'react';
 import { Space, Badge } from '@ubt/udesign-ui';
 import { HintFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 const Avatar = () => <div className='w-20 h-20 bg-indigo-100'></div>;
 
@@ -97,3 +98,5 @@ export default function BadgePage() {
     </>
   );
 }
+
+BadgePage.getLayout = getLayout;

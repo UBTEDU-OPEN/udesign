@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Checkbox, Row, Col, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function CheckboxPage() {
   const [checked, setChecked] = useState<boolean>(false);
@@ -155,3 +156,5 @@ export default function CheckboxPage() {
     </div>
   );
 }
+
+CheckboxPage.getLayout = getLayout;

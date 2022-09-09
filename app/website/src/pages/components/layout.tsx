@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Layout, Typography, Breadcrumb, Menu, Scrollbar } from '@ubt/udesign-ui';
 import { LeftOutlined, PictureFilled, VoiceFilled, DataFilled, MenuOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 const { Header, Footer, Content, Sider } = Layout;
 
@@ -20,7 +21,7 @@ export default function LayoutPage() {
     setCollapsed(!value);
   };
   return (
-    <div>
+    <>
       <Demo.Page title='Layout 布局' description='协助进行页面级整体布局。'>
         <Demo.Block title='设计规则'></Demo.Block>
         <Demo.Block
@@ -580,6 +581,8 @@ export default function LayoutPage() {
           </div>
         </Demo.Block>
       </Demo.Page>
-    </div>
+    </>
   );
 }
+
+LayoutPage.getLayout = getLayout;

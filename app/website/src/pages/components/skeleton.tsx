@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Space, Divider, Skeleton, Switch } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 import { Img } from '../../components';
+import { getLayout } from '../../demo/getLayout';
 
 export default function SkeletonPage() {
   const [active, setActive] = useState(true);
@@ -251,3 +252,5 @@ export default function SkeletonPage() {
     </div>
   );
 }
+
+SkeletonPage.getLayout = getLayout;

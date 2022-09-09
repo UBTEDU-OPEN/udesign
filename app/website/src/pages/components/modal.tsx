@@ -3,6 +3,7 @@ import { Space, Button, Modal, Toast } from '@ubt/udesign-ui';
 import { Size } from '@ubt/udesign-constants';
 import { Demo } from '../../demo';
 import { Img } from '../../components';
+import { getLayout } from '../../demo/getLayout';
 
 export default function ModalPage() {
   const [size, setSize] = useState<Size>('small');
@@ -438,3 +439,5 @@ export default function ModalPage() {
     </>
   );
 }
+
+ModalPage.getLayout = getLayout;
