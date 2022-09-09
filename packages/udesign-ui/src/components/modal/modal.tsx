@@ -226,7 +226,13 @@ export const Modal = (props: ModalProps) => {
     });
 
     return (
-      <div className={cls} style={style}>
+      <div
+        className={cls}
+        style={{
+          ...style,
+          ...props.style,
+        }}
+      >
         {draggable ? <Drag updateTransform={updateTransform}>{renderHeader()}</Drag> : renderHeader()}
         {renderBody()}
         {renderFooter()}
