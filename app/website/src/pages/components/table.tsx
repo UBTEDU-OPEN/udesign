@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { Table, Radio, Tooltip, Pagination } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 interface column {
   title: string;
@@ -224,3 +225,5 @@ export default function TablePage() {
     </div>
   );
 }
+
+TablePage.getLayout = getLayout;

@@ -1,16 +1,13 @@
 import React from 'react';
 import { Button, Space, Toast } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function ToastPage() {
   return (
     <>
       <Demo.Page title='Toast 轻提示' description='非模态弹出提示。'>
-        <Demo.Block
-          title='何时使用'
-          description='需要提醒用户，但不会打断用户操作。会自动消失，是一种不打断用户操作的轻量级提示方式。
-可提供反馈信息，一般情况文案字数较少。'
-        ></Demo.Block>
+        <Demo.Block title='何时使用' description='需要提醒用户，但不会打断用户操作。会自动消失，是一种不打断用户操作的轻量级提示方式。可提供反馈信息，一般情况文案字数较少。' />
         <Demo.Block title='基础用法' description='默认的提示'>
           <Space wrap>
             <Button onClick={() => Toast('请先勾选同意隐私协议、服务条款')} type='primary'>
@@ -81,3 +78,5 @@ export default function ToastPage() {
     </>
   );
 }
+
+ToastPage.getLayout = getLayout;

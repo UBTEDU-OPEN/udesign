@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Result } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 import { Img } from '../../components';
+import { getLayout } from '../../demo/getLayout';
 
 export default function ResultPage() {
   return (
@@ -48,3 +49,5 @@ export default function ResultPage() {
     </>
   );
 }
+
+ResultPage.getLayout = getLayout;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CloseCircleFilled, ExclamationCircleFilled, RightOutlined, SearchOutlined, SettingFilled, UserCompileOutlined, UserOutlined } from '@ubt/udesign-icons';
 import { Button, Space, Input, TextArea } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function InputPage() {
   const [value, setValue] = useState('controlled');
@@ -108,3 +109,5 @@ export default function InputPage() {
     </>
   );
 }
+
+InputPage.getLayout = getLayout;

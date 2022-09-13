@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Dropdown, Divider, Space, Input, Toast } from '@ubt/udesign-ui';
 import { DownOutlined, ExclamationCircleFilled } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 const menu = (
   <Dropdown.Menu onClick={(name) => Toast(name)}>
@@ -133,3 +134,5 @@ export default function DropdownPage() {
     </>
   );
 }
+
+DropdownPage.getLayout = getLayout;

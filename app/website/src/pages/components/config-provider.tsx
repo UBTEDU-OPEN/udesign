@@ -4,6 +4,7 @@ import { Space, ConfigProvider, Pagination, Button, Modal, Empty } from '@ubt/ud
 import zh_CN from '@ubt/udesign-ui/src/components/locale/source/zh_CN';
 import en_US from '@ubt/udesign-ui/src/components/locale/source/en_US';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function ConfigProviderPage() {
   const [locale, setLocale] = useState(zh_CN);
@@ -53,3 +54,5 @@ export default function ConfigProviderPage() {
     </>
   );
 }
+
+ConfigProviderPage.getLayout = getLayout;

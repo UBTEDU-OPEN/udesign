@@ -1,6 +1,7 @@
 import React from 'react';
 import { Divider, Typography } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function DividerPage() {
   return (
@@ -130,3 +131,5 @@ export default function DividerPage() {
     </>
   );
 }
+
+DividerPage.getLayout = getLayout;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Space, TextArea } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function TextareaPage() {
   const [value, setValue] = useState('controlled');
@@ -46,3 +47,5 @@ export default function TextareaPage() {
     </>
   );
 }
+
+TextareaPage.getLayout = getLayout;

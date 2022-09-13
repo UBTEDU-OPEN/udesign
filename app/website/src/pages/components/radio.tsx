@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Radio, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function RadioPage() {
   const [checked, setChecked] = useState(false);
@@ -125,3 +126,5 @@ export default function RadioPage() {
     </div>
   );
 }
+
+RadioPage.getLayout = getLayout;

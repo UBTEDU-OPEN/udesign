@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Space, Tag } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 const defaultTagList = [
   {
@@ -97,3 +98,5 @@ export default function TagPage() {
     </>
   );
 }
+
+TagPage.getLayout = getLayout;

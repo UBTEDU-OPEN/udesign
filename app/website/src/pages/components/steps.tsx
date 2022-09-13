@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Steps, Button, Toast } from '@ubt/udesign-ui';
 import { SearchOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 const steps = [
   {
@@ -97,3 +98,5 @@ export default function StepsPage() {
     </>
   );
 }
+
+StepsPage.getLayout = getLayout;

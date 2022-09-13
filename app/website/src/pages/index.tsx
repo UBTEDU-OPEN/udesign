@@ -21,4 +21,7 @@ const Index = () => (
   </div>
 );
 
+Index.getLayout = function getLayout(page: any) {
+  return page;
+};
 export default Index;

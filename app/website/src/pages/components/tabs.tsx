@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tabs } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function TabsPage() {
   return (
@@ -265,3 +266,5 @@ export default function TabsPage() {
     </>
   );
 }
+
+TabsPage.getLayout = getLayout;

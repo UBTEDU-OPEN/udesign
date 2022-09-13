@@ -3,8 +3,9 @@ import { Upload, Button } from '@ubt/udesign-ui';
 import { UploadFilled, LoadingOutlined, PlusOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 import { Img } from '../../components';
+import { getLayout } from '../../demo/getLayout';
 
-export default function TablePage() {
+export default function UploadPage() {
   const [fileList, setFileList] = useState<any[]>([]);
   const [fileList1, setFileList1] = useState<any[]>([]);
   const [multipleFileList, setMultipleFileList] = useState<any[]>([]);
@@ -171,3 +172,5 @@ export default function TablePage() {
     </div>
   );
 }
+
+UploadPage.getLayout = getLayout;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Space, Switch } from '@ubt/udesign-ui';
 import { CloseOutlined, CheckOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function SwitchPage() {
   return (
@@ -55,3 +56,5 @@ export default function SwitchPage() {
     </>
   );
 }
+
+SwitchPage.getLayout = getLayout;

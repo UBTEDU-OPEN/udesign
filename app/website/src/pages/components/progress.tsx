@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Progress, Button, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function ProgressPage() {
   const [percent, setPercent] = useState(50);
@@ -154,3 +155,5 @@ export default function ProgressPage() {
     </>
   );
 }
+
+ProgressPage.getLayout = getLayout;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Breadcrumb, Space } from '@ubt/udesign-ui';
 import { CopyOutlined, IdcardOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
+import { getLayout } from '../../demo/getLayout';
 
 export default function BreadcrumbPage() {
   return (
@@ -73,3 +74,5 @@ export default function BreadcrumbPage() {
     </>
   );
 }
+
+BreadcrumbPage.getLayout = getLayout;
