@@ -22,17 +22,13 @@
 
 ```jsx
 <div className='purple-theme'>
-  <Button color='primary'>Purple</Button>
+  <Button type='primary'>Purple</Button>
 </div>
 ```
 
 可以得到这样的一个按钮：
 
 ```jsx | preview
-/**
- * inline: true
- */
-
 import React from 'react';
 import { Button } from '@ubt/udesign-ui';
 
@@ -43,18 +39,10 @@ export default () => {
         ['--ud-color-primary']: '#a062d4',
       }}
     >
-      <Button color='primary'>Purple</Button>
+      <Button type='primary'>Purple</Button>
     </div>
   );
 };
 ```
 
-以下是 udesign 目前提供的全局性 CSS 变量：
-
-```css
-:root {
-  todo: '待添加';
-}
-```
-
-此外，每个组件也有自己对应的 CSS 全局变量，你可以在它们的文档页面中找到，具体请参阅 [CSS 变量](../css-variables) 章节。
+udesign 提供了全局 CSS 变量和组件 CSS 变量，你可以在它们的文档页面中找到，具体请参阅 [CSS 变量](../css-variables) 章节。

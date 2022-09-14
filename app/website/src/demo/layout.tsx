@@ -22,6 +22,7 @@ export const PageLayout = ({ children, className }: NativeProps) => {
       <div className={cls}>
         {children}
         <DesignAPI />
+        {/* <DesignToken /> */}
       </div>
     </Layout>
   );

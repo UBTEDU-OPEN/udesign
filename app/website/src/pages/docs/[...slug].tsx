@@ -6,6 +6,10 @@ import markdownToHtml from '../../lib/markdown';
 // 通用
 const docMenus = [
   {
+    name: 'changelog',
+    text: '更新日志',
+  },
+  {
     name: 'quick-start',
     text: '快速上手',
   },

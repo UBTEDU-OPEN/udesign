@@ -12,12 +12,13 @@ const Navigation = () => {
     let path = '';
     switch (name) {
       case 'docs':
-        path = '/docs/guide/quick-start';
+        path = '/docs/guide/changelog';
         break;
       case 'components':
         path = '/components/button';
         break;
       default:
+        path = name;
         break;
     }
     router.push(path);
@@ -25,7 +26,7 @@ const Navigation = () => {
 
   return (
     <>
-      <div className='fixed z-10 bg-white w-full flex justify-between items-center shadow px-4'>
+      <div className='fixed z-10 bg-white w-full flex justify-between items-center border-b px-4'>
         <Link href='/'>
           <a className='font-bold text-xl no-underline'>{SITE_NAME}</a>
         </Link>

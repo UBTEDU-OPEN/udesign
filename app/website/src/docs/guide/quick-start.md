@@ -28,8 +28,6 @@ $ npm install --save @ubt/udesign-ui@latest
 $ yarn add @ubt/udesign-ui@latest
 ```
 
-如果你的网络环境不佳，推荐使用 [cnpm](https://github.com/cnpm/cnpm)。
-
 <!-- ### 浏览器引入
 
 在浏览器中使用 `script` 和 `link` 标签直接引入文件，并使用全局变量 `udesign`。
@@ -44,7 +42,7 @@ $ yarn add @ubt/udesign-ui@latest
 
 ## TypeScript
 
-`udesign` 使用 TypeScript 进行书写并提供了完整的定义文件。（不要引用 `@types/udesign`）。
+`udesign` 使用 TypeScript 进行书写并提供了完整的类型定义文件。（不需要引用 `@types/udesign`，也没有这个东西）。
 
 ## 兼容性
 

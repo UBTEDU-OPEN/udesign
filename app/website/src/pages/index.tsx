@@ -12,6 +12,11 @@ const Index = () => (
         <Link href='/components/button'>
           <Button type='primary'>组件文档</Button>
         </Link>
+        <Link href='/docs/guide/changelog'>
+          <Button type='primary' warning>
+            更新日志
+          </Button>
+        </Link>
         <a target='_blank' href='http://npm.edu.ubtrobot.com/-/web/detail/@ubt/udesign-ui' rel='noreferrer'>
           <Button>开始使用</Button>
         </a>
@@ -21,7 +26,4 @@ const Index = () => (
   </div>
 );
 
-Index.getLayout = function getLayout(page: any) {
-  return page;
-};
 export default Index;
