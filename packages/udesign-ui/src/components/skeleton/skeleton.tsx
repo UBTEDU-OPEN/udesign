@@ -16,7 +16,7 @@ export type SkeletonProps = {
   size?: Size; // 大小，可选：small | middle | large  。默认值：middle
 } & NativeProps;
 
-export const Skeleton = ({ size = 'middle', active = false, avatar = true, loading = true, paragraph = true, title = true, children, className, style }: SkeletonProps) => {
+export const Skeleton = ({ size = 'middle', active, avatar = true, loading = true, paragraph = true, title = true, children, className, style }: SkeletonProps) => {
   function getComponentProps<T>(prop: T | boolean | undefined): T | Record<string, never> | { size: Size } {
     if (prop && typeof prop === 'object') {
       return { ...prop, size };

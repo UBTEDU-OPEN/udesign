@@ -7,29 +7,38 @@ import { getLayout } from '../../demo/getLayout';
 export default function SkeletonPage() {
   const [active, setActive] = useState(true);
   const [active1, setActive1] = useState(true);
-  const [active2, setActive2] = useState(false);
+  const [active2, setActive2] = useState(true);
   const [loading, setLoading] = useState(false);
   return (
     <div>
       <Demo.Page title='Skeleton 骨架屏' description='在需要等待加载内容的位置提供一个占位图形组合。'>
         <Demo.Block title='基本'>
+          <Skeleton />
+        </Demo.Block>
+        <Demo.Block title='尺寸' description='通过 size 来设置尺寸。'>
           <Skeleton size='small' />
         </Demo.Block>
-        <Demo.Block title='动画效果' description='显示动画效果。'>
-          <div className='mb-4'>
-            <Switch
-              defaultChecked={active1}
-              onChange={(checked: boolean) => {
-                setActive1(checked);
-              }}
-            />
-          </div>
+        <Demo.Block>
+          <Skeleton size='middle' />
+        </Demo.Block>
+        <Demo.Block>
+          <Skeleton size='large' />
+        </Demo.Block>
+        <Demo.Block title='动画效果' description='通过 active 来控制是否显示动效。'>
+          <Switch
+            defaultChecked={active1}
+            onChange={(checked: boolean) => {
+              setActive1(checked);
+            }}
+          />
+          <br />
+          <br />
           <Skeleton active={active1} />
         </Demo.Block>
-        <Demo.Block title='更复杂的组合'>
+        <Demo.Block title='自定义组合'>
           <Skeleton active avatar paragraph={{ width: ['60%', '100%', '100%', '80%'], rows: 4 }} />
         </Demo.Block>
-        <Demo.Block title='包含子组件' description='加载占位图包含子组件。'>
+        <Demo.Block title='作为容器使用' description='加载占位图包含子组件。'>
           <Space className='mb-10'>
             <Button type={loading ? 'primary' : 'default'} onClick={() => setLoading(!loading)}>
               加载占位图
@@ -38,25 +47,32 @@ export default function SkeletonPage() {
               动画效果
             </Button>
           </Space>
-          <Skeleton active={active} loading={loading}>
+          <Skeleton active={active} avatar={false} loading={loading} paragraph={{ rows: 1 }} size='small'>
             <div className='font-bold text-lg'>This is the title</div>
             <p>Lorem ipsum dolor, sit amet cons ectetur adipis icing elit. Praesen tium, quibusdam facere quo laborum maiores sequi nam tenetur laud.</p>
           </Skeleton>
         </Demo.Block>
-        <Demo.Block title='按钮头像文本标题段落' description='骨架头像、按钮、标题、段落和图像。'>
+        <Demo.Block title='单独使用' description='骨架头像、按钮、图像、标题、段落。'>
+          <Space>
+            <Skeleton.Avatar />
+            <Skeleton.Avatar shape={'square'} />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Space>
+            <Skeleton.Button />
+            <Skeleton.Button shape={'square'} />
+            <Skeleton.Button shape={'circle'} />
+          </Space>
+        </Demo.Block>
+        <Demo.Block>
+          <Skeleton.Image />
+        </Demo.Block>
+        <Demo.Block>
+          <Skeleton.Title />
+        </Demo.Block>
+        <Demo.Block>
           <Space direction='vertical' align='start'>
-            <Space>
-              <Skeleton.Avatar />
-              <Skeleton.Avatar shape={'square'} />
-            </Space>
-            <Space>
-              <Skeleton.Button />
-              <Skeleton.Button shape={'square'} />
-              <Skeleton.Button shape={'circle'} />
-            </Space>
-
-            <Skeleton.Image />
-            <Skeleton.Title />
             <Skeleton.Paragraph rows={1} />
             <Skeleton.Paragraph rows={2} width={['100%', 60]} />
           </Space>
@@ -146,7 +162,7 @@ export default function SkeletonPage() {
 
           <div className='flex justify-center p-5'>
             <div className='bg-white p-5 rounded-xl' style={{ width: '700px' }}>
-              {active2 ? (
+              {!active2 ? (
                 <Space direction='vertical' align='start'>
                   <div className='flex justify-between w-full items-end'>
                     <div style={{ color: '#25303F', fontSize: '20px' }}>帖子</div>
