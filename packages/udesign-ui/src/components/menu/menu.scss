@@ -18,7 +18,6 @@ $module: ud-menu;
   align-items: center;
   cursor: pointer;
   position: relative;
-  // width: 100%;
 
   border-right: $menu-item-border-width solid transparent;
   border-bottom: $menu-item-border-width solid transparent;
@@ -51,25 +50,30 @@ $module: ud-menu;
     border-bottom-width: $menu-item-border-width;
   }
 
-  &-active.#{$module}-item-border-hasLine-vertical,
-  &-active.#{$module}-item-border-hasLine-inline {
+  &-active.#{$module}-item-border-hasLine-vertical {
     border-right-color: $menu-item-border-color;
     border-right-width: $menu-item-border-width;
   }
 
-  &-item-link {
-    border: none;
+  .#{$module}-item-link:hover:not(&-disabled) {
+    border-bottom-width: $menu-item-border-width;
+    border-bottom-color: transparent;
   }
 
   &-active.#{$module}-item-link {
-    border: none;
+    border-bottom-width: $menu-item-border-width;
+    border-bottom-color: transparent;
+  }
+  &-active.#{$module}-submenu-is-collapsed {
+    border-right-color: transparent;
   }
 }
 
-.#{$module}-item-link:hover {
-  border: none;
+.#{$module}-submenu-horizontal .#{$module}-item.#{$module}-item-border-hasLine-inline:hover:not(.#{$module}-item-disabled),
+.#{$module}-submenu-horizontal .#{$module}-item.#{$module}-item-border-hasLine-vertical:hover:not(.#{$module}-item-disabled) {
+  border-right-color: transparent;
+  border-radius: 0;
 }
-
 .#{$module}-submenu {
   max-width: $menu-submenu-max-width;
   background: $menu-submenu-background;
@@ -80,6 +84,12 @@ $module: ud-menu;
     box-shadow: $menu-submenu-border-shadow;
     border-radius: $menu-submenu-border-radius;
     background-color: #fff;
+    min-width: $menu-horizontal-submenu-min-width;
+
+    .#{$module}-item-active {
+      border-right-color: transparent;
+      border-radius: 0;
+    }
   }
 
   .#{$module}-item {
@@ -87,13 +97,13 @@ $module: ud-menu;
   }
 
   .#{$module}-item-border-hasLine-horizontal:hover:not(.#{$module}-item-disabled) {
-    border-right-color: $menu-item-border-color;
+    // border-right-color: $menu-item-border-color;
     border-right-width: $menu-item-border-width;
     border-bottom-color: transparent;
   }
 
   .#{$module}-item-active.#{$module}-item-border-hasLine-horizontal {
-    border-right-color: $menu-item-border-color;
+    // border-right-color: $menu-item-border-color;
     border-right-width: $menu-item-border-width;
     border-bottom-color: transparent;
   }
@@ -145,6 +155,7 @@ $module: ud-menu;
   display: flex;
   flex-direction: column;
   transition: all 0.2s;
+  width: 100%;
 }
 
 .#{$module}-is-collapsed {
@@ -198,6 +209,10 @@ $module: ud-menu;
   .#{$module}-item:hover:not(.#{$module}-item-disabled) {
     background: $menu-submenu-item-hover-background;
     color: $menu-item-color-hover;
+  }
+  .#{$module}-item-active {
+    border-right-color: $menu-item-border-color;
+    border-right-width: $menu-item-border-width;
   }
 }
 

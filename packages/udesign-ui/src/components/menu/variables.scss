@@ -16,7 +16,7 @@ $menu-submenu-max-width: var(--ud-menu-submenu-max-width, 360px);
 $menu-submenu-background: var(--ud-menu-submenu-background, var(--ud-color-white));
 $menu-submenu-border-shadow: var(--ud-menu-submenu-border-shadow, var(--ud-shadow-elevated));
 $menu-submenu-border-radius: var(--ud-menu-submenu-border-radius, 8px);
-$menu-submenu-body-padding-left:var(--ud-menu-submenu-body-padding-left, 20px);
+$menu-submenu-body-padding-left: var(--ud-menu-submenu-body-padding-left, 20px);
 $menu-submenu-item-active-background: var(--ud-menu-submenu-item-active-background, #e2e6f7);
 $menu-submenu-item-hover-background: var(--ud-menu-submenu-item-hover-background, #e2e6f7);
 
@@ -32,4 +32,3 @@ $menu-inline-collapsed-background: var(--ud-menu-inline-collapsed-background, #f
 // 垂直式
 $menu-vertical-right-top-submenu-item-background: var(--ud-menu-vertical-right-top-submenu-item-background, var(--ud-color-white)); //垂直-右上-二级导航背景色
 $menu-vertical-bottom-left-submenu-item-background: var(--ud-menu-vertical-bottom-left-submenu-item-background, var(--ud-color-white)); //垂直-左下-二级导航背景色
-

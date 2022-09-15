@@ -35,7 +35,6 @@ export const MenuItem = ({ name = '', icon, disabled, link = false, children, cl
   const cls = classNames(
     prefixCls,
     {
-      [`${prefixCls}-active`]: active,
       [`${prefixCls}-disabled`]: disabled,
       [`${prefixCls}-border-${mode}`]: mode,
       [`${prefixCls}-${mode}`]: mode,
@@ -44,6 +43,7 @@ export const MenuItem = ({ name = '', icon, disabled, link = false, children, cl
       [`${prefixCls}-hasLine-active`]: hasLine,
       [`${prefixCls}-radius`]: radius,
       [`ud-menu-submenu-is-collapsed`]: isCollapsed,
+      [`${prefixCls}-active`]: active,
     },
     className,
   );

@@ -1,5 +1,5 @@
 import React, { useContext, ReactNode, useState } from 'react';
-import { DownOutlined, UpOutlined } from '@ubt/udesign-icons';
+import { DownOutlined, RightOutlined, UpOutlined } from '@ubt/udesign-icons';
 import classNames from 'classnames';
 import { MenuItem, MenuItemProps } from './item';
 import Tooltip from '../tooltip';
@@ -96,6 +96,11 @@ export const Submenu = ({ title, children, icon, subMode, subActive, name = '', 
           <MenuItem name={name} style={style} className={isCollapsed ? `${prefixCls}-submenu-is-collapsed` : ``}>
             {icon}
             {renderTitle()}
+            {mode === 'vertical' ? (
+              <span>
+                <RightOutlined />
+              </span>
+            ) : null}
           </MenuItem>
         </Tooltip>
       )}

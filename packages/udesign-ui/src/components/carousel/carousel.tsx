@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode, useCallback } from 'react';
+import React, { useState, useEffect, ReactNode, useCallback, useMemo } from 'react';
 import { RightOutlined, LeftOutlined } from '@ubt/udesign-icons';
 import classNames from 'classnames';
 import { get, isObject } from 'lodash';
@@ -18,7 +18,7 @@ export type CarouselProps = {
   defaultActiveIndex?: number; // 初始化时默认展示的索引（从0开始）。默认值：0
   autoPlay?: boolean | { interval?: number }; // 是否自动切换。默认值：false
   speed?: number; // 切换时间（单位ms）。默认值：1500
-  showArrow?: boolean; // 是否展示箭头。默认值：true
+  showArrow?: boolean; // 是否展示箭头,只有一张图片时不会展示箭头。默认值：true
   iconLeft?: ReactNode; // 左侧图标。默认值：<LeftOutlined />
   iconRight?: ReactNode; // 右侧图标。默认值：<RightOutlined />
   loop?: boolean; // 是否循环轮播。默认值：false
@@ -106,10 +106,12 @@ export const Carousel = React.forwardRef<CarouselRef, CarouselProps>(
       next: preMove,
     }));
 
+    const childrenItems = useMemo(() => toArray(children), [children]);
+
     const renderItems = () => {
       const item = (
         <div className={`${prefixCls}`}>
-          {toArray(children).map((item, index) => {
+          {childrenItems.map((item, index) => {
             const cls = classNames(`${prefixCls}-item`, {
               [`${prefixCls}-item-active`]: count === index,
               [`${prefixCls}-item-${animationDirection}-enter-animation`]: count === index && Number(init) !== index,
@@ -194,8 +196,8 @@ export const Carousel = React.forwardRef<CarouselRef, CarouselProps>(
       <>
         <div className={cls} style={style} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} ref={slickRef}>
           {renderItems()}
-          {renderLeftIcon()}
-          {renderRightIcon()}
+          {toArray(children).length !== 1 ? renderLeftIcon() : null}
+          {toArray(children).length !== 1 ? renderRightIcon() : null}
         </div>
       </>
     );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Button } from '@ubt/udesign-ui';
+import { Menu, Button, Space } from '@ubt/udesign-ui';
 import { FolderOutlined, PictureFilled, VoiceFilled, DataFilled, MenuOutlined } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
 import { getLayout } from '../../demo/getLayout';
@@ -48,7 +48,7 @@ export default function MenuPage() {
             <Menu.Item name='2' disabled icon={<FolderOutlined style={{ paddingRight: '10px' }} />}>
               Navigation Two
             </Menu.Item>
-            <Menu.Submenu title='Navigation Three - Submenu' icon={<FolderOutlined style={{ paddingRight: '10px' }} />}>
+            <Menu.Submenu name='3' title='Navigation Three - Submenu' icon={<FolderOutlined style={{ paddingRight: '10px' }} />}>
               <Menu.Item name='1-1' disabled style={{ color: '#A8B4CE' }}>
                 item 1
               </Menu.Item>
@@ -158,21 +158,23 @@ export default function MenuPage() {
           <div style={{ marginBottom: '20px' }}>
             <Button onClick={toggleCollapsed} type='primary' shape='round' icon={<MenuOutlined />} />
           </div>
-          <Menu radius mode='inline' hasLine defaultActiveKey='2' className='w-60 border-r inline-block menu-inline bg-white' isCollapsed={isCollapsed}>
-            <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%' }}>
-              {inlineSubmenu}
-            </Menu.Submenu>
-            <Menu.Submenu name='二' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二' style={{ width: '100%' }}>
-              <Menu.Item name='9'>Option 1</Menu.Item>
-              <Menu.Item name='8'>Option 2</Menu.Item>
-              <Menu.Item name='7'>Option 3</Menu.Item>
-            </Menu.Submenu>
-            <Menu.Submenu name='三' icon={<DataFilled className='text-xl mr-2' />} title='标题三' style={{ width: '100%' }}>
-              <Menu.Item name='4'>Option 1</Menu.Item>
-              <Menu.Item name='5'>Option 2(disabled)</Menu.Item>
-              <Menu.Item name='6'>Option 3</Menu.Item>
-            </Menu.Submenu>
-          </Menu>
+          <Space className='w-60'>
+            <Menu radius mode='inline' hasLine defaultActiveKey='2' className='border-r menu-inline bg-white' isCollapsed={isCollapsed}>
+              <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%' }}>
+                {inlineSubmenu}
+              </Menu.Submenu>
+              <Menu.Submenu name='二' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二' style={{ width: '100%' }}>
+                <Menu.Item name='9'>Option 1</Menu.Item>
+                <Menu.Item name='8'>Option 2</Menu.Item>
+                <Menu.Item name='7'>Option 3</Menu.Item>
+              </Menu.Submenu>
+              <Menu.Submenu name='三' icon={<DataFilled className='text-xl mr-2' />} title='标题三' style={{ width: '100%' }}>
+                <Menu.Item name='4'>Option 1</Menu.Item>
+                <Menu.Item name='5'>Option 2(disabled)</Menu.Item>
+                <Menu.Item name='6'>Option 3</Menu.Item>
+              </Menu.Submenu>
+            </Menu>
+          </Space>
         </Demo.Block>
         <Demo.Block title='垂直菜单' description='二级菜单是弹出形式，仅支持至二级菜单。'>
           <Menu hasLine radius className='w-60 border-r' defaultActiveKey='1' mode='vertical' style={{ background: '#fff' }}>
