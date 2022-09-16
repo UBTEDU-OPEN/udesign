@@ -160,14 +160,13 @@ export const Carousel = React.forwardRef<CarouselRef, CarouselProps>(
       });
       const handleClick = () => {
         if (toArray(children).length === 1) return;
-        if (init !== 'NaN') setInit('NaN');
         if (!loop) {
           if (count !== toArray(children).length - 1) {
             setAnimationDirection('left');
             setCount(count + 1);
           } else return;
         }
-
+        if (init !== 'NaN') setInit('NaN');
         if (loop) {
           preMove();
         }
