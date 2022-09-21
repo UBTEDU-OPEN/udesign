@@ -4,6 +4,8 @@ import { Radio } from './radio';
 import { RadioContext, reducer, types } from './context';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
+const prefixCls = `${BASE_CLASS_PREFIX}-radio`;
+
 export type RadioOptionType = {
   label: string; // 对外显示
   value: string; // 真实值
@@ -19,8 +21,6 @@ export interface GroupProps {
   name: string; // RadioGroup 下所有 input[type="radio"] 的 name 属性。默认值：-
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 选项变化时的回调函数  function(e:Event)。默认值：-
 }
-
-const prefixCls = `${BASE_CLASS_PREFIX}-radio`;
 
 export const Group = ({ defaultValue = '', disabled, options, children, name, onChange, ...restProps }: GroupProps) => {
   // 用于支持简单的数组作为options

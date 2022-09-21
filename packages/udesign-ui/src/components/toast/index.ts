@@ -2,6 +2,8 @@ import { PortalWrapper } from '../_portal/portal-wrapper';
 import './toast.scss';
 import { Toast as InnerToast, ToastProps } from './toast';
 
+export type { ToastProps } from './toast';
+
 const element = new PortalWrapper<typeof InnerToast>(InnerToast);
 
 let timer: NodeJS.Timeout;

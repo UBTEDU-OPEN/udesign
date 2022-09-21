@@ -1,5 +1,6 @@
 import './table.scss';
 import { Table } from './table';
-import { attachPropertiesToComponent } from '../../utils';
 
-export default attachPropertiesToComponent(Table, {});
+export type { TableProps } from './table';
+
+export default Table;
