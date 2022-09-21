@@ -70,7 +70,7 @@ export type TooltipProps = {
   defaultVisible?: boolean; //	默认是否显隐。默认值：false
   visible?: boolean; //	当trigger为custom时，通过该属性控制是否展示弹出层。默认值：false
   clickTriggerToHide?: boolean; // 点击trigger时关闭。默认值：false
-  zIndex?: number; //	弹层层级。默认值：-
+  zIndex?: number; //	弹层层级。默认值：1060
   getContainer?: () => HTMLElement; // 渲染的父节点，默认值：document.body
   onVisibleChange?: (visible: boolean) => void; //	显示隐藏的回调。默认值：-
   onClickOutSide?: (e: Event) => void; //	当弹出层处于展示状态，点击非Children、非浮层内部区域时的回调（仅trigger为custom、click时有效）。默认值：-
@@ -89,7 +89,7 @@ export const Tooltip = ({
   mouseLeaveDelay = 50,
   spacing = 8,
   defaultVisible = false,
-  zIndex,
+  zIndex = 1060,
   children,
   className,
   style,
