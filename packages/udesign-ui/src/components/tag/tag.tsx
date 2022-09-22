@@ -10,14 +10,12 @@ const PresetStatusColors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 
 const PresetColorRegex = new RegExp(`^(${PresetColors.join('|')})(-inverse)?$`);
 const PresetStatusColorRegex = new RegExp(`^(${PresetStatusColors.join('|')})(-inverse)?$`);
 
-type TagSize = Size;
-
 export type TagProps = {
   closeable?: boolean; // 标签是否可以关闭（点击默认关闭）。默认值：false
   closeIcon?: ReactNode; //	自定义关闭按钮。默认值：-
   color?: string; // 标签颜色。默认值：-
   textColor?: string; // 标签文本颜色。默认值：-
-  size?: TagSize; // 标签大小。默认值：middle
+  size?: Size; // 标签大小。默认值：middle
   checkable?: boolean; // 标签是否可以选中（点击默认选中）。默认值：false
   checked?: boolean; // 是否选中状态。默认值：false
   defaultChecked?: boolean; // 是否默认选中状态。默认值：false

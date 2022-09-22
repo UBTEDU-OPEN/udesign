@@ -7,7 +7,7 @@ import { BASE_CLASS_PREFIX } from '../../constants';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-collapse`;
 
-type CollapseProps = {
+export type CollapseProps = {
   accordion?: boolean; // 手风琴。默认值：false
   expandIcon?: ReactNode; // 自定义展开图标。默认值：<UpOutlined />
   closeIcon?: ReactNode; // 自定义折叠图标。默认值：<DownOutlined />

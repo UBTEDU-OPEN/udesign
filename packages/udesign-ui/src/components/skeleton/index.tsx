@@ -7,6 +7,8 @@ import { Image } from './image';
 import { attachPropertiesToComponent } from '../../utils';
 import { Skeleton } from './skeleton';
 
+export type { SkeletonProps } from './skeleton';
+
 export default attachPropertiesToComponent(Skeleton, {
   Avatar,
   Button,

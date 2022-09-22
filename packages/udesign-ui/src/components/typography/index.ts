@@ -7,12 +7,18 @@ import { Ellipsis } from './ellipsis';
 import { Editable } from './editable';
 import { Paragraph } from './paragraph';
 
-export type { TitleProps } from './title';
+export type TypographyProps = typeof Typography & {
+  Text: typeof Text;
+  Title: typeof Title;
+  Paragraph: typeof Paragraph;
+  Ellipsis: typeof Ellipsis;
+  Editable: typeof Editable;
+};
 
 export default attachPropertiesToComponent(Typography, {
-  Ellipsis,
   Text,
   Title,
   Paragraph,
+  Ellipsis,
   Editable,
 });
