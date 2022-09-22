@@ -15,18 +15,18 @@ export default function ToastPage() {
             </Button>
           </Space>
         </Demo.Block>
-        <Demo.Block title='其他类型提示' description='例如成功、失败、出错、警告'>
+        <Demo.Block title='其他类型提示' description='通过 style 属性传入自定义样式'>
           <Space wrap>
-            <Button onClick={() => Toast({ content: '验证码已发送' })} type='primary'>
+            <Button onClick={() => Toast({ content: '验证码已发送', style: { background: 'rgba(114,132,251,0.9)' } })} type='primary'>
               成功
             </Button>
-            <Button onClick={() => Toast({ content: '手机号已被注册' })} type='primary'>
+            <Button onClick={() => Toast({ content: '手机号已被注册', style: { background: 'rgba(255,73,64,0.9)' } })} type='primary'>
               失败
             </Button>
-            <Button onClick={() => Toast({ content: '出错' })} type='primary' danger={true}>
+            <Button onClick={() => Toast({ content: '出错', style: { background: 'rgba(255,73,64,0.9)' } })} type='primary' danger={true}>
               出错
             </Button>
-            <Button onClick={() => Toast({ content: '警告' })} type='primary' warning={true}>
+            <Button onClick={() => Toast({ content: '警告', style: { background: 'rgba(255,171,16,0.9)' } })} type='primary' warning={true}>
               警告
             </Button>
           </Space>
