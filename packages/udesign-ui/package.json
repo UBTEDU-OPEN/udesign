@@ -4,8 +4,8 @@
   "author": "Arvin <arvin.xiang@ubtrobot.com>",
   "license": "MIT",
   "scripts": {
-    "build": "gulp",
-    "deploy": "npm run build && npm publish ./dist",
+    "build": "yarn lint:fix && gulp",
+    "deploy": "yarn build && npm publish ./dist",
     "lint:fix": "eslint --ext .js,.jsx,.ts,.tsx src --cache --fix",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --cache"
   },
