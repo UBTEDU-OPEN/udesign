@@ -28,11 +28,9 @@ export const DesignAPI = (props: DesignAPIProps) => {
   const [designApi, setDesignAPI] = useState<DesignAPI>({});
 
   useEffect(() => {
-    if (!componentName) {
-      const componentNameFromUrl = lodash.nth(window.location.pathname.split('/'), -2);
-      setComponentName(componentNameFromUrl?.toLowerCase());
-    }
-  }, []);
+    const componentNameFromUrl = lodash.nth(window.location.pathname.split('/'), -2);
+    setComponentName(componentNameFromUrl?.toLowerCase());
+  }, [router.asPath]);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
