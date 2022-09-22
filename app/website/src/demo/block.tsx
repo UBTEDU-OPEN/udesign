@@ -39,7 +39,7 @@ export const Block = ({ title, description, background = true, transform, compac
           <Collapse className='border-t m-0' style={{ '--ud-collapse-item-margin': '0' }}>
             <Collapse.Item title='代码' name='1' style={{ padding: '10px' }}>
               <div className='px-6 py-5 bg-gray-50 text-gray-500 overflow-auto'>
-                <pre className='whitespace-pre-wrap'>{code}</pre>
+                <pre className='whitespace-pre-wrap break-all'>{code}</pre>
               </div>
             </Collapse.Item>
           </Collapse>
