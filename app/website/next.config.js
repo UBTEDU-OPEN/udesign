@@ -13,6 +13,7 @@ module.exports = withTM(
     reactStrictMode: true,
     trailingSlash: true,
     basePath,
+    inlineImageLimit: false,
     webpack: (config, options) => {
       // Perform customizations to config
       config.plugins.push(
