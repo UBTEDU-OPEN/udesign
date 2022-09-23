@@ -11,7 +11,12 @@ $module: ud-empty;
     justify-content: center;
   }
   &-description {
+    margin: $empty-description-margin;
+    font-size: $empty-description-font-size;
+    color: $empty-description-color;
     text-align: center;
-    margin-top: $empty-description-margin;
+  }
+  &-footer {
+    margin: $empty-footer-margin;
   }
 }

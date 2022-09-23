@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import { Empty } from '@ubt/udesign-ui';
+import { Button, Empty } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 import icon_empty_1 from '../../../public/icon_empty_1.svg';
 import icon_empty_2 from '../../../public/icon_empty_2.svg';
@@ -19,6 +19,12 @@ export default function EmptyPage() {
         <Demo.Block title='无描述用法' description='仅展示空状态图片，不展示描述文案。'>
           <Empty description={null} />
         </Demo.Block>
+        <Demo.Block title='自定义描述' description='自定义描述空状态的文案。 '>
+          <Empty description='老师还没有为你安排学习计划～' />
+        </Demo.Block>
+        <Demo.Block>
+          <Empty description='你的学习计划暂未安排' />
+        </Demo.Block>
         <Demo.Block title='自定义图片' description='可以通过 image 自定义图片。'>
           <Empty image={<img src={icon_empty_1} />} />
         </Demo.Block>
@@ -28,14 +34,17 @@ export default function EmptyPage() {
         <Demo.Block>
           <Empty image={<img src={icon_empty_3} />} />
         </Demo.Block>
-        <Demo.Block>
-          <Empty image={<img src={icon_empty_4} />} />
-        </Demo.Block>
-        <Demo.Block title='自定义文案' description='自定义描述空状态的文案。 '>
-          <Empty description='老师还没有为你安排学习计划～' />
-        </Demo.Block>
-        <Demo.Block>
-          <Empty description='你的学习计划暂未安排' />
+        <Demo.Block title='自定义更多内容' description='可以通过 children 来自定义更多内容，比如按钮'>
+          <Empty
+            image={<img src={icon_empty_4} />}
+            description={
+              <span>
+                自定义 <a href='#'>新建</a>
+              </span>
+            }
+          >
+            <Button type='primary'>确认</Button>
+          </Empty>
         </Demo.Block>
       </Demo.Page>
     </>

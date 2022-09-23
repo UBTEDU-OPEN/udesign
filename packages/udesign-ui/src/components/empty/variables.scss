@@ -1,1 +1,4 @@
-$empty-description-margin: var(--empty-description-margin, 40px 0 0 0); // 描述外边距
+$empty-description-margin: var(--empty-description-margin, 20px 0 0 0); // 描述外边距
+$empty-description-color: var(--empty-description-color, var(--ud-color-text-0)); // 描述字色
+$empty-description-font-size: var(--empty-description-font-size, 20px); // 描述字号
+$empty-footer-margin: var(--empty-footer-margin, 40px 0 0 0); // footer 外边距
