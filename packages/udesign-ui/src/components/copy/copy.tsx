@@ -5,7 +5,7 @@ import { NativeProps } from '../../utils';
 // import Tooltip from '../tooltip';
 
 export type CopyProps = {
-  text?: string; // 要复制文本。默认值：-
+  text: string; // 要复制文本。默认值：-
   onSuccess?: () => void; // 复制成功时的回调。默认值：-
   onError?: () => void; // 复制失败时的回调。默认值：-
 } & NativeProps;
@@ -19,7 +19,7 @@ export const Copy = ({ text, onSuccess, onError, children, className, style }: C
     onError && copy.on('error', onError);
   }, []);
 
-  const cls = classNames('cursor-pointer', className);
+  const cls = classNames('', className);
 
   return (
     <>
