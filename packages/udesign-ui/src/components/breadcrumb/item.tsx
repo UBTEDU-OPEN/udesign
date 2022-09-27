@@ -3,58 +3,37 @@ import classNames from 'classnames';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `${BASE_CLASS_PREFIX}-breadcrumb`;
+const prefixCls = `${BASE_CLASS_PREFIX}-breadcrumb-item`;
 
 export type ItemProps = {
   separator?: ReactNode; // 设置分隔符
   href?: string;
-  onClick?: React.MouseEventHandler<HTMLSpanElement>; // 点击时的回调
+  onClick?: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void; // 点击时的回调
 } & NativeProps;
 
 export const Item = ({ separator, onClick, className, children, style, ...restProps }: ItemProps) => {
   const strRef = useRef<HTMLSpanElement>(null);
 
-  const cls = classNames(
-    prefixCls,
-    {
-      [`${prefixCls}-item`]: children,
-    },
-    className,
-  );
+  const renderLink = () => {
+    if ('href' in restProps) return <a {...restProps}> {children}</a>;
 
-  const conCls = classNames(
-    prefixCls,
-    {
-      [`${prefixCls}-wrapper`]: children,
-    },
-    className,
-  );
+    return children;
+  };
 
-  const iconCls = `${prefixCls}-separator`;
+  const renderIcon = () => {
+    const cls = `${prefixCls}-separator`;
+    return <span className={cls}>{separator} </span>;
+  };
 
-  let link;
-  if ('href' in restProps) {
-    link = (
-      <span ref={strRef} className={cls} style={style}>
-        <a {...restProps}> {children}</a>
-      </span>
-    );
-  } else {
-    link = (
-      <span ref={strRef} className={cls} style={style} {...restProps}>
-        {children}
-      </span>
-    );
-  }
+  const cls = classNames(prefixCls, className);
 
   return (
-    <>
-      <span className={conCls} onClick={onClick}>
-        <span className={iconCls}>{separator} </span>
-        {link}
+    <span className={cls}>
+      {renderIcon()}
+      <span ref={strRef} className={`${prefixCls}-text`} style={style} onClick={onClick}>
+        {renderLink()}
       </span>
-    </>
+    </span>
   );
 };
-
 Item.displayName = 'Item';

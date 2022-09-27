@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import classNames from 'classnames';
 import { NativeProps, toArray } from '../../utils';
 import { Item } from './item';
 import { BASE_CLASS_PREFIX } from '../../constants';
@@ -13,8 +14,10 @@ export const Breadcrumb = ({ separator = '\\', className, children, style, ...re
   const newChildren = toArray(children);
   const arrkey: string[] = [];
 
+  const cls = classNames(prefixCls, className);
+
   return (
-    <div className={prefixCls} {...restProps} style={style}>
+    <div className={cls} {...restProps} style={style}>
       {newChildren.map((child, index) => {
         if (child.props.children !== undefined) {
           // 拼接地址
