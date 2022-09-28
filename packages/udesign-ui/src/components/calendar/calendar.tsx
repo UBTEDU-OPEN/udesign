@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import moment from 'dayjs';
 import { FirstRightOutlined, RightOutlined, LeftOutlined } from '@ubt/udesign-icons';
 import classNames from 'classnames';
-import { getMonth, weekArr, monthArr } from './moment';
+import { weekArr, monthArr } from '../../constants/date';
+import { getMonth, ShowDateType } from '../../utils/moment';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { NativeProps } from '../../utils';
 
@@ -57,7 +58,7 @@ const Calendar = (props: CalendarProps) => {
   );
   const renderDays = () => (
     <div className={`${prefixCls}-date-box`}>
-      {daysList.map((item: { value: number; type: string; date: string; isSelected: boolean }) => {
+      {daysList.map((item: ShowDateType) => {
         const nowValue = moment(item.date).format('YYYY-MM-D');
         let isSelected = isSelect === nowValue;
         return (

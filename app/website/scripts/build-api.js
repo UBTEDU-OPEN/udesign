@@ -29,11 +29,22 @@ async function main() {
   const udesignDir = path.join(__dirname, '../../../packages/udesign-ui/src/components');
   fs.readdirSync(udesignDir).map((dirname) => {
     // TODO: 部分组件需要特殊处理（例如：Grid 实际上是 col, row 的组合组件）
-    const propsPath = path.join(udesignDir, dirname, `${dirname}.tsx`);
-    if (fs.existsSync(propsPath)) {
-      const raw = fs.readFileSync(propsPath, { encoding: 'utf-8' });
-      const propsCodeLineList = raw.split('\n').filter((codeLine) => codeLine && !isUseless(codeLine.trim()));
-      componentVariablesMap[dirname.toLowerCase()] = propsCodeLineList.map((codeLine) => codeLineSplit(codeLine.trim()));
+    const compileMap = (paths) => {
+      paths.forEach((propsPath) => {
+        if (fs.existsSync(propsPath.filePath)) {
+          const raw = fs.readFileSync(propsPath.filePath, { encoding: 'utf-8' });
+          const propsCodeLineList = raw.split('\n').filter((codeLine) => codeLine && !isUseless(codeLine.trim()));
+          componentVariablesMap[propsPath.keyName.toLowerCase()] = propsCodeLineList.map((codeLine) => codeLineSplit(codeLine.trim()));
+        }
+      });
+    };
+    if (dirname !== 'date-picker') {
+      compileMap([{ filePath: path.join(udesignDir, dirname, `${dirname}.tsx`), keyName: dirname }]);
+    } else {
+      compileMap([
+        { filePath: path.join(udesignDir, dirname, `generatePicker/${dirname}.tsx`), keyName: dirname },
+        { filePath: path.join(udesignDir, dirname, `generatePicker/range-picker.tsx`), keyName: 'range-picker' },
+      ]);
     }
   });
   const [_, __, savePath] = process.argv;

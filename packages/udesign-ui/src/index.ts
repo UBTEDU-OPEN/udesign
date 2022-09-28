@@ -119,3 +119,4 @@ export { default as Typography } from './components/typography';
 
 export type { UploadProps } from './components/upload';
 export { default as Upload } from './components/upload';
+export { default as DatePicker } from './components/date-picker';

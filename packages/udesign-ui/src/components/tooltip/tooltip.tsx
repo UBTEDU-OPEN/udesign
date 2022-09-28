@@ -1,4 +1,4 @@
-import React, { isValidElement, useEffect, useRef, useState } from 'react';
+import React, { isValidElement, useEffect, useRef, useState, useImperativeHandle } from 'react';
 import classNames from 'classnames';
 import { get, throttle } from 'lodash';
 import { Arrow } from './arrow';
@@ -77,342 +77,363 @@ export type TooltipProps = {
 } & NativeProps;
 
 const getDefaultContainer = () => document.body;
-export const Tooltip = ({
-  prefixCls = prefix,
-  showArrow = true,
-  clickToHide,
-  content,
-  placement = 'top',
-  trigger = 'hover',
-  getContainer = getDefaultContainer,
-  mouseEnterDelay = 50,
-  mouseLeaveDelay = 50,
-  spacing = 8,
-  defaultVisible = false,
-  zIndex = 1060,
-  children,
-  className,
-  style,
-  ...restProps
-}: TooltipProps) => {
-  // 基点，基于此进行 transform 位移
-  const [coords, setCoords] = useState({});
-  const _timer = useRef(0);
-  const triggerRef = useRef<HTMLElement>(null);
-  const popupRef = useRef<HTMLDivElement>(null);
-
-  // controlled
-  const [visible, setVisible] = usePropsValue({
-    value: restProps.visible,
-    defaultValue: defaultVisible,
-    onChange: restProps.onVisibleChange,
-  });
-
-  const getTriggerBounding = () => {
-    let triggerDOM = triggerRef.current!;
-    return triggerDOM && (triggerDOM as Element).getBoundingClientRect();
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', updateCoords, false);
-    return () => window.removeEventListener('resize', updateCoords, false);
-  }, []);
-
-  useEffect(() => {
-    // 页面滚动条滚动时触发
-    window.addEventListener('scroll', updateCoords, true);
-    return () => {
-      window.removeEventListener('scroll', updateCoords, true);
-    };
-  }, []);
-
-  // 基准点
-  const updateCoords = () => {
-    // https://zh.javascript.info/coordinates
-    const rect = getTriggerBounding();
-    // 根据 placement 改变基准点
-    const newCoords = {
-      left: rect?.left,
-      top: rect?.bottom,
-    };
-    switch (placement) {
-      case 'bottomLeft':
-      case 'leftBottom':
-        break;
-      case 'bottom':
-        newCoords.left += rect?.width / 2;
-        break;
-      case 'bottomRight':
-      case 'rightBottom':
-        newCoords.left = rect?.right;
-        break;
-      case 'topLeft':
-      case 'leftTop':
-        newCoords.top = rect?.top;
-        break;
-      case 'top':
-        newCoords.left += rect?.width / 2;
-        newCoords.top = rect?.top;
-        break;
-      case 'topRight':
-      case 'rightTop':
-        newCoords.left = rect?.right;
-        newCoords.top = rect?.top;
-        break;
-      case 'left':
-        newCoords.top -= rect?.height / 2;
-        break;
-      case 'right':
-        newCoords.left = rect?.right;
-        newCoords.top -= rect?.height / 2;
-        break;
-      default:
-        break;
-    }
-
-    if (['topLeft', 'top', 'topRight'].includes(placement)) {
-      newCoords.top -= spacing;
-    }
-    if (['bottomLeft', 'bottom', 'bottomRight'].includes(placement)) {
-      newCoords.top += spacing;
-    }
-    if (['leftTop', 'left', 'leftBottom'].includes(placement)) {
-      newCoords.left -= spacing;
-    }
-    if (['rightTop', 'right', 'rightBottom'].includes(placement)) {
-      newCoords.left += spacing;
-    }
-
-    setCoords({
-      left: newCoords.left + window.scrollX,
-      top: newCoords.top + window.scrollY,
-    });
-  };
-
-  // 根据trigger类型挂载事件
-  const generateEvent = (trigger: Trigger) => {
-    const triggerEventSet: { [key: string]: (e: React.MouseEvent<HTMLElement>) => void } = {};
-    let portalEventSet: { [key: string]: (e: React.MouseEvent<HTMLElement>) => void } = {};
-    switch (trigger) {
-      case 'focus':
-        triggerEventSet.onFocus = () => {
-          updateCoords();
-          delayShow();
-        };
-        triggerEventSet.onBlur = () => {
-          delayHide();
-        };
-        portalEventSet = triggerEventSet;
-        break;
-      case 'click':
-        triggerEventSet.onClick = () => {
-          updateCoords();
-          show();
-        };
-        portalEventSet = {};
-        // Click outside needs special treatment, can not be directly tied to the trigger Element, need to be bound to the document
-        break;
-      case 'hover':
-        triggerEventSet.onMouseEnter = () => {
-          // setCache('isClickToHide', false);
-          updateCoords();
-          delayShow();
-        };
-        triggerEventSet.onMouseLeave = () => {
-          delayHide();
-        };
-
-        portalEventSet = { ...triggerEventSet };
-        portalEventSet.onMouseEnter = () => {
-          delayShow();
-        };
-        if (clickToHide) {
-          portalEventSet.onClick = () => {
-            hide();
-          };
-        }
-        break;
-      case 'custom':
-        // when trigger type is 'custom', no need to bind eventHandler
-        // show/hide completely depend on props.visible which change by user
-        break;
-      default:
-        break;
-    }
-    return { triggerEventSet, portalEventSet };
-  };
-
-  const delayShow = () => {
-    clearDelayTimer();
-
-    if (mouseEnterDelay > 0) {
-      _timer.current = window.setTimeout(() => {
-        show();
-        clearDelayTimer();
-      }, mouseEnterDelay);
-    } else {
-      show();
-    }
-  };
-
-  const delayHide = () => {
-    clearDelayTimer();
-
-    if (mouseLeaveDelay > 0) {
-      _timer.current = window.setTimeout(() => {
-        hide();
-        clearDelayTimer();
-      }, mouseLeaveDelay);
-    } else {
-      hide();
-    }
-  };
-
-  const show = () => {
-    setVisible(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
-
-  const clearDelayTimer = () => {
-    if (_timer.current) {
-      clearTimeout(_timer.current);
-      _timer.current = 0;
-    }
-  };
-
-  const handlePortalInnerClick = (e: React.MouseEvent) => {
-    if (clickToHide) {
-      hide();
-    }
-    if (restProps.stopPropagation) {
-      stopPropagation(e);
-    }
-  };
-
-  // 点击外部处理（TODO: 抽到公用hook）
-  useEffect(() => {
-    const clickOutsideHandler = (e: Event) => {
-      if ((!triggerRef.current?.contains(e.target as HTMLElement) && !popupRef.current?.contains(e.target as HTMLElement)) || restProps.clickTriggerToHide) {
-        restProps.onClickOutSide?.(e);
-        delayHide();
-      }
-    };
-    document.addEventListener('click', clickOutsideHandler, false);
-
-    return () => {
-      document.removeEventListener('click', clickOutsideHandler, false);
-    };
-  }, []);
-
-  useEffect(() => {
-    updateCoords();
-  }, []);
-
-  const wrapSpan = (elem: React.ReactNode | React.ReactElement) => {
-    const blockDisplays = ['flex', 'block', 'table', 'flow-root', 'grid'];
-    const display = get(elem, 'props.style.display');
-    const block = get(elem, 'props.block');
-
-    const style: React.CSSProperties = {
-      display: 'inline-block',
-    };
-
-    if (block || blockDisplays.includes(display)) {
-      style.width = '100%';
-    }
-
-    return <span style={style}>{elem}</span>;
-  };
-
-  const child = wrapSpan(children);
-
-  const { triggerEventSet, portalEventSet } = generateEvent(trigger);
-  const newChild = React.cloneElement(child as React.ReactElement, { ...(child as React.ReactElement).props, ...mergeEvents((child as React.ReactElement).props, triggerEventSet), ref: triggerRef });
-
-  // 箭头元素
-  const renderArrow = () => {
-    const arrowCls = classNames(`${prefixCls}-arrow`);
-    const bgColor = get(style, 'backgroundColor');
-    const arrowStyle: React.CSSProperties = {
-      color: bgColor,
-      fill: 'currentColor',
-    };
-
-    if (placement.indexOf('top') === 0) {
-      arrowStyle.bottom = '-6px';
-    }
-    if (placement.indexOf('bottom') === 0) {
-      arrowStyle.top = '-6px';
-    }
-    if (placement.indexOf('left') === 0) {
-      arrowStyle.right = '-6px';
-    }
-    if (placement.indexOf('right') === 0) {
-      arrowStyle.left = '-6px';
-    }
-
-    if (placement.includes('Left')) {
-      arrowStyle.left = '14px';
-    }
-    if (placement.includes('Right')) {
-      arrowStyle.right = '14px';
-    }
-    if (placement.includes('Top')) {
-      arrowStyle.top = '6px';
-    }
-    if (placement.includes('Bottom')) {
-      arrowStyle.bottom = '6px';
-    }
-
-    if (placement === 'top' || placement === 'bottom') {
-      arrowStyle.left = '50%';
-      // arrowStyle.transform = ' translateX(-50%)';
-    }
-
-    if (placement === 'left' || placement === 'right') {
-      arrowStyle.top = '50%';
-      // arrowStyle.transform = ' translateY(-50%)';
-    }
-
-    let icon = null;
-    if (showArrow) {
-      if (isValidElement(showArrow)) {
-        icon = showArrow;
-      } else {
-        const iconComponent = placement.includes('left') || placement.includes('right') ? <ArrowVertical /> : <Arrow />;
-        icon = React.cloneElement(iconComponent, { className: arrowCls, style: arrowStyle });
-      }
-    }
-
-    return icon;
-  };
-
-  const cls = classNames(
-    prefixCls,
+export const Tooltip = React.forwardRef(
+  (
     {
-      [`${prefixCls}-${placement}`]: placement,
-    },
-    className,
-  );
+      prefixCls = prefix,
+      showArrow = true,
+      clickToHide,
+      content,
+      placement = 'top',
+      trigger = 'hover',
+      getContainer = getDefaultContainer,
+      mouseEnterDelay = 50,
+      mouseLeaveDelay = 50,
+      spacing = 8,
+      defaultVisible = false,
+      zIndex = 1060,
+      children,
+      className,
+      style,
+      ...restProps
+    }: TooltipProps,
+    ref,
+  ) => {
+    // 基点，基于此进行 transform 位移
+    const [coords, setCoords] = useState({});
+    const _timer = useRef(0);
+    const triggerRef = useRef<HTMLElement>(null);
+    const popupRef = useRef<HTMLDivElement>(null);
 
-  return (
-    <>
-      {newChild}
-      {visible ? (
-        <Portal getContainer={getContainer} style={{ zIndex }}>
-          <div className={`${BASE_CLASS_PREFIX}-portal-inner`} style={{ ...coords, ...getTranslateStyle(placement) }} ref={popupRef}>
-            <div className={cls} style={style} {...restProps} {...portalEventSet} onClick={handlePortalInnerClick}>
-              {content}
-              {renderArrow()}
+    // controlled
+    const [visible, setVisible] = usePropsValue({
+      value: restProps.visible,
+      defaultValue: defaultVisible,
+      onChange: restProps.onVisibleChange,
+    });
+
+    const getTriggerBounding = () => {
+      let triggerDOM = triggerRef.current!;
+      return triggerDOM && (triggerDOM as Element).getBoundingClientRect();
+    };
+
+    useEffect(() => {
+      window.addEventListener('resize', updateCoords, false);
+      return () => window.removeEventListener('resize', updateCoords, false);
+    }, []);
+
+    useEffect(() => {
+      // 页面滚动条滚动时触发
+      window.addEventListener('scroll', updateCoords, true);
+      return () => {
+        window.removeEventListener('scroll', updateCoords, true);
+      };
+    }, []);
+
+    // 基准点
+    const updateCoords = () => {
+      // https://zh.javascript.info/coordinates
+      const rect = getTriggerBounding();
+      // 根据 placement 改变基准点
+      const newCoords = {
+        left: rect?.left,
+        top: rect?.bottom,
+      };
+      switch (placement) {
+        case 'bottomLeft':
+        case 'leftBottom':
+          break;
+        case 'bottom':
+          newCoords.left += rect?.width / 2;
+          break;
+        case 'bottomRight':
+        case 'rightBottom':
+          newCoords.left = rect?.right;
+          break;
+        case 'topLeft':
+        case 'leftTop':
+          newCoords.top = rect?.top;
+          break;
+        case 'top':
+          newCoords.left += rect?.width / 2;
+          newCoords.top = rect?.top;
+          break;
+        case 'topRight':
+        case 'rightTop':
+          newCoords.left = rect?.right;
+          newCoords.top = rect?.top;
+          break;
+        case 'left':
+          newCoords.top -= rect?.height / 2;
+          break;
+        case 'right':
+          newCoords.left = rect?.right;
+          newCoords.top -= rect?.height / 2;
+          break;
+        default:
+          break;
+      }
+
+      if (['topLeft', 'top', 'topRight'].includes(placement)) {
+        newCoords.top -= spacing;
+      }
+      if (['bottomLeft', 'bottom', 'bottomRight'].includes(placement)) {
+        newCoords.top += spacing;
+      }
+      if (['leftTop', 'left', 'leftBottom'].includes(placement)) {
+        newCoords.left -= spacing;
+      }
+      if (['rightTop', 'right', 'rightBottom'].includes(placement)) {
+        newCoords.left += spacing;
+      }
+
+      setCoords({
+        left: newCoords.left + window.scrollX,
+        top: newCoords.top + window.scrollY,
+      });
+    };
+
+    // 根据trigger类型挂载事件
+    const generateEvent = (trigger: Trigger) => {
+      const triggerEventSet: {
+        [key: string]: (e: React.MouseEvent<HTMLElement>) => void;
+      } = {};
+      let portalEventSet: {
+        [key: string]: (e: React.MouseEvent<HTMLElement>) => void;
+      } = {};
+      switch (trigger) {
+        case 'focus':
+          triggerEventSet.onFocus = () => {
+            updateCoords();
+            delayShow();
+          };
+          triggerEventSet.onBlur = () => {
+            delayHide();
+          };
+          portalEventSet = triggerEventSet;
+          break;
+        case 'click':
+          triggerEventSet.onClick = () => {
+            updateCoords();
+            show();
+          };
+          portalEventSet = {};
+          // Click outside needs special treatment, can not be directly tied to the trigger Element, need to be bound to the document
+          break;
+        case 'hover':
+          triggerEventSet.onMouseEnter = () => {
+            // setCache('isClickToHide', false);
+            updateCoords();
+            delayShow();
+          };
+          triggerEventSet.onMouseLeave = () => {
+            delayHide();
+          };
+
+          portalEventSet = { ...triggerEventSet };
+          portalEventSet.onMouseEnter = () => {
+            delayShow();
+          };
+          if (clickToHide) {
+            portalEventSet.onClick = () => {
+              hide();
+            };
+          }
+          break;
+        case 'custom':
+          // when trigger type is 'custom', no need to bind eventHandler
+          // show/hide completely depend on props.visible which change by user
+          break;
+        default:
+          break;
+      }
+      return { triggerEventSet, portalEventSet };
+    };
+
+    const delayShow = () => {
+      clearDelayTimer();
+
+      if (mouseEnterDelay > 0) {
+        _timer.current = window.setTimeout(() => {
+          show();
+          clearDelayTimer();
+        }, mouseEnterDelay);
+      } else {
+        show();
+      }
+    };
+
+    const delayHide = () => {
+      clearDelayTimer();
+
+      if (mouseLeaveDelay > 0) {
+        _timer.current = window.setTimeout(() => {
+          hide();
+          clearDelayTimer();
+        }, mouseLeaveDelay);
+      } else {
+        hide();
+      }
+    };
+
+    const show = () => {
+      setVisible(true);
+    };
+
+    const hide = () => {
+      setVisible(false);
+    };
+
+    const clearDelayTimer = () => {
+      if (_timer.current) {
+        clearTimeout(_timer.current);
+        _timer.current = 0;
+      }
+    };
+
+    const handlePortalInnerClick = (e: React.MouseEvent) => {
+      if (clickToHide) {
+        hide();
+      }
+      if (restProps.stopPropagation) {
+        stopPropagation(e);
+      }
+    };
+
+    useImperativeHandle(ref, () => ({
+      hide,
+      show,
+    }));
+
+    // 点击外部处理（TODO: 抽到公用hook）
+    useEffect(() => {
+      const clickOutsideHandler = (e: Event) => {
+        if ((!triggerRef.current?.contains(e.target as HTMLElement) && !popupRef.current?.contains(e.target as HTMLElement)) || restProps.clickTriggerToHide) {
+          restProps.onClickOutSide?.(e);
+          delayHide();
+        }
+      };
+      document.addEventListener('click', clickOutsideHandler, false);
+
+      return () => {
+        document.removeEventListener('click', clickOutsideHandler, false);
+      };
+    }, []);
+
+    useEffect(() => {
+      updateCoords();
+    }, []);
+
+    const wrapSpan = (elem: React.ReactNode | React.ReactElement) => {
+      const blockDisplays = ['flex', 'block', 'table', 'flow-root', 'grid'];
+      const display = get(elem, 'props.style.display');
+      const block = get(elem, 'props.block');
+
+      const style: React.CSSProperties = {
+        display: 'inline-block',
+      };
+
+      if (block || blockDisplays.includes(display)) {
+        style.width = '100%';
+      }
+
+      return <span style={style}>{elem}</span>;
+    };
+
+    const child = wrapSpan(children);
+
+    const { triggerEventSet, portalEventSet } = generateEvent(trigger);
+    const newChild = React.cloneElement(child as React.ReactElement, {
+      ...(child as React.ReactElement).props,
+      ...mergeEvents((child as React.ReactElement).props, triggerEventSet),
+      ref: triggerRef,
+    });
+
+    // 箭头元素
+    const renderArrow = () => {
+      const arrowCls = classNames(`${prefixCls}-arrow`);
+      const bgColor = get(style, 'backgroundColor');
+      const arrowStyle: React.CSSProperties = {
+        color: bgColor,
+        fill: 'currentColor',
+      };
+
+      if (placement.indexOf('top') === 0) {
+        arrowStyle.bottom = '-6px';
+      }
+      if (placement.indexOf('bottom') === 0) {
+        arrowStyle.top = '-6px';
+      }
+      if (placement.indexOf('left') === 0) {
+        arrowStyle.right = '-6px';
+      }
+      if (placement.indexOf('right') === 0) {
+        arrowStyle.left = '-6px';
+      }
+
+      if (placement.includes('Left')) {
+        arrowStyle.left = '14px';
+      }
+      if (placement.includes('Right')) {
+        arrowStyle.right = '14px';
+      }
+      if (placement.includes('Top')) {
+        arrowStyle.top = '6px';
+      }
+      if (placement.includes('Bottom')) {
+        arrowStyle.bottom = '6px';
+      }
+
+      if (placement === 'top' || placement === 'bottom') {
+        arrowStyle.left = '50%';
+        // arrowStyle.transform = ' translateX(-50%)';
+      }
+
+      if (placement === 'left' || placement === 'right') {
+        arrowStyle.top = '50%';
+        // arrowStyle.transform = ' translateY(-50%)';
+      }
+
+      let icon = null;
+      if (showArrow) {
+        if (isValidElement(showArrow)) {
+          icon = showArrow;
+        } else {
+          const iconComponent = placement.includes('left') || placement.includes('right') ? <ArrowVertical /> : <Arrow />;
+          icon = React.cloneElement(iconComponent, {
+            className: arrowCls,
+            style: arrowStyle,
+          });
+        }
+      }
+
+      return icon;
+    };
+
+    const cls = classNames(
+      prefixCls,
+      {
+        [`${prefixCls}-${placement}`]: placement,
+      },
+      className,
+    );
+
+    return (
+      <>
+        {newChild}
+        {visible ? (
+          <Portal getContainer={getContainer} style={{ zIndex }}>
+            <div className={`${BASE_CLASS_PREFIX}-portal-inner`} style={{ ...coords, ...getTranslateStyle(placement) }} ref={popupRef}>
+              <div className={cls} style={style} {...restProps} {...portalEventSet} onClick={handlePortalInnerClick}>
+                {content}
+                {renderArrow()}
+              </div>
             </div>
-          </div>
-        </Portal>
-      ) : null}
-    </>
-  );
-};
+          </Portal>
+        ) : null}
+      </>
+    );
+  },
+);
 
 Tooltip.displayName = 'Tooltip';

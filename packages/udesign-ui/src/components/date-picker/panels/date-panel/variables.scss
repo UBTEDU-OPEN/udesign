@@ -1,0 +1,47 @@
+$date-panel-color: var(--ud-date-panel-color, #3e4967);
+$date-panel-margin: var(--ud-date-panel-margin, 0);
+$date-panel-padding: var(--ud-date-panel-padding, 10px);
+$date-panel-border-radius: var(--ud-date-panel-border-radius, 12px);
+
+// 星期样式
+$date-panel-week-box-height: var(--ud-date-panel-week-box-height, 50px);
+$date-panel-week-days-width: var(--ud-date-panel-week-days-width, calc(100% / 7));
+
+// 具体日期
+$date-panel-month-days-border-radius: var(--ud-date-panel-month-days-border-radius,50%);
+$date-panel-month-days-width: var(--ud-date-panel-month-days-width, calc(100% / 7));
+$date-panel-month-days-margin: var(--ud-date-panel-month-days-margin, 4px 0);
+
+// 非当前月份的日期
+$date-panel-other-month-days-color: var(--ud-date-panel-other-month-days-color, #999);
+
+// 当前月份的日期
+$date-panel-current-month-days-color: var(--ud-date-panel-current-month-days-color, #000);
+
+// 具体日期样式
+$date-panel-date-text-line-height: var(--ud-date-panel-date-text-line-height,32px);
+$date-panel-date-text-width: var(--ud-date-panel-date-text-width, 32px);
+$date-panel-date-text-height: var(--ud-date-panel-date-text-height, 32px);
+$date-panel-date-text-font-size: var(--ud-date-panel-date-text-font-size, 16px);
+
+// 选中时日期样式
+$date-panel-selected-day-active-border-radius: var(--ud-date-panel-selected-day-active-border-radius, 50%);
+$date-panel-selected-day-active-background-image: var(--ud-date-panel-selected-day-active-background-image, linear-gradient(155deg, #74e3ff 0%, #9c6bff 100%));
+$date-panel-selected-day-active-color: var(--ud-date-panel-selected-day-active-color, #fff);
+
+// 当前日期样式
+$date-panel-now-day-border-color: var(--ud-date-panel-now-day-border-color, var(--ud-color-primary));
+
+
+// header中间年月样式
+$date-panel-year-number-font-size: var(--ud-date-panel-year-number-font-size, 18.67px);
+$date-panel-year-number-color: var(--ud-date-panel-year-number-color, #3e4967);
+$date-panel-year-number-height: var(--ud-date-panel-year-number-height, 36px);
+$date-panel-year-number-line-height: var(--ud-date-panel-year-number-line-height, 36px);
+
+$date-panel-year-margin-left: var(--ud-date-panel-year-margin-left, 20px);
+
+// 鼠标悬停样式
+$date-panel-date-text-hover-background-image: var(--ud-date-panel-date-text-hover-background-image, linear-gradient(155deg, #74e3ff 0%, #9c6bff 100%));
+$date-panel-date-text-hover-color: var(--ud-date-panel-date-text-hover-color, #fff);
+$date-panel-date-text-hover-border-radius: var(--ud-date-panel-date-text-hover-border-radius, 50%);

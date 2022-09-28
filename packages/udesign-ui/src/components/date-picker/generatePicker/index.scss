@@ -1,0 +1,56 @@
+@import './vairables.scss';
+
+// date-picker
+$module: ud-date-picker;
+.#{$module}{
+  .ud-input-wrapper{
+    background: $date-picker-background;
+      &:hover{
+        border-color: $date-picker-input-focused ;
+      }
+  }
+}
+
+// date-range-picker
+.#{$module}-range{
+  display: flex;
+  background: $date-picker-range-background;
+  color: $date-picker-range-color;
+  border: $border-width-control solid $date-picker-range-border-color;
+  border-radius: var(--ud-border-radius-full);
+  align-items: center;
+  &:hover{
+    border-color: $date-picker-range-input-focused ;
+  }
+  .ud-input-wrapper{
+    background: transparent;
+    border: 0;
+    .ud-input{
+      &:hover{
+        background: $date-picker-range-background;
+      }
+    }
+  }
+  .ud-input-wrapper-focused{
+    &::after{
+      content: '';
+      width: 50%;
+      height: 2px;
+      background: $date-picker-range-input-focused;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translate(-50%, 0);
+    }
+  } 
+}
+.#{$module}-range-dropdown{
+  max-width: $date-picker-range-dropdown-max-width;
+}
+.#{$module}-range-panel{
+  display: flex;
+  .ud-date-panel{
+    border: 0;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,22 @@
+@import './vairables.scss';
+
+$module: ud-date-picker-panel;
+
+// header
+.#{$module}-header {
+  font-size: $date-picker-panel-header-font-size;
+  display: flex;
+  height: $date-picker-panel-header-height;
+  justify-content: space-between;
+  align-items: center;
+ 
+  .#{$module}-headerImgBox {
+    height: $date-picker-panel-headerImgBox;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .#{$module}-hidden{
+    visibility: hidden;
+  }
+}

@@ -124,6 +124,14 @@ export const DesignAPI = (props: DesignAPIProps) => {
           </>
         );
       }
+      if (componentName === 'date-picker') {
+        return (
+          <>
+            {designApi['date-picker']?.length && renderTable(designApi['date-picker'], 'DatePicker')}
+            {designApi['range-picker']?.length && renderTable(designApi['range-picker'], 'RangePicker')}
+          </>
+        );
+      }
       if (designApi[componentName]?.length) {
         return renderTable(designApi[componentName]);
       }
