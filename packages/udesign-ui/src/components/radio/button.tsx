@@ -18,39 +18,31 @@ export type RadioProps = {
 
 const prefixCls = `${BASE_CLASS_PREFIX}-radio-button`;
 
-export const Button = ({ defaultChecked = false, disabled, className, children, value, ...restProps }: RadioProps) => {
+export const Button = ({ defaultChecked = false, disabled, className, children, value, style, ...restProps }: RadioProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;
   const [innerChecked, setInnerChecked] = useState<boolean>(checked!);
   const context = useContext(RadioContext);
-  // const [cusInput, setCusInput] = useState(
-  //   classNames(`${prefixCls}-cus-input`, {
-  //     [`${prefixCls}-unchecked`]: !disabled && !innerChecked,
-  //     [`${prefixCls}-checked`]: !disabled && innerChecked,
-  //     [`${prefixCls}-unchecked-disabled`]: disabled && !innerChecked,
-  //     [`${prefixCls}-checked-disabled`]: disabled && innerChecked,
-  //   }),
-  // );
+  const isDisabled = disabled || context.disabled;
   const [cusInput, setCusInput] = useState(
     classNames(`${prefixCls}-cus-input`, {
       [`${prefixCls}-unchecked`]: !innerChecked,
       [`${prefixCls}-checked`]: innerChecked,
-      [`${prefixCls}-disabled`]: disabled,
+      [`${prefixCls}-disabled`]: isDisabled,
       [`${prefixCls}-cus-input-common`]: true,
     }),
   );
 
   function handleClick() {
-    if (!disabled) {
-      setInnerChecked(true);
-      // 更新value值
-      if (context.dispatch) {
-        context.dispatch({
-          type: types.UPDATE_VALUE,
-          payload: {
-            value,
-          },
-        });
-      }
+    if (isDisabled) return;
+    setInnerChecked(true);
+    // 更新value值
+    if (context.dispatch) {
+      context.dispatch({
+        type: types.UPDATE_VALUE,
+        payload: {
+          value,
+        },
+      });
     }
   }
   useEffect(() => {
@@ -67,33 +59,27 @@ export const Button = ({ defaultChecked = false, disabled, className, children, 
 
   useEffect(() => {
     setCusInput(
-      // classNames(`${prefixCls}-cus-input`, {
-      //   [`${prefixCls}-unchecked`]: !disabled && !innerChecked,
-      //   [`${prefixCls}-checked`]: !disabled && innerChecked,
-      //   [`${prefixCls}-unchecked-disabled`]: disabled && !innerChecked,
-      //   [`${prefixCls}-checked-disabled`]: disabled && innerChecked,
-      // }),
       classNames(`${prefixCls}-cus-input`, {
         [`${prefixCls}-unchecked`]: !innerChecked,
         [`${prefixCls}-checked`]: innerChecked,
-        [`${prefixCls}-disabled`]: disabled,
+        [`${prefixCls}-disabled`]: isDisabled,
         [`${prefixCls}-cus-input-common`]: true,
       }),
     );
-  }, [innerChecked, disabled]);
+  }, [innerChecked, disabled, context.disabled]);
 
   const cls = classNames(className, prefixCls);
 
   return (
     <>
-      <label className={cls}>
+      <label className={cls} style={style}>
         <input
           name={context.name}
           type='radio'
           className={`${prefixCls}-hidden`}
           checked={innerChecked}
           value={value}
-          disabled={disabled}
+          disabled={isDisabled}
           onClick={handleClick}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             if (context.onChange) {

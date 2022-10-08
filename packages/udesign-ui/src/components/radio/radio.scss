@@ -7,7 +7,7 @@ $module: ud-radio;
 }
 
 .#{$module} {
-  padding: $radio-padding;
+  margin: $radio-margin;
   display: inline-flex;
   align-self: flex-start;
   cursor: pointer;
@@ -28,6 +28,14 @@ $module: ud-radio;
   }
   &-disabled {
     cursor: not-allowed;
+
+    .#{$module}-icon-disabled {
+      color: $radio-icon-color-disabled;
+      background: $radio-icon-background-disabled;
+    }
+  }
+  &:last-child {
+    margin: 0;
   }
 }
 
@@ -46,7 +54,7 @@ $module: ud-radio;
     }
 
     &-cus-input-common {
-      font-size: $radio-button-fontsize;
+      font-size: $radio-button-font-size;
       letter-spacing: 0;
       border-radius: $radio-button-border-radius;
       padding: $radio-button-inner-padding;
@@ -77,6 +85,7 @@ $module: ud-radio;
 .#{$module}-icon {
   display: inline-flex;
   align-self: center;
+  align-items: center;
   font-size: $radio-icon-font-size;
   margin: $radio-icon-margin;
   width: $radio-icon-width;
@@ -89,10 +98,5 @@ $module: ud-radio;
 
   &-unchecked {
     color: $radio-icon-color-unchecked;
-  }
-
-  &-disabled {
-    color: $radio-icon-color-disabled;
-    background: $radio-icon-background-disabled;
   }
 }

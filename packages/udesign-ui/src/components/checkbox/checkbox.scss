@@ -7,17 +7,36 @@ $module: ud-checkbox;
 }
 
 .#{$module} {
-  padding: $checkbox-padding;
+  margin: $checkbox-margin;
   display: inline-flex;
   cursor: pointer;
 
-  &-disabled {
-    cursor: not-allowed;
+  &:last-child {
+    margin: 0;
   }
 
-  .#{$module}-icon {
+  &-disabled {
+    cursor: not-allowed;
+
+    .#{$module}-icon-disabled {
+      color: $checkbox-icon-color-disabled;
+      background: $checkbox-icon-background-disabled;
+      border: $checkbox-icon-border-disabled;
+    }
+
+    .#{$module}-icon-disabled-checked {
+      border: none;
+    }
+
+    .#{$module}-icon-indeterminate-disabled {
+      border: none;
+    }
+  }
+
+  &-icon {
     display: flex;
     align-self: center;
+    align-items: center;
     box-sizing: border-box;
     margin: $checkbox-icon-margin;
     font-size: $checkbox-icon-font-size;
@@ -26,25 +45,20 @@ $module: ud-checkbox;
     border-radius: $checkbox-icon-border-radius;
   }
 
-  .#{$module}-icon-checked {
+  &-icon-checked {
     color: $checkbox-icon-color-checked;
   }
 
-  .#{$module}-icon-unchecked {
-    border: $checkbox-icon-border-unchecked;
+  &-icon-unchecked {
+    color: $checkbox-icon-color-unchecked;
+
+    &-disabled {
+      border: $checkbox-icon-border-indeterminate-disabled;
+    }
   }
 
-  .#{$module}-icon-disabled {
-    color: $checkbox-icon-color-disabled;
-    background: $checkbox-icon-background-disabled;
-  }
-
-  .#{$module}-icon-indeterminate {
+  &-icon-indeterminate {
     border: $checkbox-icon-border-indeterminate;
-  }
-
-  .#{$module}-icon-indeterminate-disabled {
-    border: $checkbox-icon-border-indeterminate-disabled;
   }
 
   &-hidden {

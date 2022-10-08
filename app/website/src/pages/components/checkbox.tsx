@@ -59,13 +59,11 @@ export default function CheckboxPage() {
               console.log(checkedValue);
             }}
           >
-            <>
-              <Checkbox value='A'>A</Checkbox>
-              <Checkbox value='B'>B</Checkbox>
-              <Checkbox value='C' disabled>
-                C
-              </Checkbox>
-            </>
+            <Checkbox value='A'>A</Checkbox>
+            <Checkbox value='B'>B</Checkbox>
+            <Checkbox value='C' disabled>
+              C
+            </Checkbox>
           </Checkbox.Group>
         </Demo.Block>
         <Demo.Block title='复选框组（数组方式）' description='复选框组可以通过 options 属性生成 Checkbox。'>
@@ -83,11 +81,9 @@ export default function CheckboxPage() {
               setAllchecked(selectedValue.length === 3);
             }}
           >
-            <>
-              <Checkbox value='A'>A</Checkbox>
-              <Checkbox value='B'>B</Checkbox>
-              <Checkbox value='C'>C</Checkbox>
-            </>
+            <Checkbox value='A'>A</Checkbox>
+            <Checkbox value='B'>B</Checkbox>
+            <Checkbox value='C'>C</Checkbox>
           </Checkbox.Group>
           <Checkbox
             indeterminate={indeterminate}

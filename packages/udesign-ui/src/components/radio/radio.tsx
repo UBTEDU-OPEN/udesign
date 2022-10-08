@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState, ReactNode } from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { RadioFilled, RadioOutlined } from '@ubt/udesign-icons';
+import { Icon, RadioFilled, RadioOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { RadioContext, types } from './context';
 import { BASE_CLASS_PREFIX } from '../../constants';
@@ -15,30 +15,27 @@ export type RadioProps = {
   defaultChecked?: boolean; // 初始是否选中。默认值：false
   disabled?: boolean; // 禁用 Radio。默认值：false
   value?: string; // 根据 value 进行比较，判断是否选中。默认值：-
-  label?: string; // 单选框显示文字。默认值：-
-  checkedIcon?: ReactNode; // 选中状态下的图标。默认值：<RadioLight />
-  uncheckedIcon?: ReactNode; // 未选中状态下的图标。默认值：<RadioNormal />
+  icon?: ReactNode; // 自定义图标。默认值：-
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-radio`;
 
-export const Radio = ({ defaultChecked = false, disabled, checkedIcon = <RadioFilled />, uncheckedIcon = <RadioOutlined />, className, style, children, value, label, ...restProps }: RadioProps) => {
+export const Radio = ({ defaultChecked = false, disabled, icon, className, style, children, value, ...restProps }: RadioProps) => {
   const checked = 'checked' in restProps ? restProps.checked : defaultChecked;
   const [innerChecked, setInnerChecked] = useState<boolean>(checked!);
   const context = useContext(RadioContext);
-
+  const isDisabled = disabled || context.disabled;
   function handleClick() {
-    if (!disabled) {
-      setInnerChecked(true);
-      // 更新value值
-      if (context.dispatch) {
-        context.dispatch({
-          type: types.UPDATE_VALUE,
-          payload: {
-            value,
-          },
-        });
-      }
+    if (isDisabled) return;
+    setInnerChecked(true);
+    // 更新value值
+    if (context.dispatch) {
+      context.dispatch({
+        type: types.UPDATE_VALUE,
+        payload: {
+          value,
+        },
+      });
     }
   }
   useEffect(() => {
@@ -53,51 +50,31 @@ export const Radio = ({ defaultChecked = false, disabled, checkedIcon = <RadioFi
     }
   }, [restProps.checked]);
 
-  const renderCheckedIcon = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-unchecked`]: !innerChecked });
-    return !disabled && !innerChecked && <span className={cls}>{uncheckedIcon}</span>;
-  };
-  const renderUncheckedIcon = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked`]: innerChecked });
-    return !disabled && innerChecked && <span className={cls}>{checkedIcon}</span>;
-  };
-  const renderCheckedIconDisabled = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-unchecked`]: !innerChecked, [`${prefixCls}-icon-disabled`]: disabled });
-    return disabled && !innerChecked && <span className={cls}>{uncheckedIcon}</span>;
-  };
-  const renderUncheckedIconDisabled = () => {
-    const cls = classNames(`${prefixCls}-icon`, { [`${prefixCls}-icon-checked`]: innerChecked, [`${prefixCls}-icon-disabled`]: disabled });
-    return disabled && innerChecked && <span className={cls}>{checkedIcon}</span>;
+  const renderIcon = () => {
+    const cls = classNames(
+      `${prefixCls}-icon`,
+      {
+        [`${prefixCls}-icon-checked`]: innerChecked,
+        [`${prefixCls}-icon-unchecked`]: !innerChecked,
+      },
+      `${prefixCls}-icon-disabled`,
+    );
+    return <span className={cls}>{icon || (!innerChecked ? <RadioOutlined /> : <RadioFilled />)}</span>;
   };
 
-  const cls = classNames(prefixCls, { [`${prefixCls}-disabled`]: disabled }, className);
+  const renderLabel = () => {
+    const cls = classNames(`${prefixCls}-text`);
+    return children ? <span className={cls}>{children}</span> : null;
+  };
+
+  const cls = classNames(prefixCls, { [`${prefixCls}-disabled`]: isDisabled }, className);
 
   return (
     <>
       <label className={cls} style={style}>
-        <input
-          name={context.name}
-          type='radio'
-          className={`${prefixCls}-hidden`}
-          checked={innerChecked}
-          value={value}
-          disabled={disabled}
-          onClick={handleClick}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-            if (context.onChange) {
-              context.onChange(event);
-            }
-          }}
-        />
-        {renderCheckedIcon()}
-        {renderUncheckedIcon()}
-        {renderCheckedIconDisabled()}
-        {renderUncheckedIconDisabled()}
-        {children || label ? (
-          <span className={classNames(`${prefixCls}-text`, disabled ? `${prefixCls}-text-disabled` : '')} style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}>
-            {children || label}
-          </span>
-        ) : null}
+        <input name={context.name} type='radio' className={`${prefixCls}-hidden`} checked={innerChecked} value={value} disabled={disabled} onClick={handleClick} onChange={context.onChange} />
+        {renderIcon()}
+        {renderLabel()}
       </label>
     </>
   );

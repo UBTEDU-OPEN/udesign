@@ -21,6 +21,7 @@ export function reducer(state: { [key: string]: any }, action: actionType) {
 export interface RadioContextState {
   value?: string;
   name?: string;
+  disabled?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   dispatch?: React.Dispatch<actionType>;
 }

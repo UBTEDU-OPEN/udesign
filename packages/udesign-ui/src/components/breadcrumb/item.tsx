@@ -15,12 +15,15 @@ export const Item = ({ separator, onClick, className, children, style, ...restPr
   const strRef = useRef<HTMLSpanElement>(null);
 
   const renderLink = () => {
-    if ('href' in restProps) return <a {...restProps}> {children}</a>;
-
-    return children;
+    const cls = classNames(`${prefixCls}-text`);
+    return (
+      <span ref={strRef} className={cls} style={style} onClick={onClick}>
+        {'href' in restProps ? <a {...restProps}> {children}</a> : children}
+      </span>
+    );
   };
 
-  const renderIcon = () => {
+  const renderSeparator = () => {
     const cls = `${prefixCls}-separator`;
     return <span className={cls}>{separator} </span>;
   };
@@ -29,10 +32,8 @@ export const Item = ({ separator, onClick, className, children, style, ...restPr
 
   return (
     <span className={cls}>
-      {renderIcon()}
-      <span ref={strRef} className={`${prefixCls}-text`} style={style} onClick={onClick}>
-        {renderLink()}
-      </span>
+      {renderSeparator()}
+      {renderLink()}
     </span>
   );
 };
