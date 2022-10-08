@@ -2,8 +2,11 @@
 
 ## 开发
 
-```
+```bash
+# 安装依赖
 yarn
+
+# 运行演示网站
 cd .\app\website
 yarn dev
 ```
@@ -36,24 +39,31 @@ yarn dev
 ### 公司私服发 npm 包
 
 ```bash
+# 更新 package.json 版本号
+lerna version
+
+# 打包并发布
 cd packages/udesign-ui
-# 目前需要临时更改package.json里面的版本号（但不能提交到git库）
 yarn deploy
 ```
 
 ### 网站更新
+
+不再需要手动打包上传，直接在 [Jenkins](http://jenkins.edu.ubtrobot.com/view/uDesign/job/udesign-build/) 里面打包即可。
+
+1. Build with Parameters
+2. 测试版
+3. 页面构建
+4. 开始构建
+
+如果需要将静态文件部署到其他地方，可以运行下面的命令：
 
 ```bash
 cd app/website
 yarn export
 ```
 
-构建完成后，将生成的 `out` 目录上传到临时 FTP 服务器。
-
-Host: 10.10.18.65
-username: ucode
-password: ucode
-port: 22
+构建完成后，将生成的 `out` 目录上传即可。
 
 ## 使用说明
 

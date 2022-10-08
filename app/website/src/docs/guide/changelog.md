@@ -1,5 +1,22 @@
 # 更新日志
 
+## v1.1.10
+
+### 重要！！！
+
+1. 对外暴露组件 `Props` 类型定义。比如：你现在可以 `import { ButtonProps } from '@ubt/udesign-ui'` ，这在某些情况下会非常好用。
+2. 以前 `Tooltip` 组件没有默认的 `z-index` 值，现在被设置为 `1060`。
+3. 以前 `empty` 组件默认图片太大了，我们换成了较小的图片。
+4. `empty` 组件增加了 `imageStyle` 属性，用于向图片传样式。
+5. 以前 `Copy` 组件的 `text` 属性是可选的，现在改为了 `required` 。
+6. `Tabs` 组件增加了 `tabBarStyle` 属性，用于向 `tabbar` 传样式。
+
+### 一般
+
+1. 修复 carousel 使用 defaultIndex 时,禁用失效问题
+2. 修复 website 切换导航，组件 api 不更新的问题
+3. 修复 Breadcrumb 组件 className 冲突，点击时不触发回调函数的问题
+
 ## v1.1.9
 
 ### 新增
