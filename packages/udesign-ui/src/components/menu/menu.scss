@@ -8,6 +8,7 @@ $module: ud-menu;
   padding: 0;
   list-style: none;
   overflow: hidden;
+  background: $menu-background;
 }
 
 .#{$module}-item {

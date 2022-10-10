@@ -21,7 +21,6 @@ export default function MenuPage() {
     </>
   );
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [active, setActive] = useState('');
   const toggleCollapsed = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -73,8 +72,8 @@ export default function MenuPage() {
             </Menu.Item>
           </Menu>
         </Demo.Block>
-        <Demo.Block className='flex justify-between menu-inline' title='侧边栏内嵌菜单' description='垂直菜单，二级菜单内嵌在一级菜单区域。'>
-          <Menu radius defaultActiveKey='1' className='w-60 border-r inline-block' style={{ background: '#fff' }}>
+        <Demo.Block className='flex justify-between' title='侧边栏内嵌菜单' description='垂直菜单，二级菜单内嵌在一级菜单区域。'>
+          <Menu radius defaultActiveKey='1' className='w-60 border-r inline-block'>
             <Menu.Item name='1' icon={<PictureFilled className='mr-2 text-xl' />}>
               <span>Option 1</span>
             </Menu.Item>
@@ -128,7 +127,7 @@ export default function MenuPage() {
           </Menu>
         </Demo.Block>
         <Demo.Block title='只展开当前一级别菜单' description='点击一个菜单，收起其他已展开的菜单，保持只显示一个菜单，聚焦简洁。'>
-          <Menu onlyOne radius mode='inline' defaultSubActiveKey='一' defaultActiveKey='1' className='w-60 border-r inline-block menu-inline'>
+          <Menu onlyOne radius mode='inline' defaultSubActiveKey='一' defaultActiveKey='1' className='w-60 border-r inline-block'>
             <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%', paddingLeft: '10px' }}>
               {inlineSubmenu}
             </Menu.Submenu>
@@ -159,7 +158,7 @@ export default function MenuPage() {
             <Button onClick={toggleCollapsed} type='primary' shape='round' icon={<MenuOutlined />} />
           </div>
           <Space className='w-60'>
-            <Menu radius mode='inline' hasLine defaultActiveKey='2' className='border-r menu-inline bg-white' isCollapsed={isCollapsed}>
+            <Menu radius mode='inline' hasLine defaultActiveKey='2' className='border-r' isCollapsed={isCollapsed}>
               <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%' }}>
                 {inlineSubmenu}
               </Menu.Submenu>
@@ -177,7 +176,7 @@ export default function MenuPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='垂直菜单' description='二级菜单是弹出形式，仅支持至二级菜单。'>
-          <Menu hasLine radius className='w-60 border-r' defaultActiveKey='1' mode='vertical' style={{ background: '#fff' }}>
+          <Menu hasLine radius className='w-60 border-r' defaultActiveKey='1' mode='vertical'>
             <Menu.Item name='1' icon={<PictureFilled className='mr-2 text-xl' />}>
               导航一
             </Menu.Item>
