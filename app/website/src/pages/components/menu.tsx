@@ -41,33 +41,25 @@ export default function MenuPage() {
         />
         <Demo.Block title='顶部下拉抽屉式导航' description='水平的顶部单行tab一级导航菜单，下拉展示抽屉二级菜单。'>
           <Menu hasLine defaultActiveKey='1' mode='horizontal'>
-            <Menu.Item name='1' icon={<FolderOutlined style={{ paddingRight: '10px' }} />}>
+            <Menu.Item name='1' icon={<FolderOutlined />}>
               Navigation One
             </Menu.Item>
-            <Menu.Item name='2' disabled icon={<FolderOutlined style={{ paddingRight: '10px' }} />}>
+            <Menu.Item name='2' disabled icon={<FolderOutlined />}>
               Navigation Two
             </Menu.Item>
-            <Menu.Submenu name='3' title='Navigation Three - Submenu' icon={<FolderOutlined style={{ paddingRight: '10px' }} />}>
-              <Menu.Item name='1-1' disabled style={{ color: '#A8B4CE' }}>
+            <Menu.Submenu name='3' title='Navigation Three - Submenu' icon={<FolderOutlined />}>
+              <Menu.Item name='1-1' disabled>
                 item 1
               </Menu.Item>
-              <Menu.Item name='1-2' style={{ paddingLeft: '25px' }}>
-                Option 1
-              </Menu.Item>
-              <Menu.Item name='1-3' style={{ paddingLeft: '25px' }}>
-                Option 2
-              </Menu.Item>
-              <Menu.Item name='1-4' disabled style={{ color: '#A8B4CE' }}>
+              <Menu.Item name='1-2'>Option 1</Menu.Item>
+              <Menu.Item name='1-3'>Option 2</Menu.Item>
+              <Menu.Item name='1-4' disabled>
                 item 2
               </Menu.Item>
-              <Menu.Item name='1-5' style={{ paddingLeft: '25px' }}>
-                Option 3
-              </Menu.Item>
-              <Menu.Item name='1-6' style={{ paddingLeft: '25px' }}>
-                Option 4
-              </Menu.Item>
+              <Menu.Item name='1-5'>Option 3</Menu.Item>
+              <Menu.Item name='1-6'>Option 4</Menu.Item>
             </Menu.Submenu>
-            <Menu.Item link name='4' style={{ background: 'transparent' }}>
+            <Menu.Item link name='4'>
               <a href='#'>Navigation Four - Link</a>
             </Menu.Item>
           </Menu>
@@ -86,15 +78,15 @@ export default function MenuPage() {
           </Menu>
 
           <Menu radius mode='inline' hasLine defaultActiveKey='1' className='w-60 border-r inline-block'>
-            <Menu.Submenu name='1-1' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%', paddingLeft: '10px' }}>
+            <Menu.Submenu name='1-1' icon={<PictureFilled className='text-xl mr-2' />} title='标题一'>
               {inlineSubmenu}
             </Menu.Submenu>
-            <Menu.Submenu name='1-2' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二' style={{ width: '100%', paddingLeft: '10px' }}>
+            <Menu.Submenu name='1-2' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二'>
               <Menu.Item name='1'>Option 1</Menu.Item>
               <Menu.Item name='2'>Option 2</Menu.Item>
               <Menu.Item name='3'>Option 3</Menu.Item>
             </Menu.Submenu>
-            <Menu.Submenu name='1-3' icon={<DataFilled className='text-xl mr-2' />} title='标题三' style={{ width: '100%', padding: '0' }}>
+            <Menu.Submenu name='1-3' icon={<DataFilled className='text-xl mr-2' />} title='标题三'>
               <Menu.Item name='4'>Option 1</Menu.Item>
               <Menu.Item name='5'>Option 2</Menu.Item>
               <Menu.Item name='6'>Option 3</Menu.Item>
@@ -102,13 +94,13 @@ export default function MenuPage() {
           </Menu>
 
           <Menu radius hasLine defaultActiveKey='1' className='w-60 border-r inline-block'>
-            <Menu.Submenu subMode='inline' icon={<PictureFilled className='text-xl mr-2' />} title='导航一' name='1' style={{ padding: '0 0 0 15px' }}>
-              <Menu.Item name='1-1' disabled style={{ paddingLeft: '5px', color: '#A8B4CE' }}>
+            <Menu.Submenu subMode='inline' icon={<PictureFilled className='text-xl mr-2' />} title='导航一' name='1'>
+              <Menu.Item name='1-1' disabled>
                 item 1
               </Menu.Item>
               <Menu.Item name='1-2'>Option 1</Menu.Item>
               <Menu.Item name='1-3'>Option 2</Menu.Item>
-              <Menu.Item name='1-4' disabled style={{ paddingLeft: '5px', color: '#A8B4CE' }}>
+              <Menu.Item name='1-4' disabled>
                 item 2
               </Menu.Item>
               <Menu.Item name='1-5'>Option 3</Menu.Item>
@@ -128,16 +120,16 @@ export default function MenuPage() {
         </Demo.Block>
         <Demo.Block title='只展开当前一级别菜单' description='点击一个菜单，收起其他已展开的菜单，保持只显示一个菜单，聚焦简洁。'>
           <Menu onlyOne radius mode='inline' defaultSubActiveKey='一' defaultActiveKey='1' className='w-60 border-r inline-block'>
-            <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%', paddingLeft: '10px' }}>
+            <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一'>
               {inlineSubmenu}
             </Menu.Submenu>
-            <Menu.Submenu name='二' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二' style={{ width: '100%', paddingLeft: '10px' }}>
+            <Menu.Submenu name='二' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二'>
               <Menu.Item name='9'>Option 1</Menu.Item>
               <Menu.Item name='8'>Option 2</Menu.Item>
               <Menu.Item name='2-1'>Option 1</Menu.Item>
               <Menu.Item name='2-2'>Option 2</Menu.Item>
             </Menu.Submenu>
-            <Menu.Submenu name='三' icon={<DataFilled className='text-xl mr-2' />} title='标题三' style={{ width: '100%' }}>
+            <Menu.Submenu name='三' icon={<DataFilled className='text-xl mr-2' />} title='标题三'>
               <Menu.Item name='4'>Option 1</Menu.Item>
               <Menu.Item name='5'>Option 2</Menu.Item>
               <Menu.Item name='6'>Option 3</Menu.Item>
@@ -154,20 +146,18 @@ export default function MenuPage() {
             </>
           }
         >
-          <div style={{ marginBottom: '20px' }}>
-            <Button onClick={toggleCollapsed} type='primary' shape='round' icon={<MenuOutlined />} />
-          </div>
+          <Button onClick={toggleCollapsed} type='primary' shape='round' icon={<MenuOutlined />} />
           <Space className='w-60'>
             <Menu radius mode='inline' hasLine defaultActiveKey='2' className='border-r' isCollapsed={isCollapsed}>
-              <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%' }}>
+              <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一'>
                 {inlineSubmenu}
               </Menu.Submenu>
-              <Menu.Submenu name='二' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二' style={{ width: '100%' }}>
+              <Menu.Submenu name='二' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二'>
                 <Menu.Item name='9'>Option 1</Menu.Item>
                 <Menu.Item name='8'>Option 2</Menu.Item>
                 <Menu.Item name='7'>Option 3</Menu.Item>
               </Menu.Submenu>
-              <Menu.Submenu name='三' icon={<DataFilled className='text-xl mr-2' />} title='标题三' style={{ width: '100%' }}>
+              <Menu.Submenu name='三' icon={<DataFilled className='text-xl mr-2' />} title='标题三'>
                 <Menu.Item name='4'>Option 1</Menu.Item>
                 <Menu.Item name='5'>Option 2(disabled)</Menu.Item>
                 <Menu.Item name='6'>Option 3</Menu.Item>

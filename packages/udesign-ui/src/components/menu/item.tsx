@@ -11,11 +11,12 @@ export type MenuItemProps = {
   name?: string; // 唯一标志符。默认值：''
   icon?: ReactNode; // 图标。默认值：-
   disabled?: boolean; // 是否禁用。默认值：false
-  danger?: boolean; // 展示错误状态样式。默认值：false
   link?: boolean; // 链接状态。默认值：false
 } & NativeProps;
 
-export const MenuItem = ({ name = '', icon, disabled, link = false, children, className, style, ...restProps }: MenuItemProps) => {
+export const MenuItem = (props: MenuItemProps) => {
+  const { name = '', disabled, link = false, children, className, style } = props;
+
   const context = useContext(MenuContext);
   const subContext = useContext(SubMenuContext);
   const active = context?.activeKey === name;
@@ -30,6 +31,12 @@ export const MenuItem = ({ name = '', icon, disabled, link = false, children, cl
     context?.onClick?.(name);
     context?.subClick?.(name, subName === undefined ? '' : subName);
     // subContext.onClick?.(subName);
+  };
+
+  const renderIcon = () => {
+    const { icon } = props;
+    const cls = classNames(`${prefixCls}-icon`);
+    return icon ? <div className={cls}>{icon}</div> : null;
   };
 
   const cls = classNames(
@@ -50,8 +57,8 @@ export const MenuItem = ({ name = '', icon, disabled, link = false, children, cl
 
   return (
     <>
-      <li className={cls} onClick={handleClick} style={style} {...restProps}>
-        {icon || null}
+      <li className={cls} onClick={handleClick} style={style}>
+        {renderIcon()}
         {!isCollapsed || mode === 'inline' ? children : null}
       </li>
     </>

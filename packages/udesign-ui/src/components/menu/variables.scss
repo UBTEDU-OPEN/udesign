@@ -12,6 +12,7 @@ $menu-item-color-disabled: var(--ud-menu-item-color-disabled, #a8b4ce);
 $menu-item-border-color: var(--ud-menu-item-border-color, var(--ud-color-primary));
 $menu-item-border-width: var(--ud-menu-item-border-width, 2px);
 $menu-item-border-radius: var(--ud-menu-item-border-radius, 100px 0 0 100px);
+$menu-item-icon-margin: var(--ud-menu-item-icon-margin, 0 10px 0 0); // 菜单子项图标外边距
 
 $menu-submenu-max-width: var(--ud-menu-submenu-max-width, 360px);
 $menu-submenu-background: var(--ud-menu-submenu-background, var(--ud-color-white));

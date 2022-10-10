@@ -25,6 +25,12 @@ $module: ud-menu;
 
   @include truncate;
 
+  &-icon {
+    display: flex;
+    align-items: center;
+    margin: $menu-item-icon-margin;
+  }
+
   &:hover:not(&-disabled) {
     background: $menu-item-background-hover;
     color: $menu-item-color-hover;
