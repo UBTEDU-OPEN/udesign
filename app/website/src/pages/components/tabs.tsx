@@ -27,7 +27,7 @@ export default function TabsPage() {
           }
         />
         <Demo.Block title='基础用法' description='默认的标签页'>
-          <Tabs defaultActiveKey={'1'} onChange={console.log} type='card' position='top'>
+          <Tabs defaultActiveKey={'1'} onChange={console.log}>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -40,7 +40,7 @@ export default function TabsPage() {
           </Tabs>
         </Demo.Block>
         <Demo.Block title='不可用效果' description='禁用某一项的展示效果。'>
-          <Tabs type='card'>
+          <Tabs>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -54,7 +54,7 @@ export default function TabsPage() {
         </Demo.Block>
         <Demo.Block title='不同位置显示' description='标签页左侧、居中、右侧显示。'>
           <p className='pb-5'>左侧</p>
-          <Tabs type='card'>
+          <Tabs>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -69,7 +69,7 @@ export default function TabsPage() {
 
         <Demo.Block>
           <p className='pb-5'>居中</p>
-          <Tabs type='card' centered>
+          <Tabs centered>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -81,8 +81,8 @@ export default function TabsPage() {
             </Tabs.Item>
           </Tabs>
         </Demo.Block>
-        <Demo.Block title='按钮风格' description='默认为 line 样式，可以通过 type 属性切换样式风格。'>
-          <Tabs type='button'>
+        <Demo.Block title='下划线风格' description='通过将 type 属性设置为 line 切换到下划线风格。'>
+          <Tabs type='line'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -108,7 +108,7 @@ export default function TabsPage() {
           </Tabs>
         </Demo.Block>
         <Demo.Block title='水平滚动' description=''>
-          <Tabs defaultActiveKey={'2'} onChange={console.log} type='card'>
+          <Tabs defaultActiveKey={'2'} onChange={console.log}>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -133,7 +133,7 @@ export default function TabsPage() {
           </Tabs>
         </Demo.Block>
         <Demo.Block title='自动平铺' description='设置 around 属性即可自动平铺'>
-          <Tabs around type='card'>
+          <Tabs around>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -146,7 +146,7 @@ export default function TabsPage() {
           </Tabs>
         </Demo.Block>
         <Demo.Block title='位置' description='设置 position 属性即可调整位置'>
-          <Tabs position='left' type='card'>
+          <Tabs position='left'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -159,7 +159,7 @@ export default function TabsPage() {
           </Tabs>
         </Demo.Block>
         <Demo.Block title='多款设计' description='多种款式的标签页。'>
-          <Tabs type='card'>
+          <Tabs>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -186,7 +186,7 @@ export default function TabsPage() {
         </Demo.Block>
         <Demo.Block title='不同尺寸' description='三种尺寸的标签页。大号页签用在页头区域，小号用在弹出框等较狭窄的容器内。'>
           <p className='pb-5'>小号</p>
-          <Tabs type='card' size='small'>
+          <Tabs size='small'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -200,7 +200,7 @@ export default function TabsPage() {
         </Demo.Block>
         <Demo.Block>
           <p className='pb-5'>默认</p>
-          <Tabs type='card' size='middle'>
+          <Tabs size='middle'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>
@@ -214,7 +214,7 @@ export default function TabsPage() {
         </Demo.Block>
         <Demo.Block>
           <p className='pb-5'>大号</p>
-          <Tabs type='card' size='large'>
+          <Tabs size='large'>
             <Tabs.Item label='Tab 1' name='1'>
               Content of Tab Pane 1
             </Tabs.Item>

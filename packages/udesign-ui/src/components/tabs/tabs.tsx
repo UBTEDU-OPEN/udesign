@@ -20,14 +20,14 @@ export type TabsProps = {
   onChange?: (name: string) => void; // 切换时的回调。默认值：-
 } & NativeProps;
 
-export const Tabs = ({ type = 'line', tabBarStyle, position = 'top', size = 'middle', centered, around, activeKey, defaultActiveKey, onChange, className, style, children }: TabsProps) => {
+export const Tabs = ({ type = 'card', tabBarStyle, position = 'top', size = 'middle', centered, around, activeKey, defaultActiveKey, onChange, className, style, children }: TabsProps) => {
   // 1. 提取所有子元素
   // const tabs = useMemo(() => toArray(children), []);
   const tabs = toArray(children);
 
   const [innerActiveKey, setInnerActiveKey] = usePropsValue({
     value: activeKey,
-    defaultValue: defaultActiveKey ?? tabs[0].props.name,
+    defaultValue: defaultActiveKey ?? tabs[0]?.props.name,
     onChange,
   });
 
