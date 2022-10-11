@@ -17,7 +17,7 @@ export type SwitchProps = {
   onClick?: (checked: boolean) => void; // 点击时回调函数。默认值：-
 } & NativeProps;
 
-export const Switch = ({ defaultChecked = false, disabled, loading, size = 'middle', checkedText, uncheckedText, className, ...props }: SwitchProps) => {
+export const Switch = ({ defaultChecked = false, disabled, loading, size = 'middle', checkedText, uncheckedText, className, style, ...props }: SwitchProps) => {
   const [innerChecked, setInnerChecked] = usePropsValue({
     value: props.checked,
     defaultValue: defaultChecked,
@@ -43,7 +43,7 @@ export const Switch = ({ defaultChecked = false, disabled, loading, size = 'midd
   );
   return (
     <>
-      <button onClick={onInternalClick} type='button' className={cls}>
+      <button onClick={onInternalClick} type='button' className={cls} style={style}>
         <div className={`${prefixCls}-handle`}></div>
         <span className={`${prefixCls}-text`}>{innerChecked ? checkedText : uncheckedText}</span>
       </button>

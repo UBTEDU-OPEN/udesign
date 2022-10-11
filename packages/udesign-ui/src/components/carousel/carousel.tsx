@@ -97,6 +97,9 @@ export const Carousel = React.forwardRef<CarouselRef, CarouselProps>(
     };
 
     const goTo = (index: number) => {
+      if (index === count) return;
+      if (index > count) setAnimationDirection('left');
+      else if (index < count) setAnimationDirection('right');
       setCount(index);
     };
 
