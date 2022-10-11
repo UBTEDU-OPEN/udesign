@@ -51,9 +51,9 @@ export const Group = ({ defaultValue = '', disabled, options, children, name, on
     });
   }, [restProps.value, defaultValue]);
 
-  const renderChildren = () =>
-    (isValidElement(children) ? children : <>{children}</>) ||
-    getOptions()?.map((option: RadioOptionType) => {
+  const renderChildren = () => {
+    if (children) return isValidElement(children) ? children : <>{children}</>;
+    return getOptions()?.map((option: RadioOptionType) => {
       const radioProps =
         'value' in restProps
           ? {
@@ -66,6 +66,7 @@ export const Group = ({ defaultValue = '', disabled, options, children, name, on
         </Radio>
       );
     });
+  };
 
   return (
     <RadioContext.Provider value={{ value: state.value, name, disabled, onChange, dispatch }}>
