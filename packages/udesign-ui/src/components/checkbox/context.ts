@@ -23,6 +23,7 @@ export interface CheckboxContextState {
   name?: string;
   onChange?: (checkedValue: string[]) => void;
   dispatch?: React.Dispatch<actionType>;
+  disabled?: boolean;
 }
 
 export const CheckboxContext: Context<CheckboxContextState> = createContext({});

@@ -1,5 +1,17 @@
 # 更新日志
 
+## v1.1.11
+
+### 重要！！！
+
+1. Checkbox 组件中的 `checkedIcon` 和 `uncheckedIcon` 属性被移除。
+2. Radio 组件中的 `checkedIcon` 和 `uncheckedIcon` 属性被移除。
+
+### 修复
+
+1. 修复 Checkbox 组件在使用 `Checkbox.Group` 时 `disabled` 属性不生效问题。
+2. 修复 Radio 组件在使用 `Radio.group` 时 `disabled` 属性不生效问题。
+
 ## v1.1.10
 
 ### 重要！！！

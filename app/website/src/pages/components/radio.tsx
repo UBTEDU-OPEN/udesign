@@ -103,23 +103,19 @@ export default function RadioPage() {
         <Demo.Block>
           哪一款产品最好看？
           <Radio.Group name='button' defaultValue='a'>
-            <>
-              <Radio.Button value='a'>uCode</Radio.Button>
-              <Radio.Button value='b'>uDesign</Radio.Button>
-              <Radio.Button value='c'>uExplore</Radio.Button>
-            </>
+            <Radio.Button value='a'>uCode</Radio.Button>
+            <Radio.Button value='b'>uDesign</Radio.Button>
+            <Radio.Button value='c'>uExplore</Radio.Button>
           </Radio.Group>
         </Demo.Block>
         <Demo.Block>
           哪一款产品最好看？
           <Radio.Group name='button' defaultValue='a'>
-            <>
-              <Radio.Button value='a'>uCode</Radio.Button>
-              <Radio.Button value='b'>uDesign</Radio.Button>
-              <Radio.Button value='c' disabled>
-                uExplore
-              </Radio.Button>
-            </>
+            <Radio.Button value='a'>uCode</Radio.Button>
+            <Radio.Button value='b'>uDesign</Radio.Button>
+            <Radio.Button value='c' disabled>
+              uExplore
+            </Radio.Button>
           </Radio.Group>
         </Demo.Block>
       </Demo.Page>

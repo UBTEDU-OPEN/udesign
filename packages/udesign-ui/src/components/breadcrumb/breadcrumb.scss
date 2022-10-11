@@ -8,40 +8,43 @@ $module: ud-breadcrumb;
   align-items: center;
 }
 
-.#{$module}-item-text {
-  &-wrapper {
-    display: flex;
-    flex-wrap: nowrap;
-  }
-  color: $breadcrumb-color;
-  a,
-  span {
-    display: flex;
-    align-items: center;
-  }
-  > a {
-    color: $breadcrumb-color;
-  }
-}
-
-.#{$module}-item-separator {
-  margin: $breadcrumb-item-separator-margin;
-  color: $breadcrumb-color;
-}
 .#{$module}-item {
   display: flex;
-}
-.#{$module}-item:first-child .#{$module}-item-separator {
-  display: none;
-}
+  white-space: nowrap;
 
-.#{$module}-item:last-child .#{$module}-item-text,
-.#{$module}-item:last-child:hover .#{$module}-item-text {
-  color: $breadcrumb-color-selected;
-  cursor: auto;
-}
-.#{$module}-item-text:hover,
-.#{$module}-item-text a:hover {
-  color: $breadcrumb-color-hover;
-  cursor: pointer;
+  &-separator {
+    margin: $breadcrumb-item-separator-margin;
+    color: $breadcrumb-color;
+  }
+
+  &-text {
+    &-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    color: $breadcrumb-color;
+    a,
+    span {
+      display: flex;
+      align-items: center;
+    }
+    > a {
+      color: $breadcrumb-color;
+    }
+  }
+
+  &:first-child &-separator {
+    display: none;
+  }
+
+  &-text:hover,
+  &-text a:hover {
+    color: $breadcrumb-color-hover;
+    cursor: pointer;
+  }
+
+  &:last-child &-text,
+  &:last-child:hover &-text {
+    color: $breadcrumb-color-selected;
+  }
 }
