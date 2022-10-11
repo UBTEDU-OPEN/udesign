@@ -38,7 +38,7 @@ export const Submenu = ({ title, children, icon, subMode, subActive, name = '', 
           <li className={`${prefixCls}-submenu-wrapper`}>
             <div className={cls} onClick={handleClick}>
               <span className={`${prefixCls}-submenu-header-left`}>
-                {icon}
+                <span className={`${prefixCls}-item-icon`}>{icon}</span>
                 <span>{title}</span>
               </span>
               <span>{!active ? <DownOutlined /> : <UpOutlined />}</span>
@@ -54,11 +54,11 @@ export const Submenu = ({ title, children, icon, subMode, subActive, name = '', 
       const handleClick = () => {
         setActive(!active);
       };
-      const cls = classNames(prefixCls, {
+      const cls = classNames({
         [`${prefixCls}-submenu-header`]: true,
         [`${prefixCls}-submenu-header-focus`]: affectedByChildrenSubActiveKey === subFocus,
       });
-      const itemCls = classNames(prefixCls, {
+      const itemCls = classNames({
         [`${prefixCls}-submenu-body`]: active,
         [`${prefixCls}-submenu-body-hidden`]: !active,
       });
@@ -73,7 +73,7 @@ export const Submenu = ({ title, children, icon, subMode, subActive, name = '', 
             <li className={`${prefixCls}-submenu-wrapper`}>
               <div className={cls} onClick={handleClick}>
                 <span className={`${prefixCls}-submenu-header-left`}>
-                  {icon}
+                  <span className={`${prefixCls}-item-icon`}>{icon}</span>
                   <span>{title}</span>
                 </span>
                 <span>{!active ? <DownOutlined /> : <UpOutlined />}</span>
@@ -85,7 +85,7 @@ export const Submenu = ({ title, children, icon, subMode, subActive, name = '', 
       );
     }
   };
-  const renderTitle = () => <>{!isCollapsed ? <span style={{ flexGrow: '0.9' }}>{title}</span> : null}</>;
+  const renderTitle = () => (!isCollapsed ? <span className={`${prefixCls}-item-title`}>{title}</span> : null);
 
   return (
     <>
@@ -94,7 +94,7 @@ export const Submenu = ({ title, children, icon, subMode, subActive, name = '', 
       ) : (
         <Tooltip className={`${prefixCls}-submenu-horizontal`} prefixCls={`${prefixCls}-submenu`} showArrow={false} content={children} placement={mode === 'horizontal' ? 'bottomLeft' : 'rightTop'} {...restProps} style={{ width: '100%' }}>
           <MenuItem name={name} style={style} className={isCollapsed ? `${prefixCls}-submenu-is-collapsed` : ``}>
-            {icon}
+            <span className={`${prefixCls}-item-icon`}>{icon}</span>
             {renderTitle()}
             {mode === 'vertical' ? (
               <span>

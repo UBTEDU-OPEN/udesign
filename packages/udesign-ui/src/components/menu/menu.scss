@@ -19,7 +19,7 @@ $module: ud-menu;
   align-items: center;
   cursor: pointer;
   position: relative;
-
+  color: $menu-item-color;
   border-right: $menu-item-border-width solid transparent;
   border-bottom: $menu-item-border-width solid transparent;
 
@@ -29,6 +29,10 @@ $module: ud-menu;
     display: flex;
     align-items: center;
     margin: $menu-item-icon-margin;
+  }
+
+  &-title {
+    flex-grow: 1;
   }
 
   &:hover:not(&-disabled) {
@@ -62,14 +66,21 @@ $module: ud-menu;
     border-right-width: $menu-item-border-width;
   }
 
+  &-link {
+    color: $menu-item-link-color;
+    text-decoration: underline;
+  }
+
   .#{$module}-item-link:hover:not(&-disabled) {
     border-bottom-width: $menu-item-border-width;
     border-bottom-color: transparent;
+    text-decoration: underline;
   }
 
   &-active.#{$module}-item-link {
     border-bottom-width: $menu-item-border-width;
     border-bottom-color: transparent;
+    text-decoration: underline;
   }
   &-active.#{$module}-submenu-is-collapsed {
     border-right-color: transparent;
@@ -134,6 +145,7 @@ $module: ud-menu;
 .#{$module}-submenu-bottomLeft {
   .#{$module}-item {
     background-color: $menu-vertical-bottom-left-submenu-item-background;
+    margin: var(--ud-menu-item-margin, 5px 0);
   }
 }
 
@@ -148,7 +160,6 @@ $module: ud-menu;
 
 .#{$module}-item-disabled {
   color: $menu-item-color-disabled;
-  gap: $menu-horizontal-gap;
   cursor: not-allowed;
 }
 
@@ -189,6 +200,7 @@ $module: ud-menu;
   padding: $menu-item-padding;
   flex-wrap: nowrap;
   overflow: hidden;
+  color: $menu-submenu-color;
 }
 
 .#{$module}-submenu-header-focus {
@@ -199,11 +211,16 @@ $module: ud-menu;
   display: flex;
   align-content: center;
   flex-wrap: nowrap;
+
+  .#{$module}-submenu-icon {
+    margin: $menu-submenu-icon-margin;
+  }
 }
 
 .#{$module}-submenu-body {
   padding-left: $menu-submenu-body-padding-left;
   background-color: $menu-inline-submenu-item-background;
+  overflow: auto;
 
   .#{$module}-item {
     background-color: $menu-inline-submenu-item-background;
