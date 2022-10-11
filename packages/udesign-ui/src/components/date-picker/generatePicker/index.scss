@@ -3,6 +3,7 @@
 // date-picker
 $module: ud-date-picker;
 .#{$module}{
+  width: $date-picker-width;
   .ud-input-wrapper{
     background: $date-picker-background;
       &:hover{
@@ -13,6 +14,7 @@ $module: ud-date-picker;
 
 // date-range-picker
 .#{$module}-range{
+  width: $date-picker-range-width;
   display: flex;
   background: $date-picker-range-background;
   color: $date-picker-range-color;
@@ -43,6 +45,11 @@ $module: ud-date-picker;
       transform: translate(-50%, 0);
     }
   } 
+  .clear-icon{
+    padding-right: 10px;
+    cursor: pointer;
+    color: $date-picker-range-clear-icon-color;
+  }
 }
 .#{$module}-range-dropdown{
   max-width: $date-picker-range-dropdown-max-width;

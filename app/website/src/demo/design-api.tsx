@@ -132,6 +132,14 @@ export const DesignAPI = (props: DesignAPIProps) => {
           </>
         );
       }
+      if (componentName === 'time-picker') {
+        return (
+          <>
+            {designApi['time-picker']?.length && renderTable(designApi['time-picker'], 'TimePicker')}
+            {designApi['time-range-picker']?.length && renderTable(designApi['time-range-picker'], 'RangePicker')}
+          </>
+        );
+      }
       if (designApi[componentName]?.length) {
         return renderTable(designApi[componentName]);
       }

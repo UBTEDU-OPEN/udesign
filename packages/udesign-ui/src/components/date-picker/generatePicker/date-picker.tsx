@@ -19,9 +19,9 @@ export type PickerProps = PickerPanelBaseProps & {
 };
 
 const Picker = forwardRef((props: PickerProps, ref) => {
-  let { format = DateFormat, defaultValue, placeHolder, placement = 'top', style, className, panelClassName, panelStyle, children, ...resetProps } = props;
-  let [inputValue, setInputValue] = useState<string | undefined>(defaultValue);
-  let [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue);
+  let { format = DateFormat, defaultValue = '', placeHolder, placement = 'top', style, className, panelClassName, panelStyle, children, ...resetProps } = props;
+  let [inputValue, setInputValue] = useState<string>(defaultValue);
+  let [selectedValue, setSelectedValue] = useState<string>(defaultValue);
   const dropdownRef = createRef<{ hide: () => void; show: () => void }>();
 
   const hide = () => {
@@ -53,9 +53,17 @@ const Picker = forwardRef((props: PickerProps, ref) => {
         setInputValue(selectedValue);
       }
     } else {
-      setSelectedValue('');
-      resetProps.onSelect?.('');
+      setInputValue(selectedValue);
+      setSelectedValue(selectedValue);
+      resetProps.onSelect?.(selectedValue);
     }
+  };
+
+  const onClear = () => {
+    setInputValue('');
+    setSelectedValue('');
+    resetProps.onSelect?.('');
+    hide();
   };
 
   useImperativeHandle(ref, () => ({
@@ -65,8 +73,8 @@ const Picker = forwardRef((props: PickerProps, ref) => {
 
   return (
     <div className={classNames('ud-date-picker', className)} style={style}>
-      <Dropdown content={<PickerPanel {...resetProps} className={panelClassName} onSelect={dateChange} defaultValue={selectedValue} viewDate={selectedValue}></PickerPanel>} trigger='click' placement={placement} ref={dropdownRef} style={panelStyle}>
-        {children || <Input value={inputValue} onChange={inputChange} onBlur={inputBlur} placeholder={placeHolder} />}
+      <Dropdown content={<PickerPanel {...resetProps} className={panelClassName} style={panelStyle} onSelect={dateChange} defaultValue={selectedValue} viewDate={selectedValue}></PickerPanel>} trigger='click' placement={placement} ref={dropdownRef}>
+        {children || <Input value={inputValue} onChange={inputChange} onBlur={inputBlur} placeholder={placeHolder} showClear={true} onClear={onClear} />}
       </Dropdown>
     </div>
   );

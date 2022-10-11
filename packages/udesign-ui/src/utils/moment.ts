@@ -1,7 +1,7 @@
 import moment from 'dayjs';
 import { DateFormat } from '../constants';
 
-type MonthType = 'last' | 'now' | 'next'; // 上个月|当月|下个月
+export type MonthType = 'last' | 'now' | 'next'; // 上个月|当月|下个月
 
 export type ShowDateType = {
   value: string; // DD

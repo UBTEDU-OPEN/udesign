@@ -1,6 +1,7 @@
 import React, { useEffect, useState, createRef, useRef, useImperativeHandle, CSSProperties } from 'react';
 import dayjs from 'dayjs';
 import classNames from 'classnames';
+import { CloseCircleFilled } from '@ubt/udesign-icons';
 import Input from '../../input';
 import PickerPanel, { PickerPanelBaseProps } from '../panels/picker-panel';
 import Dropdown from '../../dropdown';
@@ -26,13 +27,13 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
   const [startInputVal, setStartInputVal] = useState<string>();
   const [endInputVal, setEndInputVal] = useState<string>();
   const [selectedValue, setSelectedValue] = useState<[string, string]>();
-  const [focusedType, setFocusedInput] = useState<InputType>();
+  const [focusedType, setFocusedType] = useState<InputType>();
   const [viewDate, setViewDate] = useState<[string, string]>();
   const startInputRef = createRef<HTMLInputElement>();
   const endInputRef = createRef<HTMLInputElement>();
   const dropdownRef = createRef<{ hide: () => void; show: () => void }>();
   const chosedRef = useRef<Set<string>>(new Set());
-
+  const [hovering, setHovering] = useState<boolean>(false);
   useEffect(() => {
     if (defaultValue) {
       setStartInputVal(defaultValue[0]);
@@ -113,7 +114,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
   };
 
   const focusedHandler = (fType: InputType) => {
-    setFocusedInput(fType);
+    setFocusedType(fType);
     if (fType === 'start') {
       let view1 = selectedValue?.[0] || dayjs().format(format);
       setViewDate([view1, addMonth(view1)]);
@@ -125,6 +126,23 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
         setViewDate([view1, addMonth(view1)]);
       }
     }
+  };
+
+  const handleMouseEnter = () => {
+    setHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovering(false);
+  };
+
+  const onClear = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setStartInputVal('');
+    setEndInputVal('');
+    setSelectedValue(['', '']);
+    onSelect?.(['', '']);
+    hide();
   };
 
   const onViewDateChange = (isYear: boolean, diff: number) => {
@@ -181,33 +199,34 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
   }));
 
   return (
-    <div>
-      <Dropdown content={renderPanel()} trigger='click' placement={placement} className='ud-date-picker-range-dropdown' ref={dropdownRef}>
-        <div className={classNames('ud-date-picker-range', className)} style={style}>
-          <Input
-            ref={startInputRef}
-            value={startInputVal}
-            onChange={startInputChange}
-            onBlur={startInputBlur}
-            onFocus={() => {
-              focusedHandler('start');
-            }}
-            placeholder={placeHolder?.[0]}
-          />
-          ~
-          <Input
-            ref={endInputRef}
-            value={endInputVal}
-            onChange={endInputChange}
-            onBlur={endInputBlur}
-            onFocus={() => {
-              focusedHandler('end');
-            }}
-            placeholder={placeHolder?.[1]}
-          />
+    <Dropdown content={renderPanel()} trigger='click' placement={placement} className='ud-date-picker-range-dropdown' ref={dropdownRef}>
+      <div className={classNames('ud-date-picker-range', className)} style={style} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Input
+          ref={startInputRef}
+          value={startInputVal}
+          onChange={startInputChange}
+          onBlur={startInputBlur}
+          onFocus={() => {
+            focusedHandler('start');
+          }}
+          placeholder={placeHolder?.[0]}
+        />
+        ~
+        <Input
+          ref={endInputRef}
+          value={endInputVal}
+          onChange={endInputChange}
+          onBlur={endInputBlur}
+          onFocus={() => {
+            focusedHandler('end');
+          }}
+          placeholder={placeHolder?.[1]}
+        />
+        <div onClick={onClear} style={{ visibility: hovering && startInputVal && endInputVal ? 'visible' : 'hidden' }} className='clear-icon'>
+          <CloseCircleFilled></CloseCircleFilled>
         </div>
-      </Dropdown>
-    </div>
+      </div>
+    </Dropdown>
   );
 });
 

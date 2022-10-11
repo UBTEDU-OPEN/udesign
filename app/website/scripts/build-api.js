@@ -38,13 +38,18 @@ async function main() {
         }
       });
     };
-    if (dirname !== 'date-picker') {
-      compileMap([{ filePath: path.join(udesignDir, dirname, `${dirname}.tsx`), keyName: dirname }]);
-    } else {
+    if (dirname === 'date-picker') {
       compileMap([
         { filePath: path.join(udesignDir, dirname, `generatePicker/${dirname}.tsx`), keyName: dirname },
         { filePath: path.join(udesignDir, dirname, `generatePicker/range-picker.tsx`), keyName: 'range-picker' },
       ]);
+    } else if (dirname === 'time-picker') {
+      compileMap([
+        { filePath: path.join(udesignDir, dirname, `${dirname}.tsx`), keyName: dirname },
+        { filePath: path.join(udesignDir, dirname, `range-picker.tsx`), keyName: 'time-range-picker' },
+      ]);
+    } else {
+      compileMap([{ filePath: path.join(udesignDir, dirname, `${dirname}.tsx`), keyName: dirname }]);
     }
   });
   const [_, __, savePath] = process.argv;

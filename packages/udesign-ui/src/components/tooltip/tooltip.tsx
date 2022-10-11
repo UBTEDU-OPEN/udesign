@@ -95,6 +95,7 @@ export const Tooltip = React.forwardRef(
       children,
       className,
       style,
+      onVisibleChange,
       ...restProps
     }: TooltipProps,
     ref,
@@ -109,7 +110,7 @@ export const Tooltip = React.forwardRef(
     const [visible, setVisible] = usePropsValue({
       value: restProps.visible,
       defaultValue: defaultVisible,
-      onChange: restProps.onVisibleChange,
+      onChange: onVisibleChange,
     });
 
     const getTriggerBounding = () => {

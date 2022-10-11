@@ -142,11 +142,11 @@ export const basicMenus = [
     name: 'switch',
     text: 'Switch 开关',
   },
-  // {
-  //   name: 'timePicker',
-  //   text: 'TimePicker 时间选择框',
-  //   disabled: true,
-  // },
+  {
+    name: 'time-picker',
+    text: 'TimePicker 时间选择框',
+    disabled: false,
+  },
   // {
   //   name: 'transfer',
   //   text: 'Transfer 穿梭框',
