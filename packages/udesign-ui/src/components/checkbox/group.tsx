@@ -43,6 +43,7 @@ export const Group = ({ defaultValue = [], disabled, options, children, name, st
   const initialState = { value: restProps.value || [] };
   const [state, dispatch] = useReducer(reducer, initialState);
   const [innerDefaultValue, setInnerDefaultValue] = useState<string[]>(defaultValue!);
+
   useEffect(() => {
     dispatch({
       type: types.UPDATE_VALUE,
@@ -51,6 +52,7 @@ export const Group = ({ defaultValue = [], disabled, options, children, name, st
       },
     });
   }, [restProps.value]);
+
   useEffect(() => {
     dispatch({
       type: types.UPDATE_VALUE,
@@ -60,9 +62,9 @@ export const Group = ({ defaultValue = [], disabled, options, children, name, st
     });
   }, [innerDefaultValue]);
 
-  const renderChildren = () =>
-    (isValidElement(children) ? children : <>{children}</>) ||
-    getOptions()?.map((option: CheckboxOptionType) => {
+  const renderChildren = () => {
+    if (children) return isValidElement(children) ? children : <>{children}</>;
+    return getOptions()?.map((option: CheckboxOptionType) => {
       const radioProps =
         'value' in restProps
           ? {
@@ -75,7 +77,7 @@ export const Group = ({ defaultValue = [], disabled, options, children, name, st
         </Checkbox>
       );
     });
-
+  };
   return (
     <CheckboxContext.Provider value={{ value: state.value, name, onChange, dispatch, disabled }}>
       <div className={wrapperClass} style={style}>
