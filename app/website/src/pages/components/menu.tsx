@@ -93,7 +93,7 @@ export default function MenuPage() {
             </Menu.Submenu>
           </Menu>
 
-          <Menu radius hasLine defaultActiveKey='1' className='w-60 border-r inline-block'>
+          <Menu radius mode='inline' hasLine defaultActiveKey='1' className='w-60 border-r inline-block'>
             <Menu.Submenu subMode='inline' icon={<PictureFilled className='text-xl mr-2' />} title='导航一' name='1'>
               <Menu.Item name='1-1' disabled>
                 item 1
