@@ -27,14 +27,17 @@ $module: ud-switch;
     width: $switch-circle-diameter-middle;
     height: $switch-circle-diameter-middle;
     transition: all .2s ease-in-out;
-    &::before {
+    &::before { 
+      content: '';
       position: absolute;
+      left: 0;
       inset: 0;
       background-color: #fff;
+      height: 100%;
+      width: 100%;
       border-radius: $switch-circle-diameter-middle;
       box-shadow: 0 2px 4px #00230b33;
-      transition: all .2s ease-in-out;
-      content: "";
+      transition: all 0.2s ease-in-out;
     }
   }
   &-disabled {
@@ -50,17 +53,17 @@ $module: ud-switch;
       left: calc(100% - ($switch-circle-diameter-middle + 2px ));
       &::before {
         background-image: linear-gradient(-180deg, rgba(var(--ud-purple-4)) 0%, $switch-circle-background-checked 100%);
-        box-shadow: 0 3px 5px 0 $switch-circle-background-checked;
+        // box-shadow: 0 3px 5px 0 $switch-circle-background-checked;
       }
     }
   }
   &-unchecked {
     background: $switch-background-unchecked;
     padding-left: $switch-circle-padding-middle;
-    color: #A8B4CE;;
+    color: #A8B4CE;
     .#{$module}-handle::before {
       background-image: linear-gradient(-180deg, $switch-background-unchecked 0%, $switch-circle-background-unchecked 100%);
-      box-shadow: 0 3px 5px 0 $switch-background-unchecked;
+      // box-shadow: 0 3px 5px 0 $switch-background-unchecked;
     }
   }
   &-text {
@@ -74,20 +77,23 @@ $module: ud-switch;
   .#{$module}-handle {
     width: $switch-circle-diameter-small;
     height: $switch-circle-diameter-small;
+   
     &::before {
       position: absolute;
       inset: 0;
       background-color: #fff;
       border-radius: $switch-circle-diameter-small;
       box-shadow: 0 2px 4px #00230b33;
-      transition: all .2s ease-in-out;
-      content: "";
+      transition: all 0.2s ease-in-out;
+      content: '';
+      height: 100%;
+      width: 100%;
     }
   }
 }
 
-.#{$module}-small.#{$module}-checked  {
+.#{$module}-small.#{$module}-checked {
   .#{$module}-handle {
-    left: calc(100% - ($switch-circle-diameter-small + 2px ));
+    left: calc(100% - ($switch-circle-diameter-small + 2px));
   }
 }
