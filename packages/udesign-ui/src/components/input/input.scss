@@ -12,6 +12,7 @@ $module: ud-input;
   background: $input-background;
   color: $input-color;
   border: $border-width-control solid $input-border-color;
+  -webkit-appearance: none;
 
   // shape
   &-shape-circle {
@@ -81,6 +82,7 @@ $module: ud-input;
   outline: none;
   border: none;
   width: 100%;
+  -webkit-appearance: none;
 
   &::placeholder {
     color: $input-placeholder-color;
