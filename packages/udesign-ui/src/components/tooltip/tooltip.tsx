@@ -69,7 +69,6 @@ export type TooltipProps = {
   spacing?: number; //	弹出层与 children 元素的距离，单位 px。默认值：8
   defaultVisible?: boolean; //	默认是否显隐。默认值：false
   visible?: boolean; //	当trigger为custom时，通过该属性控制是否展示弹出层。默认值：false
-  clickTriggerToHide?: boolean; // 点击trigger时关闭。默认值：false
   zIndex?: number; //	弹层层级。默认值：1060
   getContainer?: () => HTMLElement; // 渲染的父节点，默认值：document.body
   onVisibleChange?: (visible: boolean) => void; //	显示隐藏的回调。默认值：-
@@ -77,24 +76,25 @@ export type TooltipProps = {
 } & NativeProps;
 
 const getDefaultContainer = () => document.body;
-export const Tooltip = ({
-  prefixCls = prefix,
-  showArrow = true,
-  clickToHide,
-  content,
-  placement = 'top',
-  trigger = 'hover',
-  getContainer = getDefaultContainer,
-  mouseEnterDelay = 50,
-  mouseLeaveDelay = 50,
-  spacing = 8,
-  defaultVisible = false,
-  zIndex = 1060,
-  children,
-  className,
-  style,
-  ...restProps
-}: TooltipProps) => {
+export const Tooltip = (props: TooltipProps) => {
+  const {
+    prefixCls = prefix,
+    showArrow = true,
+    clickToHide,
+    content,
+    placement = 'top',
+    trigger = 'hover',
+    getContainer = getDefaultContainer,
+    mouseEnterDelay = 50,
+    mouseLeaveDelay = 50,
+    spacing = 8,
+    defaultVisible = false,
+    zIndex = 1060,
+    onClickOutSide,
+    children,
+    className,
+    style,
+  } = props;
   // 基点，基于此进行 transform 位移
   const [coords, setCoords] = useState({});
   const _timer = useRef(0);
@@ -103,9 +103,9 @@ export const Tooltip = ({
 
   // controlled
   const [visible, setVisible] = usePropsValue({
-    value: restProps.visible,
+    value: props.visible,
     defaultValue: defaultVisible,
-    onChange: restProps.onVisibleChange,
+    onChange: props.onVisibleChange,
   });
 
   const getTriggerBounding = () => {
@@ -287,7 +287,7 @@ export const Tooltip = ({
     if (clickToHide) {
       hide();
     }
-    if (restProps.stopPropagation) {
+    if (props.stopPropagation) {
       stopPropagation(e);
     }
   };
@@ -295,8 +295,8 @@ export const Tooltip = ({
   // 点击外部处理（TODO: 抽到公用hook）
   useEffect(() => {
     const clickOutsideHandler = (e: Event) => {
-      if ((!triggerRef.current?.contains(e.target as HTMLElement) && !popupRef.current?.contains(e.target as HTMLElement)) || restProps.clickTriggerToHide) {
-        restProps.onClickOutSide?.(e);
+      if (!triggerRef.current?.contains(e.target as HTMLElement) && !popupRef.current?.contains(e.target as HTMLElement)) {
+        onClickOutSide?.(e);
         delayHide();
       }
     };
@@ -404,7 +404,7 @@ export const Tooltip = ({
       {visible ? (
         <Portal getContainer={getContainer} style={{ zIndex }}>
           <div className={`${BASE_CLASS_PREFIX}-portal-inner`} style={{ ...coords, ...getTranslateStyle(placement) }} ref={popupRef}>
-            <div className={cls} style={style} {...restProps} {...portalEventSet} onClick={handlePortalInnerClick}>
+            <div className={cls} style={style} {...portalEventSet} onClick={handlePortalInnerClick}>
               {content}
               {renderArrow()}
             </div>
