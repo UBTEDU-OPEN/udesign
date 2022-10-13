@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode, useEffect } from 'react';
+import React, { CSSProperties, ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
@@ -70,6 +70,7 @@ export type ModalProps = {
 } & NativeProps;
 
 export const Modal = (props: ModalProps) => {
+  const [hidden, setHidden] = useState(!props.visible);
   useEffect(() => {
     function handleKeydown(e: any) {
       const { closeOnEsc = true, onCancel } = props;
@@ -81,6 +82,22 @@ export const Modal = (props: ModalProps) => {
     document.addEventListener('keydown', handleKeydown);
     return () => document.removeEventListener('keydown', handleKeydown);
   }, []);
+
+  useEffect(() => {
+    const { visible } = props;
+    if (!visible && !hidden) {
+      toggleHidden(true);
+      props.afterClose?.();
+    } else if (visible && hidden) {
+      toggleHidden(false);
+    }
+  }, [props.visible]);
+
+  const toggleHidden = (hid: boolean) => {
+    if (hid !== hidden) {
+      setHidden(hid);
+    }
+  };
 
   const renderMask = () => {
     const { mask = true, maskCloseable = true, maskStyle, onCancel } = props;
@@ -265,7 +282,7 @@ export const Modal = (props: ModalProps) => {
     );
   };
 
-  return props.visible ? renderModal() : null;
+  return !hidden ? renderModal() : null;
 };
 let modalDom: HTMLDivElement;
 const modalRef = () => {
