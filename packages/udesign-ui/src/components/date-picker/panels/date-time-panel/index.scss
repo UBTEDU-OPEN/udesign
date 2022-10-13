@@ -1,0 +1,38 @@
+@import './vairables.scss';
+$module: ud-date-time-panel;
+.#{$module}{
+  display: flex;
+  flex-direction: column;
+  &-content{
+    display: flex;
+    .ud-time-picker-panel {
+        padding-top: 56px;
+        border-left: 1px solid #ccc;
+        .time-box{
+          border-bottom: 0;
+        }
+    }
+  }
+
+  .btn-box{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 10px;
+    background: $time-picker-background;
+    border-top:1px solid #ccc;
+    .confirm{
+      border-radius: 0;
+      min-width: 60px;
+      background: $time-picker-confirm-background;
+      color: $time-picker-confirm-color;
+    }
+    .now{
+      color: $time-picker-now-color;
+      cursor: pointer;
+    }
+  }
+
+
+}

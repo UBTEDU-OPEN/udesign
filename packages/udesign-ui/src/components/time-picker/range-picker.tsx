@@ -14,7 +14,7 @@ type ValuesType = [string, string];
 
 export type TimerProps = {
   placement?: Placement; // 弹出层的位置。默认值：bottomLeft
-  onSelect?: (dateString: [string, string]) => void; // 时间发生变化的回调。默认值：-
+  onChange?: (dateString: [string, string]) => void; // 时间发生变化的回调。默认值：-
   defaultValue?: [string, string]; // 输入框默认值。默认值：-
   placeHolder?: [string, string]; // 输入框提示文字。默认值：-
   panelStyle?: CSSProperties; // 时间面板内联样式。默认值：-
@@ -126,7 +126,7 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
       setInputSelValue(values);
     }
     setSelectedValue(values);
-    resetProps.onSelect?.(values);
+    resetProps.onChange?.(values);
     tiemChange();
   };
 
@@ -139,7 +139,7 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
     setInputValues(values);
     setInputSelValue(values);
     setSelectedValue(values);
-    resetProps.onSelect?.(values);
+    resetProps.onChange?.(values);
     tiemChange();
   };
 
@@ -165,7 +165,7 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
     setInputValues(initValues);
     setInputSelValue(initValues);
     setSelectedValue(initValues);
-    resetProps.onSelect?.(initValues);
+    resetProps.onChange?.(initValues);
     hide();
   };
 
@@ -180,7 +180,7 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
   return (
     <Dropdown
       className='ud-time-picker-range-dropdown'
-      content={<PickerPanel selValue={focusedType === 'end' ? inputSelValue[1] : inputSelValue[0]} onSelect={onSelect} onConfirm={onConfirm} onNow={onNow} showNow={showNow} style={resetProps.panelStyle} className={resetProps.panelClassName}></PickerPanel>}
+      content={<PickerPanel selValue={focusedType === 'end' ? inputSelValue[1] : inputSelValue[0]} onChange={onSelect} onConfirm={onConfirm} onNow={onNow} showNow={showNow} style={resetProps.panelStyle} className={resetProps.panelClassName}></PickerPanel>}
       trigger='click'
       placement={placement}
       ref={dropdownRef}

@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react';
+import React, { createRef, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 import Button from '../button';
@@ -11,17 +11,18 @@ type ColType = 'H' | 'm' | 's';
 export type TimerProps = {
   selValue?: string; // 默认值：-
   showNow?: boolean;
-  onSelect?: (dateString: string) => void; // 选择回调
+  onChange?: (dateString: string) => void; // 选择回调
   onConfirm?: () => void; // 确认回调
   onNow?: (dateString: string) => void; // 此刻回调
+  showFooter?: boolean;
 } & NativeProps;
 
 const PickerPanel = (props: TimerProps) => {
-  let { selValue = '', showNow, style, className, ...resetProps } = props;
+  let { selValue = '', showNow, style, className, showFooter = true, ...resetProps } = props;
   const hourRef = createRef<HTMLUListElement>();
   const minuteRef = createRef<HTMLUListElement>();
   const secondRef = createRef<HTMLUListElement>();
-
+  const behavior = useRef<ScrollBehavior>('auto');
   // 列点击事件
   const colClick = (colValue: string, type: ColType) => {
     let valArr = (selValue || '00:00:00').split(':');
@@ -38,7 +39,8 @@ const PickerPanel = (props: TimerProps) => {
       default:
     }
     let time = valArr.join(':');
-    resetProps.onSelect?.(time);
+    behavior.current = 'smooth';
+    resetProps.onChange?.(time);
   };
 
   // 此刻
@@ -56,7 +58,7 @@ const PickerPanel = (props: TimerProps) => {
     const valArr = selValue?.split(':') || [];
     // 选中的时间滚动到顶部
     [hourRef, minuteRef, secondRef].forEach((item, idx) => {
-      if (item.current && valArr[idx] && valArr[idx].length === 2) item.current.scrollTo({ top: Number(valArr[idx] || 0) * 28, behavior: 'smooth' });
+      if (item.current && valArr[idx] && valArr[idx].length === 2) item.current.scrollTo({ top: Number(valArr[idx] || 0) * 28, behavior: behavior.current });
     });
   }, [selValue]);
 
@@ -84,7 +86,8 @@ const PickerPanel = (props: TimerProps) => {
       list.push(
         <li
           key={i}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             colClick(colVal, type);
           }}
           className={sel && sel === colVal ? 'selected' : ''}
@@ -103,16 +106,18 @@ const PickerPanel = (props: TimerProps) => {
         <ul ref={minuteRef}>{renderCols(60, 'm')}</ul>
         <ul ref={secondRef}>{renderCols(60, 's')}</ul>
       </div>
-      <div className='btn-box'>
-        <Button onClick={onConfirm} className='confirm' type='primary' size='small' disabled={!selValue}>
-          确定
-        </Button>
-        {showNow && (
-          <label className='now' onClick={onNow}>
-            此刻
-          </label>
-        )}
-      </div>
+      {showFooter && (
+        <div className='btn-box'>
+          <Button onClick={onConfirm} className='confirm' type='primary' size='small' disabled={!selValue}>
+            确定
+          </Button>
+          {showNow && (
+            <label className='now' onClick={onNow}>
+              此刻
+            </label>
+          )}
+        </div>
+      )}
     </div>
   );
 };

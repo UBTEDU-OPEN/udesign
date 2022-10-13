@@ -51,6 +51,9 @@ $module: ud-date-picker;
     color: $date-picker-range-clear-icon-color;
   }
 }
+.#{$module}-dropdown{
+  max-width: $date-picker-dropdown-max-width;
+}
 .#{$module}-range-dropdown{
   max-width: $date-picker-range-dropdown-max-width;
 }

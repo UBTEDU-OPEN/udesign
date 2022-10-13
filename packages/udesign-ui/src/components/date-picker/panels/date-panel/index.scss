@@ -2,6 +2,7 @@
 
 $module: ud-date-panel;
 .#{$module} {
+  width: $date-panel-width;
   padding: $date-panel-padding;
   border-radius: $date-panel-border-radius;
   margin: $date-panel-margin;

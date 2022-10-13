@@ -14,7 +14,7 @@ export default function DatePickerPage() {
           <Space>
             <DatePicker
               format='YYYY/MM/DD'
-              onSelect={(e: string) => {
+              onChange={(e: string) => {
                 console.log(e);
               }}
               placeHolder='请选择日期'
@@ -24,11 +24,23 @@ export default function DatePickerPage() {
           <Space>
             <RangePicker
               format='YYYY/MM/DD'
-              onSelect={(e: [string, string]) => {
+              onChange={(e: [string, string]) => {
                 console.log(e);
               }}
               placeHolder={['开始日期', '结束日期']}
             ></RangePicker>
+          </Space>
+          <br />
+          <Space>
+            <DatePicker
+              onChange={(e: string) => {
+                console.log(e);
+              }}
+              placeHolder='请选择日期'
+              showTime={true}
+              showNow={true}
+              style={{ width: '300px' }}
+            ></DatePicker>
           </Space>
           <br />
         </Demo.Block>

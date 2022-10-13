@@ -13,17 +13,19 @@ export type RangePickerBaseProps = PickerPanelBaseProps & {
   picker?: 'date'; // 设置选择器类型。默认值：date
   format?: string; // 展示的日期格式，配置参考 dayjs。默认值：YYYY-MM-DD
   placement?: Placement; // 弹出层的位置。默认值：top
-  onSelect?: (dateString: [string, string]) => void; // 日期发生变化的回调。默认值：-
+  onChange?: (dateString: [string, string]) => void; // 日期发生变化的回调。默认值：-
   defaultValue?: [string, string]; // 输入框默认值。默认值：-
   placeHolder?: [string, string]; // 输入框提示文字。默认值：-
   panelStyle?: CSSProperties; // 日期面板内联样式。默认值：-
   panelClassName?: string; // 日期面板样式类名。默认值：-
+  // showTime?: boolean; // 是否显示时间。默认值：-
+  // showNow?: boolean; // 当设定了 showTime 的时候，面板是否显示“此刻”按钮。默认值：-
 };
 
 export type InputType = 'start' | 'end';
 
 const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
-  const { format = DateFormat, defaultValue, onSelect, placeHolder, placement = 'top', style, className, panelClassName, panelStyle, ...resetProps } = props;
+  const { format = DateFormat, defaultValue, onChange, placeHolder, placement = 'top', style, className, panelClassName, panelStyle, ...resetProps } = props;
   const [startInputVal, setStartInputVal] = useState<string>();
   const [endInputVal, setEndInputVal] = useState<string>();
   const [selectedValue, setSelectedValue] = useState<[string, string]>();
@@ -76,7 +78,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
         hide();
       }
     }
-    onSelect?.(selDateValue);
+    onChange?.(selDateValue);
   };
 
   const startInputChange = (e: string) => {
@@ -91,7 +93,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
     if (startInputVal) {
       if (dayjs(startInputVal).format(format) === startInputVal) {
         setSelectedValue([startInputVal, endInputVal || '']);
-        onSelect?.([startInputVal, endInputVal || '']);
+        onChange?.([startInputVal, endInputVal || '']);
       } else {
         setStartInputVal(selectedValue?.[0]);
       }
@@ -104,7 +106,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
     if (endInputVal) {
       if (dayjs(endInputVal).format(format) === endInputVal) {
         setSelectedValue([startInputVal || '', endInputVal]);
-        onSelect?.([startInputVal || '', endInputVal]);
+        onChange?.([startInputVal || '', endInputVal]);
       } else {
         setEndInputVal(selectedValue?.[1]);
       }
@@ -141,7 +143,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
     setStartInputVal('');
     setEndInputVal('');
     setSelectedValue(['', '']);
-    onSelect?.(['', '']);
+    onChange?.(['', '']);
     hide();
   };
 
@@ -158,7 +160,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
   const renderPanel = () => {
     let obj: { [key: string]: any } = {
       ...resetProps,
-      onSelect: dateChange,
+      onChange: dateChange,
       onViewDateChange,
       className: panelClassName,
       style: panelStyle,

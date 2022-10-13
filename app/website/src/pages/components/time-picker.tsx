@@ -13,7 +13,7 @@ export default function DatePickerPage() {
         <Demo.Block title='基本使用'>
           <Space>
             <TimePicker
-              onSelect={(e: string) => {
+              onChange={(e: string) => {
                 console.log(e);
               }}
               placeHolder='请选择时间'
@@ -24,7 +24,7 @@ export default function DatePickerPage() {
           <Space></Space>
           <br />
           <RangePicker
-            onSelect={(e: [string, string]) => {
+            onChange={(e: [string, string]) => {
               console.log(e);
             }}
             placeHolder={['开始时间', '结束时间']}

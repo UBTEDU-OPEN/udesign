@@ -8,7 +8,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-date-panel`;
 
 export type DatePanelProps = {
   defaultValue?: string; // 指定日期。默认值：-
-  onSelect?: (dates: string) => void; // 切换日期时的回调。默认值：-
+  onChange?: (dates: string) => void; // 切换日期时的回调。默认值：-
   nowDate?: string;
   cells: Array<string>;
   rows: Array<ShowDateType>;
@@ -16,7 +16,7 @@ export type DatePanelProps = {
   endValue?: string; // 最晚日期
 };
 
-const DateBody = ({ defaultValue, onSelect, rows, nowDate, cells, beginValue, endValue }: DatePanelProps) => {
+const DateBody = ({ defaultValue, onChange, rows, nowDate, cells, beginValue, endValue }: DatePanelProps) => {
   const [selectedValue, setSelectedValue] = useState<string>();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const DateBody = ({ defaultValue, onSelect, rows, nowDate, cells, beginValue, en
 
   const handleClick = (nowValue: string) => {
     setSelectedValue(nowValue);
-    onSelect?.(nowValue);
+    onChange?.(nowValue);
   };
 
   const renderWeekBox = () => (

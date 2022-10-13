@@ -16,11 +16,11 @@ export type DatePanelProps = {
   defaultValue?: string; // 默认值：-
   beginValue?: string; // 最早日期
   endValue?: string; // 最晚日期
-  onSelect?: (dates: string) => void; // 切换日期时的回调。默认值：-
+  onChange?: (dates: string) => void; // 切换日期时的回调。默认值：-
   onViewDateChange?: (isYear: boolean, diff: number) => void;
   viewDate?: string; // 面板日期
 } & Omit<NativeProps, 'children'>;
-const DatePanel = ({ onSelect, style, className, onViewDateChange, viewDate, ...restProps }: DatePanelProps) => {
+const DatePanel = ({ onChange, style, className, onViewDateChange, viewDate, ...restProps }: DatePanelProps) => {
   const nowDate = dayjs().format(DateFormat);
   const [yearNumber, setYearNumber] = useState<string>();
   const [monthNumber, setMonthNumber] = useState<string>(); // MM
@@ -61,7 +61,7 @@ const DatePanel = ({ onSelect, style, className, onViewDateChange, viewDate, ...
   };
 
   const handleSelect = (nowValue: string) => {
-    onSelect?.(nowValue);
+    onChange?.(nowValue);
   };
   const cls = classNames(`${prefixCls}`, className);
   const panelContext = useContext(PanelContext);
@@ -94,7 +94,7 @@ const DatePanel = ({ onSelect, style, className, onViewDateChange, viewDate, ...
           <span className={`${prefixCls}-year`}>{yearNumber}</span>
         </div>
       </PanelHeader>
-      <DateBody cells={weekArr} rows={daysList} onSelect={handleSelect} nowDate={nowDate} {...restProps}></DateBody>
+      <DateBody cells={weekArr} rows={daysList} onChange={handleSelect} nowDate={nowDate} {...restProps}></DateBody>
     </div>
   );
 };

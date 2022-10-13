@@ -1,4 +1,4 @@
-import React, { useState, createRef, useImperativeHandle, forwardRef, CSSProperties, useEffect, useRef } from 'react';
+import React, { useState, createRef, useImperativeHandle, forwardRef, CSSProperties, useEffect } from 'react';
 import classNames from 'classnames';
 import Input from '../input';
 import Dropdown from '../dropdown';
@@ -10,7 +10,7 @@ import { isValidateTime } from './util';
 export type TimerProps = {
   // format?: string; // 展示的时间格式，配置参考 dayjs。默认值：HH:mm:ss
   placement?: Placement; // 弹出层的位置。默认值：bottomLeft
-  onSelect?: (dateString: string) => void; // 时间发生变化的回调。默认值：-
+  onChange?: (dateString: string) => void; // 时间发生变化的回调。默认值：-
   defaultValue?: string; // 输入框默认值。默认值：-
   placeHolder?: string; // 输入框提示文字。默认值：-
   panelStyle?: CSSProperties; // 时间面板内联样式。默认值：-
@@ -59,7 +59,7 @@ const TimePicker = forwardRef((props: TimerProps, ref) => {
   // 确定
   const onConfirm = () => {
     setSelectedValue(inputSelValue);
-    resetProps.onSelect?.(inputSelValue);
+    resetProps.onChange?.(inputSelValue);
     hide();
   };
 
@@ -67,7 +67,7 @@ const TimePicker = forwardRef((props: TimerProps, ref) => {
   const onNow = (time: string) => {
     onSelect(time);
     setSelectedValue(time);
-    resetProps.onSelect?.(time);
+    resetProps.onChange?.(time);
     hide();
   };
 
@@ -84,7 +84,7 @@ const TimePicker = forwardRef((props: TimerProps, ref) => {
     setInputValue(value);
     setInputSelValue(value);
     setSelectedValue(value);
-    resetProps.onSelect?.(value);
+    resetProps.onChange?.(value);
     hide();
   };
 
@@ -99,7 +99,7 @@ const TimePicker = forwardRef((props: TimerProps, ref) => {
   return (
     <div className={classNames('ud-time-picker', className)} style={style}>
       <Dropdown
-        content={<PickerPanel selValue={inputSelValue} onSelect={onSelect} onConfirm={onConfirm} onNow={onNow} showNow={showNow} style={resetProps.panelStyle} className={resetProps.panelClassName}></PickerPanel>}
+        content={<PickerPanel selValue={inputSelValue} onChange={onSelect} onConfirm={onConfirm} onNow={onNow} showNow={showNow} style={resetProps.panelStyle} className={resetProps.panelClassName}></PickerPanel>}
         trigger='click'
         placement={placement}
         ref={dropdownRef}
