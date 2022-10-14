@@ -244,11 +244,14 @@ $module: ud-menu;
   display: none;
 }
 
-.#{$module}-item-horizontal {
+.#{$module}-horizontal .#{$module}-item-horizontal {
   background-color: transparent;
   margin: 0;
 }
 
-.#{$module}-item.#{$module}-item-horizontal:hover:not(.#{$module}-item-disabled) {
-  background-color: transparent;
+.#{$module}-horizontal .#{$module}-item.#{$module}-item-horizontal:hover:not(.#{$module}-item-disabled) {
+  background: $menu-horizontal-item-background-hover;
+}
+.#{$module}-horizontal .#{$module}-item-active.#{$module}-item-horizontal:not(.#{$module}-item-disabled) {
+  background: $menu-horizontal-item-background-active;
 }

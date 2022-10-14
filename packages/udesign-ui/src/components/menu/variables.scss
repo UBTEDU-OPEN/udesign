@@ -28,6 +28,8 @@ $menu-horizontal-submenu-min-width: var(--ud-menu-horizontal-submenu-min-width, 
 
 // 水平式
 // $menu-horizontal-gap: var(--ud-menu-horizontal-gap, 20px);
+$menu-horizontal-item-background-hover: var(--ud-menu-horizontal-item-background-hover, transparent);
+$menu-horizontal-item-background-active: var(--ud-menu-horizontal-item-background-active, transparent);
 
 // 内嵌式
 $menu-inline-submenu-item-background: var(--ud-menu-inline-submenu-item-background, rgb(var(--ud-gray-2))); //内嵌式二级导航背背景色

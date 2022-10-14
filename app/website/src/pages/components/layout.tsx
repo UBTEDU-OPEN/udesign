@@ -175,12 +175,12 @@ export default function LayoutPage() {
                 mode='horizontal'
                 style={{
                   alignItems: 'center',
-                  '--ud-menu-horizontal-gap': '0',
-                  '--ud-menu-item-background-active': '#5561D4',
-                  '--ud-menu-item-background-hover': '#5561D4',
+                  '--ud-menu-horizontal-item-background-active': '#5561D4',
+                  '--ud-menu-horizontal-item-background-hover': '#5561D4',
                   '--ud-menu-item-background': 'transparent',
                   '--ud-menu-item-color-active': '#fff',
                   '--ud-menu-item-color-hover': '#fff',
+                  background: 'transparent',
                 }}
                 className='text-white h-full'
               >
@@ -224,12 +224,12 @@ export default function LayoutPage() {
                 mode='horizontal'
                 style={{
                   alignItems: 'center',
-                  '--ud-menu-horizontal-gap': '0',
-                  '--ud-menu-item-background-active': '#5561D4',
-                  '--ud-menu-item-background-hover': '#5561D4',
+                  '--ud-menu-horizontal-item-background-active': '#5561D4',
+                  '--ud-menu-horizontal-item-background-hover': '#5561D4',
                   '--ud-menu-item-background': 'transparent',
                   '--ud-menu-item-color-active': '#fff',
                   '--ud-menu-item-color-hover': '#fff',
+                  background: 'transparent',
                 }}
                 className='text-white h-full'
               >
@@ -293,12 +293,12 @@ export default function LayoutPage() {
                 mode='horizontal'
                 style={{
                   alignItems: 'center',
-                  '--ud-menu-horizontal-gap': '0',
-                  '--ud-menu-item-background-active': '#5561D4',
-                  '--ud-menu-item-background-hover': '#5561D4',
+                  '--ud-menu-horizontal-item-background-active': '#5561D4',
+                  '--ud-menu-horizontal-item-background-hover': '#5561D4',
                   '--ud-menu-item-background': 'transparent',
                   '--ud-menu-item-color-active': '#fff',
                   '--ud-menu-item-color-hover': '#fff',
+                  background: 'transparent',
                 }}
                 className='text-white h-full'
               >
@@ -370,7 +370,11 @@ export default function LayoutPage() {
             <Sider trigger={<LeftOutlined />} onCollapse={onbreak} collapsed={collapsed} style={{ background: '#7284FB ', width: collapsed ? width : collapsedWidth }}>
               <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all .2s' }}></div>
               <div style={{ flexGrow: '1', textAlign: 'center', marginTop: '30px' }}>
-                <Menu radius isCollapsed={!collapsed} style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF' }}>
+                <Menu
+                  radius
+                  isCollapsed={!collapsed}
+                  style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF', background: '#7284FB ' }}
+                >
                   <Menu.Item name='1' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />} style={{}}>
                     Option 1
                   </Menu.Item>
@@ -417,7 +421,11 @@ export default function LayoutPage() {
             <Sider triggerTop={<MenuOutlined />} trigger={<LeftOutlined />} onCollapse={reback} collapsed={collapsed} style={{ background: '#7284fb', width: collapsed ? width : collapsedWidth, justifyContent: 'space-between' }}>
               <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all 0.2s' }}></div>
               <div style={{ textAlign: 'center', overflow: 'hidden', marginTop: '30px', flexGrow: '1' }}>
-                <Menu radius isCollapsed={!collapsed} style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF' }}>
+                <Menu
+                  radius
+                  isCollapsed={!collapsed}
+                  style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF', background: '#7284FB ' }}
+                >
                   <Menu.Item name='1' className='flex items-center' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
                     <span>Option 1</span>
                   </Menu.Item>
@@ -457,13 +465,12 @@ export default function LayoutPage() {
                 <Menu
                   mode='horizontal'
                   style={{
-                    alignItems: 'center',
-                    '--ud-menu-horizontal-gap': '0',
-                    '--ud-menu-item-background-active': '#5561D4',
-                    '--ud-menu-item-background-hover': '#5561D4',
+                    '--ud-menu-horizontal-item-background-active': '#5561D4',
+                    '--ud-menu-horizontal-item-background-hover': '#5561D4',
                     '--ud-menu-item-background': 'transparent',
                     '--ud-menu-item-color-active': '#fff',
                     '--ud-menu-item-color-hover': '#fff',
+                    background: 'transparent',
                   }}
                   className='text-white h-full'
                 >
@@ -513,12 +520,13 @@ export default function LayoutPage() {
                     hasLine
                     mode='vertical'
                     style={{
-                      alignItems: 'center',
+                      // alignItems: 'center',
                       '--ud-menu-item-background': '#7284fb',
                       color: '#fff',
                       '--ud-menu-item-color-hover': '#FFF',
                       '--ud-menu-item-color-active': '#FFF',
                       '--ud-color-primary-light': '#4F5BFF',
+                      background: '#7284FB ',
                     }}
                   >
                     <Menu.Item name='1' className='shrink-0' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
@@ -534,28 +542,28 @@ export default function LayoutPage() {
                       Option 4
                     </Menu.Item>
                     <Menu.Item name='5' className='shrink-0' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
-                      Option 1
+                      Option 5
                     </Menu.Item>
                     <Menu.Item name='6' className='shrink-0' icon={<VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
-                      Option 2
+                      Option 6
                     </Menu.Item>
                     <Menu.Item name='7' className='shrink-0' icon={<DataFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
-                      Option 3
+                      Option 7
                     </Menu.Item>
                     <Menu.Item name='8' className='shrink-0' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
-                      Option 4
+                      Option 8
                     </Menu.Item>
-                    <Menu.Item name='5' className='shrink-0' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
-                      Option 1
+                    <Menu.Item name='9' className='shrink-0' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
+                      Option 9
                     </Menu.Item>
-                    <Menu.Item name='6' className='shrink-0' icon={<VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
-                      Option 2
+                    <Menu.Item name='10' className='shrink-0' icon={<VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
+                      Option 10
                     </Menu.Item>
-                    <Menu.Item name='7' className='shrink-0' icon={<DataFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
-                      Option 3
+                    <Menu.Item name='11' className='shrink-0' icon={<DataFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
+                      Option 11
                     </Menu.Item>
-                    <Menu.Item name='8' className='shrink-0' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
-                      Option 4
+                    <Menu.Item name='12' className='shrink-0' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
+                      Option 12
                     </Menu.Item>
                   </Menu>
                 </Scrollbar>
