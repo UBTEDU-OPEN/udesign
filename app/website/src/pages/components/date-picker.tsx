@@ -43,6 +43,18 @@ export default function DatePickerPage() {
             ></DatePicker>
           </Space>
           <br />
+          <Space>
+            <RangePicker
+              format='YYYY/MM/DD HH:mm:ss'
+              onChange={(e: [string, string]) => {
+                console.log(e);
+              }}
+              placeHolder={['开始时间', '结束时间']}
+              showTime={true}
+              showNow={true}
+            ></RangePicker>
+          </Space>
+          <br />
         </Demo.Block>
       </Demo.Page>
     </>

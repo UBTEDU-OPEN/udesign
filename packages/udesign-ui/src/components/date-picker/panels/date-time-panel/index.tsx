@@ -8,8 +8,6 @@ import './index.scss';
 
 type DateTimeProps = {
   defaultValue?: string;
-  viewDate?: string;
-  onViewDateChange?: (isYear: boolean, diff: number) => void;
   beginValue?: string; // 最早日期
   endValue?: string; // 最晚日期
   showNow?: boolean;
@@ -17,7 +15,7 @@ type DateTimeProps = {
 };
 
 const DateTimePanel = (props: DateTimeProps) => {
-  const { defaultValue, showNow, ...resetProps } = props;
+  const { defaultValue, showNow, onChange, ...resetProps } = props;
   const [selDate, setSelDate] = useState<string>();
   const [selTime, setSelTime] = useState<string>();
   useEffect(() => {
@@ -36,21 +34,21 @@ const DateTimePanel = (props: DateTimeProps) => {
   };
 
   const onConfirm = () => {
-    resetProps.onChange?.(`${selDate} ${selTime}`);
+    onChange?.(`${selDate} ${selTime}`);
   };
 
   const onNow = () => {
-    resetProps.onChange?.(dayjs().format(`${DateFormat} ${TimeFormat}`));
+    onChange?.(dayjs().format(`${DateFormat} ${TimeFormat}`));
   };
 
   return (
     <div className='ud-date-time-panel'>
       <div className='ud-date-time-panel-content'>
-        <DatePanel defaultValue={selDate} onChange={onSelectDate} viewDate={selDate}></DatePanel>
+        <DatePanel defaultValue={selDate} onChange={onSelectDate} viewDate={selDate} {...resetProps}></DatePanel>
         <TimePanel showFooter={false} selValue={selTime} onChange={onSelectTime}></TimePanel>
       </div>
       <div className='btn-box'>
-        <Button onClick={onConfirm} className='confirm' type='primary' size='small'>
+        <Button onClick={onConfirm} className='confirm' type='primary' size='small' disabled={!selDate || !selTime}>
           确定
         </Button>
         {showNow && (

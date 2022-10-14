@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createRef, useRef, useImperativeHandle, CSSProperties } from 'react';
+import React, { useEffect, useState, useRef, useImperativeHandle, CSSProperties } from 'react';
 import dayjs from 'dayjs';
 import classNames from 'classnames';
 import { CloseCircleFilled } from '@ubt/udesign-icons';
@@ -6,7 +6,7 @@ import Input from '../../input';
 import PickerPanel, { PickerPanelBaseProps } from '../panels/picker-panel';
 import Dropdown from '../../dropdown';
 import PanelContext from './panel-context';
-import { DateFormat, Placement } from '../../../constants';
+import { DateFormat, Placement, TimeFormat } from '../../../constants';
 import { addMonth, addYear } from '../../../utils/moment';
 
 export type RangePickerBaseProps = PickerPanelBaseProps & {
@@ -18,24 +18,34 @@ export type RangePickerBaseProps = PickerPanelBaseProps & {
   placeHolder?: [string, string]; // 输入框提示文字。默认值：-
   panelStyle?: CSSProperties; // 日期面板内联样式。默认值：-
   panelClassName?: string; // 日期面板样式类名。默认值：-
-  // showTime?: boolean; // 是否显示时间。默认值：-
-  // showNow?: boolean; // 当设定了 showTime 的时候，面板是否显示“此刻”按钮。默认值：-
+  showTime?: boolean; // 是否显示时间。默认值：-
+  showNow?: boolean; // 当设定了 showTime 的时候，面板是否显示“此刻”按钮。默认值：-
 };
 
 export type InputType = 'start' | 'end';
 
 const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
-  const { format = DateFormat, defaultValue, onChange, placeHolder, placement = 'top', style, className, panelClassName, panelStyle, ...resetProps } = props;
+  let { format, defaultValue, onChange, placeHolder, placement = 'top', style, className, panelClassName, panelStyle, ...resetProps } = props;
   const [startInputVal, setStartInputVal] = useState<string>();
   const [endInputVal, setEndInputVal] = useState<string>();
   const [selectedValue, setSelectedValue] = useState<[string, string]>();
   const [focusedType, setFocusedType] = useState<InputType>();
   const [viewDate, setViewDate] = useState<[string, string]>();
-  const startInputRef = createRef<HTMLInputElement>();
-  const endInputRef = createRef<HTMLInputElement>();
-  const dropdownRef = createRef<{ hide: () => void; show: () => void }>();
+  const startInputRef = useRef<HTMLInputElement>(null);
+  const endInputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<{ hide: () => void; show: () => void }>();
   const chosedRef = useRef<Set<string>>(new Set());
   const [hovering, setHovering] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!format) {
+      if (resetProps.showTime) {
+        format = `${DateFormat} ${TimeFormat}`;
+      } else {
+        format = DateFormat;
+      }
+    }
+  });
   useEffect(() => {
     if (defaultValue) {
       setStartInputVal(defaultValue[0]);
@@ -56,27 +66,49 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
     let selDateValue: [string, string] = ['', ''];
     dateStr = dayjs(e).format(format);
     if (focusedType === 'start') {
-      selDateValue = [dateStr, endInputVal || ''];
-      setStartInputVal(dateStr);
-      setSelectedValue(selDateValue);
-      if (!chosedRef.current.has('end')) {
-        endInputRef.current?.focus();
-        chosedRef.current.add('start');
+      if (endInputVal) {
+        if (dayjs(dateStr).isAfter(dayjs(endInputVal))) {
+          selDateValue = [endInputVal, dateStr];
+          setEndInputVal(dateStr);
+        } else {
+          selDateValue = [dateStr, endInputVal];
+        }
       } else {
-        chosedRef.current.clear();
-        hide();
+        selDateValue = [dateStr, ''];
       }
+      setStartInputVal(selDateValue[0]);
+      setSelectedValue(selDateValue);
+      setTimeout(() => {
+        if (!chosedRef.current.has('end')) {
+          endInputRef.current?.focus();
+          chosedRef.current.add('start');
+        } else {
+          chosedRef.current.clear();
+          hide();
+        }
+      }, 0);
     } else if (focusedType === 'end') {
-      selDateValue = [startInputVal || '', dateStr];
-      setEndInputVal(dateStr);
-      setSelectedValue(selDateValue);
-      if (!chosedRef.current.has('start')) {
-        startInputRef.current?.focus();
-        chosedRef.current.add('end');
+      if (startInputVal) {
+        if (dayjs(dateStr).isBefore(dayjs(startInputVal))) {
+          selDateValue = [dateStr, startInputVal];
+          setStartInputVal(dateStr);
+        } else {
+          selDateValue = [startInputVal, dateStr];
+        }
       } else {
-        chosedRef.current.clear();
-        hide();
+        selDateValue = ['', dateStr];
       }
+      setEndInputVal(selDateValue[1]);
+      setSelectedValue(selDateValue);
+      setTimeout(() => {
+        if (!chosedRef.current.has('start')) {
+          startInputRef.current?.focus();
+          chosedRef.current.add('end');
+        } else {
+          chosedRef.current.clear();
+          hide();
+        }
+      }, 0);
     }
     onChange?.(selDateValue);
   };
@@ -117,15 +149,17 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
 
   const focusedHandler = (fType: InputType) => {
     setFocusedType(fType);
-    if (fType === 'start') {
-      let view1 = selectedValue?.[0] || dayjs().format(format);
-      setViewDate([view1, addMonth(view1)]);
-    } else if (fType === 'end') {
-      let view1 = selectedValue?.[1] || dayjs().format(format);
-      if (selectedValue?.[1] && dayjs(selectedValue?.[1]).isAfter(selectedValue?.[0], 'M')) {
-        setViewDate([addMonth(view1, -1), view1]);
-      } else {
-        setViewDate([view1, addMonth(view1)]);
+    if (!resetProps.showTime) {
+      if (fType === 'start') {
+        let view1 = selectedValue?.[0] || dayjs().format(format);
+        setViewDate([view1, addMonth(view1, 1, format)]);
+      } else if (fType === 'end') {
+        let view1 = selectedValue?.[1] || dayjs().format(format);
+        if (selectedValue?.[1] && dayjs(selectedValue?.[1]).isAfter(selectedValue?.[0], 'M')) {
+          setViewDate([addMonth(view1, -1, format), view1]);
+        } else {
+          setViewDate([view1, addMonth(view1, 1, format)]);
+        }
       }
     }
   };
@@ -150,9 +184,9 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
   const onViewDateChange = (isYear: boolean, diff: number) => {
     if (viewDate) {
       if (isYear) {
-        setViewDate([addYear(viewDate[0], diff), addYear(viewDate[1], diff)]);
+        setViewDate([addYear(viewDate[0], diff, format), addYear(viewDate[1], diff)]);
       } else {
-        setViewDate([addMonth(viewDate[0], diff), addMonth(viewDate[1], diff)]);
+        setViewDate([addMonth(viewDate[0], diff, format), addMonth(viewDate[1], diff, format)]);
       }
     }
   };
@@ -161,7 +195,6 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
     let obj: { [key: string]: any } = {
       ...resetProps,
       onChange: dateChange,
-      onViewDateChange,
       className: panelClassName,
       style: panelStyle,
     };
@@ -176,23 +209,30 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
         obj.beginValue = selectedValue?.[0];
       }
     }
-    const leftPanel = (
-      <PanelContext.Provider value={{ hideNext: true }}>
-        <PickerPanel {...obj} viewDate={viewDate?.[0]}></PickerPanel>
-      </PanelContext.Provider>
-    );
-    const rightPanel = (
-      <PanelContext.Provider value={{ hidePrev: true }}>
-        <PickerPanel {...obj} viewDate={viewDate?.[1]}></PickerPanel>
-      </PanelContext.Provider>
-    );
-
-    return (
-      <div className='ud-date-picker-range-panel'>
-        {leftPanel}
-        {rightPanel}
-      </div>
-    );
+    let panelContent;
+    // date-time
+    if (resetProps.showTime) {
+      panelContent = <PickerPanel {...obj} viewDate={focusedType === 'start' ? selectedValue?.[0] : selectedValue?.[1]}></PickerPanel>;
+    } else {
+      obj.onViewDateChange = onViewDateChange;
+      const leftPanel = (
+        <PanelContext.Provider value={{ hideNext: true }}>
+          <PickerPanel {...obj} viewDate={viewDate?.[0]}></PickerPanel>
+        </PanelContext.Provider>
+      );
+      const rightPanel = (
+        <PanelContext.Provider value={{ hidePrev: true }}>
+          <PickerPanel {...obj} viewDate={viewDate?.[1]}></PickerPanel>
+        </PanelContext.Provider>
+      );
+      panelContent = (
+        <>
+          {leftPanel}
+          {rightPanel}
+        </>
+      );
+    }
+    return <div className='ud-date-picker-range-panel'>{panelContent}</div>;
   };
 
   useImperativeHandle(ref, () => ({
@@ -201,7 +241,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
   }));
 
   return (
-    <Dropdown content={renderPanel()} trigger='click' placement={placement} className='ud-date-picker-range-dropdown' ref={dropdownRef}>
+    <Dropdown content={renderPanel()} trigger='click' placement={placement} className='ud-date-picker-range-dropdown' ref={dropdownRef} clickToHide={false}>
       <div className={classNames('ud-date-picker-range', className)} style={style} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <Input
           ref={startInputRef}

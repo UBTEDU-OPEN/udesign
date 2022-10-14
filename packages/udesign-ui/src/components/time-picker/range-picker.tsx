@@ -1,4 +1,4 @@
-import React, { useState, createRef, useImperativeHandle, forwardRef, CSSProperties, useEffect, useRef } from 'react';
+import React, { useState, useImperativeHandle, forwardRef, CSSProperties, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { CloseCircleFilled } from '@ubt/udesign-icons';
 import dayjs from 'dayjs';
@@ -33,9 +33,9 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
   const [focusedType, setFocusedType] = useState<InputType>();
   // dropdown visible值
   let [visible, setVisible] = useState<boolean>(false);
-  const dropdownRef = createRef<{ hide: () => void; show: () => void }>();
-  const startInputRef = createRef<HTMLInputElement>();
-  const endInputRef = createRef<HTMLInputElement>();
+  const dropdownRef = useRef<{ hide: () => void; show: () => void }>();
+  const startInputRef = useRef<HTMLInputElement>(null);
+  const endInputRef = useRef<HTMLInputElement>(null);
   const chosedRef = useRef<Set<string>>(new Set());
   const [hovering, setHovering] = useState<boolean>(false);
 
@@ -127,7 +127,9 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
     }
     setSelectedValue(values);
     resetProps.onChange?.(values);
-    tiemChange();
+    setTimeout(() => {
+      tiemChange();
+    }, 0);
   };
 
   // 此刻
@@ -140,7 +142,9 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
     setInputSelValue(values);
     setSelectedValue(values);
     resetProps.onChange?.(values);
-    tiemChange();
+    setTimeout(() => {
+      tiemChange();
+    }, 0);
   };
 
   // 选择
