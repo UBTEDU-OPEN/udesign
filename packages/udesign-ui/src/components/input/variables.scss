@@ -12,7 +12,7 @@ $input-color: var(--input-color, var(--ud-color-0)); // 输入框文字颜色-�
 $input-color-error: var(--input-color-error, var(--ud-color-danger)); // 输入框文字颜色-错误
 $input-color-warning: var(--input-color-warning, var(--ud-color-warning)); // 输入框文字颜色-警告
 
-$input-border-width: var(--input-border-width, 1px); // 输入框描边宽度
+$input-border-width: var(--input-border-width, $border-width-control); // 输入框描边宽度
 $input-border-color: var(--input-border-color, var(--ud-color-border)); // 输入框描边颜色-默认
 $input-border-color-focus: var(--input-border-color-focus, var(--ud-color-primary)); // 输入框描边颜色-聚焦
 $input-border-color-error: var(--input-border-color-error, var(--ud-color-danger)); // 输入框描边颜色-错误

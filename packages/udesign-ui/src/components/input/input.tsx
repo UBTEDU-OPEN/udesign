@@ -56,27 +56,27 @@ const Input = (props: InputProps) => {
     ...restProps
   } = props;
 
-  const [innerValue, setInnerValue] = usePropsValue<string>({
+  const [value, setValue] = usePropsValue<string>({
     value: props.value,
     defaultValue,
     onChange,
   });
-  const [currentCount, setCurrentCount] = useState(String(innerValue)?.length || 0);
+
+  const [currentCount, setCurrentCount] = useState(String(value)?.length || 0);
   const [focused, setFocused] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [visible, setVisible] = useState(type !== 'password');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setInnerValue(value);
-    setCurrentCount(value.length);
-    onChange?.(value);
+    setValue(value);
+    showCount && setCurrentCount(value.length);
   };
 
   const handleClear = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setInnerValue('');
-    setCurrentCount(0);
+    setValue('');
+    showCount && setCurrentCount(0);
     onClear?.(e);
   };
 
@@ -144,7 +144,7 @@ const Input = (props: InputProps) => {
       [`${prefixCls}-suffix`]: true,
       [`${prefixCls}-clear-icon`]: true,
     });
-    return Boolean(innerValue) && showClear && !disabled && (focused || hovering) ? (
+    return Boolean(value) && showClear && !disabled && (focused || hovering) ? (
       <div className={cls} onMouseDown={handleClear}>
         <CloseCircleFilled />
       </div>
@@ -160,7 +160,7 @@ const Input = (props: InputProps) => {
 
       setVisible(!visible);
     };
-    const showPasswordBtn = type === 'password' && innerValue && !disabled && (focused || hovering);
+    const showPasswordBtn = type === 'password' && value && !disabled && (focused || hovering);
     const cls = classNames({
       [`${prefixCls}-suffix`]: true,
       [`${prefixCls}-password-icon`]: true,
@@ -187,7 +187,7 @@ const Input = (props: InputProps) => {
       [`${prefixCls}`]: true,
       [`${prefixCls}-${size}`]: size,
     });
-    return <input {...restProps} className={cls} style={inputStyle} type={innerType} value={innerValue} disabled={disabled} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} onKeyDown={handleKeydown} ref={forwardRef} />;
+    return <input {...restProps} className={cls} style={inputStyle} type={innerType} value={value} disabled={disabled} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} onKeyDown={handleKeydown} ref={forwardRef} />;
   };
 
   const cls = classNames(className, {

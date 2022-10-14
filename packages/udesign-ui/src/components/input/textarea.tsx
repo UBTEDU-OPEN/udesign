@@ -38,14 +38,13 @@ const TextArea = (props: TextAreaProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
     setInnerValue(value);
-    setCurrentCount(value.length);
-    onChange?.(value);
+    showCount && setCurrentCount(value.length);
   };
 
   const handleClear = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setInnerValue('');
-    setCurrentCount(0);
+    showCount && setCurrentCount(0);
     onClear?.(e);
   };
 
