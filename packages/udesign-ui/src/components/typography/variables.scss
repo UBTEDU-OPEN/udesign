@@ -57,3 +57,5 @@ $typography-color-danger: var(--ud-typography-color-danger, var(--ud-color-dange
 $typography-color-disabled: var(--ud-typography-color-disabled, var(--ud-color-disabled)); // 字体颜色-禁用
 
 $typography-padding: var(--ud-typography-padding, 0 5px); // 内边距-默认
+
+$typography-ellipsis-symbol-color: var(--ud-typography-ellipsis-symbol-color, var(--ud-color-primary)); // 字体颜色-ellipsis symbol
