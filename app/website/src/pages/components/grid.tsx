@@ -109,7 +109,7 @@ export default function GridPage() {
           <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Horizontal
           </Divider>
-          <Row gutter={[16, 16]} className='text-center text-white'>
+          <Row gutter={16} className='text-center text-white'>
             <Col span={6} className='gutter-row'>
               <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
             </Col>
@@ -369,7 +369,7 @@ export default function GridPage() {
           <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Align Middle
           </Divider>
-          <Row justify='space-around' align='middle' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
+          <Row justify='center' align='middle' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
             <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
               <p style={{ height: '20px' }}>col-4</p>
             </Col>
@@ -386,7 +386,7 @@ export default function GridPage() {
           <Divider plain orientation='left' style={{ margin: '16px 0' }}>
             Align Bottom
           </Divider>
-          <Row justify='space-between' align='bottom' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
+          <Row justify='center' align='bottom' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
             <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
               <p style={{ height: '20px' }}>col-4</p>
             </Col>

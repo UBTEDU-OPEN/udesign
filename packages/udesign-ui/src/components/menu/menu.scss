@@ -155,7 +155,7 @@ $module: ud-menu;
 
 .#{$module}-horizontal {
   display: inline-flex;
-  gap: $menu-horizontal-gap;
+  // gap: $menu-horizontal-gap;
 }
 
 .#{$module}-item-disabled {

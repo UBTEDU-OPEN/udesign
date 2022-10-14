@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Result } from '@ubt/udesign-ui';
+import { Button, Result, Space } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
 import { Img } from '../../components';
 import { getLayout } from '../../demo/getLayout';
@@ -11,8 +11,10 @@ export default function ResultPage() {
         <Demo.Block title='何时使用' description='当有重要操作需告知用户处理结果，且反馈内容较为复杂时使用。' />
         <Demo.Block title='Success' description='成功的结果。'>
           <Result status='success' title='Successfully' subtitle='Your requirement has been successful' icon={<Img src='/icon_info.svg' alt='' />}>
-            <Button type='primary'>确认</Button>
-            <Button type='default'>返回</Button>
+            <Space justify='center'>
+              <Button type='primary'>确认</Button>
+              <Button type='default'>返回</Button>
+            </Space>
           </Result>
         </Demo.Block>
         <Demo.Block title='Info' description='展示处理结果。'>

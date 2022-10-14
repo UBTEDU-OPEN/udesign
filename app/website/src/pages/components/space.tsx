@@ -46,7 +46,7 @@ export default function SpacePage() {
           }
         >
           <Space size='small' align='center'>
-            small
+            <span>small</span>
             <Button>Button</Button>
             <Button>Button</Button>
             <Button>Button</Button>
@@ -54,7 +54,7 @@ export default function SpacePage() {
         </Demo.Block>
         <Demo.Block>
           <Space size='middle' align='center'>
-            middle
+            <span>middle</span>
             <Button>Button</Button>
             <Button>Button</Button>
             <Button>Button</Button>
@@ -62,7 +62,7 @@ export default function SpacePage() {
         </Demo.Block>
         <Demo.Block>
           <Space size='large' align='center'>
-            large
+            <span>large</span>
             <Button>Button</Button>
             <Button>Button</Button>
             <Button>Button</Button>
@@ -71,22 +71,22 @@ export default function SpacePage() {
         <Demo.Block title='对齐' description='设置对齐模式（align-items）。'>
           <Space>
             <Space className='border p-3 rounded' align='center' size='small'>
-              center
+              <span>center</span>
               <div className='px-5 py-3 bg-indigo-500 text-white rounded'>Primary</div>
               <div className='px-5 py-10 bg-indigo-50 rounded'>Block</div>
             </Space>
             <Space className='border p-3 rounded' align='start' size='small'>
-              start
+              <span>start</span>
               <div className='px-5 py-3 bg-indigo-500 text-white rounded'>Primary</div>
               <div className='px-5 py-10 bg-indigo-50 rounded'>Block</div>
             </Space>
             <Space className='border p-3 rounded' align='end' size='small'>
-              end
+              <span>end</span>
               <div className='px-5 py-3 bg-indigo-500 text-white rounded'>Primary</div>
               <div className='px-5 py-10 bg-indigo-50 rounded'>Block</div>
             </Space>
             <Space className='border p-3 rounded' align='baseline' size='small'>
-              baseline
+              <span>baseline</span>
               <div className='px-5 py-3 bg-indigo-500 text-white rounded'>Primary</div>
               <div className='px-5 py-10 bg-indigo-50 rounded'>Block</div>
             </Space>

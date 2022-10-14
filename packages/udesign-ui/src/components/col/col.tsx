@@ -86,11 +86,13 @@ export const Col = (props: ColProps) => {
       setStyleCss({
         paddingLeft: `${gutter[0] / 2}px`,
         paddingRight: `${gutter[0] / 2}px`,
+        marginTop: `${gutter[1]}px`,
       });
     } else if (typeof gutter === 'number' && gutter) {
       setStyleCss({
         padding: `0px ${gutter / 2}px`,
         margin: '0px',
+        marginTop: `${gutter}px`,
       });
     } else if (typeof gutter === 'object') {
       let gutterHorizontal;
