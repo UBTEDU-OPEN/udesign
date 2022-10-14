@@ -1,6 +1,7 @@
 # 更新日志
 
 重要：表示用户升级时，需要重点关注并自测的内容。
+
 一般：表示用户升级时，不需要关注的内容（不涉及接口变动）。
 
 ## v1.2.0
@@ -12,19 +13,19 @@
 1. Checkbox 组件和 Radio 组件添加 `icon` 属性，通过该属性使用自定义图标
 2. Checkbox 组件中的 `checkedIcon` 和 `uncheckedIcon` 属性被移除
 3. Radio 组件中的 `checkedIcon` 和 `uncheckedIcon` 属性被移除
-4. Tabs 组件默认风格由 line 更换为 card（按 UI 稿），如果需要使用 line 风格，请手动添加 type="line"
-5. Tooltip 组件的 clickTriggerToHide 属性因未被使用，现已移除
-6. Radio 组件的 checked 值作为受控属性，改变时需搭配 onChange 使用
-7. Menu 组件的 icon 属性增加默认外边距和居中样式
+4. Tabs 组件默认风格由 `line` 更换为 card（按 UI 稿），如果需要使用 line 风格，请手动添加 `type="line"`
+5. Tooltip 组件的 `clickTriggerToHide` 属性因未被使用，现已移除
+6. Radio 组件的 `checked` 值作为受控属性，改变时需搭配 onChange 使用
+7. Menu 组件的 `icon` 属性增加默认外边距和居中样式
 
 ### 一般
 
-1. 修复 Model 组件的 afterclose 事件在点击关闭按钮的时候没有触发的问题
+1. 修复 Model 组件的 `afterclose` 事件在点击关闭按钮的时候没有触发的问题
 2. 修复 Typography 组件展开按钮样式错误
 3. 修复 Space 等组件在移动端的间隙无效的问题
 4. 修复 Switch 组件在移动端无法正常显示的问题
 5. 修复 Select 下拉框白边的问题
-6. 修复 Carousel 组件 goto 动画方向错误的问题
+6. 修复 Carousel 组件 `goto` 动画方向错误的问题
 7. 修复 Checkbox 组件在使用 `Checkbox.Group` 时 `disabled` 属性不生效问题
 8. 修复 Radio 组件在使用 `Radio.group` 时 `disabled` 属性不生效问题
 9. 修复 Checkbox 等组件在移动端点击后出现浅蓝色的点击区域的问题

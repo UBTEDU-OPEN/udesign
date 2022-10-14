@@ -21,54 +21,48 @@ export default function BreadcrumbPage() {
           }
         />
         <Demo.Block title='基础用法' description='最简单的面包屑。'>
-          <Space size='large'>
-            <Breadcrumb separator='\'>
-              <Breadcrumb.Item>
-                <a href='#'>Home</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <a href='#'>Application Center</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <a href='#'>Application List</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>An Application</Breadcrumb.Item>
-            </Breadcrumb>
-          </Space>
+          <Breadcrumb>
+            <Breadcrumb.Item>
+              <a href='#'>Home</a>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>
+              <a href='#'>Application Center</a>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>
+              <a href='#'>Application List</a>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>An Application</Breadcrumb.Item>
+          </Breadcrumb>
         </Demo.Block>
         <Demo.Block title='带有图标的面包屑' description='图标放在文字前面。'>
-          <Space size='large'>
-            <Breadcrumb separator='\'>
-              <Breadcrumb.Item>
-                <CopyOutlined />
-              </Breadcrumb.Item>
-              <Breadcrumb.Item href=''>
-                <IdcardOutlined style={{ marginRight: '5px' }} />
-                <span> Application Center</span>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item href=''>Application List</Breadcrumb.Item>
-              <Breadcrumb.Item href=''>An Application</Breadcrumb.Item>
-            </Breadcrumb>
-          </Space>
+          <Breadcrumb>
+            <Breadcrumb.Item>
+              <CopyOutlined />
+            </Breadcrumb.Item>
+            <Breadcrumb.Item href=''>
+              <IdcardOutlined style={{ marginRight: '5px' }} />
+              <span> Application Center</span>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item href=''>Application List</Breadcrumb.Item>
+            <Breadcrumb.Item href=''>An Application</Breadcrumb.Item>
+          </Breadcrumb>
         </Demo.Block>
         <Demo.Block title='分隔符' description='可自定义分隔符，提供4种建议样式。'>
-          <Space size='large'>
-            <Breadcrumb>
-              <Breadcrumb.Item separator='\'>
-                <a href=''>Home</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item separator='_'>
-                <a href=''>Application Center</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item separator='>'>
-                <a href=''>Application Center</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item separator='|'>
-                <a href=''>Application List</a>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>An Application</Breadcrumb.Item>
-            </Breadcrumb>
-          </Space>
+          <Breadcrumb>
+            <Breadcrumb.Item>
+              <a href=''>Home</a>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item separator='_'>
+              <a href=''>Application Center</a>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item separator='>'>
+              <a href=''>Application Center</a>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item separator='|'>
+              <a href=''>Application List</a>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>An Application</Breadcrumb.Item>
+          </Breadcrumb>
         </Demo.Block>
       </Demo.Page>
     </>

@@ -31,7 +31,7 @@ export default function Doc({ content }: DocProps) {
   return (
     <>
       <Demo.Doc menus={docMenus}>
-        <article className='prose lg:prose-xl max-w-none' dangerouslySetInnerHTML={{ __html: content }} />
+        <article className='prose max-w-3xl mx-auto' dangerouslySetInnerHTML={{ __html: content }} />
       </Demo.Doc>
     </>
   );

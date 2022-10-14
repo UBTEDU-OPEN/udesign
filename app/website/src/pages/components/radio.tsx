@@ -6,7 +6,6 @@ import { getLayout } from '../../demo/getLayout';
 export default function RadioPage() {
   const [checked, setChecked] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const [value1, setValue1] = useState('');
   return (
     <div>
       <Demo.Page title='Radio 单选框' description='用于在选中和非选中状态之间进行切换。'>
@@ -23,9 +22,8 @@ export default function RadioPage() {
           </Radio>
         </Demo.Block>
         <Demo.Block title='单选组合' description='一组互斥的 Radio 配合使用'>
-          <Radio.Group options={['A', 'B', 'C']} name={'group'} value={value1} />
+          <Radio.Group options={['A', 'B', 'C']} name={'group'} value='A' />
         </Demo.Block>
-
         <Demo.Block title='垂直排列' description='垂直的 Radio.Group'>
           <Radio.Group name={'vertical'} defaultValue={'2'}>
             <Space direction='vertical'>

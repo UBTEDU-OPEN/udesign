@@ -47,47 +47,45 @@ export default function SelectPage() {
           }
         ></Demo.Block>
         <Demo.Block title='基础用法' description={<>基础的单项选择器,defaultValue设置初始值，disabled可以禁用, option 的disabled 禁用单个option</>}>
-          <div style={{ height: '200px' }}>
-            <Space>
-              <Select defaultValue='option1'>
-                <Select.Option value='option1'>option1(101)</Select.Option>
-                <Select.Option value='option2' disabled>
-                  option2(101)
-                </Select.Option>
-                <Select.Option value='option3'>option3(101)</Select.Option>
-              </Select>
-              <Select
-                defaultValue='option1'
-                options={[
-                  {
-                    label: 'option1(label)',
-                    value: 'option1',
-                  },
-                  {
-                    label: 'option2(label)',
-                    value: 'option2',
-                  },
-                  {
-                    label: 'option3(label)',
-                    value: 'option3',
-                  },
-                ]}
-              ></Select>
-              <Select defaultValue='option1' disabled>
-                <Select.Option value='option1'>option1</Select.Option>
-              </Select>
-            </Space>
-          </div>
+          <Space>
+            <Select defaultValue='option1'>
+              <Select.Option value='option1'>option1</Select.Option>
+              <Select.Option value='option2' disabled>
+                option2
+              </Select.Option>
+              <Select.Option value='option3'>option3</Select.Option>
+            </Select>
+            <Select
+              defaultValue='option1'
+              options={[
+                {
+                  label: 'option1',
+                  value: 'option1',
+                },
+                {
+                  label: 'option2',
+                  value: 'option2',
+                },
+                {
+                  label: 'option3',
+                  value: 'option3',
+                },
+              ]}
+            ></Select>
+            <Select defaultValue='option1' disabled>
+              <Select.Option value='option1'>option1</Select.Option>
+            </Select>
+          </Space>
         </Demo.Block>
         <Demo.Block title='带搜索框' description={<>展开后可对选项进行搜索。</>}>
           <div style={{ height: '200px' }}>
             <Space>
               <Select defaultValue='option1' showSearch>
-                <Select.Option value='option1'>option1(101)</Select.Option>
+                <Select.Option value='option1'>option1</Select.Option>
                 <Select.Option value='option2' disabled>
-                  option2(101)
+                  option2
                 </Select.Option>
-                <Select.Option value='option3'>option3(101)</Select.Option>
+                <Select.Option value='option3'>option3</Select.Option>
               </Select>
               <Select
                 showSearch
@@ -98,15 +96,15 @@ export default function SelectPage() {
                 placeholder='请选择'
                 options={[
                   {
-                    label: 'option1(label)',
+                    label: 'option1',
                     value: 'option1',
                   },
                   {
-                    label: 'option2(label)',
+                    label: 'option2',
                     value: 'option2',
                   },
                   {
-                    label: 'option3(label)',
+                    label: 'option3',
                     value: 'option3',
                   },
                 ]}
@@ -152,15 +150,15 @@ export default function SelectPage() {
                 allowClear
                 options={[
                   {
-                    label: 'option1(label)',
+                    label: 'option1',
                     value: 'option1',
                   },
                   {
-                    label: 'option2(label)',
+                    label: 'option2',
                     value: 'option2',
                   },
                   {
-                    label: 'option3(label)',
+                    label: 'option3',
                     value: 'option3',
                   },
                 ]}
@@ -176,15 +174,15 @@ export default function SelectPage() {
                 allowClear
                 options={[
                   {
-                    label: 'option1(label)',
+                    label: 'option1',
                     value: 'option1',
                   },
                   {
-                    label: 'option2(label)',
+                    label: 'option2',
                     value: 'option2',
                   },
                   {
-                    label: 'option3(label)',
+                    label: 'option3',
                     value: 'option3',
                   },
                 ]}
@@ -229,9 +227,9 @@ export default function SelectPage() {
           <div style={{ height: '200px' }}>
             <Space>
               <Select style={{ width: '500px' }} status='error'>
-                <Select.Option value='option1'>option1(101)</Select.Option>
-                <Select.Option value='option2'>option2(101)</Select.Option>
-                <Select.Option value='option3'>option3(101)</Select.Option>
+                <Select.Option value='option1'>option1</Select.Option>
+                <Select.Option value='option2'>option2</Select.Option>
+                <Select.Option value='option3'>option3</Select.Option>
               </Select>
             </Space>
             <br></br>
@@ -243,15 +241,15 @@ export default function SelectPage() {
                 allowClear
                 options={[
                   {
-                    label: 'option1(label)',
+                    label: 'option1',
                     value: 'option1',
                   },
                   {
-                    label: 'option2(label)',
+                    label: 'option2',
                     value: 'option2',
                   },
                   {
-                    label: 'option3(label)',
+                    label: 'option3',
                     value: 'option3',
                   },
                 ]}

@@ -64,9 +64,9 @@ export default function TagPage() {
         </Demo.Block>
         <Demo.Block title='标签大小' description='通过 size 属性调整标签大小。'>
           <Space>
-            <Tag size='small'>标签</Tag>
-            <Tag>标签</Tag>
-            <Tag size='large'>标签</Tag>
+            <Tag size='small'>small</Tag>
+            <Tag size='middle'>middle</Tag>
+            <Tag size='large'>large</Tag>
           </Space>
         </Demo.Block>
         <Demo.Block title='可关闭标签' description='添加 closeable 属性表示标签是可关闭的，关闭标签时会触发 close 事件，在 close 事件中可以执行隐藏标签的逻辑。'>

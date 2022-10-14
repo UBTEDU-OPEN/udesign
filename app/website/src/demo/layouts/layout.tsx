@@ -14,7 +14,7 @@ const BaseLayout = ({ sidebar, children }: BaseLayoutProps) => {
   const hasSider = Boolean(sidebar);
 
   return (
-    <Layout className='text-gray-700'>
+    <Layout>
       <Head>
         <title>{appTitle}</title>
         <meta name='viewport' content='width=1024, initial-scale=1' />

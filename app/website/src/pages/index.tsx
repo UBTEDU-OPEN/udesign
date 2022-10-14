@@ -17,7 +17,7 @@ const Index = () => (
             更新日志
           </Button>
         </Link>
-        <a target='_blank' href='http://npm.edu.ubtrobot.com/-/web/detail/@ubt/udesign-ui' rel='noreferrer'>
+        <a target='_blank' href='http://npm.edu.ubtrobot.com/-/web/detail/@ubt/udesign-ui' rel='noreferrer noopener'>
           <Button>开始使用</Button>
         </a>
       </Space>
