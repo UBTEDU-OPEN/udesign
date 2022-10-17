@@ -155,7 +155,6 @@ $module: ud-menu;
 
 .#{$module}-horizontal {
   display: inline-flex;
-  // gap: $menu-horizontal-gap;
 }
 
 .#{$module}-item-disabled {
@@ -245,8 +244,7 @@ $module: ud-menu;
 }
 
 .#{$module}-horizontal .#{$module}-item-horizontal {
-  background-color: transparent;
-  margin: 0;
+  margin: $menu-horizontal-item-margin;
 }
 
 .#{$module}-horizontal .#{$module}-item.#{$module}-item-horizontal:hover:not(.#{$module}-item-disabled) {

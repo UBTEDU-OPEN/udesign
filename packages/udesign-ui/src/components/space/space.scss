@@ -7,12 +7,7 @@ $module: ud-space;
 
   @each $size, $gap in (small, $space-small), (middle, $space-middle), (large, $space-large) {
     &-#{$size} {
-      margin-top: -$gap;
-      margin-left: -$gap;
-      & > * {
-        margin-left: $gap;
-        margin-top: $gap;
-      }
+      gap: $gap;
     }
   }
 

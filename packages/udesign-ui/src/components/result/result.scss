@@ -44,6 +44,9 @@ $module: ud-result;
   }
 
   &-extra {
+    display: flex;
     margin: $result-extra-margin;
+    justify-content: center;
+    gap: $result-extra-gap;
   }
 }

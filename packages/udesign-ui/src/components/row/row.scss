@@ -1,29 +1,40 @@
 $module: ud-grid;
 
 .#{$module} {
-  flex-grow: 1;
+    flex-grow: 1;
 
-  &-row {
-    display: flex;
-  }
-
-  @each $var, $align in (top, flex-start), (middle, center), (bottom, flex-end) {
-    &-row-align-#{$var} {
-      align-items: $align;
+    &-row {
+        display: flex;
     }
-  }
 
-  @each $var, $value in (start, start), (end, flex-end), (center, center), (space-around, space-around), (space-between, space-between), (space-evenly, space-evenly) {
-    &-row-justify-#{$var} {
-      justify-content: $value;
+    @each $var,
+    $align in (top, flex-start),
+    (middle, center),
+    (bottom, flex-end) {
+        &-row-align-#{$var} {
+            align-items: $align;
+        }
     }
-  }
 
-  &-row-wrap {
-    flex-wrap: wrap;
-  }
+    @each $var in start,
+    end,
+    center,
+    space-around,
+    space-between,
+    space-evenly {
+        &-row-justify-#{$var} {
+            justify-content: $var;
+        }
+    }
 
-  &-col-span-0 {
-    display: none;
-  }
+    &-row-wrap {
+        flex-wrap: wrap;
+    }
+
+    &-col-span-0 {
+        display: none;
+    }
+
+    
+
 }

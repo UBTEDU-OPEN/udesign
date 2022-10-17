@@ -43,14 +43,12 @@ export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter, cla
       gutterVertical = gutter[1];
 
       gutterRef.current!.style.margin = `0px ${-gutterHorizontal}px`;
-      gutterRef.current!.style.marginTop = `${-gutter[1]}px`;
-      // gutterRef.current!.style.rowGap = `${gutterVertical}px`;
+      gutterRef.current!.style.rowGap = `${gutterVertical}px`;
     } else if (typeof gutter === 'number' && gutter) {
       gutterHorizontal = gutter / 2;
       gutterRef.current!.style.marginLeft = `${-gutterHorizontal}px`;
-      gutterRef.current!.style.marginTop = `${-gutter}px`;
       gutterRef.current!.style.marginRight = `${-gutterHorizontal}px`;
-      // gutterRef.current!.style.rowGap = `${gutterVertical}px`;
+      gutterRef.current!.style.rowGap = `${gutterVertical}px`;
     } else if (typeof gutter === 'object') {
       if (size <= 576 && gutter.xs) {
         gutterHorizontal = gutter.xs / 2;
@@ -68,7 +66,7 @@ export const Row = ({ align = 'top', justify = 'start', wrap = true, gutter, cla
 
       gutterRef.current!.style.marginLeft = `${-gutterHorizontal}px`;
       gutterRef.current!.style.marginRight = `${-gutterHorizontal}px`;
-      // gutterRef.current!.style.rowGap = `${gutterVertical}px`;
+      gutterRef.current!.style.rowGap = `${gutterVertical}px`;
     }
   }, [size]);
 

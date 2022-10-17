@@ -32,7 +32,7 @@ const Navigation = () => {
         <Link href='/'>
           <a className='font-bold text-xl no-underline'>{SITE_NAME}</a>
         </Link>
-        <Menu hasLine className='gap-5' onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
+        <Menu hasLine onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
           <a className='text-inherit no-underline' target='_blank' href='http://dev.edu.ubtrobot.com/UI/U-Design/' rel='noopener noreferrer'>
             <Menu.Item name='spec'>设计</Menu.Item>
           </a>
