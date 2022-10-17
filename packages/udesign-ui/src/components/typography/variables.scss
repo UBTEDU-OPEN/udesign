@@ -34,18 +34,18 @@ $typography-font-italic: var(--ud-typography-font-italic, italic); // 字体样�
 $typography-text-link: var(--ud-typography-text-link, underline); // 字体样式-链接
 $typography-color-link: var(--ud-typography-color-link, var(--ud-color-primary)); // 字体颜色-链接
 $typography-font-strong: var(--ud-typography-font-strong, bold); // 字体样式-加粗
-$typography-background-mark: var(--ud-typography-background-mark, #d8ddf9); // 字体样式-标记
+$typography-background-mark: var(--ud-typography-background-mark, rgb(var(--ud-purple-3))); // 字体样式-标记
 
-$typography-background-code: var(--ud-typography-background-code, #f2f4fa); // 文本样式- code 背景颜色
-$typography-border-color-code: var(--ud-typography-border-color-code, rgba(100, 100, 100, 0.2)); // 文本样式- code 边框颜色
+$typography-background-code: var(--ud-typography-background-code, rgb(var(--ud-purple-1))); // 文本样式- code 背景颜色
+$typography-border-color-code: var(--ud-typography-border-color-code, rgb(var(--ud-purple-4))); // 文本样式- code 边框颜色
 $typography-border-width-code: var(--ud-typography-border-width-code, 1px); // 文本样式- code 边框宽度
 $typography-border-style-code: var(--ud-typography-border-style-code, solid); // 文本样式- code 边框样式
 
-$typography-background-keyboard: var(--ud-typography-background-keyboard, #eeeeee); // 文本样式- code 背景颜色
+$typography-background-keyboard: var(--ud-typography-background-keyboard, rgb(var(--ud-gray-3))); // 文本样式- code 背景颜色
 $typography-border-color-keyboard: var(--ud-typography-border-color-keyboard, var(--ud-color-code-border)); // 文本样式- keyboard 边框颜色
 $typography-border-width-keyboard: var(--ud-typography-border-width-keyboard, 1px); // 文本样式- keyboard 边框颜色
 $typography-border-style-keyboard: var(--ud-typography-border-style-keyboard, solid); // 文本样式- keyboard 边框宽度
-$typography-box-shadow-keyboard: var(--ud-typography-box-shadow-keyboard, inset 0 -1px 3px 0 rgba(0, 0, 0, 0.5)); // 文本样式- keyboard 边框阴影
+$typography-box-shadow-keyboard: var(--ud-typography-box-shadow-keyboard, inset 0 -1px 3px 0 rgba(var(--ud-black), 0.5)); // 文本样式- keyboard 边框阴影
 $typography-border-radius-keyboard: var(--ud-typography-border-radius-keyboard, 3px); // 文本样式- code 边框圆角
 
 $typography-font-size: var(--ud-text-size, 16px); // 字体大小-默认
@@ -56,6 +56,10 @@ $typography-color-warning: var(--ud-typography-color-warning, var(--ud-color-war
 $typography-color-danger: var(--ud-typography-color-danger, var(--ud-color-danger)); // 字体颜色-危险
 $typography-color-disabled: var(--ud-typography-color-disabled, var(--ud-color-disabled)); // 字体颜色-禁用
 
-$typography-padding: var(--ud-typography-padding, 0 5px); // 内边距-默认
-
+$typography-padding: var(--ud-typography-padding, 9px 14px 9px 10px); // 内边距-默认
 $typography-ellipsis-symbol-color: var(--ud-typography-ellipsis-symbol-color, var(--ud-color-primary)); // 字体颜色-ellipsis symbol
+$typography-editable-icon-margin: var(--ud-editable-icon-margin, 0 0 0 5px); // 外边距 - 编辑图标
+$typography-ellipsis-suffix-margin: var(--ud-ellipsis-suffix-margin, 0 0 0 5px); // 外边距 - ellipsis-suffix
+
+$typography-ellipsis-tooltip-font-size: var(--ud-paragraph-ellipsis-tooltip-font-size, 6px); // 字体大小- ellipsis tooltip
+$typography-ellipsis-tooltip-border: var(--ud-paragraph-ellipsis-tooltip-border, 1px solid rgb(var(--ud-gray-4))); // 边框样式- ellipsis tooltip
