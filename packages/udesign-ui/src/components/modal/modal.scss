@@ -9,7 +9,7 @@ $module: ud-modal;
   transform: translate(-50%);
 
   &-centered {
-    top: 50% !important;
+    top: 50%;
     transform: translate(-50%, -50%);
   }
 }
@@ -35,6 +35,7 @@ $module: ud-modal;
     font-weight: $modal-title-font-weight;
     color: $modal-title-color;
     text-align: $modal-title-text-align;
+    padding: $modal-title-padding;
   }
 
   &-header {
@@ -95,9 +96,13 @@ $module: ud-modal;
 .#{$module}-large {
   width: $modal-width-large;
 }
+.#{$module}-wrap-fullscreen,
 .#{$module}-fullscreen {
-  width: $modal-width-fullscreen;
-  height: $modal-height-fullscreen;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate(0, 0);
   border-radius: $modal-border-radius-fullscreen;
 }
 

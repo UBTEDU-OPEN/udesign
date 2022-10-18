@@ -173,7 +173,14 @@ export const Modal = (props: ModalProps) => {
     return title === null || title === undefined ? null : (
       <div className={`${prefixCls}-header`}>
         {renderIcon()}
-        <div className={`${prefixCls}-title`}>{title}</div>
+        {props.draggable ? (
+          <Drag updateTransform={updateTransform}>
+            <div className={`${prefixCls}-title`}>{title}</div>
+          </Drag>
+        ) : (
+          <div className={`${prefixCls}-title`}>{title}</div>
+        )}
+
         <div className={`${prefixCls}-header-left`}>{renderBackBtn()}</div>
         <div className={`${prefixCls}-header-right`}>
           {renderHelpBtn()}
@@ -230,12 +237,6 @@ export const Modal = (props: ModalProps) => {
     if (height) {
       style.height = height;
     }
-    // if (fullscreen) {
-    //   style.width = '100vw';
-    //   style.height = '100vh';
-    //   style.margin = 'unset';
-    // }
-
     const cls = classNames(prefixCls, {
       [`${prefixCls}-fullscreen`]: fullscreen,
       [`${prefixCls}-centered`]: centered,
@@ -250,7 +251,7 @@ export const Modal = (props: ModalProps) => {
           ...props.style,
         }}
       >
-        {draggable ? <Drag updateTransform={updateTransform}>{renderHeader()}</Drag> : renderHeader()}
+        {renderHeader()}
         {renderBody()}
         {renderFooter()}
       </div>
@@ -258,9 +259,16 @@ export const Modal = (props: ModalProps) => {
   };
 
   const renderModal = () => {
-    const { centered = true, zIndex = 1000, getContainer, className, style } = props;
+    const { centered = true, zIndex = 1000, getContainer, fullscreen, className, style } = props;
 
-    const cls = classNames({ [`${prefixCls}-wrap`]: true, [`${prefixCls}-wrap-centered`]: centered }, className);
+    const cls = classNames(
+      {
+        [`${prefixCls}-wrap`]: true,
+        [`${prefixCls}-wrap-centered`]: centered,
+        [`${prefixCls}-wrap-fullscreen`]: fullscreen,
+      },
+      className,
+    );
 
     const mergedStyle: React.CSSProperties = {
       ...style,
@@ -288,7 +296,7 @@ let modalDom: HTMLDivElement;
 const modalRef = () => {
   modalDom = document.getElementsByClassName('ud-modal-wrap')[0] as HTMLDivElement;
 };
-const updateTransform = (transformStr: string) => {
+const updateTransform = (transformStr: string, tx: number, ty: number, target: HTMLElement) => {
   if (modalDom) modalDom.style.transform = transformStr;
 };
 
