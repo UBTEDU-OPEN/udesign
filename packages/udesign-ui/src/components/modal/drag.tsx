@@ -29,7 +29,7 @@ export default class Drag extends React.Component<DragProps> {
       // 只允许左键，右键问题在于不选择contextmenu就不会触发mouseup事件
       return;
     }
-    document.addEventListener('mousemove', this.docMove);
+    this.target?.addEventListener('mousemove', this.docMove);
     this.position.startX = event.pageX - this.position.dx;
     this.position.startY = event.pageY - this.position.dy;
   };
@@ -44,24 +44,50 @@ export default class Drag extends React.Component<DragProps> {
   };
 
   docMouseUp = (event: MouseEvent) => {
-    document.removeEventListener('mousemove', this.docMove);
+    this.target?.removeEventListener('mousemove', this.docMove);
+  };
+
+  touchStart = (event: TouchEvent) => {
+    event.preventDefault();
+    this.target?.addEventListener('touchmove', this.touchDocMove);
+    this.position.startX = event.targetTouches[0].pageX - this.position.dx;
+    this.position.startY = event.targetTouches[0].pageY - this.position.dy;
+  };
+
+  touchDocMove = (event: TouchEvent) => {
+    const tx = event.targetTouches[0].pageX - this.position.startX;
+    const ty = event.targetTouches[0].pageY - this.position.startY;
+    const transformStr = `translate(${tx}px,${ty}px)`;
+    this.props.updateTransform(transformStr, tx, ty, this.target as HTMLElement);
+    this.position.dx = tx;
+    this.position.dy = ty;
+  };
+
+  touchDocMouseUp = (event: TouchEvent) => {
+    this.target?.removeEventListener('touchmove', this.touchDocMove);
   };
 
   componentDidMount() {
     this.target?.addEventListener('mousedown', this.start);
-    const rect = this.target?.parentElement?.getBoundingClientRect();
+    this.target?.addEventListener('touchstart', this.touchStart);
+    const rect = this.target?.parentElement?.parentElement?.getBoundingClientRect();
     if (rect) {
       this.position.dx = -(rect.width / 2);
-      this.position.dy = -(rect?.height / 2);
+      this.position.dy = -(rect.height / 2);
     }
-    // 用document移除对mousemove事件的监听
-    document.addEventListener('mouseup', this.docMouseUp);
+    // 用this.target?移除对mousemove事件的监听
+    this.target?.addEventListener('mouseup', this.docMouseUp);
+    this.target?.addEventListener('touchend', this.touchDocMouseUp);
   }
 
   componentWillUnmount() {
     this.target?.removeEventListener('mousedown', this.start);
-    document.removeEventListener('mouseup', this.docMouseUp);
-    document.removeEventListener('mousemove', this.docMove);
+    this.target?.removeEventListener('touchstart', this.touchStart);
+    this.target?.removeEventListener('mouseup', this.docMouseUp);
+    this.target?.removeEventListener('mousemove', this.docMove);
+
+    this.target?.removeEventListener('touchend', this.touchDocMouseUp);
+    this.target?.removeEventListener('touchmove', this.touchDocMove);
   }
 
   render() {
