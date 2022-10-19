@@ -113,19 +113,6 @@ export const Tooltip = (props: TooltipProps) => {
     return triggerDOM && (triggerDOM as Element).getBoundingClientRect();
   };
 
-  useEffect(() => {
-    window.addEventListener('resize', updateCoords, false);
-    return () => window.removeEventListener('resize', updateCoords, false);
-  }, []);
-
-  useEffect(() => {
-    // 页面滚动条滚动时触发
-    window.addEventListener('scroll', updateCoords, true);
-    return () => {
-      window.removeEventListener('scroll', updateCoords, true);
-    };
-  }, []);
-
   // 基准点
   const updateCoords = () => {
     // https://zh.javascript.info/coordinates
@@ -270,11 +257,17 @@ export const Tooltip = (props: TooltipProps) => {
 
   const show = () => {
     setVisible(true);
+    window.addEventListener('resize', updateCoords, false);
+    window.addEventListener('scroll', updateCoords, true);
+    document.addEventListener('click', clickOutsideHandler, false);
   };
 
   const hide = () => {
     if (popupRef.current) {
       setVisible(false);
+      window.removeEventListener('resize', updateCoords, false);
+      window.removeEventListener('scroll', updateCoords, true);
+      document.removeEventListener('click', clickOutsideHandler, false);
     }
   };
 
@@ -295,19 +288,12 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   // 点击外部处理（TODO: 抽到公用hook）
-  useEffect(() => {
-    const clickOutsideHandler = (e: Event) => {
-      if (!triggerRef.current?.contains(e.target as HTMLElement) && !popupRef.current?.contains(e.target as HTMLElement)) {
-        onClickOutSide?.(e);
-        delayHide();
-      }
-    };
-    document.addEventListener('click', clickOutsideHandler, false);
-
-    return () => {
-      document.removeEventListener('click', clickOutsideHandler, false);
-    };
-  }, []);
+  const clickOutsideHandler = (e: Event) => {
+    if (!triggerRef.current?.contains(e.target as HTMLElement) && !popupRef.current?.contains(e.target as HTMLElement)) {
+      onClickOutSide?.(e);
+      delayHide();
+    }
+  };
 
   useEffect(() => {
     updateCoords();
