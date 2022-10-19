@@ -25,4 +25,4 @@ $select-item-background-hover: var(--ud-select-item-background-hover, var(--ud-c
 $select-item-color-hover: var(--ud-select-item-color-hover, var(--ud-color-primary)); // 选择器下拉菜单子项文本色-hover
 $select-item-input-border: var(--ud-select-item-input-border, 1px solid transparent); // 选择器中input边框
 $select-item-input-border-focus: var(--ud-select-item-input-border-focus, transparent); // 选择器中input边框颜色-focus
-$select-item-input-background-focus: var(--ud-select-item-input-background-focus, #fff ); // 选择器中input背景-focus
+$select-item-input-background-focus: var(--ud-select-item-input-background-focus, var(--ud-color-white) ); // 选择器中input背景-focus

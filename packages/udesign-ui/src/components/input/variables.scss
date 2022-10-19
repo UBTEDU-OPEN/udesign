@@ -2,11 +2,11 @@
 
 $input-background: var(--input-background, var(--ud-color-fill-0)); // 输入框背景色-默认
 $input-background-hover: var(--input-background-hover, transparent); // 输入框背景色-悬浮
-$input-background-focus: var(--input-background-focus, #fff); // 输入框背景色-聚焦
+$input-background-focus: var(--input-background-focus, var(--ud-color-white)); // 输入框背景色-聚焦
 $input-background-error: var(--input-background-error, var(--ud-color-danger-light)); // 输入框背景色-错误
 $input-background-warning: var(--input-background-warning, var(--ud-color-warning-light)); // 输入框背景色-警告
 
-$input-placeholder-color: var(--input-placeholder-color, #a8b4ce); // 输入框占位文字颜色
+$input-placeholder-color: var(--input-placeholder-color, rgb(var(--ud-gray-6))); // 输入框占位文字颜色
 
 $input-color: var(--input-color, var(--ud-color-0)); // 输入框文字颜色-默认
 $input-color-error: var(--input-color-error, var(--ud-color-danger)); // 输入框文字颜色-错误
@@ -18,7 +18,7 @@ $input-border-color-focus: var(--input-border-color-focus, var(--ud-color-primar
 $input-border-color-error: var(--input-border-color-error, var(--ud-color-danger)); // 输入框描边颜色-错误
 $input-border-color-warning: var(--input-border-color-warning, var(--ud-color-warning)); // 输入框描边颜色-警告
 
-$input-count-color: var(--input-count-color, #a8b4ce); // 输入框字数提示文字颜色
+$input-count-color: var(--input-count-color, rgb(var(--ud-gray-6))); // 输入框字数提示文字颜色
 
 $input-font-size-small: var(--input-font-size-small, 14px); // 输入框文字字号-小
 $input-font-size-middle: var(--input-font-size-middle, 16px); // 输入框文字字号-中
@@ -39,11 +39,11 @@ $input-append-padding: var(--input-append-padding, 0 20px); // 输入框后置�
 
 $input-prefix-margin: var(--input-prefix-margin, 0 10px); // 输入框前缀外边距
 $input-prefix-font-size: var(--input-prefix-font-size, 16px); // 输入框前缀字号
-$input-prefix-color: var(--input-prefix-color, #555b67); // 输入框前缀颜色
+$input-prefix-color: var(--input-prefix-color, rgb(var(--ud-gray-10))); // 输入框前缀颜色
 
 $input-suffix-margin: var(--input-suffix-margin, 0 10px); // 输入框后缀外边距
 $input-suffix-font-size: var(--input-suffix-font-size, 16px); // 输入框后缀字号
-$input-suffix-color: var(--input-suffix-color, #a8b4ce); // 输入框后缀颜色
+$input-suffix-color: var(--input-suffix-color, rgb(var(--ud-gray-6))); // 输入框后缀颜色
 
 $input-clear-icon-color: var(--input-clear-icon-color, var(--ud-color-primary)); // 输入框清除图标颜色
 $input-password-icon-color: var(--input-password-icon-color, var(--ud-color-primary)); // 输入框密码图标颜色

@@ -77,11 +77,6 @@ $module: ud-typography;
     border-radius: $typography-border-radius;
     background: $typography-background-code;
     border: $typography-border-width-code $typography-border-style-code $typography-border-color-code;
-    line-height: 18px;
-    -webkit-border-radius: $typography-border-radius;
-    -moz-border-radius: $typography-border-radius;
-    -ms-border-radius: $typography-border-radius;
-    -o-border-radius: $typography-border-radius;
   }
 
   &-text-keyboard {
@@ -91,11 +86,6 @@ $module: ud-typography;
     border: $typography-border-width-keyboard $typography-border-style-keyboard $typography-border-color-keyboard;
     box-shadow: $typography-box-shadow-keyboard;
     border-radius: $typography-border-radius-keyboard;
-    line-height: 20px;
-    -webkit-border-radius: $typography-border-radius-keyboard;
-    -moz-border-radius: $typography-border-radius-keyboard;
-    -ms-border-radius: $typography-border-radius-keyboard;
-    -o-border-radius: $typography-border-radius-keyboard;
   }
 
   &-text-underline {
@@ -157,14 +147,10 @@ $module: ud-typography;
   &-editable-isShow {
     width: 100%;
     border-radius: $typography-border-radius-edit;
-    -webkit-border-radius: $typography-border-radius-edit;
-    -moz-border-radius: $typography-border-radius-edit;
-    -ms-border-radius: $typography-border-radius-edit;
-    -o-border-radius: $typography-border-radius-edit;
   }
 
   &-editable-isShow-icon {
-    margin-left: 5px;
+    margin: $typography-editable-icon-margin;
     color: $typography-color-icon;
     cursor: pointer;
   }
@@ -192,20 +178,20 @@ $module: ud-typography;
     padding: 0;
     text-align: center;
     text-decoration: inherit;
-    --tooltip-bg-color: #fff;
+    --tooltip-bg-color: var(--ud-color-white);
   }
 
   &-paragraph-ellipsis-tooltip {
-    --tooltip-bg-color: #fff;
-    --tooltip-color: #000;
-    --tooltip-font-size: 6px;
+    --tooltip-bg-color: var(--ud-color-white);
+    --tooltip-color: var(--ud-color-black);
+    --tooltip-font-size: $typography-ellipsis-tooltip-font-size;
     --width: 100%;
-    border: 1px solid rgb(var(--ud-gray-4));
+    border: $typography-ellipsis-tooltip-border;
   }
 
   &-paragraph-ellipsis-suffix {
     float: right;
-    margin-right: 5px;
+    margin: $typography-ellipsis-suffix-margin;
   }
 
   &-paragraph-ellipsis-symbol:hover + &-paragraph-ellipsis-tooltip {

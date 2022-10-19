@@ -6,9 +6,9 @@ $spin-width-small: 20px; // 加载图标尺寸 - 小
 
 $spin-children-opacity: 0.5; // 加载图标作为容器使用时，children的透明度
 
-$spin-background-global: var(--ud-spin-background-global, #fff);
+$spin-background-global: var(--ud-spin-background-global, var(--ud-color-white));
 $spin-width-global: var(--ud-spin-width-global, 110px);
 $spin-height-global: var(--ud-spin-height-global, 110px);
 $spin-zIndex-global: var(--ud-spin-zIndex-global, 10);
 $spin-border-radius-global: var(--ud-spin-border-radius-global, 12px);
-$spin-box-shadow-global: var(--ud-spin-box-shadow-global, 0px 0px 16px -2px rgba(0, 0, 0, 0.3));
+$spin-box-shadow-global: var(--ud-spin-box-shadow-global, 0px 0px 16px -2px rgba(var(--ud-black), 0.3));
