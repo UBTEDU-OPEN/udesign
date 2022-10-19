@@ -18,7 +18,7 @@ export type GroupProps = {
   disabled?: boolean; // 禁选所有子单选器。默认值：false
   options?: Array<RadioOptionType | string>; // 以配置形式设置子元素。默认值：-
   name: string; // RadioGroup 下所有 input[type="radio"] 的 name 属性。默认值：-
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 选项变化时的回调函数  function(e:Event)。默认值：-
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // 选项变化时的回调函数。默认值：-
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-radio`;

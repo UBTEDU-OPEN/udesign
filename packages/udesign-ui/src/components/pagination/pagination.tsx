@@ -26,7 +26,7 @@ export type PaginationProps = {
   showTotal?: boolean; //	是否显示总页数。默认值：false
   showQuickJumper?: boolean; //	是否可以快速跳转至某页。默认值：false
   showSizeChanger?: boolean; //	是否展示 pageSize 切换器，当 total 大于 50 时默认为true。
-  total?: number; // 总条数。默认值：-
+  total?: number; // 总条数。默认值：0
   onChange?: (currentPage: number, pageSize: number) => void; // 页码、每页容量变化时的回调函数。默认值：-
   onPageChange?: (currentPage: number) => void; // 页码变化的回调函数。默认值：-
   onPageSizeChange?: (pageSize: number) => void; // 每页容量变化时的回调函数。默认值：-

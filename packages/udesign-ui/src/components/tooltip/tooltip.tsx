@@ -273,7 +273,9 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   const hide = () => {
-    setVisible(false);
+    if (popupRef.current) {
+      setVisible(false);
+    }
   };
 
   const clearDelayTimer = () => {

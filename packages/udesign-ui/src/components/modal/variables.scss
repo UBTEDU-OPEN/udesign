@@ -40,8 +40,8 @@ $modal-body-font-weight: var(--ud-modal-body-font-weight, 400); // 对话框body
 $modal-body-color: var(--ud-modal-body-color, var(--ud-color-text-2)); // 对话框body颜色
 $modal-body-text-align: var(--ud-modal-body-text-align, center); // 对话框body对齐
 
-$modal-footer-margin: var(--ud-modal-footer-margin, 40px 0); // 对话框footer外边距
-$modal-footer-padding: var(--ud-modal-footer-padding, 0); // 对话框footer内边距
+$modal-footer-margin: var(--ud-modal-footer-margin, 0); // 对话框footer外边距
+$modal-footer-padding: var(--ud-modal-footer-padding, 40px 0); // 对话框footer内边距
 
 $modal-icon-color-info: var(--ud-modal-icon-color-info, var(--ud-color-primary)); // info对话框图标颜色
 $modal-icon-color-success: var(--ud-modal-icon-color-success, var(--ud-color-success)); // success对话框图标颜色
