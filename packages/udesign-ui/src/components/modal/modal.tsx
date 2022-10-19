@@ -258,9 +258,16 @@ export const Modal = (props: ModalProps) => {
   };
 
   const renderModal = () => {
-    const { centered = true, zIndex = 1000, getContainer, className, style } = props;
+    const { centered = true, zIndex = 1000, getContainer, fullscreen, className, style } = props;
 
-    const cls = classNames({ [`${prefixCls}-wrap`]: true, [`${prefixCls}-wrap-centered`]: centered }, className);
+    const cls = classNames(
+      {
+        [`${prefixCls}-wrap`]: true,
+        [`${prefixCls}-wrap-centered`]: centered,
+        [`${prefixCls}-wrap-fullscreen`]: fullscreen,
+      },
+      className,
+    );
 
     const mergedStyle: React.CSSProperties = {
       ...style,
