@@ -1,6 +1,6 @@
 {
   "name": "@ubt/udesign-website",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "private": true,
   "scripts": {
     "prepare": "node ./scripts/build-api.js ./public/designApi.json && node ./scripts/build-token.js ./public/designToken.json",
