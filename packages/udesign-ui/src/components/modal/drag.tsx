@@ -47,8 +47,30 @@ export default class Drag extends React.Component<DragProps> {
     document.removeEventListener('mousemove', this.docMove);
   };
 
+  touchStart = (event: TouchEvent) => {
+    event.stopPropagation();
+    document.addEventListener('touchmove', this.touchDocMove, { passive: false });
+    this.position.startX = event.changedTouches[0].pageX - this.position.dx;
+    this.position.startY = event.changedTouches[0].pageY - this.position.dy;
+  };
+
+  touchDocMove = (event: TouchEvent) => {
+    if (event.cancelable) event.preventDefault();
+    const tx = event.changedTouches[0].pageX - this.position.startX;
+    const ty = event.changedTouches[0].pageY - this.position.startY;
+    const transformStr = `translate(${tx}px,${ty}px)`;
+    this.props.updateTransform(transformStr, tx, ty, this.target as HTMLElement);
+    this.position.dx = tx;
+    this.position.dy = ty;
+  };
+
+  touchDocMouseUp = (event: TouchEvent) => {
+    document.removeEventListener('touchmove', this.touchDocMove);
+  };
+
   componentDidMount() {
-    this.target?.addEventListener('mousedown', this.start);
+    this.target?.addEventListener('mousedown', this.start, false);
+    this.target?.addEventListener('touchstart', this.touchStart);
     const rect = this.target?.parentElement?.getBoundingClientRect();
     if (rect) {
       this.position.dx = -(rect.width / 2);
@@ -56,12 +78,18 @@ export default class Drag extends React.Component<DragProps> {
     }
     // 用document移除对mousemove事件的监听
     document.addEventListener('mouseup', this.docMouseUp);
+    document.addEventListener('touchend', this.touchDocMouseUp);
   }
 
   componentWillUnmount() {
     this.target?.removeEventListener('mousedown', this.start);
+    this.target?.removeEventListener('touchstart', this.touchStart);
+
     document.removeEventListener('mouseup', this.docMouseUp);
     document.removeEventListener('mousemove', this.docMove);
+
+    document.removeEventListener('touchend', this.touchDocMouseUp);
+    document.removeEventListener('touchmove', this.touchDocMove);
   }
 
   render() {

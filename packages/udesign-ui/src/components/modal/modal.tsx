@@ -157,6 +157,7 @@ export const Modal = (props: ModalProps) => {
     const handleClick = (e: React.MouseEvent) => {
       onCancel?.(e);
     };
+
     return closeable ? (
       <div className={`${prefixCls}-header-icon`} onClick={handleClick}>
         {closeIcon ? <Icon size='middle' svg={closeIcon} /> : <Close size='middle' />}
@@ -230,11 +231,9 @@ export const Modal = (props: ModalProps) => {
     if (height) {
       style.height = height;
     }
-    // if (fullscreen) {
-    //   style.width = '100vw';
-    //   style.height = '100vh';
-    //   style.margin = 'unset';
-    // }
+    if (draggable) {
+      style.userSelect = 'none';
+    }
 
     const cls = classNames(prefixCls, {
       [`${prefixCls}-fullscreen`]: fullscreen,
