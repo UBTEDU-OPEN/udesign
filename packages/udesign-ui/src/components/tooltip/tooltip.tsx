@@ -1,4 +1,4 @@
-import React, { isValidElement, useEffect, useRef, useState } from 'react';
+import React, { isValidElement, useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { get, throttle } from 'lodash';
 import { Arrow } from './arrow';
@@ -114,7 +114,7 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   // 基准点
-  const updateCoords = () => {
+  const updateCoords = useCallback(() => {
     // https://zh.javascript.info/coordinates
     const rect = getTriggerBounding();
     // 根据 placement 改变基准点
@@ -174,7 +174,7 @@ export const Tooltip = (props: TooltipProps) => {
       left: newCoords.left + window.scrollX,
       top: newCoords.top + window.scrollY,
     });
-  };
+  }, []);
 
   // 根据trigger类型挂载事件
   const generateEvent = (trigger: Trigger) => {
@@ -288,12 +288,12 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   // 点击外部处理（TODO: 抽到公用hook）
-  const clickOutsideHandler = (e: Event) => {
+  const clickOutsideHandler = useCallback((e: Event) => {
     if (!triggerRef.current?.contains(e.target as HTMLElement) && !popupRef.current?.contains(e.target as HTMLElement)) {
       onClickOutSide?.(e);
       delayHide();
     }
-  };
+  }, []);
 
   useEffect(() => {
     updateCoords();
