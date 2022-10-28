@@ -213,11 +213,6 @@ export const Tooltip = (props: TooltipProps) => {
         portalEventSet.onMouseEnter = () => {
           delayShow();
         };
-        if (clickToHide) {
-          portalEventSet.onClick = () => {
-            hide();
-          };
-        }
         break;
       case 'custom':
         // when trigger type is 'custom', no need to bind eventHandler
@@ -297,6 +292,11 @@ export const Tooltip = (props: TooltipProps) => {
 
   useEffect(() => {
     updateCoords();
+    return () => {
+      window.removeEventListener('resize', updateCoords, false);
+      window.removeEventListener('scroll', updateCoords, true);
+      document.removeEventListener('click', clickOutsideHandler, false);
+    };
   }, []);
 
   const wrapSpan = (elem: React.ReactNode | React.ReactElement) => {
