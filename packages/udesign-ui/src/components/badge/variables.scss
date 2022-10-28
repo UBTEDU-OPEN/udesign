@@ -1,5 +1,8 @@
-$badge-background-default: var(--badge-background-default, var(--ud-color-danger)); // 徽标背景色-默认
-$badge-color-default: var(--badge-color-default, var(--ud-color-white)); // 徽标文字色-默认
+$badge-z-index: var(--badge-z-index, var(--ud-z-badge)); // 徽标 z-index
+
+$badge-background: var(--badge-background, var(--ud-color-danger)); // 徽标背景色-默认
+$badge-color: var(--badge-color, var(--ud-color-white)); // 徽标文字色-默认
+
 $badge-border-radius: var(--badge-border-radius, var(--ud-border-radius-full)); // 徽标圆角
 
 $badge-height-small: var(--badge-height-small, 16px); // 徽标高度-小

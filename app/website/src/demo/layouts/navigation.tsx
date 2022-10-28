@@ -28,7 +28,7 @@ const Navigation = () => {
 
   return (
     <>
-      <div className='fixed z-10 bg-white w-full flex justify-between items-center border-b px-4'>
+      <div className='fixed z-50 bg-white w-full flex justify-between items-center border-b px-4'>
         <Link href='/'>
           <a className='font-bold text-xl no-underline'>{SITE_NAME}</a>
         </Link>
