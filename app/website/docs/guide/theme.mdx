@@ -16,11 +16,11 @@
 
 ```css
 .purple-theme {
-  --ud-color-primary: #a062d4;
+  --ud-color-primary: purple;
 }
 ```
 
-```jsx
+```js
 <div className='purple-theme'>
   <Button type='primary'>Purple</Button>
 </div>
@@ -28,21 +28,12 @@
 
 可以得到这样的一个按钮：
 
-```jsx | preview
-import React from 'react';
-import { Button } from '@ubt/udesign-ui';
-
-export default () => {
-  return (
-    <div
-      style={{
-        ['--ud-color-primary']: '#a062d4',
-      }}
-    >
-      <Button type='primary'>Purple</Button>
-    </div>
-  );
-};
-```
+<div
+  style={{
+    '--ud-color-primary': 'purple',
+  }}
+>
+  <Button type='primary'>Purple</Button>
+</div>
 
 udesign 提供了全局 CSS 变量和组件 CSS 变量，你可以在它们的文档页面中找到，具体请参阅 [CSS 变量](../css-variables) 章节。

@@ -32,6 +32,7 @@ module.exports = {
       },
       plugins: ['react', 'react-hooks', 'import', '@typescript-eslint', 'prettier'],
       rules: {
+        'arrow-body-style': 0,
         'no-nested-ternary': 0,
         'prettier/prettier': [
           'error',
@@ -90,6 +91,12 @@ module.exports = {
             jsx: 'never',
             ts: 'never',
             tsx: 'never',
+          },
+        ],
+        'import/no-unresolved': [
+          2,
+          {
+            ignore: ['contentlayer', 'next-contentlayer'],
           },
         ],
       },
