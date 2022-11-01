@@ -35,6 +35,7 @@ export type ModalProps = {
   confirmLoading?: boolean; // 确认按钮 loading。默认值：true
   content?: ReactNode; //	对话框内容，用于命令式调用。默认值：-
   footer?: ReactNode; //	对话框底部。默认值：-
+  keepDom?: boolean; // 关闭后是否销毁。默认值： true
   fullscreen?: boolean; // 对话是否是全屏（会覆盖 width height）。默认值：false
   getContainer?: () => HTMLElement; //	指定父级 DOM，弹层将会渲染至该 DOM 中，自定义需要设置 position: relative。默认值：-
   hasCancel?: boolean; //	是否显示取消按钮。默认值：
@@ -57,6 +58,8 @@ export type ModalProps = {
   showScrollbar?: boolean; // 是否使用内置滚动条。默认值：true
   showBack?: boolean; // 是否显示左上角的回退按钮。默认值：false
   backIcon?: ReactNode; //	自定义回退按钮的图标。默认值：-
+  showAnimation?: boolean; // 动画开关。默认值：true
+  animation?: 'fadeIn' | 'slideInUp'; // 动画方式，。默认值：fadeIn
   onBack?: (e: React.MouseEvent) => void; // 点击回退按钮时的回调函数。默认值：-
   showHelp?: boolean; // 是否显示右上角的缩小按钮。默认值：false
   draggable?: boolean; // 是否开启拖拽。
@@ -70,7 +73,10 @@ export type ModalProps = {
 } & NativeProps;
 
 export const Modal = (props: ModalProps) => {
-  const [hidden, setHidden] = useState(!props.visible);
+  const { keepDom = false, visible, showAnimation = true, animation = 'fadeIn' } = props;
+  const [hidden, setHidden] = useState(true);
+  const [displayNone, setDisplayNone] = useState(true);
+
   useEffect(() => {
     function handleKeydown(e: any) {
       const { closeOnEsc = true, onCancel } = props;
@@ -83,22 +89,6 @@ export const Modal = (props: ModalProps) => {
     return () => document.removeEventListener('keydown', handleKeydown);
   }, []);
 
-  useEffect(() => {
-    const { visible } = props;
-    if (!visible && !hidden) {
-      toggleHidden(true);
-      props.afterClose?.();
-    } else if (visible && hidden) {
-      toggleHidden(false);
-    }
-  }, [props.visible]);
-
-  const toggleHidden = (hid: boolean) => {
-    if (hid !== hidden) {
-      setHidden(hid);
-    }
-  };
-
   const renderMask = () => {
     const { mask = true, maskCloseable = true, maskStyle, onCancel } = props;
 
@@ -108,7 +98,20 @@ export const Modal = (props: ModalProps) => {
       }
     };
 
-    return mask ? <Mask onClick={handleClickMask} style={maskStyle} /> : null;
+    const mergedStyle: React.CSSProperties = {
+      ...maskStyle,
+    };
+
+    if (displayNone) {
+      mergedStyle.display = 'none';
+    }
+
+    const cls = classNames({
+      [`${prefixCls}-fadeIn`]: visible && !displayNone && showAnimation,
+      [`${prefixCls}-fadeOut`]: !visible && !displayNone && showAnimation,
+    });
+
+    return mask ? <Mask className={cls} onClick={handleClickMask} style={mergedStyle} /> : null;
   };
 
   const renderIcon = () => {
@@ -239,6 +242,8 @@ export const Modal = (props: ModalProps) => {
       [`${prefixCls}-fullscreen`]: fullscreen,
       [`${prefixCls}-centered`]: centered,
       [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-${animation}`]: visible && showAnimation,
+      [`${prefixCls}-${animation === 'fadeIn' ? 'fadeOut' : 'slideOutDown'}`]: !visible && showAnimation,
     });
 
     return (
@@ -256,9 +261,28 @@ export const Modal = (props: ModalProps) => {
     );
   };
 
+  useEffect(() => {
+    if (!visible) {
+      if (!showAnimation) toggleHidden();
+    } else {
+      setHidden(false);
+      setDisplayNone(false);
+    }
+  }, [visible]);
+
+  const onAnimationEnd = () => {
+    if (visible) {
+      setDisplayNone(false);
+    } else toggleHidden();
+  };
+
+  const toggleHidden = () => {
+    setDisplayNone(true);
+    !keepDom && setHidden(true);
+    props.afterClose?.();
+  };
   const renderModal = () => {
     const { centered = true, zIndex = 1000, getContainer, fullscreen, className, style } = props;
-
     const cls = classNames(
       {
         [`${prefixCls}-wrap`]: true,
@@ -267,7 +291,6 @@ export const Modal = (props: ModalProps) => {
       },
       className,
     );
-
     const mergedStyle: React.CSSProperties = {
       ...style,
     };
@@ -278,10 +301,14 @@ export const Modal = (props: ModalProps) => {
       mergedStyle.position = 'static';
     }
 
+    if (displayNone) {
+      mergedStyle.display = 'none';
+    }
+
     return (
       <Portal getContainer={getContainer}>
         {renderMask()}
-        <div className={cls} style={mergedStyle} ref={modalRef}>
+        <div className={cls} style={mergedStyle} ref={modalRef} onAnimationEnd={onAnimationEnd}>
           {renderContent()}
         </div>
       </Portal>
