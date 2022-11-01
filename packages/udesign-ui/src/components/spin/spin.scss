@@ -6,6 +6,7 @@ $module: ud-spin;
 .#{$module} {
   position: relative;
   display: inline-block;
+  z-index: $spin-zIndex;
   @include size($spin-width-middle);
 
   &-wrapper {
