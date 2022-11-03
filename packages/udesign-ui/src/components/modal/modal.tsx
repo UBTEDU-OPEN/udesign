@@ -35,7 +35,7 @@ export type ModalProps = {
   confirmLoading?: boolean; // 确认按钮 loading。默认值：true
   content?: ReactNode; //	对话框内容，用于命令式调用。默认值：-
   footer?: ReactNode; //	对话框底部。默认值：-
-  keepDom?: boolean; // 关闭后是否销毁。默认值： true
+  keepDOM?: boolean; // 关闭后是否不销毁。默认值：false
   fullscreen?: boolean; // 对话是否是全屏（会覆盖 width height）。默认值：false
   getContainer?: () => HTMLElement; //	指定父级 DOM，弹层将会渲染至该 DOM 中，自定义需要设置 position: relative。默认值：-
   hasCancel?: boolean; //	是否显示取消按钮。默认值：
@@ -73,7 +73,7 @@ export type ModalProps = {
 } & NativeProps;
 
 export const Modal = (props: ModalProps) => {
-  const { keepDom = false, visible, showAnimation = true, animation = 'fadeIn' } = props;
+  const { keepDOM = false, visible, showAnimation = true, animation = 'fadeIn' } = props;
   const [hidden, setHidden] = useState(true);
   const [displayNone, setDisplayNone] = useState(true);
 
@@ -278,9 +278,10 @@ export const Modal = (props: ModalProps) => {
 
   const toggleHidden = () => {
     setDisplayNone(true);
-    !keepDom && setHidden(true);
+    !keepDOM && setHidden(true);
     props.afterClose?.();
   };
+
   const renderModal = () => {
     const { centered = true, zIndex = 1000, getContainer, fullscreen, className, style } = props;
     const cls = classNames(
@@ -315,8 +316,9 @@ export const Modal = (props: ModalProps) => {
     );
   };
 
-  return !hidden ? renderModal() : null;
+  return hidden ? null : renderModal();
 };
+
 let modalDom: HTMLDivElement;
 const modalRef = () => {
   modalDom = document.getElementsByClassName('ud-modal-wrap')[0] as HTMLDivElement;

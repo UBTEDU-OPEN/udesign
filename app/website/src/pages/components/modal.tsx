@@ -152,6 +152,45 @@ export default function ModalPage() {
             </Modal>
           </Space>
         </Demo.Block>
+        <Demo.Block title='使用动画' description='通过 showAnimation 设置是否开启动画；通过 animation 设置动画名称，默认 fadeIn，可选 slideInUp。'>
+          <Space>
+            <Button
+              type='primary'
+              onClick={() => {
+                confirm({
+                  title: '对话框标题',
+                  content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+                });
+              }}
+            >
+              fadeIn
+            </Button>
+            <Button
+              type='primary'
+              onClick={() => {
+                confirm({
+                  animation: 'slideInUp',
+                  title: '对话框标题',
+                  content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+                });
+              }}
+            >
+              slideInUp
+            </Button>
+            <Button
+              type='primary'
+              onClick={() => {
+                confirm({
+                  showAnimation: false,
+                  title: '对话框标题',
+                  content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+                });
+              }}
+            >
+              没有动画
+            </Button>
+          </Space>
+        </Demo.Block>
         <Demo.Block title='其他尺寸' description='通过 size 使用内置的尺寸，或者直接设置 width 或 height。'>
           <Space wrap>
             <Button
