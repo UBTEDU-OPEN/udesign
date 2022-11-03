@@ -14,27 +14,29 @@ const BaseLayout = ({ sidebar, children }: BaseLayoutProps) => {
   const hasSider = Boolean(sidebar);
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>{appTitle}</title>
         <meta name='viewport' content='width=1024, initial-scale=1' />
         <meta charSet='utf-8' />
       </Head>
       <Navigation />
-      <Layout hasSider={hasSider}>
-        {hasSider ? (
-          <Sider className='fixed z-1 w-72 h-full pb-12 border-r bg-white'>
-            <Scrollbar hover className='p-4'>
-              {sidebar}
-            </Scrollbar>
-          </Sider>
-        ) : null}
-        <Layout>
-          <Content className={hasSider ? 'pl-72' : ''}>{children}</Content>
-          <Footer className='h-16 border-t'>Footer</Footer>
+      <div className='max-w-screen-2xl mx-auto'>
+        <Layout hasSider={hasSider}>
+          {hasSider ? (
+            <Sider className='fixed z-1 w-72 h-full pb-12 border-r bg-white'>
+              <Scrollbar hover className='p-4'>
+                {sidebar}
+              </Scrollbar>
+            </Sider>
+          ) : null}
+          <Layout className={hasSider ? 'pl-72' : ''}>
+            <Content>{children}</Content>
+            <Footer className='p-16 border-t text-center'>Made with ❤ by uDesign</Footer>
+          </Layout>
         </Layout>
-      </Layout>
-    </Layout>
+      </div>
+    </>
   );
 };
 

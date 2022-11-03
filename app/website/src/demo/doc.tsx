@@ -6,7 +6,7 @@ import { Layout, SideMenu, SideMenuProps } from './layouts';
 type DocProps = SideMenuProps & NativeProps;
 
 export const Doc = ({ menus, children, className }: DocProps) => {
-  const cls = classNames('p-20 mx-auto', className);
+  const cls = classNames('p-20 max-w-none mx-auto prose prose-slate', className);
 
   return (
     <Layout sidebar={<SideMenu base='docs/guide' menus={menus} />}>

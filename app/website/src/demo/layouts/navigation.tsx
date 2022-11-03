@@ -28,24 +28,26 @@ const Navigation = () => {
 
   return (
     <>
-      <div className='fixed z-50 bg-white w-full flex justify-between items-center border-b px-4'>
-        <Link href='/'>
-          <a className='font-bold text-xl no-underline'>{SITE_NAME}</a>
-        </Link>
-        <Menu hasLine onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
-          <a className='text-inherit no-underline' target='_blank' href='http://dev.edu.ubtrobot.com/UI/U-Design/' rel='noopener noreferrer'>
-            <Menu.Item name='spec'>设计</Menu.Item>
-          </a>
-          <Menu.Item name='docs'>文档</Menu.Item>
-          <Menu.Item name='components'>组件</Menu.Item>
-          <Menu.Item name='theme' disabled>
-            主题
-          </Menu.Item>
-          <Menu.Item name='community' disabled>
-            社区
-          </Menu.Item>
-        </Menu>
-      </div>
+      <header className='fixed z-50 bg-white w-full border-b'>
+        <div className='max-w-screen-2xl mx-auto px-5 flex justify-between items-center'>
+          <Link href='/'>
+            <a className='font-bold text-xl no-underline'>{SITE_NAME}</a>
+          </Link>
+          <Menu hasLine onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
+            <a className='text-inherit no-underline' target='_blank' href='http://dev.edu.ubtrobot.com/UI/U-Design/' rel='noopener noreferrer'>
+              <Menu.Item name='spec'>设计</Menu.Item>
+            </a>
+            <Menu.Item name='docs'>文档</Menu.Item>
+            <Menu.Item name='components'>组件</Menu.Item>
+            <Menu.Item name='theme' disabled>
+              主题
+            </Menu.Item>
+            <Menu.Item name='community' disabled>
+              社区
+            </Menu.Item>
+          </Menu>
+        </div>
+      </header>
       <div className='h-14'></div>
     </>
   );
