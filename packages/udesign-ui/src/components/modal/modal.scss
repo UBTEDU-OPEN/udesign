@@ -24,20 +24,20 @@ $module: ud-modal;
   flex-direction: column;
 
   &-fadeIn {
-    animation: fadeIn 0.5s;
+    animation: fadeIn 0.2s;
   }
 
   &-fadeOut {
-    animation: fadeOut 0.5s;
+    animation: fadeOut 0.2s;
     animation-fill-mode: forwards;
   }
 
   &-slideInUp {
-    animation: slideInUp 0.5s;
+    animation: slideInUp 0.3s;
   }
 
   &-slideOutDown {
-    animation: slideOutDown 0.5s;
+    animation: slideOutDown 0.3s;
     animation-fill-mode: forwards;
   }
 

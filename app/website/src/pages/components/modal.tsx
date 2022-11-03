@@ -23,6 +23,7 @@ export default function ModalPage() {
   const [visible13, setVisible13] = useState(false);
   const [visible14, setVisible14] = useState(false);
   const [visible15, setVisible15] = useState(false);
+  const [visible16, setVisible16] = useState(false);
 
   const { confirm } = Modal;
 
@@ -137,6 +138,16 @@ export default function ModalPage() {
               Open Modal
             </Button>
             <Modal visible={visible} title='对话框标题' onCancel={() => setVisible(false)} onOk={() => setVisible(false)}>
+              对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+            </Modal>
+          </Space>
+        </Demo.Block>
+        <Demo.Block title='没有遮罩' description='通过 mask 设置是否开启遮罩。'>
+          <Space>
+            <Button type='primary' onClick={() => setVisible16(true)}>
+              Open Modal
+            </Button>
+            <Modal mask={false} visible={visible16} title='对话框标题' onCancel={() => setVisible16(false)} onOk={() => setVisible16(false)}>
               对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
             </Modal>
           </Space>
