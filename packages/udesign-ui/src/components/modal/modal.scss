@@ -23,6 +23,24 @@ $module: ud-modal;
   display: flex;
   flex-direction: column;
 
+  &-fadeIn {
+    animation: fadeIn 0.5s;
+  }
+
+  &-fadeOut {
+    animation: fadeOut 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  &-slideInUp {
+    animation: slideInUp 0.5s;
+  }
+
+  &-slideOutDown {
+    animation: slideOutDown 0.5s;
+    animation-fill-mode: forwards;
+  }
+
   &-icon-wrapper {
     display: flex;
     justify-content: center;
@@ -89,12 +107,15 @@ $module: ud-modal;
 .#{$module}-small {
   width: $modal-width-small;
 }
+
 .#{$module}-middle {
   width: $modal-width-middle;
 }
+
 .#{$module}-large {
   width: $modal-width-large;
 }
+
 .#{$module}-fullscreen,
 .#{$module}-wrap-fullscreen {
   left: 0;
@@ -113,6 +134,7 @@ $module: ud-modal;
     }
   }
 }
+
 .#{$module}-success {
   .#{$module}-icon-wrapper {
     svg {
@@ -120,6 +142,7 @@ $module: ud-modal;
     }
   }
 }
+
 .#{$module}-error {
   .#{$module}-icon-wrapper {
     svg {
@@ -127,10 +150,47 @@ $module: ud-modal;
     }
   }
 }
+
 .#{$module}-warning {
   .#{$module}-icon-wrapper {
     svg {
       color: $modal-icon-color-warning;
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
   }
 }
