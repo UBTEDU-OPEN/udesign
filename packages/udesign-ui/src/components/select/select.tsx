@@ -1,7 +1,8 @@
 import React, { useReducer, useEffect, useState, useRef, ReactNode } from 'react';
 import classNames from 'classnames';
 import { DownOutlined, SearchOutlined } from '@ubt/udesign-icons';
-import { NativeProps } from '../../utils';
+import { isArray } from 'lodash';
+import { NativeProps, usePropsValue } from '../../utils';
 import Tooltip from '../tooltip';
 import { Option } from './option';
 import { BASE_CLASS_PREFIX, Size, Trigger } from '../../constants';
@@ -23,9 +24,9 @@ export type SelectProps = {
   options?: OptionItem[]; // 数据化配置选项内容，相比 jsx 定义会获得更好的渲染性能。默认值：-
   size?: Size; // 选择框大小。默认值：middle
   arrowIcon?: ReactNode; // 自定义右侧下拉箭头Icon，当showClear开关打开且当前有选中值时，hover会优先显示clear icon
-  onChange?: (value: string | number | any[]) => void; // 选中 option，调用此函数。默认值：-
-  value?: string | number | any[]; // 指定当前选中的条目，多选时为一个数组。默认值：-
-  defaultValue?: string | number | any[]; // 指定默认选中的条目。默认值：-
+  onChange?: (value: string | number | any[] | undefined) => void; // 选中 option，调用此函数。默认值：-
+  value?: string | number | any[] | undefined; // 指定当前选中的条目，多选时为一个数组。默认值：-
+  defaultValue?: string | number | any[] | undefined; // 指定默认选中的条目。默认值：-
   disabled?: boolean; // 是否禁用。默认值：false
   mode?: 'multiple'; // 设置 Select 的模式为多选。默认值：-
   children?: any;
@@ -51,10 +52,7 @@ export const Select = ({
   className,
   style,
   size = 'middle',
-  value,
-  onChange,
   disabled,
-  defaultValue,
   mode,
   allowClear,
   status,
@@ -78,9 +76,11 @@ export const Select = ({
     },
     className,
   );
+
   const listWrapper = classNames(`${prefixCls}-list-wrapper`, {
     [`${prefixCls}-list-wrapper-${size}`]: size,
   });
+
   const formatValue = (value?: string | number | any[]) => {
     let result: any[] = [];
     if (Array.isArray(value)) {
@@ -94,6 +94,18 @@ export const Select = ({
     }
     return result;
   };
+  const onChange = (e: string | number | any[]) => {
+    if (mode) {
+      restProps.onChange?.(e);
+    } else {
+      isArray(e) && restProps.onChange?.(e[0]);
+    }
+  };
+  const [active, setActive] = usePropsValue({
+    value: restProps.value ? formatValue(restProps.value) : undefined,
+    defaultValue: formatValue(restProps.defaultValue),
+    onChange,
+  });
 
   const getOptions = () => {
     let result: OptionItem[] = [];
@@ -108,14 +120,11 @@ export const Select = ({
     }
     return result;
   };
+
   const triggerRef = useRef<HTMLDivElement>(null);
   const [showClear, setShowClear] = useState<boolean>(false);
-  const [innerDefaultValue, setInnerDefaultValue] = useState<any[]>(formatValue(defaultValue));
-  const initialState = { value: formatValue(value) };
-  const [state, dispatch] = useReducer(reducer, initialState);
   const [visible, setVisible] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>('');
-  const [selectedList, setSelectedList] = useState<OptionItem[]>([]);
   const updateStyle = () => {
     let statusStyle = style;
     switch (status) {
@@ -139,20 +148,17 @@ export const Select = ({
       }
     }
   };
+
   useEffect(() => {
     if (autoFocus) setVisible(!visible);
   }, []);
+
   const handleClose = (data: { value: string | number; label: ReactNode | string }, event: React.MouseEvent<HTMLElement>) => {
-    dispatch({
-      type: types.UPDATE_VALUE,
-      payload: {
-        value: state.value.filter((item: string) => item !== data.value),
-      },
-    });
+    setActive(active.filter((item: string) => item !== data.value));
   };
 
   const handleEnter = () => {
-    if (!disabled && allowClear && selectedList.length > 0) {
+    if (!disabled && allowClear && active.length > 0) {
       setShowClear(true);
     }
   };
@@ -173,6 +179,7 @@ export const Select = ({
   const renderOptions = () => {
     const defaultFilterOption = (searchValue: string | number, OptionItem: OptionItem) => {
       let result: boolean;
+
       if (searchValue && typeof searchValue === 'string') {
         result = typeof OptionItem?.value === 'string' && OptionItem?.value?.includes(searchValue);
       } else if (searchValue && typeof searchValue === 'number') {
@@ -200,28 +207,37 @@ export const Select = ({
     );
   };
 
-  const iconCls = classNames(`${prefixCls}-arrow`, {
-    [`${prefixCls}-icon-${size}`]: size,
-  });
-
+  //  右侧图标
   const renderIcon = () => {
+    const iconCls = classNames(`${prefixCls}-arrow`, {
+      [`${prefixCls}-icon-${size}`]: size,
+    });
+
+    let icon: ReactNode = <DownOutlined />;
+
     if (mode !== 'multiple' && showSearch && visible) {
+      icon = <SearchOutlined />;
+    }
+
+    const clearClick = () => {
+      if (disabled) return;
+      setActive(mode ? formatValue([]) : formatValue(''));
+      onClear?.();
+    };
+
+    if (showClear) {
       return (
-        <div className={iconCls}>
-          <SearchOutlined />
+        <div className={iconCls} onClick={clearClick}>
+          {clearIcon}
         </div>
       );
     }
 
-    if (showClear) {
-      return clearIcon;
-    }
-
     if (disabled) {
-      return <DownOutlined style={{ color: '#D4D4DA' }} />;
+      icon = <DownOutlined style={{ color: '#D4D4DA' }} />;
     }
 
-    return <DownOutlined />;
+    return <div className={iconCls}>{icon}</div>;
   };
   useEffect(() => {
     const clickOutsideHandler = (e: Event) => {
@@ -235,56 +251,40 @@ export const Select = ({
       document.removeEventListener('click', clickOutsideHandler, true);
     };
   }, []);
-  useEffect(() => {
-    dispatch({
-      type: types.UPDATE_VALUE,
-      payload: {
-        value: formatValue(value),
-      },
-    });
-  }, [value]);
-  useEffect(() => {
-    dispatch({
-      type: types.UPDATE_VALUE,
-      payload: {
-        value: formatValue(innerDefaultValue),
-      },
-    });
-  }, [innerDefaultValue]);
-
-  useEffect(() => {
-    setSelectedList(getOptions().filter((item: OptionItem) => state.value.includes(item.value)));
-  }, [state.value]);
 
   const renderSelect = () => (
     <div className={cls} onClick={handleClick} style={updateStyle()} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <div
-        className={iconCls}
-        onClick={() => {
-          if (disabled) return;
-          dispatch({
-            type: types.UPDATE_VALUE,
-            payload: {
-              value: [],
-            },
-          });
-          onClear?.();
-          onChange?.('');
-        }}
-      >
-        {renderIcon()}
-      </div>
+      {renderIcon()}
       {mode !== 'multiple' ? (
-        <SingleBar searchValue={searchValue} visible={visible} setSearchValue={setSearchValue} showSearch={showSearch} options={getOptions()} innerDefaultValue={innerDefaultValue} placeholder={placeholder} />
+        <SingleBar searchValue={searchValue} visible={visible} setSearchValue={setSearchValue} showSearch={showSearch} options={getOptions()} active={active} placeholder={placeholder} />
       ) : (
-        <MultiBar searchValue={searchValue} visible={visible} setSearchValue={setSearchValue} maxTagCount={maxTagCount} selectedList={selectedList} tagRender={tagRender} handleClose={handleClose} placeholder={placeholder} />
+        <MultiBar
+          searchValue={searchValue}
+          visible={visible}
+          setSearchValue={setSearchValue}
+          maxTagCount={maxTagCount}
+          selectedList={getOptions().filter((item: OptionItem) => active.includes(item.value))}
+          tagRender={tagRender}
+          handleClose={handleClose}
+          placeholder={placeholder}
+        />
       )}
     </div>
   );
 
+  //  选中值
+  const click = (val: any) => {
+    let newSet = new Set<any[]>(active);
+    if (mode === 'multiple') {
+      if (newSet.has(val)) {
+        newSet.delete(val);
+      } else newSet.add(val);
+      setActive([...newSet]);
+    } else setActive([val]);
+  };
   return (
     <>
-      <SelectContext.Provider value={{ value: state.value, onChange, dispatch, defaultValue: innerDefaultValue, mode, setVisible, disabled, onSelect, autoFocus }}>
+      <SelectContext.Provider value={{ active, mode, setVisible, disabled, onSelect, autoFocus, click }}>
         <div className={`${prefixCls}-wrapper`} style={getWidthStyle()} ref={triggerRef}>
           {disabled ? (
             renderSelect()

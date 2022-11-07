@@ -15,20 +15,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-select-item`;
 
 export const Option = ({ label, disabled = false, className, children, style, value }: OptionProps) => {
   const context = useContext(SelectContext);
-  const [innerChecked, setInnerChecked] = useState<boolean>(context.defaultValue?.includes(value || '') || false);
-  const getResult = () => {
-    let result: any[] = context.value || [];
-    if (context.mode === 'multiple') {
-      if (innerChecked) {
-        result = (context.value || []).filter((item) => item !== value);
-      } else {
-        result = value ? [...(context.value || []), value] : context.value || [];
-      }
-    } else if (!innerChecked) {
-      result = value ? [value] : [];
-    }
-    return result;
-  };
+  const [innerChecked, setInnerChecked] = useState<boolean>(context.active?.includes(value || '') || false);
 
   let cls = classNames(prefixCls, className, {
     [`${prefixCls}-active`]: innerChecked,
@@ -40,22 +27,12 @@ export const Option = ({ label, disabled = false, className, children, style, va
   const handleClick = () => {
     if (!disabled) {
       const options = { value, label, disabled };
-      !context.value?.includes(value) && context.onChange && context.onChange(getResult() || '');
       context.onSelect && context.onSelect(options);
       // 选中时更新value值
-      if (context.dispatch) {
-        context.dispatch({
-          type: types.UPDATE_VALUE,
-          payload: {
-            value: getResult(),
-          },
-        });
-      }
+      context.click?.(value);
 
-      if (!innerChecked && context.mode !== 'multiple') {
-        if (context.setVisible) {
-          context.setVisible(false);
-        }
+      if (!innerChecked && context.mode !== 'multiple' && context.setVisible) {
+        context.setVisible(false);
       }
     }
   };
@@ -70,10 +47,10 @@ export const Option = ({ label, disabled = false, className, children, style, va
   }, [innerChecked]);
 
   useEffect(() => {
-    if (context.value && value) {
-      setInnerChecked(context.value.includes(value));
+    if (context.active && value) {
+      setInnerChecked(context.active.includes(value));
     }
-  }, [context.value]);
+  }, [context.active]);
 
   return (
     <>
