@@ -14,7 +14,7 @@ export type ToastProps = {
   afterClose?: () => void; // 关闭后的回调。默认值：-
 } & NativeProps;
 
-export const Toast = ({ content, position = 'top', zIndex = 1010, className, style }: ToastProps) => {
+export const Toast = ({ content, position = 'center', zIndex = 1010, className, style }: ToastProps) => {
   const cls = classNames(
     `${prefixCls}`,
     {
