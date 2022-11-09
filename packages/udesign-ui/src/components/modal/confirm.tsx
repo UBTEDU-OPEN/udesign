@@ -9,7 +9,6 @@ export type showModalProps = ConfirmModalProps;
 export default function show(props: showModalProps) {
   // create a dom in adapter?
   const div = document.createElement('div');
-  document.body.appendChild(div);
 
   let currentConfig = { ...props };
 
