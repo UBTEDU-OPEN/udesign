@@ -29,25 +29,25 @@ export default function SwitchPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='带有文字' description='开关中带有文字'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Switch defaultChecked checkedText='开启' uncheckedText='关闭' />
             <Switch checkedText='开启' uncheckedText='关闭' />
           </Space>
         </Demo.Block>
         <Demo.Block>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Switch defaultChecked checkedText='1' uncheckedText='0' />
             <Switch checkedText='1' uncheckedText='0' />
           </Space>
         </Demo.Block>
         <Demo.Block title='带有图标' description='开关中带有图标'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Switch defaultChecked checkedText={<CheckOutlined />} uncheckedText={<CloseOutlined />} />
             <Switch checkedText={<CheckOutlined />} uncheckedText={<CloseOutlined />} />
           </Space>
         </Demo.Block>
         <Demo.Block title='其它尺寸' description='两种大小的开关。'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Switch defaultChecked />
             <Switch defaultChecked size='small' />
           </Space>

@@ -56,7 +56,7 @@ export default function DropdownPage() {
           </Dropdown>
         </Demo.Block>
         <Demo.Block title='弹出位置' description='支持 6 个弹出位置。'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Space>
               <Dropdown content={menu} placement='topLeft'>
                 <Button>topLeft</Button>
@@ -82,7 +82,7 @@ export default function DropdownPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='带箭头展示' description='通过 showArrow 可以展示一个箭头。'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Space>
               <Dropdown content={menu} placement='topLeft' showArrow>
                 <Button>topLeft</Button>

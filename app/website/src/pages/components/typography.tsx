@@ -30,7 +30,7 @@ export default function TypographyPage() {
           <Title level={5}>h5. uDesign</Title>
         </Demo.Block>
         <Demo.Block title='文本与超链接组件' description='内置不同样式的文本以及超链接组件。'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Text>uDesign (default)</Text>
             <Text type='secondary'>uDesign (secondary)</Text>
             <Text type='success'>uDesign (success)</Text>
@@ -48,7 +48,7 @@ export default function TypographyPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='可交互能力' description='提供可编辑和可复制等额外的交互能力。'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Text style={{ width: '100%' }} editable={{ tooltip: '编辑', icon: () => <EditFilled /> }}>
               This is an editable text.
             </Text>
@@ -82,7 +82,7 @@ export default function TypographyPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='省略展示' description='多行文本省略。你可以通过 tooltip 属性配置省略展示内容，大量文本时推荐优先使用 expandable。'>
-          <Space size='large' direction='vertical'>
+          <Space size='large' vertical>
             <Paragraph
               ellipsis={{
                 rows: 1,

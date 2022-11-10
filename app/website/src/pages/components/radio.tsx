@@ -26,7 +26,7 @@ export default function RadioPage() {
         </Demo.Block>
         <Demo.Block title='垂直排列' description='垂直的 Radio.Group'>
           <Radio.Group name={'vertical'} defaultValue={'2'}>
-            <Space direction='vertical'>
+            <Space vertical>
               <Radio value={'1'}>Option A</Radio>
               <Radio value={'2'}>Option B</Radio>
               <Radio value={'3'}>Option C</Radio>

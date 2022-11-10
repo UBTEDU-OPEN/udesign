@@ -265,7 +265,7 @@ export default function ButtonPage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='Block 按钮' description='通过 block 属性使按钮适合其父宽度。'>
-          <Space direction='vertical'>
+          <Space vertical>
             <Button type='primary' block>
               Primary
             </Button>

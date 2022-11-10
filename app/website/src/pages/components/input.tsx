@@ -24,14 +24,14 @@ export default function InputPage() {
           <Input className='max-w-2xl' placeholder='Basic usage' />
         </Demo.Block>
         <Demo.Block title='尺寸' description='我们为 <Input /> 输入框定义了三种尺寸（大、默认、小），高度分别为 （50px、42px 和 32px）'>
-          <Space direction='vertical' size='middle' align='start'>
+          <Space vertical size='middle' align='start'>
             <Input className='max-w-2xl' placeholder='Large size' size='large' />
             <Input className='max-w-lg' placeholder='Default size' />
             <Input className='max-w-sm' placeholder='Small size' size='small' />
           </Space>
         </Demo.Block>
         <Demo.Block title='形状' description='shape 支持 circle，round, square, 默认为 circle。'>
-          <Space direction='vertical' size='middle' align='start'>
+          <Space vertical size='middle' align='start'>
             <Input className='max-w-2xl' placeholder='circle' shape='circle' />
             <Input className='max-w-2xl' placeholder='round' shape='round' />
             <Input className='max-w-2xl' placeholder='square' shape='square' />
@@ -73,7 +73,7 @@ export default function InputPage() {
           <Input className='max-w-2xl' type='password' defaultValue='Basic usage' />
         </Demo.Block>
         <Demo.Block title='字数提示' description='通过 maxLength 属性限定总输入字数，showCount 来显示可输入字数提示'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Input className='max-w-2xl' placeholder='请输入名称' maxLength={40} showCount />
             <TextArea className='max-w-2xl' placeholder='给你的作品写一个操作指南，并告诉大家如何操作' maxLength={200} showCount />
           </Space>
@@ -85,7 +85,7 @@ export default function InputPage() {
           <TextArea className='max-w-2xl' placeholder='给你的作品写一个操作指南，并告诉大家如何操作' showClear />
         </Demo.Block>
         <Demo.Block title='自定义状态' description='使用 status 为输入框添加状态，可选 error 或者 warning。'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Input className='max-w-2xl' status='error' placeholder='Error' />
             <Input className='max-w-2xl' status='warning' placeholder='Warning' />
             <Input className='max-w-2xl' status='error' suffix={<CloseCircleFilled size='small' />} placeholder='Error with suffix' />

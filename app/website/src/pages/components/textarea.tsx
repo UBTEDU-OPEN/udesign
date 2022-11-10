@@ -26,7 +26,7 @@ export default function TextareaPage() {
           <TextArea defaultValue='论一个优秀的操作指南' showClear />
         </Demo.Block>
         <Demo.Block title='自定义状态' description='使用 status 为输入框添加状态，可选 error 或者 warning。'>
-          <Space direction='vertical'>
+          <Space vertical>
             <TextArea status='error' placeholder='Error' />
             <TextArea status='warning' placeholder='Warning' />
           </Space>

@@ -48,7 +48,7 @@ export default function TooltipPage() {
           </Tooltip>
         </Demo.Block>
         <Demo.Block title='弹出位置' description='支持弹出层在不同方向展示，共有 12 个方向'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Space>
               <Tooltip content={content} placement='topLeft'>
                 <HorizontalBox>topLeft</HorizontalBox>
@@ -61,7 +61,7 @@ export default function TooltipPage() {
               </Tooltip>
             </Space>
             <Space justify='between'>
-              <Space direction='vertical'>
+              <Space vertical>
                 <Tooltip content={content} placement='leftTop'>
                   <VerticalBox>leftTop</VerticalBox>
                 </Tooltip>
@@ -72,7 +72,7 @@ export default function TooltipPage() {
                   <VerticalBox>leftBottom</VerticalBox>
                 </Tooltip>
               </Space>
-              <Space direction='vertical'>
+              <Space vertical>
                 <Tooltip content={content} placement='rightTop'>
                   <VerticalBox>rightTop</VerticalBox>
                 </Tooltip>

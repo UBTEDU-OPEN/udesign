@@ -39,7 +39,7 @@ export default function ProgressPage() {
           }
         />
         <Demo.Block title='基本用法' description='常规进度条用法。'>
-          <Space className='max-w-3xl' direction='vertical'>
+          <Space className='max-w-3xl' vertical>
             <Progress percent={50} />
             <Progress percent={50} status='warning' />
             <Progress percent={100} status='success' />
@@ -49,7 +49,7 @@ export default function ProgressPage() {
         <Demo.Block title='不同尺寸的进度条' description='通过 size 来设置进度条尺寸，或者传入style'>
           <Space>
             small
-            <Space className='max-w-xs w-full' direction='vertical'>
+            <Space className='max-w-xs w-full' vertical>
               <Progress size='small' percent={50} />
               <Progress size='small' percent={50} status='warning' />
               <Progress size='small' percent={100} status='success' />
@@ -60,7 +60,7 @@ export default function ProgressPage() {
         <Demo.Block>
           <Space>
             middle
-            <Space className='max-w-lg w-full' direction='vertical'>
+            <Space className='max-w-lg w-full' vertical>
               <Progress percent={50} />
               <Progress percent={50} status='warning' />
               <Progress percent={100} status='success' />
@@ -71,7 +71,7 @@ export default function ProgressPage() {
         <Demo.Block>
           <Space>
             large
-            <Space className='max-w-3xl w-full' direction='vertical'>
+            <Space className='max-w-3xl w-full' vertical>
               <Progress size='large' percent={50} />
               <Progress size='large' percent={50} status='warning' />
               <Progress size='large' percent={100} status='success' />
@@ -82,7 +82,7 @@ export default function ProgressPage() {
         <Demo.Block>
           <Space>
             自定义
-            <Space className='max-w-3xl w-full' direction='vertical'>
+            <Space className='max-w-3xl w-full' vertical>
               <Progress style={{ height: '4px' }} percent={50} />
               <Progress style={{ height: '4px' }} percent={50} status='warning' />
               <Progress style={{ height: '4px' }} percent={100} status='success' />

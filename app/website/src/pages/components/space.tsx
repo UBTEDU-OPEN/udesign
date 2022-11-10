@@ -30,7 +30,7 @@ export default function SpacePage() {
           </Space>
         </Demo.Block>
         <Demo.Block title='垂直间距' description='相邻组件垂直间距。'>
-          <Space direction='vertical' align='start'>
+          <Space vertical align='start'>
             <Button>Button</Button>
             <Button>Button</Button>
             <Button>Button</Button>
