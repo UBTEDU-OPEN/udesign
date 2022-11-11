@@ -1,40 +1,22 @@
-$module: ud-grid;
+$module: ud-row;
 
 .#{$module} {
-    flex-grow: 1;
+  display: flex;
+  flex-grow: 1;
 
-    &-row {
-        display: flex;
+  @each $var, $align in (top, flex-start), (middle, center), (bottom, flex-end) {
+    &-#{$var} {
+      align-items: $align;
     }
+  }
 
-    @each $var,
-    $align in (top, flex-start),
-    (middle, center),
-    (bottom, flex-end) {
-        &-row-align-#{$var} {
-            align-items: $align;
-        }
+  @each $var in start, end, center, space-around, space-between, space-evenly {
+    &-#{$var} {
+      justify-content: $var;
     }
+  }
 
-    @each $var in start,
-    end,
-    center,
-    space-around,
-    space-between,
-    space-evenly {
-        &-row-justify-#{$var} {
-            justify-content: $var;
-        }
-    }
-
-    &-row-wrap {
-        flex-wrap: wrap;
-    }
-
-    &-col-span-0 {
-        display: none;
-    }
-
-    
-
+  &-wrap {
+    flex-wrap: wrap;
+  }
 }

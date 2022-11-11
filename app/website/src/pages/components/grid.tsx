@@ -7,6 +7,26 @@ import { getLayout } from '../../demo/getLayout';
 export default function GridPage() {
   return (
     <>
+      <style>
+        {`
+        .ud-row>div {
+          text-align: center;
+          color: white;
+          margin-top: 8px;
+          margin-bottom: 8px;
+        }
+        .ud-row>div.gutter-row>div {
+          padding: 16px 0;
+          background: rgb(114, 132, 251);
+        }
+        .ud-row>div:not(.gutter-row) {
+          padding: 16px 0;
+          background: rgb(114, 132, 251);
+        }
+        .ud-row>div:not(.gutter-row):nth-child(2n+1) {
+          background: rgba(114, 132, 251, 0.50);
+        }`}
+      </style>
       <Demo.Page title='Grid 栅格' description='24 栅格系统。'>
         <Demo.Block
           title='设计理念'
@@ -57,43 +77,23 @@ export default function GridPage() {
             </>
           }
         >
-          <Row className='mb-4 text-center text-white'>
-            <Col className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }} span={24}>
-              col 123
-            </Col>
+          <Row>
+            <Col span={24}>col 24</Col>
           </Row>
-          <Row className='mb-4 text-center text-white'>
-            <Col className='py-4 px-0' span={12} style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-12
-            </Col>
-            <Col className='py-4 px-0' span={12} style={{ background: 'rgb(114, 132, 251)' }}>
-              col-12
-            </Col>
+          <Row>
+            <Col span={12}>col-12</Col>
+            <Col span={12}>col-12</Col>
           </Row>
-          <Row className='mb-4 text-center text-white'>
-            <Col className='py-4 px-0' span={8} style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-8
-            </Col>
-            <Col className='py-4 px-0' span={8} style={{ background: 'rgb(114, 132, 251)' }}>
-              col-8
-            </Col>
-            <Col className='py-4 px-0' span={8} style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-8
-            </Col>
+          <Row>
+            <Col span={8}>col-8</Col>
+            <Col span={8}>col-8</Col>
+            <Col span={8}>col-8</Col>
           </Row>
-          <Row className='text-center text-white'>
-            <Col className='py-4 px-0' span={6} style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-6
-            </Col>
-            <Col className='py-4 px-0' span={6} style={{ background: 'rgb(114, 132, 251)' }}>
-              col-6
-            </Col>
-            <Col className='py-4 px-0' span={6} style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-6
-            </Col>
-            <Col className='py-4 px-0' span={6} style={{ background: 'rgb(114, 132, 251)' }}>
-              col-6
-            </Col>
+          <Row>
+            <Col span={6}>col-6</Col>
+            <Col span={6}>col-6</Col>
+            <Col span={6}>col-6</Col>
+            <Col span={6}>col-6</Col>
           </Row>
         </Demo.Block>
         <Demo.Block
@@ -106,67 +106,61 @@ export default function GridPage() {
             </>
           }
         >
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            Horizontal
-          </Divider>
-          <Row gutter={16} className='text-center text-white'>
+          <Divider orientation='left'>Horizontal</Divider>
+          <Row gutter={16}>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
           </Row>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            Responsive
-          </Divider>
-          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, xl: 40, xxl: 48 }} className='text-center text-white'>
+          <Divider orientation='left'>Responsive</Divider>
+          <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, xl: 40, xxl: 48 }}>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
           </Row>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            Vertical
-          </Divider>
-          <Row gutter={[16, 16]} className='text-center text-white'>
+          <Divider orientation='left'>Vertical</Divider>
+          <Row gutter={[16, 16]}>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
             <Col span={6} className='gutter-row'>
-              <div style={{ background: 'rgba(114, 132, 251, 0.50)', padding: '1rem 0' }}>col-6</div>
+              <div>col-6</div>
             </Col>
           </Row>
         </Demo.Block>
@@ -180,40 +174,30 @@ export default function GridPage() {
             </>
           }
         >
-          <Row className='mb-4 text-center text-white'>
-            <Col className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }} span={8}>
-              col-8
-            </Col>
-            <Col className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }} span={8} offset={8}>
+          <Row>
+            <Col span={8}>col-8</Col>
+            <Col span={8} offset={8}>
               col-8
             </Col>
           </Row>
-          <Row className='mb-4 text-center text-white'>
-            <Col className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }} span={6} offset={6}>
+          <Row>
+            <Col span={6} offset={6}>
               col-6 col-offset-6
             </Col>
-            <Col className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }} span={6} offset={6}>
+            <Col span={6} offset={6}>
               col-6 col-offset-6
             </Col>
           </Row>
-          <Row className='mb-4 text-center text-white'>
-            <Col className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }} span={12} offset={6}>
+          <Row>
+            <Col span={12} offset={6}>
               col-12 col-offset-6
             </Col>
           </Row>
-          <Row className='mb-4 text-center text-white'>
-            <Col className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }} span={6}>
-              col-6
-            </Col>
-            <Col className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }} span={6}>
-              col-6
-            </Col>
-            <Col className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }} span={6}>
-              col-6
-            </Col>
-            <Col className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }} span={6}>
-              col-6
-            </Col>
+          <Row>
+            <Col span={6}>col-6</Col>
+            <Col span={6}>col-6</Col>
+            <Col span={6}>col-6</Col>
+            <Col span={6}>col-6</Col>
           </Row>
         </Demo.Block>
         <Demo.Block
@@ -226,11 +210,11 @@ export default function GridPage() {
             </>
           }
         >
-          <Row className='text-center text-white'>
-            <Col span={18} push={6} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Row>
+            <Col span={18} push={6}>
               col-18 col-push-6
             </Col>
-            <Col span={6} pull={18} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={6} pull={18}>
               col-6 col-pull-18
             </Col>
           </Row>
@@ -245,251 +229,169 @@ export default function GridPage() {
             </>
           }
         >
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            sub-element align left
-          </Divider>
-          <Row justify='start' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
+          <Divider orientation='left'>sub-element align left</Divider>
+          <Row justify='start'>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='center' style={{ margin: '16px 0' }}>
-            sub-element align center
-          </Divider>
-          <Row justify='center' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
+          <Divider orientation='center'>sub-element align center</Divider>
+          <Row justify='center'>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='right' style={{ margin: '16px 0' }}>
-            sub-element align right
-          </Divider>
-          <Row justify='end' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
+          <Divider orientation='right'>sub-element align right</Divider>
+          <Row justify='end'>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            sub-element align arrangement
-          </Divider>
-          <Row justify='space-between' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
+          <Divider orientation='left'>sub-element align arrangement</Divider>
+          <Row justify='space-between'>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            sub-element align full
-          </Divider>
-          <Row justify='space-around' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
+          <Divider orientation='left'>sub-element align full</Divider>
+          <Row justify='space-around'>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
           </Row>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            sub-element align evenly
-          </Divider>
-          <Row justify='space-evenly' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              col-4
-            </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              col-4
-            </Col>
+          <Divider orientation='left'>sub-element align evenly</Divider>
+          <Row justify='space-evenly'>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
+            <Col span={4}>col-4</Col>
           </Row>
         </Demo.Block>
         <Demo.Block title='对齐' description={<>子元素垂直对齐。</>}>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            Align Top
-          </Divider>
-          <Row justify='center' align='top' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Divider orientation='left'>Align Top</Divider>
+          <Row justify='center' align='top'>
+            <Col span={4}>
               <p style={{ height: '20px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={4}>
               <p style={{ height: '100px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+            <Col span={4}>
               <p style={{ height: '80px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={4}>
               <p style={{ height: '50px' }}>col-4</p>
             </Col>
           </Row>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            Align Middle
-          </Divider>
-          <Row justify='space-around' align='middle' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Divider orientation='left'>Align Middle</Divider>
+          <Row justify='space-around' align='middle'>
+            <Col span={4}>
               <p style={{ height: '20px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={4}>
               <p style={{ height: '100px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+            <Col span={4}>
               <p style={{ height: '80px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={4}>
               <p style={{ height: '50px' }}>col-4</p>
             </Col>
           </Row>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            Align Bottom
-          </Divider>
-          <Row justify='space-between' align='bottom' style={{ padding: '8px 0', background: '#eee' }} className='text-center text-white'>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Divider orientation='left'>Align Bottom</Divider>
+          <Row justify='space-between' align='bottom'>
+            <Col span={4}>
               <p style={{ height: '20px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={4}>
               <p style={{ height: '100px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+            <Col span={4}>
               <p style={{ height: '80px' }}>col-4</p>
             </Col>
-            <Col span={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={4}>
               <p style={{ height: '50px' }}>col-4</p>
             </Col>
           </Row>
         </Demo.Block>
         <Demo.Block title='排序' description={<>通过 order 来改变元素的排序。</>}>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            Normal
-          </Divider>
-          <Row className='text-center text-white'>
-            <Col span={6} order={4} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Divider orientation='left'>Normal</Divider>
+          <Row>
+            <Col span={6} order={4}>
               1 col-order-4
             </Col>
-            <Col span={6} order={3} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={6} order={3}>
               2 col-order-3
             </Col>
-            <Col span={6} order={2} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+            <Col span={6} order={2}>
               3 col-order-2
             </Col>
-            <Col span={6} order={1} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={6} order={1}>
               4 col-order-1
             </Col>
           </Row>
-          <Divider plain orientation='left' style={{ margin: '16px 0' }}>
-            Responsive
-          </Divider>
-          <Row className='text-center text-white'>
-            <Col span={6} xs={{ order: 1 }} sm={{ order: 2 }} md={{ order: 3 }} lg={{ order: 4 }} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Divider orientation='left'>Responsive</Divider>
+          <Row>
+            <Col span={6} xs={{ order: 1 }} sm={{ order: 2 }} md={{ order: 3 }} lg={{ order: 4 }}>
               1 col-order-responsive
             </Col>
-            <Col span={6} xs={{ order: 2 }} sm={{ order: 1 }} md={{ order: 4 }} lg={{ order: 3 }} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={6} xs={{ order: 2 }} sm={{ order: 1 }} md={{ order: 4 }} lg={{ order: 3 }}>
               2 col-order-responsive
             </Col>
-            <Col span={6} xs={{ order: 3 }} sm={{ order: 4 }} md={{ order: 2 }} lg={{ order: 1 }} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+            <Col span={6} xs={{ order: 3 }} sm={{ order: 4 }} md={{ order: 2 }} lg={{ order: 1 }}>
               3 col-order-responsive
             </Col>
-            <Col span={6} xs={{ order: 4 }} sm={{ order: 3 }} md={{ order: 1 }} lg={{ order: 2 }} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col span={6} xs={{ order: 4 }} sm={{ order: 3 }} md={{ order: 1 }} lg={{ order: 2 }}>
               4 col-order-responsive
             </Col>
           </Row>
         </Demo.Block>
-        <Demo.Block title='Flex填充' description={<>Col 提供 flex 属性以支持填充。</>}>
-          <Divider orientation='left' style={{ margin: '16px 0' }}>
-            Percentage columns
-          </Divider>
-          <Row className='text-center text-white'>
-            <Col flex={2} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              2 / 5
-            </Col>
-            <Col flex={3} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              3 / 5
-            </Col>
-          </Row>
-          <Divider orientation='left' style={{ margin: '16px 0' }}>
-            Fill rest
-          </Divider>
-          <Row className='text-center text-white'>
-            <Col flex='100px' className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              100px
-            </Col>
-            <Col flex='auto' className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              Fill Rest
-            </Col>
-          </Row>
-          <Divider orientation='left' style={{ margin: '16px 0' }}>
-            Raw flex style
-          </Divider>
-          <Row className='mb-4 text-center text-white'>
-            <Col flex='1 1 200px' className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              1 1 200px
-            </Col>
-            <Col flex='0 1 300px' className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              0 1 300px
-            </Col>
-          </Row>
 
-          <Row wrap={false} className='text-center text-white'>
-            <Col flex='none' className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
-              <div style={{ padding: '0 16px' }}>none</div>
-            </Col>
-            <Col flex='auto' className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
-              auto with no-wrap
-            </Col>
+        <Demo.Block title='Flex填充' description={<>Col 提供 flex 属性以支持填充。</>}>
+          Percentage columns
+          <Row>
+            <Col flex={2}>2 / 5</Col>
+            <Col flex={3}>3 / 5</Col>
           </Row>
         </Demo.Block>
+        <Demo.Block>
+          Fill rest
+          <Row>
+            <Col flex='100px'>100px</Col>
+            <Col flex='auto'>Fill Rest</Col>
+          </Row>
+        </Demo.Block>
+        <Demo.Block>
+          Raw flex style
+          <Row>
+            <Col flex='1 1 200px'>1 1 200px</Col>
+            <Col flex='0 1 300px'>0 1 300px</Col>
+          </Row>
+        </Demo.Block>
+        <Demo.Block>
+          auto
+          <Row wrap={false}>
+            <Col flex='none'>
+              <div>none</div>
+            </Col>
+            <Col flex='auto'>auto with no-wrap</Col>
+          </Row>
+        </Demo.Block>
+
         <Demo.Block title='响应式布局' description={<>参照 Bootstrap 的 响应式设计，预设六个响应尺寸：xs sm md lg xl xxl。</>}>
-          <Row className='text-center text-white'>
-            <Col xs={2} sm={4} md={6} lg={8} xl={10} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Row>
+            <Col xs={2} sm={4} md={6} lg={8} xl={10}>
               Col
             </Col>
-            <Col xs={20} sm={16} md={12} lg={8} xl={4} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col xs={20} sm={16} md={12} lg={8} xl={4}>
               Col
             </Col>
-            <Col xs={2} sm={4} md={6} lg={8} xl={10} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+            <Col xs={2} sm={4} md={6} lg={8} xl={10}>
               Col
             </Col>
           </Row>
@@ -502,14 +404,14 @@ export default function GridPage() {
             </>
           }
         >
-          <Row className='text-center text-white'>
-            <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+          <Row>
+            <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
               Col
             </Col>
-            <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }} className='py-4 px-0' style={{ background: 'rgb(114, 132, 251)' }}>
+            <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
               Col
             </Col>
-            <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }} className='py-4 px-0' style={{ background: 'rgba(114, 132, 251, 0.50)' }}>
+            <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
               Col
             </Col>
           </Row>

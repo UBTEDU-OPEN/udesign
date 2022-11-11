@@ -4,7 +4,7 @@ import RowContext from '../row/rowContext';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
-const prefixCls = `${BASE_CLASS_PREFIX}-grid-col`;
+const prefixCls = `${BASE_CLASS_PREFIX}-col`;
 
 export interface ColSize {
   span?: number;
@@ -53,7 +53,7 @@ export const Col = (props: ColProps) => {
   });
 
   const cls = classNames(prefixCls, className, {
-    [`${prefixCls}-span-${span}`]: span,
+    [`${prefixCls}-${span}`]: span,
     [`${prefixCls}-pull-${pull}`]: pull,
     [`${prefixCls}-push-${push}`]: push,
     [`${prefixCls}-offset-${offset}`]: offset,
