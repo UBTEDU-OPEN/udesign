@@ -13,6 +13,7 @@ $module: ud-input;
   color: $input-color;
   border: $border-width-control solid $input-border-color;
   -webkit-appearance: none;
+  overflow: hidden;
 
   // shape
   &-shape-circle {
