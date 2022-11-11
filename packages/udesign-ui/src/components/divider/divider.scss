@@ -3,21 +3,18 @@
 $module: ud-divider;
 
 .#{$module} {
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
   color: $divider-text-color;
+  border-top: $divider-border-width solid $divider-border-color;
 
   .#{$module}-inner-text {
     display: inline-block;
     padding: $divider-text-padding;
     font-size: $divider-text-font-size;
     font-weight: $divider-text-font-weight;
-  }
-
-  &-horizontal {
-    display: flex;
-    clear: both;
-    width: 100%;
-    min-width: 100%;
-    border-top: $divider-border-width solid $divider-border-color;
   }
 
   &-with-text {
@@ -74,20 +71,6 @@ $module: ud-divider;
     }
   }
 
-  &-vertical {
-    position: relative;
-    top: -0.06em;
-    display: inline-block;
-    height: $divider-vertical-height;
-    margin: $divider-vertical-margin;
-    vertical-align: middle;
-    border-left: $divider-border-width solid $divider-border-color;
-  }
-
-  &-plain {
-    font-weight: normal;
-  }
-
   &-dashed {
     border-style: dashed;
 
@@ -98,4 +81,14 @@ $module: ud-divider;
       border-style: dashed;
     }
   }
+}
+
+.#{$module}-vertical {
+  position: relative;
+  top: -0.06em;
+  display: inline-block;
+  height: $divider-vertical-height;
+  margin: $divider-vertical-margin;
+  vertical-align: middle;
+  border-left: $divider-border-width solid $divider-border-color;
 }

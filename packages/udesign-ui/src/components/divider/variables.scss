@@ -1,10 +1,10 @@
 $divider-border-width: var(--ud-divider-border-width, 1px); // 分割线宽度
 $divider-border-color: var(--ud-divider-border-color, rgb(var(--ud-gray-3))); // 分割线颜色
 
-$divider-text-color: var(--ud-divider-text-color, rgb(var(--ud-gray-12))); // 分割线文字颜色
-$divider-text-font-size: var(--ud-divider-font-size, 16px); // 分割线文字字号
-$divider-text-font-weight: var(--ud-divider-text-font-weight, 500); // 分割线文字字重
-$divider-text-padding: var(--ud-divider-text-padding, 0 1em); // 分割线文字内边距
+$divider-text-color: var(--ud-divider-text-color, rgb(var(--ud-gray-12))); // 水平分割线文字颜色
+$divider-text-font-size: var(--ud-divider-font-size, 16px); // 水平分割线文字字号
+$divider-text-font-weight: var(--ud-divider-text-font-weight, 500); // 水平分割线文字字重
+$divider-text-padding: var(--ud-divider-text-padding, 0 1em); // 水平分割线文字内边距
 
 $divider-vertical-height: var(--ud-divider-vertical-height, 0.9em); // 垂直分割线高度
 $divider-vertical-margin: var(--ud-divider-vertical-margin, 0 1em); // 垂直分割线外边距

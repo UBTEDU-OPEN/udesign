@@ -45,21 +45,19 @@ export default function DividerPage() {
             这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案。
             这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案。
           </p>
-          <Divider className='my-10' plain>
-            Text
-          </Divider>
+          <Divider className='my-10'>Text</Divider>
           <p>
             这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案。
             这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案。
           </p>
-          <Divider className='my-10' plain orientation='left'>
+          <Divider className='my-10' orientation='left'>
             Left Text
           </Divider>
           <p>
             这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案。
             这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案。
           </p>
-          <Divider className='my-10' plain orientation='right'>
+          <Divider className='my-10' orientation='right'>
             Right Text
           </Divider>
           <p>
@@ -117,14 +115,14 @@ export default function DividerPage() {
           title='垂直分割线'
           description={
             <>
-              使用<Typography.Text code>type=vertical</Typography.Text>设置为行内的垂直分割线。
+              使用<Typography.Text code>vertical</Typography.Text>设置为行内的垂直分割线。
             </>
           }
         >
           Text
-          <Divider type='vertical' />
+          <Divider vertical />
           <a href=''>Link</a>
-          <Divider type='vertical' />
+          <Divider vertical />
           <a href=''>Link</a>
         </Demo.Block>
       </Demo.Page>
