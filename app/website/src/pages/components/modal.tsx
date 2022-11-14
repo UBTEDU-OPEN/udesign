@@ -115,7 +115,7 @@ export default function ModalPage() {
 
     setTimeout(() => {
       clearInterval(timer);
-      modal.destroy();
+      modal.close();
     }, secondsToGo * 1000);
   };
 
