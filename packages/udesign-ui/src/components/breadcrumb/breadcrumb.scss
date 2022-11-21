@@ -18,27 +18,16 @@ $module: ud-breadcrumb;
   }
 
   &-text {
-    &-wrapper {
-      display: flex;
-      flex-wrap: nowrap;
-    }
+    display: flex;
     color: $breadcrumb-color;
-    a,
-    span {
-      display: flex;
-      align-items: center;
-    }
-    > a {
-      color: $breadcrumb-color;
-    }
+    gap: $breadcrumb-item-text-gap;
   }
 
   &:first-child &-separator {
     display: none;
   }
 
-  &-text:hover,
-  &-text a:hover {
+  &-text:hover {
     color: $breadcrumb-color-hover;
     cursor: pointer;
   }

@@ -3,45 +3,29 @@ import classNames from 'classnames';
 import { NativeProps, toArray } from '../../utils';
 import { Item } from './item';
 import { BASE_CLASS_PREFIX } from '../../constants';
+import { BreadcrumbContext } from './context';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-breadcrumb`;
 
 export type BreadcrumbProps = {
   separator?: ReactNode; // 设置分隔符。默认值：\
+  onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void; // 点击Breadcrumb时的回调函数。
 } & NativeProps;
 
-export const Breadcrumb = ({ separator = '\\', className, children, style, ...restProps }: BreadcrumbProps) => {
-  const newChildren = toArray(children);
-  const arrkey: string[] = [];
-
+export const Breadcrumb = ({ separator = '\\', className, children, style, onClick }: BreadcrumbProps) => {
   const cls = classNames(prefixCls, className);
 
   return (
-    <div className={cls} {...restProps} style={style}>
-      {newChildren.map((child, index) => {
-        if (child.props.children !== undefined) {
-          // 拼接地址
-          if (typeof child.props.children !== 'string') {
-            if (child.props.children.length > 0) {
-              arrkey.push(child.props.children[1]);
-            } else if (child.props.children.props !== undefined) {
-              arrkey.push(child.props.children.props.children);
-            }
-          } else {
-            arrkey.push(child.props.children);
-          }
-
-          if (!arrkey[0]) arrkey.shift();
-          const strKey: string = arrkey.join('/');
-          return (
-            <Item key={strKey} {...child.props} separator={child.props.separator ? child.props.separator : separator}>
-              {child.props.children}
-            </Item>
-          );
-        }
-        return null;
-      })}
-    </div>
+    <BreadcrumbContext.Provider
+      value={{
+        onClick,
+        separator,
+      }}
+    >
+      <div className={cls} style={style}>
+        {children}
+      </div>
+    </BreadcrumbContext.Provider>
   );
 };
 Breadcrumb.displayName = 'Breadcrumb';
