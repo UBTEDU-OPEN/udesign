@@ -124,6 +124,22 @@ export const DesignAPI = (props: DesignAPIProps) => {
           </>
         );
       }
+      if (componentName === 'date-picker') {
+        return (
+          <>
+            {designApi['date-picker']?.length && renderTable(designApi['date-picker'], 'DatePicker')}
+            {designApi['range-picker']?.length && renderTable(designApi['range-picker'], 'RangePicker')}
+          </>
+        );
+      }
+      if (componentName === 'time-picker') {
+        return (
+          <>
+            {designApi['time-picker']?.length && renderTable(designApi['time-picker'], 'TimePicker')}
+            {designApi['time-range-picker']?.length && renderTable(designApi['time-range-picker'], 'RangePicker')}
+          </>
+        );
+      }
       if (designApi[componentName]?.length) {
         return renderTable(designApi[componentName]);
       }

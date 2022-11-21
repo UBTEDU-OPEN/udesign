@@ -53,6 +53,11 @@ $module: ud-calendar;
     height: $calendar-date-text-height;
     cursor: pointer;
     font-size: $calendar-date-text-font-size;
+    &:hover {
+      background-image: $calendar-date-text-hover-background-image;
+      color: $calendar-date-text-hover-color;
+      border-radius: $calendar-date-text-hover-border-radius;
+    }
   }
   .common-days-active {
     border-radius: $calendar-common-days-active-border-radius;
@@ -90,8 +95,4 @@ $module: ud-calendar;
   }
 }
 
-.date-text:hover {
-  background-image: $calendar-date-text-hover-background-image;
-  color: $calendar-date-text-hover-color;
-  border-radius: $calendar-date-text-hover-border-radius;
-}
+

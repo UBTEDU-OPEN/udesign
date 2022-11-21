@@ -19,12 +19,12 @@ export type DropdownProps = {
   onVisibleChange?: (visible: boolean) => void; //	显示隐藏的回调。默认值：-
 } & NativeProps;
 
-export const Dropdown = ({ clickToHide = true, showArrow = false, placement = 'bottomLeft', children, ...restProps }: DropdownProps) => (
+export const Dropdown = React.forwardRef(({ clickToHide = true, showArrow = false, placement = 'bottomLeft', children, ...restProps }: DropdownProps, ref) => (
   <>
-    <Tooltip prefixCls={prefixCls} clickToHide={clickToHide} showArrow={showArrow} placement={placement} {...restProps}>
+    <Tooltip prefixCls={prefixCls} clickToHide={clickToHide} showArrow={showArrow} placement={placement} {...restProps} ref={ref}>
       {children}
     </Tooltip>
   </>
-);
+));
 
 Dropdown.displayName = 'Dropdown';

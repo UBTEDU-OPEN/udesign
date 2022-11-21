@@ -1,4 +1,4 @@
-import React, { isValidElement, useCallback, useEffect, useRef, useState } from 'react';
+import React, { isValidElement, useCallback, useEffect, useRef, useState, useImperativeHandle } from 'react';
 import classNames from 'classnames';
 import { get, throttle } from 'lodash';
 import { Arrow } from './arrow';
@@ -76,7 +76,7 @@ export type TooltipProps = {
 } & NativeProps;
 
 const getDefaultContainer = () => document.body;
-export const Tooltip = (props: TooltipProps) => {
+export const Tooltip = React.forwardRef((props: TooltipProps, ref) => {
   const {
     prefixCls = prefix,
     showArrow = true,
@@ -290,6 +290,11 @@ export const Tooltip = (props: TooltipProps) => {
     }
   }, []);
 
+  useImperativeHandle(ref, () => ({
+    hide,
+    show,
+  }));
+
   useEffect(() => {
     updateCoords();
     return () => {
@@ -401,6 +406,6 @@ export const Tooltip = (props: TooltipProps) => {
       ) : null}
     </>
   );
-};
+});
 
 Tooltip.displayName = 'Tooltip';

@@ -1,0 +1,98 @@
+@import './variables.scss';
+
+$module: ud-date-panel;
+.#{$module} {
+  width: $date-panel-width;
+  padding: $date-panel-padding;
+  border-radius: $date-panel-border-radius;
+  margin: $date-panel-margin;
+  box-sizing: border-box;
+  color: $date-panel-color;
+
+  // panel-header
+  .#{$module}-year-number {
+    font-size: $date-panel-year-number-font-size;
+    color: $date-panel-year-number-color;
+    height: $date-panel-year-number-height;
+    line-height: $date-panel-year-number-line-height;
+    .#{$module}-year {
+      margin-left: $date-panel-year-margin-left;
+    }
+  }
+
+  // panel-body
+  .#{$module}-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .#{$module}-week-box {
+    height: $date-panel-week-box-height;
+    display: flex;
+    width: 100%;
+    .#{$module}-week-days {
+      width: $date-panel-week-days-width;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .#{$module}-date-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    .#{$module}-month-days {
+      width: $date-panel-month-days-width;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin: $date-panel-month-days-margin;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+    }
+    .other-month-days {
+      color: $date-panel-other-month-days-color;
+    }
+    .current-month-days {
+      color: $date-panel-current-month-days-color;
+    }
+    .disabled-month-days{
+      background: $date-panel-range-day-disable-background;
+      cursor: default;
+       color: $date-panel-other-month-days-color;
+      .date-text{
+        &:hover{
+          background: none;
+          border-radius: 0;
+          cursor: default;
+        }
+      }
+    }
+    .range-day-active {
+      background: $date-panel-range-day-active-background;
+    }
+    .date-text {
+      text-align: center;
+      line-height: $date-panel-date-text-line-height;
+      width: $date-panel-date-text-width;
+      height: $date-panel-date-text-height;
+      cursor: pointer;
+      font-size: $date-panel-date-text-font-size;
+      &:hover {
+        background: rgba(0, 0,0,0.1);
+      }
+      &.now-day-active{
+        border: 1px solid $date-panel-now-day-border-color;
+      }
+      &.selected-day-active {
+        border: none;
+        // border-radius: $date-panel-selected-day-active-border-radius;
+        background-image: $date-panel-selected-day-active-background-image;
+        color: $date-panel-selected-day-active-color;
+      }
+    }
+    
+  } 
+}
+
+
