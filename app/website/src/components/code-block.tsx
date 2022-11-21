@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { Copy, Space, Tooltip } from '@ubt/udesign-ui';
-import { CopyOutlined } from '@ubt/udesign-icons';
+import { CopyOutlined, DownOutlined, UpOutlined } from '@ubt/udesign-icons';
 import * as uDesign from '@ubt/udesign-ui';
 import * as uDesignIcons from '@ubt/udesign-icons';
 import { PrismTheme } from 'prism-react-renderer';
@@ -28,18 +28,19 @@ export const CodeBlock = ({ code = '', theme = nightOwl }: CodeBlockProps) => {
 
   const renderEditor = () => {
     const [collapsed, setCollapsed] = useState(true);
-    const cls = classNames('p-3 bg-gray-900 text-gray-500 overflow-auto text-sm text-left', {
+    const cls = classNames('relative p-3 bg-gray-900 text-gray-500 overflow-auto text-sm text-left', {
       hidden: collapsed,
     });
     return (
       <>
-        <Space className='border-t px-4 py-3' justify='between'>
-          {renderCopy()}
-          <div className='cursor-pointer' onClick={() => setCollapsed(!collapsed)}>
-            <Tooltip content={collapsed ? '显示代码' : '收起代码'}>{collapsed ? '显示' : '收起'}</Tooltip>
+        <div className='border-t px-4 py-3 cursor-pointer flex justify-between' onClick={() => setCollapsed(!collapsed)}>
+          <span>代码</span>
+          <div>
+            <Tooltip content={collapsed ? '显示代码' : '收起代码'}>{collapsed ? <DownOutlined /> : <UpOutlined />}</Tooltip>
           </div>
-        </Space>
+        </div>
         <div className={cls}>
+          {renderCopy()}
           <LiveEditor className='not-prose' />
         </div>
       </>
@@ -50,7 +51,7 @@ export const CodeBlock = ({ code = '', theme = nightOwl }: CodeBlockProps) => {
     const [content, setContent] = useState('复制代码');
     return (
       <Copy
-        className='cursor-pointer'
+        className='cursor-pointer text-white text-lg absolute top-5 right-5'
         text={code}
         onSuccess={() => {
           setContent('复制成功');
