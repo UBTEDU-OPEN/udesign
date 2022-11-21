@@ -52,7 +52,7 @@ export default function show(props: showModalProps) {
   render(currentConfig);
   destroyFns.push(close);
   return {
-    destroy: close,
+    close,
     update,
   };
 }
