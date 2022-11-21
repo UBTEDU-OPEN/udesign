@@ -2,6 +2,8 @@ import React, { createRef, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 import Button from '../button';
+import LocaleConsumer from '../locale/consumer';
+import { Locale } from '../locale/interface';
 import { TimeFormat } from '../../constants';
 import { NativeProps } from '../../utils';
 
@@ -100,25 +102,29 @@ const PickerPanel = (props: TimerProps) => {
   };
 
   return (
-    <div className={classNames('ud-time-picker-panel', className)} style={style}>
-      <div className='time-box'>
-        <ul ref={hourRef}>{renderCols(24, 'H')}</ul>
-        <ul ref={minuteRef}>{renderCols(60, 'm')}</ul>
-        <ul ref={secondRef}>{renderCols(60, 's')}</ul>
-      </div>
-      {showFooter && (
-        <div className='btn-box'>
-          <Button onClick={onConfirm} className='confirm' type='primary' size='small' disabled={!selValue}>
-            确定
-          </Button>
-          {showNow && (
-            <label className='now' onClick={onNow}>
-              此刻
-            </label>
+    <LocaleConsumer componentName='DateTimePicker'>
+      {(locale: Locale['DateTimePicker']) => (
+        <div className={classNames('ud-time-picker-panel', className)} style={style}>
+          <div className='time-box'>
+            <ul ref={hourRef}>{renderCols(24, 'H')}</ul>
+            <ul ref={minuteRef}>{renderCols(60, 'm')}</ul>
+            <ul ref={secondRef}>{renderCols(60, 's')}</ul>
+          </div>
+          {showFooter && (
+            <div className='btn-box'>
+              <Button onClick={onConfirm} className='confirm' type='primary' size='small' disabled={!selValue}>
+                {locale.confirm}
+              </Button>
+              {showNow && (
+                <label className='now' onClick={onNow}>
+                  {locale.now}
+                </label>
+              )}
+            </div>
           )}
         </div>
       )}
-    </div>
+    </LocaleConsumer>
   );
 };
 

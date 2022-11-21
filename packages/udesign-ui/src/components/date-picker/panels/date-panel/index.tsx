@@ -6,7 +6,9 @@ import DateBody from './date-body';
 import PanelContext from '../../generatePicker/panel-context';
 
 import { getMonth } from '../../../../utils/moment';
-import { BASE_CLASS_PREFIX, DateFormat, weekArr, monthArr } from '../../../../constants';
+import { BASE_CLASS_PREFIX, DateFormat } from '../../../../constants';
+import LocaleConsumer from '../../../locale/consumer';
+import { Locale } from '../../../locale/interface';
 import { NativeProps } from '../../../../utils';
 import './index.scss';
 
@@ -68,36 +70,40 @@ const DatePanel = ({ onChange, style, className, onViewDateChange, viewDate, ...
   const cls = classNames(`${prefixCls}`, className);
   const panelContext = useContext(PanelContext);
   return (
-    <div
-      className={cls}
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
-      style={style}
-    >
-      <PanelHeader
-        onSuperPrev={() => {
-          yearChange(-1);
-        }}
-        onSuperNext={() => {
-          yearChange(1);
-        }}
-        onPrev={() => {
-          changMonth(-1);
-        }}
-        onNext={() => {
-          changMonth(1);
-        }}
-        hideNext={panelContext.hideNext}
-        hidePrev={panelContext.hidePrev}
-      >
-        <div className={`${prefixCls}-year-number`}>
-          <span>{monthArr[Number(monthNumber)]}月</span>
-          <span className={`${prefixCls}-year`}>{yearNumber}</span>
+    <LocaleConsumer componentName='DateTimePicker'>
+      {(locale: Locale['DateTimePicker']) => (
+        <div
+          className={cls}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          style={style}
+        >
+          <PanelHeader
+            onSuperPrev={() => {
+              yearChange(-1);
+            }}
+            onSuperNext={() => {
+              yearChange(1);
+            }}
+            onPrev={() => {
+              changMonth(-1);
+            }}
+            onNext={() => {
+              changMonth(1);
+            }}
+            hideNext={panelContext.hideNext}
+            hidePrev={panelContext.hidePrev}
+          >
+            <div className={`${prefixCls}-year-number`}>
+              <span>{locale.monthArr[Number(monthNumber) - 1]}</span>
+              <span className={`${prefixCls}-year`}>{yearNumber}</span>
+            </div>
+          </PanelHeader>
+          <DateBody cells={locale.weekArr} rows={daysList} onChange={handleSelect} nowDate={nowDate} {...restProps}></DateBody>
         </div>
-      </PanelHeader>
-      <DateBody cells={weekArr} rows={daysList} onChange={handleSelect} nowDate={nowDate} {...restProps}></DateBody>
-    </div>
+      )}
+    </LocaleConsumer>
   );
 };
 

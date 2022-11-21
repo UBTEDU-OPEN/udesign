@@ -3,6 +3,8 @@ import dayjs from 'dayjs';
 import Button from '../../../button';
 import DatePanel from '../date-panel';
 import TimePanel from '../../../time-picker/picker-panel';
+import LocaleConsumer from '../../../locale/consumer';
+import { Locale } from '../../../locale/interface';
 import { DateFormat, TimeFormat } from '../../../../constants/date';
 import './index.scss';
 
@@ -42,22 +44,26 @@ const DateTimePanel = (props: DateTimeProps) => {
   };
 
   return (
-    <div className='ud-date-time-panel'>
-      <div className='ud-date-time-panel-content'>
-        <DatePanel defaultValue={selDate} onChange={onSelectDate} viewDate={selDate} {...resetProps}></DatePanel>
-        <TimePanel showFooter={false} selValue={selTime} onChange={onSelectTime}></TimePanel>
-      </div>
-      <div className='btn-box'>
-        <Button onClick={onConfirm} className='confirm' type='primary' size='small' disabled={!selDate || !selTime}>
-          确定
-        </Button>
-        {showNow && (
-          <label className='now' onClick={onNow}>
-            此刻
-          </label>
-        )}
-      </div>
-    </div>
+    <LocaleConsumer componentName='DateTimePicker'>
+      {(locale: Locale) => (
+        <div className='ud-date-time-panel'>
+          <div className='ud-date-time-panel-content'>
+            <DatePanel defaultValue={selDate} onChange={onSelectDate} viewDate={selDate} {...resetProps}></DatePanel>
+            <TimePanel showFooter={false} selValue={selTime} onChange={onSelectTime}></TimePanel>
+          </div>
+          <div className='btn-box'>
+            <Button onClick={onConfirm} className='confirm' type='primary' size='small' disabled={!selDate || !selTime}>
+              {locale.confirm}
+            </Button>
+            {showNow && (
+              <label className='now' onClick={onNow}>
+                {locale.now}
+              </label>
+            )}
+          </div>
+        </div>
+      )}
+    </LocaleConsumer>
   );
 };
 
