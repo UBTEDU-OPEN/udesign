@@ -1,0 +1,162 @@
+# Input 输入框
+
+通过键盘输入内容。
+
+## 何时使用
+
+- 需要用户输入表单域内容时。
+- 提供组合型输入框，带搜索的输入框，还可以进行大小选择。
+
+## 基础用法
+
+基础的输入框。
+
+```jsx
+<Input className='max-w-2xl' placeholder='Basic usage' />
+```
+
+## 尺寸
+
+通过 size 可以设置尺寸，默认 middle，可选 small 和 large。
+
+```jsx
+<Space vertical size='middle' align='start'>
+  <Input className='max-w-2xl' placeholder='Large size' size='large' />
+  <Input className='max-w-lg' placeholder='Default size' />
+  <Input className='max-w-sm' placeholder='Small size' size='small' />
+</Space>
+```
+
+## 形状
+
+通过 shape 设置形状，默认 circle，可选 round 和 square。
+
+```jsx
+<Space vertical align='start'>
+  <Input className='max-w-2xl' placeholder='circle' shape='circle' />
+  <Input className='max-w-2xl' placeholder='round' shape='round' />
+  <Input className='max-w-2xl' placeholder='square' shape='square' />
+</Space>
+```
+
+## 禁用状态
+
+通过 disabled 属性设置禁用状态。
+
+```jsx
+<Input className='max-w-2xl' placeholder='disabled input' disabled />
+```
+
+## 前置/后置标签
+
+通过 prepend 属性设置前置标签，append 属性设置后置标签。
+
+```jsx
+<Space vertical align='start'>
+  <Input className='max-w-2xl' prepend='http://' />
+  <Input className='max-w-2xl' append={<SettingFilled />} />
+  <Input className='max-w-2xl' prepend='http://' append='.com' />
+</Space>
+```
+
+## 前缀/后缀
+
+通过 prefix 属性设置前缀，suffix 属性设置后缀。
+
+```jsx
+<Space vertical align='start'>
+  <Input className='max-w-2xl' placeholder='请输入账号名称' prefix={<UserOutlined size='middle' />} />
+  <Input className='max-w-2xl' placeholder='昵称' prefix={<UserCompileOutlined size='middle' />} suffix={<RightOutlined />} />
+</Space>
+```
+
+## 搜索输入框
+
+带有搜索功能的输入框。
+
+```jsx
+() => {
+  const [loading, setLoading] = useState(false);
+  return (
+    <Space vertical align='start'>
+      <Space size={10}>
+        <Input className='max-w-2xl' placeholder='input search text' />
+        <Button type='primary' loading={loading} onClick={() => setLoading(!loading)} icon={<SearchOutlined size='small' />} />
+      </Space>
+      <Space size={10}>
+        <Input className='max-w-2xl' placeholder='input search text' />
+        <Button type='primary' loading={loading} onClick={() => setLoading(!loading)}>
+          Search
+        </Button>
+      </Space>
+    </Space>
+  );
+};
+```
+
+## 密码框
+
+密码输入框，支持加密字符。
+
+```jsx
+<Input className='max-w-2xl' type='password' defaultValue='Basic usage' />
+```
+
+## 字数提示
+
+通过 maxLength 属性限定总输入字数，showCount 来显示可输入字数提示。
+
+```jsx
+<Space vertical align='start'>
+  <Input className='max-w-2xl' placeholder='请输入名称' maxLength={40} showCount />
+  <TextArea className='max-w-2xl' placeholder='给你的作品写一个操作指南，并告诉大家如何操作' maxLength={200} showCount />
+</Space>
+```
+
+## 带删除图标
+
+通过 showClear 属性设置移除图标，点击图标删除所有内容。
+
+```jsx
+<Input className='max-w-2xl' placeholder='请输入名称' showClear />
+```
+
+```jsx
+<TextArea className='max-w-2xl' placeholder='给你的作品写一个操作指南，并告诉大家如何操作' showClear />
+```
+
+## 自定义状态
+
+使用 status 为输入框添加状态，可选 error 或者 warning。
+
+```jsx
+<Space vertical align='start'>
+  <Input className='max-w-2xl' status='error' placeholder='Error' />
+  <Input className='max-w-2xl' status='warning' placeholder='Warning' />
+  <Input className='max-w-2xl' status='error' suffix={<CloseCircleFilled size='small' />} placeholder='Error with suffix' />
+  <Input className='max-w-2xl' status='warning' suffix={<ExclamationCircleFilled size='small' />} placeholder='Warning with suffix' />
+</Space>
+```
+
+## 受控组件
+
+当传入 value 时，输入框将变成受控组件，必须配合 onChange 回调函数使用。如果不希望使用受控组件，请使用 defaultValue。
+
+```jsx
+() => {
+  const [value, setValue] = useState('controlled');
+
+  return (
+    <Space vertical align='start'>
+      <Input
+        className='max-w-2xl'
+        value={value}
+        onChange={(value) => {
+          setValue(value);
+        }}
+      />
+      <Button onClick={() => setValue('new value')}>Change Value</Button>
+    </Space>
+  );
+};
+```

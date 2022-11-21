@@ -1,0 +1,101 @@
+# Toast 轻提示
+
+非模态弹出提示。
+
+## 何时使用
+
+需要提醒用户，但不会打断用户操作。会自动消失，是一种不打断用户操作的轻量级提示方式。可提供反馈信息，一般情况文案字数较少。
+
+## 基础用法
+
+默认的提示。
+
+```jsx
+<Button onClick={() => Toast('请先勾选同意隐私协议、服务条款')} type='primary'>
+  normal toast
+</Button>
+```
+
+## 自定义样式
+
+通过 style 属性传入自定义样式。
+
+```jsx
+<Space wrap>
+  <Button onClick={() => Toast({ content: '验证码已发送', style: { background: 'rgba(114,132,251,0.9)' } })} type='primary'>
+    成功
+  </Button>
+  <Button onClick={() => Toast({ content: '手机号已被注册', style: { background: 'rgba(255,73,64,0.9)' } })} type='primary'>
+    失败
+  </Button>
+  <Button onClick={() => Toast({ content: '出错', style: { background: 'rgba(255,73,64,0.9)' } })} type='primary' danger={true}>
+    出错
+  </Button>
+  <Button onClick={() => Toast({ content: '警告', style: { background: 'rgba(255,171,16,0.9)' } })} type='primary' warning={true}>
+    警告
+  </Button>
+</Space>
+```
+
+## 延时提示
+
+通过 delay 设置延迟显示。
+
+```jsx
+<Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', delay: 1000 })} type='primary'>
+  延时提示
+</Button>
+```
+
+## 显示时长
+
+通过 duration 设置显示时长，默认 2000 毫秒。
+
+```jsx
+<Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', duration: 1000 })} type='primary'>
+  自定义提示显示时间
+</Button>
+```
+
+## 显示位置
+
+通过 position 设置显示位置，默认 center，可选 top、bottom、left 和 right。
+
+```jsx
+<Space wrap>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'center' })} type='primary'>
+    居中显示
+  </Button>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'top' })} type='primary'>
+    顶部显示
+  </Button>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'bottom' })} type='primary'>
+    底部显示
+  </Button>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'left' })} type='primary'>
+    左侧显示
+  </Button>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'right' })} type='primary'>
+    右侧显示
+  </Button>
+</Space>
+```
+
+## 结束回调
+
+默认的提示。
+
+```jsx
+<Button
+  onClick={() =>
+    Toast({
+      content: '将在500ms后关闭',
+      duration: 500,
+      afterClose: () => alert('closed'),
+    })
+  }
+  type='primary'
+>
+  结束时回调
+</Button>
+```

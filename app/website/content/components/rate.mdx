@@ -1,0 +1,54 @@
+# Rate 评分
+
+评分组件
+
+## 何时使用
+
+- 对评价进行展示。
+- 对事物进行快速的评级操作。
+
+## 基础用法
+
+默认的评分用法，从低到高分五个级别，一个单位为一级。
+
+```jsx
+<Rate />
+```
+
+## 半星
+
+通过 allowHalf 来设置是否支持选中半星。
+
+```jsx
+<Rate allowHalf />
+```
+
+## 文案展现
+
+通过 tooltips 来指定文案提示。
+
+```jsx
+<Rate tooltips={['terrible', 'bad', 'normal', 'good', 'wonderful']} />
+```
+
+## 展示型评分
+
+通过 disabled 来关闭交互，仅展示评分。
+
+```jsx
+<Rate disabled defaultValue={2.5} />
+```
+
+## 自定义评分
+
+可以将星星替换为其他字符，比如字母，数字，字体图标甚至中文等。
+
+```jsx
+<Space vertical align='start'>
+  <Rate character={'6'} count={6} />
+  <Rate character={<SmileOutlined />} activeColor='#1A9BFF' allowHalf />
+  <Rate character={<HeartFilled />} activeColor='#FF493F' allowHalf />
+  <Rate character={'好'} allowHalf />
+  <Rate character={(index) => index + 1} allowHalf />
+</Space>
+```

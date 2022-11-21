@@ -1,0 +1,99 @@
+# Scrollbar 滚动条
+
+快速修改滚动条样式，当内容尺寸超过容器时，才会出现。
+
+## 基础用法
+
+当内容超过容器时，滚动条出现。
+
+```jsx
+<Scrollbar className='w-60 h-64'>
+  <ul className='bg-indigo-50'>
+    <li className='px-10 py-5'>Option 1</li>
+    <li className='px-10 py-5'>Option 2</li>
+    <li className='px-10 py-5'>Option 3</li>
+    <li className='px-10 py-5'>Option 4</li>
+    <li className='px-10 py-5'>Option 5</li>
+    <li className='px-10 py-5'>Option 6</li>
+    <li className='px-10 py-5'>Option 7</li>
+    <li className='px-10 py-5'>Option 8</li>
+  </ul>
+</Scrollbar>
+```
+
+## 悬浮效果
+
+通过 hover 属性，开启滚动条悬浮效果，鼠标移入时出现滚动条，鼠标离开时滚动条消失。
+
+```jsx
+<Scrollbar className='w-60 h-64' hover>
+  <ul className='bg-indigo-50'>
+    <li className='px-10 py-5'>Option 1</li>
+    <li className='px-10 py-5'>Option 2</li>
+    <li className='px-10 py-5'>Option 3</li>
+    <li className='px-10 py-5'>Option 4</li>
+    <li className='px-10 py-5'>Option 5</li>
+    <li className='px-10 py-5'>Option 6</li>
+    <li className='px-10 py-5'>Option 7</li>
+    <li className='px-10 py-5'>Option 8</li>
+  </ul>
+</Scrollbar>
+```
+
+## 滚动条出现位置
+
+滚动条出现位置，有三个值：auto（水平和垂直都显示，默认值）、vertical（只显示垂直滚动条）、horizontal（只显示水平滚动条）。
+
+```jsx
+<>
+  auto
+  <Scrollbar className='w-48 h-64'>
+    <ul className='bg-indigo-50 w-60'>
+      <li className='px-10 py-5'>Option 1</li>
+      <li className='px-10 py-5'>Option 2</li>
+      <li className='px-10 py-5'>Option 3</li>
+      <li className='px-10 py-5'>Option 4</li>
+      <li className='px-10 py-5'>Option 5</li>
+      <li className='px-10 py-5'>Option 6</li>
+      <li className='px-10 py-5'>Option 7</li>
+      <li className='px-10 py-5'>Option 8</li>
+    </ul>
+  </Scrollbar>
+</>
+```
+
+```jsx
+<>
+  vertical
+  <Scrollbar className='w-48 h-64' direction='vertical'>
+    <ul className='bg-indigo-50 w-60'>
+      <li className='px-10 py-5'>Option 1</li>
+      <li className='px-10 py-5'>Option 2</li>
+      <li className='px-10 py-5'>Option 3</li>
+      <li className='px-10 py-5'>Option 4</li>
+      <li className='px-10 py-5'>Option 5</li>
+      <li className='px-10 py-5'>Option 6</li>
+      <li className='px-10 py-5'>Option 7</li>
+      <li className='px-10 py-5'>Option 8</li>
+    </ul>
+  </Scrollbar>
+</>
+```
+
+```jsx
+<>
+  horizontal
+  <Scrollbar className='w-48 h-64' direction='horizontal'>
+    <ul className='bg-indigo-50 w-60'>
+      <li className='px-10 py-5'>Option 1</li>
+      <li className='px-10 py-5'>Option 2</li>
+      <li className='px-10 py-5'>Option 3</li>
+      <li className='px-10 py-5'>Option 4</li>
+      <li className='px-10 py-5'>Option 5</li>
+      <li className='px-10 py-5'>Option 6</li>
+      <li className='px-10 py-5'>Option 7</li>
+      <li className='px-10 py-5'>Option 8</li>
+    </ul>
+  </Scrollbar>
+</>
+```

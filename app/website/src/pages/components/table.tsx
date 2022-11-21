@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { Table, Radio, Tooltip, Pagination } from '@ubt/udesign-ui';
 import { Demo } from '../../demo';
-import { getLayout } from '../../demo/getLayout';
+import { menus } from '../../constants/menus';
 
 interface column {
   title: string;
@@ -10,6 +10,7 @@ interface column {
   ellipsis?: boolean;
   width?: string;
 }
+
 const columns: column[] = [
   {
     title: 'Name',
@@ -44,6 +45,7 @@ const columns: column[] = [
     ),
   },
 ];
+
 const columns1: column[] = [
   {
     title: 'Name',
@@ -133,97 +135,97 @@ export default function TablePage() {
   const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
   const [checked, setChecked] = useState<boolean>(false);
   return (
-    <div>
-      <Demo.Page title='Table 表格' description='展示行列数据。'>
-        <Demo.Block
-          title='何时使用'
-          description={
-            <>
-              *当有大量结构化的数据需要展现时；
-              <br />
-              *当需要对数据进行排序、搜索、分页、自定义操作等复杂行为时。
-            </>
-          }
-        ></Demo.Block>
-        <Demo.Block
-          title='基础用法'
-          description={
-            <>
-              基础用法
-              <br />
-              基础用法中，简单的表格，最后一列是各种操作。
-            </>
-          }
-        >
-          <div className='bg-white p-5'>
-            <Table columns={columns} dataSource={data} />
-          </div>
-        </Demo.Block>
-        <Demo.Block
-          title='带勾选'
-          description={
-            <>
-              基础用法
-              <br />
-              第一列是联动的选择框。可以通过 rowSelection.type 属性指定选择类型，默认为 checkbox。
-            </>
-          }
-        >
-          <div className='bg-white p-5'>
-            <Radio.Group
-              name='type'
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setChecked(!checked);
-              }}
-            >
-              <React.Fragment>
-                <Radio checked={!checked}>多选</Radio>
-                <Radio checked={checked}>单选</Radio>
-              </React.Fragment>
-            </Radio.Group>
-            <Table
-              columns={columns}
-              dataSource={data}
-              rowKey='name'
-              rowSelection={{
-                type: `${checked ? 'radio' : 'checkbox'}`,
-                onChange: (selectedRowKey, record) => {
-                  console.log(selectedRowKey, record, 'select');
-                },
-                onSelectAll: (selected, selectedRows) => {
-                  console.log(selected, selectedRows, 'selectall');
-                },
-                selectedRowKeys,
-                getCheckboxProps: (record: any) => ({
-                  disabled: record.age === 37,
-                }),
-                hideSelectAll: false,
-              }}
-            />
-          </div>
-        </Demo.Block>
-        <Demo.Block title='自定义单元格省略提示' description={<>使用 Tooltip 替代。</>}>
-          <div className='bg-white p-5'>
-            <Table columns={columns2} dataSource={data} />
-          </div>
-        </Demo.Block>
-        <Demo.Block title='带边框' description={<>添加表格边框线。</>}>
-          <div className='bg-white p-5'>
-            <Table columns={columns1} dataSource={data} bordered />
-          </div>
-        </Demo.Block>
-
-        <Demo.Block title='分页设置' description={<>与分页组件配合使用</>}>
-          <div className='bg-white p-5'>
-            <Table columns={columns1} dataSource={data} />
-            <div style={{ marginTop: '20px' }}>
-              <Pagination total={100} />
+    <>
+      <Demo.Doc base='components' menus={menus}>
+        <Demo.Page title='Table 表格' description='展示行列数据。'>
+          <Demo.Block
+            title='何时使用'
+            description={
+              <>
+                *当有大量结构化的数据需要展现时；
+                <br />
+                *当需要对数据进行排序、搜索、分页、自定义操作等复杂行为时。
+              </>
+            }
+          ></Demo.Block>
+          <Demo.Block
+            title='基础用法'
+            description={
+              <>
+                基础用法
+                <br />
+                基础用法中，简单的表格，最后一列是各种操作。
+              </>
+            }
+          >
+            <div className='bg-white p-5'>
+              <Table columns={columns} dataSource={data} />
             </div>
-          </div>
-        </Demo.Block>
-      </Demo.Page>
-    </div>
+          </Demo.Block>
+          <Demo.Block
+            title='带勾选'
+            description={
+              <>
+                基础用法
+                <br />
+                第一列是联动的选择框。可以通过 rowSelection.type 属性指定选择类型，默认为 checkbox。
+              </>
+            }
+          >
+            <div className='bg-white p-5'>
+              <Radio.Group
+                name='type'
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  setChecked(!checked);
+                }}
+              >
+                <React.Fragment>
+                  <Radio checked={!checked}>多选</Radio>
+                  <Radio checked={checked}>单选</Radio>
+                </React.Fragment>
+              </Radio.Group>
+              <Table
+                columns={columns}
+                dataSource={data}
+                rowKey='name'
+                rowSelection={{
+                  type: `${checked ? 'radio' : 'checkbox'}`,
+                  onChange: (selectedRowKey, record) => {
+                    console.log(selectedRowKey, record, 'select');
+                  },
+                  onSelectAll: (selected, selectedRows) => {
+                    console.log(selected, selectedRows, 'selectall');
+                  },
+                  selectedRowKeys,
+                  getCheckboxProps: (record: any) => ({
+                    disabled: record.age === 37,
+                  }),
+                  hideSelectAll: false,
+                }}
+              />
+            </div>
+          </Demo.Block>
+          <Demo.Block title='自定义单元格省略提示' description={<>使用 Tooltip 替代。</>}>
+            <div className='bg-white p-5'>
+              <Table columns={columns2} dataSource={data} />
+            </div>
+          </Demo.Block>
+          <Demo.Block title='带边框' description={<>添加表格边框线。</>}>
+            <div className='bg-white p-5'>
+              <Table columns={columns1} dataSource={data} bordered />
+            </div>
+          </Demo.Block>
+
+          <Demo.Block title='分页设置' description={<>与分页组件配合使用</>}>
+            <div className='bg-white p-5'>
+              <Table columns={columns1} dataSource={data} />
+              <div style={{ marginTop: '20px' }}>
+                <Pagination total={100} />
+              </div>
+            </div>
+          </Demo.Block>
+        </Demo.Page>
+      </Demo.Doc>
+    </>
   );
 }
-
-TablePage.getLayout = getLayout;

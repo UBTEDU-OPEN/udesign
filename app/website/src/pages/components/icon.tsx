@@ -53,7 +53,7 @@ import {
   RadioOutlined,
 } from '@ubt/udesign-icons';
 import { Demo } from '../../demo';
-import { getLayout } from '../../demo/getLayout';
+import { menus } from '../../constants/menus';
 
 export default function IconPage() {
   const [type, setType] = useState('outlined');
@@ -141,45 +141,45 @@ export default function IconPage() {
 
   return (
     <>
-      <Demo.Page title='Icon 图标' description='语义化的矢量图形。'>
-        <div className='py-4'>
-          <div className='text-2xl'>如何使用</div>
-          <div className='text-gray-500 my-2'>语义化的矢量图形。使用图标组件，你需要安装 @ubt/udesign-icons 图标组件包：</div>
-          <code>$ yarn add @ubt/udesign-icons@latest</code>
-        </div>
-        <div className='py-4'>
-          <div className='text-2xl'>图标列表</div>
-          <div className='text-gray-500 my-2'>提供2种风格常用图标。</div>
-          <Space>
-            <Button type={type === 'outlined' ? 'primary' : 'default'} onClick={() => setType('outlined')}>
-              线性
-            </Button>
-            <Button type={type === 'filled' ? 'primary' : 'default'} onClick={() => setType('filled')}>
-              面性
-            </Button>
-          </Space>
-          <div className='text-xl my-6'>方向性图标</div>
-          {renderIcons(type === 'outlined' ? directionIconsOutlined : null)}
-          <div className='text-xl my-6'>提示及建议性图标</div>
-          {renderIcons(type === 'outlined' ? tipsIconsOutlined : tipsIconsFilled)}
-          <div className='text-xl my-6'>编辑类图标</div>
-          {renderIcons(type === 'outlined' ? editIconsOutlined : editIconsFilled)}
-          <div className='text-xl my-6'>其他类图标</div>
-          {renderIcons(type === 'outlined' ? otherIconsOutlined : otherIconsFilled)}
-        </div>
-        <Demo.Block title='尺寸' description='Icon 组件封装了 size 属性，可以更方便地定义图标尺寸，支持 small， middle， large，当 size 指定为 inherit 时，图标大小继承当前上下文字体大小'>
-          <SettingFilled size='inherit' />
-          <SettingFilled size='small' />
-          <SettingFilled size='middle' />
-          <SettingFilled size='large' />
-        </Demo.Block>
-        <Demo.Block title='旋转' description='通过设置 spin 属性，可以方便地开启旋转效果'>
-          <SyncOutlined spin size='large' />
-          <LoadingOutlined spin size='large' />
-        </Demo.Block>
-      </Demo.Page>
+      <Demo.Doc base='components' menus={menus}>
+        <Demo.Page title='Icon 图标' description='语义化的矢量图形。'>
+          <div className='py-4'>
+            <div className='text-2xl'>如何使用</div>
+            <div className='text-gray-500 my-2'>语义化的矢量图形。使用图标组件，你需要安装 @ubt/udesign-icons 图标组件包：</div>
+            <code>$ yarn add @ubt/udesign-icons@latest</code>
+          </div>
+          <div className='py-4'>
+            <div className='text-2xl'>图标列表</div>
+            <div className='text-gray-500 my-2'>提供2种风格常用图标。</div>
+            <Space>
+              <Button type={type === 'outlined' ? 'primary' : 'default'} onClick={() => setType('outlined')}>
+                线性
+              </Button>
+              <Button type={type === 'filled' ? 'primary' : 'default'} onClick={() => setType('filled')}>
+                面性
+              </Button>
+            </Space>
+            <div className='text-xl my-6'>方向性图标</div>
+            {renderIcons(type === 'outlined' ? directionIconsOutlined : null)}
+            <div className='text-xl my-6'>提示及建议性图标</div>
+            {renderIcons(type === 'outlined' ? tipsIconsOutlined : tipsIconsFilled)}
+            <div className='text-xl my-6'>编辑类图标</div>
+            {renderIcons(type === 'outlined' ? editIconsOutlined : editIconsFilled)}
+            <div className='text-xl my-6'>其他类图标</div>
+            {renderIcons(type === 'outlined' ? otherIconsOutlined : otherIconsFilled)}
+          </div>
+          <Demo.Block title='尺寸' description='Icon 组件封装了 size 属性，可以更方便地定义图标尺寸，支持 small， middle， large，当 size 指定为 inherit 时，图标大小继承当前上下文字体大小'>
+            <SettingFilled size='inherit' />
+            <SettingFilled size='small' />
+            <SettingFilled size='middle' />
+            <SettingFilled size='large' />
+          </Demo.Block>
+          <Demo.Block title='旋转' description='通过设置 spin 属性，可以方便地开启旋转效果'>
+            <SyncOutlined spin size='large' />
+            <LoadingOutlined spin size='large' />
+          </Demo.Block>
+        </Demo.Page>
+      </Demo.Doc>
     </>
   );
 }
-
-IconPage.getLayout = getLayout;

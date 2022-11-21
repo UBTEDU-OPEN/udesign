@@ -1,0 +1,126 @@
+# Badge 徽标
+
+图标右上角的圆形徽标数字。
+
+## 何时使用
+
+一般出现在通知图标或头像的右上角，用于显示需要处理的消息条数，通过醒目视觉形式吸引用户处理。
+
+## 基础用法
+
+简单的徽章展示，当 count 为 0 时，默认不显示，但是可以使用 showZero 修改为显示。
+
+```jsx
+<Space>
+  <Badge content='5'>
+    <Button shape='round' />
+  </Badge>
+  <Badge content={0} showZero>
+    <Button shape='round' />
+  </Badge>
+  <Badge content={<HintFilled />}>
+    <Button shape='round' />
+  </Badge>
+  <Badge dot>
+    <Button shape='round' />
+  </Badge>
+</Space>
+```
+
+## 独立使用
+
+不包裹任何元素即是独立使用，可自定义样式展现。
+
+```jsx
+<Space>
+  <Badge content='43' />
+  <Badge content={<HintFilled />} />
+  <Badge content='120' style={{ background: '#7BDC7B' }} />
+</Space>
+```
+
+## 封顶数字
+
+超过 overflowCount 的会显示为 `{overflowCount}+`，默认的 overflowCount 为 99
+
+```jsx
+<Space>
+  <Badge content='99'>
+    <Button shape='round' />
+  </Badge>
+  <Badge content='20' overflowCount='10'>
+    <Button shape='round' />
+  </Badge>
+  <Badge content='200' overflowCount='99'>
+    <Button shape='round' />
+  </Badge>
+  <Badge content='2000' overflowCount='999'>
+    <Button shape='round' />
+  </Badge>
+</Space>
+```
+
+## 极简显示
+
+通过 dot 属性设置只有小红点提示，没有具体数值。
+
+```jsx
+<Space align='center' size='large'>
+  <Badge dot>
+    <HintFilled className='text-4xl text-indigo-500' />
+  </Badge>
+  <Badge dot>
+    <a href='#'>Link Something</a>
+  </Badge>
+</Space>
+```
+
+## 设置样式
+
+通过 style 属性可以自定义徽标的样式。
+
+```jsx
+<Space>
+  <Badge content='5' style={{ background: '#7284fb' }}>
+    <Button shape='round' />
+  </Badge>
+  <Badge content='5' style={{ background: '#7BDC7B' }}>
+    <Button shape='round' />
+  </Badge>
+  <Badge content='5' style={{ background: 'gray' }}>
+    <Button shape='round' />
+  </Badge>
+</Space>
+```
+
+## 尺寸
+
+通过 size 属性指定尺寸，默认 middle, 可选 small
+
+```jsx
+<Space>
+  middle
+  <Badge content='5' size='middle'>
+    <Button shape='round' />
+  </Badge>
+</Space>
+```
+
+```jsx
+<Space>
+  small
+  <Badge content='5' size='small'>
+    <Button shape='round' />
+  </Badge>
+</Space>
+```
+
+## 提示文案
+
+通过 title 属性指定鼠标 hover 时的提示文案。
+
+```jsx
+<Badge content='5' title='我是title'>
+  <Button shape='round' />
+</Badge>
+```

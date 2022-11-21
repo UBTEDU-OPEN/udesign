@@ -7,6 +7,7 @@ import * as uDesign from '@ubt/udesign-ui';
 import * as uDesignIcons from '@ubt/udesign-icons';
 import { PrismTheme } from 'prism-react-renderer';
 import nightOwl from 'prism-react-renderer/themes/nightOwl';
+import { Img } from './img';
 
 export type CodeBlockProps = {
   code?: string;
@@ -15,10 +16,10 @@ export type CodeBlockProps = {
 
 export const CodeBlock = ({ code = '', theme = nightOwl }: CodeBlockProps) => {
   const renderPreview = () => {
-    const cls = classNames('relative p-12 overflow-auto');
+    const cls = classNames('relative p-12 overflow-auto not-prose');
 
     return (
-      <div className={cls}>
+      <div className={cls} style={{ background: 'rgba(242,244,250,0.45)' }}>
         <LivePreview />
         <LiveError />
       </div>
@@ -39,7 +40,7 @@ export const CodeBlock = ({ code = '', theme = nightOwl }: CodeBlockProps) => {
           </div>
         </Space>
         <div className={cls}>
-          <LiveEditor />
+          <LiveEditor className='not-prose' />
         </div>
       </>
     );
@@ -68,6 +69,7 @@ export const CodeBlock = ({ code = '', theme = nightOwl }: CodeBlockProps) => {
     ...React,
     ...uDesign,
     ...uDesignIcons,
+    Img,
   };
 
   return (

@@ -1,0 +1,120 @@
+# Skeleton 骨架屏
+
+在需要等待加载内容的位置提供一个占位图形组合。
+
+## 基础用法
+
+```jsx
+<Skeleton />
+```
+
+## 尺寸
+
+通过 size 来设置尺寸。
+
+```jsx
+<Skeleton size='small' />
+```
+
+```jsx
+<Skeleton size='middle' />
+```
+
+```jsx
+<Skeleton size='large' />
+```
+
+## 动画效果
+
+通过 active 来控制是否显示动效。
+
+```jsx
+<Skeleton active />
+```
+
+## 自定义组合
+
+```jsx
+<Skeleton active avatar paragraph={{ width: ['60%', '100%', '100%', '80%'], rows: 4 }} />
+```
+
+## 作为容器使用
+
+```jsx
+() => {
+  const [loading, setLoading] = useState(false);
+
+  return (
+    <>
+      <Space className='mb-10'>
+        <Button type={loading ? 'primary' : 'default'} onClick={() => setLoading(!loading)}>
+          加载
+        </Button>
+      </Space>
+      <Skeleton active avatar={false} loading={loading} paragraph={{ rows: 1 }} size='small'>
+        <div className='font-bold text-lg'>This is the title</div>
+        <p>Lorem ipsum dolor, sit amet cons ectetur adipis icing elit. Praesen tium, quibusdam facere quo laborum maiores sequi nam tenetur laud.</p>
+      </Skeleton>
+    </>
+  );
+};
+```
+
+## 单独使用
+
+骨架头像、按钮、图像、标题、段落。
+
+```jsx
+<Space>
+  Avatar
+  <Skeleton.Avatar />
+  <Skeleton.Avatar shape='square' />
+</Space>
+```
+
+```jsx
+<Space>
+  Button
+  <Skeleton.Button />
+  <Skeleton.Button shape='square' />
+</Space>
+```
+
+```jsx
+<Space>
+  Image
+  <Skeleton.Image />
+</Space>
+```
+
+```jsx
+<Space>
+  Title
+  <Skeleton.Title />
+</Space>
+```
+
+```jsx
+<Space vertical align='start'>
+  Paragraph
+  <Skeleton.Paragraph rows={1} />
+  <Skeleton.Paragraph rows={2} width={['100%', 300]} />
+</Space>
+```
+
+## 图文用法
+
+复杂的图文组合。
+
+```jsx
+<div className='bg-white pb-5 rounded-xl'>
+  <Space vertical align='start'>
+    <Skeleton.Image width='280px' height='178px' />
+    <div className='px-5 py-0'>
+      <Space vertical align='start'>
+        <Skeleton.Paragraph rows={3} width={[120, 240, 240]} size='small' />
+      </Space>
+    </div>
+  </Space>
+</div>
+```

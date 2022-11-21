@@ -1,0 +1,67 @@
+# Switch 开关
+
+开关选择器。
+
+## 何时使用
+
+- 需要表示开关状态或两种状态之间的切换时；
+- 和 checkbox 的区别是，切换 switch 会直接触发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合。
+
+## 基础用法
+
+默认的开关。
+
+```jsx
+<Switch />
+```
+
+## 不可用状态
+
+通过 disabled 属性设置不可用状态。
+
+```jsx
+<Space>
+  <Switch disabled />
+  <Switch defaultChecked disabled />
+</Space>
+```
+
+## 带有文字
+
+开关中带有文字。
+
+```jsx
+<Space vertical align='start'>
+  <Switch defaultChecked checkedText='开启' uncheckedText='关闭' />
+  <Switch checkedText='开启' uncheckedText='关闭' />
+</Space>
+```
+
+```jsx
+<Space vertical align='start'>
+  <Switch defaultChecked checkedText='1' uncheckedText='0' />
+  <Switch checkedText='1' uncheckedText='0' />
+</Space>
+```
+
+## 带有图标
+
+开关中带有图标。
+
+```jsx
+<Space vertical align='start'>
+  <Switch defaultChecked checkedText={<CheckOutlined />} uncheckedText={<CloseOutlined />} />
+  <Switch checkedText={<CheckOutlined />} uncheckedText={<CloseOutlined />} />
+</Space>
+```
+
+## 尺寸
+
+默认 middle，可选 small。
+
+```jsx
+<Space vertical align='start'>
+  <Switch defaultChecked />
+  <Switch defaultChecked size='small' />
+</Space>
+```

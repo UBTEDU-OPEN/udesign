@@ -1,0 +1,807 @@
+# Modal 对话框
+
+模态对话框。
+
+## 何时使用
+
+- 需要用户处理事务，又不希望跳转页面以致打断工作流程时，可以使用 Modal 在当前页面正中打开一个浮层，承载相应的操作。
+- 另外当需要一个简洁的确认框询问用户时，可以使用 Modal.confirm() 方法。
+
+## 基础用法
+
+默认的文本对话框。
+
+```jsx
+() => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <>
+      <Button type='primary' onClick={() => setVisible(true)}>
+        Open Modal
+      </Button>
+      <Modal visible={visible} title='对话框标题' onCancel={() => setVisible(false)} onOk={() => setVisible(false)}>
+        对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+      </Modal>
+    </>
+  );
+};
+```
+
+## 没有遮罩
+
+通过 mask 设置是否开启遮罩。
+
+```jsx
+() => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <>
+      <Button type='primary' onClick={() => setVisible(true)}>
+        Open Modal
+      </Button>
+      <Modal mask={false} visible={visible} title='对话框标题' onCancel={() => setVisible(false)} onOk={() => setVisible(false)}>
+        对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+      </Modal>
+    </>
+  );
+};
+```
+
+## 点击遮罩层不可关闭
+
+通过 `maskCloseable={false}` 设置点击遮罩层不可关闭对话框。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      maskCloseable: false,
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        点击遮罩层不可关闭
+      </Button>
+    </>
+  );
+};
+```
+
+## 尺寸
+
+通过 size 使用内置的尺寸，默认 small，可选 middle 和 large；也支持直接设置 width 或 height。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      size: 'small',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Small Modal
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      size: 'middle',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Middle Modal
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      size: 'large',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Large Modal
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      width: 1000,
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        自定义宽度
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      height: 500,
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        自定义高度
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      fullscreen: true,
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        全屏
+      </Button>
+    </>
+  );
+};
+```
+
+## 位置
+
+默认水平垂直居中， 可使用类似 style.top 的样式来设置对话框位置。（需要同时设置 centered=false）
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        默认垂直居中
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      centered: false,
+      style: { top: '20px' },
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        20px to Top
+      </Button>
+    </>
+  );
+};
+```
+
+## 自定义按钮文字
+
+通过设置 okText 与 cancelText 属性可自定义按钮显示的文字。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      size: 'small',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      okText: '保存',
+      cancelText: '不保存',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        自定义按钮文字
+      </Button>
+    </>
+  );
+};
+```
+
+## 自定义按钮属性
+
+通过设置 okButtonProps 与 cancelButtonProps 属性可自定义按钮的属性。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      size: 'small',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      okButtonProps: {
+        danger: true,
+      },
+      cancelButtonProps: {
+        type: 'default',
+      },
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        自定义按钮属性
+      </Button>
+    </>
+  );
+};
+```
+
+## 自定义对话框的样式
+
+通过设置 maskStyle 自定义遮罩样式，及 bodyStyle 自定义对话框内容样式。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      size: 'small',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      maskStyle: { background: 'rgba(0,0,0,.7)' },
+      bodyStyle: { textAlign: 'right' },
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Small Modal
+      </Button>
+    </>
+  );
+};
+```
+
+## 自定义头部
+
+如果需要实现更丰富的个性化需求，可以通过 header 自定义头部；把 header 设为 null 时，则不显示头部区域（包括关闭按钮区域）。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      size: 'small',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      header: (
+        <div className='p-5'>
+          <div className='font-bold text-xl'>对话框标题</div>
+        </div>
+      ),
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        自定义头部
+      </Button>
+    </>
+  );
+};
+```
+
+## 自定义页脚
+
+更复杂的例子，通过 footer 自定义了页脚。不需要默认确定取消按钮时，你可以把 footer 设为 null。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      size: 'large',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      footer: (
+        <>
+          <Space className='p-10' justify='center'>
+            <Button>自定义</Button>
+            <Button type='primary'>自定义</Button>
+            <Button type='primary'>自定义</Button>
+          </Space>
+        </>
+      ),
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        自定义页脚
+      </Button>
+    </>
+  );
+};
+```
+
+## 完全自定义
+
+如果需要实现更丰富的个性化需求，可以把 header 和 footer 都设为 null 来完全自定义对话框。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      header: null,
+      footer: null,
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        完全自定义
+      </Button>
+    </>
+  );
+};
+```
+
+## 图文对话框
+
+对话框内容包含图片、文字，均支持自定义。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      hasCancel: false,
+      content: (
+        <>
+          <img className='mx-auto' src='/demo.svg' alt='' />
+          对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+        </>
+      ),
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        图文对话框
+      </Button>
+    </>
+  );
+};
+```
+
+## 顶部按钮
+
+顶部按钮可以自由组合使用。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        单关闭按钮
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      showBack: true,
+      onBack: () => Toast('onBack'),
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        返回+关闭按钮
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      showMinus: true,
+      onMinus: () => Toast('onMinus'),
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        关闭+缩小按钮
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      showBack: true,
+      onBack: () => Toast('onBack'),
+      showMinus: true,
+      onMinus: () => Toast('onMinus'),
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        返回+关闭+缩小按钮
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+      showBack: true,
+      onBack: () => Toast('onBack'),
+      showHelp: true,
+      onHelp: () => Toast('onHelp'),
+      showMinus: true,
+      onMinus: () => Toast('onMinus'),
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        返回+关闭+缩小+帮助按钮
+      </Button>
+    </>
+  );
+};
+```
+
+## 命令式调用
+
+使用 confirm() 可以快捷地弹出确认框。onCancel/onOk 返回 promise 可以延迟关闭。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Confirm
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '连接wifi',
+      content: '正在搜索WiFi…',
+      onOk() {
+        return new Promise((resolve, reject) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+        }).catch(() => Toast('Oops errors!'));
+      },
+      onCancel() {
+        return new Promise((resolve, reject) => {
+          setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
+        }).catch(() => Toast('Oops errors!'));
+      },
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        With promise
+      </Button>
+    </>
+  );
+};
+```
+
+## 图标
+
+命令式调用支持四种内置风格，自带了 icon。你也可以自定义 icon , 其他 Modal 支持的 props 都可以传入。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.info({
+      title: '这是一则提示信息',
+      content: '这是一则提示信息，这是一则提示信息',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Info Modal
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.success({
+      title: '操作成功',
+      content: '这是一则提示信息，这是一则提示信息',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Success Modal
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.error({
+      title: '操作失败',
+      content: '这是一则提示信息，这是一则提示信息',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Error Modal
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.warning({
+      title: '这是一则警告信息',
+      content: '这是一则警告信息，这是一则警告信息',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Warning Modal
+      </Button>
+    </>
+  );
+};
+```
+
+## 手动更新和关闭
+
+通过 update 方法更新、close 方法来关闭函数方式创建的对话框。
+
+```jsx
+() => {
+  const showModal = () => {
+    let secondsToGo = 5;
+
+    const modal = Modal.info({
+      title: '关闭倒计时',
+    });
+
+    const timer = setInterval(() => {
+      secondsToGo -= 1;
+      modal.update({
+        content: <div className='text-3xl'>{secondsToGo}</div>,
+      });
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(timer);
+      modal.close();
+    }, secondsToGo * 1000);
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        Open modal will close in 5s
+      </Button>
+    </>
+  );
+};
+```
+
+## 可拖拽弹框
+
+通过 draggable 开启对话框的拖拽功能。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      draggable: true,
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        可拖拽弹框
+      </Button>
+    </>
+  );
+};
+```
+
+## 使用动画
+
+通过 animation 设置动画名称，默认 fadeIn，可选 slideInUp。通过 showAnimation 设置是否开启动画，默认开启；
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        默认fadeIn
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      animation: 'slideInUp',
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        slideInUp
+      </Button>
+    </>
+  );
+};
+```
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      showAnimation: false,
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        没有动画
+      </Button>
+    </>
+  );
+};
+```

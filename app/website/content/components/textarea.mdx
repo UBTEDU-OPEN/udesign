@@ -1,0 +1,70 @@
+# TextArea 多行输入框
+
+用于输入多行文本信息。
+
+## 基础用法
+
+通过 rows 属性控制高度。
+
+```jsx
+<TextArea placeholder='给你的作品写一个操作指南，并告诉大家如何操作' />
+```
+
+## 禁用状态
+
+通过 disabled 属性设置禁用状态。
+
+```jsx
+<TextArea placeholder='给你的作品写一个操作指南，并告诉大家如何操作' disabled />
+```
+
+## 字数提示
+
+通过 maxLength 属性限定总输入字数，showCount 来显示可输入字数提示。
+
+```jsx
+<TextArea placeholder='给你的作品写一个操作指南，并告诉大家如何操作' maxLength={100} showCount />
+```
+
+## 可清空
+
+通过 showClear 属性显示移除图标，点击图标删除所有内容。
+
+```jsx
+<TextArea placeholder='给你的作品写一个操作指南，并告诉大家如何操作' showClear />
+```
+
+## 自定义状态
+
+通过 status 属性设置状态，默认 normal，可选 error 和 warning。
+
+```jsx
+<Space vertical>
+  <TextArea status='error' placeholder='Error' />
+  <TextArea status='warning' placeholder='Warning' />
+</Space>
+```
+
+## 受控组件
+
+当传入 value 时，输入框将变成受控组件，必须配合 onChange 回调函数使用。如果不希望使用受控组件，请使用 defaultValue。
+
+```jsx
+() => {
+  const [value, setValue] = useState('controlled');
+
+  return (
+    <>
+      <TextArea
+        value={value}
+        onChange={(value) => {
+          setValue(value);
+        }}
+      />
+      <br />
+      <br />
+      <Button onClick={() => setValue('new value')}>Change Value</Button>
+    </>
+  );
+};
+```

@@ -1,0 +1,91 @@
+# Spin 加载中
+
+用于页面和区块的加载中状态。
+
+## 何时使用
+
+页面局部处于等待加载数据中或渲染过程中，加载动效能有效缓解用户的等待焦虑。
+
+## 基础用法
+
+一个简单的 loading 状态。
+
+```jsx
+<Spin />
+```
+
+## 尺寸
+
+通过 size 设置尺寸，默认 middle，可选 small 和 large。
+
+```jsx
+<Spin size='small' />
+```
+
+```jsx
+<Spin />
+```
+
+```jsx
+<Spin size='large' />
+```
+
+## 带描述文案
+
+通过 tip 属性可设置文案。
+
+```jsx
+<Spin tip='加载中' style={{ width: '100px' }} />
+```
+
+## 作为容器
+
+可以直接把内容内嵌到 Spin 中，变为加载状态。
+
+```jsx
+<Spin tip='加载中'>
+  <div className='p-5 rounded-lg bg-white'>
+    <p className='text-indigo-500 font-bold'>Alert message title</p>
+    <Divider className='my-5' />
+    <p>Further details about the context of this alert.</p>
+  </div>
+</Spin>
+```
+
+## 延迟加载
+
+通过 delay 设置一个延迟显示效果。
+
+```jsx
+() => {
+  const [loading, setLoading] = useState(false);
+  return (
+    <>
+      <Spin spinning={loading} delay={500}>
+        <div className='p-5 rounded-lg bg-white'>
+          <p className='text-indigo-500 font-bold'>Alert message title</p>
+          <Divider className='my-5' />
+          <p>Further details about the context of this alert.</p>
+        </div>
+      </Spin>
+      <br />
+      <Switch onChange={() => setLoading(!loading)} checked={loading} />
+    </>
+  );
+};
+```
+
+## 全局加载
+
+通过 showLoading 和 hideLoading 两个方法快速调用全局加载。
+
+```jsx
+<Space>
+  <Button onClick={Spin.showLoading} type='primary'>
+    showLoading
+  </Button>
+  <Button onClick={Spin.hideLoading} type='primary'>
+    hideLoading
+  </Button>
+</Space>
+```

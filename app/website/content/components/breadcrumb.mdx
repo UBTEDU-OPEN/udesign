@@ -1,0 +1,70 @@
+# Breadcrumb 面包屑
+
+显示当前页面在系统层级结构中的位置，并能向上返回。
+
+## 何时使用
+
+- 当系统拥有超过两级以上的层级结构时；
+
+- 当需要告知用户『你在哪里』时；
+
+- 当需要向上导航的功能时。
+
+## 基础用法
+
+最简单的面包屑。
+
+```jsx
+<Breadcrumb>
+  <Breadcrumb.Item>
+    <a href='#'>Home</a>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item>
+    <a href='#'>Application Center</a>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item>
+    <a href='#'>Application List</a>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item>An Application</Breadcrumb.Item>
+</Breadcrumb>
+```
+
+## 带有图标的面包屑
+
+图标放在文字前面。
+
+```jsx
+<Breadcrumb>
+  <Breadcrumb.Item>
+    <CopyOutlined />
+  </Breadcrumb.Item>
+  <Breadcrumb.Item>
+    <IdcardOutlined />
+    <span>Application Center</span>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item>Application List</Breadcrumb.Item>
+  <Breadcrumb.Item>An Application</Breadcrumb.Item>
+</Breadcrumb>
+```
+
+## 分隔符
+
+可自定义分隔符，提供 4 种建议样式。
+
+```jsx
+<Breadcrumb>
+  <Breadcrumb.Item>
+    <a href=''>Home</a>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item separator='_'>
+    <a href=''>Application Center</a>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item separator='>'>
+    <a href=''>Application Center</a>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item separator='|'>
+    <a href=''>Application List</a>
+  </Breadcrumb.Item>
+  <Breadcrumb.Item>An Application</Breadcrumb.Item>
+</Breadcrumb>
+```

@@ -1,0 +1,227 @@
+# Tabs 标签页
+
+选项卡切换组件。
+
+## 何时使用
+
+- 提供平级的区域将大块内容进行收纳和展现，保持界面整洁。
+- Ant Design 依次提供了三级选项卡，分别用于不同的场景。
+- 卡片式的页签，提供可关闭的样式，常用于容器顶部。
+- 可用于容器顶部，也可用于容器内部，是最通用的 Tabs。
+- Radio.Button 可作为更次级的页签来使用。
+
+## 基础用法
+
+默认的标签页。
+
+```jsx
+<Tabs>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+## 禁用
+
+通过 disabled 禁用某一项。
+
+```jsx
+<Tabs>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2' disabled>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+## 居中
+
+默认居左，可通过 centered 属性设置居中显示。
+
+```jsx
+<Tabs centered>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+## 下划线风格
+
+通过将 type 属性设置为 line 切换到下划线风格。
+
+```jsx
+<Tabs type='line'>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+## 开关风格
+
+通过将 type 属性设置为 switch 切换到开关风格。
+
+```jsx
+<Tabs type='switch'>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+## 水平滚动
+
+默认的标签页。
+
+```jsx
+<Tabs>
+  {Array(7)
+    .fill(1)
+    .map((item, index) => (
+      <Tabs.Item label={`Tab ${index}`} name={String(index)}>
+        Content of Tab Pane {index}
+      </Tabs.Item>
+    ))}
+</Tabs>
+```
+
+## 自动平铺
+
+通过 around 属性设置为自动平铺。
+
+```jsx
+<Tabs around>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+## 位置
+
+通过 position 属性设置位置，默认 top，可选 left、right 和 bottom。
+
+```jsx
+<Tabs position='left'>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+```jsx
+<Tabs position='right'>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+```jsx
+<Tabs position='bottom'>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+## 尺寸
+
+通过 size 属性设置尺寸，默认 middle，可选 small 和 large。
+
+```jsx
+<Tabs size='small'>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+```jsx
+<Tabs size='middle'>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```
+
+```jsx
+<Tabs size='large'>
+  <Tabs.Item label='Tab 1' name='1'>
+    Content of Tab Pane 1
+  </Tabs.Item>
+  <Tabs.Item label='Tab 2' name='2'>
+    Content of Tab Pane 2
+  </Tabs.Item>
+  <Tabs.Item label='Tab 3' name='3'>
+    Content of Tab Pane 3
+  </Tabs.Item>
+</Tabs>
+```

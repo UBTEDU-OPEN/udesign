@@ -10,7 +10,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-empty`;
 
 export type EmptyProps = {
   image?: ReactNode; // 自定义图片。默认值：内置图
-  description?: ReactNode; // 自定义描述。
+  description?: ReactNode; // 自定义描述。默认值：暂无数据
   imageStyle?: React.CSSProperties; // 图片样式。
 } & NativeProps;
 

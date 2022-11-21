@@ -1,0 +1,66 @@
+# Pagination 分页
+
+采用分页的形式分隔长列表，每次只加载一个页面。
+
+## 何时使用
+
+- 当加载/渲染所有数据将花费很多时间时；
+- 当超过 1 页，需要切换页码浏览数据。
+
+## 基础用法
+
+常规分页用法，通过 total 指定总数量，将按照默认的 page_size 进行分页处理。
+
+```jsx
+<Pagination total={500} />
+```
+
+## 翻页文本
+
+通过 prevText 指定上一页文本，nextText 指定下一页文本。
+
+```jsx
+<Pagination total={500} prevText='上一页' nextText='下一页' />
+```
+
+## 跳转页面
+
+通过 showQuickJumper 开启跳转至指定页面功能。
+
+```jsx
+<Pagination total={500} showQuickJumper />
+```
+
+## 总数
+
+通过设置 showTotal 展示总共有多少数据。
+
+```jsx
+<Pagination total={500} showTotal />
+```
+
+## 动态更新
+
+响应外部 total 变化。
+
+```jsx
+() => {
+  const [total, setTotal] = useState(500);
+  return (
+    <>
+      <Space>
+        Total:
+        <Button type={total === 100 ? 'primary' : 'default'} onClick={() => setTotal(100)}>
+          100
+        </Button>
+        <Button type={total === 500 ? 'primary' : 'default'} onClick={() => setTotal(500)}>
+          500
+        </Button>
+      </Space>
+      <br />
+      <br />
+      <Pagination total={total} />
+    </>
+  );
+};
+```

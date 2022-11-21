@@ -1,0 +1,124 @@
+# Tooltip 文字提示
+
+简单的文字提示气泡框。
+
+## 基础用法
+
+通过 content 来指定内容。
+
+```jsx
+<Tooltip content='Hi Tooltip'>
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+## 箭头
+
+通过 showArrow 来显示箭头，默认 true。
+
+```jsx
+<Tooltip content='Hi Tooltip' showArrow={false}>
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+## 触发方式
+
+通过 trigger 设置触发方式，默认为 hover，可选 focus、click 和 custom。
+
+设为 custom 时，需要配合 visible 属性使用，此时显示与否完全受控。
+
+```jsx
+<Tooltip content='Hi Tooltip'>
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+```jsx
+<Tooltip content='Hi Tooltip' trigger='focus'>
+  <Input placeholder='Focus me' />
+</Tooltip>
+```
+
+```jsx
+<Tooltip content='Hi Tooltip' trigger='click'>
+  <Button>Click me</Button>
+</Tooltip>
+```
+
+```jsx
+() => {
+  const [visible, setVisible] = useState(true);
+
+  return (
+    <Tooltip content='Hi Tooltip' trigger='custom' visible={visible}>
+      <Space>
+        <Button onClick={() => setVisible(true)}>Controlled show</Button>
+        <Button onClick={() => setVisible(false)}>Controlled hide</Button>
+      </Space>
+    </Tooltip>
+  );
+};
+```
+
+## 弹出位置
+
+通过 placement 来指定弹出位置，共有 12 个方向。
+
+```jsx
+() => {
+  const HorizontalBox = ({ children }) => <div className='w-36 h-12 flex justify-center items-center bg-indigo-50 rounded'>{children}</div>;
+  const VerticalBox = ({ children }) => <div className='w-24 h-36 flex justify-center items-center bg-indigo-50 rounded'>{children}</div>;
+
+  return (
+    <>
+      <Space justify='center'>
+        <Tooltip content='Hi Tooltip' placement='topLeft'>
+          <HorizontalBox>topLeft</HorizontalBox>
+        </Tooltip>
+        <Tooltip content='Hi Tooltip' placement='top'>
+          <HorizontalBox>top</HorizontalBox>
+        </Tooltip>
+        <Tooltip content='Hi Tooltip' placement='topRight'>
+          <HorizontalBox>topRight</HorizontalBox>
+        </Tooltip>
+      </Space>
+      <Space justify='between'>
+        <Space vertical>
+          <Tooltip content='Hi Tooltip' placement='leftTop'>
+            <VerticalBox>leftTop</VerticalBox>
+          </Tooltip>
+          <Tooltip content='Hi Tooltip' placement='left'>
+            <VerticalBox>left</VerticalBox>
+          </Tooltip>
+          <Tooltip content='Hi Tooltip' placement='leftBottom'>
+            <VerticalBox>leftBottom</VerticalBox>
+          </Tooltip>
+        </Space>
+        <Space vertical>
+          <Tooltip content='Hi Tooltip' placement='rightTop'>
+            <VerticalBox>rightTop</VerticalBox>
+          </Tooltip>
+          <Tooltip content='Hi Tooltip' placement='right'>
+            <VerticalBox>right</VerticalBox>
+          </Tooltip>
+          <Tooltip content='Hi Tooltip' placement='rightBottom'>
+            <VerticalBox>rightBottom</VerticalBox>
+          </Tooltip>
+        </Space>
+      </Space>
+      <Space justify='center'>
+        <Tooltip content='Hi Tooltip' placement='bottomLeft'>
+          <HorizontalBox>bottomLeft</HorizontalBox>
+        </Tooltip>
+        <Tooltip content='Hi Tooltip' placement='bottom'>
+          <HorizontalBox>bottom</HorizontalBox>
+        </Tooltip>
+        <Tooltip content='Hi Tooltip' placement='bottomRight'>
+          <HorizontalBox>bottomRight</HorizontalBox>
+        </Tooltip>
+      </Space>
+    </>
+  );
+};
+```

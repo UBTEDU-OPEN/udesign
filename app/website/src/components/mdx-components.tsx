@@ -10,7 +10,6 @@ export const Pre = (props: any) => {
   const code = props.children?.props.children.trim();
   const language = className?.replace(/language-/, '');
 
-  // return <div className='border rounded-lg overflow-hidden'>{language === 'jsx' ? <CodeBlock code={code} /> : <Highlight code={code} language={language} />}</div>;
   return language === 'jsx' ? <CodeBlock code={code} /> : <Highlight code={code} language={language} />;
 };
 

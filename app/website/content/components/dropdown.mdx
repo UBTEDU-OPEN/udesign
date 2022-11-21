@@ -1,0 +1,210 @@
+# Dropdown 下拉菜单
+
+向下弹出的菜单列表。
+
+## 何时使用
+
+- 当页面上的操作命令过多时，用此组件可以收纳操作元素。点击或移入触点，会出现一个下拉菜单。可在列表中进行选择，并执行相应的命令。
+- 用于收罗一组命令操作。
+- Select 用于选择，而 Dropdown 是命令集合。
+
+## 基础用法
+
+最简单的下拉菜单。通过设置 disabled 可以禁用某个选项。通过在 Dropdown.Item 上设置 icon 可以快速配置图标。
+
+```jsx
+<Dropdown
+  content={
+    <Dropdown.Menu onClick={(name) => Toast(name)}>
+      <Dropdown.Item name='1'>1 st menu item</Dropdown.Item>
+      <Dropdown.Item name='2'>2 st menu item</Dropdown.Item>
+      <Dropdown.Item name='3' disabled>
+        3 st menu item(disabled)
+      </Dropdown.Item>
+      <Divider />
+      <Dropdown.Item name='4' danger icon={<ExclamationCircleFilled />}>
+        a danger item
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  }
+>
+  <Button type='text'>
+    <Space size={10}>
+      Hover me
+      <DownOutlined />
+    </Space>
+  </Button>
+</Dropdown>
+```
+
+## 点击不关闭
+
+通过 clickToHide 控制在弹出层内点击时是否自动关闭弹出层。
+
+```jsx
+<Dropdown
+  clickToHide={false}
+  content={
+    <Dropdown.Menu onClick={(name) => Toast(name)}>
+      <Dropdown.Item name='1'>1 st menu item</Dropdown.Item>
+      <Dropdown.Item name='2'>2 st menu item</Dropdown.Item>
+      <Dropdown.Item name='3' disabled>
+        3 st menu item(disabled)
+      </Dropdown.Item>
+      <Divider />
+      <Dropdown.Item name='4' danger icon={<ExclamationCircleFilled />}>
+        a danger item
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  }
+>
+  <Button type='text'>
+    <Space size={10}>
+      Hover me
+      <DownOutlined />
+    </Space>
+  </Button>
+</Dropdown>
+```
+
+## 弹出位置
+
+通过 placement 指定弹出位置。
+
+```jsx
+() => {
+  const menu = (
+    <Dropdown.Menu onClick={(name) => Toast(name)}>
+      <Dropdown.Item name='1'>1 st menu item</Dropdown.Item>
+      <Dropdown.Item name='2'>2 st menu item</Dropdown.Item>
+      <Dropdown.Item name='3' disabled>
+        3 st menu item(disabled)
+      </Dropdown.Item>
+      <Divider />
+      <Dropdown.Item name='4' danger icon={<ExclamationCircleFilled />}>
+        a danger item
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  );
+
+  return (
+    <Space vertical align='start'>
+      <Space>
+        <Dropdown content={menu} placement='topLeft'>
+          <Button>topLeft</Button>
+        </Dropdown>
+        <Dropdown content={menu} placement='top'>
+          <Button>top</Button>
+        </Dropdown>
+        <Dropdown content={menu} placement='topRight'>
+          <Button>topRight</Button>
+        </Dropdown>
+      </Space>
+      <Space>
+        <Dropdown content={menu} placement='bottomLeft'>
+          <Button>bottomLeft</Button>
+        </Dropdown>
+        <Dropdown content={menu} placement='bottom'>
+          <Button>bottom</Button>
+        </Dropdown>
+        <Dropdown content={menu} placement='bottomRight'>
+          <Button>bottomRight</Button>
+        </Dropdown>
+      </Space>
+    </Space>
+  );
+};
+```
+
+## 带箭头展示
+
+通过 showArrow 设置是否显示箭头。
+
+```jsx
+() => {
+  const menu = (
+    <Dropdown.Menu onClick={(name) => Toast(name)}>
+      <Dropdown.Item name='1'>1 st menu item</Dropdown.Item>
+      <Dropdown.Item name='2'>2 st menu item</Dropdown.Item>
+      <Dropdown.Item name='3' disabled>
+        3 st menu item(disabled)
+      </Dropdown.Item>
+      <Divider />
+      <Dropdown.Item name='4' danger icon={<ExclamationCircleFilled />}>
+        a danger item
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  );
+
+  return (
+    <Space vertical align='start'>
+      <Space>
+        <Dropdown content={menu} placement='topLeft' showArrow>
+          <Button>topLeft</Button>
+        </Dropdown>
+        <Dropdown content={menu} placement='top' showArrow>
+          <Button>top</Button>
+        </Dropdown>
+        <Dropdown content={menu} placement='topRight' showArrow>
+          <Button>topRight</Button>
+        </Dropdown>
+      </Space>
+      <Space>
+        <Dropdown content={menu} placement='bottomLeft' showArrow>
+          <Button>bottomLeft</Button>
+        </Dropdown>
+        <Dropdown content={menu} placement='bottom' showArrow>
+          <Button>bottom</Button>
+        </Dropdown>
+        <Dropdown content={menu} placement='bottomRight' showArrow>
+          <Button>bottomRight</Button>
+        </Dropdown>
+      </Space>
+    </Space>
+  );
+};
+```
+
+## 触发方式
+
+默认是 hover 触发，可以通过 trigger 更改触发方式。
+
+```jsx
+() => {
+  const [visible, setVisible] = useState(true);
+
+  const menu = (
+    <Dropdown.Menu onClick={(name) => Toast(name)}>
+      <Dropdown.Item name='1'>1 st menu item</Dropdown.Item>
+      <Dropdown.Item name='2'>2 st menu item</Dropdown.Item>
+      <Dropdown.Item name='3' disabled>
+        3 st menu item(disabled)
+      </Dropdown.Item>
+      <Divider />
+      <Dropdown.Item name='4' danger icon={<ExclamationCircleFilled />}>
+        a danger item
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  );
+
+  return (
+    <Space vertical align='start'>
+      <Dropdown content={menu} trigger='hover'>
+        <Button>Hover me</Button>
+      </Dropdown>
+      <Dropdown content={menu} trigger='focus'>
+        <Input placeholder='Focus me' />
+      </Dropdown>
+      <Dropdown content={menu} trigger='click'>
+        <Button>Click me</Button>
+      </Dropdown>
+      <Dropdown content={menu} trigger='custom' visible={visible}>
+        <Space>
+          <Button onClick={() => setVisible(true)}>Controlled show</Button>
+          <Button onClick={() => setVisible(false)}>Controlled hide</Button>
+        </Space>
+      </Dropdown>
+    </Space>
+  );
+};
+```

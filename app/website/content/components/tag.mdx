@@ -1,0 +1,130 @@
+# Tag 标签
+
+进行标记和分类的小标签。
+
+## 何时使用
+
+用于标记事物的属性和维度，进行分类。
+
+## 基础用法
+
+默认标签的用法，可以通过添加 closable 变为可关闭标签。可关闭标签具有 onClose 事件。
+
+```jsx
+<Space>
+  <Tag>Tag1</Tag>
+  <Tag closeable>Tag2</Tag>
+  <Tag closeable onClose={(v, e) => e.preventDefault()}>
+    Prevent Default
+  </Tag>
+</Space>
+```
+
+## 尺寸
+
+通过 size 属性设置尺寸，默认 middle，可选 small 和 large。
+
+```jsx
+<Space>
+  <Tag size='small'>small</Tag>
+  <Tag size='middle'>middle</Tag>
+  <Tag size='large'>large</Tag>
+</Space>
+```
+
+## 可关闭标签
+
+通过 closeable 属性设置标签是否可关闭，点击关闭标签时会触发 close 事件。
+
+```jsx
+<Tag closeable onClose={(value) => Toast('onClose')}>
+  标签
+</Tag>
+```
+
+## 可选择标签
+
+通过 checkable 属性实现类似 Checkbox 的效果，点击切换选中效果。
+
+```jsx
+<Space>
+  <Tag checkable defaultChecked>
+    uCode
+  </Tag>
+  <Tag checkable>uDesign</Tag>
+  <Tag checkable>uExplore</Tag>
+  <Tag checkable>uSim</Tag>
+</Space>
+```
+
+## 添加和删除
+
+用数组生成一组标签，可以动态添加和删除。
+
+```jsx
+() => {
+  const [label, setLabel] = useState('');
+  const [tagList, setTagList] = useState([
+    {
+      label: 'Unremovable',
+    },
+    {
+      label: 'Tag2',
+      closeable: true,
+    },
+    {
+      label: 'Tag3',
+      closeable: true,
+    },
+  ]);
+
+  const handleAddTag = () => {
+    if (!label) return;
+    const newTagList = [...tagList];
+    newTagList.push({ label });
+    setTagList(newTagList);
+  };
+
+  return (
+    <Space wrap>
+      {tagList.map((tag, index) => (
+        <Tag key={index} closeable={tag.closeable}>
+          {tag.label}
+        </Tag>
+      ))}
+      <Input size='middle' style={{ width: 120 }} defaultValue={label} onChange={setLabel} onEnterPress={handleAddTag} placeholder='回车键入' />
+    </Space>
+  );
+};
+```
+
+## 多彩标签
+
+多种预设色彩的标签样式，用作不同场景使用。
+
+```jsx
+<Space wrap>
+  <Tag color='purple'>Purple/紫色</Tag>
+  <Tag color='red'>Red/红色</Tag>
+  <Tag color='orange'>Orange/橘色</Tag>
+  <Tag color='yellow'>Yellow/黄色</Tag>
+  <Tag color='green'>Green/绿色</Tag>
+  <Tag color='cyan'>Cyan/青色</Tag>
+  <Tag color='blue'>Blue/蓝色</Tag>
+</Space>
+```
+
+## 自定义颜色
+
+如果预设值不能满足你的需求，可以设置为具体的色值。
+
+```jsx
+<Space>
+  <Tag color='#f50' textColor='#fff'>
+    #f50
+  </Tag>
+  <Tag color='#eee' textColor='#999'>
+    #eee
+  </Tag>
+</Space>
+```

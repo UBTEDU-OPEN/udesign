@@ -69,9 +69,9 @@ yarn export
 
 请移步具体目录的说明：
 
-[CSS 变量规范](app\website\src\docs\guide\css-variables.md)
+[CSS 变量规范](app\website\src\docs\css-variables.md)
 
-[接入说明](app\website\src\docs\guide\quick-start.md)
+[接入说明](app\website\src\docs\quick-start.md)
 
 [website](app/website/readme.md)
 

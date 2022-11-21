@@ -12,7 +12,7 @@ const Index = () => (
         <Link href='/components/button'>
           <Button type='primary'>组件文档</Button>
         </Link>
-        <Link href='/docs/guide/changelog'>
+        <Link href='/docs/changelog'>
           <Button type='primary' warning>
             更新日志
           </Button>

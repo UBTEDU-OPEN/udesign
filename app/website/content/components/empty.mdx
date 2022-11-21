@@ -1,0 +1,65 @@
+# Empty 空状态
+
+空状态时的展示占位图。
+
+## 何时使用
+
+- 当目前没有数据时，用于显式的用户提示。
+- 初始化场景时的引导创建流程。
+
+## 基础用法
+
+默认的空状态。
+
+```jsx
+<Empty />
+```
+
+## 无描述用法
+
+仅展示空状态图片，不展示描述文案。
+
+```jsx
+<Empty description={null} />
+```
+
+## 自定义描述
+
+自定义描述空状态的文案。
+
+```jsx
+<Empty description='老师还没有为你安排学习计划～' />
+```
+
+## 自定义图片
+
+通过 image 可以自定义图片。
+
+```jsx
+<Empty image='/icon_empty_1.svg' />
+```
+
+```jsx
+<Empty image='/icon_empty_2.svg' />
+```
+
+```jsx
+<Empty image='/icon_empty_3.svg' />
+```
+
+## 自定义更多内容
+
+通过 children 可以自定义更多内容，比如按钮
+
+```jsx
+<Empty
+  image='/icon_empty_1.svg'
+  description={
+    <span>
+      自定义 <a href='#'>新建</a>
+    </span>
+  }
+>
+  <Button type='primary'>确认</Button>
+</Empty>
+```
