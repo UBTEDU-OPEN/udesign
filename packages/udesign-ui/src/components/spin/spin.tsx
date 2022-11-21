@@ -9,7 +9,7 @@ export const destroyFns: any[] = [];
 
 export type SpinProps = {
   spinning?: boolean; // 是否处于加载中的状态。默认值：true
-  timeOut?: number; // 加载持续时间。默认值：60s
+  timeout?: number; // 加载持续时间。
   size?: Size; // 组件大小，可选 small, middle, large。默认值：middle
   tip?: ReactNode; // 当 spin 作为包裹元素时，可以自定义描述文字。默认值：-
   delay?: number; // 延迟显示加载效果的时间。默认值：-
@@ -20,7 +20,7 @@ export type SpinProps = {
 
 let timer: NodeJS.Timeout;
 export const Spin = (props: SpinProps) => {
-  const { spinning = true, size = 'middle', timeOut, delay, childStyle, className, children, style, _global = false } = props;
+  const { spinning = true, size = 'middle', timeout, delay, childStyle, className, children, style, _global = false } = props;
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(true);
 
@@ -38,11 +38,10 @@ export const Spin = (props: SpinProps) => {
   }, [spinning]);
 
   useEffect(() => {
-    if (timeOut) {
+    if (timeout) {
       timer = setTimeout(() => {
-        console.log(timeOut);
         setVisible(false);
-      }, timeOut * 1000);
+      }, timeout);
     }
 
     return () => clearTimeout(timer);
