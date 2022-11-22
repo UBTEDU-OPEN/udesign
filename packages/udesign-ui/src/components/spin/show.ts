@@ -6,18 +6,18 @@ const element = new PortalWrapper<typeof InnerSpin>(InnerSpin);
 let timer: NodeJS.Timeout;
 export default function showLoading(props?: SpinProps) {
   clearTimeout(timer);
-  const timeOut = props?.timeOut || 60;
+  const timeout = props?.timeout || 60000;
 
   element.show({
     ...props,
-    timeOut: 0,
+    timeout: 0,
     _global: true,
   });
 
   timer = setTimeout(() => {
     element.close();
     console.log(11);
-  }, timeOut * 1000);
+  }, timeout);
 }
 export function hideLoading() {
   element.close();
