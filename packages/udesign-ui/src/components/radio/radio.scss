@@ -91,12 +91,9 @@ $module: ud-radio;
   width: $radio-icon-width;
   height: $radio-icon-height;
   border-radius: $radio-icon-border-radius;
+  color: $radio-icon-color-unchecked;
 
   &-checked {
     color: $radio-icon-color-checked;
-  }
-
-  &-unchecked {
-    color: $radio-icon-color-unchecked;
   }
 }
