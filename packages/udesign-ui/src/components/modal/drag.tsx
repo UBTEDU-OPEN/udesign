@@ -15,6 +15,10 @@ export default class Drag extends React.Component<DragProps> {
 
   target: HTMLElement | null = null;
 
+  dragX = 0;
+
+  dragY = 0;
+
   position = {
     startX: 0,
     startY: 0,
@@ -22,6 +26,11 @@ export default class Drag extends React.Component<DragProps> {
     dy: 0,
     tx: 0,
     ty: 0,
+  };
+
+  moveBoundary = (clientX: number, clientY: number) => {
+    if (clientY <= 0 || clientY > this.dragY - 30 || clientX <= 30 || clientX > this.dragX - 30) return true;
+    return false;
   };
 
   start = (event: MouseEvent) => {
@@ -35,6 +44,7 @@ export default class Drag extends React.Component<DragProps> {
   };
 
   docMove = (event: MouseEvent) => {
+    if (this.moveBoundary(event.clientX, event.clientY)) return;
     const tx = event.pageX - this.position.startX;
     const ty = event.pageY - this.position.startY;
     const transformStr = `translate(${tx}px,${ty}px)`;
@@ -56,6 +66,7 @@ export default class Drag extends React.Component<DragProps> {
 
   touchDocMove = (event: TouchEvent) => {
     if (event.cancelable) event.preventDefault();
+    if (this.moveBoundary(event.changedTouches[0].clientY, event.changedTouches[0].clientY)) return;
     const tx = event.changedTouches[0].pageX - this.position.startX;
     const ty = event.changedTouches[0].pageY - this.position.startY;
     const transformStr = `translate(${tx}px,${ty}px)`;
@@ -66,6 +77,11 @@ export default class Drag extends React.Component<DragProps> {
 
   touchDocMouseUp = (event: TouchEvent) => {
     document.removeEventListener('touchmove', this.touchDocMove);
+  };
+
+  resize = () => {
+    this.dragX = window.innerWidth;
+    this.dragY = window.innerHeight;
   };
 
   componentDidMount() {
@@ -79,6 +95,8 @@ export default class Drag extends React.Component<DragProps> {
     // 用document移除对mousemove事件的监听
     document.addEventListener('mouseup', this.docMouseUp);
     document.addEventListener('touchend', this.touchDocMouseUp);
+    this.resize();
+    window.addEventListener('resize', this.resize);
   }
 
   componentWillUnmount() {
@@ -90,6 +108,7 @@ export default class Drag extends React.Component<DragProps> {
 
     document.removeEventListener('touchend', this.touchDocMouseUp);
     document.removeEventListener('touchmove', this.touchDocMove);
+    window.removeEventListener('resize', this.resize);
   }
 
   render() {
