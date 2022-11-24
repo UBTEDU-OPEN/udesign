@@ -1,0 +1,68 @@
+# Slider 滑动输入条
+
+## 基础用法
+
+```jsx
+<Slider
+  onChange={(e) => {
+    Toast(`${e}`);
+  }}
+/>
+```
+
+## 不同尺寸的滑动输入条
+
+```jsx
+<Space vertical>
+  <Slider
+    size='small'
+    onChange={(e) => {
+      Toast(`${e}`);
+    }}
+  />
+  <Slider
+    size='middle'
+    onChange={(e) => {
+      Toast(`${e}`);
+    }}
+  />
+</Space>
+```
+
+## 指定滑动范围
+
+```jsx
+<Slider defaultValue={6} max={10} min={1} />
+```
+
+## 受控属性
+
+```jsx
+<Slider value={60} max={100} min={50} />
+```
+
+## 使用事件
+
+使用 onChange 事件
+
+```jsx
+<Slider
+  max={50}
+  min={0}
+  onChange={(e) => {
+    Toast(`${e}`);
+  }}
+/>
+```
+
+使用 onAfterChange 事件
+
+```jsx
+<Slider
+  max={10}
+  min={1}
+  onAfterChange={(e) => {
+    Toast(`${e}`);
+  }}
+/>
+```
