@@ -79,6 +79,11 @@ $module: ud-modal;
     &-icon {
       cursor: pointer;
     }
+
+    .#{$module}-header-icon-disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   }
 
   &-body {

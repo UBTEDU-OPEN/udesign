@@ -743,6 +743,54 @@
 };
 ```
 
+## 不显示关闭按钮
+
+通过 showClose 控制是否显示关闭按钮，默认 true。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      showClose: false,
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        不可关闭弹框
+      </Button>
+    </>
+  );
+};
+```
+
+## 不可关闭弹框
+
+通过 closeable 控制关闭按钮是否可以点击，默认 true。
+
+```jsx
+() => {
+  const showModal = () => {
+    Modal.confirm({
+      closeable: false,
+      title: '对话框标题',
+      content: '对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文',
+    });
+  };
+
+  return (
+    <>
+      <Button type='primary' onClick={showModal}>
+        不可关闭弹框
+      </Button>
+    </>
+  );
+};
+```
+
 ## 使用动画
 
 通过 animation 设置动画名称，默认 fadeIn，可选 slideInUp。通过 showAnimation 设置是否开启动画，默认开启；
