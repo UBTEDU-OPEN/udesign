@@ -24,11 +24,7 @@ $module: ud-checkbox;
       border: $checkbox-icon-border-disabled;
     }
 
-    .#{$module}-icon-disabled-checked {
-      border: none;
-    }
-
-    .#{$module}-icon-indeterminate-disabled {
+    .#{$module}-icon-disabled {
       border: none;
     }
   }
@@ -51,14 +47,10 @@ $module: ud-checkbox;
 
   &-icon-unchecked {
     color: $checkbox-icon-color-unchecked;
-
-    &-disabled {
-      border: $checkbox-icon-border-indeterminate-disabled;
-    }
   }
 
   &-icon-indeterminate {
-    border: $checkbox-icon-border-indeterminate;
+    color: $checkbox-icon-color-indeterminate;
   }
 
   &-hidden {

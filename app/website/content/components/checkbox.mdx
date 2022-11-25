@@ -1,0 +1,193 @@
+# Checkbox 复选框
+
+在一组可选项中进行多项选择时；
+
+单独使用可以表示两种状态之间的切换，和 switch 类似。
+
+区别在于切换 switch 会直接触发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合。
+
+## 基础用法
+
+通过 defaultChecked 指定复选框的初始勾选状态。
+
+```jsx
+<Space>
+  <Checkbox>未选中</Checkbox>
+  <Checkbox defaultChecked>已选中</Checkbox>
+</Space>
+```
+
+## 禁用状态
+
+通过设置 disabled 属性可以禁用复选框。
+
+```jsx
+<Space>
+  <Checkbox disabled>复选框</Checkbox>
+  <Checkbox defaultChecked disabled>
+    复选框
+  </Checkbox>
+</Space>
+```
+
+## 受控组件
+
+组件是否选中完全取决于传入的 checked 值，配合 onChange 回调函数使用
+
+```jsx
+() => {
+  const [checked, setChecked] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  return (
+    <>
+      <Space vertical align='start'>
+        <Space className='mb-4'>
+          <Button type='primary' onClick={() => setChecked(!checked)}>
+            {checked ? 'unchecked' : 'checked'}
+          </Button>
+          <Button type='primary' onClick={() => setDisabled(!disabled)}>
+            {disabled ? 'enable' : 'disable'}
+          </Button>
+        </Space>
+        <Checkbox checked={checked} disabled={disabled} onChange={(event) => setChecked(event.nativeEvent.target?.checked)}>
+          复选框
+        </Checkbox>
+      </Space>
+    </>
+  );
+};
+```
+
+## 复选框组
+
+通过在 CheckboxGroup 内部放置 Checkbox 元素，可以声明 Checkbox 组
+
+```jsx
+() => {
+  return (
+    <>
+      <Space>
+        <Checkbox.Group defaultValue={['A']} name='group'>
+          <Checkbox value='A'>A</Checkbox>
+          <Checkbox value='B'>B</Checkbox>
+          <Checkbox value='C' disabled>
+            C
+          </Checkbox>
+        </Checkbox.Group>
+      </Space>
+    </>
+  );
+};
+```
+
+## 复选框组（数组方式）
+
+复选框组可以通过 options 属性生成 Checkbox。
+
+```jsx
+() => {
+  const optionsWithDisabled = [
+    { label: 'A', value: 'A' },
+    { label: 'B', value: 'B' },
+    { label: 'C', value: 'C' },
+  ];
+
+  return (
+    <>
+      <Space vertical align='start'>
+        <Checkbox.Group options={['A', 'B', 'C']} defaultValue={['A', 'B', 'C']} name='array1' />
+        <Checkbox.Group options={['A', 'B', 'C']} name='array2' />
+        <Checkbox.Group options={optionsWithDisabled} defaultValue={['A']} name='array3' disabled />
+      </Space>
+    </>
+  );
+};
+```
+
+## 全选
+
+在实现全选效果时，你可能会用到 indeterminate 属性。
+
+```jsx
+() => {
+  const [indeterminate, setIndeterminate] = useState(false);
+  const [checkedList, setCheckedList] = useState([]);
+  const [checkedAll, setCheckedAll] = useState(false);
+
+  return (
+    <>
+      <Space vertical align='start'>
+        <Checkbox.Group
+          value={checkedList}
+          name='selectall'
+          onChange={(selectedValue) => {
+            setCheckedList(selectedValue);
+            setIndeterminate(!!selectedValue.length && selectedValue.length < 3);
+            setCheckedAll(selectedValue.length === 3);
+          }}
+        >
+          <Checkbox value='A'>A</Checkbox>
+          <Checkbox value='B'>B</Checkbox>
+          <Checkbox value='C'>C</Checkbox>
+        </Checkbox.Group>
+        <Checkbox
+          indeterminate={indeterminate}
+          checked={allchecked}
+          onChange={(event) => {
+            setCheckedList(event.target.checked ? ['A', 'B', 'C'] : []);
+            setIndeterminate(false);
+            setCheckedAll(event.target.checked);
+          }}
+        >
+          全选
+        </Checkbox>
+      </Space>
+    </>
+  );
+};
+```
+
+## 布局
+
+Checkbox.Group 内嵌 Checkbox 并与 Grid 组件一起使用，可以实现灵活的布局。
+
+```jsx
+<Space vertical align='start'>
+  <Space>
+    <Checkbox.Group name='grid1'>
+      <Row gutter={16}>
+        <Col span={8}>
+          <Checkbox value='A'>A</Checkbox>
+        </Col>
+        <Col span={8}>
+          <Checkbox value='B'>B</Checkbox>
+        </Col>
+        <Col span={8}>
+          <Checkbox value='C'>C</Checkbox>
+        </Col>
+      </Row>
+    </Checkbox.Group>
+  </Space>
+  <Space style={{ width: '100%' }}>
+    <Checkbox.Group name='grid1'>
+      <Row gutter={16}>
+        <Col span={6}>
+          <Checkbox value='A'>A</Checkbox>
+        </Col>
+        <Col span={6}>
+          <Checkbox value='B'>B</Checkbox>
+        </Col>
+        <Col span={6}>
+          <Checkbox value='C'>C</Checkbox>
+        </Col>
+        <Col span={6}>
+          <Checkbox value='D'>D</Checkbox>
+        </Col>
+        <Col span={6}>
+          <Checkbox value='E'>E</Checkbox>
+        </Col>
+      </Row>
+    </Checkbox.Group>
+  </Space>
+</Space>
+```
