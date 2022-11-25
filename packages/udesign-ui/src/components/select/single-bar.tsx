@@ -11,14 +11,14 @@ export type SingleBarProps = {
   visible?: boolean; // 是否展开列表
   showSearch?: boolean; // 是否显示搜索框
   options?: OptionItem[]; // 下拉列表options
-  innerDefaultValue?: string[] | number[]; // 默认选中的value
+  active?: string[] | number[]; // 默认选中的value
   placeholder?: string; // 选择框默认文本
   onClick?: (e: MouseEvent) => void;
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-select`;
 
-export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearch, options = [], innerDefaultValue = [], placeholder, onClick }: SingleBarProps) => {
+export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearch, options = [], active = [], placeholder, onClick }: SingleBarProps) => {
   const context = useContext(SelectContext);
   const searchRef = useRef<HTMLInputElement>(null);
   const getSingleLabel = (value: string | number, options: OptionItem[] = []) => {
@@ -51,13 +51,12 @@ export const SingleBar = ({ searchValue = '', setSearchValue, visible, showSearc
           value={searchValue}
           type='text'
           onChange={(val: string) => {
-            context.onChange && context?.onChange(val);
             setSearchValue(val);
           }}
         />
       ) : (
         <div className={`${prefixCls}-single-text`}>
-          <div className={`${prefixCls}-single-text-content`}>{getSingleLabel((context.value || [])[0], options) || getSingleLabel(innerDefaultValue[0], options) || <div className={`${prefixCls}-single-placeholder`}>{placeholder}</div>}</div>
+          <div className={`${prefixCls}-single-text-content`}>{getSingleLabel((context.active || [])[0], options) || getSingleLabel(active[0], options) || <div className={`${prefixCls}-single-placeholder`}>{placeholder}</div>}</div>
         </div>
       )}
     </React.Fragment>
