@@ -1,0 +1,121 @@
+# Select 选择器
+
+下拉选择器。
+
+## 何时使用
+
+- 弹出一个下拉菜单给用户选择操作，选择后内容填入。
+- 当选项少时（少于 5 项），建议直接将选项平铺，使用 Radio 是更好的选择。
+
+## 基础用法
+
+基础的单项选择器, 通过 defaultValue 设置初始值。
+
+```jsx
+<Select defaultValue='option2'>
+  <Select.Option value='option1'>option1</Select.Option>
+  <Select.Option value='option2'>option2</Select.Option>
+  <Select.Option value='option3'>option3</Select.Option>
+</Select>
+```
+
+## 禁用状态
+
+通过 disabled 禁用选项或者整个 Select。
+
+```jsx
+<Space>
+  <Select defaultValue='option2'>
+    <Select.Option value='option1'>option1</Select.Option>
+    <Select.Option value='option2' disabled>
+      option2
+    </Select.Option>
+    <Select.Option value='option3'>option3</Select.Option>
+  </Select>
+  <Select defaultValue='option2' disabled>
+    <Select.Option value='option1'>option1</Select.Option>
+    <Select.Option value='option2'>option2</Select.Option>
+    <Select.Option value='option3'>option3</Select.Option>
+  </Select>
+</Space>
+```
+
+## 尺寸
+
+通过 size 可以设置尺寸，默认 middle，可选 small 和 large。
+
+```jsx
+<Space>
+  small
+  <Select defaultValue='option2' size='small'>
+    <Select.Option value='option1'>option1</Select.Option>
+    <Select.Option value='option2'>option2</Select.Option>
+    <Select.Option value='option3'>option3</Select.Option>
+  </Select>
+</Space>
+```
+
+```jsx
+<Space>
+  middle
+  <Select defaultValue='option2' size='middle'>
+    <Select.Option value='option1'>option1</Select.Option>
+    <Select.Option value='option2'>option2</Select.Option>
+    <Select.Option value='option3'>option3</Select.Option>
+  </Select>
+</Space>
+```
+
+```jsx
+<Space>
+  large
+  <Select defaultValue='option2' size='large'>
+    <Select.Option value='option1'>option1</Select.Option>
+    <Select.Option value='option2'>option2</Select.Option>
+    <Select.Option value='option3'>option3</Select.Option>
+  </Select>
+</Space>
+```
+
+## 多选模式
+
+多选，从已有条目中选择。
+
+通过 `mode='multiple'` 设置为多选模式。
+
+```jsx
+<Select mode='multiple' style={{ width: '500px' }}>
+  <Select.Option value='option1'>option1</Select.Option>
+  <Select.Option value='option2'>option2</Select.Option>
+  <Select.Option value='option3'>option3</Select.Option>
+</Select>
+```
+
+## 数据化配置
+
+通过 options 传入要数据化配置的选项内容。
+
+```jsx
+() => {
+  const options = [
+    {
+      value: 'ucode',
+      label: 'uCode',
+    },
+    {
+      value: 'explore',
+      label: 'Explore',
+    },
+    {
+      value: 'disabled',
+      disabled: true,
+      label: 'Disabled',
+    },
+    {
+      value: 'udesign',
+      label: 'uDesign',
+    },
+  ];
+  return <Select defaultValue='explore' options={options} />;
+};
+```
