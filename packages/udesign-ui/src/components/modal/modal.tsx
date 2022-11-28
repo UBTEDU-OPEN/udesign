@@ -179,10 +179,10 @@ export const Modal = (props: ModalProps) => {
     }
 
     const { title } = props;
-    return title === null || title === undefined ? null : (
+    return (
       <div className={`${prefixCls}-header`}>
         {renderIcon()}
-        <div className={`${prefixCls}-title`}>{title}</div>
+        {title ? <div className={`${prefixCls}-title`}>{title}</div> : null}
         <div className={`${prefixCls}-header-left`}>{renderBackBtn()}</div>
         <div className={`${prefixCls}-header-right`}>
           {renderHelpBtn()}
