@@ -54,6 +54,7 @@ export default function show(props: showModalProps) {
   return {
     close,
     update,
+    destroy,
   };
 }
 
