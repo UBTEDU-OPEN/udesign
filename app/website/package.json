@@ -1,6 +1,6 @@
 {
   "name": "@ubt/udesign-website",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "private": true,
   "scripts": {
     "prepare": "node ./scripts/build-api.js ./public/designApi.json && node ./scripts/build-token.js ./public/designToken.json",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.2",
     "@ubt/udesign-icons": "^1.1.4",
-    "@ubt/udesign-ui": "^1.3.0",
+    "@ubt/udesign-ui": "^1.3.1",
     "classnames": "^2.3.1",
     "contentlayer": "^0.2.8",
     "lodash": "^4.17.21",
