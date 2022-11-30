@@ -1,38 +1,40 @@
-import React, { useEffect, ReactNode, useState, useRef } from 'react';
+import React, { useEffect, ReactNode, useState, useRef, CSSProperties } from 'react';
 import classNames from 'classnames';
 import { LoadingOutlined } from '@ubt/udesign-icons';
 import { NativeProps } from '../../utils';
 import { BASE_CLASS_PREFIX, Size } from '../../constants';
+import Mask from '../mask';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-spin`;
 export const destroyFns: any[] = [];
 
 export type SpinProps = {
   spinning?: boolean; // 是否处于加载中的状态。默认值：true
+  mask?: boolean; // 是否展示遮罩。默认值：false
+  maskStyle?: CSSProperties; //	遮罩的样式。
   timeout?: number; // 加载持续时间。
   size?: Size; // 组件大小，可选 small, middle, large。默认值：middle
-  tip?: ReactNode; // 当 spin 作为包裹元素时，可以自定义描述文字。默认值：-
-  delay?: number; // 延迟显示加载效果的时间。默认值：-
-  indicator?: ReactNode; // 加载指示符。默认值：-
-  childStyle?: React.CSSProperties; // 包裹子元素的样式。默认值：-
-  _global?: boolean; // 内部变量
+  tip?: ReactNode; // 当 spin 作为包裹元素时，可以自定义描述文字。
+  delay?: number; // 延迟显示加载效果的时间。
+  indicator?: ReactNode; // 加载指示符。
+  childStyle?: React.CSSProperties; // 包裹子元素的样式。
+  fullscreen?: boolean; // 仅全局加载有效
 } & NativeProps;
 
 let timer: NodeJS.Timeout;
 export const Spin = (props: SpinProps) => {
-  const { spinning = true, size = 'middle', timeout, delay, childStyle, className, children, style, _global = false } = props;
-  const [loading, setLoading] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const { spinning = true, size = 'middle', timeout, delay, className, children, style, fullscreen } = props;
+  const [visible, setVisible] = useState(spinning);
 
   const timerRef = useRef(0);
   useEffect(() => {
     if (delay) {
       window.clearTimeout(timerRef.current);
       timerRef.current = window.setTimeout(() => {
-        setLoading(spinning);
+        setVisible(spinning);
       }, delay);
     } else {
-      setLoading(spinning);
+      setVisible(spinning);
     }
     return () => clearTimeout(timerRef.current);
   }, [spinning]);
@@ -47,14 +49,14 @@ export const Spin = (props: SpinProps) => {
     return () => clearTimeout(timer);
   }, []);
 
-  const renderSpin = () => {
+  const renderIndicator = () => {
     const { indicator, tip } = props;
 
     const cls = classNames({
-      [`${prefixCls}-animate`]: loading,
+      [`${prefixCls}-animate`]: spinning,
     });
 
-    return loading ? (
+    return visible ? (
       <div className={`${prefixCls}-wrapper`}>
         {indicator ? <div className={cls}>{indicator}</div> : <LoadingOutlined spin />}
         {tip ? <div className={`${prefixCls}-tip`}>{tip}</div> : null}
@@ -62,25 +64,40 @@ export const Spin = (props: SpinProps) => {
     ) : null;
   };
 
-  const spinCls = classNames(prefixCls, className, {
-    [`${prefixCls}-${size}`]: size,
-    [`${prefixCls}-block`]: children,
-    [`${prefixCls}-hidden`]: !loading,
-    [`${prefixCls}-global`]: _global,
-  });
+  const renderChildren = () => {
+    const { children, childStyle } = props;
+    return children ? (
+      <div className={`${prefixCls}-children`} style={childStyle}>
+        {children}
+      </div>
+    ) : null;
+  };
 
-  return visible ? (
+  const renderMask = () => {
+    const { mask, maskStyle } = props;
+
+    return mask ? <Mask style={maskStyle} /> : null;
+  };
+
+  const cls = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-block`]: children,
+      [`${prefixCls}-fullscreen`]: fullscreen,
+    },
+    className,
+  );
+
+  return (
     <>
-      <div className={spinCls} style={style}>
-        {renderSpin()}
-        {children ? (
-          <div className={`${prefixCls}-children`} style={childStyle}>
-            {children}
-          </div>
-        ) : null}
+      {renderMask()}
+      <div className={cls} style={style}>
+        {renderIndicator()}
+        {renderChildren()}
       </div>
     </>
-  ) : null;
+  );
 };
 
 Spin.displayName = 'Spin';

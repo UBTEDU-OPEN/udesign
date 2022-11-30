@@ -128,7 +128,7 @@ $module: ud-modal;
   width: 100%;
   height: 100%;
   transform: translate(0, 0);
-  border-radius: $modal-border-radius-fullscreen;
+  border-radius: 0;
 }
 
 // 不同类型图标默认色

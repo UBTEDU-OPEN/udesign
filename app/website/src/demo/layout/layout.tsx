@@ -26,7 +26,7 @@ const BaseLayout = ({ sidebar, children }: BaseLayoutProps) => {
           ) : null}
           <Layout className={hasSider ? 'pl-72' : ''}>
             <Content>{children}</Content>
-            <Footer className='p-16 border-t text-center'>Made with ❤ by uDesign</Footer>
+            <Footer className='p-16 border-t text-center'>Made with ❤ by uCode Team</Footer>
           </Layout>
         </Layout>
       </div>

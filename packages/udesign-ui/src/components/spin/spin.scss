@@ -6,7 +6,6 @@ $module: ud-spin;
 .#{$module} {
   position: relative;
   display: inline-block;
-  z-index: $spin-zIndex;
   @include size($spin-width-middle);
 
   &-wrapper {
@@ -92,21 +91,12 @@ $module: ud-spin;
   }
 }
 
-.#{$module}-container {
-  overflow: hidden;
-}
-
-.#{$module}-global {
+.#{$module}-fullscreen {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: $spin-zIndex-global;
-  background: $spin-background-global;
-  width: $spin-width-global;
-  height: $spin-height-global;
-  border-radius: $spin-border-radius-global;
-  box-shadow: $spin-box-shadow-global;
+  z-index: $spin-z-index;
 
   .#{$module}-wrapper {
     display: flex;
