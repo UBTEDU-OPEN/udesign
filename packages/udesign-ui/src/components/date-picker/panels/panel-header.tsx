@@ -26,27 +26,31 @@ export type HeaderProps = {
 
 const PanelHeader = ({ prefixCls = `${BASE_CLASS_PREFIX}-date-picker-panel`, prevIcon, nextIcon, superPrevIcon, superNextIcon, onSuperPrev, onSuperNext, onPrev, onNext, children, hideNext, hidePrev }: HeaderProps) => (
   <div className={`${prefixCls}-header`}>
-    {onSuperPrev && (
-      <div className={classNames(`${prefixCls}-headerImgBox`, hidePrev ? `${prefixCls}-hidden` : '')} onClick={onSuperPrev}>
-        {superPrevIcon ?? <FirstRightOutlined className={`left-icon`} size='small' />}
-      </div>
-    )}
-    {onPrev && (
-      <div className={classNames(`${prefixCls}-headerImgBox`, hidePrev ? `${prefixCls}-hidden` : '')} onClick={onPrev}>
-        {prevIcon ?? <LeftOutlined size='small' />}
-      </div>
-    )}
+    <div className={`${prefixCls}-header-img-container`}>
+      {onSuperPrev && (
+        <div className={classNames(`${prefixCls}-headerImgBox`, hidePrev ? `${prefixCls}-hidden` : '')} onClick={onSuperPrev}>
+          {superPrevIcon ?? <FirstRightOutlined className={classNames(`left-icon`, `${prefixCls}-header-left-icon`)} size='small' />}
+        </div>
+      )}
+      {onPrev && (
+        <div className={classNames(`${prefixCls}-headerImgBox`, `${prefixCls}-header-left-icon`, hidePrev ? `${prefixCls}-hidden` : '')} onClick={onPrev}>
+          {prevIcon ?? <LeftOutlined size='small' />}
+        </div>
+      )}
+    </div>
     {children}
-    {onNext && (
-      <div className={classNames(`${prefixCls}-headerImgBox`, hideNext ? `${prefixCls}-hidden` : '')} onClick={onNext}>
-        {nextIcon ?? <RightOutlined size='small' />}
-      </div>
-    )}
-    {onSuperNext && (
-      <div className={classNames(`${prefixCls}-headerImgBox`, hideNext ? `${prefixCls}-hidden` : '')} onClick={onSuperNext}>
-        {superNextIcon ?? <FirstRightOutlined size='small' />}
-      </div>
-    )}
+    <div className={`${prefixCls}-header-img-container`}>
+      {onNext && (
+        <div className={classNames(`${prefixCls}-headerImgBox`, hideNext ? `${prefixCls}-hidden` : '')} onClick={onNext}>
+          {nextIcon ?? <RightOutlined size='small' />}
+        </div>
+      )}
+      {onSuperNext && (
+        <div className={classNames(`${prefixCls}-headerImgBox`, hideNext ? `${prefixCls}-hidden` : '')} onClick={onSuperNext}>
+          {superNextIcon ?? <FirstRightOutlined size='small' />}
+        </div>
+      )}
+    </div>
   </div>
 );
 

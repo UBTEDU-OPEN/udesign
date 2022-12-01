@@ -55,7 +55,8 @@ const DateBody = ({ defaultValue, onChange, rows, nowDate, cells, beginValue, en
         const isSelected = item.type === 'now' && selectedValue === nowValue;
         let disabled = false;
         let isRange = false; // 是否是开始和结束范围内日期
-        let rangeLimit = false;
+        let isBegin = false;
+        let isEnd = false;
         // 开始日期
         if (beginValue) {
           let begin = dayjs(beginValue).format(DateFormat);
@@ -63,7 +64,7 @@ const DateBody = ({ defaultValue, onChange, rows, nowDate, cells, beginValue, en
           if (selectedValue && item.type === 'now') {
             if (dayjs(item.date).isAfter(beginValue) && dayjs(item.date).isBefore(selectedValue)) isRange = true;
           }
-          rangeLimit = item.type === 'now' && nowValue === begin;
+          isBegin = item.type === 'now' && nowValue === begin;
         }
         // 结束日期
         if (endValue) {
@@ -72,17 +73,19 @@ const DateBody = ({ defaultValue, onChange, rows, nowDate, cells, beginValue, en
           if (selectedValue && item.type === 'now') {
             if (dayjs(item.date).isAfter(selectedValue) && dayjs(item.date).isBefore(endValue)) isRange = true;
           }
-          rangeLimit = item.type === 'now' && nowValue === end;
+          isEnd = item.type === 'now' && nowValue === end;
         }
         return (
           <div
-            className={`${`${prefixCls}-month-days`} ${item.type === 'now' && item.date ? 'now-month-days' : 'other-month-days'} ${disabled ? 'disabled-month-days' : ''} ${isRange ? 'range-day-active' : ''}`}
+            className={`${`${prefixCls}-month-days`} ${item.type === 'now' && item.date ? 'now-month-days' : 'other-month-days'} ${disabled ? 'disabled-month-days' : ''} ${
+              selectedValue && (isBegin || (endValue && isSelected)) ? 'range-day-selected-start' : ''
+            }  ${selectedValue && (isEnd || (beginValue && isSelected)) ? 'range-day-selected-end' : ''} ${isRange ? 'range-day-active' : ''}`}
             key={`${item.type}-${item.value}`}
             onClick={() => {
               if (!disabled) handleClick(nowValue, item.type);
             }}
           >
-            <div className={`${rangeLimit || isSelected ? 'selected-day-active' : ''} ${'date-text'} ${nowDate === item.date ? 'now-day-active' : ''}`}>{item.value}</div>
+            <div className={`${isSelected || isBegin || isEnd ? 'selected-day-active' : ''} ${'date-text'} ${nowDate === item.date ? 'now-day-active' : ''}`}>{item.value}</div>
           </div>
         );
       })}

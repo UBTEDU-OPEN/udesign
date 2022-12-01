@@ -1,12 +1,14 @@
 @import '../../../global/variables.scss';
 $date-picker-width: var(--ud-date-picker-width, 200px);
-$date-picker-background: var(--ud-date-picker-input-background, #fff); // 输入框背景色-默认
+$date-picker-background: var(--ud-date-picker-background, #fff); // 输入框背景色-默认
+$date-picker-disabled-background: var(--ud-date-picker-disabled-background, #F5F5F5); // 输入框背景色-默认
 $date-picker-input-focused: var(--ud-date-picker-input-focused, var(--ud-color-primary));
-$date-picker-dropdown-max-width: var(--ud-date-picker-dropdown-max-width, 480px); // 下拉菜单最大宽度
-$date-picker-range-width: var(--ud-date-picker-range-width, 480px);
+$date-picker-dropdown-max-width: var(--ud-date-picker-dropdown-max-width, 600px); // 下拉菜单最大宽度
+$date-picker-range-width: var(--ud-date-picker-range-width, 420);
 $date-picker-range-background: var(--ud-date-picker-range-background, #fff); // 输入框背景色-默认
 $date-picker-range-color: var(--ud-date-picker-range-color, var(--ud-color-0)); // 输入框文字颜色-默认
-$date-picker-range-border-color: var(--ud-date-picker-range-border-color, var(--ud-color-border)); // 输入框描边颜色-默认
+$date-picker-border-color: var(--ud-date-picker-border-color, var(--ud-color-border)); // 输入框描边颜色-默认
 $date-picker-range-input-focused: var(--ud-date-picker-range-input-focused, var(--ud-color-primary));
-$date-picker-range-dropdown-max-width: var(--ud-date-picker-range-dropdown-max-width, 640px); // 下拉菜单最大宽度
-$date-picker-range-clear-icon-color: var(--ud-date-picker-range-clear-icon-color, var(--ud-color-primary)); // 输入框清除图标颜色
+$date-picker-range-dropdown-max-width: var(--ud-date-picker-range-dropdown-max-width, 840px); // 下拉菜单最大宽度
+$date-picker-panel-background:var(--ud-date-picker-panel-background,linear-gradient(160deg, rgba(85, 203, 255, 0.22) 0%, transparent 30%, transparent 60%, rgba(182, 131, 253, 0.22) 100%))
+

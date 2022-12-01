@@ -9,6 +9,14 @@ $module: ud-date-picker-panel;
   height: $date-picker-panel-header-height;
   justify-content: space-between;
   align-items: center;
+  padding: 0 12px;
+
+  &-img-container{
+    display: flex;
+    .#{$module}-headerImgBox{
+      padding: 0 10px;
+    }
+  }
  
   .#{$module}-headerImgBox {
     height: $date-picker-panel-headerImgBox;
@@ -18,5 +26,8 @@ $module: ud-date-picker-panel;
   }
   .#{$module}-hidden{
     visibility: hidden;
+  }
+  .#{$module}-header-left-icon{
+    color: $date-picker-header-left-icon-color;
   }
 }

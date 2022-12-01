@@ -4,7 +4,6 @@ $module: ud-date-panel;
 .#{$module} {
   width: $date-panel-width;
   padding: $date-panel-padding;
-  border-radius: $date-panel-border-radius;
   margin: $date-panel-margin;
   box-sizing: border-box;
   color: $date-panel-color;
@@ -24,6 +23,7 @@ $module: ud-date-panel;
   .#{$module}-content {
     display: flex;
     flex-wrap: wrap;
+    padding: 0 12px;
   }
   .#{$module}-week-box {
     height: $date-panel-week-box-height;
@@ -47,17 +47,14 @@ $module: ud-date-panel;
       justify-content: center;
       margin: $date-panel-month-days-margin;
       cursor: pointer;
-      margin: 0;
+      margin: 0 0 10px;
       padding: 0;
     }
     .other-month-days {
-      color: $date-panel-other-month-days-color;
-    }
-    .current-month-days {
-      color: $date-panel-current-month-days-color;
+      opacity: 0.7;
     }
     .disabled-month-days{
-      background: $date-panel-range-day-disable-background;
+      opacity: 0.5;
       cursor: default;
        color: $date-panel-other-month-days-color;
       .date-text{
@@ -69,8 +66,22 @@ $module: ud-date-panel;
       }
     }
     .range-day-active {
-      background: $date-panel-range-day-active-background;
+     background: $date-panel-range-day-active-background;
+     color: #fff;
     }
+    .range-day-selected-start, .range-day-selected-end{
+       background: $date-panel-selected-day-active-background;
+       color: $date-panel-selected-day-active-color;
+      }
+    .range-day-selected-end{
+      border-top-right-radius: $date-panel-range-day-selected-radius;
+      border-bottom-right-radius: $date-panel-range-day-selected-radius;
+    }
+    .range-day-selected-start{
+      border-top-left-radius: $date-panel-range-day-selected-radius;
+      border-bottom-left-radius: $date-panel-range-day-selected-radius;
+    }
+
     .date-text {
       text-align: center;
       line-height: $date-panel-date-text-line-height;
@@ -80,19 +91,33 @@ $module: ud-date-panel;
       font-size: $date-panel-date-text-font-size;
       &:hover {
         background: rgba(0, 0,0,0.1);
+        border-radius: 50%;
       }
       &.now-day-active{
         border: 1px solid $date-panel-now-day-border-color;
+        border-radius: 50%;
       }
       &.selected-day-active {
         border: none;
         // border-radius: $date-panel-selected-day-active-border-radius;
-        background-image: $date-panel-selected-day-active-background-image;
+        background: $date-panel-selected-day-active-background;
         color: $date-panel-selected-day-active-color;
+        border-radius: 50%;
+        font-weight: 500;
       }
     }
     
   } 
+  .tody_box{
+    padding: 16px 0 10px;
+    line-height: 28px;
+    text-align: center;
+    color: $date-panel-tody-color;
+    border-top: 1px solid #ddd;
+    margin-top: 6px;
+    font-weight: 500;
+    cursor: pointer;
+  }
 }
 
 

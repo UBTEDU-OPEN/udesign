@@ -1,6 +1,6 @@
 import React, { useState, useImperativeHandle, forwardRef, CSSProperties, useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { CloseCircleFilled } from '@ubt/udesign-icons';
+import { ClockCircleOutlined, CloseCircleFilled } from '@ubt/udesign-icons';
 import dayjs from 'dayjs';
 import Input from '../input';
 import Dropdown from '../dropdown';
@@ -20,10 +20,12 @@ export type TimerProps = {
   panelStyle?: CSSProperties; // 时间面板内联样式。默认值：-
   panelClassName?: string; // 时间面板样式类名。默认值：-
   showNow?: boolean; // 面板是否显示“此刻”按钮。默认值：false
+  disabled?: boolean; // 是否禁用。默认值：-
+  readonly?: boolean; // 是否只读。默认值：-
 } & NativeProps;
 
 const RangePicker = forwardRef((props: TimerProps, ref) => {
-  let { defaultValue = ['', ''], placeHolder, placement = 'bottomLeft', showNow = false, style, className, ...resetProps } = props;
+  let { defaultValue = ['', ''], placeHolder, placement = 'bottomLeft', showNow = false, style, className, disabled, readonly, ...resetProps } = props;
   // 输入框值
   let [inputValues, setInputValues] = useState<ValuesType>(defaultValue);
   // 列表选中值
@@ -181,17 +183,14 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
     }
   }, [visible]);
 
-  return (
-    <Dropdown
-      className='ud-time-picker-range-dropdown'
-      content={<PickerPanel selValue={focusedType === 'end' ? inputSelValue[1] : inputSelValue[0]} onChange={onSelect} onConfirm={onConfirm} onNow={onNow} showNow={showNow} style={resetProps.panelStyle} className={resetProps.panelClassName}></PickerPanel>}
-      trigger='click'
-      placement={placement}
-      ref={dropdownRef}
-      clickToHide={false}
-      onVisibleChange={onVisibleChange}
-    >
-      <div className={classNames('ud-time-picker-range', className)} style={style} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+  const renderPicker = () => {
+    return (
+      <div
+        className={classNames('ud-time-picker-range', disabled ? 'ud-time-picker-range-disabled' : readonly ? 'ud-time-picker-range-readonly' : 'ud-time-picker-range-normal', className)}
+        style={style}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <Input
           ref={startInputRef}
           value={inputValues[0]}
@@ -200,6 +199,8 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
             focusedHandler('start');
           }}
           placeholder={placeHolder?.[0]}
+          disabled={disabled}
+          readOnly={readonly}
         />
         ~
         <Input
@@ -210,11 +211,35 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
             focusedHandler('end');
           }}
           placeholder={placeHolder?.[1]}
+          disabled={disabled}
+          readOnly={readonly}
         />
-        <div onClick={onClear} style={{ visibility: hovering && inputSelValue && inputSelValue[0] && inputSelValue[1] ? 'visible' : 'hidden' }} className='clear-icon'>
-          <CloseCircleFilled></CloseCircleFilled>
+        <div className='suffix-icon'>
+          {hovering && inputSelValue && inputSelValue[0] && inputSelValue[1] ? (
+            <label onClick={onClear}>
+              <CloseCircleFilled className='clear-icon' />
+            </label>
+          ) : (
+            <ClockCircleOutlined className='date-icon' />
+          )}
         </div>
       </div>
+    );
+  };
+
+  return disabled || readonly ? (
+    <>{renderPicker()}</>
+  ) : (
+    <Dropdown
+      className='ud-time-picker-range-dropdown'
+      content={<PickerPanel selValue={focusedType === 'end' ? inputSelValue[1] : inputSelValue[0]} onChange={onSelect} onConfirm={onConfirm} onNow={onNow} showNow={showNow} style={resetProps.panelStyle} className={resetProps.panelClassName}></PickerPanel>}
+      trigger='click'
+      placement={placement}
+      ref={dropdownRef}
+      clickToHide={false}
+      onVisibleChange={onVisibleChange}
+    >
+      {renderPicker()}
     </Dropdown>
   );
 });

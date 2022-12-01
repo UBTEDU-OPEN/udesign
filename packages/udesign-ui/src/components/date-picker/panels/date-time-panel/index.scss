@@ -7,9 +7,10 @@ $module: ud-date-time-panel;
     display: flex;
     .ud-time-picker-panel {
         padding-top: 56px;
-        border-left: 1px solid #ccc;
+        border-left: 1px solid $time-picker-border-color;
         .time-box{
           border-bottom: 0;
+          border-top: 1px solid $time-picker-border-color;
         }
     }
   }
@@ -20,10 +21,9 @@ $module: ud-date-time-panel;
     flex-direction: row-reverse;
     align-items: center;
     padding: 10px;
-    background: $time-picker-background;
-    border-top:1px solid #ccc;
+    border-top:1px solid $time-picker-border-color;
     .confirm{
-      border-radius: 0;
+      border-radius: 5px;
       min-width: 60px;
       background: $time-picker-confirm-background;
       color: $time-picker-confirm-color;
@@ -31,6 +31,7 @@ $module: ud-date-time-panel;
     .now{
       color: $time-picker-now-color;
       cursor: pointer;
+      font-weight: bold;
     }
   }
 

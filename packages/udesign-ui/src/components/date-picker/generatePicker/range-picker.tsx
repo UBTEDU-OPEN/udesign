@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useImperativeHandle, CSSProperties } from 'react';
 import dayjs from 'dayjs';
 import classNames from 'classnames';
-import { CloseCircleFilled } from '@ubt/udesign-icons';
+import { CloseCircleFilled, IconDateOutline } from '@ubt/udesign-icons';
 import Input from '../../input';
 import PickerPanel, { PickerPanelBaseProps } from '../panels/picker-panel';
 import Dropdown from '../../dropdown';
@@ -20,12 +20,14 @@ export type RangePickerBaseProps = PickerPanelBaseProps & {
   panelClassName?: string; // 日期面板样式类名。默认值：-
   showTime?: boolean; // 是否显示时间。默认值：-
   showNow?: boolean; // 当设定了 showTime 的时候，面板是否显示“此刻”按钮。默认值：-
+  disabled?: boolean; // 是否禁用。默认值：-
+  readonly?: boolean; // 是否只读。默认值：-
 };
 
 export type InputType = 'start' | 'end';
 
 const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
-  let { format, defaultValue, onChange, placeHolder, placement = 'top', style, className, panelClassName, panelStyle, ...resetProps } = props;
+  let { format, defaultValue, onChange, placeHolder, placement = 'top', style, className, panelClassName, panelStyle, disabled, readonly, ...resetProps } = props;
   const [startInputVal, setStartInputVal] = useState<string>();
   const [endInputVal, setEndInputVal] = useState<string>();
   const [selectedValue, setSelectedValue] = useState<[string, string]>();
@@ -191,6 +193,11 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
     }
   };
 
+  useImperativeHandle(ref, () => ({
+    hide,
+    show,
+  }));
+
   const renderPanel = () => {
     let obj: { [key: string]: any } = {
       ...resetProps,
@@ -235,14 +242,9 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
     return <div className='ud-date-picker-range-panel'>{panelContent}</div>;
   };
 
-  useImperativeHandle(ref, () => ({
-    hide,
-    show,
-  }));
-
-  return (
-    <Dropdown content={renderPanel()} trigger='click' placement={placement} className='ud-date-picker-range-dropdown' ref={dropdownRef} clickToHide={false}>
-      <div className={classNames('ud-date-picker-range', className)} style={style} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+  const renderPicker = () => {
+    return (
+      <div className={classNames('ud-date-picker-range', disabled ? 'ud-date-picker-range-disabled' : readonly ? '' : 'ud-date-picker-range-normal', className)} style={style} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <Input
           ref={startInputRef}
           value={startInputVal}
@@ -252,6 +254,8 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
             focusedHandler('start');
           }}
           placeholder={placeHolder?.[0]}
+          disabled={disabled}
+          readOnly={readonly}
         />
         ~
         <Input
@@ -263,11 +267,27 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
             focusedHandler('end');
           }}
           placeholder={placeHolder?.[1]}
+          disabled={disabled}
+          readOnly={readonly}
         />
-        <div onClick={onClear} style={{ visibility: hovering && startInputVal && endInputVal ? 'visible' : 'hidden' }} className='clear-icon'>
-          <CloseCircleFilled></CloseCircleFilled>
+        <div className='suffix-icon'>
+          {hovering && startInputVal && endInputVal ? (
+            <label onClick={onClear}>
+              <CloseCircleFilled className='clear-icon' />{' '}
+            </label>
+          ) : (
+            <IconDateOutline className='date-icon' />
+          )}
         </div>
       </div>
+    );
+  };
+
+  return disabled || readonly ? (
+    <>{renderPicker()}</>
+  ) : (
+    <Dropdown content={renderPanel()} trigger='click' placement={placement} className='ud-date-picker-range-dropdown' ref={dropdownRef} clickToHide={false}>
+      {renderPicker()}
     </Dropdown>
   );
 });

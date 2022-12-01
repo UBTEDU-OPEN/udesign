@@ -1,6 +1,7 @@
 import React, { useState, createRef, useImperativeHandle, forwardRef, CSSProperties, ReactNode, useEffect } from 'react';
 import dayjs from 'dayjs';
 import classNames from 'classnames';
+import { IconDateOutline, CloseCircleFilled } from '@ubt/udesign-icons';
 import Input from '../../input';
 import PickerPanel, { PickerPanelBaseProps } from '../panels/picker-panel';
 import Dropdown from '../../dropdown';
@@ -18,12 +19,16 @@ export type PickerProps = PickerPanelBaseProps & {
   children?: ReactNode;
   showTime?: boolean; // 是否显示时间。默认值：-
   showNow?: boolean; // 当设定了 showTime 的时候，面板是否显示“此刻”按钮。默认值：-
+  showTody?: boolean; // 日期面板是否显示“今天”按钮。当showTime设置为true时,该属性设置不生效。默认值：-
+  disabled?: boolean; // 是否禁用。默认值：-
+  readonly?: boolean; // 是否只读。默认值：-
 };
 
 const Picker = forwardRef((props: PickerProps, ref) => {
-  let { format, defaultValue = '', placeHolder, placement = 'top', style, className, panelClassName, panelStyle, children, ...resetProps } = props;
+  let { format, defaultValue = '', placeHolder, placement = 'top', style, className, panelClassName, panelStyle, children, disabled, readonly, ...resetProps } = props;
   let [inputValue, setInputValue] = useState<string>(defaultValue);
   let [selectedValue, setSelectedValue] = useState<string>(defaultValue);
+  const [hovering, setHovering] = useState<boolean>(false);
   const dropdownRef = createRef<{ hide: () => void; show: () => void }>();
 
   useEffect(() => {
@@ -67,11 +72,20 @@ const Picker = forwardRef((props: PickerProps, ref) => {
     }
   };
 
-  const onClear = () => {
+  const onClear = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setInputValue('');
     setSelectedValue('');
     resetProps.onChange?.('');
     hide();
+  };
+
+  const handleMouseEnter = () => {
+    setHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovering(false);
   };
 
   useImperativeHandle(ref, () => ({
@@ -79,18 +93,41 @@ const Picker = forwardRef((props: PickerProps, ref) => {
     show,
   }));
 
-  return (
-    <div className={classNames('ud-date-picker', className)} style={style}>
-      <Dropdown
-        className='ud-date-picker-dropdown'
-        content={<PickerPanel {...resetProps} className={panelClassName} style={panelStyle} onChange={dateChange} defaultValue={selectedValue} viewDate={selectedValue}></PickerPanel>}
-        trigger='click'
-        placement={placement}
-        ref={dropdownRef}
-      >
-        {children || <Input value={inputValue} onChange={inputChange} onBlur={inputBlur} placeholder={placeHolder} showClear={true} onClear={onClear} />}
-      </Dropdown>
-    </div>
+  const renderDatePicker = () => {
+    return (
+      children || (
+        <div className={classNames('ud-date-picker', disabled ? 'ud-date-picker-disabled' : readonly ? 'ud-date-picker-readonly' : 'ud-date-picker-normal', className)} style={style} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <Input className='picker-input' value={inputValue} onChange={inputChange} onBlur={inputBlur} placeholder={placeHolder} disabled={disabled} readOnly={readonly} />
+          <div className='suffix-icon'>
+            {hovering && inputValue ? (
+              <label onClick={onClear}>
+                <CloseCircleFilled className='clear-icon' />
+              </label>
+            ) : (
+              <IconDateOutline className='date-icon' />
+            )}
+          </div>
+        </div>
+      )
+    );
+  };
+
+  return disabled || readonly ? (
+    <>{renderDatePicker()}</>
+  ) : (
+    <Dropdown
+      className='ud-date-picker-dropdown'
+      content={
+        <div className='ud-date-picker-panel'>
+          <PickerPanel {...resetProps} className={panelClassName} style={panelStyle} onChange={dateChange} defaultValue={selectedValue} viewDate={selectedValue}></PickerPanel>
+        </div>
+      }
+      trigger='click'
+      placement={placement}
+      ref={dropdownRef}
+    >
+      {renderDatePicker()}
+    </Dropdown>
   );
 });
 Picker.displayName = 'DatePicker';

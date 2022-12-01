@@ -1,5 +1,6 @@
 import React, { useState, createRef, useImperativeHandle, forwardRef, CSSProperties, useEffect } from 'react';
 import classNames from 'classnames';
+import { ClockCircleOutlined, CloseCircleFilled } from '@ubt/udesign-icons';
 import Input from '../input';
 import Dropdown from '../dropdown';
 import PickerPanel from './picker-panel';
@@ -16,16 +17,20 @@ export type TimerProps = {
   panelStyle?: CSSProperties; // 时间面板内联样式。默认值：-
   panelClassName?: string; // 时间面板样式类名。默认值：-
   showNow?: boolean; // 面板是否显示“此刻”按钮。默认值：false
+  disabled?: boolean; // 是否禁用。默认值：-
+  readonly?: boolean; // 是否只读。默认值：-
 } & NativeProps;
 
 const TimePicker = forwardRef((props: TimerProps, ref) => {
-  let { defaultValue = '', placeHolder, placement = 'bottomLeft', showNow = false, style, className, children, ...resetProps } = props;
+  let { defaultValue = '', placeHolder, placement = 'bottomLeft', showNow = false, style, className, children, disabled, readonly, ...resetProps } = props;
   // 输入框值
   let [inputValue, setInputValue] = useState<string>(defaultValue);
   // 列表选中值
   let [inputSelValue, setInputSelValue] = useState<string>(defaultValue);
   // 确认值
   let [selectedValue, setSelectedValue] = useState<string>(defaultValue);
+  const [hovering, setHovering] = useState<boolean>(false);
+
   // dropdown visible值
   let [visible, setVisible] = useState<boolean>(false);
   const dropdownRef = createRef<{ hide: () => void; show: () => void }>();
@@ -88,6 +93,14 @@ const TimePicker = forwardRef((props: TimerProps, ref) => {
     hide();
   };
 
+  const handleMouseEnter = () => {
+    setHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovering(false);
+  };
+
   useEffect(() => {
     // 隐藏时置已确认的值
     if (!visible) {
@@ -96,19 +109,36 @@ const TimePicker = forwardRef((props: TimerProps, ref) => {
     }
   }, [visible]);
 
-  return (
-    <div className={classNames('ud-time-picker', className)} style={style}>
-      <Dropdown
-        content={<PickerPanel selValue={inputSelValue} onChange={onSelect} onConfirm={onConfirm} onNow={onNow} showNow={showNow} style={resetProps.panelStyle} className={resetProps.panelClassName}></PickerPanel>}
-        trigger='click'
-        placement={placement}
-        ref={dropdownRef}
-        clickToHide={false}
-        onVisibleChange={onVisibleChange}
-      >
-        {children || <Input value={inputValue} onChange={inputChange} placeholder={placeHolder} showClear={true} onClear={onClear} />}
-      </Dropdown>
-    </div>
+  const renderPicker = () => {
+    return (
+      <div className={classNames('ud-time-picker', disabled ? 'ud-time-picker-disabled' : readonly ? 'ud-time-picker-readonly' : 'ud-time-picker-normal', className)} style={style} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        {children || <Input className='picker-input' value={inputValue} onChange={inputChange} placeholder={placeHolder} disabled={disabled} readOnly={readonly} />}
+        <div className='suffix-icon'>
+          {hovering && inputValue ? (
+            <label onClick={onClear}>
+              <CloseCircleFilled className='clear-icon' />
+            </label>
+          ) : (
+            <ClockCircleOutlined className='date-icon' />
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  return disabled || readonly ? (
+    <>{renderPicker()}</>
+  ) : (
+    <Dropdown
+      content={<PickerPanel selValue={inputSelValue} onChange={onSelect} onConfirm={onConfirm} onNow={onNow} showNow={showNow} style={resetProps.panelStyle} className={resetProps.panelClassName}></PickerPanel>}
+      trigger='click'
+      placement={placement}
+      ref={dropdownRef}
+      clickToHide={false}
+      onVisibleChange={onVisibleChange}
+    >
+      {renderPicker()}
+    </Dropdown>
   );
 });
 TimePicker.displayName = 'TimePicker';

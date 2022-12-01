@@ -4,11 +4,48 @@
 $module: ud-time-picker;
 .#{$module}{
   width: $time-picker-width;
+  position: relative;
   .ud-input-wrapper{
     background: $time-picker-background;
-      &:hover{
-        border-color: $time-picker-input-focused ;
-      }
+  }
+  .picker-input{
+    padding-right: 32px;
+  }
+  .suffix-icon{
+    width: 32px;
+    height: 100%;
+    position: absolute;
+    top:0;
+    right: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .clear-icon{
+    cursor: pointer;
+  }
+  .date-icon, .clear-icon{
+    width: 32px;
+    height: 32px;
+  }
+}
+.#{$module}-normal{
+  .ud-input-wrapper{
+    &:hover{
+      border-color: $time-picker-input-focused ;
+    }
+  }
+}
+.#{$module}-readonly{
+  .ud-input-wrapper.ud-input-wrapper-focused{
+    border-color: $time-picker-border-color !important;
+  }
+}
+.#{$module}-disabled{
+  .ud-input-wrapper{
+    background: $time-picker-disabled-background;
+  }
+  .suffix-icon{
+    opacity: 0.5;
   }
 }
 .#{$module}-panel{
@@ -19,31 +56,31 @@ $module: ud-time-picker;
   .time-box{
     display: flex;
     width: 100%;
-    height: 224px;
+    height: 288px;
     text-align: center;
     border-bottom: 1px solid $time-picker-border-color;
     ul{
       position: relative;
-      width: 60px;
+      width: 64px;
       text-align: left;
       margin: 0;
-      padding: 0;
+      padding: 4px;
       overflow-y: hidden;
       list-style: none;
       border-right: 1px solid $time-picker-border-color;
       transition: all 0.3s linear;
       &:hover{
         overflow-y: auto;
-        border-right: 1px solid $time-picker-background;
       }
       li{
         margin: 0;
         padding: 0 0 0 16px;
-        height: 28px;
-        line-height: 28px;
+        height: 32px;
+        line-height: 32px;
         &.selected{
           background: $time-picker-selected-background;
           color: $time-picker-selected-color;
+          border-radius: 8px;
         }
       }
       &:last-child{
@@ -51,7 +88,7 @@ $module: ud-time-picker;
       }
       &::after{
         display: block;
-        height: 196px;
+        height: 256px;
         content: '';
       }
     }
@@ -64,7 +101,7 @@ $module: ud-time-picker;
     padding: 10px;
     background: $time-picker-background;
     .confirm{
-      border-radius: 0;
+      border-radius: 8px;
       min-width: 60px;
       background: $time-picker-confirm-background;
       color: $time-picker-confirm-color;
@@ -72,8 +109,31 @@ $module: ud-time-picker;
     .now{
       color: $time-picker-now-color;
       cursor: pointer;
+      font-weight: bold;
     }
   }
+  ::-webkit-scrollbar
+{
+    width:6px;
+    height:6px;
+    background-color: transparent;
+}
+/*定义滚动条轨道
+ 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow:inset 0 0 6px transparent;
+    border-radius:5px;
+    background-color: transparent;
+}
+/*定义滑块
+ 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    border-radius:5px;
+    -webkit-box-shadow:inset 0 0 6px $time-picker-scrollbar-color;
+    background-color:transparent;
+}
 }
 
 // time-range-picker
@@ -85,12 +145,27 @@ $module: ud-time-picker;
   border: $border-width-control solid $time-picker-range-border-color;
   border-radius: var(--ud-border-radius-full);
   align-items: center;
+  .ud-input-wrapper{
+    background: transparent;
+    border: 0;
+  }
+  .suffix-icon{
+    box-sizing: border-box;
+    width: 32px;
+    height: 100%;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .clear-icon{
+    cursor: pointer;
+  }
+}
+.#{$module}-range-normal{
   &:hover{
     border-color: $time-picker-range-input-focused ;
   }
   .ud-input-wrapper{
-    background: transparent;
-    border: 0;
     .ud-input{
       &:hover{
         background: $time-picker-range-background;
@@ -109,10 +184,11 @@ $module: ud-time-picker;
       transform: translate(-50%, 0);
     }
   } 
-  .clear-icon{
-    padding-right: 10px;
-    cursor: pointer;
-    color: $time-picker-range-clear-icon-color;
+}
+.#{$module}-range-disabled{
+  background: $time-picker-disabled-background;
+  .suffix-icon{
+    opacity: 0.5;
   }
 }
 .#{$module}-range-dropdown{

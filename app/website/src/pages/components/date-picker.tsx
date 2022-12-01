@@ -19,6 +19,7 @@ export default function DatePickerPage() {
                   console.log(e);
                 }}
                 placeHolder='请选择日期'
+                showTody={true}
               ></DatePicker>
             </Space>
             <br />

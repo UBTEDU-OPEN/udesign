@@ -1,7 +1,7 @@
-$date-panel-width: var(--ud-date-panel-width, 320px);
+$date-panel-width: var(--ud-date-panel-width, 420px);
 $date-panel-color: var(--ud-date-panel-color, #3e4967);
 $date-panel-margin: var(--ud-date-panel-margin, 0);
-$date-panel-padding: var(--ud-date-panel-padding, 10px);
+$date-panel-padding: var(--ud-date-panel-padding, 16px 0 6px);
 $date-panel-border-radius: var(--ud-date-panel-border-radius, 12px);
 
 // 星期样式
@@ -16,9 +16,6 @@ $date-panel-month-days-margin: var(--ud-date-panel-month-days-margin, 4px 0);
 // 非当前月份的日期
 $date-panel-other-month-days-color: var(--ud-date-panel-other-month-days-color, #999);
 
-// 当前月份的日期
-$date-panel-current-month-days-color: var(--ud-date-panel-current-month-days-color, var(--ud-color-black));
-
 // 具体日期样式
 $date-panel-date-text-line-height: var(--ud-date-panel-date-text-line-height,32px);
 $date-panel-date-text-width: var(--ud-date-panel-date-text-width, 32px);
@@ -27,15 +24,18 @@ $date-panel-date-text-font-size: var(--ud-date-panel-date-text-font-size, 16px);
 
 // 选中时日期样式
 $date-panel-selected-day-active-border-radius: var(--ud-date-panel-selected-day-active-border-radius, 50%);
-$date-panel-selected-day-active-background-image: var(--ud-date-panel-selected-day-active-background-image, linear-gradient(155deg, #74e3ff 0%, #9c6bff 100%));
+$date-panel-selected-day-active-background: var(--ud-date-panel-selected-day-active-background, var(--ud-color-primary));
 $date-panel-selected-day-active-color: var(--ud-date-panel-selected-day-active-color, var(--ud-color-white));
 
 // range日期样式
-$date-panel-range-day-active-background: var(--ud-date-panel-range-day-active-background, #f2f4fa);
+$date-panel-range-day-active-background: var(--ud-date-panel-range-day-active-background, var(--ud-color-primary));
 $date-panel-range-day-disable-background: var(--ud-date-panel-range-day-disable-background,rgba(0,0,0,0.05) );
+$date-panel-range-day-selected-radius: var(--ud-date-panel-range-day-selected-radius, 16px);
 
 // 当前日期样式
 $date-panel-now-day-border-color: var(--ud-date-panel-now-day-border-color, var(--ud-color-primary));
+$date-panel-tody-color: var(--ud-date-panel-tody-color, var(--ud-color-primary));
+
 
 
 

@@ -49,3 +49,4 @@ export { default as UpOutlined } from './UpOutlined';
 export { default as UserCompileOutlined } from './UserCompileOutlined';
 export { default as UserOutlined } from './UserOutlined';
 export { default as VoiceFilled } from './VoiceFilled';
+export { default as IconDateOutline } from './IconDateOutline';

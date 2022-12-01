@@ -24,6 +24,9 @@ const DateTimePanel = (props: DateTimeProps) => {
     if (defaultValue) {
       setSelDate(dayjs(defaultValue).format(DateFormat));
       setSelTime(dayjs(defaultValue).format(TimeFormat));
+    } else {
+      setSelDate('');
+      setSelTime('');
     }
   }, [defaultValue]);
 

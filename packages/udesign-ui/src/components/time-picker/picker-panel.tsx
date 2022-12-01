@@ -60,7 +60,7 @@ const PickerPanel = (props: TimerProps) => {
     const valArr = selValue?.split(':') || [];
     // 选中的时间滚动到顶部
     [hourRef, minuteRef, secondRef].forEach((item, idx) => {
-      if (item.current && valArr[idx] && valArr[idx].length === 2) item.current.scrollTo({ top: Number(valArr[idx] || 0) * 28, behavior: behavior.current });
+      if (item.current && valArr[idx] && valArr[idx].length === 2) item.current.scrollTo({ top: Number(valArr[idx] || 0) * 32, behavior: behavior.current });
     });
   }, [selValue]);
 

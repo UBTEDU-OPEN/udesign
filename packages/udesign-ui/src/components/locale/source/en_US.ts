@@ -21,6 +21,7 @@ const local: Locale = {
     monthArr: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     confirm: 'Confirm',
     now: 'Now',
+    tody: 'Tody',
   },
 };
 

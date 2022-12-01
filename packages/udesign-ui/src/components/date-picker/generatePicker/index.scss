@@ -4,29 +4,85 @@
 $module: ud-date-picker;
 .#{$module}{
   width: $date-picker-width;
+  position: relative;
   .ud-input-wrapper{
     background: $date-picker-background;
-      &:hover{
-        border-color: $date-picker-input-focused ;
-      }
+  }
+  .picker-input{
+    padding-right: 32px;
+  }
+  .suffix-icon{
+    width: 32px;
+    height: 100%;
+    position: absolute;
+    top:0;
+    right: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .clear-icon{
+    cursor: pointer;
+  }
+  .date-icon, .clear-icon{
+    width: 32px;
+    height: 32px;
+  }
+}
+.#{$module}-normal{
+  .ud-input-wrapper{
+    &:hover{
+      border-color: $date-picker-input-focused ;
+    }
+  }
+}
+.#{$module}-readonly{
+  .ud-input-wrapper.ud-input-wrapper-focused{
+    border-color: $date-picker-border-color !important;
+  }
+}
+.#{$module}-disabled{
+  .ud-input-wrapper{
+    background: $date-picker-disabled-background;
+  }
+  .suffix-icon{
+    opacity: 0.5;
   }
 }
 
 // date-range-picker
 .#{$module}-range{
   width: $date-picker-range-width;
-  display: flex;
   background: $date-picker-range-background;
+  display: flex;
   color: $date-picker-range-color;
-  border: $border-width-control solid $date-picker-range-border-color;
+  border: $border-width-control solid $date-picker-border-color;
   border-radius: var(--ud-border-radius-full);
   align-items: center;
+  .ud-input-wrapper{
+    background: transparent;
+    border: 0;
+  }
+  .suffix-icon{
+    box-sizing: border-box;
+    width: 32px;
+    height: 100%;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .clear-icon{
+    cursor: pointer;
+  }
+  .date-icon, .clear-icon{
+    width: 32px;
+    height: 32px;
+  }
+}
+.#{$module}-range-normal{
   &:hover{
     border-color: $date-picker-range-input-focused ;
   }
   .ud-input-wrapper{
-    background: transparent;
-    border: 0;
     .ud-input{
       &:hover{
         background: $date-picker-range-background;
@@ -45,11 +101,16 @@ $module: ud-date-picker;
       transform: translate(-50%, 0);
     }
   } 
-  .clear-icon{
-    padding-right: 10px;
-    cursor: pointer;
-    color: $date-picker-range-clear-icon-color;
+}
+.#{$module}-range-disabled{
+  background: $date-picker-disabled-background;
+  .suffix-icon{
+    opacity: 0.5;
   }
+}
+
+.#{$module}-panel{
+  background:$date-picker-panel-background;
 }
 .#{$module}-dropdown{
   max-width: $date-picker-dropdown-max-width;
@@ -59,8 +120,10 @@ $module: ud-date-picker;
 }
 .#{$module}-range-panel{
   display: flex;
+  background:$date-picker-panel-background;
   .ud-date-panel{
     border: 0;
     border-radius: 0;
   }
 }
+

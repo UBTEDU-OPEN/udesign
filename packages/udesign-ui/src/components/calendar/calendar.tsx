@@ -89,10 +89,10 @@ const Calendar = (props: CalendarProps) => {
         >
           <div className={`${prefixCls}-title`}>
             <div className={`${prefixCls}-titleImgBox`} onClick={YearDecreaseClick}>
-              <FirstRightOutlined className={`left-icon`} size='small' />
+              <FirstRightOutlined className={classNames(`left-icon`, `${prefixCls}-title-left-icon`)} size='small' />
             </div>
             <div className={`${prefixCls}-titleImgBox`} onClick={changLessMonth}>
-              <LeftOutlined size='small' />
+              <LeftOutlined size='small' className={`${prefixCls}-title-left-icon`} />
             </div>
             <div className={`${prefixCls}-year-number`}>
               <span>{locale.monthArr[Number(monthNumber) - 1]}</span>

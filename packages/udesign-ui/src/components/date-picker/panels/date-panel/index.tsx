@@ -21,8 +21,9 @@ export type DatePanelProps = {
   onChange?: (dates: string) => void; // 切换日期时的回调。默认值：-
   onViewDateChange?: (isYear: boolean, diff: number) => void;
   viewDate?: string; // 面板日期
+  showTody?: boolean;
 } & Omit<NativeProps, 'children'>;
-const DatePanel = ({ onChange, style, className, onViewDateChange, viewDate, ...restProps }: DatePanelProps) => {
+const DatePanel = ({ onChange, style, className, onViewDateChange, viewDate, showTody, ...restProps }: DatePanelProps) => {
   const nowDate = dayjs().format(DateFormat);
   const [yearNumber, setYearNumber] = useState<string>();
   const [monthNumber, setMonthNumber] = useState<string>(); // MM
@@ -101,6 +102,16 @@ const DatePanel = ({ onChange, style, className, onViewDateChange, viewDate, ...
             </div>
           </PanelHeader>
           <DateBody cells={locale.weekArr} rows={daysList} onChange={handleSelect} nowDate={nowDate} {...restProps}></DateBody>
+          {showTody && (
+            <div
+              className='tody_box'
+              onClick={() => {
+                onChange?.(nowDate);
+              }}
+            >
+              {locale.tody}
+            </div>
+          )}
         </div>
       )}
     </LocaleConsumer>

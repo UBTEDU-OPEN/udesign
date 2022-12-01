@@ -16,15 +16,16 @@ export type PickerPanelProps = PickerPanelBaseProps & {
   endValue?: string; // 最晚日期
   showTime?: boolean; // 是否显示时间。默认值：-
   showNow?: boolean;
+  showTody?: boolean;
 };
 
 const PickerPanel = (props: PickerPanelProps) => {
-  let { picker = 'date', showTime, ...resetProps } = props;
+  let { picker = 'date', showTime, showTody, ...resetProps } = props;
   const renderPanel = () => {
     let node;
     switch (picker) {
       default:
-        node = showTime ? <DateTimePanel {...resetProps}></DateTimePanel> : <DatePanel {...resetProps}></DatePanel>;
+        node = showTime ? <DateTimePanel {...resetProps}></DateTimePanel> : <DatePanel showTody={showTody} {...resetProps}></DatePanel>;
     }
     return node;
   };
