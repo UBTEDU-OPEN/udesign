@@ -59,7 +59,7 @@ export const Body = () => {
                   <div className={classNames(`${prefixCls}-tbody-content`)} style={{ width: '80px' }}>
                     <Radio.Group
                       name={data[rowKey] as string}
-                      onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                      onChange={() => {
                         if (dispatch) {
                           dispatch({
                             type: types.UPDATE_SELECTED,

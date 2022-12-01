@@ -84,6 +84,9 @@ export { default as Scrollbar } from './components/scrollbar';
 export type { SelectProps } from './components/select';
 export { default as Select } from './components/select';
 
+export type { SliderProps } from './components/slider';
+export { default as Slider } from './components/slider';
+
 export type { SkeletonProps } from './components/skeleton';
 export { default as Skeleton } from './components/skeleton';
 

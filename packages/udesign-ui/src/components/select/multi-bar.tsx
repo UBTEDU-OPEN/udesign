@@ -91,7 +91,6 @@ export const MultiBar = ({ searchValue = '', setSearchValue, maxTagCount, select
             type='text'
             ref={inputRef}
             onChange={(val: string) => {
-              context.onChange && context?.onChange(val);
               setSearchValue(val);
             }}
           />

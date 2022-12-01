@@ -1,0 +1,11 @@
+$slider-height-small: var(--ud-slider-height-small, 16px);
+$slider-height-middle: var(--ud-slider-height-middle, 20px);
+$slider-background: var(--ud-slider-background, var(--ud-color-primary));
+
+$slider-track-background: var(--ud-slider-main-background, transparent);
+
+$slider-handle-height-small: var(--ud-slider-handle-height-small, 20px);
+$slider-handle-width-small: var(--ud-slider-handle-width-small, 20px);
+$slider-handle-height-middle: var(--ud-slider-handle-height-middle, 34px);
+$slider-handle-width-middle: var(--ud-slider-handle-width-middle, 34px);
+$slider-handle-background: var(--ud-slider-handle-background, var(--ud-color-white));

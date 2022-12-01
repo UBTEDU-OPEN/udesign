@@ -14,5 +14,5 @@ $checkbox-icon-color-disabled: var(--ud-checkbox-icon-color-checked-disabled, va
 $checkbox-icon-background-disabled: var(--ud-checkbox-icon-background-checked-disabled, var(--ud-color-disabled-fill)); // checkbox 选中图标禁用状态 颜色(color + background + border)
 $checkbox-icon-border-disabled: var(--ud-checkbox-icon-border-checked-disabled, 2px solid var(--ud-color-disabled-text)); // checkbox 选中图标禁用状态 颜色(color + background + border)
 
-$checkbox-icon-border-indeterminate: var(--ud-checkbox-icon-border-checked-indeterminate, 2px solid var(--ud-color-primary)); // 多选下 未全选中时图标 颜色(border)
+$checkbox-icon-color-indeterminate: var(--ud-checkbox-icon-color-checked-indeterminate, var(--ud-color-primary)); // 多选下 未全选中时图标 颜色(border)
 $checkbox-icon-border-indeterminate-disabled: var(--ud-checkbox-icon-border-checked-indeterminate-disabled, 2px solid var(--ud-color-disabled-text)); // 多选下 未全选中时图标禁用状态 颜色(border)

@@ -29,7 +29,8 @@ export type ModalProps = {
   cancelText?: string; // 取消按钮的文字。
   cancelLoading?: boolean; // 取消按钮 loading。默认值：false
   centered?: boolean; // 是否居中显示。默认值：false
-  closeable?: boolean; // 是否显示右上角的关闭按钮。默认值：true
+  closeable?: boolean; // 右上角的关闭按钮是否可点击。默认值：true
+  showClose?: boolean; // 是否显示右上角的关闭按钮。默认值：true
   closeIcon?: ReactNode; //	自定义关闭按钮的图标。
   closeOnEsc?: boolean; // 允许通过键盘事件Esc触发关闭。默认值：
   confirmLoading?: boolean; // 确认按钮 loading。默认值：true
@@ -156,13 +157,17 @@ export const Modal = (props: ModalProps) => {
   };
 
   const renderCloseBtn = () => {
-    const { closeable = true, closeIcon, onCancel } = props;
+    const { showClose = true, closeable = true, closeIcon, onCancel } = props;
     const handleClick = (e: React.MouseEvent) => {
+      if (!closeable) return;
       onCancel?.(e);
     };
 
-    return closeable ? (
-      <div className={`${prefixCls}-header-icon`} onClick={handleClick}>
+    const cls = classNames(`${prefixCls}-header-icon`, {
+      [`${prefixCls}-header-icon-disabled`]: !closeable,
+    });
+    return showClose ? (
+      <div className={cls} onClick={handleClick}>
         {closeIcon ? <Icon size='middle' svg={closeIcon} /> : <Close size='middle' />}
       </div>
     ) : null;
@@ -174,10 +179,10 @@ export const Modal = (props: ModalProps) => {
     }
 
     const { title } = props;
-    return title === null || title === undefined ? null : (
+    return (
       <div className={`${prefixCls}-header`}>
         {renderIcon()}
-        <div className={`${prefixCls}-title`}>{title}</div>
+        {title ? <div className={`${prefixCls}-title`}>{title}</div> : null}
         <div className={`${prefixCls}-header-left`}>{renderBackBtn()}</div>
         <div className={`${prefixCls}-header-right`}>
           {renderHelpBtn()}

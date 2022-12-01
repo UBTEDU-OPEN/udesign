@@ -133,11 +133,10 @@ export const menus = [
     name: 'select',
     text: 'Select 选择器',
   },
-  // {
-  //   name: 'slider',
-  //   text: 'Slider 滑动选择器',
-  //   disabled: true,
-  // },
+  {
+    name: 'slider',
+    text: 'Slider 滑动选择器',
+  },
   {
     name: 'switch',
     text: 'Switch 开关',
@@ -275,11 +274,11 @@ export const menus = [
     name: 'modal',
     text: 'Modal 对话框',
   },
-  {
-    name: 'notification',
-    text: 'Notification 通知提醒框',
-    disabled: true,
-  },
+  // {
+  //   name: 'notification',
+  //   text: 'Notification 通知提醒框',
+  //   disabled: true,
+  // },
   // {
   //   name: 'popconfirm',
   //   text: 'Popconfirm 气泡确认框',

@@ -175,7 +175,7 @@ export default function TablePage() {
             <div className='bg-white p-5'>
               <Radio.Group
                 name='type'
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                onChange={() => {
                   setChecked(!checked);
                 }}
               >

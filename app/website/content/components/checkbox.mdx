@@ -1,0 +1,126 @@
+# Checkbox 复选框
+
+- 在一组可选项中进行多项选择时；
+
+- 单独使用可以表示两种状态之间的切换，和 switch 类似。
+
+- 区别在于切换 switch 会直接触发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合。
+
+## 基础用法
+
+通过 defaultChecked 指定复选框的初始勾选状态。
+
+```jsx
+<Space>
+  <Checkbox>未选中</Checkbox>
+  <Checkbox defaultChecked>已选中</Checkbox>
+</Space>
+```
+
+## 禁用状态
+
+通过设置 disabled 属性可以禁用复选框。
+
+```jsx
+<Space>
+  <Checkbox disabled>复选框</Checkbox>
+  <Checkbox defaultChecked disabled>
+    复选框
+  </Checkbox>
+</Space>
+```
+
+## 受控组件
+
+组件是否选中完全取决于传入的 checked 值，配合 onChange 回调函数使用。
+
+```jsx
+() => {
+  const [checked, setChecked] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+
+  return (
+    <>
+      <Space vertical align='start'>
+        <Space className='mb-4'>
+          <Button type='primary' onClick={() => setChecked(!checked)}>
+            {checked ? 'unchecked' : 'checked'}
+          </Button>
+          <Button type='primary' onClick={() => setDisabled(!disabled)}>
+            {disabled ? 'enable' : 'disable'}
+          </Button>
+        </Space>
+        <Checkbox checked={checked} disabled={disabled} onChange={(event) => setChecked(event.nativeEvent.target?.checked)}>
+          复选框
+        </Checkbox>
+      </Space>
+    </>
+  );
+};
+```
+
+## 复选框组（jsx）
+
+通过在 Checkbox.Group 内部放置 Checkbox 元素，可以声明 Checkbox 组
+
+```jsx
+<Checkbox.Group defaultValue={['A']} onChange={(value) => console.log(value)}>
+  <Checkbox value='A'>A</Checkbox>
+  <Checkbox value='B'>B</Checkbox>
+  <Checkbox value='C' disabled>
+    C
+  </Checkbox>
+</Checkbox.Group>
+```
+
+## 复选框组（数组）
+
+复选框组可以通过 options 属性生成 Checkbox。
+
+```jsx
+<Checkbox.Group
+  options={[
+    { label: 'A', value: 'a' },
+    { label: 'B', value: 'b' },
+    { label: 'C', value: 'c' },
+  ]}
+  defaultValue={['a']}
+/>
+```
+
+## 全选
+
+在实现全选效果时，你可能会用到 indeterminate 属性。
+
+```jsx
+() => {
+  const plainOptions = ['A', 'B', 'C'];
+
+  const [indeterminate, setIndeterminate] = useState(true);
+  const [checkedList, setCheckedList] = useState(['A', 'B']);
+  const [checkedAll, setCheckedAll] = useState(false);
+
+  const onChange = (selectedValue) => {
+    setCheckedList(selectedValue);
+    setIndeterminate(!!selectedValue.length && selectedValue.length < plainOptions.length);
+    setCheckedAll(selectedValue.length === plainOptions.length);
+  };
+
+  const onCheckAllChange = (event) => {
+    setCheckedList(event.target.checked ? plainOptions : []);
+    setIndeterminate(false);
+    setCheckedAll(event.target.checked);
+  };
+
+  return (
+    <>
+      <Space vertical align='start'>
+        <Checkbox indeterminate={indeterminate} checked={checkedAll} onChange={onCheckAllChange}>
+          全选
+        </Checkbox>
+        <Checkbox.Group options={plainOptions} value={checkedList} onChange={onChange} />
+      </Space>
+    </>
+  );
+};
+```

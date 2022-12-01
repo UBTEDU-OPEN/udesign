@@ -1,7 +1,43 @@
 # 更新日志
 
-- 重要：表示用户升级时，需要重点关注并自测的内容。
+- 重要：表示用户升级时，**需要自测**的内容。
 - 一般：表示用户升级时，不需要关注的内容（不涉及接口变动）。
+
+## v1.3.1
+
+### 一般
+
+1. 新增 Slider 滑动输入条组件
+2. 修复 Modal 组件 `title` 传 null 后，关闭按钮也不见了
+3. 文档更新
+
+## v1.3.0
+
+> 因为早期组件设计不合理，我们在此版本进行了大量的 API 重写，如果使用，请务必自测标记为重要的部分。
+
+### 重要!!!
+
+1. 删除 Space 组件的 `direction` 属性
+2. 新增 Space 组件的 `vertical` 属性用于垂直布局
+3. 删除 Divider 组件的 `type` 属性
+4. 删除 Divider 组件的 `plain` 属性
+5. 新增 Divider 组件的 `vertical` 属性用于垂直分割线
+6. 修改 Modal 组件的 `destroy` 方法名为 `close`
+7. 修改 Modal 组件的 `closeable` 属性为控制关闭按钮是否可以被点击
+8. 新增 Modal 组件的 `showClose` 属性控制是否显示关闭按钮
+9. 修改 Spin 组件的 `timeOut` 属性为 `timeout`
+10. 修改 Toast 组件的默认位置为居中（以前为顶部）
+
+### 一般
+
+1. 修复 Modal 组件函数式调用时，关闭后残留了一个 div 的问题
+2. 修复 input 组件的 `prepend` 和 `append` 属性导致 Input 变形的问题
+3. 修复 Modal 组件 `style` 被挂载两次的错误
+4. 修改 Modal 最多只能拖动到屏幕边缘，以避免拖出后无法拖回的问题
+5. 文档网站大更新，使用 mdx 重写了大部分的组件文档和演示案例
+6. 删除 Row 和 Col 的 className 中无用的 grid, align, justify
+7. 新增 Breadcrumb.Item 的 `icon` 属性
+8. 修复 Radio 组件受控功能
 
 ## v1.2.4
 
