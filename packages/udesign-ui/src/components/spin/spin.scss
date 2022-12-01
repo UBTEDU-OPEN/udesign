@@ -26,12 +26,7 @@ $module: ud-spin;
     display: inline-flex;
   }
 
-  &-children {
-    opacity: $spin-children-opacity;
-    user-select: none;
-  }
-
-  &-block {
+  &-hasChild {
     display: block;
 
     &::after {
@@ -54,15 +49,14 @@ $module: ud-spin;
     }
   }
 
-  &-hidden {
+  &-spinning {
     &::after {
       content: none;
     }
 
-    // 考虑到嵌套，.spin-chidren 节点的 opacity 由直接父级节点的 .spin-hidden 决定
     & > .#{$module}-children {
-      opacity: 1;
-      user-select: auto;
+      opacity: 0.5;
+      user-select: none;
     }
   }
 }

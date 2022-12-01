@@ -83,7 +83,8 @@ export const Spin = (props: SpinProps) => {
     prefixCls,
     {
       [`${prefixCls}-${size}`]: size,
-      [`${prefixCls}-block`]: children,
+      [`${prefixCls}-hasChild`]: children,
+      [`${prefixCls}-spinning`]: visible,
       [`${prefixCls}-fullscreen`]: fullscreen,
     },
     className,
