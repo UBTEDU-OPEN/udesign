@@ -22,6 +22,7 @@ const Index = () => (
         </a>
       </Space>
       {process.env.UDESIGN_VERSION ? <div className='mt-5 text-gray-500'>当前版本：v{process.env.UDESIGN_VERSION}</div> : null}
+      {process.env.UDESIGN_BASE_PATH ? console.log(process.env.UDESIGN_BASE_PATH) : console.log('process.env.UDESIGN_BASE_PATH not found')}
     </div>
   </div>
 );
