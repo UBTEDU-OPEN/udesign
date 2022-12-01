@@ -11,14 +11,14 @@ const prefixCls = `${BASE_CLASS_PREFIX}-typography-editable`;
 
 export type EditableProps = {
   icon?: ReactNode; // 自定义编辑图标。默认值：null
-  tooltip?: boolean | ReactNode; // 自定义提示文案。默认值：false
+  tooltip?: boolean | ReactNode; // 自定义提示文案。
   maxLength?: number; // 编辑中文本域最大长度 undefined
   autoSize?: { minRows?: number; maxRows?: number }; // 自动 resize 文本域。默认值：undefined
   editStyle?: CSSProperties; // 编辑框样式。默认值：undefined
   onStart?: () => void; // 进入编辑中状态时触发。默认值：-
   onEnd?: () => void; // 按 ENTER 结束编辑状态时触发。默认值：-
   onCancel?: () => void; // 按 ESC 退出编辑状态时触发。默认值：-
-  onChange?: () => void; // 文本域编辑时触发。默认值：-
+  onChange?: (value: string) => void; // 文本域编辑时触发。默认值：-
 } & NativeProps;
 
 export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength, onCancel, onStart, onEnd, onChange, autoSize, children, className, editStyle }: EditableProps) => {
@@ -49,7 +49,8 @@ export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength,
   const textArea = useRef<HTMLTextAreaElement>(null);
   const inpText = useRef<HTMLDivElement>(null);
 
-  const showHandle = () => {
+  const showHandle = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setIsShow(!isShow);
     onStart?.();
 
@@ -84,7 +85,7 @@ export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength,
       <div hidden={!isShow} className={cls} ref={inpText}>
         {propChildren}
         <span className={isShowCls} onClick={showHandle}>
-          <Tooltip content={tooltip}>{iconProps}</Tooltip>
+          {tooltip ? <Tooltip content={tooltip}>{iconProps}</Tooltip> : iconProps}
         </span>
       </div>
       {autoSize ? (
@@ -96,8 +97,8 @@ export const Editable = ({ icon = <EditFilled />, tooltip = '编辑', maxLength,
             className={!isShow ? cls : ''}
             onBlur={textareaBlur}
             ref={textArea}
-            onChange={() => {
-              onChange?.();
+            onChange={(val) => {
+              onChange?.(val);
             }}
             onKeyDown={onKeyHandler}
             defaultValue={propChildren}
