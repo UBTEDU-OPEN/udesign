@@ -10,7 +10,6 @@ const basePath = process.env.UDESIGN_BASE_PATH || '';
 module.exports = withTM(
   withImages(
     withContentlayer({
-      // 你项目中其他的 Next.js 配置
       reactStrictMode: true,
       trailingSlash: true,
       basePath,

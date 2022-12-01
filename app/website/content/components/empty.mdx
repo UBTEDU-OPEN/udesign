@@ -36,15 +36,15 @@
 通过 image 可以自定义图片。
 
 ```jsx
-<Empty image='/icon_empty_1.svg' />
+<Empty image={<Img src='/icon_empty_1.svg' alt='' />} />
 ```
 
 ```jsx
-<Empty image='/icon_empty_2.svg' />
+<Empty image={<Img src='/icon_empty_2.svg' alt='' />} />
 ```
 
 ```jsx
-<Empty image='/icon_empty_3.svg' />
+<Empty image={<Img src='/icon_empty_3.svg' alt='' />} />
 ```
 
 ## 自定义更多内容
@@ -53,7 +53,7 @@
 
 ```jsx
 <Empty
-  image='/icon_empty_1.svg'
+  image={<Img src='/icon_empty_1.svg' alt='' />}
   description={
     <span>
       自定义 <a href='#'>新建</a>

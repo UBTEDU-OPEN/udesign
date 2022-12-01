@@ -3,6 +3,7 @@ import * as uDesign from '@ubt/udesign-ui';
 import * as uDesignIcons from '@ubt/udesign-icons';
 import { CodeBlock } from './code-block';
 import { Highlight } from './highlight';
+import { Img } from './img';
 
 export const Pre = (props: any) => {
   if (typeof props.children === 'string') return <pre {...props} />;
@@ -16,6 +17,7 @@ export const Pre = (props: any) => {
 export const mdxComponents = {
   ...uDesign,
   ...uDesignIcons,
+  Img,
   // h1: (props) => <div className='text-3xl mt-14 mb-7 font-semibold' {...props} />,
   // h2: (props) => <div className='text-2xl mt-12 mb-5 font-semibold' {...props} />,
   // h3: (props) => <div className='text-xl mt-10 mb-3 font-semibold' {...props} />,

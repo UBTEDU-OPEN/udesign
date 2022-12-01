@@ -6,6 +6,7 @@ import icon_ip from '../../../public/icon_ip.svg';
 import icon_wifi from '../../../public/icon_wifi.svg';
 import icon_bluetooth from '../../../public/icon_bluetooth.svg';
 import { menus } from '../../constants/menus';
+import { Img } from '../../components';
 
 const itemsData = [
   {
@@ -36,7 +37,7 @@ export default function CarouselPage() {
           .fill(1)
           .map((_, key) => (
             <div className='inline-block' key={key}>
-              <img src={item.image} alt='' />
+              <Img src={item.image} alt='' />
               <span className='text-sm'>{item.name}</span>
             </div>
           ))}
