@@ -202,8 +202,6 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
     let obj: { [key: string]: any } = {
       ...resetProps,
       onChange: dateChange,
-      className: panelClassName,
-      style: panelStyle,
     };
     if (focusedType === 'start') {
       obj.defaultValue = selectedValue?.[0];
@@ -239,7 +237,11 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
         </>
       );
     }
-    return <div className='ud-date-picker-range-panel'>{panelContent}</div>;
+    return (
+      <div className={classNames('ud-date-picker-range-panel', panelClassName)} style={panelStyle}>
+        {panelContent}
+      </div>
+    );
   };
 
   const renderPicker = () => {

@@ -88,21 +88,25 @@ const Calendar = (props: CalendarProps) => {
           style={style}
         >
           <div className={`${prefixCls}-title`}>
-            <div className={`${prefixCls}-titleImgBox`} onClick={YearDecreaseClick}>
-              <FirstRightOutlined className={classNames(`left-icon`, `${prefixCls}-title-left-icon`)} size='small' />
-            </div>
-            <div className={`${prefixCls}-titleImgBox`} onClick={changLessMonth}>
-              <LeftOutlined size='small' className={`${prefixCls}-title-left-icon`} />
+            <div className={`${prefixCls}-titleImgContainer`}>
+              <div className={`${prefixCls}-titleImgBox`} onClick={YearDecreaseClick}>
+                <FirstRightOutlined className={classNames(`left-icon`, `${prefixCls}-title-left-icon`)} size='small' />
+              </div>
+              <div className={`${prefixCls}-titleImgBox`} onClick={changLessMonth}>
+                <LeftOutlined size='small' className={`${prefixCls}-title-left-icon`} />
+              </div>
             </div>
             <div className={`${prefixCls}-year-number`}>
               <span>{locale.monthArr[Number(monthNumber) - 1]}</span>
               <span className={`${prefixCls}-year`}>{yearNumber}</span>
             </div>
-            <div className={`${prefixCls}-titleImgBox`} onClick={changAddNumber}>
-              <RightOutlined size='small' />
-            </div>
-            <div className={`${prefixCls}-titleImgBox`} onClick={YearAddClick}>
-              <FirstRightOutlined size='small' />
+            <div className={`${prefixCls}-titleImgContainer`}>
+              <div className={`${prefixCls}-titleImgBox`} onClick={changAddNumber}>
+                <RightOutlined size='small' />
+              </div>
+              <div className={`${prefixCls}-titleImgBox`} onClick={YearAddClick}>
+                <FirstRightOutlined size='small' />
+              </div>
             </div>
           </div>
           <div className={`${prefixCls}-content`}>

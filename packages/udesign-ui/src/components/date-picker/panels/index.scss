@@ -25,7 +25,7 @@ $module: ud-date-picker-panel;
     cursor: pointer;
   }
   .#{$module}-hidden{
-    visibility: hidden;
+    display: none;
   }
   .#{$module}-header-left-icon{
     color: $date-picker-header-left-icon-color;

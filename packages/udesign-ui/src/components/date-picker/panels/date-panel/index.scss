@@ -91,18 +91,18 @@ $module: ud-date-panel;
       font-size: $date-panel-date-text-font-size;
       &:hover {
         background: rgba(0, 0,0,0.1);
-        border-radius: 50%;
+        border-radius: $date-panel-date-text-hover-border-radius;
       }
       &.now-day-active{
         border: 1px solid $date-panel-now-day-border-color;
-        border-radius: 50%;
+        border-radius: $date-panel-date-text-hover-border-radius;
       }
       &.selected-day-active {
         border: none;
         // border-radius: $date-panel-selected-day-active-border-radius;
         background: $date-panel-selected-day-active-background;
         color: $date-panel-selected-day-active-color;
-        border-radius: 50%;
+        border-radius: $date-panel-date-text-hover-border-radius;
         font-weight: 500;
       }
     }

@@ -89,12 +89,15 @@ $module: ud-calendar;
   height: $calendar-title-height;
   justify-content: space-between;
   align-items: center;
- 
+  .#{$module}-titleImgContainer{
+    display: flex;
+  }
   .#{$module}-titleImgBox {
     height: $calendar-titleImgBox;
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding: 0 10px;
   }
   .#{$module}-title-left-icon{
     color: $calendar-title-left-icon-color;
