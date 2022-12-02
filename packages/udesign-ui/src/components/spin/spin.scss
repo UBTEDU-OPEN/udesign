@@ -22,6 +22,10 @@ $module: ud-spin;
     }
   }
 
+  &-tip {
+    white-space: nowrap;
+  }
+
   &-animate {
     display: inline-flex;
   }
@@ -94,6 +98,7 @@ $module: ud-spin;
 
   .#{$module}-wrapper {
     display: flex;
+    flex-direction: column;
     width: auto;
     left: 50%;
     transform: translate(-50%, -50%);
