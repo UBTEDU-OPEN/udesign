@@ -2,173 +2,176 @@
 $module: ud-tabs;
 
 .#{$module} {
-	display: flex;
-	flex: 1 1 0%;
-	&-header {
-		display: flex;
-		overflow: hidden;
-	}
-	&-content {
-		padding: 30px;
-	}
-	&-tab {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
-		cursor: pointer;
-	}
-	&-tab-small {
-		padding: $tabs-tab-padding-small;
-	}
-	&-tab-middle {
-		padding: $tabs-tab-padding-middle;
-	}
-	&-tab-large {
-		font-size: $tabs-font-size-large;
-		div {
-			font-size: $tabs-font-size-large;
-		}
-		padding: $tabs-tab-padding-large;
-	}
-	&-disabled {
-		opacity: 0.5;
-		user-select: none;
-		cursor: not-allowed;
-	}
-	&-position-top {
-		flex-direction: column;
-		.#{$module}-header {
-			border-bottom: $tabs-border-width $tabs-border-style $tabs-border-color;
-			li {
-				margin-right: $tabs-tab-margin-tab;
-			}
-		}
-		.#{$module}-type-line {
-			.#{$module}-tab {
-				border-bottom-width: 2px;
-			}
-		}
-		.#{$module}-type-card {
-			.#{$module}-tab {
-				border-radius: $tabs-border-radius $tabs-border-radius 0 0;
-			}
-		}
-	}
-	&-position-bottom {
-		flex-direction: column;
-		.#{$module}-header {
-			border-top: $tabs-border-width $tabs-border-style $tabs-border-color;
-			li {
-				margin-right: $tabs-tab-margin-tab;
-			}
-		}
-		.#{$module}-type-line {
-			.#{$module}-tab {
-				border-top-width: 2px;
-			}
-		}
-		.#{$module}-type-card {
-			.#{$module}-tab {
-				border-radius: 0 0 $tabs-border-radius $tabs-border-radius;
-			}
-		}
-	}
-	&-position-left {
-		flex-direction: row;
-		.#{$module}-header {
-			border-right: $tabs-border-width $tabs-border-style $tabs-border-color;
-			li {
-				margin-bottom: $tabs-tab-margin-tab;
-			}
-		}
-		.#{$module}-header {
-			flex-direction: column;
-		}
-		.#{$module}-type-line {
-			.#{$module}-tab {
-				border-right-width: 2px;
-			}
-		}
-		.#{$module}-type-card {
-			.#{$module}-tab {
-				border-radius: $tabs-border-radius 0 0 $tabs-border-radius;
-			}
-		}
-	}
-	&-position-right {
-		.#{$module}-header {
-			border-left: $tabs-border-width $tabs-border-style $tabs-border-color;
-			li {
-				margin-bottom: $tabs-tab-margin-tab;
-			}
-		}
-		.#{$module}-header {
-			flex-direction: column;
-		}
-		.#{$module}-type-line {
-			.#{$module}-tab {
-				border-left-width: 2px;
-			}
-		}
-		.#{$module}-type-card {
-			.#{$module}-tab {
-				border-radius: 0 $tabs-border-radius $tabs-border-radius 0;
-			}
-		}
-	}
-	&-position-center {
-		justify-content: center;
-	}
-	&-position-around {
-		justify-content: space-around;
-	}
-	&-type-line {
-		.#{$module}-active {
-			border-color:  $tabs-background-active;
-		}
-		.#{$module}-inactive {
-			border-color: transparent;
-		}
-	}
-	&-type-card {
-		.#{$module}-active {
-			background: $tabs-background-active;
-			color: #fff;
-		}
-		.#{$module}-inactive {
-			background: $tabs-background-inactive;
-		}
-	}
-	&-type-button {
-		flex-direction: row;
-		border: none;
-		.#{$module}-tab {
-			border-radius: $tabs-border-radius;
-		}
-		.#{$module}-active {
-			background: $tabs-background-active;
-			color: #fff;
-		}
-		.#{$module}-inactive {
-			background: $tabs-background-inactive;
-		}
-	}
-	&-type-switch {
-		background: $tabs-background-inactive;
-		border-radius: 999px;
-		border: none;
-		li {
-			border-radius: 999px;
-		}
-		.#{$module}-active {
-			border-width: $tabs-border-width;
-			background: #fff;
-		}
-		.#{$module}-inactive {
-			background: $tabs-background-inactive;
-			border-color: transparent;
-			border-width: $tabs-border-width;
-		}
-	}
+  display: flex;
+  flex: 1 1 0%;
+  &-header {
+    display: flex;
+    overflow: hidden;
+  }
+  &-content {
+    padding: 30px;
+    flex-grow: 1;
+  }
+  &-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  &-tab-small {
+    padding: $tabs-tab-padding-small;
+  }
+  &-tab-middle {
+    padding: $tabs-tab-padding-middle;
+  }
+  &-tab-large {
+    font-size: $tabs-font-size-large;
+    div {
+      font-size: $tabs-font-size-large;
+    }
+    padding: $tabs-tab-padding-large;
+  }
+  &-disabled {
+    opacity: 0.5;
+    user-select: none;
+    cursor: not-allowed;
+  }
+  &-position-top {
+    flex-direction: column;
+    .#{$module}-header {
+      border-bottom: $tabs-border-width $tabs-border-style $tabs-border-color;
+      li {
+        margin-right: $tabs-tab-margin-tab;
+      }
+    }
+    .#{$module}-type-line {
+      .#{$module}-tab {
+        border-bottom-width: 2px;
+      }
+    }
+    .#{$module}-type-card {
+      .#{$module}-tab {
+        border-radius: $tabs-border-radius $tabs-border-radius 0 0;
+      }
+    }
+  }
+  &-position-bottom {
+    flex-direction: column;
+    .#{$module}-header {
+      order: 2;
+      border-top: $tabs-border-width $tabs-border-style $tabs-border-color;
+      li {
+        margin-right: $tabs-tab-margin-tab;
+      }
+    }
+    .#{$module}-type-line {
+      .#{$module}-tab {
+        border-top-width: 2px;
+      }
+    }
+    .#{$module}-type-card {
+      .#{$module}-tab {
+        border-radius: 0 0 $tabs-border-radius $tabs-border-radius;
+      }
+    }
+  }
+  &-position-left {
+    flex-direction: row;
+    .#{$module}-header {
+      border-right: $tabs-border-width $tabs-border-style $tabs-border-color;
+      li {
+        margin-bottom: $tabs-tab-margin-tab;
+      }
+    }
+    .#{$module}-header {
+      flex-direction: column;
+    }
+    .#{$module}-type-line {
+      .#{$module}-tab {
+        border-right-width: 2px;
+      }
+    }
+    .#{$module}-type-card {
+      .#{$module}-tab {
+        border-radius: $tabs-border-radius 0 0 $tabs-border-radius;
+      }
+    }
+  }
+  &-position-right {
+    .#{$module}-header {
+      order: 2;
+      border-left: $tabs-border-width $tabs-border-style $tabs-border-color;
+      li {
+        margin-bottom: $tabs-tab-margin-tab;
+      }
+    }
+    .#{$module}-header {
+      flex-direction: column;
+    }
+    .#{$module}-type-line {
+      .#{$module}-tab {
+        border-left-width: 2px;
+      }
+    }
+    .#{$module}-type-card {
+      .#{$module}-tab {
+        border-radius: 0 $tabs-border-radius $tabs-border-radius 0;
+      }
+    }
+  }
+  &-position-center {
+    justify-content: center;
+  }
+  &-position-around {
+    justify-content: space-around;
+  }
+  &-type-line {
+    .#{$module}-active {
+      border-color: $tabs-background-active;
+    }
+    .#{$module}-inactive {
+      border-color: transparent;
+    }
+  }
+  &-type-card {
+    .#{$module}-active {
+      background: $tabs-background-active;
+      color: #fff;
+    }
+    .#{$module}-inactive {
+      background: $tabs-background-inactive;
+    }
+  }
+  &-type-button {
+    flex-direction: row;
+    border: none;
+    .#{$module}-tab {
+      border-radius: $tabs-border-radius;
+    }
+    .#{$module}-active {
+      background: $tabs-background-active;
+      color: #fff;
+    }
+    .#{$module}-inactive {
+      background: $tabs-background-inactive;
+    }
+  }
+  &-type-switch {
+    background: $tabs-background-inactive;
+    border-radius: 999px;
+    border: none;
+    li {
+      border-radius: 999px;
+    }
+    .#{$module}-active {
+      border-width: $tabs-border-width;
+      background: #fff;
+    }
+    .#{$module}-inactive {
+      background: $tabs-background-inactive;
+      border-color: transparent;
+      border-width: $tabs-border-width;
+    }
+  }
 }
