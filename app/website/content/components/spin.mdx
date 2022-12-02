@@ -90,12 +90,22 @@
 </Space>
 ```
 
-## 全局加载（无遮罩）
+## 无遮罩的全局加载
 
-全局加载默认有遮罩，可以通过 `mask=false` 去掉遮罩。
+通过 `mask` 设置全局加载是否包含遮罩，默认有遮罩。
 
 ```jsx
 <Button onClick={() => Spin.showLoading({ mask: false })} type='primary'>
   无遮罩
+</Button>
+```
+
+## 超时关闭的全局加载
+
+通过 `timeout` 设置全局加载超时关闭时间，默认 120 秒。
+
+```jsx
+<Button onClick={() => Spin.showLoading({ timeout: 10000 })} type='primary'>
+  10秒超时关闭
 </Button>
 ```
