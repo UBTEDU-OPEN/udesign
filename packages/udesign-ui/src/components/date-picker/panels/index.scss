@@ -1,0 +1,33 @@
+@import './vairables.scss';
+
+$module: ud-date-picker-panel;
+
+// header
+.#{$module}-header {
+  font-size: $date-picker-panel-header-font-size;
+  display: flex;
+  height: $date-picker-panel-header-height;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+
+  &-img-container{
+    display: flex;
+    .#{$module}-headerImgBox{
+      padding: 0 10px;
+    }
+  }
+ 
+  .#{$module}-headerImgBox {
+    height: $date-picker-panel-headerImgBox;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .#{$module}-hidden{
+    display: none;
+  }
+  .#{$module}-header-left-icon{
+    color: $date-picker-header-left-icon-color;
+  }
+}

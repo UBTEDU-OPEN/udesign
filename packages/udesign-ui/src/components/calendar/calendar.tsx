@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import moment from 'dayjs';
 import { FirstRightOutlined, RightOutlined, LeftOutlined } from '@ubt/udesign-icons';
 import classNames from 'classnames';
-import { getMonth, weekArr, monthArr } from './moment';
+import LocaleConsumer from '../locale/consumer';
+import { Locale } from '../locale/interface';
+import { getMonth, ShowDateType } from '../../utils/moment';
 import { BASE_CLASS_PREFIX } from '../../constants';
 import { NativeProps } from '../../utils';
 
@@ -46,9 +48,9 @@ const Calendar = (props: CalendarProps) => {
   const YearDecreaseClick = () => {
     setYearNumber(String(Number(yearNumber) - 1));
   };
-  const renderWeekBox = () => (
+  const renderWeekBox = (locale: Locale['DateTimePicker']) => (
     <div className={`${prefixCls}-week-box`}>
-      {weekArr.map((item: string) => (
+      {locale.weekArr.map((item: string) => (
         <div className={`${prefixCls}-week-days`} key={`week-${item}`}>
           {item}
         </div>
@@ -57,7 +59,7 @@ const Calendar = (props: CalendarProps) => {
   );
   const renderDays = () => (
     <div className={`${prefixCls}-date-box`}>
-      {daysList.map((item: { value: number; type: string; date: string; isSelected: boolean }) => {
+      {daysList.map((item: ShowDateType) => {
         const nowValue = moment(item.date).format('YYYY-MM-D');
         let isSelected = isSelect === nowValue;
         return (
@@ -76,36 +78,44 @@ const Calendar = (props: CalendarProps) => {
   );
   const cls = classNames(`${prefixCls}`, className);
   return (
-    <div
-      className={cls}
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
-      style={style}
-    >
-      <div className={`${prefixCls}-title`}>
-        <div className={`${prefixCls}-titleImgBox`} onClick={YearDecreaseClick}>
-          <FirstRightOutlined className={`left-icon`} size='small' />
+    <LocaleConsumer componentName='DateTimePicker'>
+      {(locale: Locale['DateTimePicker']) => (
+        <div
+          className={cls}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          style={style}
+        >
+          <div className={`${prefixCls}-title`}>
+            <div className={`${prefixCls}-titleImgContainer`}>
+              <div className={`${prefixCls}-titleImgBox`} onClick={YearDecreaseClick}>
+                <FirstRightOutlined className={classNames(`left-icon`, `${prefixCls}-title-left-icon`)} size='small' />
+              </div>
+              <div className={`${prefixCls}-titleImgBox`} onClick={changLessMonth}>
+                <LeftOutlined size='small' className={`${prefixCls}-title-left-icon`} />
+              </div>
+            </div>
+            <div className={`${prefixCls}-year-number`}>
+              <span>{locale.monthArr[Number(monthNumber) - 1]}</span>
+              <span className={`${prefixCls}-year`}>{yearNumber}</span>
+            </div>
+            <div className={`${prefixCls}-titleImgContainer`}>
+              <div className={`${prefixCls}-titleImgBox`} onClick={changAddNumber}>
+                <RightOutlined size='small' />
+              </div>
+              <div className={`${prefixCls}-titleImgBox`} onClick={YearAddClick}>
+                <FirstRightOutlined size='small' />
+              </div>
+            </div>
+          </div>
+          <div className={`${prefixCls}-content`}>
+            {renderWeekBox(locale)}
+            {renderDays()}
+          </div>
         </div>
-        <div className={`${prefixCls}-titleImgBox`} onClick={changLessMonth}>
-          <LeftOutlined size='small' />
-        </div>
-        <div className={`${prefixCls}-year-number`}>
-          <span>{monthArr[Number(monthNumber)]}月</span>
-          <span className={`${prefixCls}-year`}>{yearNumber}</span>
-        </div>
-        <div className={`${prefixCls}-titleImgBox`} onClick={changAddNumber}>
-          <RightOutlined size='small' />
-        </div>
-        <div className={`${prefixCls}-titleImgBox`} onClick={YearAddClick}>
-          <FirstRightOutlined size='small' />
-        </div>
-      </div>
-      <div className={`${prefixCls}-content`}>
-        {renderWeekBox()}
-        {renderDays()}
-      </div>
-    </div>
+      )}
+    </LocaleConsumer>
   );
 };
 
