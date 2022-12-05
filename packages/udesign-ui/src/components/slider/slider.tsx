@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import { floor, round } from 'lodash';
 import { NativeProps, usePropsValue } from '../../utils';
@@ -17,7 +17,7 @@ export type SliderProps = {
 } & NativeProps;
 
 export const Slider = (props: SliderProps) => {
-  const { defaultValue, max = 255, min = 0, size = 'middle', onAfterChange, style, disabled = false, className } = props;
+  const { defaultValue, max = 100, min = 0, size = 'middle', onAfterChange, style, disabled = false, className } = props;
   const handleRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -118,7 +118,7 @@ export const Slider = (props: SliderProps) => {
     };
 
     const onMouseDown = () => {
-      if (props.value || disabled) return;
+      if (disabled) return;
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
     };
@@ -135,13 +135,13 @@ export const Slider = (props: SliderProps) => {
     };
 
     const onTouchStart = () => {
-      if (props.value || disabled) return;
+      if (disabled) return;
       document.addEventListener('touchmove', onTouchMove);
       document.addEventListener('touchend', onTouchEnd);
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      if (props.value || disabled) return;
+      if (disabled) return;
 
       changeHandle(e.changedTouches[0].pageX, e.type);
     };
