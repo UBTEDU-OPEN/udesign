@@ -10,7 +10,7 @@ export const destroyFns: any[] = [];
 
 export type SpinProps = {
   spinning?: boolean; // 是否处于加载中的状态。默认值：true
-  mask?: boolean; // 是否展示遮罩。默认值：false
+  mask?: boolean; // 是否展示遮罩。默认值：true
   maskStyle?: CSSProperties; //	遮罩的样式。
   timeout?: number; // 加载持续时间。
   size?: Size; // 组件大小，可选 small, middle, large。默认值：middle

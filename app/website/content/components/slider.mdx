@@ -2,71 +2,69 @@
 
 ## 基础用法
 
+默认的滑动输入条。
+
 ```jsx
-<Slider
-  onChange={(e) => {
-    Toast(`${e}`);
-  }}
-/>
+<Slider />
 ```
 
 ## 禁用状态
 
+通过 disabled 属性设置禁用状态。
+
 ```jsx
-<Slider disabled defaultValue={50} />
+<Slider disabled />
 ```
 
-## 不同尺寸的滑动输入条
+## 尺寸
+
+通过 size 设置尺寸，默认 middle，可选 small。
 
 ```jsx
-<Space vertical>
-  <Slider
-    size='small'
-    onChange={(e) => {
-      Toast(`${e}`);
-    }}
-  />
-  <Slider
-    size='middle'
-    onChange={(e) => {
-      Toast(`${e}`);
-    }}
-  />
-</Space>
+<Slider />
 ```
 
-## 指定滑动范围
+```jsx
+<Slider size='small' />
+```
+
+## 滑动范围
+
+通过 min 设置最小值，默认 0；通过 max 设置最大值，默认 100。
 
 ```jsx
-<Slider defaultValue={6} max={10} min={1} />
+<Slider max={10} min={0} />
 ```
 
 ## 受控属性
 
+Slider 的值由 value 控制，配合 onChange 使用。如果不希望使用受控组件，请使用 defaultValue。
+
 ```jsx
-<Slider value={60} max={100} min={50} />
+<Slider value={50} />
 ```
 
-## 使用事件
+```jsx
+() => {
+  const [value, setValue] = useState(50);
+  return (
+    <Slider
+      value={value}
+      onChange={(v) => {
+        setValue(v);
+        Toast(`${v}`);
+      }}
+    />
+  );
+};
+```
 
-使用 onChange 事件
+## 回调
+
+使用 onAfterChange 事件，触发时机与 onmouseup 一致。
 
 ```jsx
 <Slider
-  max={50}
-  min={0}
-  onChange={(e) => {
-    Toast(`${e}`);
-  }}
-/>
-```
-
-使用 onAfterChange 事件
-
-```jsx
-<Slider
-  max={10}
-  min={1}
   onAfterChange={(e) => {
     Toast(`${e}`);
   }}
