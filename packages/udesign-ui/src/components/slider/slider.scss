@@ -27,6 +27,10 @@ $module: ud-slider;
     }
   }
 
+  &-disabled {
+    cursor: not-allowed;
+    opacity: $slider-opacity-disabled;
+  }
   &-rail {
     position: absolute;
     width: 100%;
