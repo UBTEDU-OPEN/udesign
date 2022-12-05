@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Menu } from '@ubt/udesign-ui';
 import { SITE_NAME } from '../../constants/site';
+import { Img } from '../../components';
 
 const Navigation = () => {
   const router = useRouter();
-  const defaultActiveKey = router.asPath.split('/').shift() || router.asPath.split('/').slice(1, 2)[0];
+  const defaultActiveKey = router.asPath.split('/').shift() || router.asPath.split('/').slice(1, 2)[0] || 'spec';
 
   function handleChange(name: string) {
     if (name === 'spec') return;
@@ -31,12 +32,17 @@ const Navigation = () => {
       <header className='fixed z-50 bg-white w-full border-b'>
         <div className='max-w-screen-2xl mx-auto px-5 flex justify-between items-center'>
           <Link href='/'>
-            <a className='font-bold text-xl no-underline'>{SITE_NAME}</a>
+            <a className='no-underline flex items-center'>
+              <Img src='/logo.svg' width='154' height='56' alt={SITE_NAME} />
+              {process.env.UDESIGN_VERSION ? <span className='ml-3'>v{process.env.UDESIGN_VERSION}</span> : null}
+            </a>
           </Link>
           <Menu hasLine onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
-            <a className='text-inherit no-underline' target='_blank' href='http://dev.edu.ubtrobot.com/UI/U-Design/' rel='noopener noreferrer'>
-              <Menu.Item name='spec'>设计</Menu.Item>
-            </a>
+            <Link href='/'>
+              <a className='text-inherit no-underline'>
+                <Menu.Item name='spec'>设计</Menu.Item>
+              </a>
+            </Link>
             <Menu.Item name='docs'>文档</Menu.Item>
             <Menu.Item name='components'>组件</Menu.Item>
             <Menu.Item name='theme' disabled>

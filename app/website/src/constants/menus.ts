@@ -3,7 +3,7 @@ export const menus = [
   {
     name: '通用',
     text: '通用',
-    title: 1,
+    isCategory: true,
   },
   {
     name: 'button',
@@ -22,7 +22,7 @@ export const menus = [
   {
     name: '布局',
     text: '布局',
-    title: 1,
+    isCategory: true,
   },
   {
     name: 'divider',
@@ -45,7 +45,7 @@ export const menus = [
   {
     name: '导航',
     text: '导航',
-    title: 1,
+    isCategory: true,
   },
   // {
   //   name: 'affix',
@@ -82,7 +82,7 @@ export const menus = [
   {
     name: '数据录入',
     text: '数据录入',
-    title: 1,
+    isCategory: true,
   },
   // {
   //   name: 'autoComplete',
@@ -162,6 +162,11 @@ export const menus = [
   },
 
   // 数据展示
+  {
+    name: '数据展示',
+    text: '数据展示',
+    isCategory: true,
+  },
   // {
   //   name: 'avatar',
   //   text: 'Avatar 头像',
@@ -253,7 +258,7 @@ export const menus = [
   {
     name: '反馈',
     text: '反馈',
-    title: 1,
+    isCategory: true,
   },
   // {
   //   name: 'alert',
@@ -310,7 +315,7 @@ export const menus = [
   {
     name: '其他',
     text: '其他',
-    title: 1,
+    isCategory: true,
   },
   // {
   //   name: 'anchor',

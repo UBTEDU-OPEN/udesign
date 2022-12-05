@@ -15,7 +15,7 @@ const BaseLayout = ({ sidebar, children }: BaseLayoutProps) => {
     <>
       <Meta />
       <Navigation />
-      <div className='max-w-screen-2xl mx-auto'>
+      <div className={hasSider ? 'max-w-screen-2xl mx-auto' : ''}>
         <Layout hasSider={hasSider}>
           {hasSider ? (
             <Sider className='fixed z-1 w-72 h-full pb-12 border-r bg-white'>
@@ -26,7 +26,7 @@ const BaseLayout = ({ sidebar, children }: BaseLayoutProps) => {
           ) : null}
           <Layout className={hasSider ? 'pl-72' : ''}>
             <Content>{children}</Content>
-            <Footer className='p-16 border-t text-center'>Made with ❤ by uCode Team</Footer>
+            {/* <Footer className='p-16 border-t text-center'>Made with ❤ by uCode Team</Footer> */}
           </Layout>
         </Layout>
       </div>

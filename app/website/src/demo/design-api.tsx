@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import lodash from 'lodash';
 import axios from 'axios';
-import { Result } from '@ubt/udesign-ui';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
 
@@ -105,13 +104,6 @@ export const DesignAPI = (props: DesignAPIProps) => {
       </>
     );
   };
-  // (
-  // <div className='border rounded-lg overflow-hidden'>
-  //   <Result title='暂无数据' subtitle='当前组件没有可使用的 API，或者开发者没有正确编写导致无法正确显示。'>
-  //     <div className='text-base text-gray-400'>如果发现 API 不完整，请联系开发人员补充。</div>
-  //   </Result>
-  // </div>
-  // );
 
   const renderContent = () => {
     if (designApi && componentName) {
@@ -148,12 +140,12 @@ export const DesignAPI = (props: DesignAPIProps) => {
     return null;
   };
 
-  return (
+  return designApi && componentName && designApi[componentName]?.length ? (
     <section className='mb-10'>
       <div className='py-4'>
         <div className='text-2xl font-semibold'>API 参考</div>
       </div>
       {renderContent()}
     </section>
-  );
+  ) : null;
 };

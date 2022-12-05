@@ -13,8 +13,7 @@ module.exports = withTM(
       reactStrictMode: true,
       trailingSlash: true,
       basePath,
-      inlineImageLimit: false,
-      webpack: (config, options) => {
+      webpack: (config) => {
         config.plugins.push(
           new webpack.DefinePlugin({
             'process.env.UDESIGN_VERSION': JSON.stringify(pkg.version),
