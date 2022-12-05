@@ -6,3 +6,4 @@ export * from './shape';
 export * from './size';
 export * from './status';
 export * from './trigger';
+export * from './date';

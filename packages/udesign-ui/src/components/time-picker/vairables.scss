@@ -1,0 +1,18 @@
+$time-picker-width: var(--ud-time-picker-width,200px);
+$time-picker-background: var(--ud-time-picker-background, var(--ud-color-white));
+$time-picker-disabled-background: var(--ud-time-picker-disabled-background, #F5F5F5); // 输入框背景色-默认
+$time-picker-border-color: var(--ud-time-picker-border-color, #ddd);
+$time-picker-color: var(--ud-time-picker-color, var(--ud-color-black));
+$time-picker-input-focused: var(--ud-date-picker-input-focused, var(--ud-color-primary));
+$time-picker-selected-background: var(--ud-time-picker-selected-background, #EEF0FC);
+$time-picker-selected-color: var(--ud-time-picker-selected-color,  var(--ud-color-primary));
+$time-picker-now-color: var(--ud-time-picker-now-color, var(--ud-color-text-0));
+$time-picker-confirm-background: var(--ud-time-picker-confirm-background, var(--ud-color-primary));
+$time-picker-confirm-color: var(--ud-time-picker-confirm-color, var(--ud-color-white));
+$time-picker-range-width: var(--ud-time-picker-range-width, 400px);
+$time-picker-range-background: var(--ud-time-picker-range-background, #fff); // 输入框背景色-默认
+$time-picker-range-color: var(--ud-time-picker-range-color, var(--ud-color-0)); // 输入框文字颜色-默认
+$time-picker-range-border-color: var(--ud-time-picker-range-border-color, var(--ud-color-border)); // 输入框描边颜色-默认
+$time-picker-range-input-focused: var(--ud-time-picker-range-input-focused, var(--ud-color-primary));
+$time-picker-range-dropdown-max-width: var(--ud-time-picker-range-dropdown-max-width, 500px); // 下拉菜单最大宽度
+$time-picker-scrollbar-color:var(--ud-time-picker-scrollbar-color, rgb(var(--ud-gray-5)))

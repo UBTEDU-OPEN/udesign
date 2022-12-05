@@ -2,6 +2,7 @@
 
 $module: ud-calendar;
 .#{$module} {
+  background: $calendar-background;
   border: $calendar-border;
   padding: $calendar-padding;
   border-radius: $calendar-border-radius;
@@ -39,9 +40,10 @@ $module: ud-calendar;
     margin: $calendar-common-days-margin;
     cursor: pointer;
     border-radius: $calendar-common-days-border-radius;
+    margin: 0 0 10px;
   }
   .other-days {
-    color: $calendar-other-days-color;
+    opacity: 0.7;
   }
   .now-days {
     color: $calendar-now-days-color;
@@ -53,11 +55,17 @@ $module: ud-calendar;
     height: $calendar-date-text-height;
     cursor: pointer;
     font-size: $calendar-date-text-font-size;
+    &:hover {
+      background-image: $calendar-date-text-hover-background-image;
+      color: $calendar-date-text-hover-color;
+      border-radius: $calendar-date-text-hover-border-radius;
+    }
   }
   .common-days-active {
-    border-radius: $calendar-common-days-active-border-radius;
-    background-image: $calendar-common-days-active-background-image;
     color: $calendar-common-days-active-color;
+    background: $calendar-selected-day-active-background;
+    border-radius: $calendar-common-days-active-border-radius;
+    font-weight: 500;
   }
 }
 
@@ -81,17 +89,19 @@ $module: ud-calendar;
   height: $calendar-title-height;
   justify-content: space-between;
   align-items: center;
- 
+  .#{$module}-titleImgContainer{
+    display: flex;
+  }
   .#{$module}-titleImgBox {
     height: $calendar-titleImgBox;
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding: 0 10px;
+  }
+  .#{$module}-title-left-icon{
+    color: $calendar-title-left-icon-color;
   }
 }
 
-.date-text:hover {
-  background-image: $calendar-date-text-hover-background-image;
-  color: $calendar-date-text-hover-color;
-  border-radius: $calendar-date-text-hover-border-radius;
-}
+
