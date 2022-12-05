@@ -11,12 +11,13 @@ export type SliderProps = {
   max?: number; // 最大值。默认值：100
   min?: number; // 最小值。默认值：0
   size?: 'small' | 'middle'; // 设置大小。默认值：middle
+  disabled?: boolean; // 禁用状态。默认值: false
   onChange?: (value: number) => void; // 当 Slider 的值发生改变时，会触发 onChange 事件。
-  onAfterChange?: (value: number) => void; // 与 onmouseup 触发时机一致。n
+  onAfterChange?: (value: number) => void; // 与 onmouseup 触发时机一致。
 } & NativeProps;
 
 export const Slider = (props: SliderProps) => {
-  const { defaultValue, max = 255, min = 0, size = 'middle', onAfterChange, style } = props;
+  const { defaultValue, max = 255, min = 0, size = 'middle', onAfterChange, style, disabled = false, className } = props;
   const handleRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -43,6 +44,7 @@ export const Slider = (props: SliderProps) => {
   }, []);
 
   const railHandle = (e: React.MouseEvent) => {
+    if (disabled) return;
     e.preventDefault();
     e.stopPropagation();
     const value = changeHandle(e.pageX, e.type);
@@ -116,7 +118,7 @@ export const Slider = (props: SliderProps) => {
     };
 
     const onMouseDown = () => {
-      if (props.value) return;
+      if (props.value || disabled) return;
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
     };
@@ -133,13 +135,13 @@ export const Slider = (props: SliderProps) => {
     };
 
     const onTouchStart = () => {
-      if (props.value) return;
+      if (props.value || disabled) return;
       document.addEventListener('touchmove', onTouchMove);
       document.addEventListener('touchend', onTouchEnd);
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      if (props.value) return;
+      if (props.value || disabled) return;
 
       changeHandle(e.changedTouches[0].pageX, e.type);
     };
@@ -158,8 +160,9 @@ export const Slider = (props: SliderProps) => {
     prefixCls,
     {
       [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-disabled`]: disabled,
     },
-    classNames,
+    className,
   );
 
   return (
