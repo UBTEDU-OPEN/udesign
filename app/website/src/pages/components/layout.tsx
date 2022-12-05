@@ -110,53 +110,6 @@ export default function LayoutPage() {
                 Footer
               </Footer>
             </Layout>
-
-            <Layout className='bg-white text-white'>
-              <Header className='h-16' style={{ background: '#b5befc', lineHeight: '64px' }}>
-                Header
-              </Header>
-              <Layout hasSider className='h-52'>
-                <Sider className='w-52' style={{ backgroundColor: 'rgba(114, 132, 251, 0.7)', lineHeight: '208px' }}>
-                  Sider
-                </Sider>
-                <Content style={{ background: '#7284fb', lineHeight: '208px' }}>Content</Content>
-              </Layout>
-              <Footer className='py-6  px-12' style={{ background: '#b5befc' }}>
-                Footer
-              </Footer>
-            </Layout>
-
-            <Layout className='bg-white text-white'>
-              <Header className='h-16' style={{ background: '#b5befc', lineHeight: '64px' }}>
-                Header
-              </Header>
-              <Layout hasSider className='h-52'>
-                <Content style={{ background: '#7284fb', lineHeight: '208px' }}>Content</Content>
-                <Sider className='w-52' style={{ backgroundColor: 'rgba(114, 132, 251, 0.7)', lineHeight: '208px' }}>
-                  Sider
-                </Sider>
-              </Layout>
-              <Footer className='py-6  px-12' style={{ background: '#b5befc' }}>
-                Footer
-              </Footer>
-            </Layout>
-
-            <Layout hasSider className='bg-white text-white'>
-              <Sider className='w-52' style={{ backgroundColor: 'rgba(114, 132, 251, 0.7)', lineHeight: '320px' }}>
-                Sider
-              </Sider>
-              <Layout>
-                <Header className='h-16' style={{ background: '#b5befc', lineHeight: '64px' }}>
-                  Header
-                </Header>
-                <Content className='h-52' style={{ background: '#7284fb', lineHeight: '208px' }}>
-                  Content
-                </Content>
-                <Footer className='py-6  px-12' style={{ background: '#b5befc' }}>
-                  Footer
-                </Footer>
-              </Layout>
-            </Layout>
           </Demo.Block>
           <Demo.Block
             className='layout-menu'
@@ -253,7 +206,7 @@ export default function LayoutPage() {
               </Header>
               <Layout hasSider>
                 <Sider style={{ textAlign: 'center', backgroundColor: '#fff', paddingTop: '40px', display: 'inline-block' }}>
-                  <Menu radius mode='inline' hasLine defaultActiveKey='2' className='w-60 border-r inline-block menu-inline' style={{ '--ud-menu-inline-submenu-item-background': '#fff' }}>
+                  <Menu mode='inline' hasLine defaultActiveKey='2' className='w-60 border-r inline-block menu-inline' style={{ '--ud-menu-inline-submenu-item-background': '#fff' }}>
                     <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%' }}>
                       <Menu.Item name='1'>Option 1</Menu.Item>
                       <Menu.Item name='2'>Option 2</Menu.Item>
@@ -301,6 +254,268 @@ export default function LayoutPage() {
                     '--ud-menu-item-color-hover': '#fff',
                     background: 'transparent',
                   }}
+                  className=' h-full'
+                >
+                  <Menu.Item name='1' className='h-full'>
+                    Nav 1
+                  </Menu.Item>
+                  <Menu.Item name='2' className='h-full'>
+                    Nav 2
+                  </Menu.Item>
+                  <Menu.Item name='3' className='h-full'>
+                    Nav 3
+                  </Menu.Item>
+                  <Menu.Item name='4' className='h-full'>
+                    Nav 4
+                  </Menu.Item>
+                  <Menu.Item name='5' className='h-full'>
+                    Nav 5
+                  </Menu.Item>
+                </Menu>
+              </Header>
+              <Layout style={{ padding: '0 40px', background: '#f2f4fa' }}>
+                <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+                  <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+                  <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+                  <Breadcrumb.Item>App</Breadcrumb.Item>
+                </Breadcrumb>
+                <Layout hasSider style={{ textAlign: 'left' }}>
+                  <Sider style={{ textAlign: 'center', padding: '24px 0', background: '#ffff', width }}>
+                    <Menu>
+                      <Menu.Item name='1'>
+                        <PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />
+                        <span>Option 1</span>
+                      </Menu.Item>
+                      <Menu.Item name='2'>
+                        <VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 2
+                      </Menu.Item>
+                      <Menu.Item name='3'>
+                        <DataFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 3
+                      </Menu.Item>
+                      <Menu.Item name='4'>
+                        <PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} /> Option 4
+                      </Menu.Item>
+                    </Menu>
+                  </Sider>
+                  <Content style={{ background: '#7284fb', lineHeight: '208px' }}>Content</Content>
+                </Layout>
+              </Layout>
+              <Footer className='py-6  px-12' style={{ textAlign: 'center', background: '#f2f4fa' }}>
+                &copy;2022 Ubtech Robotics Corp. All rights reserved
+              </Footer>
+            </Layout>
+          </Demo.Block>
+
+          <Demo.Block
+            title='侧边布局'
+            description={
+              <>
+                侧边两列式布局。页面横向空间有限时，侧边导航可收起。
+                <br />
+                侧边导航在页面布局上采用的是左右的结构，一般主导航放置于页面的左侧固定位置，辅助菜单放置于工作区顶部。内容根据浏览器终端进行自适应，能提高横向空间的使用率，但是整个页面排版不稳定。侧边导航的模式层级扩展性强，一、二、三级导航项目可以更为顺畅且具关联性的被展示，同时侧边导航可以固定，使得用户在操作和浏览中可以快速的定位和切换当前位置，有很高的操作效率。但这类导航横向页面内容的空间会被牺牲一部分。
+              </>
+            }
+          >
+            <Layout hasSider>
+              <Sider trigger={<LeftOutlined />} onCollapse={onbreak} collapsed={collapsed} style={{ background: '#7284FB ', width: collapsed ? width : collapsedWidth }}>
+                <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all .2s' }}></div>
+                <div style={{ flexGrow: '1', textAlign: 'center' }}>
+                  <Menu isCollapsed={!collapsed} style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF', background: '#7284FB ' }}>
+                    <Menu.Item name='1' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />} style={{}}>
+                      Option 1
+                    </Menu.Item>
+                    <Menu.Item name='2' icon={<VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} />} style={{}}>
+                      Option 2
+                    </Menu.Item>
+                    <Menu.Item name='3' icon={<DataFilled style={{ margin: '0 10px', fontSize: '22px' }} />} style={{}}>
+                      Option 3
+                    </Menu.Item>
+                    <Menu.Item name='4' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '25px' }} />} style={{}}>
+                      Option 4
+                    </Menu.Item>
+                  </Menu>
+                </div>
+              </Sider>
+              <Layout style={{ padding: '0 20px', background: '#f2f4fa' }}>
+                <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+                  <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+                  <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+                  <Breadcrumb.Item>App</Breadcrumb.Item>
+                </Breadcrumb>
+                <Layout hasSider style={{ textAlign: 'left' }}>
+                  <Content>
+                    <div className='bg-white text-black p-6' style={{ height: '428px', textAlign: 'center' }}>
+                      Content
+                    </div>
+                  </Content>
+                </Layout>
+                <Footer className='py-6  px-12' style={{ textAlign: 'center', background: '#f2f4fa' }}>
+                  &copy;2022 Ubtech Robotics Corp. All rights reserved
+                </Footer>
+              </Layout>
+            </Layout>
+          </Demo.Block>
+          <Demo.Block
+            title='自定义触发器'
+            description={
+              <>
+                要使用自定义触发器，可以设置 <Text code>trigger = {'{ null }'}</Text> 来隐藏默认设定。
+              </>
+            }
+          >
+            <Layout hasSider>
+              <Sider triggerTop={<MenuOutlined />} trigger={<LeftOutlined />} onCollapse={reback} collapsed={collapsed} style={{ background: '#7284fb', width: collapsed ? width : collapsedWidth, justifyContent: 'space-between' }}>
+                <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all 0.2s' }}></div>
+                <div style={{ textAlign: 'center', overflow: 'hidden', marginTop: '30px', flexGrow: '1' }}>
+                  <Menu isCollapsed={!collapsed} style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF', background: '#7284FB ' }}>
+                    <Menu.Item name='1' className='flex items-center' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
+                      <span>Option 1</span>
+                    </Menu.Item>
+                    <Menu.Item name='2' className='flex items-center' icon={<VoiceFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
+                      Option 2
+                    </Menu.Item>
+                    <Menu.Item name='3' className='flex items-center' icon={<DataFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
+                      Option 3
+                    </Menu.Item>
+                    <Menu.Item name='4' className='flex items-center' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '25px' }} />}>
+                      Option 4
+                    </Menu.Item>
+                  </Menu>
+                </div>
+              </Sider>
+              <Layout>
+                <Header className='h-16' style={{ paddingLeft: '125px', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'rgba(114,132,251,.8)' }}>
+                  <div className='h-10 mx-6' style={{ width: '150px', background: '#D6DCFF' }}></div>
+                  <Menu
+                    mode='horizontal'
+                    style={{
+                      alignItems: 'center',
+                      '--ud-menu-horizontal-item-background-active': '#5561D4',
+                      '--ud-menu-horizontal-item-background-hover': '#5561D4',
+                      '--ud-menu-item-background': 'transparent',
+                      '--ud-menu-item-color-active': '#fff',
+                      '--ud-menu-item-color-hover': '#fff',
+                      background: 'transparent',
+                    }}
+                    className='text-white h-full'
+                  >
+                    <Menu.Item name='1' className='h-full'>
+                      Nav 1
+                    </Menu.Item>
+                    <Menu.Item name='2' className='h-full'>
+                      Nav 2
+                    </Menu.Item>
+                    <Menu.Item name='3' className='h-full'>
+                      Nav 3
+                    </Menu.Item>
+                    <Menu.Item name='4' className='h-full'>
+                      Nav 4
+                    </Menu.Item>
+                    <Menu.Item name='5' className='h-full'>
+                      Nav 5
+                    </Menu.Item>
+                  </Menu>
+                </Header>
+                <Content style={{ padding: '0 50px', textAlign: 'left', background: '#f2f4fa' }}>
+                  <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+                    <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+                    <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+                    <Breadcrumb.Item>App</Breadcrumb.Item>
+                  </Breadcrumb>
+                  <div className='bg-white text-black p-6' style={{ height: '428px', textAlign: 'center' }}>
+                    Content
+                  </div>
+                </Content>
+                <Footer className='py-6  px-12' style={{ textAlign: 'center', background: '#f2f4fa' }}>
+                  &copy;2022 Ubtech Robotics Corp. All rights reserved
+                </Footer>
+              </Layout>
+            </Layout>
+          </Demo.Block>
+          <Demo.Block title='顶部-侧边布局-通栏' description='同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。'>
+            <Layout>
+              <Header className='h-16' style={{ background: 'rgba(114,132,251,.8)', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+                <div className='h-10 mx-6' style={{ width: '150px', background: '#D6DCFF' }}></div>
+                <Menu
+                  mode='horizontal'
+                  style={{
+                    alignItems: 'center',
+                    '--ud-menu-horizontal-item-background-active': '#5561D4',
+                    '--ud-menu-horizontal-item-background-hover': '#5561D4',
+                    '--ud-menu-item-background': 'transparent',
+                    '--ud-menu-item-color-active': '#fff',
+                    '--ud-menu-item-color-hover': '#fff',
+                    background: 'transparent',
+                  }}
+                  className='text-white h-full'
+                >
+                  <Menu.Item name='1' className='h-full'>
+                    Nav 1
+                  </Menu.Item>
+                  <Menu.Item name='2' className='h-full'>
+                    Nav 2
+                  </Menu.Item>
+                  <Menu.Item name='3' className='h-full'>
+                    Nav 3
+                  </Menu.Item>
+                  <Menu.Item name='4' className='h-full'>
+                    Nav 4
+                  </Menu.Item>
+                  <Menu.Item name='5' className='h-full'>
+                    Nav 5
+                  </Menu.Item>
+                </Menu>
+              </Header>
+              <Layout hasSider>
+                <Sider style={{ backgroundColor: '#fff', paddingTop: '40px', display: 'inline-block' }}>
+                  <Menu mode='inline' hasLine defaultActiveKey='2' className='w-60 border-r inline-block menu-inline' style={{ '--ud-menu-inline-submenu-item-background': '#fff' }}>
+                    <Menu.Submenu name='一' icon={<PictureFilled className='text-xl mr-2' />} title='标题一' style={{ width: '100%' }}>
+                      <Menu.Item name='1'>Option 1</Menu.Item>
+                      <Menu.Item name='2'>Option 2</Menu.Item>
+                      <Menu.Item name='3'>Option 3</Menu.Item>
+                    </Menu.Submenu>
+                    <Menu.Submenu name='二' icon={<VoiceFilled className='text-xl mr-2' />} title='标题二' style={{ width: '100%' }}>
+                      <Menu.Item name='9'>Option 1</Menu.Item>
+                      <Menu.Item name='8'>Option 2</Menu.Item>
+                      <Menu.Item name='7'>Option 3</Menu.Item>
+                    </Menu.Submenu>
+                    <Menu.Submenu name='三' icon={<DataFilled className='text-xl mr-2' />} title='标题三' style={{ width: '100%' }}>
+                      <Menu.Item name='4'>Option 1</Menu.Item>
+                      <Menu.Item name='5'>Option 2(disabled)</Menu.Item>
+                      <Menu.Item name='6'>Option 3</Menu.Item>
+                    </Menu.Submenu>
+                  </Menu>
+                </Sider>
+                <Layout style={{ padding: '0  40px 30px', textAlign: 'left', background: '#f2f4fa' }}>
+                  <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+                    <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+                    <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+                    <Breadcrumb.Item>App</Breadcrumb.Item>
+                  </Breadcrumb>
+                  <Content>
+                    <div className='bg-white text-black p-6' style={{ height: '428px' }}>
+                      Content
+                    </div>
+                  </Content>
+                </Layout>
+              </Layout>
+            </Layout>
+          </Demo.Block>
+          <Demo.Block title='顶部-侧边布局' description='拥有顶部导航及侧边栏的页面，多用于展示类网站。'>
+            <Layout>
+              <Header className='h-16' style={{ display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'rgba(114,132,251,.8)' }}>
+                <div className='h-10' style={{ width: '150px', background: '#D6DCFF', marginLeft: '40px' }}></div>
+                <Menu
+                  mode='horizontal'
+                  style={{
+                    alignItems: 'center',
+                    '--ud-menu-horizontal-item-background-active': '#5561D4',
+                    '--ud-menu-horizontal-item-background-hover': '#5561D4',
+                    '--ud-menu-item-background': 'transparent',
+                    '--ud-menu-item-color-active': '#fff',
+                    '--ud-menu-item-color-hover': '#fff',
+                    background: 'transparent',
+                  }}
                   className='text-white h-full'
                 >
                   <Menu.Item name='1' className='h-full'>
@@ -328,7 +543,7 @@ export default function LayoutPage() {
                 </Breadcrumb>
                 <Layout hasSider style={{ textAlign: 'left' }}>
                   <Sider style={{ textAlign: 'center', padding: '24px 0', background: '#ffff', width }}>
-                    <Menu radius>
+                    <Menu>
                       <Menu.Item name='1' style={{ width: '100%', borderRadius: '100px 0 0 100px', height: '60px' }}>
                         <PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />
                         <span>Option 1</span>
@@ -372,9 +587,16 @@ export default function LayoutPage() {
                 <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all .2s' }}></div>
                 <div style={{ flexGrow: '1', textAlign: 'center', marginTop: '30px' }}>
                   <Menu
-                    radius
-                    isCollapsed={!collapsed}
-                    style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF', background: '#7284FB ' }}
+                    hasLine
+                    mode='vertical'
+                    style={{
+                      '--ud-menu-item-background': '#7284fb',
+                      color: '#fff',
+                      '--ud-menu-item-color-hover': '#FFF',
+                      '--ud-menu-item-color-active': '#FFF',
+                      '--ud-color-primary-light': '#4F5BFF',
+                      background: '#7284FB ',
+                    }}
                   >
                     <Menu.Item name='1' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />} style={{}}>
                       Option 1
@@ -422,11 +644,7 @@ export default function LayoutPage() {
               <Sider triggerTop={<MenuOutlined />} trigger={<LeftOutlined />} onCollapse={reback} collapsed={collapsed} style={{ background: '#7284fb', width: collapsed ? width : collapsedWidth, justifyContent: 'space-between' }}>
                 <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all 0.2s' }}></div>
                 <div style={{ textAlign: 'center', overflow: 'hidden', marginTop: '30px', flexGrow: '1' }}>
-                  <Menu
-                    radius
-                    isCollapsed={!collapsed}
-                    style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF', background: '#7284FB ' }}
-                  >
+                  <Menu isCollapsed={!collapsed} style={{ '--ud-menu-item-background': '#7284fb', color: '#fff', '--ud-menu-item-color-hover': '#FFF', '--ud-menu-item-color-active': '#FFF', '--ud-color-primary-light': '#4F5BFF', background: '#7284FB ' }}>
                     <Menu.Item name='1' className='flex items-center' icon={<PictureFilled style={{ margin: '0 10px', fontSize: '22px' }} />}>
                       <span>Option 1</span>
                     </Menu.Item>
@@ -475,21 +693,11 @@ export default function LayoutPage() {
                     }}
                     className='text-white h-full'
                   >
-                    <Menu.Item name='1' className='h-full'>
-                      Nav 1
-                    </Menu.Item>
-                    <Menu.Item name='2' className='h-full'>
-                      Nav 2
-                    </Menu.Item>
-                    <Menu.Item name='3' className='h-full'>
-                      Nav 3
-                    </Menu.Item>
-                    <Menu.Item name='4' className='h-full'>
-                      Nav 4
-                    </Menu.Item>
-                    <Menu.Item name='5' className='h-full'>
-                      Nav 5
-                    </Menu.Item>
+                    <Menu.Item name='1'>Nav 1</Menu.Item>
+                    <Menu.Item name='2'>Nav 2</Menu.Item>
+                    <Menu.Item name='3'>Nav 3</Menu.Item>
+                    <Menu.Item name='4'>Nav 4</Menu.Item>
+                    <Menu.Item name='5'>Nav 5</Menu.Item>
                   </Menu>
                 </Header>
                 <Scrollbar hover style={{ marginTop: '64px', height: '500px' }}>
@@ -517,11 +725,9 @@ export default function LayoutPage() {
                   <div className='h-10 mx-6' style={{ margin: '12px 25px', width: '150px', background: '#D6DCFF' }}></div>
                   <Scrollbar style={{ flexGrow: '0', textAlign: 'center', height: '456px', '--ud-scrollbar-thumb-color': '#9cacff' }}>
                     <Menu
-                      radius
                       hasLine
                       mode='vertical'
                       style={{
-                        // alignItems: 'center',
                         '--ud-menu-item-background': '#7284fb',
                         color: '#fff',
                         '--ud-menu-item-color-hover': '#FFF',

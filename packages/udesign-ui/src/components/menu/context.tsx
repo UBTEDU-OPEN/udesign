@@ -9,12 +9,12 @@ export type MenuContextProps = {
   firstLevel: boolean;
   isCollapsed: boolean;
   activeKey?: string | number;
-  subActiveKey?: string | number;
+  subActiveKey?: Set<string>;
   hasLine?: boolean;
-  radius?: boolean;
-  onlyOne?: boolean;
+  subKey?: string[];
   affectedByChildrenSubActiveKey?: string | number;
-  onClick?: (name: string) => void;
+  onChangeItemKey?: (name: string) => void;
+  onChange?: (name: string) => void;
   handleClick?: (name: string) => void;
   subClick?: (name: string, item: string) => void;
 };

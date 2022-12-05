@@ -19,13 +19,13 @@ export const SideMenu = ({ menus, base, ...restProps }: SideMenuProps) => {
   const router = useRouter();
   const defaultActiveKey = router.asPath.split('/').pop() || router.asPath.split('/').slice(-2, -1)[0];
 
-  function handleChange(name: string) {
+  function handleClick(name: string) {
     router.push(`/${base}/${name.toLowerCase()}`);
   }
 
   return (
     <>
-      <Menu onChange={handleChange} defaultActiveKey={defaultActiveKey} {...restProps}>
+      <Menu onClick={handleClick} defaultActiveKey={defaultActiveKey} {...restProps}>
         {menus.map((menu) =>
           menu.isCategory ? (
             <div key={menu.name} className='my-2 p-3 border-b font-bold'>

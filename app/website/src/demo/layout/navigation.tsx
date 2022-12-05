@@ -9,7 +9,7 @@ const Navigation = () => {
   const router = useRouter();
   const defaultActiveKey = router.asPath.split('/').shift() || router.asPath.split('/').slice(1, 2)[0] || 'spec';
 
-  function handleChange(name: string) {
+  function handleClick(name: string) {
     if (name === 'spec') return;
 
     let path = '';
@@ -37,7 +37,7 @@ const Navigation = () => {
               {process.env.UDESIGN_VERSION ? <span className='ml-3'>v{process.env.UDESIGN_VERSION}</span> : null}
             </a>
           </Link>
-          <Menu hasLine onChange={handleChange} defaultActiveKey={defaultActiveKey} mode='horizontal'>
+          <Menu hasLine onClick={handleClick} defaultActiveKey={defaultActiveKey} mode='horizontal'>
             <Link href='/'>
               <a className='text-inherit no-underline'>
                 <Menu.Item name='spec'>设计</Menu.Item>

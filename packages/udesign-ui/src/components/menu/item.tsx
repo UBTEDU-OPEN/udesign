@@ -9,7 +9,7 @@ const prefixCls = `${BASE_CLASS_PREFIX}-menu-item`;
 
 export type MenuItemProps = {
   name?: string; // 唯一标志符。默认值：''
-  icon?: ReactNode; // 图标。默认值：-
+  icon?: ReactNode; // 图标。
   disabled?: boolean; // 是否禁用。默认值：false
   link?: boolean; // 链接状态。默认值：false
 } & NativeProps;
@@ -22,15 +22,13 @@ export const MenuItem = (props: MenuItemProps) => {
   const active = context?.activeKey === name;
   const mode = context?.mode;
   const hasLine = context?.hasLine;
-  const radius = context?.radius;
   const isCollapsed = context?.isCollapsed;
   const subName = subContext?.name;
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     if (disabled) return;
-    context?.onClick?.(name);
+    context?.onChangeItemKey?.(name);
     context?.subClick?.(name, subName === undefined ? '' : subName);
-    // subContext.onClick?.(subName);
   };
 
   const renderIcon = () => {
@@ -43,13 +41,9 @@ export const MenuItem = (props: MenuItemProps) => {
     prefixCls,
     {
       [`${prefixCls}-disabled`]: disabled,
-      [`${prefixCls}-border-${mode}`]: mode,
       [`${prefixCls}-${mode}`]: mode,
       [`${prefixCls}-link`]: link,
-      [`${prefixCls}-border-hasLine-${mode}`]: hasLine,
-      [`${prefixCls}-hasLine-active`]: hasLine,
-      [`${prefixCls}-radius`]: radius,
-      [`ud-menu-submenu-is-collapsed`]: isCollapsed,
+      [`${prefixCls}-hasLine`]: hasLine,
       [`${prefixCls}-active`]: active,
     },
     className,

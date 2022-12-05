@@ -4,6 +4,8 @@ import { FolderOutlined, PictureFilled, VoiceFilled, DataFilled, MenuOutlined } 
 import { Demo } from '../../demo';
 import { menus } from '../../constants/menus';
 
+const rootSubmenuKeys = ['一', '二', '三'];
+
 export default function MenuPage() {
   const Submenu = (
     <>
@@ -23,6 +25,10 @@ export default function MenuPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const toggleCollapsed = () => {
     setIsCollapsed(!isCollapsed);
+  };
+  const [subActiveKey, setSubActiveKey] = useState([rootSubmenuKeys[0]]);
+  const onChange = (e: string) => {
+    subActiveKey.includes(e) ? setSubActiveKey([]) : setSubActiveKey([e]);
   };
 
   return (
@@ -66,61 +72,63 @@ export default function MenuPage() {
             </Menu>
           </Demo.Block>
           <Demo.Block className='flex justify-between' title='侧边栏内嵌菜单' description='垂直菜单，二级菜单内嵌在一级菜单区域。'>
-            <Menu radius defaultActiveKey='1' className='w-60 border-r inline-block'>
-              <Menu.Item name='1' icon={<PictureFilled className='text-xl' />}>
-                <span>Option 1</span>
-              </Menu.Item>
-              <Menu.Item name='2' icon={<VoiceFilled className='text-xl' />}>
-                <span>Option 2</span>
-              </Menu.Item>
-              <Menu.Item name='3' icon={<DataFilled className='text-xl' />}>
-                <>Option 3</>
-              </Menu.Item>
-            </Menu>
-
-            <Menu radius mode='inline' hasLine defaultActiveKey='1' className='w-60 border-r inline-block'>
-              <Menu.Submenu name='1-1' icon={<PictureFilled className='text-xl' />} title='标题一'>
-                {inlineSubmenu}
-              </Menu.Submenu>
-              <Menu.Submenu name='1-2' icon={<VoiceFilled className='text-xl' />} title='标题二'>
-                <Menu.Item name='1'>Option 1</Menu.Item>
-                <Menu.Item name='2'>Option 2</Menu.Item>
-                <Menu.Item name='3'>Option 3</Menu.Item>
-              </Menu.Submenu>
-              <Menu.Submenu name='1-3' icon={<DataFilled className='text-xl' />} title='标题三'>
-                <Menu.Item name='4'>Option 1</Menu.Item>
-                <Menu.Item name='5'>Option 2</Menu.Item>
-                <Menu.Item name='6'>Option 3</Menu.Item>
-              </Menu.Submenu>
-            </Menu>
-
-            <Menu radius hasLine defaultActiveKey='1' className='w-60 border-r inline-block'>
-              <Menu.Submenu subMode='inline' icon={<PictureFilled className='text-xl' />} title='导航一' name='1'>
-                <Menu.Item name='1-1' disabled>
-                  item 1
+            <Space justify='between' align='start'>
+              <Menu defaultActiveKey='1' className='w-60'>
+                <Menu.Item name='1' icon={<PictureFilled />}>
+                  <span>Option 1</span>
                 </Menu.Item>
-                <Menu.Item name='1-2'>Option 1</Menu.Item>
-                <Menu.Item name='1-3'>Option 2</Menu.Item>
-                <Menu.Item name='1-4' disabled>
-                  item 2
+                <Menu.Item name='2' icon={<VoiceFilled />}>
+                  <span>Option 2</span>
                 </Menu.Item>
-                <Menu.Item name='1-5'>Option 3</Menu.Item>
-                <Menu.Item name='1-6'>Option 4</Menu.Item>
-              </Menu.Submenu>
-              <Menu.Submenu subMode='inline' icon={<VoiceFilled className='text-xl' />} title='导航二' name='2'>
-                <Menu.Item name='2-1'>Option 5</Menu.Item>
-                <Menu.Item name='2-2'>Option 6</Menu.Item>
-                <Menu.Item name='2-3-2'>Option 7</Menu.Item>
-              </Menu.Submenu>
-              <Menu.Submenu subMode='inline' icon={<DataFilled className='text-xl' />} title='导航三' name='3'>
-                <Menu.Item name='3-1'>Option 1</Menu.Item>
-                <Menu.Item name='3-2'>Option 1</Menu.Item>
-                <Menu.Item name='3-3'>Option 1</Menu.Item>
-              </Menu.Submenu>
-            </Menu>
+                <Menu.Item name='3' icon={<DataFilled />}>
+                  <>Option 3</>
+                </Menu.Item>
+              </Menu>
+
+              <Menu mode='inline' defaultActiveKey='1' className='w-60'>
+                <Menu.Submenu name='1-1' icon={<PictureFilled />} title='标题一'>
+                  {inlineSubmenu}
+                </Menu.Submenu>
+                <Menu.Submenu name='1-2' icon={<VoiceFilled />} title='标题二'>
+                  <Menu.Item name='1'>Option 1</Menu.Item>
+                  <Menu.Item name='2'>Option 2</Menu.Item>
+                  <Menu.Item name='3'>Option 3</Menu.Item>
+                </Menu.Submenu>
+                <Menu.Submenu name='1-3' icon={<DataFilled />} title='标题三'>
+                  <Menu.Item name='4'>Option 1</Menu.Item>
+                  <Menu.Item name='5'>Option 2</Menu.Item>
+                  <Menu.Item name='6'>Option 3</Menu.Item>
+                </Menu.Submenu>
+              </Menu>
+
+              <Menu mode='inline' hasLine defaultActiveKey='1' className='w-60 border-r inline-block'>
+                <Menu.Submenu icon={<PictureFilled className='text-xl' />} title='导航一' name='1'>
+                  <Menu.Item name='1-1' disabled>
+                    item 1
+                  </Menu.Item>
+                  <Menu.Item name='1-2'>Option 1</Menu.Item>
+                  <Menu.Item name='1-3'>Option 2</Menu.Item>
+                  <Menu.Item name='1-4' disabled>
+                    item 2
+                  </Menu.Item>
+                  <Menu.Item name='1-5'>Option 3</Menu.Item>
+                  <Menu.Item name='1-6'>Option 4</Menu.Item>
+                </Menu.Submenu>
+                <Menu.Submenu icon={<VoiceFilled className='text-xl' />} title='导航二' name='2'>
+                  <Menu.Item name='2-1'>Option 5</Menu.Item>
+                  <Menu.Item name='2-2'>Option 6</Menu.Item>
+                  <Menu.Item name='2-3-2'>Option 7</Menu.Item>
+                </Menu.Submenu>
+                <Menu.Submenu icon={<DataFilled className='text-xl' />} title='导航三' name='3'>
+                  <Menu.Item name='3-1'>Option 1</Menu.Item>
+                  <Menu.Item name='3-2'>Option 1</Menu.Item>
+                  <Menu.Item name='3-3'>Option 1</Menu.Item>
+                </Menu.Submenu>
+              </Menu>
+            </Space>
           </Demo.Block>
           <Demo.Block title='只展开当前一级别菜单' description='点击一个菜单，收起其他已展开的菜单，保持只显示一个菜单，聚焦简洁。'>
-            <Menu onlyOne radius mode='inline' defaultSubActiveKey='一' defaultActiveKey='1' className='w-60 border-r inline-block'>
+            <Menu mode='inline' subActiveKey={subActiveKey} className='w-60 border-r inline-block' onChange={onChange}>
               <Menu.Submenu name='一' icon={<PictureFilled className='text-xl' />} title='标题一'>
                 {inlineSubmenu}
               </Menu.Submenu>
@@ -149,7 +157,7 @@ export default function MenuPage() {
           >
             <Button onClick={toggleCollapsed} type='primary' shape='round' icon={<MenuOutlined />} />
             <Space className='w-60'>
-              <Menu radius mode='inline' hasLine defaultActiveKey='2' className='border-r' isCollapsed={isCollapsed}>
+              <Menu mode='inline' hasLine defaultActiveKey='2' className='border-r' isCollapsed={isCollapsed}>
                 <Menu.Submenu name='一' icon={<PictureFilled className='text-xl' />} title='标题一'>
                   {inlineSubmenu}
                 </Menu.Submenu>
@@ -167,7 +175,7 @@ export default function MenuPage() {
             </Space>
           </Demo.Block>
           <Demo.Block title='垂直菜单' description='二级菜单是弹出形式，仅支持至二级菜单。'>
-            <Menu hasLine radius className='w-60 border-r' defaultActiveKey='1' mode='vertical'>
+            <Menu hasLine className='w-60 border-r' defaultActiveKey='1' mode='vertical'>
               <Menu.Item name='1' icon={<PictureFilled className='mr-2 text-xl' />}>
                 导航一
               </Menu.Item>

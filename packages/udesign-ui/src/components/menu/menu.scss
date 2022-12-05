@@ -1,255 +1,197 @@
 @import '../../global/mixin.scss';
 @import './variables.scss';
-
 $module: ud-menu;
 
 .#{$module} {
-  margin: 0;
-  padding: 0;
   list-style: none;
   overflow: hidden;
   background: $menu-background;
-}
-
-.#{$module}-item {
-  padding: $menu-item-padding;
-  margin: $menu-item-margin;
-  background: $menu-item-background;
+  white-space: nowrap;
   display: flex;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  color: $menu-item-color;
-  border-right: $menu-item-border-width solid transparent;
-  border-bottom: $menu-item-border-width solid transparent;
+  gap: $menu-item-gap;
 
-  @include truncate;
-
-  &-icon {
+  &-item {
+    padding: $menu-item-padding;
+    background: $menu-item-background;
     display: flex;
     align-items: center;
-    margin: $menu-item-icon-margin;
-  }
+    cursor: pointer;
+    position: relative;
+    color: $menu-item-color;
+    border-right: $menu-item-border-width solid transparent;
+    border-bottom: $menu-item-border-width solid transparent;
 
-  &-title {
-    flex-grow: 1;
-  }
+    @include truncate;
 
-  &:hover:not(&-disabled) {
-    background: $menu-item-background-hover;
-    color: $menu-item-color-hover;
-  }
+    &-horizontal {
+      display: inline-flex;
+    }
+    &-horizontal:hover:not(.#{$module}-item-disabled) {
+      color: $menu-item-color-hover;
+    }
 
-  .#{$module}-item-border-hasLine-vertical:hover:not(&-disabled),
-  .#{$module}-item-border-hasLine-inline:hover:not(&-disabled) {
-    border-right-color: $menu-item-border-color;
-    border-right-width: $menu-item-border-width;
-  }
+    &-icon {
+      display: flex;
+      align-items: center;
+      margin: $menu-item-icon-margin;
+    }
 
-  .#{$module}-item-border-hasLine-horizontal:hover:not(&-disabled) {
-    border-bottom-color: $menu-item-border-color;
-    border-bottom-width: $menu-item-border-width;
-  }
+    &-title {
+      flex-grow: 1;
+    }
 
-  &-active {
-    background: $menu-item-background-active;
-    color: $menu-item-color-active;
-  }
+    &-disabled {
+      color: $menu-item-color-disabled;
+      cursor: not-allowed;
+    }
 
-  &-active.#{$module}-item-border-hasLine-horizontal {
-    border-bottom-color: $menu-item-border-color;
-    border-bottom-width: $menu-item-border-width;
-  }
+    &-active.#{$module}-item-horizontal:not(.#{$module}-item-disabled) {
+      color: $menu-item-color-active;
+    }
+    &-active.#{$module}-item-horizontal:not(.#{$module}-item-disabled).#{$module}-item-hasLine,
+    &-horizontal:not(.#{$module}-item-disabled).#{$module}-item-hasLine:hover {
+      box-sizing: border-box;
+      border-bottom: $menu-item-border-width solid $menu-item-border-color;
+    }
+    &-active.#{$module}-item-vertical:not(.#{$module}-item-disabled).#{$module}-item-hasLine,
+    &-vertical:not(.#{$module}-item-disabled).#{$module}-item-hasLine:hover,
+    &-active.#{$module}-item-inline:not(.#{$module}-item-disabled).#{$module}-item-hasLine,
+    &-inline:not(.#{$module}-item-disabled).#{$module}-item-hasLine:hover {
+      box-sizing: border-box;
+      border-right: $menu-item-border-width solid $menu-item-border-color;
+    }
 
-  &-active.#{$module}-item-border-hasLine-vertical {
-    border-right-color: $menu-item-border-color;
-    border-right-width: $menu-item-border-width;
-  }
+    &-active.#{$module}-item-vertical:not(.#{$module}-item-disabled),
+    &-active.#{$module}-item-inline:not(.#{$module}-item-disabled) {
+      background: $menu-item-background-active;
+      color: $menu-item-color-active;
+    }
 
-  &-link {
-    color: $menu-item-link-color;
-    text-decoration: underline;
-  }
-
-  .#{$module}-item-link:hover:not(&-disabled) {
-    border-bottom-width: $menu-item-border-width;
-    border-bottom-color: transparent;
-    text-decoration: underline;
-  }
-
-  &-active.#{$module}-item-link {
-    border-bottom-width: $menu-item-border-width;
-    border-bottom-color: transparent;
-    text-decoration: underline;
-  }
-  &-active.#{$module}-submenu-is-collapsed {
-    border-right-color: transparent;
-  }
-}
-
-.#{$module}-submenu-horizontal .#{$module}-item.#{$module}-item-border-hasLine-inline:hover:not(.#{$module}-item-disabled),
-.#{$module}-submenu-horizontal .#{$module}-item.#{$module}-item-border-hasLine-vertical:hover:not(.#{$module}-item-disabled) {
-  border-right-color: transparent;
-  border-radius: 0;
-}
-.#{$module}-submenu {
-  max-width: $menu-submenu-max-width;
-  background: $menu-submenu-background;
-  overflow: hidden;
-  width: 100%;
-
-  &-horizontal {
-    box-shadow: $menu-submenu-border-shadow;
-    border-radius: $menu-submenu-border-radius;
-    background-color: #fff;
-    min-width: $menu-horizontal-submenu-min-width;
-
-    .#{$module}-item-active {
-      border-right-color: transparent;
-      border-radius: 0;
+    &-link,
+    &-link.#{$module}-item-active.#{$module}-item-hasLine.#{$module}-item-horizontal,
+    &-link.#{$module}-item-hasLine.#{$module}-item-horizontal:hover {
+      text-decoration: underline;
+      color: $menu-item-color-active;
+      border-bottom: $menu-item-border-width solid transparent;
     }
   }
 
-  .#{$module}-item {
-    background-color: $menu-inline-submenu-item-background;
+  &-vertical {
+    padding: $menu-vertical-padding;
   }
 
-  .#{$module}-item-border-hasLine-horizontal:hover:not(.#{$module}-item-disabled) {
-    // border-right-color: $menu-item-border-color;
-    border-right-width: $menu-item-border-width;
-    border-bottom-color: transparent;
+  &-inline {
+    transition: all 0.2s;
   }
 
-  .#{$module}-item-active.#{$module}-item-border-hasLine-horizontal {
-    // border-right-color: $menu-item-border-color;
-    border-right-width: $menu-item-border-width;
-    border-bottom-color: transparent;
+  &-vertical,
+  &-inline {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $menu-item-gap;
   }
 
-  .#{$module}-item.#{$module}-item-active {
-    background-color: $menu-item-background-active;
+  &-item-vertical,
+  &-item-inline {
+    border-radius: $menu-item-border-radius;
+
+    &:hover:not(.#{$module}-item-disabled) {
+      background: $menu-item-background-hover;
+      color: $menu-item-color-hover;
+    }
   }
 
-  .#{$module}-item.ud-menu-item-horizontal:hover:not(.#{$module}-item-disabled) {
-    background: $menu-item-background-hover;
-    color: $menu-item-color-hover;
-  }
-}
-
-.#{$module}-submenu-rightTop {
-  .#{$module}-item {
-    background-color: $menu-vertical-right-top-submenu-item-background;
-  }
-}
-
-.#{$module}-submenu-bottomLeft {
-  .#{$module}-item {
-    background-color: $menu-vertical-bottom-left-submenu-item-background;
-    margin: var(--ud-menu-item-margin, 5px 0);
-  }
-}
-
-.#{$module}-submenu-is-collapsed {
-  justify-content: center;
-}
-
-.#{$module}-horizontal {
-  display: inline-flex;
-}
-
-.#{$module}-item-disabled {
-  color: $menu-item-color-disabled;
-  cursor: not-allowed;
-}
-
-.#{$module}-vertical {
-  display: flex;
-  flex-direction: column;
-  padding: $menu-padding;
-}
-
-.#{$module}-inline {
-  display: flex;
-  flex-direction: column;
-  transition: all 0.2s;
-  width: 100%;
-}
-
-.#{$module}-is-collapsed {
-  width: 90px;
-  transition: all 0.2s;
-  justify-content: center;
-}
-
-.#{$module}-item-radius {
-  border-radius: $menu-item-border-radius;
-}
-
-.#{$module}-submenu-wrapper {
-  background-color: $menu-submenu-background;
-  white-space: nowrap;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.#{$module}-submenu-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: $menu-item-padding;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  color: $menu-submenu-color;
-}
-
-.#{$module}-submenu-header-focus {
-  color: $menu-item-color-active;
-}
-
-.#{$module}-submenu-header-left {
-  display: flex;
-  align-content: center;
-  flex-wrap: nowrap;
-
-  .#{$module}-submenu-icon {
-    margin: $menu-submenu-icon-margin;
-  }
-}
-
-.#{$module}-submenu-body {
-  padding-left: $menu-submenu-body-padding-left;
-  background-color: $menu-inline-submenu-item-background;
-  overflow: auto;
-
-  .#{$module}-item {
-    background-color: $menu-inline-submenu-item-background;
+  &-is-collapsed {
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+    transition: all 0.2s;
+    justify-content: center;
   }
 
-  .#{$module}-item-active {
-    background-color: $menu-submenu-item-active-background;
+  &-submenu {
+    max-width: $menu-submenu-max-width;
+    background: $menu-submenu-background;
+    overflow: hidden;
+    min-width: $menu-horizontal-submenu-min-width;
+    gap: $menu-item-gap;
+    gap: var(--ud-menu-item-gap, 5px);
+    display: flex;
+    flex-direction: column;
+
+    &-horizontal {
+      box-shadow: $menu-submenu-border-shadow;
+      border-radius: $menu-submenu-border-radius;
+
+      .#{$module}-item {
+        display: block;
+      }
+
+      .#{$module}-item-active.#{$module}-item-horizontal:not(.#{$module}-item-disabled).#{$module}-item-hasLine,
+      .#{$module}-item-horizontal:not(.#{$module}-item-disabled).#{$module}-item-hasLine:hover {
+        border-bottom: $menu-item-border-width solid transparent;
+        box-sizing: border-box;
+        border-right: $menu-item-border-width solid $menu-item-border-color;
+      }
+
+      .#{$module}-item-active.#{$module}-item-horizontal:not(.#{$module}-item-disabled) {
+        background: $menu-item-background-active;
+        color: $menu-item-color-active;
+      }
+      .#{$module}-item-horizontal:hover:not(.#{$module}-item-disabled) {
+        background: $menu-item-background-hover;
+        color: $menu-item-color-hover;
+      }
+    }
+
+    &-wrapper {
+      // background-color: $menu-submenu-background;
+      white-space: nowrap;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: $menu-item-padding;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      color: $menu-submenu-color;
+
+      &-focus {
+        color: $menu-item-color-active;
+      }
+
+      &-left {
+        display: flex;
+        align-content: center;
+        flex-wrap: nowrap;
+
+        .#{$module}-submenu-icon {
+          margin: $menu-submenu-icon-margin;
+        }
+      }
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      padding-left: $menu-submenu-body-padding-left;
+      background-color: $menu-inline-submenu-item-background;
+      overflow: auto;
+
+      gap: 5px;
+    }
+
+    &-body-hidden {
+      display: none;
+    }
+
+    &-is-collapsed {
+      justify-content: center;
+    }
   }
-
-  .#{$module}-item:hover:not(.#{$module}-item-disabled) {
-    background: $menu-submenu-item-hover-background;
-    color: $menu-item-color-hover;
-  }
-  .#{$module}-item-active {
-    border-right-color: $menu-item-border-color;
-    border-right-width: $menu-item-border-width;
-  }
-}
-
-.#{$module}-submenu-body-hidden {
-  display: none;
-}
-
-.#{$module}-horizontal .#{$module}-item-horizontal {
-  margin: $menu-horizontal-item-margin;
-}
-
-.#{$module}-horizontal .#{$module}-item.#{$module}-item-horizontal:hover:not(.#{$module}-item-disabled) {
-  background: $menu-horizontal-item-background-hover;
-}
-.#{$module}-horizontal .#{$module}-item-active.#{$module}-item-horizontal:not(.#{$module}-item-disabled) {
-  background: $menu-horizontal-item-background-active;
 }
