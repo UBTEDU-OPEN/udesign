@@ -6,8 +6,8 @@ import { NativeProps } from '@ubt/udesign-utils';
 export type SideMenuItemProps = {
   name: string;
   text: string;
-  title?: number;
   disabled?: boolean;
+  isCategory?: boolean; // 是否分类Item
 };
 
 export type SideMenuProps = {
@@ -27,7 +27,7 @@ export const SideMenu = ({ menus, base, ...restProps }: SideMenuProps) => {
     <>
       <Menu onChange={handleChange} defaultActiveKey={defaultActiveKey} {...restProps}>
         {menus.map((menu) =>
-          menu.title ? (
+          menu.isCategory ? (
             <div key={menu.name} className='my-2 p-3 border-b font-bold'>
               {menu.name}
             </div>
