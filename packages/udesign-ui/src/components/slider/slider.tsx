@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import { floor, round } from 'lodash';
+import { floor, round, ceil } from 'lodash';
 import { NativeProps, usePropsValue } from '../../utils';
 
 const prefixCls = `ud-slider`;
@@ -10,6 +10,7 @@ export type SliderProps = {
   value?: number; // 设置当前取值。
   max?: number; // 最大值。默认值：100
   min?: number; // 最小值。默认值：0
+  step?: number; // 步长，取值必须大于 0。默认值: 1
   size?: 'small' | 'middle'; // 设置大小。默认值：middle
   disabled?: boolean; // 禁用状态。默认值: false
   onChange?: (value: number) => void; // 当 Slider 的值发生改变时，会触发 onChange 事件。
@@ -17,7 +18,7 @@ export type SliderProps = {
 } & NativeProps;
 
 export const Slider = (props: SliderProps) => {
-  const { defaultValue, max = 100, min = 0, size = 'middle', onAfterChange, style, disabled = false, className } = props;
+  const { defaultValue, max = 100, min = 0, size = 'middle', onAfterChange, style, disabled = false, step = 1, className } = props;
   const handleRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -25,7 +26,9 @@ export const Slider = (props: SliderProps) => {
     x: 0,
     width: 0,
     ratio: 0,
+    lastStep: 0,
   });
+  const stepDecimals = step.toString().split('.')[1]?.length || 0;
   let oldValue: number;
 
   const [value, setValue] = usePropsValue({
@@ -36,17 +39,22 @@ export const Slider = (props: SliderProps) => {
 
   useEffect(() => {
     if (!sliderRef.current || !handleRef.current) return;
-    const { x, width, height } = sliderRef.current.getBoundingClientRect();
-    distance.current.ratio = width / (max - min);
-    distance.current.x = x;
-    distance.current.width = width;
+    const { height } = sliderRef.current.getBoundingClientRect();
     handleRef.current.style.top = `${-(handleRef.current.getBoundingClientRect().height - height) / 2}px`;
   }, []);
 
+  const getDistance = () => {
+    if (!sliderRef.current || !handleRef.current) return;
+    const { x, width } = sliderRef.current.getBoundingClientRect();
+    distance.current.ratio = width / (max - min);
+    distance.current.x = x;
+    distance.current.width = width;
+  };
+
   const railHandle = (e: React.MouseEvent) => {
     if (disabled) return;
+    getDistance();
     e.preventDefault();
-    e.stopPropagation();
     const value = changeHandle(e.pageX, e.type);
     onAfterChange?.(value);
   };
@@ -74,20 +82,23 @@ export const Slider = (props: SliderProps) => {
       return min;
     }
 
-    if (x > floor(distance.current.width + distance.current.x)) {
+    const nextValue = getValue((x - distance.current.x) / distance.current.width, min, max) / step;
+
+    if (nextValue >= getValue(1, min, max) / step - 0.5) {
       updateValue(max);
       return max;
     }
 
-    const nextValue = getValue((x - distance.current.x) / distance.current.width, min, max);
-
     if (type === 'click') {
-      updateValue(round(nextValue));
-      return round(nextValue);
+      updateValue(round(round(nextValue) * step, stepDecimals));
+      return round(round(nextValue) * step, stepDecimals);
     }
 
-    updateValue(round(nextValue));
-    return round(nextValue);
+    if ((nextValue >= floor(nextValue) + 0.5 && nextValue < ceil(nextValue)) || (nextValue < floor(nextValue) + 0.5 && nextValue >= floor(nextValue) - 0.5)) {
+      updateValue(round(round(nextValue) * step, stepDecimals));
+    }
+
+    return round(round(nextValue) * step, stepDecimals);
   };
 
   const getValue = (ratio: number, min: number, max: number) => {
@@ -95,30 +106,9 @@ export const Slider = (props: SliderProps) => {
   };
 
   const renderHandle = () => {
-    const changeHandle: (x: number, type: string) => number = (x: number, type: string) => {
-      if (floor(distance.current.x) > x) {
-        updateValue(min);
-        return min;
-      }
-
-      if (x > floor(distance.current.width + distance.current.x)) {
-        updateValue(max);
-        return max;
-      }
-
-      const nextValue = getValue((x - distance.current.x) / distance.current.width, min, max);
-
-      if (type === 'click') {
-        updateValue(round(nextValue));
-        return round(nextValue);
-      }
-
-      updateValue(round(nextValue));
-      return round(nextValue);
-    };
-
     const onMouseDown = () => {
       if (disabled) return;
+      getDistance();
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
     };
@@ -136,6 +126,7 @@ export const Slider = (props: SliderProps) => {
 
     const onTouchStart = () => {
       if (disabled) return;
+      getDistance();
       document.addEventListener('touchmove', onTouchMove);
       document.addEventListener('touchend', onTouchEnd);
     };
