@@ -10,7 +10,7 @@
 $ yarn add @ubt/udesign-icons@latest
 ```
 
-## 如何贡献
+## 如何添加图标
 
 ### 拉取代码仓库
 
@@ -34,14 +34,14 @@ yarn build
 
 ### 使用检查
 
-启动 udesign 本地服务，检查图标是否能够正常使用。
+在 `app\website\src\pages\components\icon.tsx` 里，引入你的图标。
+
+启动 udesign 本地服务，访问 `http://localhost:3000/components/icon/` 查看你的图标是否运行正常。
 
 ```
 cd app\website
 yarn dev
 ```
-
-在 `app\website\src\pages\components\icon.tsx` 里，引用你的图标，访问 `http://localhost:3000/components/icon/` 查看你的图标是否运行正常。
 
 ### 提交代码
 

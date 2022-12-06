@@ -5,6 +5,7 @@ import {
   FolderOutlined,
   MenuOutlined,
   DataFilled,
+  DateOutline,
   PictureFilled,
   EyeInvisibleOutlined,
   EyeOutlined,
@@ -109,6 +110,7 @@ export default function IconPage() {
     { key: 'SmileOutlined', node: <SmileOutlined /> },
     { key: 'LinkOutlined', node: <LinkOutlined /> },
     { key: 'RefreshOutlined', node: <RefreshOutlined /> },
+    { key: 'DateOutline', node: <DateOutline /> },
   ];
   const otherIconsFilled = [
     { key: 'DataFilled', node: <DataFilled /> },

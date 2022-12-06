@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useImperativeHandle, CSSProperties } from 'react';
 import dayjs from 'dayjs';
 import classNames from 'classnames';
-import { CloseCircleFilled, IconDateOutline } from '@ubt/udesign-icons';
+import { CloseCircleFilled, DateOutline } from '@ubt/udesign-icons';
 import Input from '../../input';
 import PickerPanel, { PickerPanelBaseProps } from '../panels/picker-panel';
 import Dropdown from '../../dropdown';
@@ -278,7 +278,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
               <CloseCircleFilled className='clear-icon' />{' '}
             </label>
           ) : (
-            <IconDateOutline className='date-icon' />
+            <DateOutline className='date-icon' />
           )}
         </div>
       </div>
