@@ -2,6 +2,7 @@ import React, { isValidElement, ReactNode, useEffect, useReducer } from 'react';
 import classNames from 'classnames';
 import { NativeProps, usePropsValue } from '../../utils';
 import { Radio } from './radio';
+import { Button } from './button';
 import { RadioContext } from './context';
 import { BASE_CLASS_PREFIX } from '../../constants';
 
@@ -17,13 +18,14 @@ export type GroupProps = {
   value?: string; // 用于设置当前选中的值。
   disabled?: boolean; // 禁选所有子单选器。默认值：false
   options?: Array<RadioOptionType | string>; // 以配置形式设置子元素。
+  optionType?: 'default' | 'button'; // 用于设置 Radio options 类型。默认值: 'default'
   name: string; // RadioGroup 下所有 input[type="radio"] 的 name 属性。
   onChange?: (event: React.MouseEvent<HTMLInputElement>) => void; // 选项变化时的回调函数。
 } & NativeProps;
 
 const prefixCls = `${BASE_CLASS_PREFIX}-radio`;
 
-export const Group = ({ defaultValue = '', disabled, options, children, name, className, style, ...restProps }: GroupProps) => {
+export const Group = ({ defaultValue = '', disabled, options, optionType = 'default', children, name, className, style, ...restProps }: GroupProps) => {
   // 用于支持简单的数组作为options
   const getOptions = () => {
     if (!options) return [];
@@ -48,12 +50,13 @@ export const Group = ({ defaultValue = '', disabled, options, children, name, cl
   const renderChildren = () => {
     if (children) return isValidElement(children) ? children : <>{children}</>;
     return getOptions()?.map((option: RadioOptionType) => {
-      const radioProps =
-        'value' in restProps
-          ? {
-              checked: value === option.value,
-            }
-          : {};
+      if (optionType === 'button') {
+        return (
+          <Button value={option.value} key={option.value.toString()} defaultChecked={defaultValue === option.value} disabled={'disabled' in option ? option.disabled : disabled} checked={value === option.value}>
+            {option.label}
+          </Button>
+        );
+      }
       return (
         <Radio value={option.value} icon={option.icon} key={option.value.toString()} defaultChecked={defaultValue === option.value} disabled={'disabled' in option ? option.disabled : disabled} checked={value === option.value}>
           {option.label}

@@ -65,7 +65,7 @@ export const Radio = ({ defaultChecked = false, disabled, icon, className, style
   return (
     <>
       <label className={cls} style={style}>
-        <input name={context.name} type='radio' className={`${prefixCls}-hidden`} checked={checked} value={value} disabled={disabled} onClick={handleClick} onChange={onChange} />
+        <input name={context.name} type='radio' className={`${prefixCls}-hidden`} checked={checked} value={value} disabled={disabled} onClick={handleClick} onChange={(e) => onChange?.(e)} />
         {renderIcon()}
         {renderLabel()}
       </label>
