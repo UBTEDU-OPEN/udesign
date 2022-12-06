@@ -14,15 +14,25 @@ $module: ud-toast;
   z-index: $toast-z-index;
   &-left {
     left: $toast-space;
-    top: $toast-space;
+    top: $toast-translate;
+    transform: translateY($toast-translate-negative);
   }
   &-right {
     right: $toast-space;
-    top: $toast-space;
+    top: $toast-translate;
+    transform: translateY($toast-translate-negative);
   }
   &-top {
     left: $toast-translate;
     transform: translateX($toast-translate-negative);
+    top: $toast-space;
+  }
+  &-topLeft {
+    left: $toast-space;
+    top: $toast-space;
+  }
+  &-topRight {
+    right: $toast-space;
     top: $toast-space;
   }
   &-center {
@@ -33,6 +43,14 @@ $module: ud-toast;
   &-bottom {
     left: $toast-translate;
     transform: translateX($toast-translate-negative);
+    bottom: $toast-space;
+  }
+  &-bottomLeft {
+    left: $toast-space;
+    bottom: $toast-space;
+  }
+  &-bottomRight {
+    right: $toast-space;
     bottom: $toast-space;
   }
   .content {

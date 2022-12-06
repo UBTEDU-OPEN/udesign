@@ -59,7 +59,7 @@
 
 ## 显示位置
 
-通过 position 设置显示位置，默认 center，可选 top、bottom、left 和 right。
+通过 position 设置显示位置，默认 center，可选 top、topLeft、topRight、bottom、bottomLeft、bottomRight、left 和 right。
 
 ```jsx
 <Space wrap>
@@ -77,6 +77,18 @@
   </Button>
   <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'right' })} type='primary'>
     右侧显示
+  </Button>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'topLeft' })} type='primary'>
+    左上显示
+  </Button>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'topRight' })} type='primary'>
+    右上显示
+  </Button>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'bottomLeft' })} type='primary'>
+    左下显示
+  </Button>
+  <Button onClick={() => Toast({ content: '请先勾选同意隐私协议、服务条款', position: 'bottomRight' })} type='primary'>
+    右下显示
   </Button>
 </Space>
 ```
