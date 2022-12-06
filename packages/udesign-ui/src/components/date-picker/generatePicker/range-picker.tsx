@@ -278,7 +278,7 @@ const RangePicker = React.forwardRef((props: RangePickerBaseProps, ref) => {
               <CloseCircleFilled className='clear-icon' />{' '}
             </label>
           ) : (
-            <DateOutline className='date-icon' />
+            <DateOutline size='middle' />
           )}
         </div>
       </div>

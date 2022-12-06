@@ -23,10 +23,6 @@ $module: ud-date-picker;
   .clear-icon{
     cursor: pointer;
   }
-  .date-icon, .clear-icon{
-    width: 32px;
-    height: 32px;
-  }
 }
 .#{$module}-normal{
   .ud-input-wrapper{
@@ -73,10 +69,6 @@ $module: ud-date-picker;
   .clear-icon{
     cursor: pointer;
   }
-  .date-icon, .clear-icon{
-    width: 32px;
-    height: 32px;
-  }
 }
 .#{$module}-range-normal{
   &:hover{
@@ -100,7 +92,7 @@ $module: ud-date-picker;
       bottom: 0;
       transform: translate(-50%, 0);
     }
-  } 
+  }
 }
 .#{$module}-range-disabled{
   background: $date-picker-disabled-background;
@@ -126,4 +118,3 @@ $module: ud-date-picker;
     border-radius: 0;
   }
 }
-

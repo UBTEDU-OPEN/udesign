@@ -220,7 +220,7 @@ const RangePicker = forwardRef((props: TimerProps, ref) => {
               <CloseCircleFilled className='clear-icon' />
             </label>
           ) : (
-            <ClockCircleOutlined className='date-icon' />
+            <ClockCircleOutlined size='small' />
           )}
         </div>
       </div>

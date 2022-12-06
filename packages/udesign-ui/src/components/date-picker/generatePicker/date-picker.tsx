@@ -104,7 +104,7 @@ const Picker = forwardRef((props: PickerProps, ref) => {
                 <CloseCircleFilled className='clear-icon' />
               </label>
             ) : (
-              <DateOutline className='date-icon' />
+              <DateOutline size='middle' />
             )}
           </div>
         </div>
