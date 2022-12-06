@@ -22,6 +22,7 @@ export const Submenu = ({ title, children, icon, subActive, name = '', style, ..
   useEffect(() => {
     setActive(subActiveKey?.has(name));
   }, [subActiveKey]);
+
   const renderInline = () => {
     const handleClick = () => {
       context.onChange?.(name);
@@ -63,8 +64,9 @@ export const Submenu = ({ title, children, icon, subActive, name = '', style, ..
       </>
     );
   };
+
   const renderTitle = () => (!isCollapsed ? <span className={`${prefixCls}-item-title`}>{title}</span> : null);
-  console.log(isCollapsed);
+
   return (
     <>
       {mode === 'inline' && !isCollapsed ? (

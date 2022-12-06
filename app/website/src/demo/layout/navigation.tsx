@@ -43,7 +43,7 @@ const Navigation = () => {
                 <Menu.Item name='spec'>设计</Menu.Item>
               </a>
             </Link>
-            <Menu.Item name='docs'>文档</Menu.Item>
+            <Menu.Item name='docs'>研发</Menu.Item>
             <Menu.Item name='components'>组件</Menu.Item>
             <Menu.Item name='theme' disabled>
               主题

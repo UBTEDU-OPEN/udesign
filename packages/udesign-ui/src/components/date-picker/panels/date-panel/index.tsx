@@ -61,7 +61,6 @@ const DatePanel = ({ onChange, style, className, onViewDateChange, viewDate, sho
     let year = String(Number(yearNumber) + diff);
     setYearNumber(year);
     onViewDateChange?.(true, diff);
-    console.log('yearChange');
   };
 
   const handleSelect = (nowValue: string, diff: number) => {

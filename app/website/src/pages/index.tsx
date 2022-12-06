@@ -50,14 +50,16 @@ const Subtitle = ({ children }: NativeProps) => {
 const ArrowButton = ({ href, className }: { href: string } & NativeProps) => {
   const cls = classNames('inline-block px-5 py-2.5 rounded-full my-10 border border-gray-800', className);
   return (
-    <a href={href} className={cls}>
-      <svg width={52} height={12} xmlns='http://www.w3.org/2000/svg'>
-        <g fill='currentColor' fillRule='evenodd'>
-          <path fillRule='nonzero' d='M44 5.5v1H0v-1z' />
-          <path d='m40.5 0 11 6-11 6z' />
-        </g>
-      </svg>
-    </a>
+    <Link href={href}>
+      <a className={cls}>
+        <svg width={52} height={12} xmlns='http://www.w3.org/2000/svg'>
+          <g fill='currentColor' fillRule='evenodd'>
+            <path fillRule='nonzero' d='M44 5.5v1H0v-1z' />
+            <path d='m40.5 0 11 6-11 6z' />
+          </g>
+        </svg>
+      </a>
+    </Link>
   );
 };
 
@@ -169,13 +171,15 @@ const Index = () => {
           <div className='grid sm:grid-cols-3 gap-5'>
             {blogData.map((item, index) => {
               return (
-                <a href={item.url} key={`${item.title}${index}`}>
-                  <Img className='rounded-lg hover:shadow-lg' src={item.image} alt='' />
-                  <div className='p-5'>
-                    <div className='font-bold text-2xl'>{item.title}</div>
-                    <div className='mt-2 opacity-70'>{item.description}</div>
-                  </div>
-                </a>
+                <Link href={item.url} key={`${item.title}${index}`}>
+                  <a>
+                    <Img className='rounded-lg hover:shadow-lg' src={item.image} alt='' />
+                    <div className='p-5'>
+                      <div className='font-bold text-2xl'>{item.title}</div>
+                      <div className='mt-2 opacity-70'>{item.description}</div>
+                    </div>
+                  </a>
+                </Link>
               );
             })}
           </div>
