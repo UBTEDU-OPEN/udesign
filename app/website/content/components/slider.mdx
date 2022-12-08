@@ -36,6 +36,22 @@
 <Slider max={10} min={0} />
 ```
 
+## 步长
+
+通过 step 设置步长。step 取值必须大于 0，并且可被 (max - min) 整除。
+
+```jsx
+<Slider step={10} />
+```
+
+```jsx
+<Slider step={0.2} min={-30} max={-25} />
+```
+
+```jsx
+<Slider step={5} min={-30} max={10} />
+```
+
 ## 受控属性
 
 Slider 的值由 value 控制，配合 onChange 使用。如果不希望使用受控组件，请使用 defaultValue。
