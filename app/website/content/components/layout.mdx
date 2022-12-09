@@ -1,0 +1,713 @@
+# Layout 布局
+
+协助进行页面级整体布局。
+
+## 功能色
+
+**一级导航项偏左靠近 logo 放置，辅助菜单偏右放置。**
+
+- 顶部导航（大部分系统）：一级导航高度 64px，二级导航 48px。
+
+- 顶部导航（展示类页面）：一级导航高度 80px，二级导航 56px。
+
+- 顶部导航高度的范围计算公式为：48+8n。
+
+- 侧边导航宽度的范围计算公式：200+8n。
+
+## 交互
+
+- 一级导航和末级的导航需要在可视化的层面被强调出来；
+
+- 当前项应该在呈现上优先级最高；
+
+- 当导航收起的时候，当前项的样式自动赋予给它的上一个层级；
+
+- 左侧导航栏的收放交互同时支持手风琴和全展开的样式，根据业务的要求进行适当的选择。
+
+## 视觉
+
+**大色块强调**
+
+- 建议用于底色为深色系时，当前页面父级的导航项。
+
+- 高亮火柴棍
+  当导航栏底色为浅色系时使用，可用于当前页面对应导航项，建议尽量在导航路径的最终项使用。
+
+- 字体高亮变色
+  从可视化层面，字体高亮的视觉强化力度低于大色块，通常在当前项的上一级使用。
+
+- 字体放大
+  12px、14px 是导航的标准字号，14 号字体用在一、二级导航中。字号可以考虑导航项的等级做相应选择。
+
+## 组件概述
+
+- Layout：布局容器，其下可嵌套 <Typography.Text code>Header</Typography.Text>，<Typography.Text code>Sider</Typography.Text>，<Typography.Text code>Content</Typography.Text>，<Typography.Text code>Footer</Typography.Text>或<Typography.Text code>Layout</Typography.Text>本身，可以放在任何父容器中。
+
+- Header：顶部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。
+
+- Sider：侧边栏，自带默认样式及基本功能，其下可嵌套任何元素，只能放在 Layout 中。
+
+- Content：内容部分，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。
+
+- Footer：底部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。
+
+# 代码演示
+
+## 排版
+
+**典型的页面布局。**
+
+```jsx
+() => {
+  const { Header, Content, Footer } = Layout;
+
+  return (
+    <>
+      <Layout>
+        <Header className='h-16 text-center' style={{ background: '#b5befc', lineHeight: '64px' }}>
+          Header
+        </Header>
+        <Content className='h-52 text-center' style={{ background: '#7284fb', lineHeight: '208px' }}>
+          Content
+        </Content>
+        <Footer className='py-6  px-12 text-center' style={{ background: '#b5befc' }}>
+          Footer
+        </Footer>
+      </Layout>
+    </>
+  );
+};
+```
+
+## 上中下布局
+
+最基本的『上-中-下』布局。
+
+一般主导航放置于页面的顶端，从左自右依次为：logo、一级导航项、辅助菜单（用户、设置、通知等）。通常将内容放在固定尺寸（例如：1200px）内，整个页面排版稳定，不受用户终端显示器影响；上下级的结构符合用户上下浏览的习惯，也是较为经典的网站导航模式。页面上下切分的方式提高了主工作区域的信息展示效率，但在纵向空间上会有一些牺牲。此外，由于导航栏水平空间的限制，不适合那些一级导航项很多的信息结构。
+
+```jsx
+() => {
+  const { Header, Content, Footer } = Layout;
+  return (
+    <>
+      <style>
+        {`
+            .top-center-bottom-layout .ud-layout-header{
+                padding-left: 125px;
+                height: 64px;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                background: rgba(114,132,251,.8); 
+            }
+
+            .top-center-bottom-layout .ud-menu{
+                align-items: center;
+                --ud-menu-horizontal-item-background-active: #5561D4;
+                --ud-menu-horizontal-item-background-hover: #5561D4;
+                --ud-menu-item-background: transparent;
+                --ud-menu-item-color-active: #fff;
+                --ud-menu-item-color-hover: #fff;
+                background: transparent;
+            }
+
+             .top-center-bottom-layout .ud-layout-main{
+                padding: 0 50px;
+                text-align: left;
+                background: #f2f4fa;
+             }
+
+             .top-center-bottom-layout .ud-layout-footer{
+                padding: 24px;
+                text-align: center;
+                background: #f2f4fa;
+             }
+        `}
+      </style>
+
+      <Layout className='top-center-bottom-layout'>
+        <Header>
+          <div className='h-10 mx-6' style={{ width: '150px', background: '#D6DCFF' }}></div>
+          <Menu mode='horizontal'>
+            <Menu.Item name='1'>Nav 1</Menu.Item>
+            <Menu.Item name='2'>Nav 2</Menu.Item>
+            <Menu.Item name='3'>Nav 3</Menu.Item>
+            <Menu.Item name='4'>Nav 4</Menu.Item>
+            <Menu.Item name='5'>Nav 5</Menu.Item>
+          </Menu>
+        </Header>
+        <Content>
+          <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+            <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+            <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className='bg-white text-black p-6' style={{ height: '428px' }}>
+            Content
+          </div>
+        </Content>
+        <Footer>&copy;2022 Ubtech Robotics Corp. All rights reserved</Footer>
+      </Layout>
+    </>
+  );
+};
+```
+
+## 顶部-侧边布局-通栏
+
+同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。
+
+```jsx
+() => {
+  const { Header, Content, Footer, Sider } = Layout;
+  return (
+    <>
+      <style>
+        {`
+            .top-side-sidebar-layout .ud-layout-header{
+                height: 64px;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                background: rgba(114,132,251,.8); 
+            }
+
+             .top-side-sidebar-layout .ud-layout-header .ud-menu{
+                align-items: center;
+                --ud-menu-horizontal-item-background-active: #5561D4;
+                --ud-menu-horizontal-item-background-hover: #5561D4;
+                --ud-menu-item-background: transparent;
+                --ud-menu-item-color-active: #fff;
+                --ud-menu-item-color-hover: #fff;
+                background: transparent;
+            }
+
+            .top-side-sidebar-layout .ud-layout-sider{
+                text-align: center;
+                background: #fff;
+                padding-top: 40px;
+                display: inline-block;
+            }
+
+            .top-side-sidebar-layout .ud-icon{
+              margin: 0 10px; 
+              font-size: 22px;
+            }
+        `}
+      </style>
+      <Layout className='top-side-sidebar-layout'>
+        <Header>
+          <div className='h-10 mx-6' style={{ width: '150px', background: '#D6DCFF' }}></div>
+          <Menu mode='horizontal'>
+            <Menu.Item name='1'>Nav 1</Menu.Item>
+            <Menu.Item name='2'>Nav 2</Menu.Item>
+            <Menu.Item name='3'>Nav 3</Menu.Item>
+            <Menu.Item name='4'>Nav 4</Menu.Item>
+            <Menu.Item name='5'>Nav 5</Menu.Item>
+          </Menu>
+        </Header>
+        <Layout hasSider>
+          <Sider>
+            <Menu mode='inline' hasLine defaultActiveKey='2' className='w-60 border-r inline-block menu-inline'>
+              <Menu.Submenu name='一' icon={<PictureFilled />} title='标题一'>
+                <Menu.Item name='1'>Option 1</Menu.Item>
+                <Menu.Item name='2'>Option 2</Menu.Item>
+                <Menu.Item name='3'>Option 3</Menu.Item>
+              </Menu.Submenu>
+              <Menu.Submenu name='二' icon={<VoiceFilled />} title='标题二'>
+                <Menu.Item name='9'>Option 1</Menu.Item>
+                <Menu.Item name='8'>Option 2</Menu.Item>
+                <Menu.Item name='7'>Option 3</Menu.Item>
+              </Menu.Submenu>
+              <Menu.Submenu name='三' icon={<DataFilled />} title='标题三'>
+                <Menu.Item name='4'>Option 1</Menu.Item>
+                <Menu.Item name='5'>Option 2(disabled)</Menu.Item>
+                <Menu.Item name='6'>Option 3</Menu.Item>
+              </Menu.Submenu>
+            </Menu>
+          </Sider>
+          <Layout style={{ padding: '0  40px 30px', textAlign: 'left', background: '#f2f4fa' }}>
+            <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+              <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+              <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+              <Breadcrumb.Item>App</Breadcrumb.Item>
+            </Breadcrumb>
+            <Content>
+              <div className='bg-white text-black p-6' style={{ height: '100%', minHeight: '428px' }}>
+                Content
+              </div>
+            </Content>
+          </Layout>
+        </Layout>
+      </Layout>
+    </>
+  );
+};
+```
+
+## 顶部-侧边布局
+
+拥有顶部导航及侧边栏的页面，多用于展示类网站。
+
+```jsx
+() => {
+  const { Header, Content, Footer, Sider } = Layout;
+  const width = '200px';
+  return (
+    <>
+      <style>
+        {`
+          .top-side-layout .ud-layout-header{
+                height: 64px;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                background: rgba(114,132,251,.8); 
+            }
+
+            .top-side-layout .ud-layout-header .ud-menu{
+                align-items: center;
+                --ud-menu-horizontal-item-background-active: #5561D4;
+                --ud-menu-horizontal-item-background-hover: #5561D4;
+                --ud-menu-item-background: transparent;
+                --ud-menu-item-color-active: #fff;
+                --ud-menu-item-color-hover: #fff;
+                background: transparent;
+            }
+
+            .top-side-layout .ud-layout-sider{
+                text-align: center;
+                background: #fff;
+                padding-top: 40px;
+                display: inline-block;
+                width: ${width}
+            }
+
+            .top-side-layout .ud-layout-main{
+                padding: 0 20px;
+                background: #f2f4fa;
+             }
+
+             .top-side-layout .ud-layout-footer{
+                padding: 24px;
+                text-align: center;
+                background: #f2f4fa;
+             }
+
+             .top-side-layout .ud-icon{
+              margin: 0 10px; 
+              font-size: 22px;
+            }
+        `}
+      </style>
+      <Layout className='top-side-layout'>
+        <Header>
+          <div className='h-10 mx-6' style={{ width: '150px', background: '#D6DCFF' }}></div>
+          <Menu mode='horizontal' className=' h-full'>
+            <Menu.Item name='1'>Nav 1</Menu.Item>
+            <Menu.Item name='2'>Nav 2</Menu.Item>
+            <Menu.Item name='3'>Nav 3</Menu.Item>
+            <Menu.Item name='4'>Nav 4</Menu.Item>
+            <Menu.Item name='5'>Nav 5</Menu.Item>
+          </Menu>
+        </Header>
+        <Layout style={{ padding: '0 40px', background: '#f2f4fa' }}>
+          <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+            <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+            <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <Layout hasSider style={{ textAlign: 'left' }}>
+            <Sider>
+              <Menu>
+                <Menu.Item name='1'>
+                  <PictureFilled />
+                  <span>Option 1</span>
+                </Menu.Item>
+                <Menu.Item name='2'>
+                  <VoiceFilled /> Option 2
+                </Menu.Item>
+                <Menu.Item name='3'>
+                  <DataFilled /> Option 3
+                </Menu.Item>
+                <Menu.Item name='4'>
+                  <PictureFilled /> Option 4
+                </Menu.Item>
+              </Menu>
+            </Sider>
+            <Content>
+              <div className='bg-white text-black p-6' style={{ height: '100%', minHeight: '428px' }}>
+                Content
+              </div>
+            </Content>
+          </Layout>
+        </Layout>
+        <Footer>&copy;2022 Ubtech Robotics Corp. All rights reserved</Footer>
+      </Layout>
+    </>
+  );
+};
+```
+
+## 侧边布局
+
+侧边两列式布局。页面横向空间有限时，侧边导航可收起。
+
+侧边导航在页面布局上采用的是左右的结构，一般主导航放置于页面的左侧固定位置，辅助菜单放置于工作区顶部。内容根据浏览器终端进行自适应，能提高横向空间的使用率，但是整个页面排版不稳定。侧边导航的模式层级扩展性强，一、二、三级导航项目可以更为顺畅且具关联性的被展示，同时侧边导航可以固定，使得用户在操作和浏览中可以快速的定位和切换当前位置，有很高的操作效率。但这类导航横向页面内容的空间会被牺牲一部分。
+
+```jsx
+() => {
+  const { Header, Content, Footer, Sider } = Layout;
+  const width = '200px';
+  const collapsedWidth = '100px';
+  const [collapsed, setCollapsed] = useState(true);
+
+  return (
+    <>
+      <style>
+        {`
+            .side-layout .ud-layout-sider{
+                width: ${collapsed ? width : collapsedWidth};
+                background: #7284FB;
+            }
+
+            .side-layout .ud-menu{ 
+                --ud-menu-item-background: #7284fb;
+                color: #fff; 
+                --ud-menu-item-color-hover: #FFF; 
+                --ud-menu-item-color-active: #FFF;
+                --ud-color-primary-light: #4F5BFF;
+                background: #7284FB ;
+            }
+
+            .side-layout .ud-menu .ud-menu-item{
+                height: 70px;
+            }
+
+            .side-layout .ud-layout-footer{
+                padding: 24px;
+                text-align: center;
+                background: #f2f4fa;
+            }
+
+            .side-layout .ud-icon{
+              margin: 0 10px; 
+              font-size: 22px;
+            }
+        `}
+      </style>
+      <Layout hasSider className='side-layout'>
+        <Sider
+          trigger={<LeftOutlined />}
+          onCollapse={(value) => {
+            setCollapsed(!value);
+          }}
+          collapsed={collapsed}
+        >
+          <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all .2s' }}></div>
+          <div style={{ flexGrow: '1', textAlign: 'center' }}>
+            <Menu isCollapsed={!collapsed}>
+              <Menu.Item name='1' icon={<PictureFilled />}>
+                Option 1
+              </Menu.Item>
+              <Menu.Item name='2' icon={<VoiceFilled />}>
+                Option 2
+              </Menu.Item>
+              <Menu.Item name='3' icon={<DataFilled />}>
+                Option 3
+              </Menu.Item>
+              <Menu.Item name='4' icon={<PictureFilled />}>
+                Option 4
+              </Menu.Item>
+            </Menu>
+          </div>
+        </Sider>
+        <Layout style={{ padding: '0 20px', background: '#f2f4fa' }}>
+          <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+            <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+            <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <Layout hasSider style={{ textAlign: 'left' }}>
+            <Content>
+              <div className='bg-white text-black p-6' style={{ height: '428px', textAlign: 'center' }}>
+                Content
+              </div>
+            </Content>
+          </Layout>
+          <Footer>&copy;2022 Ubtech Robotics Corp. All rights reserved</Footer>
+        </Layout>
+      </Layout>
+    </>
+  );
+};
+```
+
+## 自定义触发器
+
+要使用自定义触发器，可以设置 <Typography.Text code>trigger = {'{ null }'}</Typography.Text> 来隐藏默认设定。
+
+```jsx
+() => {
+  const { Header, Content, Footer, Sider } = Layout;
+  const [collapsed, setCollapsed] = useState(true);
+  const width = '200px';
+  const collapsedWidth = '100px';
+  return (
+    <>
+      <style>
+        {`
+            .custom-trigger-layout .ud-layout-sider{
+                width: ${collapsed ? width : collapsedWidth};
+                background: #7284FB;
+                justify-ontent: space-between;
+            }
+
+           .custom-trigger-layout .ud-menu{ 
+                --ud-menu-item-background: #7284fb;
+                color: #fff; 
+                --ud-menu-item-color-hover: #FFF; 
+                --ud-menu-item-color-active: #FFF;
+                --ud-color-primary-light: #4F5BFF;
+                background: #7284FB ;
+            }
+
+             .custom-trigger-layout .ud-menu .ud-menu-item{
+                height: 70px;
+            }
+
+            .custom-trigger-layout .ud-icon{
+              margin: 0 10px; 
+              font-size: 22px;
+            }
+        `}
+      </style>
+      <Layout hasSider className='custom-trigger-layout'>
+        <Sider
+          triggerTop={<MenuOutlined />}
+          trigger={<LeftOutlined />}
+          onCollapse={(value) => {
+            setCollapsed(!value);
+          }}
+          collapsed={collapsed}
+        >
+          <div className='h-10 mx-6' style={{ margin: '12px 25px 0 25px', width: collapsed ? '150px' : '50px', background: '#D6DCFF', transition: 'all 0.2s' }}></div>
+          <div style={{ textAlign: 'center', overflow: 'hidden', marginTop: '30px', flexGrow: '1' }}>
+            <Menu isCollapsed={!collapsed}>
+              <Menu.Item name='1' icon={<PictureFilled />}>
+                <span>Option 1</span>
+              </Menu.Item>
+              <Menu.Item name='2' icon={<VoiceFilled />}>
+                Option 2
+              </Menu.Item>
+              <Menu.Item name='3' icon={<DataFilled />}>
+                Option 3
+              </Menu.Item>
+              <Menu.Item name='4' icon={<PictureFilled />}>
+                Option 4
+              </Menu.Item>
+            </Menu>
+          </div>
+        </Sider>
+        <Layout>
+          <Header className='h-16' style={{ background: '#fff', padding: '0 20px' }}></Header>
+          <Layout hasSider style={{ textAlign: 'left', padding: '20px 20px 0  20px', background: '#f2f4fa' }}>
+            <Content>
+              <div className='bg-white text-black p-6' style={{ height: '428px' }}>
+                Content
+              </div>
+            </Content>
+          </Layout>
+          <Footer className='py-6  px-12' style={{ textAlign: 'center', background: '#f2f4fa' }}>
+            &copy;2022 Ubtech Robotics Corp. All rights reserved
+          </Footer>
+        </Layout>
+      </Layout>
+    </>
+  );
+};
+```
+
+## 固定头部
+
+一般用于固定顶部导航，方便页面切换。
+
+```jsx
+() => {
+  const { Header, Content, Footer, Sider } = Layout;
+
+  return (
+    <>
+      <style>
+        {`
+            .header-fixed-layout{
+                height: 500px;
+                overflow: auto;
+            }
+
+            .header-fixed-layout .ud-layout-header{
+                height: 64px;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                background: rgba(114,132,251,.8); 
+            }
+
+            .header-fixed-layout .ud-menu{ 
+                --ud-menu-horizontal-item-background-active: #5561D4;
+                --ud-menu-horizontal-item-background-hover: #5561D4;
+                --ud-menu-item-background: transparent;
+                --ud-menu-item-color-active: #fff;
+                --ud-menu-item-color-hover: #fff;
+                background: transparent;
+            }
+
+            .header-fixed-layout .ud-layout-main{
+                padding: 16px 50px 0 50px; 
+                text-align: left;
+                background: #f2f4fa; 
+            }
+
+            .header-fixed-layout .ud-layout-footer{
+                padding: 24px;
+                text-align: center;
+                background: #f2f4fa;
+            }
+            
+        `}
+      </style>
+      <div className='translate-y-0 translate-y-0'>
+        <Layout className='header-fixed-layout'>
+          <Header>
+            <div className='h-10 mx-6' style={{ width: '150px', background: '#D6DCFF' }}></div>
+            <Menu mode='horizontal'>
+              <Menu.Item name='1'>Nav 1</Menu.Item>
+              <Menu.Item name='2'>Nav 2</Menu.Item>
+              <Menu.Item name='3'>Nav 3</Menu.Item>
+              <Menu.Item name='4'>Nav 4</Menu.Item>
+              <Menu.Item name='5'>Nav 5</Menu.Item>
+            </Menu>
+          </Header>
+          <Scrollbar hover style={{ height: '500px' }}>
+            <Content>
+              <Breadcrumb style={{ marginBottom: '16px', fontSize: '14px' }}>
+                <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+                <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+                <Breadcrumb.Item>App</Breadcrumb.Item>
+              </Breadcrumb>
+              <div className='bg-white text-black p-6' style={{ height: '428px' }}>
+                Content
+              </div>
+            </Content>
+            <Footer>&copy;2022 Ubtech Robotics Corp. All rights reserved</Footer>
+          </Scrollbar>
+        </Layout>
+      </div>
+    </>
+  );
+};
+```
+
+## 固定侧边栏
+
+当内容较长时，使用固定侧边栏可以提供更好的体验。
+
+```jsx
+() => {
+  const { Header, Content, Footer, Sider } = Layout;
+  return (
+    <>
+      <style>
+        {`
+            .side-fixed-layout .ud-menu{ 
+                --ud-menu-item-background: #7284fb;
+                color: #fff;
+                --ud-menu-item-color-hover: #FFF;
+                --ud-menu-item-color-active: #FFF;
+                --ud-color-primary-light: #4F5BFF;
+                background: #7284FB ;
+            }
+
+            .side-fixed-layout .ud-scrollbar{
+                lexGrow: 0;
+                textAlign: center; 
+                height: 456px;
+                --ud-scrollbar-thumb-color: #9cacff'
+             }
+
+            .side-fixed-layout .ud-layout-footer{
+                padding: 24px;
+                text-align: center;
+                background: #f2f4fa;
+            }
+
+            .side-fixed-layout .ud-icon{
+              margin: 0 10px; 
+              font-size: 22px;
+            }
+        `}
+      </style>
+      <Layout hasSider className='side-fixed-layout'>
+        <Sider style={{ transform: 'translate(0, 0)', background: '#7284fb ' }}>
+          <div className='h-10 mx-6' style={{ margin: '12px 25px', width: '150px', background: '#D6DCFF' }}></div>
+          <Scrollbar>
+            <Menu hasLine mode='vertical'>
+              <Menu.Item name='1' icon={<PictureFilled />}>
+                Option 1
+              </Menu.Item>
+              <Menu.Item name='2' icon={<VoiceFilled />}>
+                Option 2
+              </Menu.Item>
+              <Menu.Item name='3' icon={<DataFilled />}>
+                Option 3
+              </Menu.Item>
+              <Menu.Item name='4' icon={<PictureFilled />}>
+                Option 4
+              </Menu.Item>
+              <Menu.Item name='5' icon={<PictureFilled />}>
+                Option 5
+              </Menu.Item>
+              <Menu.Item name='6' icon={<VoiceFilled />}>
+                Option 6
+              </Menu.Item>
+              <Menu.Item name='7' icon={<DataFilled />}>
+                Option 7
+              </Menu.Item>
+              <Menu.Item name='8' icon={<PictureFilled />}>
+                Option 8
+              </Menu.Item>
+              <Menu.Item name='9' icon={<PictureFilled />}>
+                Option 9
+              </Menu.Item>
+              <Menu.Item name='10' icon={<VoiceFilled />}>
+                Option 10
+              </Menu.Item>
+              <Menu.Item name='11' icon={<DataFilled />}>
+                Option 11
+              </Menu.Item>
+              <Menu.Item name='12' icon={<PictureFilled />}>
+                Option 12
+              </Menu.Item>
+            </Menu>
+          </Scrollbar>
+        </Sider>
+        <Layout style={{ padding: '0 20px', background: '#f2f4fa' }}>
+          <Breadcrumb style={{ margin: '16px 0', fontSize: '14px' }}>
+            <Breadcrumb.Item href=''>Home</Breadcrumb.Item>
+            <Breadcrumb.Item href=''>List</Breadcrumb.Item>
+            <Breadcrumb.Item>App</Breadcrumb.Item>
+          </Breadcrumb>
+          <Layout hasSider>
+            <Content>
+              <div className='bg-white text-black p-6' style={{ height: '428px' }}>
+                Content
+              </div>
+            </Content>
+          </Layout>
+          <Footer>&copy;2022 Ubtech Robotics Corp. All rights reserved</Footer>
+        </Layout>
+      </Layout>
+    </>
+  );
+};
+```

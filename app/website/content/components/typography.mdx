@@ -1,0 +1,131 @@
+# Typography 排版
+
+文本的基本格式
+
+## 何时使用
+
+当需要展示标题、段落、列表内容时使用，如文章、博客、日志的文本样式。
+
+当需要一列基于文本的基础操作时，如拷贝、省略、可编辑。
+
+## 标题组件
+
+展示不同级别的标题。
+
+```jsx
+<>
+  <Typography.Title level={1}>h1. uDesign</Typography.Title>
+  <Typography.Title level={2}>h2. uDesign</Typography.Title>
+  <Typography.Title level={3}>h3. uDesign</Typography.Title>
+  <Typography.Title level={4}>h4. uDesign</Typography.Title>
+  <Typography.Title level={5}>h5. uDesign</Typography.Title>
+</>
+```
+
+## 文本与超链接组件
+
+内置不同样式的文本以及超链接组件。
+
+```jsx
+<Space vertical align='start'>
+  <Typography.Text>uDesign (default)</Typography.Text>
+  <Typography.Text type='secondary'>uDesign (secondary)</Typography.Text>
+  <Typography.Text type='success'>uDesign (success)</Typography.Text>
+  <Typography.Text type='warning'>uDesign (warning)</Typography.Text>
+  <Typography.Text type='danger'>uDesign (danger)</Typography.Text>
+  <Typography.Text disabled>uDesign (disabled)</Typography.Text>
+  <Typography.Text mark>uDesign (mark)</Typography.Text>
+  <Typography.Text code>uDesign (code)</Typography.Text>
+  <Typography.Text keyboard>uDesign (keyboard)</Typography.Text>
+  <Typography.Text underline>uDesign (underline)</Typography.Text>
+  <Typography.Text strong>uDesign (strong)</Typography.Text>
+  <Typography.Text del>uDesign (delete)</Typography.Text>
+  <Typography.Text italic>uDesign (italic)</Typography.Text>
+  <Typography.Text link='#'>uDesign (Link)</Typography.Text>
+</Space>
+```
+
+## 可交互能力
+
+提供可编辑和可复制等额外的交互能力。
+
+```jsx
+() => {
+  const { Text } = Typography;
+  const [copyIcon, setCopyIcon] = useState(true);
+  return (
+    <Space vertical align='start'>
+      <Text style={{ width: '100%' }} editable={{ tooltip: '编辑', icon: () => <EditFilled /> }}>
+        This is an editable text.
+      </Text>
+      <Text
+        style={{ width: '100%' }}
+        editable={{
+          tooltip: '编辑',
+          autoSize: { minRows: 2 },
+          icon: () => <EditFilled />,
+        }}
+      >
+        This is an editable text.
+      </Text>
+      <Text>
+        This is an editable text.
+        <Copy
+          style={{ color: '#7284fb', marginLeft: '5px' }}
+          text='复制成功'
+          onSuccess={() => {
+            setCopyIcon(!copyIcon);
+            Toast('复制成功');
+            setTimeout(() => {
+              setCopyIcon(copyIcon);
+            }, 2000);
+          }}
+          onError={() => Toast('复制失败')}
+        >
+          {copyIcon ? <CopyOutlined /> : <CheckOutlined style={{ color: '#7bdc7b' }} />}
+        </Copy>
+      </Text>
+    </Space>
+  );
+};
+```
+
+省略展示
+
+多行文本省略。你可以通过 tooltip 属性配置省略展示内容，大量文本时推荐优先使用 expandable。
+
+```jsx
+() => {
+  const { Paragraph } = Typography;
+  return (
+    <Space size='large' vertical>
+      <Paragraph
+        ellipsis={{
+          rows: 1,
+          symbol: 'more',
+          expandable: true,
+          tooltip: true,
+        }}
+      >
+        这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编，
+        这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案，
+      </Paragraph>
+      <Paragraph
+        ellipsis={{
+          rows: 3,
+          tooltip: true,
+          symbol: 'more',
+          expandable: true,
+          suffix: '--William',
+          onExpand: () => {
+            Toast('展开时触发');
+          },
+        }}
+      >
+        这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案， 这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编，
+        这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案这是一段待编辑的文案，
+      </Paragraph>
+    </Space>
+  );
+};
+```

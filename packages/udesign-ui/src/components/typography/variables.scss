@@ -56,7 +56,7 @@ $typography-color-warning: var(--ud-typography-color-warning, var(--ud-color-war
 $typography-color-danger: var(--ud-typography-color-danger, var(--ud-color-danger)); // 字体颜色-危险
 $typography-color-disabled: var(--ud-typography-color-disabled, var(--ud-color-disabled)); // 字体颜色-禁用
 
-$typography-padding: var(--ud-typography-padding, 9px 14px 9px 10px); // 内边距-默认
+$typography-padding: var(--ud-typography-padding, 0); // 内边距-默认
 $typography-ellipsis-symbol-color: var(--ud-typography-ellipsis-symbol-color, var(--ud-color-primary)); // 字体颜色-ellipsis symbol
 $typography-editable-icon-margin: var(--ud-editable-icon-margin, 0 0 0 5px); // 外边距 - 编辑图标
 $typography-ellipsis-suffix-margin: var(--ud-ellipsis-suffix-margin, 0 0 0 5px); // 外边距 - ellipsis-suffix
