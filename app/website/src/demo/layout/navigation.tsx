@@ -30,7 +30,7 @@ const Navigation = () => {
   return (
     <>
       <header className='fixed z-50 bg-white w-full border-b'>
-        <div className='max-w-screen-2xl mx-auto px-5 flex justify-between items-center'>
+        <div className='mx-auto px-5 flex justify-between items-center'>
           <Link href='/'>
             <a className='no-underline flex items-center'>
               <Img src='/logo.svg' width='154' height='56' alt={SITE_NAME} />
