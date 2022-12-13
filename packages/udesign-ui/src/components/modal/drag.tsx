@@ -80,8 +80,43 @@ export default class Drag extends React.Component<DragProps> {
   };
 
   resize = () => {
+    const rect = this.target?.parentElement?.getBoundingClientRect();
+
     this.dragX = window.innerWidth;
     this.dragY = window.innerHeight;
+
+    if (!rect) return;
+
+    if (rect.y < 0) {
+      const y = rect.y;
+      const transformStr = `translate(${this.position.dx}px,${this.position.dy - y}px)`;
+      this.props.updateTransform(transformStr, this.position.dx, this.position.dy - y, this.target as HTMLElement);
+      this.position.dy -= y;
+      return;
+    }
+
+    if (rect.y + 30 > this.dragY) {
+      const y = rect.y + 30 - this.dragY;
+      const transformStr = `translate(${this.position.dx}px,${this.position.dy - y}px)`;
+      this.props.updateTransform(transformStr, this.position.dx, this.position.dy - y, this.target as HTMLElement);
+      this.position.dy -= y;
+      return;
+    }
+
+    if (rect.x + rect.width - 30 < 0) {
+      const x = rect.x + rect.width - 30;
+      const transformStr = `translate(${this.position.dx - x}px,${this.position.dy}px)`;
+      this.props.updateTransform(transformStr, this.position.dx - x, this.position.dy, this.target as HTMLElement);
+      this.position.dx -= x;
+      return;
+    }
+
+    if (rect.x + 30 > this.dragX) {
+      const x = rect.x + 30 - this.dragX;
+      const transformStr = `translate(${this.position.dx - x}px,${this.position.dy}px)`;
+      this.props.updateTransform(transformStr, this.position.dx - x, this.position.dy, this.target as HTMLElement);
+      this.position.dx -= x;
+    }
   };
 
   componentDidMount() {
@@ -92,6 +127,7 @@ export default class Drag extends React.Component<DragProps> {
       this.position.dx = -(rect.width / 2);
       this.position.dy = -(rect?.height / 2);
     }
+
     // 用document移除对mousemove事件的监听
     document.addEventListener('mouseup', this.docMouseUp);
     document.addEventListener('touchend', this.touchDocMouseUp);
