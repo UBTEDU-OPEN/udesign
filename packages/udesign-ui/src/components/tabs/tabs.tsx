@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Tab } from './tab';
+import { Item } from './item';
 import { NativeProps, toArray, usePropsValue } from '../../utils';
 import { Position, BASE_CLASS_PREFIX } from '../../constants';
 import TabsContext from './context';
 import { TabType, TabSize } from './type';
+import Scrollbar from '../scrollbar';
 
 const prefixCls = `${BASE_CLASS_PREFIX}-tabs`;
 
@@ -14,13 +15,14 @@ export type TabsProps = {
   position?: Position; // 标签位置。默认值：top
   centered?: boolean; // 标签居中展示。默认值：false
   tabBarStyle?: React.CSSProperties; // tab bar 的样式
+  contentStyle?: React.CSSProperties; // content 的样式
   around?: boolean; // 自动平铺'justify-content: around;'。默认值：false
   activeKey?: string; // 当前激活 tab 面板的 key。默认值：-
   defaultActiveKey?: string; // 初始化选中面板的 key，如果没有设置 activeKey。默认值：-
   onChange?: (name: string) => void; // 切换时的回调。默认值：-
 } & NativeProps;
 
-export const Tabs = ({ type = 'card', tabBarStyle, position = 'top', size = 'middle', centered, around, activeKey, defaultActiveKey, onChange, className, style, children }: TabsProps) => {
+export const Tabs = ({ type = 'card', tabBarStyle, position = 'top', size = 'middle', centered, around, activeKey, defaultActiveKey, onChange, contentStyle, className, style, children }: TabsProps) => {
   // 1. 提取所有子元素
   // const tabs = useMemo(() => toArray(children), []);
   const tabs = toArray(children);
@@ -63,7 +65,7 @@ export const Tabs = ({ type = 'card', tabBarStyle, position = 'top', size = 'mid
               }}
               key={name}
             >
-              <Tab {...newProps} />
+              <Item {...newProps} />
             </TabsContext.Provider>
           );
         })}
@@ -73,9 +75,9 @@ export const Tabs = ({ type = 'card', tabBarStyle, position = 'top', size = 'mid
 
   // 使用 hidden 属性来显示和隐藏内容
   const renderContent = () => {
-    const cls = classNames(`${prefixCls}-content`, className);
+    const cls = classNames(`${prefixCls}-content`);
     return (
-      <div className={cls}>
+      <div className={cls} style={contentStyle}>
         {tabs.map((child) => {
           const { name, children } = child.props;
           return (
@@ -88,14 +90,19 @@ export const Tabs = ({ type = 'card', tabBarStyle, position = 'top', size = 'mid
     );
   };
 
-  const cls = classNames(prefixCls, {
-    [`${prefixCls}-position-${position}`]: position,
-  });
+  const cls = classNames(
+    prefixCls,
+    {
+      [`${prefixCls}-position-${position}`]: position,
+    },
+    className,
+  );
   return (
     <>
       {tabs.length ? (
         <div className={cls} style={style}>
-          {renderControls()}
+          {position === 'left' || position === 'right' ? <Scrollbar>{renderControls()}</Scrollbar> : renderControls()}
+
           {renderContent()}
         </div>
       ) : null}

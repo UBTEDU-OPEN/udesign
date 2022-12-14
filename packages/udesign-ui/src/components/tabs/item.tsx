@@ -1,8 +1,45 @@
-import React from 'react';
-import { TabProps } from './tab';
+import React, { ReactNode, useContext } from 'react';
+import classNames from 'classnames';
+import { NativeProps } from '../../utils';
+import { BASE_CLASS_PREFIX } from '../../constants';
+import TabsContext from './context';
 
-export type ItemProps = Omit<TabProps, 'type' | 'active' | 'onItemClick'>;
+const prefixCls = `${BASE_CLASS_PREFIX}-tabs`;
 
-export const Item = ({ children }: ItemProps) => <>{children}</>;
+export type ItemProps = {
+  name: string; // 用于匹配的标识符。默认值：-
+  label: ReactNode; // 对外显示。默认值：-
+  disabled?: boolean; // 是否禁用。默认值：false
+  onClick?: (name: string) => void; // 点击tab触发。默认值：-
+} & NativeProps;
+
+export const Item = ({ name, label, disabled, onClick, className, style }: ItemProps) => {
+  const { size, position, onInnerClick, active } = useContext(TabsContext);
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    if (disabled) return;
+    onClick?.(name);
+    onInnerClick?.(name);
+    (e.target as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'end' });
+  };
+
+  const cls = classNames(
+    `${prefixCls}-tab-${size}`,
+    `${prefixCls}-tab`,
+    {
+      [`${prefixCls}-active`]: active,
+      [`${prefixCls}-inactive`]: !active,
+      [`${prefixCls}-disabled`]: disabled,
+    },
+    className,
+  );
+
+  return (
+    <>
+      <li className={cls} onClick={handleClick} key={name} style={style}>
+        {label}
+      </li>
+    </>
+  );
+};
 
 Item.displayName = 'Tabs.Item';

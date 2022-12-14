@@ -3,7 +3,7 @@ import { attachPropertiesToComponent } from '../../utils';
 import { Tabs } from './tabs';
 import { Item } from './item';
 
-export type { TabProps } from './tab';
+export type { ItemProps } from './item';
 export type { TabsProps } from './tabs';
 
 export default attachPropertiesToComponent(Tabs, { Item });

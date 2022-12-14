@@ -58,6 +58,7 @@ $module: ud-tabs;
   }
   &-position-bottom {
     flex-direction: column;
+
     .#{$module}-header {
       order: 2;
       border-top: $tabs-border-width $tabs-border-style $tabs-border-color;
@@ -78,6 +79,9 @@ $module: ud-tabs;
   }
   &-position-left {
     flex-direction: row;
+    .ud-scrollbar {
+      width: auto;
+    }
     .#{$module}-header {
       border-right: $tabs-border-width $tabs-border-style $tabs-border-color;
       li {
@@ -99,6 +103,10 @@ $module: ud-tabs;
     }
   }
   &-position-right {
+    .ud-scrollbar {
+      order: 2;
+      width: auto;
+    }
     .#{$module}-header {
       order: 2;
       border-left: $tabs-border-width $tabs-border-style $tabs-border-color;
