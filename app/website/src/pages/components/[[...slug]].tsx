@@ -41,4 +41,5 @@ const ComponentPage = ({ component }: ComponentPageProps) => {
     </>
   );
 };
+
 export default ComponentPage;
