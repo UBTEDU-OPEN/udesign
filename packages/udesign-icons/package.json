@@ -1,7 +1,7 @@
 {
   "name": "@ubt/udesign-icons",
   "version": "1.1.6",
-  "author": "Arvin <arvin.xiang@ubtrobot.com>",
+  "author": "uCode Team",
   "license": "MIT",
   "scripts": {
     "build:icon": "node scripts/build-icon",

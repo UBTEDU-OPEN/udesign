@@ -9,31 +9,3 @@ $ yarn add @ubt/udesign-ui@latest
 # or
 $ npm install --save @ubt/udesign-ui@latest
 ```
-
-## 如何贡献
-
-### 拉取代码仓库
-
-http://gerrit.edu.ubtrobot.com/admin/repos/edu-libraries/udesign
-
-### 启动服务
-
-```
-cd app\website
-yarn dev
-```
-
-访问 `http://localhost:3000/` 查看。
-
-### 遵守开发规范
-
-正式开发组件前，请务必阅读 [uDesign 组件开发规范](\spec.md)。
-在 `packages\udesign-ui` 里写组件的代码，在 `app\website` 里写组件的演示案例和文档。
-
-### 提交代码
-
-提交代码到 gerrit，记得 add reviewer（向明）
-```bash
-git cz
-git push origin HEAD:refs/for/develop
-```
