@@ -1,0 +1,31 @@
+# TimePicker 时间选择框
+
+输入或选择时间的控件。
+
+## 何时使用
+
+当用户需要输入一个时间，可以点击标准输入框，弹出时间面板进行选择。
+
+## 基础用法
+
+```jsx
+<TimePicker
+  onChange={(e) => {
+    console.log(e);
+  }}
+  placeHolder='请选择时间'
+  showNow={true}
+/>
+```
+
+## 范围选择器
+
+```jsx
+<TimePicker.RangePicker
+  onChange={(e) => {
+    console.log(e);
+  }}
+  placeHolder={['开始时间', '结束时间']}
+  showNow={true}
+/>
+```

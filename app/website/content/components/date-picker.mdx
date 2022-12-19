@@ -1,0 +1,64 @@
+# DatePicker 日期选择框
+
+输入或选择日期的控件。
+
+## 何时使用
+
+当用户需要输入一个日期，可以点击标准输入框，弹出日期面板进行选择。
+
+## 基础用法
+
+```jsx
+<DatePicker
+  format='YYYY/MM/DD'
+  onChange={(e) => {
+    console.log(e);
+  }}
+  placeHolder='请选择日期'
+  showTody={true}
+/>
+```
+
+## 范围选择器
+
+```jsx
+<DatePicker.RangePicker
+  format='YYYY/MM/DD'
+  onChange={(e) => {
+    console.log(e);
+  }}
+  placeHolder={['开始日期', '结束日期']}
+/>
+```
+
+## 日期时间选择器
+
+通过 `showTime` 来设置是否显示时间选择器。
+
+```jsx
+<DatePicker
+  onChange={(e) => {
+    console.log(e);
+  }}
+  placeHolder='请选择日期'
+  showTime={true}
+  showNow={true}
+  style={{ width: '300px' }}
+/>
+```
+
+## 范围日期时间选择器
+
+通过 `showTime` 来设置是否显示时间选择器。
+
+```jsx
+<DatePicker.RangePicker
+  format='YYYY/MM/DD HH:mm:ss'
+  onChange={(e) => {
+    console.log(e);
+  }}
+  placeHolder={['开始时间', '结束时间']}
+  showTime={true}
+  showNow={true}
+/>
+```
