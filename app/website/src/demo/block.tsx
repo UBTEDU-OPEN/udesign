@@ -15,7 +15,7 @@ type DemoBlockProps = {
 } & NativeProps;
 
 export const Block = ({ title, description, background = true, transform, compact, debug, todo, children, className }: DemoBlockProps) => {
-  const cls = classNames('relative', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-12', className);
+  const cls = classNames('relative not-prose', transform ? 'translate-x-0 translate-y-0' : '', compact ? '' : 'p-12', className);
   const code = reactElementToJSXString(React.isValidElement(children) ? children : <>{children}</>, { maxInlineAttributesLineLength: 80, showFunctions: false, sortProps: false, useBooleanShorthandSyntax: false });
   return debug && process.env.NODE_ENV === 'production' ? null : (
     <section className='my-12'>

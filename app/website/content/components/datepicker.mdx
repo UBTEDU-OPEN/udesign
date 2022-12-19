@@ -1,0 +1,49 @@
+# ConfigProvider 全局配置
+
+为组件提供统一的全局化配置。目前内置了中文和英文，其他语言待产品补充。
+
+## 何时使用
+
+## 基础用法
+
+通过向 ConfigProvider 传入 locale 语言包，来切换组件语言。
+
+```js
+() => {
+  import zh_CN from '@ubt/udesign-ui/src/components/locale/source/zh_CN';
+  import en_US from '@ubt/udesign-ui/src/components/locale/source/en_US';
+
+  const [locale, setLocale] = useState(zh_CN);
+  const [visible, setVisible] = useState(false);
+
+  <>
+    <Space>
+      切换语言：
+      <Button type={locale === zh_CN ? 'primary' : 'default'} onClick={() => setLocale(zh_CN)}>
+        中文
+      </Button>
+      <Button type={locale === en_US ? 'primary' : 'default'} onClick={() => setLocale(en_US)}>
+        英语
+      </Button>
+    </Space>
+    <br />
+    <br />
+    <ConfigProvider locale={locale}>
+      <Pagination total={500} showTotal />
+      <br />
+      <br />
+      <Space>
+        <Button type='primary' onClick={() => setVisible(true)}>
+          Open Modal
+        </Button>
+        <Modal visible={visible} title='对话框标题' onCancel={() => setVisible(false)} onOk={() => setVisible(false)}>
+          对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文对话框正文
+        </Modal>
+      </Space>
+      <br />
+      <br />
+      <Empty />
+    </ConfigProvider>
+  </>;
+};
+```
