@@ -143,7 +143,7 @@ export const DesignAPI = (props: DesignAPIProps) => {
   return designApi && componentName && designApi[componentName]?.length ? (
     <section className='mb-10'>
       <div className='py-4'>
-        <div className='text-2xl font-semibold'>API 参考</div>
+        <div className='text-2xl font-semibold'>Props</div>
       </div>
       {renderContent()}
     </section>

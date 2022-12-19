@@ -58,7 +58,7 @@ export const DesignToken = (props: DesignTokenProps) => {
 
   const renderTable = () => {
     const cls = 'border border-bottom p-4';
-    return designToken && componentName && designToken[componentName] ? (
+    return designToken && componentName ? (
       <table className='w-full text-left'>
         <thead>
           <tr>
@@ -68,7 +68,7 @@ export const DesignToken = (props: DesignTokenProps) => {
           </tr>
         </thead>
         <tbody>
-          {designToken[componentName].map((item, index) => (
+          {designToken[componentName]?.map((item, index) => (
             <tr className='hover:bg-indigo-50' key={index}>
               <td className='border border-bottom p-4'>{item.key}</td>
               <td className='border border-bottom p-4'>{item.comment}</td>
@@ -77,18 +77,16 @@ export const DesignToken = (props: DesignTokenProps) => {
           ))}
         </tbody>
       </table>
-    ) : (
-      <div className='text-indigo-500'>当前组件没有可使用的 CSS 变量，或者开发者没有正确编写导致无法显示。</div>
-    );
+    ) : null;
   };
 
-  return (
+  return designToken && componentName && designToken[componentName] ? (
     <section className='mb-10'>
       <div className='py-4'>
-        <div className='text-2xl font-semibold'>CSS 变量</div>
+        <div className='text-2xl font-semibold'>CSS</div>
         <div className='text-base text-gray-500 mt-2'>{SITE_NAME} 广泛使用了CSS变量，因此你可以通过修改这些变量来轻松定制主题或者组件样式。</div>
       </div>
       {renderTable()}
     </section>
-  );
+  ) : null;
 };

@@ -16,7 +16,7 @@ export const Doc = ({ base, menus, children, className }: DocProps) => {
       <div className={cls}>
         {children}
         <DesignAPI />
-        {/* <DesignToken /> */}
+        <DesignToken />
       </div>
     </Layout>
   );
