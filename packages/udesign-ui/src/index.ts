@@ -105,7 +105,7 @@ export { default as Switch } from './components/switch';
 export type { TableProps } from './components/table';
 export { default as Table } from './components/table';
 
-export type { TabsProps, TabProps } from './components/tabs';
+export type { TabsProps, ItemProps } from './components/tabs';
 export { default as Tabs } from './components/tabs';
 
 export type { TagProps } from './components/tag';
